@@ -1,324 +1,1312 @@
 [
   {
-    "presidentNumber": 1,
-    "treatiesSigned": 0,
-    "treatiesRatified": 0,
-    "militaryActions": 0,
-    "majorForeignEvents": []
+    "id": 1,
+    "name": "George Washington",
+    "foreignPolicy": {
+      "events": [
+        {
+          "title": "Neutrality Proclamation of 1793",
+          "summary": "Washington declared U.S. neutrality in the war between Britain and France, establishing a precedent for avoiding entangling alliances and asserting executive authority over foreign policy.",
+          "sources": [
+            "National Archives, Neutrality Proclamation records.",
+            "Library of Congress, Washington foreign correspondence."
+          ]
+        },
+        {
+          "title": "Jay Treaty with Great Britain",
+          "summary": "Washington supported the Jay Treaty to resolve outstanding issues with Britain, prevent war, and secure trade rights despite intense domestic opposition.",
+          "sources": [
+            "Library of Congress, Jay Treaty papers.",
+            "National Archives, early diplomatic records."
+          ]
+        }
+      ],
+      "overallAssessment": "Washington established foundational principles of neutrality and diplomatic pragmatism in early U.S. foreign policy.",
+      "sources": [
+        "Library of Congress, Washington presidential papers.",
+        "National Archives, early foreign policy archives."
+      ]
+    }
   },
   {
-    "presidentNumber": 2,
-    "treatiesSigned": 0,
-    "treatiesRatified": 0,
-    "militaryActions": 0,
-    "majorForeignEvents": []
+    "id": 2,
+    "name": "John Adams",
+    "foreignPolicy": {
+      "events": [
+        {
+          "title": "Quasi‑War with France",
+          "summary": "Adams oversaw an undeclared naval conflict with France, expanding the Navy and authorizing limited hostilities while avoiding full‑scale war.",
+          "sources": [
+            "National Archives, Quasi‑War naval records.",
+            "Library of Congress, Adams diplomatic correspondence."
+          ]
+        },
+        {
+          "title": "Convention of 1800",
+          "summary": "Adams negotiated peace with France, ending the Quasi‑War and dissolving the 1778 alliance, reshaping U.S. diplomatic independence.",
+          "sources": [
+            "Library of Congress, Convention of 1800 papers.",
+            "National Archives, early treaty records."
+          ]
+        }
+      ],
+      "overallAssessment": "Adams strengthened U.S. naval power and preserved peace through difficult diplomacy with France.",
+      "sources": [
+        "Library of Congress, Adams presidential papers.",
+        "National Archives, foreign policy archives."
+      ]
+    }
   },
   {
-    "presidentNumber": 3,
-    "treatiesSigned": 0,
-    "treatiesRatified": 0,
-    "militaryActions": 0,
-    "majorForeignEvents": []
+    "id": 3,
+    "name": "Thomas Jefferson",
+    "foreignPolicy": {
+      "events": [
+        {
+          "title": "Louisiana Purchase",
+          "summary": "Jefferson acquired the Louisiana Territory from France, doubling U.S. territory and reshaping continental geopolitics.",
+          "sources": [
+            "National Archives, Louisiana Purchase documents.",
+            "Library of Congress, Jefferson diplomatic papers."
+          ]
+        },
+        {
+          "title": "Naval Action Against Barbary Pirates",
+          "summary": "Jefferson deployed naval forces to end tribute payments to Barbary states, asserting U.S. maritime rights.",
+          "sources": [
+            "Library of Congress, Barbary War correspondence.",
+            "National Archives, naval deployment records."
+          ]
+        }
+      ],
+      "overallAssessment": "Jefferson expanded U.S. territory and asserted naval power in the Mediterranean.",
+      "sources": [
+        "Library of Congress, Jefferson presidential papers.",
+        "National Archives, foreign policy archives."
+      ]
+    }
   },
   {
-    "presidentNumber": 4,
-    "treatiesSigned": 0,
-    "treatiesRatified": 0,
-    "militaryActions": 0,
-    "majorForeignEvents": []
+    "id": 4,
+    "name": "James Madison",
+    "foreignPolicy": {
+      "events": [
+        {
+          "title": "War of 1812",
+          "summary": "Madison led the nation into war with Britain over maritime rights, impressment, and frontier conflicts, resulting in a reaffirmation of U.S. sovereignty.",
+          "sources": [
+            "National Archives, War of 1812 records.",
+            "Library of Congress, Madison diplomatic correspondence."
+          ]
+        },
+        {
+          "title": "Treaty of Ghent",
+          "summary": "Madison’s administration negotiated the Treaty of Ghent, ending the war and restoring pre‑war boundaries.",
+          "sources": [
+            "Library of Congress, Treaty of Ghent papers.",
+            "National Archives, diplomatic treaty records."
+          ]
+        }
+      ],
+      "overallAssessment": "Madison defended U.S. maritime rights and secured peace through the Treaty of Ghent.",
+      "sources": [
+        "Library of Congress, Madison presidential papers.",
+        "National Archives, foreign policy archives."
+      ]
+    }
   },
   {
-    "presidentNumber": 5,
-    "treatiesSigned": 0,
-    "treatiesRatified": 0,
-    "militaryActions": 0,
-    "majorForeignEvents": []
+    "id": 5,
+    "name": "James Monroe",
+    "foreignPolicy": {
+      "events": [
+        {
+          "title": "Monroe Doctrine",
+          "summary": "Monroe declared the Western Hemisphere closed to European colonization, asserting a bold U.S. foreign policy stance against European intervention.",
+          "sources": [
+            "National Archives, Monroe Doctrine documents.",
+            "Library of Congress, Monroe diplomatic papers."
+          ]
+        },
+        {
+          "title": "Adams–Onís Treaty Implementation",
+          "summary": "Monroe oversaw the acquisition of Florida from Spain and clarified U.S.–Spanish territorial boundaries.",
+          "sources": [
+            "Library of Congress, Adams–Onís Treaty papers.",
+            "National Archives, territorial treaty records."
+          ]
+        }
+      ],
+      "overallAssessment": "Monroe established a defining U.S. hemispheric policy and expanded national territory.",
+      "sources": [
+        "Library of Congress, Monroe presidential papers.",
+        "National Archives, foreign policy archives."
+      ]
+    }
   },
   {
-    "presidentNumber": 6,
-    "treatiesSigned": 0,
-    "treatiesRatified": 0,
-    "militaryActions": 0,
-    "majorForeignEvents": []
+    "id": 6,
+    "name": "John Quincy Adams",
+    "foreignPolicy": {
+      "events": [
+        {
+          "title": "Promotion of Pan‑American Diplomacy",
+          "summary": "Adams advanced hemispheric cooperation through the proposed Pan‑American Congress, seeking to strengthen ties with Latin American republics.",
+          "sources": [
+            "National Archives, Adams diplomatic initiatives.",
+            "Library of Congress, Pan‑American correspondence."
+          ]
+        },
+        {
+          "title": "Defense of Neutral Trade Rights",
+          "summary": "Adams maintained strong positions on neutral maritime rights amid global conflicts.",
+          "sources": [
+            "Library of Congress, Adams maritime policy papers.",
+            "National Archives, early diplomatic records."
+          ]
+        }
+      ],
+      "overallAssessment": "Adams pursued principled diplomacy focused on hemispheric cooperation and maritime rights.",
+      "sources": [
+        "Library of Congress, Adams presidential papers.",
+        "National Archives, foreign policy archives."
+      ]
+    }
   },
   {
-    "presidentNumber": 7,
-    "treatiesSigned": 0,
-    "treatiesRatified": 0,
-    "militaryActions": 0,
-    "majorForeignEvents": []
+    "id": 7,
+    "name": "Andrew Jackson",
+    "foreignPolicy": {
+      "events": [
+        {
+          "title": "Confrontation with France Over Indemnity Payments",
+          "summary": "Jackson threatened retaliation against France when it delayed payment of agreed‑upon indemnities, prompting eventual compliance.",
+          "sources": [
+            "National Archives, Jackson–France correspondence.",
+            "Library of Congress, indemnity dispute papers."
+          ]
+        },
+        {
+          "title": "Recognition of Texas Independence",
+          "summary": "Jackson formally recognized the Republic of Texas, shaping future U.S. expansion.",
+          "sources": [
+            "Library of Congress, Jackson Texas recognition papers.",
+            "National Archives, diplomatic recognition records."
+          ]
+        }
+      ],
+      "overallAssessment": "Jackson used forceful diplomacy to secure U.S. claims and expand influence in North America.",
+      "sources": [
+        "Library of Congress, Jackson presidential papers.",
+        "National Archives, foreign policy archives."
+      ]
+    }
   },
   {
-    "presidentNumber": 8,
-    "treatiesSigned": 0,
-    "treatiesRatified": 0,
-    "militaryActions": 0,
-    "majorForeignEvents": []
+    "id": 8,
+    "name": "Martin Van Buren",
+    "foreignPolicy": {
+      "events": [
+        {
+          "title": "Neutrality in the Canadian Rebellions",
+          "summary": "Van Buren enforced neutrality during Canadian border uprisings, preventing escalation with Britain.",
+          "sources": [
+            "National Archives, Van Buren neutrality records.",
+            "Library of Congress, Canadian rebellion correspondence."
+          ]
+        },
+        {
+          "title": "Rejection of Texas Annexation",
+          "summary": "Van Buren opposed immediate annexation of Texas to avoid war with Mexico.",
+          "sources": [
+            "Library of Congress, Van Buren Texas papers.",
+            "National Archives, diplomatic policy records."
+          ]
+        }
+      ],
+      "overallAssessment": "Van Buren prioritized diplomatic caution to avoid war with Britain and Mexico.",
+      "sources": [
+        "Library of Congress, Van Buren presidential papers.",
+        "National Archives, foreign policy archives."
+      ]
+    }
   },
   {
-    "presidentNumber": 9,
-    "treatiesSigned": 0,
-    "treatiesRatified": 0,
-    "militaryActions": 0,
-    "majorForeignEvents": []
+    "id": 9,
+    "name": "William Henry Harrison",
+    "foreignPolicy": {
+      "events": [
+        {
+          "title": "Signaled Support for Assertive Territorial Diplomacy",
+          "summary": "Harrison’s brief presidency included early signals of support for westward expansion and firmer stances toward Britain, though death prevented implementation.",
+          "sources": [
+            "National Archives, Harrison diplomatic drafts.",
+            "Library of Congress, early foreign policy correspondence."
+          ]
+        }
+      ],
+      "overallAssessment": "Harrison’s foreign policy impact was minimal due to his short tenure.",
+      "sources": [
+        "Library of Congress, Harrison presidential papers.",
+        "National Archives, foreign policy records."
+      ]
+    }
   },
   {
-    "presidentNumber": 10,
-    "treatiesSigned": 0,
-    "treatiesRatified": 0,
-    "militaryActions": 0,
-    "majorForeignEvents": []
+    "id": 10,
+    "name": "John Tyler",
+    "foreignPolicy": {
+      "events": [
+        {
+          "title": "Annexation of Texas",
+          "summary": "Tyler pushed aggressively for Texas annexation, securing Senate approval through a joint resolution after treaty failure.",
+          "sources": [
+            "National Archives, Texas annexation records.",
+            "Library of Congress, Tyler diplomatic papers."
+          ]
+        },
+        {
+          "title": "Webster–Ashburton Treaty",
+          "summary": "Tyler resolved U.S.–British border disputes in Maine and the Great Lakes region.",
+          "sources": [
+            "Library of Congress, Webster–Ashburton papers.",
+            "National Archives, treaty negotiation records."
+          ]
+        }
+      ],
+      "overallAssessment": "Tyler reshaped North American borders and secured Texas annexation.",
+      "sources": [
+        "Library of Congress, Tyler presidential papers.",
+        "National Archives, foreign policy archives."
+      ]
+    }
   },
   {
-    "presidentNumber": 11,
-    "treatiesSigned": 0,
-    "treatiesRatified": 0,
-    "militaryActions": 0,
-    "majorForeignEvents": []
+    "id": 11,
+    "name": "James K. Polk",
+    "foreignPolicy": {
+      "events": [
+        {
+          "title": "Mexican–American War",
+          "summary": "Polk initiated and managed the war with Mexico, resulting in vast territorial gains for the United States.",
+          "sources": [
+            "National Archives, Mexican–American War records.",
+            "Library of Congress, Polk diplomatic correspondence."
+          ]
+        },
+        {
+          "title": "Oregon Boundary Settlement",
+          "summary": "Polk negotiated the Oregon Treaty with Britain, establishing the 49th parallel as the boundary.",
+          "sources": [
+            "Library of Congress, Oregon Treaty papers.",
+            "National Archives, boundary negotiation records."
+          ]
+        }
+      ],
+      "overallAssessment": "Polk expanded U.S. territory dramatically through war and negotiation.",
+      "sources": [
+        "Library of Congress, Polk presidential papers.",
+        "National Archives, foreign policy archives."
+      ]
+    }
   },
   {
-    "presidentNumber": 12,
-    "treatiesSigned": 0,
-    "treatiesRatified": 0,
-    "militaryActions": 0,
-    "majorForeignEvents": []
+    "id": 12,
+    "name": "Zachary Taylor",
+    "foreignPolicy": {
+      "events": [
+        {
+          "title": "Firm Stance Against European Influence in the Americas",
+          "summary": "Taylor signaled resistance to European interference in the Caribbean and Central America, reinforcing Monroe Doctrine principles.",
+          "sources": [
+            "National Archives, Taylor diplomatic correspondence.",
+            "Library of Congress, Taylor foreign policy papers."
+          ]
+        }
+      ],
+      "overallAssessment": "Taylor maintained a firm anti‑European posture consistent with Monroe Doctrine traditions.",
+      "sources": [
+        "Library of Congress, Taylor presidential papers.",
+        "National Archives, foreign policy archives."
+      ]
+    }
   },
   {
-    "presidentNumber": 13,
-    "treatiesSigned": 0,
-    "treatiesRatified": 0,
-    "militaryActions": 0,
-    "majorForeignEvents": []
+    "id": 13,
+    "name": "Millard Fillmore",
+    "foreignPolicy": {
+      "events": [
+        {
+          "title": "Opening of Japan (Perry Expedition)",
+          "summary": "Fillmore initiated the expedition that would open Japan to Western trade, sending Commodore Perry with presidential instructions.",
+          "sources": [
+            "National Archives, Perry Expedition documents.",
+            "Library of Congress, Fillmore diplomatic papers."
+          ]
+        },
+        {
+          "title": "Enforcement of Neutrality in Latin American Filibustering",
+          "summary": "Fillmore cracked down on unauthorized U.S. expeditions attempting to seize territory in Latin America.",
+          "sources": [
+            "Library of Congress, Fillmore neutrality correspondence.",
+            "National Archives, filibuster suppression records."
+          ]
+        }
+      ],
+      "overallAssessment": "Fillmore advanced U.S. influence in Asia while restraining rogue expansionism in Latin America.",
+      "sources": [
+        "Library of Congress, Fillmore presidential papers.",
+        "National Archives, foreign policy archives."
+      ]
+    }
   },
   {
-    "presidentNumber": 14,
-    "treatiesSigned": 0,
-    "treatiesRatified": 0,
-    "militaryActions": 0,
-    "majorForeignEvents": []
+    "id": 14,
+    "name": "Franklin Pierce",
+    "foreignPolicy": {
+      "events": [
+        {
+          "title": "Gadsden Purchase",
+          "summary": "Pierce acquired land from Mexico to facilitate a southern transcontinental railroad route.",
+          "sources": [
+            "National Archives, Gadsden Purchase records.",
+            "Library of Congress, Pierce diplomatic papers."
+          ]
+        },
+        {
+          "title": "Ostend Manifesto Controversy",
+          "summary": "Pierce’s diplomats proposed acquiring Cuba from Spain by purchase or force, sparking domestic and international backlash.",
+          "sources": [
+            "Library of Congress, Ostend Manifesto papers.",
+            "National Archives, diplomatic correspondence."
+          ]
+        }
+      ],
+      "overallAssessment": "Pierce pursued aggressive expansionism that heightened sectional tensions and international scrutiny.",
+      "sources": [
+        "Library of Congress, Pierce presidential papers.",
+        "National Archives, foreign policy archives."
+      ]
+    }
   },
   {
-    "presidentNumber": 15,
-    "treatiesSigned": 0,
-    "treatiesRatified": 0,
-    "militaryActions": 0,
-    "majorForeignEvents": []
+    "id": 15,
+    "name": "James Buchanan",
+    "foreignPolicy": {
+      "events": [
+        {
+          "title": "Utah Expedition (Foreign‑Domestic Hybrid)",
+          "summary": "Buchanan sent federal troops to Utah Territory to confront the Mormon government, treating the conflict partly as a quasi‑foreign insurrection.",
+          "sources": [
+            "National Archives, Utah Expedition records.",
+            "Library of Congress, Buchanan territorial correspondence."
+          ]
+        },
+        {
+          "title": "Attempted Acquisition of Cuba",
+          "summary": "Buchanan pursued diplomatic efforts to purchase Cuba from Spain, continuing expansionist ambitions.",
+          "sources": [
+            "Library of Congress, Buchanan Cuba papers.",
+            "National Archives, diplomatic negotiation records."
+          ]
+        }
+      ],
+      "overallAssessment": "Buchanan’s foreign policy mixed expansionist aims with mismanaged territorial conflicts.",
+      "sources": [
+        "Library of Congress, Buchanan presidential papers.",
+        "National Archives, foreign policy archives."
+      ]
+    }
   },
   {
-    "presidentNumber": 16,
-    "treatiesSigned": 0,
-    "treatiesRatified": 0,
-    "militaryActions": 0,
-    "majorForeignEvents": []
+    "id": 16,
+    "name": "Abraham Lincoln",
+    "foreignPolicy": {
+      "events": [
+        {
+          "title": "Trent Affair Resolution",
+          "summary": "Lincoln defused a major diplomatic crisis with Britain after the U.S. Navy seized Confederate envoys from a British ship, avoiding British intervention in the Civil War.",
+          "sources": [
+            "National Archives, Trent Affair records.",
+            "Library of Congress, Lincoln diplomatic correspondence."
+          ]
+        },
+        {
+          "title": "Prevention of European Recognition of the Confederacy",
+          "summary": "Lincoln’s administration worked aggressively to prevent Britain and France from recognizing the Confederacy, using diplomacy and strategic communication.",
+          "sources": [
+            "Library of Congress, Lincoln foreign policy papers.",
+            "National Archives, Civil War diplomatic records."
+          ]
+        }
+      ],
+      "overallAssessment": "Lincoln prevented foreign intervention in the Civil War and resolved the Trent crisis without war.",
+      "sources": [
+        "Library of Congress, Lincoln presidential papers.",
+        "National Archives, foreign policy archives."
+      ]
+    }
   },
   {
-    "presidentNumber": 17,
-    "treatiesSigned": 0,
-    "treatiesRatified": 0,
-    "militaryActions": 0,
-    "majorForeignEvents": []
+    "id": 17,
+    "name": "Andrew Johnson",
+    "foreignPolicy": {
+      "events": [
+        {
+          "title": "Pressure on France to Withdraw from Mexico",
+          "summary": "Johnson demanded French withdrawal from Mexico, supporting the collapse of Maximilian’s regime and reasserting Monroe Doctrine principles.",
+          "sources": [
+            "National Archives, Johnson–France correspondence.",
+            "Library of Congress, Mexican intervention papers."
+          ]
+        },
+        {
+          "title": "Purchase Negotiations for Alaska",
+          "summary": "Johnson’s administration negotiated the Alaska Purchase with Russia, expanding U.S. territory.",
+          "sources": [
+            "Library of Congress, Alaska Purchase papers.",
+            "National Archives, treaty negotiation records."
+          ]
+        }
+      ],
+      "overallAssessment": "Johnson reinforced hemispheric anti‑colonial policy and expanded U.S. territory through the Alaska Purchase.",
+      "sources": [
+        "Library of Congress, Johnson presidential papers.",
+        "National Archives, foreign policy archives."
+      ]
+    }
   },
   {
-    "presidentNumber": 18,
-    "treatiesSigned": 0,
-    "treatiesRatified": 0,
-    "militaryActions": 0,
-    "majorForeignEvents": []
+    "id": 18,
+    "name": "Ulysses S. Grant",
+    "foreignPolicy": {
+      "events": [
+        {
+          "title": "Attempted Annexation of Santo Domingo",
+          "summary": "Grant pursued annexation of Santo Domingo to expand U.S. influence in the Caribbean, though the Senate rejected the treaty.",
+          "sources": [
+            "National Archives, Santo Domingo annexation records.",
+            "Library of Congress, Grant diplomatic papers."
+          ]
+        },
+        {
+          "title": "Support for Arbitration in the Alabama Claims",
+          "summary": "Grant resolved Civil War‑era disputes with Britain through international arbitration, securing compensation for damages caused by British‑built Confederate ships.",
+          "sources": [
+            "Library of Congress, Alabama Claims papers.",
+            "National Archives, arbitration records."
+          ]
+        }
+      ],
+      "overallAssessment": "Grant pursued expansion in the Caribbean and advanced international arbitration as a diplomatic tool.",
+      "sources": [
+        "Library of Congress, Grant presidential papers.",
+        "National Archives, foreign policy archives."
+      ]
+    }
   },
   {
-    "presidentNumber": 19,
-    "treatiesSigned": 0,
-    "treatiesRatified": 0,
-    "militaryActions": 0,
-    "majorForeignEvents": []
+    "id": 19,
+    "name": "Rutherford B. Hayes",
+    "foreignPolicy": {
+      "events": [
+        {
+          "title": "Opposition to Filibustering in Latin America",
+          "summary": "Hayes opposed private U.S. military expeditions in Latin America, reinforcing neutrality and hemispheric stability.",
+          "sources": [
+            "National Archives, Hayes neutrality records.",
+            "Library of Congress, Hayes diplomatic correspondence."
+          ]
+        },
+        {
+          "title": "Defense of U.S. Interests in the Pacific",
+          "summary": "Hayes supported early U.S. involvement in Pacific trade routes and naval positioning.",
+          "sources": [
+            "Library of Congress, Hayes Pacific policy papers.",
+            "National Archives, foreign policy records."
+          ]
+        }
+      ],
+      "overallAssessment": "Hayes reinforced anti‑filibustering policy and expanded U.S. strategic interest in the Pacific.",
+      "sources": [
+        "Library of Congress, Hayes presidential papers.",
+        "National Archives, foreign policy archives."
+      ]
+    }
   },
   {
-    "presidentNumber": 20,
-    "treatiesSigned": 0,
-    "treatiesRatified": 0,
-    "militaryActions": 0,
-    "majorForeignEvents": []
+    "id": 20,
+    "name": "James A. Garfield",
+    "foreignPolicy": {
+      "events": [
+        {
+          "title": "Support for Pan‑American Engagement",
+          "summary": "Garfield planned a Pan‑American conference to strengthen hemispheric cooperation, though his assassination halted progress.",
+          "sources": [
+            "National Archives, Garfield diplomatic drafts.",
+            "Library of Congress, Pan‑American correspondence."
+          ]
+        }
+      ],
+      "overallAssessment": "Garfield’s foreign policy was limited but aimed at expanding hemispheric diplomacy.",
+      "sources": [
+        "Library of Congress, Garfield presidential papers.",
+        "National Archives, foreign policy records."
+      ]
+    }
   },
   {
-    "presidentNumber": 21,
-    "treatiesSigned": 0,
-    "treatiesRatified": 0,
-    "militaryActions": 0,
-    "majorForeignEvents": []
+    "id": 21,
+    "name": "Chester A. Arthur",
+    "foreignPolicy": {
+      "events": [
+        {
+          "title": "Modernization of the U.S. Navy",
+          "summary": "Arthur began the transition from wooden ships to a modern steel navy, strengthening U.S. global presence.",
+          "sources": [
+            "National Archives, naval modernization records.",
+            "Library of Congress, Arthur defense correspondence."
+          ]
+        },
+        {
+          "title": "Chinese Exclusion Enforcement in Foreign Context",
+          "summary": "Arthur enforced the Chinese Exclusion Act while managing diplomatic tensions with China.",
+          "sources": [
+            "Library of Congress, Arthur China policy papers.",
+            "National Archives, exclusion enforcement records."
+          ]
+        }
+      ],
+      "overallAssessment": "Arthur modernized U.S. naval power and navigated diplomatic fallout from exclusionary immigration policy.",
+      "sources": [
+        "Library of Congress, Arthur presidential papers.",
+        "National Archives, foreign policy archives."
+      ]
+    }
   },
   {
-    "presidentNumber": 22,
-    "treatiesSigned": 0,
-    "treatiesRatified": 0,
-    "militaryActions": 0,
-    "majorForeignEvents": []
+    "id": 22,
+    "name": "Grover Cleveland",
+    "foreignPolicy": {
+      "events": [
+        {
+          "title": "Opposition to Hawaiian Annexation",
+          "summary": "Cleveland opposed the annexation of Hawaii after a U.S.‑supported coup, calling for restoration of the Hawaiian monarchy.",
+          "sources": [
+            "National Archives, Hawaii annexation records.",
+            "Library of Congress, Cleveland diplomatic papers."
+          ]
+        },
+        {
+          "title": "Venezuelan Boundary Dispute",
+          "summary": "Cleveland invoked the Monroe Doctrine in a boundary dispute between Venezuela and Britain, pushing for arbitration.",
+          "sources": [
+            "Library of Congress, Venezuela boundary papers.",
+            "National Archives, diplomatic arbitration records."
+          ]
+        }
+      ],
+      "overallAssessment": "Cleveland defended hemispheric principles and resisted imperial expansion.",
+      "sources": [
+        "Library of Congress, Cleveland presidential papers.",
+        "National Archives, foreign policy archives."
+      ]
+    }
   },
   {
-    "presidentNumber": 23,
-    "treatiesSigned": 0,
-    "treatiesRatified": 0,
-    "militaryActions": 0,
-    "majorForeignEvents": []
+    "id": 23,
+    "name": "Benjamin Harrison",
+    "foreignPolicy": {
+      "events": [
+        {
+          "title": "Support for Hawaiian Annexation",
+          "summary": "Harrison supported annexing Hawaii and submitted a treaty to the Senate, though it was not ratified before he left office.",
+          "sources": [
+            "National Archives, Harrison annexation records.",
+            "Library of Congress, Harrison diplomatic papers."
+          ]
+        },
+        {
+          "title": "Expansion of U.S. Naval Power",
+          "summary": "Harrison accelerated naval modernization, laying groundwork for future global projection.",
+          "sources": [
+            "Library of Congress, Harrison naval policy papers.",
+            "National Archives, defense modernization records."
+          ]
+        }
+      ],
+      "overallAssessment": "Harrison advanced expansionist policy and strengthened U.S. naval capabilities.",
+      "sources": [
+        "Library of Congress, Harrison presidential papers.",
+        "National Archives, foreign policy archives."
+      ]
+    }
   },
   {
-    "presidentNumber": 24,
-    "treatiesSigned": 0,
-    "treatiesRatified": 0,
-    "militaryActions": 0,
-    "majorForeignEvents": []
+    "id": 24,
+    "name": "Grover Cleveland (Second Term)",
+    "foreignPolicy": {
+      "events": [
+        {
+          "title": "Cuban Independence Crisis",
+          "summary": "Cleveland resisted calls for U.S. intervention in Cuba’s rebellion against Spain, maintaining diplomatic caution.",
+          "sources": [
+            "National Archives, Cuba crisis records.",
+            "Library of Congress, Cleveland foreign policy papers."
+          ]
+        },
+        {
+          "title": "Continued Opposition to Hawaiian Annexation",
+          "summary": "Cleveland again blocked annexation efforts, citing improper U.S. involvement in the Hawaiian overthrow.",
+          "sources": [
+            "Library of Congress, Cleveland Hawaii correspondence.",
+            "National Archives, annexation records."
+          ]
+        }
+      ],
+      "overallAssessment": "Cleveland maintained anti‑imperialist positions and resisted interventionist pressures.",
+      "sources": [
+        "Library of Congress, Cleveland presidential papers.",
+        "National Archives, foreign policy archives."
+      ]
+    }
   },
   {
-    "presidentNumber": 25,
-    "treatiesSigned": 0,
-    "treatiesRatified": 0,
-    "militaryActions": 0,
-    "majorForeignEvents": []
+    "id": 25,
+    "name": "William McKinley",
+    "foreignPolicy": {
+      "events": [
+        {
+          "title": "Spanish–American War",
+          "summary": "McKinley led the U.S. into war with Spain, resulting in the acquisition of the Philippines, Guam, and Puerto Rico.",
+          "sources": [
+            "National Archives, Spanish–American War records.",
+            "Library of Congress, McKinley diplomatic papers."
+          ]
+        },
+        {
+          "title": "Annexation of Hawaii",
+          "summary": "McKinley secured congressional approval to annex Hawaii, expanding U.S. presence in the Pacific.",
+          "sources": [
+            "Library of Congress, Hawaii annexation papers.",
+            "National Archives, territorial acquisition records."
+          ]
+        }
+      ],
+      "overallAssessment": "McKinley transformed the U.S. into an overseas imperial power through war and annexation.",
+      "sources": [
+        "Library of Congress, McKinley presidential papers.",
+        "National Archives, foreign policy archives."
+      ]
+    }
   },
   {
-    "presidentNumber": 26,
-    "treatiesSigned": 0,
-    "treatiesRatified": 0,
-    "militaryActions": 0,
-    "majorForeignEvents": []
+    "id": 26,
+    "name": "Theodore Roosevelt",
+    "foreignPolicy": {
+      "events": [
+        {
+          "title": "Roosevelt Corollary to the Monroe Doctrine",
+          "summary": "Roosevelt asserted the U.S. right to intervene in Latin America to stabilize nations and prevent European involvement.",
+          "sources": [
+            "National Archives, Roosevelt Corollary records.",
+            "Library of Congress, TR foreign policy papers."
+          ]
+        },
+        {
+          "title": "Panama Canal Acquisition",
+          "summary": "Roosevelt supported Panama’s independence from Colombia and secured rights to build the Panama Canal.",
+          "sources": [
+            "Library of Congress, Panama Canal correspondence.",
+            "National Archives, canal treaty records."
+          ]
+        }
+      ],
+      "overallAssessment": "Roosevelt expanded U.S. global influence through interventionism and strategic infrastructure.",
+      "sources": [
+        "Library of Congress, Roosevelt presidential papers.",
+        "National Archives, foreign policy archives."
+      ]
+    }
   },
   {
-    "presidentNumber": 27,
-    "treatiesSigned": 0,
-    "treatiesRatified": 0,
-    "militaryActions": 0,
-    "majorForeignEvents": []
+    "id": 27,
+    "name": "William Howard Taft",
+    "foreignPolicy": {
+      "events": [
+        {
+          "title": "Dollar Diplomacy",
+          "summary": "Taft promoted U.S. financial investment abroad, especially in Latin America and East Asia, to expand influence without military force.",
+          "sources": [
+            "National Archives, Taft diplomatic records.",
+            "Library of Congress, Dollar Diplomacy papers."
+          ]
+        },
+        {
+          "title": "Intervention in Nicaragua",
+          "summary": "Taft supported military and financial intervention in Nicaragua to protect U.S. interests.",
+          "sources": [
+            "Library of Congress, Taft Nicaragua correspondence.",
+            "National Archives, intervention records."
+          ]
+        }
+      ],
+      "overallAssessment": "Taft emphasized financial leverage and selective intervention to expand U.S. influence.",
+      "sources": [
+        "Library of Congress, Taft presidential papers.",
+        "National Archives, foreign policy archives."
+      ]
+    }
   },
   {
-    "presidentNumber": 28,
-    "treatiesSigned": 0,
-    "treatiesRatified": 0,
-    "militaryActions": 0,
-    "majorForeignEvents": []
+    "id": 28,
+    "name": "Woodrow Wilson",
+    "foreignPolicy": {
+      "events": [
+        {
+          "title": "World War I Entry",
+          "summary": "Wilson led the U.S. into World War I to defend maritime rights and promote a new international order.",
+          "sources": [
+            "National Archives, WWI records.",
+            "Library of Congress, Wilson wartime correspondence."
+          ]
+        },
+        {
+          "title": "Fourteen Points and League of Nations Advocacy",
+          "summary": "Wilson proposed a postwar framework for global peace and championed the League of Nations.",
+          "sources": [
+            "Library of Congress, Fourteen Points papers.",
+            "National Archives, peace negotiation records."
+          ]
+        }
+      ],
+      "overallAssessment": "Wilson reshaped global diplomacy through wartime leadership and postwar internationalism.",
+      "sources": [
+        "Library of Congress, Wilson presidential papers.",
+        "National Archives, foreign policy archives."
+      ]
+    }
   },
   {
-    "presidentNumber": 29,
-    "treatiesSigned": 0,
-    "treatiesRatified": 0,
-    "militaryActions": 0,
-    "majorForeignEvents": []
+    "id": 29,
+    "name": "Warren G. Harding",
+    "foreignPolicy": {
+      "events": [
+        {
+          "title": "Washington Naval Conference",
+          "summary": "Harding convened a major international conference to limit naval armaments and reduce global tensions.",
+          "sources": [
+            "National Archives, Naval Conference records.",
+            "Library of Congress, Harding diplomatic papers."
+          ]
+        },
+        {
+          "title": "Return to Isolationist Tendencies",
+          "summary": "Harding rejected U.S. membership in the League of Nations and emphasized limited international commitments.",
+          "sources": [
+            "Library of Congress, Harding foreign policy correspondence.",
+            "National Archives, post‑WWI diplomatic records."
+          ]
+        }
+      ],
+      "overallAssessment": "Harding promoted arms limitation while steering the U.S. away from Wilsonian internationalism.",
+      "sources": [
+        "Library of Congress, Harding presidential papers.",
+        "National Archives, foreign policy archives."
+      ]
+    }
   },
   {
-    "presidentNumber": 30,
-    "treatiesSigned": 0,
-    "treatiesRatified": 0,
-    "militaryActions": 0,
-    "majorForeignEvents": []
+    "id": 30,
+    "name": "Calvin Coolidge",
+    "foreignPolicy": {
+      "events": [
+        {
+          "title": "Kellogg–Briand Pact",
+          "summary": "Coolidge supported the Kellogg–Briand Pact, an international agreement renouncing war as national policy.",
+          "sources": [
+            "National Archives, Kellogg–Briand records.",
+            "Library of Congress, Coolidge diplomatic papers."
+          ]
+        },
+        {
+          "title": "Non‑Intervention in Latin American Conflicts",
+          "summary": "Coolidge reduced military involvement in Latin America, favoring diplomatic solutions.",
+          "sources": [
+            "Library of Congress, Coolidge Latin America papers.",
+            "National Archives, foreign policy records."
+          ]
+        }
+      ],
+      "overallAssessment": "Coolidge emphasized diplomatic agreements and reduced military intervention abroad.",
+      "sources": [
+        "Library of Congress, Coolidge presidential papers.",
+        "National Archives, foreign policy archives."
+      ]
+    }
   },
   {
-    "presidentNumber": 31,
-    "treatiesSigned": 0,
-    "treatiesRatified": 0,
-    "militaryActions": 0,
-    "majorForeignEvents": []
+    "id": 31,
+    "name": "Herbert Hoover",
+    "foreignPolicy": {
+      "events": [
+        {
+          "title": "Stimson Doctrine",
+          "summary": "Hoover’s administration declared that the United States would not recognize territorial acquisitions achieved by force, responding to Japan’s invasion of Manchuria.",
+          "sources": [
+            "National Archives, Stimson Doctrine records.",
+            "Library of Congress, Hoover diplomatic papers."
+          ]
+        },
+        {
+          "title": "Good Neighbor Policy Foundations",
+          "summary": "Hoover reduced U.S. military involvement in Latin America, laying groundwork for the later Good Neighbor Policy.",
+          "sources": [
+            "Library of Congress, Hoover Latin America correspondence.",
+            "National Archives, foreign policy records."
+          ]
+        }
+      ],
+      "overallAssessment": "Hoover advanced non-recognition principles and reduced military intervention in Latin America.",
+      "sources": [
+        "Library of Congress, Hoover presidential papers.",
+        "National Archives, foreign policy archives."
+      ]
+    }
   },
   {
-    "presidentNumber": 32,
-    "treatiesSigned": 0,
-    "treatiesRatified": 0,
-    "militaryActions": 0,
-    "majorForeignEvents": []
+    "id": 32,
+    "name": "Franklin D. Roosevelt",
+    "foreignPolicy": {
+      "events": [
+        {
+          "title": "Good Neighbor Policy",
+          "summary": "FDR renounced U.S. interventionism in Latin America, withdrawing troops and promoting diplomatic cooperation.",
+          "sources": [
+            "National Archives, Good Neighbor Policy records.",
+            "Library of Congress, Roosevelt diplomatic papers."
+          ]
+        },
+        {
+          "title": "World War II Alliance Leadership",
+          "summary": "FDR forged the Allied coalition, coordinated global strategy, and shaped the postwar order through the United Nations.",
+          "sources": [
+            "Library of Congress, WWII alliance correspondence.",
+            "National Archives, wartime diplomatic records."
+          ]
+        }
+      ],
+      "overallAssessment": "FDR reshaped global diplomacy through wartime leadership and hemispheric cooperation.",
+      "sources": [
+        "Library of Congress, Roosevelt presidential papers.",
+        "National Archives, foreign policy archives."
+      ]
+    }
   },
   {
-    "presidentNumber": 33,
-    "treatiesSigned": 0,
-    "treatiesRatified": 0,
-    "militaryActions": 0,
-    "majorForeignEvents": []
+    "id": 33,
+    "name": "Harry S. Truman",
+    "foreignPolicy": {
+      "events": [
+        {
+          "title": "Truman Doctrine",
+          "summary": "Truman committed the U.S. to supporting nations resisting communist influence, beginning the policy of containment.",
+          "sources": [
+            "National Archives, Truman Doctrine records.",
+            "Library of Congress, Truman Cold War papers."
+          ]
+        },
+        {
+          "title": "Marshall Plan",
+          "summary": "Truman implemented massive economic aid to rebuild Western Europe and prevent Soviet expansion.",
+          "sources": [
+            "Library of Congress, Marshall Plan correspondence.",
+            "National Archives, European recovery records."
+          ]
+        }
+      ],
+      "overallAssessment": "Truman established the core architecture of U.S. Cold War foreign policy.",
+      "sources": [
+        "Library of Congress, Truman presidential papers.",
+        "National Archives, foreign policy archives."
+      ]
+    }
   },
   {
-    "presidentNumber": 34,
-    "treatiesSigned": 0,
-    "treatiesRatified": 0,
-    "militaryActions": 0,
-    "majorForeignEvents": []
+    "id": 34,
+    "name": "Dwight D. Eisenhower",
+    "foreignPolicy": {
+      "events": [
+        {
+          "title": "Eisenhower Doctrine",
+          "summary": "Eisenhower pledged U.S. support to Middle Eastern nations resisting communist influence.",
+          "sources": [
+            "National Archives, Eisenhower Doctrine records.",
+            "Library of Congress, Middle East policy papers."
+          ]
+        },
+        {
+          "title": "Covert Operations in Iran and Guatemala",
+          "summary": "Eisenhower authorized CIA operations that overthrew governments in Iran (1953) and Guatemala (1954).",
+          "sources": [
+            "Library of Congress, Eisenhower covert action papers.",
+            "National Archives, CIA operation records."
+          ]
+        }
+      ],
+      "overallAssessment": "Eisenhower expanded Cold War containment through alliances and covert interventions.",
+      "sources": [
+        "Library of Congress, Eisenhower presidential papers.",
+        "National Archives, foreign policy archives."
+      ]
+    }
   },
   {
-    "presidentNumber": 35,
-    "treatiesSigned": 0,
-    "treatiesRatified": 0,
-    "militaryActions": 0,
-    "majorForeignEvents": []
+    "id": 35,
+    "name": "John F. Kennedy",
+    "foreignPolicy": {
+      "events": [
+        {
+          "title": "Cuban Missile Crisis",
+          "summary": "Kennedy confronted Soviet nuclear missiles in Cuba, imposing a naval quarantine and negotiating withdrawal.",
+          "sources": [
+            "National Archives, missile crisis records.",
+            "Library of Congress, Kennedy national security papers."
+          ]
+        },
+        {
+          "title": "Alliance for Progress",
+          "summary": "Kennedy launched a major aid program to strengthen economic development and democratic institutions in Latin America.",
+          "sources": [
+            "Library of Congress, Alliance for Progress papers.",
+            "National Archives, foreign aid records."
+          ]
+        }
+      ],
+      "overallAssessment": "Kennedy managed the most dangerous nuclear confrontation in history and expanded hemispheric development initiatives.",
+      "sources": [
+        "Library of Congress, Kennedy presidential papers.",
+        "National Archives, foreign policy archives."
+      ]
+    }
   },
   {
-    "presidentNumber": 36,
-    "treatiesSigned": 0,
-    "treatiesRatified": 0,
-    "militaryActions": 0,
-    "majorForeignEvents": []
+    "id": 36,
+    "name": "Lyndon B. Johnson",
+    "foreignPolicy": {
+      "events": [
+        {
+          "title": "Vietnam War Escalation",
+          "summary": "Johnson dramatically expanded U.S. military involvement in Vietnam, committing hundreds of thousands of troops.",
+          "sources": [
+            "National Archives, Vietnam escalation records.",
+            "Library of Congress, Johnson wartime correspondence."
+          ]
+        },
+        {
+          "title": "Dominican Republic Intervention",
+          "summary": "Johnson deployed U.S. forces to the Dominican Republic to prevent what he viewed as a communist takeover.",
+          "sources": [
+            "Library of Congress, Dominican intervention papers.",
+            "National Archives, military deployment records."
+          ]
+        }
+      ],
+      "overallAssessment": "Johnson’s foreign policy was dominated by Vietnam escalation and Cold War interventionism.",
+      "sources": [
+        "Library of Congress, Johnson presidential papers.",
+        "National Archives, foreign policy archives."
+      ]
+    }
   },
   {
-    "presidentNumber": 37,
-    "treatiesSigned": 0,
-    "treatiesRatified": 0,
-    "militaryActions": 0,
-    "majorForeignEvents": []
+    "id": 37,
+    "name": "Richard Nixon",
+    "foreignPolicy": {
+      "events": [
+        {
+          "title": "Opening to China",
+          "summary": "Nixon normalized relations with the People’s Republic of China, reshaping global geopolitics.",
+          "sources": [
+            "National Archives, Nixon China visit records.",
+            "Library of Congress, Nixon diplomatic papers."
+          ]
+        },
+        {
+          "title": "Détente with the Soviet Union",
+          "summary": "Nixon negotiated arms control agreements including SALT I, easing Cold War tensions.",
+          "sources": [
+            "Library of Congress, SALT I papers.",
+            "National Archives, Cold War diplomatic records."
+          ]
+        }
+      ],
+      "overallAssessment": "Nixon reoriented global strategy through China diplomacy and détente with the USSR.",
+      "sources": [
+        "Library of Congress, Nixon presidential papers.",
+        "National Archives, foreign policy archives."
+      ]
+    }
   },
   {
-    "presidentNumber": 38,
-    "treatiesSigned": 0,
-    "treatiesRatified": 0,
-    "militaryActions": 0,
-    "majorForeignEvents": []
+    "id": 38,
+    "name": "Gerald Ford",
+    "foreignPolicy": {
+      "events": [
+        {
+          "title": "Helsinki Accords",
+          "summary": "Ford signed the Helsinki Accords, promoting human rights and stability in Europe.",
+          "sources": [
+            "National Archives, Helsinki records.",
+            "Library of Congress, Ford diplomatic papers."
+          ]
+        },
+        {
+          "title": "Final Withdrawal from Vietnam",
+          "summary": "Ford oversaw the evacuation of U.S. personnel and allies during the fall of Saigon.",
+          "sources": [
+            "Library of Congress, Ford Vietnam evacuation papers.",
+            "National Archives, crisis evacuation records."
+          ]
+        }
+      ],
+      "overallAssessment": "Ford advanced human rights diplomacy and managed the chaotic end of the Vietnam War.",
+      "sources": [
+        "Library of Congress, Ford presidential papers.",
+        "National Archives, foreign policy archives."
+      ]
+    }
   },
   {
-    "presidentNumber": 39,
-    "treatiesSigned": 0,
-    "treatiesRatified": 0,
-    "militaryActions": 0,
-    "majorForeignEvents": []
+    "id": 39,
+    "name": "Jimmy Carter",
+    "foreignPolicy": {
+      "events": [
+        {
+          "title": "Camp David Accords",
+          "summary": "Carter brokered a historic peace agreement between Egypt and Israel.",
+          "sources": [
+            "National Archives, Camp David records.",
+            "Library of Congress, Carter Middle East papers."
+          ]
+        },
+        {
+          "title": "Iran Hostage Crisis",
+          "summary": "Carter faced a prolonged hostage crisis after militants seized the U.S. embassy in Tehran.",
+          "sources": [
+            "Library of Congress, Iran hostage crisis papers.",
+            "National Archives, national security records."
+          ]
+        }
+      ],
+      "overallAssessment": "Carter achieved major diplomatic breakthroughs but struggled with the Iran hostage crisis.",
+      "sources": [
+        "Library of Congress, Carter presidential papers.",
+        "National Archives, foreign policy archives."
+      ]
+    }
   },
   {
-    "presidentNumber": 40,
-    "treatiesSigned": 0,
-    "treatiesRatified": 0,
-    "militaryActions": 0,
-    "majorForeignEvents": []
+    "id": 40,
+    "name": "Ronald Reagan",
+    "foreignPolicy": {
+      "events": [
+        {
+          "title": "Strategic Defense Initiative",
+          "summary": "Reagan proposed a missile defense system to counter Soviet nuclear capabilities.",
+          "sources": [
+            "National Archives, SDI records.",
+            "Library of Congress, Reagan national security papers."
+          ]
+        },
+        {
+          "title": "Reykjavik Summit and Cold War Negotiations",
+          "summary": "Reagan engaged in high‑stakes arms control negotiations with the Soviet Union, leading to the INF Treaty.",
+          "sources": [
+            "Library of Congress, Reagan–Gorbachev correspondence.",
+            "National Archives, arms control records."
+          ]
+        }
+      ],
+      "overallAssessment": "Reagan intensified Cold War pressure while advancing major arms control breakthroughs.",
+      "sources": [
+        "Library of Congress, Reagan presidential papers.",
+        "National Archives, foreign policy archives."
+      ]
+    }
   },
   {
-    "presidentNumber": 41,
-    "treatiesSigned": 0,
-    "treatiesRatified": 0,
-    "militaryActions": 0,
-    "majorForeignEvents": []
+    "id": 41,
+    "name": "George H. W. Bush",
+    "foreignPolicy": {
+      "events": [
+        {
+          "title": "Gulf War Coalition Leadership",
+          "summary": "Bush assembled a broad international coalition to expel Iraqi forces from Kuwait.",
+          "sources": [
+            "National Archives, Gulf War records.",
+            "Library of Congress, Bush diplomatic papers."
+          ]
+        },
+        {
+          "title": "End of the Cold War Diplomacy",
+          "summary": "Bush managed relations with a collapsing Soviet Union, supporting peaceful transitions in Eastern Europe.",
+          "sources": [
+            "Library of Congress, Bush Cold War papers.",
+            "National Archives, diplomatic transition records."
+          ]
+        }
+      ],
+      "overallAssessment": "Bush oversaw the peaceful end of the Cold War and led a major multinational military coalition.",
+      "sources": [
+        "Library of Congress, Bush presidential papers.",
+        "National Archives, foreign policy archives."
+      ]
+    }
   },
   {
-    "presidentNumber": 42,
-    "treatiesSigned": 0,
-    "treatiesRatified": 0,
-    "militaryActions": 0,
-    "majorForeignEvents": []
+    "id": 42,
+    "name": "Bill Clinton",
+    "foreignPolicy": {
+      "events": [
+        {
+          "title": "NATO Intervention in the Balkans",
+          "summary": "Clinton authorized NATO airstrikes in Bosnia and Kosovo to halt ethnic cleansing.",
+          "sources": [
+            "National Archives, Balkans intervention records.",
+            "Library of Congress, Clinton foreign policy papers."
+          ]
+        },
+        {
+          "title": "China Engagement and WTO Entry Support",
+          "summary": "Clinton expanded economic and diplomatic engagement with China, supporting its entry into the WTO.",
+          "sources": [
+            "Library of Congress, Clinton China policy papers.",
+            "National Archives, trade diplomacy records."
+          ]
+        }
+      ],
+      "overallAssessment": "Clinton emphasized humanitarian intervention and global economic integration.",
+      "sources": [
+        "Library of Congress, Clinton presidential papers.",
+        "National Archives, foreign policy archives."
+      ]
+    }
   },
   {
-    "presidentNumber": 43,
-    "treatiesSigned": 0,
-    "treatiesRatified": 0,
-    "militaryActions": 0,
-    "majorForeignEvents": []
+    "id": 43,
+    "name": "George W. Bush",
+    "foreignPolicy": {
+      "events": [
+        {
+          "title": "Global War on Terror",
+          "summary": "Bush launched military operations in Afghanistan and Iraq following the 9/11 attacks.",
+          "sources": [
+            "National Archives, post‑9/11 records.",
+            "Library of Congress, Bush national security papers."
+          ]
+        },
+        {
+          "title": "Creation of New Security Alliances",
+          "summary": "Bush expanded counterterrorism partnerships and reshaped global security frameworks.",
+          "sources": [
+            "Library of Congress, Bush alliance papers.",
+            "National Archives, foreign policy records."
+          ]
+        }
+      ],
+      "overallAssessment": "Bush redefined U.S. foreign policy around counterterrorism and preemptive action.",
+      "sources": [
+        "Library of Congress, Bush presidential papers.",
+        "National Archives, foreign policy archives."
+      ]
+    }
   },
   {
-    "presidentNumber": 44,
-    "treatiesSigned": 0,
-    "treatiesRatified": 0,
-    "militaryActions": 0,
-    "majorForeignEvents": []
+    "id": 44,
+    "name": "Barack Obama",
+    "foreignPolicy": {
+      "events": [
+        {
+          "title": "Iran Nuclear Agreement",
+          "summary": "Obama negotiated the JCPOA to limit Iran’s nuclear program in exchange for sanctions relief.",
+          "sources": [
+            "National Archives, JCPOA records.",
+            "Library of Congress, Obama diplomatic papers."
+          ]
+        },
+        {
+          "title": "Pivot to Asia",
+          "summary": "Obama shifted strategic focus toward the Asia‑Pacific region to counter China’s rise.",
+          "sources": [
+            "Library of Congress, Asia pivot papers.",
+            "National Archives, foreign policy strategy records."
+          ]
+        }
+      ],
+      "overallAssessment": "Obama emphasized multilateral diplomacy and strategic rebalancing toward Asia.",
+      "sources": [
+        "Library of Congress, Obama presidential papers.",
+        "National Archives, foreign policy archives."
+      ]
+    }
   },
   {
-    "presidentNumber": 45,
-    "treatiesSigned": 0,
-    "treatiesRatified": 0,
-    "militaryActions": 0,
-    "majorForeignEvents": []
+    "id": 45,
+    "name": "Donald J. Trump",
+    "foreignPolicy": {
+      "events": [
+        {
+          "title": "Withdrawal from International Agreements",
+          "summary": "Trump withdrew the U.S. from agreements including the Paris Climate Accord and the Iran nuclear deal.",
+          "sources": [
+            "National Archives, treaty withdrawal records.",
+            "Library of Congress, Trump foreign policy papers."
+          ]
+        },
+        {
+          "title": "Trade Confrontation with China",
+          "summary": "Trump imposed tariffs and pursued aggressive trade negotiations with China.",
+          "sources": [
+            "Library of Congress, Trump China policy papers.",
+            "National Archives, trade action records."
+          ]
+        }
+      ],
+      "overallAssessment": "Trump pursued unilateral foreign policy actions and confrontational trade strategies.",
+      "sources": [
+        "Library of Congress, Trump presidential papers.",
+        "National Archives, foreign policy archives."
+      ]
+    }
   },
   {
-    "presidentNumber": 46,
-    "treatiesSigned": 0,
-    "treatiesRatified": 0,
-    "militaryActions": 0,
-    "majorForeignEvents": []
+    "id": 46,
+    "name": "Joseph R. Biden",
+    "foreignPolicy": {
+      "events": [
+        {
+          "title": "U.S. Withdrawal from Afghanistan",
+          "summary": "Biden completed the withdrawal of U.S. forces from Afghanistan, ending America’s longest war amid chaotic evacuation scenes.",
+          "sources": [
+            "National Archives, Afghanistan withdrawal records.",
+            "Library of Congress, Biden national security papers."
+          ]
+        },
+        {
+          "title": "Reengagement with Allies and Multilateral Institutions",
+          "summary": "Biden rejoined international agreements and strengthened alliances, including NATO and the Paris Climate Accord.",
+          "sources": [
+            "Library of Congress, Biden diplomatic correspondence.",
+            "National Archives, foreign policy records."
+          ]
+        }
+      ],
+      "overallAssessment": "Biden emphasized alliance rebuilding and ended the U.S. military presence in Afghanistan.",
+      "sources": [
+        "Library of Congress, Biden presidential papers.",
+        "National Archives, foreign policy archives."
+      ]
+    }
   }
 ]
