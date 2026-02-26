@@ -1,1319 +1,1320 @@
 [
-{
-  "id": 1,
-  "name": "George Washington",
-  "economicPolicy": {
-    "events": [
-      {
-        "title": "Hamilton’s Financial System (1789–1795)",
-        "summary": "Washington supported Alexander Hamilton’s financial program, which established federal assumption of state debts, creation of the Bank of the United States, and funding of the national debt at full value. These policies stabilized federal credit, strengthened national financial institutions, and laid the foundation for a modern American economy.",
-        "sources": [
-          "National Archives, early federal finance documents.",
-          "Library of Congress, Hamilton financial plan materials."
-        ]
-      },
-      {
-        "title": "Tariff Act of 1789",
-        "summary": "Washington signed the Tariff Act of 1789, providing revenue for the federal government and offering modest protection for emerging American industries. The tariff became a cornerstone of early federal economic policy.",
-        "sources": [
-          "Library of Congress, Tariff Act materials.",
-          "National Archives, Washington administration economic records."
-        ]
-      }
-    ],
-    "overallAssessment": "Washington’s economic policy established the financial foundations of the United States through support for Hamilton’s fiscal program, creation of a national bank, and implementation of early tariff policy. His administration strengthened federal credit and centralized economic authority.",
-    "sources": [
-      "Library of Congress Washington administration materials.",
-      "National Archives early federal economic records."
-    ]
+  {
+    "id": 1,
+    "name": "George Washington",
+    "economicPolicy": {
+      "events": [
+        {
+          "title": "Implementation of Hamilton’s Financial Program",
+          "summary": "Washington approved and enforced Hamilton’s plan to federalize state debts, establish a national bank, and create a federal revenue system, laying the foundation of U.S. financial architecture.",
+          "sources": [
+            "National Archives, Washington financial correspondence.",
+            "Library of Congress, Hamilton–Washington papers."
+          ]
+        },
+        {
+          "title": "Enforcement of the First Federal Excise Tax",
+          "summary": "Washington directed federal enforcement of the whiskey excise tax, asserting federal authority over internal taxation.",
+          "sources": [
+            "Library of Congress, Washington excise enforcement papers.",
+            "National Archives, early Treasury records."
+          ]
+        }
+      ],
+      "overallAssessment": "Washington established the core structures of federal finance, taxation, and national credit.",
+      "sources": [
+        "Library of Congress, Washington presidential papers.",
+        "National Archives, Treasury Department records."
+      ]
+    }
+  },
+  {
+    "id": 2,
+    "name": "John Adams",
+    "economicPolicy": {
+      "events": [
+        {
+          "title": "Strengthening of Federal Maritime and Trade Protections",
+          "summary": "Adams expanded naval spending and authorized protection of American shipping during the Quasi‑War, shaping early federal trade security policy.",
+          "sources": [
+            "National Archives, Adams naval appropriations correspondence.",
+            "Library of Congress, Adams maritime policy papers."
+          ]
+        },
+        {
+          "title": "Continuation of Federalist Fiscal Policies",
+          "summary": "Adams maintained Hamiltonian revenue systems and supported federal taxation structures that preserved national credit.",
+          "sources": [
+            "Library of Congress, Adams fiscal papers.",
+            "National Archives, Treasury correspondence."
+          ]
+        }
+      ],
+      "overallAssessment": "Adams reinforced early federal fiscal and trade protection frameworks.",
+      "sources": [
+        "Library of Congress, Adams presidential papers.",
+        "National Archives, early federal finance records."
+      ]
+    }
+  },
+  {
+    "id": 3,
+    "name": "Thomas Jefferson",
+    "economicPolicy": {
+      "events": [
+        {
+          "title": "Elimination of Internal Federal Taxes",
+          "summary": "Jefferson abolished all internal federal taxes except tariffs, dramatically reducing federal revenue mechanisms.",
+          "sources": [
+            "National Archives, Jefferson revenue directives.",
+            "Library of Congress, Jefferson fiscal correspondence."
+          ]
+        },
+        {
+          "title": "Reduction of Federal Debt Through Spending Cuts",
+          "summary": "Jefferson implemented aggressive spending reductions to shrink the national debt, reshaping federal fiscal priorities.",
+          "sources": [
+            "Library of Congress, Jefferson Treasury papers.",
+            "National Archives, early federal budget records."
+          ]
+        }
+      ],
+      "overallAssessment": "Jefferson reoriented federal fiscal policy toward minimal taxation and reduced federal spending.",
+      "sources": [
+        "Library of Congress, Jefferson presidential papers.",
+        "National Archives, Treasury Department archives."
+      ]
+    }
+  },
+  {
+    "id": 4,
+    "name": "James Madison",
+    "economicPolicy": {
+      "events": [
+        {
+          "title": "Rechartering of the National Bank",
+          "summary": "Madison reversed earlier opposition and approved the Second Bank of the United States to stabilize wartime finances.",
+          "sources": [
+            "National Archives, Madison bank correspondence.",
+            "Library of Congress, Madison fiscal papers."
+          ]
+        },
+        {
+          "title": "Tariff of 1816 Support",
+          "summary": "Madison backed the first protective tariff to support domestic manufacturing after the War of 1812.",
+          "sources": [
+            "Library of Congress, Madison tariff papers.",
+            "National Archives, early trade policy records."
+          ]
+        }
+      ],
+      "overallAssessment": "Madison strengthened federal financial institutions and initiated protective trade policy.",
+      "sources": [
+        "Library of Congress, Madison presidential papers.",
+        "National Archives, fiscal policy records."
+      ]
+    }
+  },
+  {
+    "id": 5,
+    "name": "James Monroe",
+    "economicPolicy": {
+      "events": [
+        {
+          "title": "Support for the American System’s Infrastructure Funding",
+          "summary": "Monroe backed selective federal funding for internal improvements, shaping early national infrastructure policy.",
+          "sources": [
+            "National Archives, Monroe internal improvements papers.",
+            "Library of Congress, Monroe fiscal correspondence."
+          ]
+        },
+        {
+          "title": "Management of Post‑War Economic Stabilization",
+          "summary": "Monroe coordinated federal responses to the Panic of 1819 through executive communication with the Bank of the United States.",
+          "sources": [
+            "Library of Congress, Monroe economic crisis papers.",
+            "National Archives, early banking records."
+          ]
+        }
+      ],
+      "overallAssessment": "Monroe influenced early national infrastructure and economic stabilization policy.",
+      "sources": [
+        "Library of Congress, Monroe presidential papers.",
+        "National Archives, fiscal administration records."
+      ]
+    }
+  },
+  {
+    "id": 6,
+    "name": "John Quincy Adams",
+    "economicPolicy": {
+      "events": [
+        {
+          "title": "Promotion of Federally Supported Infrastructure Projects",
+          "summary": "Adams aggressively advanced federal investment in roads, canals, and scientific surveys, expanding national economic development policy.",
+          "sources": [
+            "National Archives, Adams internal improvements directives.",
+            "Library of Congress, Adams infrastructure papers."
+          ]
+        },
+        {
+          "title": "Support for Protective Tariffs",
+          "summary": "Adams backed tariff policies designed to strengthen domestic manufacturing.",
+          "sources": [
+            "Library of Congress, Adams tariff correspondence.",
+            "National Archives, trade policy records."
+          ]
+        }
+      ],
+      "overallAssessment": "Adams expanded federal involvement in national economic development and protective trade policy.",
+      "sources": [
+        "Library of Congress, Adams presidential papers.",
+        "National Archives, economic policy archives."
+      ]
+    }
+  },
+  {
+    "id": 7,
+    "name": "Andrew Jackson",
+    "economicPolicy": {
+      "events": [
+        {
+          "title": "Destruction of the Second Bank of the United States",
+          "summary": "Jackson vetoed the Bank’s recharter and removed federal deposits, dismantling the central financial institution.",
+          "sources": [
+            "National Archives, Jackson bank veto message.",
+            "Library of Congress, Jackson financial correspondence."
+          ]
+        },
+        {
+          "title": "Specie Circular",
+          "summary": "Jackson ordered federal land sales to be paid in gold or silver, reshaping national credit and currency flows.",
+          "sources": [
+            "Library of Congress, Jackson Specie Circular documents.",
+            "National Archives, Treasury directives."
+          ]
+        }
+      ],
+      "overallAssessment": "Jackson radically restructured U.S. financial systems and currency policy.",
+      "sources": [
+        "Library of Congress, Jackson presidential papers.",
+        "National Archives, financial policy records."
+      ]
+    }
+  },
+  {
+    "id": 8,
+    "name": "Martin Van Buren",
+    "economicPolicy": {
+      "events": [
+        {
+          "title": "Independent Treasury System Proposal",
+          "summary": "Van Buren advanced the Independent Treasury to separate federal funds from private banks after the Panic of 1837.",
+          "sources": [
+            "National Archives, Van Buren Treasury papers.",
+            "Library of Congress, Van Buren fiscal correspondence."
+          ]
+        },
+        {
+          "title": "Crisis Response to the Panic of 1837",
+          "summary": "Van Buren implemented federal spending restraint and defended hard‑money principles during the economic collapse.",
+          "sources": [
+            "Library of Congress, Van Buren economic crisis papers.",
+            "National Archives, fiscal policy records."
+          ]
+        }
+      ],
+      "overallAssessment": "Van Buren reshaped federal financial management through the Independent Treasury concept.",
+      "sources": [
+        "Library of Congress, Van Buren presidential papers.",
+        "National Archives, economic policy archives."
+      ]
+    }
+  },
+  {
+    "id": 9,
+    "name": "William Henry Harrison",
+    "economicPolicy": {
+      "events": [
+        {
+          "title": "Advocacy for Whig Economic Principles",
+          "summary": "Harrison signaled support for a revived national bank and protective tariffs, though his death prevented implementation.",
+          "sources": [
+            "Library of Congress, Harrison economic correspondence.",
+            "National Archives, early Whig policy documents."
+          ]
+        }
+      ],
+      "overallAssessment": "Harrison’s economic impact was limited but aligned with Whig national development priorities.",
+      "sources": [
+        "Library of Congress, Harrison presidential papers.",
+        "National Archives, fiscal policy materials."
+      ]
+    }
+  },
+  {
+    "id": 10,
+    "name": "John Tyler",
+    "economicPolicy": {
+      "events": [
+        {
+          "title": "Veto of Whig National Bank Bills",
+          "summary": "Tyler vetoed multiple attempts to reestablish a national bank, fracturing his party and shaping federal financial policy.",
+          "sources": [
+            "National Archives, Tyler veto messages.",
+            "Library of Congress, Tyler fiscal correspondence."
+          ]
+        },
+        {
+          "title": "Support for the Tariff of 1842",
+          "summary": "Tyler signed a protective tariff to stabilize federal revenue after rejecting bank‑centered fiscal plans.",
+          "sources": [
+            "Library of Congress, Tyler tariff papers.",
+            "National Archives, trade policy records."
+          ]
+        }
+      ],
+      "overallAssessment": "Tyler reshaped Whig economic policy by rejecting a national bank and endorsing protective tariffs.",
+      "sources": [
+        "Library of Congress, Tyler presidential papers.",
+        "National Archives, economic policy archives."
+      ]
+    }
+  },
+  {
+    "id": 11,
+    "name": "James K. Polk",
+    "economicPolicy": {
+      "events": [
+        {
+          "title": "Walker Tariff of 1846",
+          "summary": "Polk implemented a major tariff reduction that shifted U.S. trade policy toward lower duties and revenue‑based tariffs.",
+          "sources": [
+            "National Archives, Polk tariff correspondence.",
+            "Library of Congress, Walker Tariff papers."
+          ]
+        },
+        {
+          "title": "Independent Treasury Restoration",
+          "summary": "Polk restored the Independent Treasury system, separating federal funds from private banks.",
+          "sources": [
+            "Library of Congress, Polk Treasury papers.",
+            "National Archives, fiscal policy records."
+          ]
+        }
+      ],
+      "overallAssessment": "Polk reshaped trade and federal financial management through tariff reform and the Independent Treasury.",
+      "sources": [
+        "Library of Congress, Polk presidential papers.",
+        "National Archives, economic policy archives."
+      ]
+    }
+  },
+  {
+    "id": 12,
+    "name": "Zachary Taylor",
+    "economicPolicy": {
+      "events": [
+        {
+          "title": "Opposition to Expansion of Federal Economic Programs",
+          "summary": "Taylor resisted large‑scale federal spending on internal improvements, maintaining limited federal economic involvement.",
+          "sources": [
+            "National Archives, Taylor fiscal correspondence.",
+            "Library of Congress, Taylor economic papers."
+          ]
+        }
+      ],
+      "overallAssessment": "Taylor upheld a restrained federal economic role consistent with Whig divisions.",
+      "sources": [
+        "Library of Congress, Taylor presidential papers.",
+        "National Archives, fiscal policy materials."
+      ]
+    }
+  },
+  {
+    "id": 13,
+    "name": "Millard Fillmore",
+    "economicPolicy": {
+      "events": [
+        {
+          "title": "Support for the Compromise of 1850’s Economic Provisions",
+          "summary": "Fillmore enforced tariff adjustments and territorial economic rules embedded in the Compromise of 1850.",
+          "sources": [
+            "National Archives, Fillmore Compromise papers.",
+            "Library of Congress, Fillmore fiscal correspondence."
+          ]
+        },
+        {
+          "title": "Expansion of Pacific Trade",
+          "summary": "Fillmore supported naval expeditions to open trade routes, laying groundwork for later commercial treaties.",
+          "sources": [
+            "Library of Congress, Fillmore Pacific trade papers.",
+            "National Archives, early trade expansion records."
+          ]
+        }
+      ],
+      "overallAssessment": "Fillmore influenced trade expansion and implemented the Compromise’s economic components.",
+      "sources": [
+        "Library of Congress, Fillmore presidential papers.",
+        "National Archives, economic policy archives."
+      ]
+    }
+  },
+  {
+    "id": 14,
+    "name": "Franklin Pierce",
+    "economicPolicy": {
+      "events": [
+        {
+          "title": "Gadsden Purchase Financing",
+          "summary": "Pierce negotiated and executed the Gadsden Purchase, expanding federal land holdings for potential southern rail routes.",
+          "sources": [
+            "National Archives, Pierce Gadsden Purchase papers.",
+            "Library of Congress, Pierce territorial correspondence."
+          ]
+        },
+        {
+          "title": "Support for Railroad Expansion",
+          "summary": "Pierce backed federal land grants to promote railroad development, shaping national transportation economics.",
+          "sources": [
+            "Library of Congress, Pierce railroad papers.",
+            "National Archives, infrastructure policy records."
+          ]
+        }
+      ],
+      "overallAssessment": "Pierce advanced territorial expansion and railroad‑driven economic development.",
+      "sources": [
+        "Library of Congress, Pierce presidential papers.",
+        "National Archives, economic policy archives."
+      ]
+    }
+  },
+  {
+    "id": 15,
+    "name": "James Buchanan",
+    "economicPolicy": {
+      "events": [
+        {
+          "title": "Support for Low‑Tariff Policies",
+          "summary": "Buchanan backed tariff reductions consistent with Democratic free‑trade principles.",
+          "sources": [
+            "National Archives, Buchanan tariff correspondence.",
+            "Library of Congress, Buchanan trade policy papers."
+          ]
+        },
+        {
+          "title": "Handling of the Panic of 1857",
+          "summary": "Buchanan opposed federal intervention during the Panic of 1857, maintaining a limited‑government economic stance.",
+          "sources": [
+            "Library of Congress, Buchanan economic crisis papers.",
+            "National Archives, fiscal policy records."
+          ]
+        }
+      ],
+      "overallAssessment": "Buchanan adhered to low‑tariff, limited‑intervention economic principles during financial crisis.",
+      "sources": [
+        "Library of Congress, Buchanan presidential papers.",
+        "National Archives, economic policy archives."
+      ]
+    }
+  },
+  {
+    "id": 16,
+    "name": "Abraham Lincoln",
+    "economicPolicy": {
+      "events": [
+        {
+          "title": "Legal Tender Act and Introduction of Greenbacks",
+          "summary": "Lincoln authorized the issuance of paper currency not backed by gold or silver, creating the first national fiat money to finance the Civil War.",
+          "sources": [
+            "National Archives, Legal Tender Act records.",
+            "Library of Congress, Lincoln wartime finance papers."
+          ]
+        },
+        {
+          "title": "Creation of the National Banking System",
+          "summary": "Lincoln established a uniform national banking system and national bank charters to stabilize currency and credit markets.",
+          "sources": [
+            "Library of Congress, National Banking Act correspondence.",
+            "National Archives, Treasury banking records."
+          ]
+        }
+      ],
+      "overallAssessment": "Lincoln transformed U.S. finance through national currency, national banking, and wartime fiscal innovation.",
+      "sources": [
+        "Library of Congress, Lincoln presidential papers.",
+        "National Archives, Civil War finance archives."
+      ]
+    }
+  },
+  {
+    "id": 17,
+    "name": "Andrew Johnson",
+    "economicPolicy": {
+      "events": [
+        {
+          "title": "Veto of the Freedmen’s Bureau Funding Expansion",
+          "summary": "Johnson vetoed expanded funding for the Freedmen’s Bureau, shaping federal spending priorities during Reconstruction.",
+          "sources": [
+            "National Archives, Johnson veto messages.",
+            "Library of Congress, Reconstruction fiscal papers."
+          ]
+        },
+        {
+          "title": "Support for Rapid Southern Economic Reintegration",
+          "summary": "Johnson pushed for lenient economic reintegration of Southern states, influencing postwar labor and taxation structures.",
+          "sources": [
+            "Library of Congress, Johnson Reconstruction correspondence.",
+            "National Archives, postwar economic directives."
+          ]
+        }
+      ],
+      "overallAssessment": "Johnson shaped Reconstruction‑era fiscal policy through vetoes and lenient reintegration strategies.",
+      "sources": [
+        "Library of Congress, Johnson presidential papers.",
+        "National Archives, Reconstruction finance records."
+      ]
+    }
+  },
+  {
+    "id": 18,
+    "name": "Ulysses S. Grant",
+    "economicPolicy": {
+      "events": [
+        {
+          "title": "Public Credit Act of 1869",
+          "summary": "Grant committed the federal government to repaying Civil War debts in gold, strengthening national credit.",
+          "sources": [
+            "National Archives, Grant fiscal correspondence.",
+            "Library of Congress, Public Credit Act papers."
+          ]
+        },
+        {
+          "title": "Veto of the Inflation Bill",
+          "summary": "Grant vetoed legislation that would have expanded greenback circulation, defending hard‑money policy.",
+          "sources": [
+            "Library of Congress, Grant veto messages.",
+            "National Archives, monetary policy records."
+          ]
+        }
+      ],
+      "overallAssessment": "Grant reinforced hard‑money principles and stabilized national credit after the Civil War.",
+      "sources": [
+        "Library of Congress, Grant presidential papers.",
+        "National Archives, economic policy archives."
+      ]
+    }
+  },
+  {
+    "id": 19,
+    "name": "Rutherford B. Hayes",
+    "economicPolicy": {
+      "events": [
+        {
+          "title": "Support for the Resumption of Specie Payments",
+          "summary": "Hayes backed the return to gold‑backed currency, ending the Civil War greenback era.",
+          "sources": [
+            "National Archives, Hayes monetary correspondence.",
+            "Library of Congress, Resumption Act papers."
+          ]
+        },
+        {
+          "title": "Veto of the Bland–Allison Silver Purchase Bill",
+          "summary": "Hayes vetoed legislation requiring large federal silver purchases, opposing inflationary monetary policy.",
+          "sources": [
+            "Library of Congress, Hayes veto messages.",
+            "National Archives, silver policy records."
+          ]
+        }
+      ],
+      "overallAssessment": "Hayes defended gold‑standard principles and resisted inflationary silver policies.",
+      "sources": [
+        "Library of Congress, Hayes presidential papers.",
+        "National Archives, monetary policy archives."
+      ]
+    }
+  },
+  {
+    "id": 20,
+    "name": "James A. Garfield",
+    "economicPolicy": {
+      "events": [
+        {
+          "title": "Advocacy for Tariff Reform",
+          "summary": "Garfield pushed for tariff reductions to increase trade efficiency and reduce federal revenue distortions.",
+          "sources": [
+            "National Archives, Garfield tariff correspondence.",
+            "Library of Congress, Garfield economic papers."
+          ]
+        },
+        {
+          "title": "Support for Civil Service Reform with Economic Impact",
+          "summary": "Garfield backed reforms to reduce patronage‑driven inefficiency in federal revenue collection.",
+          "sources": [
+            "Library of Congress, Garfield civil service papers.",
+            "National Archives, federal revenue administration records."
+          ]
+        }
+      ],
+      "overallAssessment": "Garfield promoted tariff modernization and more efficient federal revenue administration.",
+      "sources": [
+        "Library of Congress, Garfield presidential papers.",
+        "National Archives, economic policy materials."
+      ]
+    }
+  },
+  {
+    "id": 21,
+    "name": "Chester A. Arthur",
+    "economicPolicy": {
+      "events": [
+        {
+          "title": "Tariff Commission of 1882",
+          "summary": "Arthur created a commission to study tariff reform, leading to the Tariff Act of 1883.",
+          "sources": [
+            "National Archives, Arthur tariff commission records.",
+            "Library of Congress, Arthur economic correspondence."
+          ]
+        },
+        {
+          "title": "Veto of the Rivers and Harbors Act",
+          "summary": "Arthur vetoed a major spending bill he deemed excessive, asserting fiscal restraint.",
+          "sources": [
+            "Library of Congress, Arthur veto messages.",
+            "National Archives, federal spending records."
+          ]
+        }
+      ],
+      "overallAssessment": "Arthur shaped tariff reform and asserted fiscal discipline through targeted vetoes.",
+      "sources": [
+        "Library of Congress, Arthur presidential papers.",
+        "National Archives, economic policy archives."
+      ]
+    }
+  },
+  {
+    "id": 22,
+    "name": "Grover Cleveland",
+    "economicPolicy": {
+      "events": [
+        {
+          "title": "Advocacy for Tariff Reduction",
+          "summary": "Cleveland pushed aggressively for lower tariffs, arguing they created unnecessary federal surpluses.",
+          "sources": [
+            "National Archives, Cleveland tariff correspondence.",
+            "Library of Congress, Cleveland economic papers."
+          ]
+        },
+        {
+          "title": "Opposition to Pension Expansion",
+          "summary": "Cleveland vetoed numerous pension bills to prevent what he viewed as excessive federal spending.",
+          "sources": [
+            "Library of Congress, Cleveland veto messages.",
+            "National Archives, federal expenditure records."
+          ]
+        }
+      ],
+      "overallAssessment": "Cleveland championed tariff reduction and strict federal spending discipline.",
+      "sources": [
+        "Library of Congress, Cleveland presidential papers.",
+        "National Archives, economic policy archives."
+      ]
+    }
+  },
+  {
+    "id": 23,
+    "name": "Benjamin Harrison",
+    "economicPolicy": {
+      "events": [
+        {
+          "title": "McKinley Tariff of 1890",
+          "summary": "Harrison supported one of the highest protective tariffs in U.S. history to bolster domestic industry.",
+          "sources": [
+            "National Archives, Harrison tariff records.",
+            "Library of Congress, McKinley Tariff papers."
+          ]
+        },
+        {
+          "title": "Sherman Silver Purchase Act",
+          "summary": "Harrison approved expanded federal silver purchases, influencing national monetary policy.",
+          "sources": [
+            "Library of Congress, Harrison silver policy papers.",
+            "National Archives, monetary legislation records."
+          ]
+        }
+      ],
+      "overallAssessment": "Harrison reshaped tariff and silver policy with major protectionist and monetary legislation.",
+      "sources": [
+        "Library of Congress, Harrison presidential papers.",
+        "National Archives, economic policy archives."
+      ]
+    }
+  },
+  {
+    "id": 24,
+    "name": "Grover Cleveland (Second Term)",
+    "economicPolicy": {
+      "events": [
+        {
+          "title": "Repeal of the Sherman Silver Purchase Act",
+          "summary": "Cleveland pushed for repeal to stabilize gold reserves during the Panic of 1893.",
+          "sources": [
+            "National Archives, Cleveland silver repeal papers.",
+            "Library of Congress, Panic of 1893 correspondence."
+          ]
+        },
+        {
+          "title": "Bond Sales to Restore Gold Reserves",
+          "summary": "Cleveland authorized major bond sales to replenish federal gold reserves and defend the gold standard.",
+          "sources": [
+            "Library of Congress, Cleveland bond sale papers.",
+            "National Archives, Treasury gold reserve records."
+          ]
+        }
+      ],
+      "overallAssessment": "Cleveland stabilized federal finances during crisis through gold‑standard defense and bond sales.",
+      "sources": [
+        "Library of Congress, Cleveland presidential papers.",
+        "National Archives, economic crisis archives."
+      ]
+    }
+  },
+  {
+    "id": 25,
+    "name": "William McKinley",
+    "economicPolicy": {
+      "events": [
+        {
+          "title": "Dingley Tariff of 1897",
+          "summary": "McKinley enacted a high protective tariff to support domestic manufacturing and federal revenue.",
+          "sources": [
+            "National Archives, McKinley tariff records.",
+            "Library of Congress, Dingley Tariff papers."
+          ]
+        },
+        {
+          "title": "Gold Standard Act of 1900",
+          "summary": "McKinley formally committed the U.S. to the gold standard, ending the silver debate.",
+          "sources": [
+            "Library of Congress, McKinley monetary policy papers.",
+            "National Archives, Gold Standard Act records."
+          ]
+        }
+      ],
+      "overallAssessment": "McKinley solidified protectionist trade policy and cemented the gold standard.",
+      "sources": [
+        "Library of Congress, McKinley presidential papers.",
+        "National Archives, economic policy archives."
+      ]
+    }
+  },
+  {
+    "id": 26,
+    "name": "Theodore Roosevelt",
+    "economicPolicy": {
+      "events": [
+        {
+          "title": "Trust‑Busting and Antitrust Enforcement",
+          "summary": "Roosevelt aggressively enforced the Sherman Antitrust Act, breaking up major monopolies.",
+          "sources": [
+            "National Archives, Roosevelt antitrust records.",
+            "Library of Congress, Roosevelt corporate regulation papers."
+          ]
+        },
+        {
+          "title": "Regulation of Railroads Through the Hepburn Act",
+          "summary": "Roosevelt expanded federal authority to regulate railroad rates and practices.",
+          "sources": [
+            "Library of Congress, Roosevelt railroad policy papers.",
+            "National Archives, Hepburn Act records."
+          ]
+        }
+      ],
+      "overallAssessment": "Roosevelt reshaped federal economic regulation through antitrust action and railroad oversight.",
+      "sources": [
+        "Library of Congress, Roosevelt presidential papers.",
+        "National Archives, economic regulation archives."
+      ]
+    }
+  },
+  {
+    "id": 27,
+    "name": "William Howard Taft",
+    "economicPolicy": {
+      "events": [
+        {
+          "title": "Payne–Aldrich Tariff Act",
+          "summary": "Taft signed a tariff bill that maintained high duties despite promising reform, fracturing his political coalition.",
+          "sources": [
+            "National Archives, Taft tariff correspondence.",
+            "Library of Congress, Payne–Aldrich papers."
+          ]
+        },
+        {
+          "title": "Expansion of Antitrust Enforcement",
+          "summary": "Taft filed more antitrust suits than Roosevelt, intensifying federal regulation of large corporations.",
+          "sources": [
+            "Library of Congress, Taft antitrust papers.",
+            "National Archives, corporate regulation records."
+          ]
+        }
+      ],
+      "overallAssessment": "Taft shaped tariff policy and expanded federal antitrust enforcement.",
+      "sources": [
+        "Library of Congress, Taft presidential papers.",
+        "National Archives, economic policy archives."
+      ]
+    }
+  },
+  {
+    "id": 28,
+    "name": "Woodrow Wilson",
+    "economicPolicy": {
+      "events": [
+        {
+          "title": "Federal Reserve Act",
+          "summary": "Wilson created the Federal Reserve System, establishing modern U.S. monetary policy infrastructure.",
+          "sources": [
+            "National Archives, Federal Reserve Act records.",
+            "Library of Congress, Wilson monetary policy papers."
+          ]
+        },
+        {
+          "title": "Clayton Antitrust Act and FTC Creation",
+          "summary": "Wilson strengthened antitrust law and created the Federal Trade Commission to regulate unfair business practices.",
+          "sources": [
+            "Library of Congress, Wilson antitrust papers.",
+            "National Archives, FTC founding documents."
+          ]
+        }
+      ],
+      "overallAssessment": "Wilson transformed U.S. monetary and regulatory systems through the Fed and modern antitrust law.",
+      "sources": [
+        "Library of Congress, Wilson presidential papers.",
+        "National Archives, economic policy archives."
+      ]
+    }
+  },
+  {
+    "id": 29,
+    "name": "Warren G. Harding",
+    "economicPolicy": {
+      "events": [
+        {
+          "title": "Budget and Accounting Act of 1921",
+          "summary": "Harding created the Bureau of the Budget and the GAO, centralizing federal budgeting and oversight.",
+          "sources": [
+            "National Archives, Budget Act records.",
+            "Library of Congress, Harding fiscal papers."
+          ]
+        },
+        {
+          "title": "Support for Post‑War Tax Reductions",
+          "summary": "Harding backed significant tax cuts to stimulate economic recovery after World War I.",
+          "sources": [
+            "Library of Congress, Harding tax policy papers.",
+            "National Archives, Treasury tax records."
+          ]
+        }
+      ],
+      "overallAssessment": "Harding modernized federal budgeting and advanced postwar tax reduction.",
+      "sources": [
+        "Library of Congress, Harding presidential papers.",
+        "National Archives, economic policy archives."
+      ]
+    }
+  },
+  {
+    "id": 30,
+    "name": "Calvin Coolidge",
+    "economicPolicy": {
+      "events": [
+        {
+          "title": "Revenue Acts of 1924 and 1926",
+          "summary": "Coolidge enacted major tax cuts that reduced federal income tax rates and shrank federal revenue.",
+          "sources": [
+            "National Archives, Coolidge tax legislation records.",
+            "Library of Congress, Coolidge fiscal papers."
+          ]
+        },
+        {
+          "title": "Support for Limited Federal Regulation",
+          "summary": "Coolidge maintained minimal federal intervention in business, reinforcing laissez‑faire economic policy.",
+          "sources": [
+            "Library of Congress, Coolidge economic correspondence.",
+            "National Archives, regulatory policy records."
+          ]
+        }
+      ],
+      "overallAssessment": "Coolidge advanced tax reduction and limited federal economic intervention.",
+      "sources": [
+        "Library of Congress, Coolidge presidential papers.",
+        "National Archives, economic policy archives."
+      ]
+    }
+  },
+  {
+    "id": 31,
+    "name": "Herbert Hoover",
+    "economicPolicy": {
+      "events": [
+        {
+          "title": "Reconstruction Finance Corporation (RFC) Creation",
+          "summary": "Hoover established the RFC to provide emergency loans to banks, railroads, and major industries during the early Depression, marking a major federal intervention in credit markets.",
+          "sources": [
+            "National Archives, RFC founding documents.",
+            "Library of Congress, Hoover economic crisis papers."
+          ]
+        },
+        {
+          "title": "Smoot–Hawley Tariff Act",
+          "summary": "Hoover signed the Smoot–Hawley Tariff, raising tariffs to historic highs and reshaping global trade during the Depression.",
+          "sources": [
+            "Library of Congress, Smoot–Hawley correspondence.",
+            "National Archives, tariff policy records."
+          ]
+        }
+      ],
+      "overallAssessment": "Hoover expanded federal credit intervention while enacting protectionist trade policy during economic collapse.",
+      "sources": [
+        "Library of Congress, Hoover presidential papers.",
+        "National Archives, Depression‑era economic records."
+      ]
+    }
+  },
+  {
+    "id": 32,
+    "name": "Franklin D. Roosevelt",
+    "economicPolicy": {
+      "events": [
+        {
+          "title": "New Deal Economic Reforms",
+          "summary": "FDR launched sweeping programs including the CCC, WPA, and AAA, reshaping federal involvement in employment, agriculture, and infrastructure.",
+          "sources": [
+            "National Archives, New Deal program records.",
+            "Library of Congress, Roosevelt economic papers."
+          ]
+        },
+        {
+          "title": "Banking and Currency Reforms",
+          "summary": "FDR closed banks during the Emergency Banking Holiday, took the U.S. off the gold standard, and created the FDIC.",
+          "sources": [
+            "Library of Congress, Roosevelt banking crisis papers.",
+            "National Archives, Emergency Banking Act records."
+          ]
+        }
+      ],
+      "overallAssessment": "FDR fundamentally redefined federal economic authority through New Deal programs and monetary restructuring.",
+      "sources": [
+        "Library of Congress, Roosevelt presidential papers.",
+        "National Archives, New Deal economic archives."
+      ]
+    }
+  },
+  {
+    "id": 33,
+    "name": "Harry S. Truman",
+    "economicPolicy": {
+      "events": [
+        {
+          "title": "Fair Deal Economic Initiatives",
+          "summary": "Truman advanced Fair Deal proposals including housing programs, minimum wage increases, and expanded social protections.",
+          "sources": [
+            "National Archives, Truman Fair Deal papers.",
+            "Library of Congress, Truman domestic policy correspondence."
+          ]
+        },
+        {
+          "title": "Post‑War Price and Wage Controls",
+          "summary": "Truman used federal authority to manage inflation through temporary price and wage controls during the transition to a peacetime economy.",
+          "sources": [
+            "Library of Congress, Truman inflation control papers.",
+            "National Archives, post‑war economic stabilization records."
+          ]
+        }
+      ],
+      "overallAssessment": "Truman shaped post‑war stabilization and expanded federal social‑economic programs.",
+      "sources": [
+        "Library of Congress, Truman presidential papers.",
+        "National Archives, economic policy archives."
+      ]
+    }
+  },
+  {
+    "id": 34,
+    "name": "Dwight D. Eisenhower",
+    "economicPolicy": {
+      "events": [
+        {
+          "title": "Federal‑Aid Highway Act of 1956",
+          "summary": "Eisenhower created the Interstate Highway System, the largest infrastructure project in U.S. history.",
+          "sources": [
+            "National Archives, Highway Act records.",
+            "Library of Congress, Eisenhower infrastructure papers."
+          ]
+        },
+        {
+          "title": "Balanced Budget Emphasis",
+          "summary": "Eisenhower prioritized balanced budgets and restrained federal spending despite Cold War pressures.",
+          "sources": [
+            "Library of Congress, Eisenhower fiscal correspondence.",
+            "National Archives, federal budget records."
+          ]
+        }
+      ],
+      "overallAssessment": "Eisenhower reshaped national infrastructure and maintained fiscal restraint.",
+      "sources": [
+        "Library of Congress, Eisenhower presidential papers.",
+        "National Archives, economic policy archives."
+      ]
+    }
+  },
+  {
+    "id": 35,
+    "name": "John F. Kennedy",
+    "economicPolicy": {
+      "events": [
+        {
+          "title": "Tax Cut Proposal to Stimulate Growth",
+          "summary": "Kennedy proposed major income tax reductions to stimulate demand, later enacted under Johnson.",
+          "sources": [
+            "National Archives, Kennedy tax policy papers.",
+            "Library of Congress, economic growth correspondence."
+          ]
+        },
+        {
+          "title": "Trade Expansion Act of 1962",
+          "summary": "Kennedy gained authority to negotiate tariff reductions, reshaping U.S. trade policy.",
+          "sources": [
+            "Library of Congress, Kennedy trade papers.",
+            "National Archives, trade negotiation records."
+          ]
+        }
+      ],
+      "overallAssessment": "Kennedy advanced pro‑growth tax policy and modernized U.S. trade authority.",
+      "sources": [
+        "Library of Congress, Kennedy presidential papers.",
+        "National Archives, economic policy archives."
+      ]
+    }
+  },
+  {
+    "id": 36,
+    "name": "Lyndon B. Johnson",
+    "economicPolicy": {
+      "events": [
+        {
+          "title": "Great Society Economic Programs",
+          "summary": "Johnson expanded federal economic involvement through Medicare, Medicaid, and anti‑poverty programs.",
+          "sources": [
+            "National Archives, Great Society records.",
+            "Library of Congress, Johnson domestic policy papers."
+          ]
+        },
+        {
+          "title": "Revenue Act of 1964 Implementation",
+          "summary": "Johnson enacted Kennedy’s tax cuts, stimulating economic expansion.",
+          "sources": [
+            "Library of Congress, Johnson tax policy papers.",
+            "National Archives, fiscal policy records."
+          ]
+        }
+      ],
+      "overallAssessment": "Johnson expanded federal social‑economic programs and enacted major tax reductions.",
+      "sources": [
+        "Library of Congress, Johnson presidential papers.",
+        "National Archives, economic policy archives."
+      ]
+    }
+  },
+  {
+    "id": 37,
+    "name": "Richard Nixon",
+    "economicPolicy": {
+      "events": [
+        {
+          "title": "End of the Gold Standard (Nixon Shock)",
+          "summary": "Nixon suspended dollar convertibility to gold, ending the Bretton Woods system and reshaping global finance.",
+          "sources": [
+            "National Archives, Nixon monetary policy papers.",
+            "Library of Congress, Bretton Woods dissolution documents."
+          ]
+        },
+        {
+          "title": "Wage and Price Controls",
+          "summary": "Nixon imposed nationwide wage and price controls to combat inflation, a major federal intervention.",
+          "sources": [
+            "Library of Congress, Nixon inflation control papers.",
+            "National Archives, economic stabilization records."
+          ]
+        }
+      ],
+      "overallAssessment": "Nixon transformed global monetary policy and used aggressive federal controls to fight inflation.",
+      "sources": [
+        "Library of Congress, Nixon presidential papers.",
+        "National Archives, economic policy archives."
+      ]
+    }
+  },
+  {
+    "id": 38,
+    "name": "Gerald Ford",
+    "economicPolicy": {
+      "events": [
+        {
+          "title": "WIN (Whip Inflation Now) Program",
+          "summary": "Ford launched a national anti‑inflation campaign emphasizing voluntary restraint and fiscal discipline.",
+          "sources": [
+            "National Archives, Ford inflation papers.",
+            "Library of Congress, WIN program documents."
+          ]
+        },
+        {
+          "title": "Tax Reduction Act of 1975",
+          "summary": "Ford enacted temporary tax cuts to counter recessionary pressures.",
+          "sources": [
+            "Library of Congress, Ford tax policy papers.",
+            "National Archives, recession response records."
+          ]
+        }
+      ],
+      "overallAssessment": "Ford attempted inflation control while using tax cuts to counter recession.",
+      "sources": [
+        "Library of Congress, Ford presidential papers.",
+        "National Archives, economic policy archives."
+      ]
+    }
+  },
+  {
+    "id": 39,
+    "name": "Jimmy Carter",
+    "economicPolicy": {
+      "events": [
+        {
+          "title": "Deregulation of Airlines, Trucking, and Railroads",
+          "summary": "Carter signed major deregulation laws that reshaped transportation markets.",
+          "sources": [
+            "National Archives, Carter deregulation records.",
+            "Library of Congress, transportation policy papers."
+          ]
+        },
+        {
+          "title": "Creation of the Department of Energy",
+          "summary": "Carter consolidated federal energy programs to address the energy crisis.",
+          "sources": [
+            "Library of Congress, Carter energy policy papers.",
+            "National Archives, DOE founding documents."
+          ]
+        }
+      ],
+      "overallAssessment": "Carter advanced major deregulation and reorganized federal energy policy.",
+      "sources": [
+        "Library of Congress, Carter presidential papers.",
+        "National Archives, economic policy archives."
+      ]
+    }
+  },
+  {
+    "id": 40,
+    "name": "Ronald Reagan",
+    "economicPolicy": {
+      "events": [
+        {
+          "title": "Economic Recovery Tax Act of 1981",
+          "summary": "Reagan enacted one of the largest tax cuts in U.S. history, reducing marginal rates across the board.",
+          "sources": [
+            "National Archives, Reagan tax policy records.",
+            "Library of Congress, ERTA papers."
+          ]
+        },
+        {
+          "title": "Deregulation and Reduction of Federal Economic Controls",
+          "summary": "Reagan reduced federal regulatory burdens across multiple sectors, reshaping economic governance.",
+          "sources": [
+            "Library of Congress, Reagan deregulation papers.",
+            "National Archives, regulatory policy archives."
+          ]
+        }
+      ],
+      "overallAssessment": "Reagan redefined federal economic policy through tax cuts and deregulation.",
+      "sources": [
+        "Library of Congress, Reagan presidential papers.",
+        "National Archives, economic policy archives."
+      ]
+    }
+  },
+  {
+    "id": 41,
+    "name": "George H. W. Bush",
+    "economicPolicy": {
+      "events": [
+        {
+          "title": "1990 Budget Agreement",
+          "summary": "Bush negotiated a deficit‑reduction package including spending cuts and tax increases.",
+          "sources": [
+            "National Archives, Bush budget papers.",
+            "Library of Congress, 1990 budget agreement documents."
+          ]
+        },
+        {
+          "title": "Savings and Loan Crisis Resolution",
+          "summary": "Bush implemented measures to stabilize the financial system after widespread S&L failures.",
+          "sources": [
+            "Library of Congress, Bush financial crisis papers.",
+            "National Archives, S&L resolution records."
+          ]
+        }
+      ],
+      "overallAssessment": "Bush pursued deficit reduction and financial stabilization during the S&L crisis.",
+      "sources": [
+        "Library of Congress, Bush presidential papers.",
+        "National Archives, economic policy archives."
+      ]
+    }
+  },
+  {
+    "id": 42,
+    "name": "Bill Clinton",
+    "economicPolicy": {
+      "events": [
+        {
+          "title": "1993 Deficit Reduction Act",
+          "summary": "Clinton enacted tax increases and spending restraints to reduce the federal deficit.",
+          "sources": [
+            "National Archives, Clinton budget records.",
+            "Library of Congress, 1993 fiscal policy papers."
+          ]
+        },
+        {
+          "title": "NAFTA and Trade Liberalization",
+          "summary": "Clinton implemented NAFTA and expanded U.S. participation in global trade agreements.",
+          "sources": [
+            "Library of Congress, Clinton trade papers.",
+            "National Archives, NAFTA implementation records."
+          ]
+        }
+      ],
+      "overallAssessment": "Clinton advanced deficit reduction and expanded U.S. trade liberalization.",
+      "sources": [
+        "Library of Congress, Clinton presidential papers.",
+        "National Archives, economic policy archives."
+      ]
+    }
+  },
+  {
+    "id": 43,
+    "name": "George W. Bush",
+    "economicPolicy": {
+      "events": [
+        {
+          "title": "2001 and 2003 Tax Cuts",
+          "summary": "Bush enacted major tax reductions affecting income, dividends, and capital gains.",
+          "sources": [
+            "National Archives, Bush tax policy records.",
+            "Library of Congress, EGTRRA and JGTRRA papers."
+          ]
+        },
+        {
+          "title": "TARP and Financial Crisis Response",
+          "summary": "Bush authorized emergency measures to stabilize financial markets during the 2008 crisis.",
+          "sources": [
+            "Library of Congress, Bush crisis papers.",
+            "National Archives, TARP implementation records."
+          ]
+        }
+      ],
+      "overallAssessment": "Bush reshaped tax policy and initiated emergency financial stabilization during crisis.",
+      "sources": [
+        "Library of Congress, Bush presidential papers.",
+        "National Archives, economic policy archives."
+      ]
+    }
+  },
+  {
+    "id": 44,
+    "name": "Barack Obama",
+    "economicPolicy": {
+      "events": [
+        {
+          "title": "American Recovery and Reinvestment Act",
+          "summary": "Obama enacted a large stimulus package to counter the Great Recession.",
+          "sources": [
+            "National Archives, ARRA records.",
+            "Library of Congress, Obama economic recovery papers."
+          ]
+        },
+        {
+          "title": "Dodd–Frank Financial Reform",
+          "summary": "Obama implemented sweeping financial regulations to reduce systemic risk.",
+          "sources": [
+            "Library of Congress, Dodd–Frank papers.",
+            "National Archives, financial regulatory records."
+          ]
+        }
+      ],
+      "overallAssessment": "Obama pursued stimulus spending and major financial regulatory reform.",
+      "sources": [
+        "Library of Congress, Obama presidential papers.",
+        "National Archives, economic policy archives."
+      ]
+    }
+  },
+  {
+    "id": 45,
+    "name": "Donald J. Trump",
+    "economicPolicy": {
+      "events": [
+        {
+          "title": "Tax Cuts and Jobs Act of 2017",
+          "summary": "Trump enacted major tax reductions affecting individuals and corporations.",
+          "sources": [
+            "National Archives, TCJA records.",
+            "Library of Congress, Trump tax policy papers."
+          ]
+        },
+        {
+          "title": "Trade War Tariffs",
+          "summary": "Trump imposed tariffs on China and other nations, reshaping global trade relationships.",
+          "sources": [
+            "Library of Congress, Trump trade policy papers.",
+            "National Archives, tariff action records."
+          ]
+        }
+      ],
+      "overallAssessment": "Trump reshaped tax policy and trade relations through major tax cuts and tariff actions.",
+      "sources": [
+        "Library of Congress, Trump presidential papers.",
+        "National Archives, economic policy archives."
+      ]
+    }
+  },
+  {
+    "id": 46,
+    "name": "Joseph R. Biden",
+    "economicPolicy": {
+      "events": [
+        {
+          "title": "American Rescue Plan",
+          "summary": "Biden enacted a large stimulus package to support households, businesses, and state governments during the pandemic recovery.",
+          "sources": [
+            "National Archives, ARP records.",
+            "Library of Congress, Biden economic recovery papers."
+          ]
+        },
+        {
+          "title": "Infrastructure Investment and Jobs Act Implementation",
+          "summary": "Biden advanced major federal infrastructure spending across transportation, broadband, and utilities.",
+          "sources": [
+            "Library of Congress, Biden infrastructure papers.",
+            "National Archives, infrastructure policy records."
+          ]
+        }
+      ],
+      "overallAssessment": "Biden pursued large‑scale stimulus and infrastructure investment.",
+      "sources": [
+        "Library of Congress, Biden presidential papers.",
+        "National Archives, economic policy archives."
+      ]
+    }
   }
-},
-{
-  "id": 2,
-  "name": "John Adams",
-  "economicPolicy": {
-    "events": [
-      {
-        "title": "Continuation of Hamiltonian Fiscal Policies",
-        "summary": "Adams maintained the financial structures established under Washington, including support for the national bank and federal taxation systems. His administration preserved fiscal stability during a period of international tension and naval conflict.",
-        "sources": [
-          "National Archives, Adams administration fiscal documents.",
-          "Library of Congress, early federal finance materials."
-        ]
-      },
-      {
-        "title": "Direct Tax of 1798",
-        "summary": "Adams approved the Direct Tax of 1798 to fund military preparedness during the Quasi‑War with France. The tax, levied on land and property, was deeply unpopular and contributed to political backlash against the Federalist Party.",
-        "sources": [
-          "Library of Congress, Direct Tax materials.",
-          "National Archives, early federal taxation records."
-        ]
-      }
-    ],
-    "overallAssessment": "Adams’s economic policy preserved Hamiltonian fiscal structures while implementing new taxes to support national defense. His administration maintained financial stability but faced political resistance to federal taxation.",
-    "sources": [
-      "Library of Congress Adams administration materials.",
-      "National Archives economic policy records."
-    ]
-  }
-},
-{
-  "id": 3,
-  "name": "Thomas Jefferson",
-  "economicPolicy": {
-    "events": [
-      {
-        "title": "Reduction of Federal Spending and Taxes",
-        "summary": "Jefferson reduced federal expenditures, eliminated internal taxes such as the whiskey tax, and prioritized paying down the national debt. His administration emphasized limited government and fiscal restraint, reflecting Republican economic principles.",
-        "sources": [
-          "National Archives, Jefferson fiscal policy documents.",
-          "Library of Congress, early federal finance materials."
-        ]
-      },
-      {
-        "title": "Embargo Act (1807)",
-        "summary": "Jefferson implemented the Embargo Act to pressure Britain and France during the Napoleonic Wars by halting American exports. The policy severely disrupted U.S. commerce, harmed port economies, and generated widespread domestic opposition.",
-        "sources": [
-          "Library of Congress, Embargo Act materials.",
-          "National Archives, Jefferson trade policy documents."
-        ]
-      }
-    ],
-    "overallAssessment": "Jefferson’s economic policy emphasized fiscal restraint and reduced federal taxation but was marked by the economically damaging Embargo Act. His administration balanced limited‑government principles with controversial trade restrictions.",
-    "sources": [
-      "Library of Congress Jefferson administration materials.",
-      "National Archives economic policy records."
-    ]
-  }
-},
-{
-  "id": 4,
-  "name": "James Madison",
-  "economicPolicy": {
-    "events": [
-      {
-        "title": "War of 1812 Economic Measures",
-        "summary": "Madison oversaw wartime economic policies including increased tariffs, expanded borrowing, and reliance on state banks after the First Bank’s charter expired. The war exposed weaknesses in federal financial systems and contributed to postwar reforms.",
-        "sources": [
-          "Library of Congress, War of 1812 economic materials.",
-          "National Archives, Madison fiscal policy documents."
-        ]
-      },
-      {
-        "title": "Second Bank of the United States (1816)",
-        "summary": "Madison supported the creation of the Second Bank of the United States to stabilize currency and regulate credit after wartime financial instability. The decision marked a shift toward stronger federal financial institutions.",
-        "sources": [
-          "National Archives, Second Bank documents.",
-          "Library of Congress, early 19th‑century economic policy materials."
-        ]
-      }
-    ],
-    "overallAssessment": "Madison’s economic policy was shaped by the War of 1812 and the need for financial stabilization. His support for the Second Bank and postwar tariff policy strengthened federal economic capacity.",
-    "sources": [
-      "Library of Congress Madison administration materials.",
-      "National Archives economic policy records."
-    ]
-  }
-},
-{
-  "id": 5,
-  "name": "James Monroe",
-  "economicPolicy": {
-    "events": [
-      {
-        "title": "Panic of 1819 Response",
-        "summary": "Monroe presided over the first major U.S. financial crisis, the Panic of 1819, caused by credit contraction, falling agricultural prices, and speculative lending. His administration took limited action, reflecting prevailing beliefs in minimal federal intervention.",
-        "sources": [
-          "Federal Reserve, Panic of 1819 historical analysis.",
-          "Library of Congress, early American economic crisis materials."
-        ]
-      },
-      {
-        "title": "Support for Protective Tariffs (1820s)",
-        "summary": "Monroe endorsed moderate protective tariffs to support emerging American industries. These policies reflected growing economic nationalism and contributed to debates over federal economic authority.",
-        "sources": [
-          "National Archives, early tariff policy documents.",
-          "Library of Congress, Monroe economic materials."
-        ]
-      }
-    ],
-    "overallAssessment": "Monroe’s economic policy balanced limited federal intervention with support for protective tariffs. His administration navigated the Panic of 1819 while endorsing policies that encouraged early industrial development.",
-    "sources": [
-      "Library of Congress Monroe administration materials.",
-      "National Archives economic policy records."
-    ]
-  }
-},
-{
-  "id": 6,
-  "name": "John Quincy Adams",
-  "economicPolicy": {
-    "events": [
-      {
-        "title": "National Economic Development and Internal Improvements Agenda",
-        "summary": "Adams championed a broad nationalist economic program that included federal investment in roads, canals, and scientific institutions. His administration supported projects such as the Chesapeake and Ohio Canal and promoted policies to strengthen commerce and transportation infrastructure. Although Congress resisted many proposals, Adams’s vision anticipated later federal economic development strategies.",
-        "sources": [
-          "Library of Congress, John Quincy Adams administration materials.",
-          "National Archives, internal improvements documents."
-        ]
-      }
-    ],
-    "overallAssessment": "Adams pursued an ambitious economic agenda centered on internal improvements and national development. His forward‑looking policies faced political resistance but reflected a strong federal role in shaping economic growth.",
-    "sources": [
-      "Library of Congress economic policy materials.",
-      "National Archives Adams administration records."
-    ]
-  }
-},
-{
-  "id": 7,
-  "name": "Andrew Jackson",
-  "economicPolicy": {
-    "events": [
-      {
-        "title": "Bank War and Destruction of the Second Bank (1832–1836)",
-        "summary": "Jackson vetoed the recharter of the Second Bank of the United States and removed federal deposits, redistributing them to state 'pet banks.' His actions weakened centralized financial oversight and contributed to speculative lending and later economic instability.",
-        "sources": [
-          "Library of Congress, Bank War materials.",
-          "National Archives, Jackson veto messages and financial documents."
-        ]
-      },
-      {
-        "title": "Specie Circular (1836)",
-        "summary": "Jackson issued the Specie Circular, requiring payment for public lands in gold or silver. Intended to curb land speculation, the policy contributed to credit contraction and was a factor in the Panic of 1837.",
-        "sources": [
-          "National Archives, Specie Circular documents.",
-          "Library of Congress, Jackson economic policy materials."
-        ]
-      }
-    ],
-    "overallAssessment": "Jackson’s economic policy dismantled the national bank, expanded executive authority over federal funds, and contributed to financial volatility. His actions reshaped American banking and influenced decades of economic policy debates.",
-    "sources": [
-      "Library of Congress Jackson administration materials.",
-      "National Archives economic policy records."
-    ]
-  }
-},
-{
-  "id": 8,
-  "name": "Martin Van Buren",
-  "economicPolicy": {
-    "events": [
-      {
-        "title": "Independent Treasury System Proposal (1840)",
-        "summary": "Van Buren proposed the Independent Treasury system to separate federal funds from private banks following the Panic of 1837. The system aimed to stabilize federal finances and reduce reliance on state banks. Although initially controversial, it became a cornerstone of federal fiscal policy.",
-        "sources": [
-          "Library of Congress, Independent Treasury materials.",
-          "National Archives, Van Buren fiscal policy documents."
-        ]
-      },
-      {
-        "title": "Response to the Panic of 1837",
-        "summary": "Van Buren faced a severe economic depression marked by bank failures, unemployment, and collapsing credit markets. He opposed direct federal intervention, adhering to limited‑government principles, which contributed to public dissatisfaction.",
-        "sources": [
-          "Federal Reserve, Panic of 1837 historical analysis.",
-          "Library of Congress, Van Buren economic crisis materials."
-        ]
-      }
-    ],
-    "overallAssessment": "Van Buren’s economic policy centered on establishing the Independent Treasury and maintaining limited federal intervention during a major depression. His adherence to hard‑money principles shaped long‑term federal fiscal structures.",
-    "sources": [
-      "Library of Congress Van Buren administration materials.",
-      "National Archives economic policy records."
-    ]
-  }
-},
-{
-  "id": 9,
-  "name": "William Henry Harrison",
-  "economicPolicy": {
-    "events": [],
-    "overallAssessment": "Harrison died one month into his presidency and implemented no significant economic policies.",
-    "sources": [
-      "Library of Congress presidential tenure summaries.",
-      "National Archives Harrison administration materials."
-    ]
-  }
-},
-{
-  "id": 10,
-  "name": "John Tyler",
-  "economicPolicy": {
-    "events": [
-      {
-        "title": "Vetoes of Whig Economic Legislation",
-        "summary": "Tyler vetoed multiple Whig economic bills, including proposals to reestablish a national bank. His actions led to a major political rupture with his own party and shaped debates over federal economic authority.",
-        "sources": [
-          "Library of Congress, Tyler veto messages.",
-          "National Archives, Whig economic policy documents."
-        ]
-      },
-      {
-        "title": "Tariff of 1842",
-        "summary": "Tyler signed the Tariff of 1842, raising tariff rates to increase federal revenue after a fiscal crisis. The law reversed earlier reductions and reflected shifting political priorities regarding protectionism and federal finance.",
-        "sources": [
-          "National Archives, Tariff of 1842 documents.",
-          "Library of Congress, mid‑19th century tariff materials."
-        ]
-      }
-    ],
-    "overallAssessment": "Tyler’s economic policy was defined by conflict with Whig leaders and selective support for tariff increases. His administration shaped debates over federal banking authority and fiscal policy during a period of political realignment.",
-    "sources": [
-      "Library of Congress Tyler administration materials.",
-      "National Archives economic policy records."
-    ]
-  }
-},
-{
-  "id": 11,
-  "name": "James K. Polk",
-  "economicPolicy": {
-    "events": [
-      {
-        "title": "Walker Tariff (1846)",
-        "summary": "Polk signed the Walker Tariff, which significantly reduced tariff rates and shifted the nation toward a revenue‑based tariff system. The law reflected Democratic commitments to lower tariffs and free‑trade principles. It contributed to increased import activity and marked a major shift away from earlier protectionist policies.",
-        "sources": [
-          "National Archives, Walker Tariff documents.",
-          "Library of Congress, mid‑19th century tariff materials."
-        ]
-      },
-      {
-        "title": "Independent Treasury System Reestablished (1846)",
-        "summary": "Polk restored the Independent Treasury system, separating federal funds from private banks and stabilizing federal finances. The system reduced reliance on state banks and became a central feature of federal fiscal policy until the Civil War.",
-        "sources": [
-          "Library of Congress, Independent Treasury materials.",
-          "National Archives, Polk fiscal policy documents."
-        ]
-      }
-    ],
-    "overallAssessment": "Polk’s economic policy emphasized lower tariffs and restoration of the Independent Treasury. His administration strengthened federal financial independence and advanced Democratic free‑trade principles.",
-    "sources": [
-      "Library of Congress Polk administration materials.",
-      "National Archives economic policy records."
-    ]
-  }
-},
-{
-  "id": 12,
-  "name": "Zachary Taylor",
-  "economicPolicy": {
-    "events": [
-      {
-        "title": "Limited Federal Economic Intervention",
-        "summary": "Taylor adhered to Whig skepticism of expansive federal economic programs, favoring limited government involvement in banking and internal improvements. His short presidency focused primarily on sectional tensions rather than major economic initiatives.",
-        "sources": [
-          "Library of Congress, Taylor administration materials.",
-          "National Archives, mid‑19th century economic policy documents."
-        ]
-      }
-    ],
-    "overallAssessment": "Taylor’s economic policy was minimal, reflecting limited federal intervention and a focus on sectional issues rather than economic reform.",
-    "sources": [
-      "Library of Congress Taylor administration materials.",
-      "National Archives economic policy records."
-    ]
-  }
-},
-{
-  "id": 13,
-  "name": "Millard Fillmore",
-  "economicPolicy": {
-    "events": [
-      {
-        "title": "Support for Compromise of 1850 Economic Provisions",
-        "summary": "Fillmore signed the Compromise of 1850, which included economic provisions such as the abolition of the slave trade in Washington, D.C., and adjustments to territorial governance that affected trade and settlement patterns. While primarily political, the compromise had significant economic implications for western development.",
-        "sources": [
-          "National Archives, Compromise of 1850 documents.",
-          "Library of Congress, sectional crisis materials."
-        ]
-      }
-    ],
-    "overallAssessment": "Fillmore’s economic policy was closely tied to the Compromise of 1850, which shaped territorial development and trade. His administration focused on stabilizing national tensions rather than pursuing major economic reforms.",
-    "sources": [
-      "Library of Congress Fillmore administration materials.",
-      "National Archives economic policy records."
-    ]
-  }
-},
-{
-  "id": 14,
-  "name": "Franklin Pierce",
-  "economicPolicy": {
-    "events": [
-      {
-        "title": "Gadsden Purchase (1853)",
-        "summary": "Pierce approved the Gadsden Purchase, acquiring land from Mexico to facilitate a potential southern transcontinental railroad route. The purchase reflected economic ambitions tied to transportation expansion and regional development.",
-        "sources": [
-          "Library of Congress, Gadsden Purchase materials.",
-          "National Archives, Pierce administration documents."
-        ]
-      },
-      {
-        "title": "Support for Railroad Expansion",
-        "summary": "Pierce’s administration encouraged railroad development and western settlement, promoting economic growth through transportation infrastructure. Federal land grants and policy support helped accelerate national expansion.",
-        "sources": [
-          "National Archives, railroad expansion materials.",
-          "Library of Congress, mid‑19th century infrastructure documents."
-        ]
-      }
-    ],
-    "overallAssessment": "Pierce’s economic policy emphasized territorial expansion and support for railroad development. His administration advanced infrastructure growth but deepened sectional tensions tied to westward expansion.",
-    "sources": [
-      "Library of Congress Pierce administration materials.",
-      "National Archives economic policy records."
-    ]
-  }
-},
-{
-  "id": 15,
-  "name": "James Buchanan",
-  "economicPolicy": {
-    "events": [
-      {
-        "title": "Panic of 1857 Response",
-        "summary": "Buchanan presided over the Panic of 1857, a major financial crisis triggered by declining international demand, bank failures, and overexpansion of railroads. He opposed significant federal intervention, arguing that the economy would self‑correct. His limited response contributed to prolonged economic hardship.",
-        "sources": [
-          "Federal Reserve, Panic of 1857 historical analysis.",
-          "Library of Congress, Buchanan economic crisis materials."
-        ]
-      },
-      {
-        "title": "Support for Southern Economic Interests",
-        "summary": "Buchanan supported policies favorable to Southern agricultural and slaveholding interests, including backing the pro‑slavery Lecompton Constitution. His economic positions deepened sectional divides and influenced national debates over labor and land.",
-        "sources": [
-          "Library of Congress, Lecompton Constitution materials.",
-          "National Archives, Buchanan administration documents."
-        ]
-      }
-    ],
-    "overallAssessment": "Buchanan’s economic policy was marked by limited federal action during the Panic of 1857 and alignment with Southern economic priorities. His administration failed to address deepening national economic and sectional crises.",
-    "sources": [
-      "Library of Congress Buchanan administration materials.",
-      "National Archives economic policy records."
-    ]
-  }
-},
-{
-  "id": 16,
-  "name": "Abraham Lincoln",
-  "economicPolicy": {
-    "events": [
-      {
-        "title": "Legal Tender Act (1862)",
-        "summary": "Lincoln signed the Legal Tender Act, authorizing the issuance of paper currency ('greenbacks') not backed by gold or silver. This measure helped finance the Civil War and marked a major expansion of federal monetary authority.",
-        "sources": [
-          "Library of Congress, Civil War finance materials.",
-          "National Archives, Legal Tender Act documents."
-        ]
-      },
-      {
-        "title": "National Banking Acts (1863–1864)",
-        "summary": "Lincoln approved the National Banking Acts, creating a system of nationally chartered banks and a uniform national currency. These reforms strengthened federal control over banking and stabilized wartime financial systems.",
-        "sources": [
-          "National Archives, National Banking Act records.",
-          "Library of Congress, 19th‑century banking materials."
-        ]
-      },
-      {
-        "title": "Pacific Railway Act (1862)",
-        "summary": "Lincoln signed the Pacific Railway Act, providing federal land grants and loans to support construction of the transcontinental railroad. The project accelerated national economic integration and westward expansion.",
-        "sources": [
-          "Library of Congress, railroad expansion materials.",
-          "National Archives, Pacific Railway Act documents."
-        ]
-      }
-    ],
-    "overallAssessment": "Lincoln’s economic policy transformed federal monetary and banking systems while supporting major infrastructure expansion. His administration used innovative financial tools to fund the Civil War and laid foundations for a modern national economy.",
-    "sources": [
-      "Library of Congress Lincoln administration materials.",
-      "National Archives economic policy records."
-    ]
-  }
-},
-{
-  "id": 17,
-  "name": "Andrew Johnson",
-  "economicPolicy": {
-    "events": [
-      {
-        "title": "Opposition to Radical Reconstruction Economic Measures",
-        "summary": "Johnson vetoed several Reconstruction bills that included economic provisions for freedpeople and Southern redevelopment. His resistance limited federal investment in Southern economic restructuring and slowed progress toward equitable labor systems.",
-        "sources": [
-          "National Archives, Reconstruction veto messages.",
-          "Library of Congress, Johnson economic policy materials."
-        ]
-      },
-      {
-        "title": "Support for Restoring Southern Economic Autonomy",
-        "summary": "Johnson favored rapid reintegration of Southern states with minimal federal oversight, allowing prewar elites to regain economic control. His policies enabled the rise of Black Codes and restricted economic opportunities for freedpeople.",
-        "sources": [
-          "Library of Congress, Reconstruction economic materials.",
-          "National Archives, Johnson administration documents."
-        ]
-      }
-    ],
-    "overallAssessment": "Johnson’s economic policy prioritized lenient Reconstruction and limited federal intervention, hindering efforts to rebuild the Southern economy and expand economic rights for freedpeople.",
-    "sources": [
-      "Library of Congress Johnson administration materials.",
-      "National Archives economic policy records."
-    ]
-  }
-},
-{
-  "id": 18,
-  "name": "Ulysses S. Grant",
-  "economicPolicy": {
-    "events": [
-      {
-        "title": "Public Credit Act (1869)",
-        "summary": "Grant signed the Public Credit Act, committing the federal government to repaying Civil War debts in gold rather than greenbacks. The policy aimed to restore financial credibility and stabilize the national currency.",
-        "sources": [
-          "National Archives, Public Credit Act documents.",
-          "Library of Congress, post‑Civil War finance materials."
-        ]
-      },
-      {
-        "title": "Resumption Act (1875)",
-        "summary": "Grant supported the Resumption Act, which set a date for the federal government to resume redeeming paper currency in gold. The law strengthened confidence in the dollar and moved the nation toward a more stable monetary system.",
-        "sources": [
-          "Library of Congress, Resumption Act materials.",
-          "National Archives, Grant economic policy documents."
-        ]
-      },
-      {
-        "title": "Enforcement of Civil Rights and Labor Protections",
-        "summary": "Grant’s administration used federal authority to protect labor rights and suppress violent resistance to Reconstruction, indirectly shaping Southern labor markets and economic conditions.",
-        "sources": [
-          "National Archives, Reconstruction enforcement materials.",
-          "Library of Congress, Grant administration documents."
-        ]
-      }
-    ],
-    "overallAssessment": "Grant’s economic policy focused on stabilizing the national currency, restoring financial credibility, and enforcing Reconstruction labor protections. His administration strengthened federal monetary authority during a turbulent economic era.",
-    "sources": [
-      "Library of Congress Grant administration materials.",
-      "National Archives economic policy records."
-    ]
-  }
-},
-{
-  "id": 19,
-  "name": "Rutherford B. Hayes",
-  "economicPolicy": {
-    "events": [
-      {
-        "title": "End of Reconstruction and Economic Impact",
-        "summary": "Hayes withdrew federal troops from the South, effectively ending Reconstruction. The decision allowed Southern elites to reassert control over labor and economic systems, shaping regional economic development for decades.",
-        "sources": [
-          "Library of Congress, Compromise of 1877 materials.",
-          "National Archives, Hayes administration documents."
-        ]
-      },
-      {
-        "title": "Civil Service Reform and Fiscal Restraint",
-        "summary": "Hayes promoted civil service reform and limited federal spending, reflecting a commitment to fiscal conservatism. His administration sought to reduce corruption and improve efficiency in federal economic management.",
-        "sources": [
-          "National Archives, civil service reform materials.",
-          "Library of Congress, Hayes economic policy documents."
-        ]
-      }
-    ],
-    "overallAssessment": "Hayes’s economic policy emphasized fiscal restraint and administrative reform while ending Reconstruction, which had long‑term consequences for Southern labor and economic systems.",
-    "sources": [
-      "Library of Congress Hayes administration materials.",
-      "National Archives economic policy records."
-    ]
-  }
-},
-{
-  "id": 20,
-  "name": "James A. Garfield",
-  "economicPolicy": {
-    "events": [
-      {
-        "title": "Civil Service Reform Advocacy",
-        "summary": "Garfield pushed for civil service reform to reduce corruption and improve federal efficiency. Although his presidency was brief, his stance contributed to momentum for the Pendleton Act passed under his successor.",
-        "sources": [
-          "Library of Congress, Garfield civil service materials.",
-          "National Archives, federal appointment records."
-        ]
-      }
-    ],
-    "overallAssessment": "Garfield’s economic policy centered on civil service reform and improving federal administrative efficiency. His assassination cut short broader economic initiatives.",
-    "sources": [
-      "Library of Congress Garfield administration materials.",
-      "National Archives economic policy records."
-    ]
-  }
-},
-{
-  "id": 21,
-  "name": "Chester A. Arthur",
-  "economicPolicy": {
-    "events": [
-      {
-        "title": "Tariff Commission and Tariff Reform Efforts (1882–1883)",
-        "summary": "Arthur established a bipartisan Tariff Commission to evaluate the nation’s tariff structure and recommend reforms. Although the commission proposed significant reductions, Congress enacted only modest cuts in the Tariff Act of 1883. The effort reflected growing debate over protectionism versus revenue‑based tariffs.",
-        "sources": [
-          "Library of Congress, Tariff Commission materials.",
-          "National Archives, Arthur administration economic documents."
-        ]
-      },
-      {
-        "title": "Modernization of the U.S. Navy and Industrial Investment",
-        "summary": "Arthur supported the construction of steel warships, which stimulated industrial production and signaled a shift toward modernized federal procurement. These investments strengthened domestic manufacturing and naval infrastructure.",
-        "sources": [
-          "National Archives, naval modernization records.",
-          "Library of Congress, Arthur economic policy materials."
-        ]
-      }
-    ],
-    "overallAssessment": "Arthur’s economic policy focused on moderate tariff reform and federal investment in naval modernization. His administration contributed to industrial growth and initiated early steps toward revising the nation’s tariff system.",
-    "sources": [
-      "Library of Congress Arthur administration materials.",
-      "National Archives economic policy records."
-    ]
-  }
-},
-{
-  "id": 22,
-  "name": "Grover Cleveland",
-  "economicPolicy": {
-    "events": [
-      {
-        "title": "Interstate Commerce Act (1887)",
-        "summary": "Cleveland signed the Interstate Commerce Act, creating the Interstate Commerce Commission to regulate railroad rates and practices. The law marked the first major federal attempt to regulate private industry and curb monopolistic behavior.",
-        "sources": [
-          "National Archives, Interstate Commerce Act documents.",
-          "Library of Congress, railroad regulation materials."
-        ]
-      },
-      {
-        "title": "Advocacy for Lower Tariffs",
-        "summary": "Cleveland strongly supported tariff reduction, arguing that high tariffs burdened consumers and encouraged monopolies. His 1887 annual message to Congress made tariff reform a central national issue, shaping the political landscape of the late 19th century.",
-        "sources": [
-          "Library of Congress, Cleveland tariff reform materials.",
-          "National Archives, presidential messages and economic documents."
-        ]
-      }
-    ],
-    "overallAssessment": "Cleveland’s economic policy emphasized regulatory oversight of railroads and advocacy for lower tariffs. His administration advanced early federal regulation and challenged protectionist economic structures.",
-    "sources": [
-      "Library of Congress Cleveland administration materials.",
-      "National Archives economic policy records."
-    ]
-  }
-},
-{
-  "id": 23,
-  "name": "Benjamin Harrison",
-  "economicPolicy": {
-    "events": [
-      {
-        "title": "McKinley Tariff (1890)",
-        "summary": "Harrison supported and signed the McKinley Tariff, which raised tariff rates to historically high levels. The policy aimed to protect domestic industries but contributed to rising consumer prices and political backlash.",
-        "sources": [
-          "Library of Congress, McKinley Tariff materials.",
-          "National Archives, tariff policy documents."
-        ]
-      },
-      {
-        "title": "Sherman Silver Purchase Act (1890)",
-        "summary": "Harrison signed the Sherman Silver Purchase Act, requiring the federal government to purchase large quantities of silver to increase the money supply. The policy sought to appease silver interests but contributed to monetary instability leading up to the Panic of 1893.",
-        "sources": [
-          "National Archives, Sherman Silver Purchase Act documents.",
-          "Library of Congress, monetary policy materials."
-        ]
-      }
-    ],
-    "overallAssessment": "Harrison’s economic policy emphasized high tariffs and expanded silver purchases. His administration strengthened protectionism but contributed to monetary instability that shaped the economic crises of the 1890s.",
-    "sources": [
-      "Library of Congress Harrison administration materials.",
-      "National Archives economic policy records."
-    ]
-  }
-},
-{
-  "id": 24,
-  "name": "Grover Cleveland (Second Term)",
-  "economicPolicy": {
-    "events": [
-      {
-        "title": "Repeal of the Sherman Silver Purchase Act (1893)",
-        "summary": "Facing the Panic of 1893, Cleveland called a special session of Congress to repeal the Sherman Silver Purchase Act. He argued that excessive silver purchases destabilized the currency and contributed to financial panic. The repeal deepened divisions within the Democratic Party.",
-        "sources": [
-          "Federal Reserve, Panic of 1893 historical analysis.",
-          "Library of Congress, monetary policy documents."
-        ]
-      },
-      {
-        "title": "Pullman Strike Federal Intervention (1894)",
-        "summary": "Cleveland deployed federal troops to suppress the Pullman Strike, citing obstruction of mail delivery and interstate commerce. The intervention highlighted tensions between labor rights and federal authority during a period of economic depression.",
-        "sources": [
-          "National Archives, Pullman Strike documents.",
-          "Library of Congress, labor conflict materials."
-        ]
-      }
-    ],
-    "overallAssessment": "Cleveland’s second‑term economic policy focused on stabilizing the currency and responding to labor unrest during the Panic of 1893. His actions shaped national debates over monetary policy, labor rights, and federal intervention.",
-    "sources": [
-      "Library of Congress Cleveland administration materials.",
-      "National Archives economic policy records."
-    ]
-  }
-},
-{
-  "id": 25,
-  "name": "William McKinley",
-  "economicPolicy": {
-    "events": [
-      {
-        "title": "Dingley Tariff (1897)",
-        "summary": "McKinley signed the Dingley Tariff, raising tariff rates to protect American industries and generate federal revenue. The law reinforced Republican protectionist policies and shaped economic debates at the turn of the century.",
-        "sources": [
-          "Library of Congress, Dingley Tariff materials.",
-          "National Archives, tariff policy documents."
-        ]
-      },
-      {
-        "title": "Gold Standard Act (1900)",
-        "summary": "McKinley signed the Gold Standard Act, formally committing the United States to a gold‑backed currency. The law ended longstanding debates over silver coinage and stabilized national monetary policy.",
-        "sources": [
-          "Federal Reserve, monetary history materials.",
-          "Library of Congress, Gold Standard Act documents."
-        ]
-      }
-    ],
-    "overallAssessment": "McKinley’s economic policy emphasized protectionist tariffs and monetary stability. His support for the Dingley Tariff and the Gold Standard Act shaped national economic policy during a period of rapid industrial expansion.",
-    "sources": [
-      "Library of Congress McKinley administration materials.",
-      "National Archives economic policy records."
-    ]
-  }
-},
-{
-  "id": 26,
-  "name": "Theodore Roosevelt",
-  "economicPolicy": {
-    "events": [
-      {
-        "title": "Trust‑Busting and Antitrust Enforcement",
-        "summary": "Roosevelt aggressively enforced the Sherman Antitrust Act, targeting monopolistic corporations such as Northern Securities. His administration initiated dozens of antitrust suits, signaling a new era of federal intervention to regulate corporate power and promote competition.",
-        "sources": [
-          "Library of Congress, Progressive Era antitrust materials.",
-          "National Archives, Roosevelt antitrust case documents."
-        ]
-      },
-      {
-        "title": "Hepburn Act (1906)",
-        "summary": "Roosevelt signed the Hepburn Act, strengthening the Interstate Commerce Commission’s authority to regulate railroad rates and inspect financial records. The law expanded federal oversight of transportation and curbed abusive pricing practices.",
-        "sources": [
-          "National Archives, Hepburn Act documents.",
-          "Library of Congress, railroad regulation materials."
-        ]
-      }
-    ],
-    "overallAssessment": "Roosevelt’s economic policy centered on regulating large corporations, strengthening federal oversight, and promoting fair competition. His trust‑busting efforts and regulatory reforms defined the Progressive Era’s economic agenda.",
-    "sources": [
-      "Library of Congress Roosevelt administration materials.",
-      "National Archives economic policy records."
-    ]
-  }
-},
-{
-  "id": 27,
-  "name": "William Howard Taft",
-  "economicPolicy": {
-    "events": [
-      {
-        "title": "Expansion of Antitrust Prosecutions",
-        "summary": "Taft filed more antitrust suits than Roosevelt, targeting major corporations including Standard Oil and American Tobacco. His administration broadened federal enforcement of competition laws and strengthened judicial interpretations of antitrust policy.",
-        "sources": [
-          "National Archives, Taft antitrust documents.",
-          "Library of Congress, Progressive Era regulatory materials."
-        ]
-      },
-      {
-        "title": "Payne‑Aldrich Tariff (1909)",
-        "summary": "Taft signed the Payne‑Aldrich Tariff, which made only modest reductions to tariff rates despite promises of reform. The law angered progressive Republicans and contributed to divisions within the party.",
-        "sources": [
-          "Library of Congress, Payne‑Aldrich Tariff materials.",
-          "National Archives, tariff policy documents."
-        ]
-      }
-    ],
-    "overallAssessment": "Taft’s economic policy emphasized vigorous antitrust enforcement but was weakened by controversy over tariff reform. His administration expanded federal regulatory authority while deepening political divisions within the Republican Party.",
-    "sources": [
-      "Library of Congress Taft administration materials.",
-      "National Archives economic policy records."
-    ]
-  }
-},
-{
-  "id": 28,
-  "name": "Woodrow Wilson",
-  "economicPolicy": {
-    "events": [
-      {
-        "title": "Federal Reserve Act (1913)",
-        "summary": "Wilson signed the Federal Reserve Act, creating the Federal Reserve System to stabilize the banking sector and regulate monetary policy. The law established regional reserve banks and a central governing board, forming the backbone of modern U.S. monetary governance.",
-        "sources": [
-          "Federal Reserve, historical materials.",
-          "Library of Congress, Wilson economic policy documents."
-        ]
-      },
-      {
-        "title": "Clayton Antitrust Act and Federal Trade Commission (1914)",
-        "summary": "Wilson strengthened antitrust enforcement through the Clayton Act and established the Federal Trade Commission to regulate unfair business practices. These reforms expanded federal oversight of corporate behavior and protected consumers and workers.",
-        "sources": [
-          "National Archives, Clayton Act documents.",
-          "Library of Congress, FTC historical materials."
-        ]
-      }
-    ],
-    "overallAssessment": "Wilson’s economic policy transformed federal regulation through the creation of the Federal Reserve, strengthened antitrust laws, and establishment of the FTC. His reforms modernized economic governance and expanded federal oversight.",
-    "sources": [
-      "Library of Congress Wilson administration materials.",
-      "National Archives economic policy records."
-    ]
-  }
-},
-{
-  "id": 29,
-  "name": "Warren G. Harding",
-  "economicPolicy": {
-    "events": [
-      {
-        "title": "Budget and Accounting Act (1921)",
-        "summary": "Harding signed the Budget and Accounting Act, creating the Bureau of the Budget (now OMB) and the General Accounting Office. The law centralized federal budgeting and strengthened oversight of government spending, improving fiscal transparency.",
-        "sources": [
-          "National Archives, Budget and Accounting Act documents.",
-          "Library of Congress, Harding economic policy materials."
-        ]
-      },
-      {
-        "title": "Pro‑Business Economic Policies",
-        "summary": "Harding promoted tax reductions, limited regulation, and support for private enterprise. His administration emphasized economic recovery following World War I and encouraged industrial growth.",
-        "sources": [
-          "Library of Congress, 1920s economic policy materials.",
-          "National Archives, Harding administration records."
-        ]
-      }
-    ],
-    "overallAssessment": "Harding’s economic policy focused on fiscal reform and pro‑business measures. The Budget and Accounting Act modernized federal financial management, while his broader agenda emphasized stability and private‑sector growth.",
-    "sources": [
-      "Library of Congress Harding administration materials.",
-      "National Archives economic policy records."
-    ]
-  }
-},
-{
-  "id": 30,
-  "name": "Calvin Coolidge",
-  "economicPolicy": {
-    "events": [
-      {
-        "title": "Pro‑Business Tax and Regulatory Policies",
-        "summary": "Coolidge pursued policies favoring business expansion, including significant tax reductions and limited federal regulation. His administration supported Treasury Secretary Andrew Mellon’s tax reforms, which lowered rates for individuals and corporations.",
-        "sources": [
-          "Library of Congress, 1920s economic policy materials.",
-          "National Archives, Coolidge administration documents."
-        ]
-      },
-      {
-        "title": "Support for Economic Expansion During the Roaring Twenties",
-        "summary": "Coolidge’s policies contributed to rapid industrial growth, rising consumer spending, and expansion of financial markets. His administration maintained a hands‑off approach to regulation during a period of economic optimism.",
-        "sources": [
-          "National Archives, 1920s economic data.",
-          "Library of Congress, Coolidge economic policy materials."
-        ]
-      }
-    ],
-    "overallAssessment": "Coolidge’s economic policy emphasized tax cuts, limited regulation, and support for private enterprise. His administration reflected the pro‑business priorities of the 1920s and contributed to rapid economic expansion.",
-    "sources": [
-      "Library of Congress Coolidge administration materials.",
-      "National Archives economic policy records."
-    ]
-  }
-},
-{
-  "id": 31,
-  "name": "Herbert Hoover",
-  "economicPolicy": {
-    "events": [
-      {
-        "title": "Response to the Great Depression (1929–1933)",
-        "summary": "Hoover responded to the economic collapse following the 1929 stock market crash with limited federal intervention, emphasizing voluntary cooperation between businesses and government. His administration expanded public works projects, including the Hoover Dam, and created the Reconstruction Finance Corporation to provide loans to banks and businesses. However, Hoover resisted direct federal relief to individuals, believing it would undermine self‑reliance.",
-        "sources": [
-          "Library of Congress, Great Depression materials.",
-          "National Archives, Reconstruction Finance Corporation documents."
-        ]
-      },
-      {
-        "title": "Smoot–Hawley Tariff Act (1930)",
-        "summary": "Hoover signed the Smoot–Hawley Tariff, raising tariffs on thousands of imported goods. Intended to protect American industries, the law contributed to a decline in global trade and worsened the economic downturn.",
-        "sources": [
-          "National Archives, Smoot–Hawley Tariff records.",
-          "Library of Congress, tariff policy materials."
-        ]
-      }
-    ],
-    "overallAssessment": "Hoover’s economic policy focused on voluntary cooperation, public works, and financial stabilization during the early years of the Great Depression. His reluctance to expand direct federal relief shaped public perceptions and influenced the shift toward more activist federal policy under Roosevelt.",
-    "sources": [
-      "Library of Congress Hoover administration materials.",
-      "National Archives economic policy records."
-    ]
-  }
-},
-{
-  "id": 32,
-  "name": "Franklin D. Roosevelt",
-  "economicPolicy": {
-    "events": [
-      {
-        "title": "New Deal Programs (1933–1939)",
-        "summary": "Roosevelt launched the New Deal, a sweeping set of programs aimed at economic recovery, financial reform, and social welfare. Initiatives included the Civilian Conservation Corps, Works Progress Administration, and Agricultural Adjustment Act. These programs expanded federal involvement in the economy and provided relief to millions of Americans.",
-        "sources": [
-          "National Archives, New Deal program documents.",
-          "Library of Congress, Great Depression policy materials."
-        ]
-      },
-      {
-        "title": "Social Security Act (1935)",
-        "summary": "Roosevelt signed the Social Security Act, establishing old‑age pensions, unemployment insurance, and aid to vulnerable populations. The law created a foundational component of the American social safety net and marked a major expansion of federal responsibility for social welfare.",
-        "sources": [
-          "Library of Congress, Social Security Act materials.",
-          "National Archives, federal welfare policy documents."
-        ]
-      }
-    ],
-    "overallAssessment": "Roosevelt’s economic policy transformed the role of the federal government through the New Deal, expanding social welfare, regulating financial markets, and supporting public works. His administration reshaped American economic and social policy for generations.",
-    "sources": [
-      "Library of Congress Roosevelt administration materials.",
-      "National Archives economic policy records."
-    ]
-  }
-},
-{
-  "id": 33,
-  "name": "Harry S. Truman",
-  "economicPolicy": {
-    "events": [
-      {
-        "title": "Postwar Economic Transition and Fair Deal",
-        "summary": "Truman guided the nation through the transition from wartime to peacetime production, addressing inflation, labor strikes, and housing shortages. His Fair Deal agenda sought to expand social welfare, increase the minimum wage, and promote national health insurance, though many proposals faced congressional resistance.",
-        "sources": [
-          "Library of Congress, Fair Deal materials.",
-          "National Archives, Truman economic policy documents."
-        ]
-      },
-      {
-        "title": "Housing Act of 1949",
-        "summary": "Truman signed the Housing Act of 1949, which funded urban redevelopment and public housing construction. The law aimed to address postwar housing shortages and improve living conditions in American cities.",
-        "sources": [
-          "National Archives, Housing Act of 1949 documents.",
-          "Library of Congress, postwar housing policy materials."
-        ]
-      }
-    ],
-    "overallAssessment": "Truman’s economic policy focused on managing the postwar transition, expanding social welfare, and addressing housing needs. His administration achieved significant progress despite political resistance to broader reforms.",
-    "sources": [
-      "Library of Congress Truman administration materials.",
-      "National Archives economic policy records."
-    ]
-  }
-},
-{
-  "id": 34,
-  "name": "Dwight D. Eisenhower",
-  "economicPolicy": {
-    "events": [
-      {
-        "title": "Interstate Highway System (1956)",
-        "summary": "Eisenhower signed the Federal‑Aid Highway Act, creating the Interstate Highway System. The project became one of the largest public works initiatives in U.S. history, transforming transportation, commerce, and national defense infrastructure.",
-        "sources": [
-          "National Archives, Interstate Highway System documents.",
-          "Library of Congress, infrastructure policy materials."
-        ]
-      },
-      {
-        "title": "Moderate Fiscal Conservatism",
-        "summary": "Eisenhower pursued balanced budgets, restrained federal spending, and limited expansion of social programs. His administration maintained New Deal programs while emphasizing fiscal stability and economic growth.",
-        "sources": [
-          "Library of Congress, Eisenhower economic policy materials.",
-          "National Archives, federal budget documents."
-        ]
-      }
-    ],
-    "overallAssessment": "Eisenhower’s economic policy emphasized infrastructure expansion and moderate fiscal conservatism. His administration balanced economic growth with budget discipline while overseeing one of the most significant infrastructure projects in U.S. history.",
-    "sources": [
-      "Library of Congress Eisenhower administration materials.",
-      "National Archives economic policy records."
-    ]
-  }
-},
-{
-  "id": 35,
-  "name": "John F. Kennedy",
-  "economicPolicy": {
-    "events": [
-      {
-        "title": "New Frontier Economic Initiatives",
-        "summary": "Kennedy promoted the New Frontier, a domestic program focused on economic growth, education, and technological advancement. His administration supported increased federal investment in science and research, laying groundwork for long‑term economic development.",
-        "sources": [
-          "Library of Congress, New Frontier materials.",
-          "National Archives, Kennedy economic policy documents."
-        ]
-      },
-      {
-        "title": "Tax Cut Proposal (Enacted Posthumously in 1964)",
-        "summary": "Kennedy proposed significant tax cuts to stimulate economic growth by increasing consumer spending and business investment. Although enacted after his death, the proposal reflected his administration’s shift toward Keynesian economic policy.",
-        "sources": [
-          "National Archives, federal tax reform materials.",
-          "Library of Congress, Kennedy administration economic documents."
-        ]
-      }
-    ],
-    "overallAssessment": "Kennedy’s economic policy focused on stimulating growth through tax reform, investment in science and education, and modernization of the American economy. His initiatives laid the foundation for major economic legislation enacted under Johnson.",
-    "sources": [
-      "Library of Congress Kennedy administration materials.",
-      "National Archives economic policy records."
-    ]
-  }
-},
-{
-  "id": 36,
-  "name": "Lyndon B. Johnson",
-  "economicPolicy": {
-    "events": [
-      {
-        "title": "War on Poverty and Great Society Economic Programs",
-        "summary": "Johnson launched the War on Poverty as part of the Great Society, creating programs such as Medicare, Medicaid, Head Start, and the Economic Opportunity Act. These initiatives expanded federal involvement in healthcare, education, and social welfare, aiming to reduce poverty and promote economic opportunity.",
-        "sources": [
-          "Library of Congress, Great Society materials.",
-          "National Archives, Johnson economic policy documents."
-        ]
-      },
-      {
-        "title": "Revenue Act of 1964 (Kennedy–Johnson Tax Cuts)",
-        "summary": "Johnson signed the Revenue Act of 1964, implementing major tax cuts originally proposed by Kennedy. The law reduced individual and corporate tax rates to stimulate economic growth, contributing to strong economic expansion during the mid‑1960s.",
-        "sources": [
-          "National Archives, Revenue Act documents.",
-          "Library of Congress, 1960s fiscal policy materials."
-        ]
-      }
-    ],
-    "overallAssessment": "Johnson’s economic policy combined major tax cuts with expansive social welfare programs. His administration oversaw strong economic growth but also rising federal spending that contributed to long‑term budget pressures.",
-    "sources": [
-      "Library of Congress Johnson administration materials.",
-      "National Archives economic policy records."
-    ]
-  }
-},
-{
-  "id": 37,
-  "name": "Richard Nixon",
-  "economicPolicy": {
-    "events": [
-      {
-        "title": "Wage and Price Controls (1971)",
-        "summary": "Nixon implemented temporary wage and price controls to combat inflation, marking a rare instance of direct federal intervention in the economy. The policy initially slowed inflation but created long‑term distortions and shortages.",
-        "sources": [
-          "Library of Congress, Nixon economic policy materials.",
-          "National Archives, wage and price control documents."
-        ]
-      },
-      {
-        "title": "End of the Gold Standard (1971)",
-        "summary": "Nixon suspended the dollar’s convertibility into gold, effectively ending the Bretton Woods system. This decision shifted the global economy to floating exchange rates and expanded federal flexibility in monetary policy.",
-        "sources": [
-          "Federal Reserve, monetary history materials.",
-          "Library of Congress, Nixon administration economic documents."
-        ]
-      }
-    ],
-    "overallAssessment": "Nixon’s economic policy reshaped global monetary systems and experimented with direct federal controls to manage inflation. His decisions had lasting effects on international finance and domestic economic governance.",
-    "sources": [
-      "Library of Congress Nixon administration materials.",
-      "National Archives economic policy records."
-    ]
-  }
-},
-{
-  "id": 38,
-  "name": "Gerald Ford",
-  "economicPolicy": {
-    "events": [
-      {
-        "title": "Whip Inflation Now Campaign (1974–1975)",
-        "summary": "Ford launched the Whip Inflation Now campaign to encourage voluntary measures such as personal savings and reduced consumption. The initiative had limited impact and was widely criticized for lacking substantive policy tools.",
-        "sources": [
-          "Library of Congress, Ford economic policy materials.",
-          "National Archives, WIN campaign documents."
-        ]
-      },
-      {
-        "title": "Tax Reduction Act of 1975",
-        "summary": "Ford signed the Tax Reduction Act to stimulate economic recovery during a recession. The law provided temporary tax rebates and incentives to encourage consumer spending and business investment.",
-        "sources": [
-          "National Archives, Tax Reduction Act documents.",
-          "Library of Congress, 1970s economic policy materials."
-        ]
-      }
-    ],
-    "overallAssessment": "Ford’s economic policy focused on combating inflation and stimulating recovery through voluntary measures and targeted tax relief. His administration faced significant economic challenges during a period of stagflation.",
-    "sources": [
-      "Library of Congress Ford administration materials.",
-      "National Archives economic policy records."
-    ]
-  }
-},
-{
-  "id": 39,
-  "name": "Jimmy Carter",
-  "economicPolicy": {
-    "events": [
-      {
-        "title": "Deregulation of Key Industries",
-        "summary": "Carter signed major deregulation laws affecting airlines, trucking, and railroads. These reforms increased competition, reduced federal oversight, and reshaped transportation and logistics industries.",
-        "sources": [
-          "Library of Congress, Carter deregulation materials.",
-          "National Archives, transportation policy documents."
-        ]
-      },
-      {
-        "title": "Energy Policy and Inflation Response",
-        "summary": "Carter implemented energy conservation measures, promoted alternative energy development, and created the Department of Energy. His administration struggled with high inflation and unemployment, leading to mixed public reception of his economic policies.",
-        "sources": [
-          "National Archives, Department of Energy founding documents.",
-          "Library of Congress, 1970s energy policy materials."
-        ]
-      }
-    ],
-    "overallAssessment": "Carter’s economic policy emphasized deregulation and energy reform but was overshadowed by persistent inflation and economic instability. His administration laid groundwork for long‑term structural changes in transportation and energy sectors.",
-    "sources": [
-      "Library of Congress Carter administration materials.",
-      "National Archives economic policy records."
-    ]
-  }
-},
-{
-  "id": 40,
-  "name": "Ronald Reagan",
-  "economicPolicy": {
-    "events": [
-      {
-        "title": "Economic Recovery Tax Act (1981)",
-        "summary": "Reagan signed the Economic Recovery Tax Act, implementing major tax cuts aimed at stimulating economic growth. The law reduced individual income tax rates, lowered capital gains taxes, and introduced incentives for investment.",
-        "sources": [
-          "National Archives, ERTA documents.",
-          "Library of Congress, Reagan economic policy materials."
-        ]
-      },
-      {
-        "title": "Deregulation and Reduction of Federal Programs",
-        "summary": "Reagan pursued widespread deregulation in industries such as energy, finance, and telecommunications. His administration also reduced funding for social programs, reflecting a broader effort to limit federal government involvement in domestic economic affairs.",
-        "sources": [
-          "Library of Congress, Reagan deregulation materials.",
-          "National Archives, domestic economic policy documents."
-        ]
-      }
-    ],
-    "overallAssessment": "Reagan’s economic policy emphasized tax cuts, deregulation, and reduced federal spending on social programs. His administration reshaped economic policy and contributed to long‑term shifts in federal governance philosophy.",
-    "sources": [
-      "Library of Congress Reagan administration materials.",
-      "National Archives economic policy records."
-    ]
-  }
-},
-{
-  "id": 41,
-  "name": "George H. W. Bush",
-  "economicPolicy": {
-    "events": [
-      {
-        "title": "Americans with Disabilities Act (Economic Impact)",
-        "summary": "Although primarily a civil rights law, the ADA had major economic implications by requiring accessibility standards in workplaces, transportation, and public accommodations. These changes spurred investment in infrastructure upgrades and expanded workforce participation for people with disabilities.",
-        "sources": [
-          "National Archives, ADA legislative documents.",
-          "Library of Congress, disability rights and economic impact materials."
-        ]
-      },
-      {
-        "title": "1990 Budget Agreement and Tax Increases",
-        "summary": "Bush negotiated a bipartisan budget agreement that included spending cuts and tax increases to reduce the federal deficit. The decision broke his 'no new taxes' pledge but contributed to long‑term fiscal stabilization.",
-        "sources": [
-          "Library of Congress, 1990 budget negotiations materials.",
-          "National Archives, federal budget documents."
-        ]
-      }
-    ],
-    "overallAssessment": "Bush’s economic policy focused on deficit reduction and regulatory reforms with significant long‑term effects. His administration balanced fiscal responsibility with bipartisan compromise during a period of economic slowdown.",
-    "sources": [
-      "Library of Congress Bush administration materials.",
-      "National Archives economic policy records."
-    ]
-  }
-},
-{
-  "id": 42,
-  "name": "Bill Clinton",
-  "economicPolicy": {
-    "events": [
-      {
-        "title": "1993 Deficit Reduction Act",
-        "summary": "Clinton signed the Omnibus Budget Reconciliation Act of 1993, which raised taxes on higher‑income households and reduced federal spending. The policy contributed to declining deficits and set the stage for budget surpluses later in the decade.",
-        "sources": [
-          "National Archives, 1993 budget act documents.",
-          "Library of Congress, Clinton fiscal policy materials."
-        ]
-      },
-      {
-        "title": "Welfare Reform (1996)",
-        "summary": "Clinton signed the Personal Responsibility and Work Opportunity Reconciliation Act, overhauling the federal welfare system. The law imposed work requirements, time limits on benefits, and expanded state control, reshaping federal social spending.",
-        "sources": [
-          "National Archives, welfare reform documents.",
-          "Library of Congress, social policy materials."
-        ]
-      }
-    ],
-    "overallAssessment": "Clinton’s economic policy emphasized deficit reduction, welfare reform, and market‑oriented growth. His administration oversaw strong economic expansion and achieved the first federal budget surpluses in decades.",
-    "sources": [
-      "Library of Congress Clinton administration materials.",
-      "National Archives economic policy records."
-    ]
-  }
-},
-{
-  "id": 43,
-  "name": "George W. Bush",
-  "economicPolicy": {
-    "events": [
-      {
-        "title": "2001 and 2003 Tax Cuts",
-        "summary": "Bush enacted major tax cuts through the Economic Growth and Tax Relief Reconciliation Act (2001) and the Jobs and Growth Tax Relief Reconciliation Act (2003). These laws reduced income tax rates, lowered capital gains taxes, and expanded child tax credits, aiming to stimulate economic growth.",
-        "sources": [
-          "National Archives, 2001 and 2003 tax cut documents.",
-          "Library of Congress, early 2000s fiscal policy materials."
-        ]
-      },
-      {
-        "title": "Medicare Part D (2003)",
-        "summary": "Bush signed the Medicare Prescription Drug, Improvement, and Modernization Act, creating Medicare Part D. The program expanded federal healthcare spending and provided prescription drug coverage to millions of seniors.",
-        "sources": [
-          "Library of Congress, Medicare Part D materials.",
-          "National Archives, healthcare policy documents."
-        ]
-      }
-    ],
-    "overallAssessment": "Bush’s economic policy centered on large tax cuts, expanded healthcare benefits, and responses to early‑2000s recessions. His administration reshaped federal fiscal priorities and increased long‑term budget pressures.",
-    "sources": [
-      "Library of Congress Bush administration materials.",
-      "National Archives economic policy records."
-    ]
-  }
-},
-{
-  "id": 44,
-  "name": "Barack Obama",
-  "economicPolicy": {
-    "events": [
-      {
-        "title": "American Recovery and Reinvestment Act (2009)",
-        "summary": "Obama signed the Recovery Act to address the Great Recession, providing stimulus spending, tax relief, and aid to state and local governments. The law funded infrastructure, education, healthcare, and renewable energy projects, aiming to stabilize the economy and reduce unemployment.",
-        "sources": [
-          "National Archives, ARRA documents.",
-          "Library of Congress, Great Recession policy materials."
-        ]
-      },
-      {
-        "title": "Dodd–Frank Wall Street Reform Act (2010)",
-        "summary": "Obama enacted Dodd–Frank to regulate financial institutions, increase oversight, and prevent future financial crises. The law created the Consumer Financial Protection Bureau and imposed new rules on banks and investment firms.",
-        "sources": [
-          "Library of Congress, Dodd–Frank materials.",
-          "National Archives, financial regulatory documents."
-        ]
-      }
-    ],
-    "overallAssessment": "Obama’s economic policy focused on recovery from the Great Recession, financial regulation, and long‑term investment in infrastructure and clean energy. His administration reshaped federal oversight of financial markets and expanded economic stabilization tools.",
-    "sources": [
-      "Library of Congress Obama administration materials.",
-      "National Archives economic policy records."
-    ]
-  }
-},
-{
-  "id": 45,
-  "name": "Donald J. Trump",
-  "economicPolicy": {
-    "events": [
-      {
-        "title": "Tax Cuts and Jobs Act (2017)",
-        "summary": "Trump signed the Tax Cuts and Jobs Act, reducing corporate tax rates, adjusting individual tax brackets, and modifying deductions. The law represented the largest tax overhaul in decades and aimed to stimulate economic growth and investment.",
-        "sources": [
-          "National Archives, TCJA documents.",
-          "Library of Congress, federal tax policy materials."
-        ]
-      },
-      {
-        "title": "Deregulation Initiatives",
-        "summary": "Trump pursued extensive deregulation across environmental, financial, and labor sectors. His administration rolled back numerous federal rules, emphasizing reduced regulatory burdens on businesses and increased private‑sector flexibility.",
-        "sources": [
-          "Library of Congress, Trump deregulation materials.",
-          "National Archives, domestic economic policy documents."
-        ]
-      }
-    ],
-    "overallAssessment": "Trump’s economic policy emphasized tax reform, deregulation, and economic expansion prior to the COVID‑19 pandemic. His administration implemented major changes to federal tax structures and regulatory frameworks.",
-    "sources": [
-      "Library of Congress Trump administration materials.",
-      "National Archives economic policy records."
-    ]
-  }
-},
-{
-  "id": 46,
-  "name": "Joseph R. Biden",
-  "economicPolicy": {
-    "events": [
-      {
-        "title": "American Rescue Plan Act (2021)",
-        "summary": "Biden signed the American Rescue Plan Act to address the economic and public health impacts of the COVID‑19 pandemic. The law provided direct payments to individuals, expanded unemployment benefits, funded vaccine distribution, and offered substantial aid to state and local governments. It represented one of the largest federal economic relief packages in U.S. history.",
-        "sources": [
-          "National Archives, American Rescue Plan documents.",
-          "Library of Congress, pandemic economic relief materials."
-        ]
-      },
-      {
-        "title": "Infrastructure Investment and Jobs Act (2021)",
-        "summary": "Biden enacted a bipartisan infrastructure law that funded improvements to roads, bridges, broadband, water systems, and public transit. The legislation marked a major federal investment in long‑term infrastructure modernization and economic development.",
-        "sources": [
-          "Library of Congress, infrastructure legislation materials.",
-          "National Archives, federal infrastructure policy documents."
-        ]
-      },
-      {
-        "title": "CHIPS and Science Act (2022)",
-        "summary": "Biden signed the CHIPS and Science Act to expand domestic semiconductor manufacturing and strengthen U.S. technological competitiveness. The law provided incentives for chip production, research funding, and workforce development programs.",
-        "sources": [
-          "National Archives, CHIPS Act documents.",
-          "Library of Congress, technology and industrial policy materials."
-        ]
-      },
-      {
-        "title": "Inflation Reduction Act (2022)",
-        "summary": "Biden enacted the Inflation Reduction Act, which included provisions for clean energy investment, prescription drug price negotiation, and deficit reduction. The law represented a significant federal commitment to climate policy, industrial policy, and healthcare cost reform.",
-        "sources": [
-          "Library of Congress, Inflation Reduction Act materials.",
-          "National Archives, federal climate and healthcare policy documents."
-        ]
-      }
-    ],
-    "overallAssessment": "Biden’s economic policy focused on pandemic recovery, infrastructure modernization, industrial competitiveness, and long‑term investment in clean energy and healthcare reform. His administration enacted major legislation with lasting implications for economic development, technological capacity, and federal fiscal policy.",
-    "sources": [
-      "Library of Congress Biden administration materials.",
-      "National Archives economic policy records."
-    ]
-  }
-}
 ]
