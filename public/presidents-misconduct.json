@@ -2,683 +2,1175 @@
   {
     "id": 1,
     "name": "George Washington",
-    "note": "No known misconduct or scandal allegations during their term.",
-    "events": []
+    "misconduct": {
+      "events": [
+        {
+          "title": "Enslavement and Pursuit of Runaway Enslaved People",
+          "summary": "Washington enslaved more than 100 people over his lifetime and, despite some private doubts about slavery, actively pursued those who escaped, including Ona Judge. Historians widely regard his continued participation in slavery and efforts to recover fugitives as a serious moral failing, even though it was legal at the time.",
+          "sources": [
+            "Mount Vernon, Washington and slavery historical essays.",
+            "Library of Congress, Washington papers on enslaved labor."
+          ]
+        }
+      ],
+      "overallAssessment": "Washington’s primary area of misconduct, as judged by modern standards and historical scholarship, lies in his ownership of enslaved people and active efforts to maintain that system, despite his otherwise restrained use of power in office.",
+      "sources": [
+        "Mount Vernon, slavery and Washington resources.",
+        "Library of Congress, George Washington papers."
+      ]
+    }
   },
   {
     "id": 2,
     "name": "John Adams",
-    "note": null,
-    "events": [
-      {
-        "title": "XYZ Affair",
-        "summary": "The XYZ Affair was a diplomatic scandal in which French intermediaries demanded bribes and loans from American envoys before formal negotiations could begin. When Adams reported the incident to Congress, he substituted the letters X, Y, and Z for the names of the French agents, which gave the affair its name. The scandal inflamed anti-French sentiment in the United States, led to the undeclared Quasi-War with France, and raised questions about the administration’s handling of foreign policy, though Adams ultimately resisted full-scale war.",
-        "sources": [
-          "James M. Banner Jr. (ed.), Presidential Misconduct: From George Washington to Today.",
-          "U.S. Department of State, Office of the Historian, \"The XYZ Affair\"."
-        ]
-      }
-    ]
+    "misconduct": {
+      "events": [
+        {
+          "title": "Alien and Sedition Acts and Suppression of Dissent",
+          "summary": "Adams signed and enforced the Alien and Sedition Acts, which criminalized certain forms of criticism of the federal government. Historians widely view this as an abuse of federal power that infringed on civil liberties, even though the laws were passed by Congress and upheld at the time.",
+          "sources": [
+            "National Archives, Alien and Sedition Acts records.",
+            "Library of Congress, Adams correspondence on sedition prosecutions."
+          ]
+        }
+      ],
+      "overallAssessment": "Adams’s main misconduct is associated with his role in suppressing political dissent through the Alien and Sedition Acts, which are now broadly regarded as unconstitutional in spirit and contrary to free expression.",
+      "sources": [
+        "Library of Congress, John Adams papers.",
+        "National Archives, early federal judiciary and sedition case records."
+      ]
+    }
   },
   {
     "id": 3,
     "name": "Thomas Jefferson",
-    "note": null,
-    "events": [
-      {
-        "title": "Sally Hemings Relationship Allegations",
-        "summary": "Thomas Jefferson has long been alleged to have had a sexual relationship with Sally Hemings, an enslaved woman he owned at Monticello. Modern historical research, including DNA evidence, strongly supports the conclusion that Jefferson fathered several of Hemings’s children. While this was not treated as a formal \"scandal\" in the legal sense during his presidency, it raises profound ethical and moral questions about power, consent, and slavery, and is now central to assessments of his personal conduct.",
-        "sources": [
-          "James M. Banner Jr. (ed.), Presidential Misconduct: From George Washington to Today.",
-          "Monticello, Thomas Jefferson Foundation, \"Thomas Jefferson and Sally Hemings: A Brief Account\"."
-        ]
-      }
-    ]
+    "misconduct": {
+      "events": [
+        {
+          "title": "Enslavement and Exploitation at Monticello",
+          "summary": "Jefferson enslaved hundreds of people at Monticello while publicly writing about liberty and equality. Historians widely regard this contradiction, and his continued participation in slavery, as a profound moral failing.",
+          "sources": [
+            "Monticello, Jefferson and slavery historical resources.",
+            "Library of Congress, Jefferson plantation records."
+          ]
+        },
+        {
+          "title": "Relationship with Sally Hemings",
+          "summary": "DNA evidence and historical research strongly support that Jefferson fathered children with Sally Hemings, an enslaved woman he owned. This relationship, occurring in a context of extreme power imbalance and lack of legal consent for enslaved people, is widely viewed by historians as exploitative, even though Jefferson never publicly acknowledged it.",
+          "sources": [
+            "Monticello, Sally Hemings and Jefferson DNA study summary.",
+            "Nature, DNA study on Jefferson–Hemings lineage (1998)."
+          ]
+        }
+      ],
+      "overallAssessment": "Jefferson’s misconduct centers on his deep involvement in slavery and his exploitative relationship with Sally Hemings, which starkly contradict his public rhetoric about liberty and equality.",
+      "sources": [
+        "Monticello, Jefferson slavery and Hemings resources.",
+        "Library of Congress, Thomas Jefferson papers."
+      ]
+    }
   },
   {
     "id": 4,
     "name": "James Madison",
-    "note": "No known misconduct or scandal allegations during their term.",
-    "events": []
+    "misconduct": {
+      "events": [
+        {
+          "title": "Continued Enslavement While Advocating Republican Ideals",
+          "summary": "Madison owned enslaved people throughout his life and did not free them in his will, even as he helped design a constitutional system grounded in liberty and rights. Historians widely view this as a serious moral inconsistency and a form of personal and structural misconduct.",
+          "sources": [
+            "Montpelier, Madison and slavery historical essays.",
+            "Library of Congress, Madison plantation and financial records."
+          ]
+        }
+      ],
+      "overallAssessment": "Madison’s primary misconduct lies in his sustained participation in slavery and failure to act meaningfully against it, despite his central role in shaping American constitutional ideals.",
+      "sources": [
+        "Montpelier, James Madison slavery resources.",
+        "Library of Congress, James Madison papers."
+      ]
+    }
   },
   {
     "id": 5,
     "name": "James Monroe",
-    "note": "No known misconduct or scandal allegations during their term.",
-    "events": []
+    "misconduct": {
+      "events": [
+        {
+          "title": "Enslavement and Limited Emancipation Efforts",
+          "summary": "Monroe owned enslaved people and, while he supported colonization schemes to send freed Black people to Africa, he did not broadly free those he enslaved. Historians view his actions as part of the broader presidential complicity in slavery, with only limited and paternalistic efforts at reform.",
+          "sources": [
+            "James Monroe Museum, Monroe and slavery resources.",
+            "Library of Congress, Monroe plantation records."
+          ]
+        }
+      ],
+      "overallAssessment": "Monroe’s misconduct is primarily tied to his role as a slaveholder and his limited, colonization‑focused approach to addressing slavery rather than confronting the institution directly.",
+      "sources": [
+        "James Monroe Museum historical essays.",
+        "Library of Congress, James Monroe papers."
+      ]
+    }
   },
   {
     "id": 6,
     "name": "John Quincy Adams",
-    "note": null,
-    "events": [
-      {
-        "title": "The \"Corrupt Bargain\" of 1824",
-        "summary": "After the 1824 presidential election was thrown into the House of Representatives, John Quincy Adams was chosen president despite Andrew Jackson having won a plurality of the popular and electoral vote. When Adams later appointed Henry Clay, the powerful Speaker of the House who had supported him, as Secretary of State, Jackson’s supporters denounced the outcome as a \"corrupt bargain.\" Although no formal proof of an explicit deal emerged, the perception of backroom trading dogged Adams’s legitimacy and became a defining political scandal of his presidency.",
-        "sources": [
-          "James M. Banner Jr. (ed.), Presidential Misconduct: From George Washington to Today.",
-          "House of Representatives, Office of the Historian, \"Contingent Election of 1824\"."
-        ]
-      }
-    ]
+    "misconduct": {
+      "events": [
+        {
+          "title": "Patronage and Political Hardball",
+          "summary": "Adams’s presidency involved patronage and political deal‑making, including the so‑called “corrupt bargain” allegation surrounding his election in 1824. Historians generally view the corrupt bargain claim as politically charged and not definitively proven, though it damaged his legitimacy.",
+          "sources": [
+            "Library of Congress, 1824 election correspondence.",
+            "House of Representatives historical essays on the 1824 election."
+          ]
+        }
+      ],
+      "overallAssessment": "Compared to many presidents, John Quincy Adams has relatively limited documented personal or professional misconduct; the main controversy is the disputed “corrupt bargain,” which remains more a political accusation than a proven ethical violation.",
+      "sources": [
+        "Library of Congress, John Quincy Adams papers.",
+        "U.S. House of Representatives, historical overview of the 1824 election."
+      ]
+    }
   },
   {
     "id": 7,
     "name": "Andrew Jackson",
-    "note": null,
-    "events": [
-      {
-        "title": "Spoils System and Patronage",
-        "summary": "Andrew Jackson aggressively used federal appointments to reward loyal supporters, a practice that became known as the \"spoils system.\" Critics charged that he replaced experienced officials with partisan loyalists, undermining competence and inviting corruption in the federal service. While patronage was not new, Jackson’s scale and openness in using it were widely condemned as an abuse of presidential power and a source of systemic misconduct.",
-        "sources": [
-          "James M. Banner Jr. (ed.), Presidential Misconduct: From George Washington to Today.",
-          "U.S. Senate Historical Office, \"The Spoils System\"."
-        ]
-      },
-      {
-        "title": "Bank War and Abuse of Power Allegations",
-        "summary": "In his campaign against the Second Bank of the United States, Jackson removed federal deposits and placed them in selected state banks, often called \"pet banks.\" Opponents argued that he exceeded his constitutional authority and used financial power to punish enemies and reward allies. The controversy over the Bank War became a major constitutional and ethical dispute, with critics portraying Jackson as a president willing to bend institutions to his personal will.",
-        "sources": [
-          "James M. Banner Jr. (ed.), Presidential Misconduct: From George Washington to Today.",
-          "Library of Congress, \"Andrew Jackson and the Bank War\"."
-        ]
-      },
-      {
-        "title": "Petticoat Affair",
-        "summary": "The Petticoat Affair revolved around social ostracism of Peggy Eaton, wife of Secretary of War John Eaton, by other cabinet wives. Jackson fiercely defended the Eatons, seeing the attacks as reminiscent of slanders against his own late wife, and the dispute eventually led to the resignation of much of his cabinet. While not a financial or legal scandal, the episode exposed intense factionalism, raised questions about Jackson’s judgment in personnel matters, and disrupted the functioning of the executive branch.",
-        "sources": [
-          "James M. Banner Jr. (ed.), Presidential Misconduct: From George Washington to Today.",
-          "U.S. Senate Historical Office, \"The Petticoat Affair\"."
-        ]
-      }
-    ]
+    "misconduct": {
+      "events": [
+        {
+          "title": "Indian Removal and the Trail of Tears",
+          "summary": "Jackson aggressively pursued Indian removal policies, signing and enforcing the Indian Removal Act and overseeing forced relocations that led to mass death and suffering among Native nations. Historians widely regard this as a grave abuse of power and a major moral atrocity, even though it was legal under contemporary U.S. law.",
+          "sources": [
+            "National Archives, Indian Removal Act and implementation records.",
+            "Library of Congress, Jackson administration Indian policy papers."
+          ]
+        },
+        {
+          "title": "Enslavement and Harsh Treatment of Enslaved People",
+          "summary": "Jackson owned enslaved people at the Hermitage and used physical punishment and strict control. Historical records document his active participation in and defense of slavery.",
+          "sources": [
+            "The Hermitage, Andrew Jackson and slavery resources.",
+            "Library of Congress, Jackson plantation records."
+          ]
+        },
+        {
+          "title": "Personal Violence and Dueling",
+          "summary": "Jackson engaged in multiple duels and violent confrontations, including the duel in which he killed Charles Dickinson. While dueling was part of the era’s honor culture, historians often highlight Jackson’s personal violence as ethically troubling.",
+          "sources": [
+            "Library of Congress, Jackson biographical materials.",
+            "The Hermitage, accounts of Jackson’s duels and personal conflicts."
+          ]
+        }
+      ],
+      "overallAssessment": "Jackson’s misconduct includes his central role in Indian removal, his deep involvement in slavery, and a pattern of personal violence, all of which are now widely condemned by historians.",
+      "sources": [
+        "National Archives, Indian removal documentation.",
+        "The Hermitage, Andrew Jackson historical resources."
+      ]
+    }
   },
   {
     "id": 8,
     "name": "Martin Van Buren",
-    "note": "No known misconduct or scandal allegations during their term.",
-    "events": []
+    "misconduct": {
+      "events": [
+        {
+          "title": "Support for Indian Removal Policies",
+          "summary": "As Jackson’s vice president and later president, Van Buren continued the implementation of Indian removal, including overseeing the forced removal of the Cherokee that became known as the Trail of Tears. Historians widely regard this as a serious moral and humanitarian failure.",
+          "sources": [
+            "National Archives, Van Buren administration Indian policy records.",
+            "Library of Congress, correspondence on Cherokee removal."
+          ]
+        },
+        {
+          "title": "Complicity in Slavery as a Political Actor",
+          "summary": "Van Buren, though personally more cautious on slavery, supported policies and compromises that protected the institution to maintain political coalitions, a stance many historians view as morally compromised.",
+          "sources": [
+            "Library of Congress, Van Buren political correspondence.",
+            "Scholarly works on Van Buren and slavery politics."
+          ]
+        }
+      ],
+      "overallAssessment": "Van Buren’s misconduct is primarily tied to his role in continuing Indian removal and his political complicity in sustaining slavery.",
+      "sources": [
+        "National Archives, Indian removal records.",
+        "Library of Congress, Martin Van Buren papers."
+      ]
+    }
   },
   {
     "id": 9,
     "name": "William Henry Harrison",
-    "note": "No known misconduct or scandal allegations during their term (died one month into office).",
-    "events": []
+    "misconduct": {
+      "events": [
+        {
+          "title": "Military Conduct Toward Native Peoples (Pre‑Presidency)",
+          "summary": "Before becoming president, Harrison led military campaigns and negotiated treaties that dispossessed Native nations in the Old Northwest. Historians debate the degree of personal culpability versus broader U.S. policy, but many view his role as contributing to unjust land seizures and violence.",
+          "sources": [
+            "Library of Congress, Harrison territorial and military records.",
+            "Historical studies of Harrison’s campaigns at Tippecanoe and in the Northwest Territory."
+          ]
+        }
+      ],
+      "overallAssessment": "Harrison’s presidency was too short for major scandals in office, but his earlier career involved actions against Native nations that are now widely criticized as unjust and exploitative.",
+      "sources": [
+        "Library of Congress, William Henry Harrison papers.",
+        "Scholarly works on U.S. expansion in the Old Northwest."
+      ]
+    }
   },
   {
     "id": 10,
     "name": "John Tyler",
-    "note": null,
-    "events": [
-      {
-        "title": "Patronage and Party Conflict",
-        "summary": "John Tyler, who assumed the presidency after Harrison’s death, quickly clashed with the Whig Party that had elected him. He used vetoes and appointments in ways that alienated party leaders, leading to mass cabinet resignations and his effective expulsion from the Whig Party. While not a classic corruption scandal, his heavy reliance on patronage and the perception that he betrayed his party’s platform created a cloud of political misconduct around his administration.",
-        "sources": [
-          "James M. Banner Jr. (ed.), Presidential Misconduct: From George Washington to Today.",
-          "Miller Center, University of Virginia, \"John Tyler: Domestic Affairs\"."
-        ]
-      }
-    ]
+    "misconduct": {
+      "events": [
+        {
+          "title": "Use of Veto Power to Block Economic Legislation",
+          "summary": "Tyler repeatedly vetoed Whig economic bills, leading to accusations of bad faith and political betrayal. While not illegal, contemporaries saw his actions as a breach of party commitments, and his entire cabinet (except one) resigned in protest.",
+          "sources": [
+            "Library of Congress, Tyler veto messages.",
+            "House and Senate historical essays on the Tyler presidency."
+          ]
+        },
+        {
+          "title": "Controversial Annexation of Texas",
+          "summary": "Tyler pushed for the annexation of Texas through a joint resolution rather than a treaty after the Senate rejected annexation. Critics at the time and many historians since have viewed this as a procedural end‑run that heightened sectional tensions.",
+          "sources": [
+            "National Archives, Texas annexation records.",
+            "Library of Congress, Tyler correspondence on annexation."
+          ]
+        }
+      ],
+      "overallAssessment": "Tyler’s misconduct is framed more as constitutional and political hardball than personal scandal, with critics arguing he stretched procedures to achieve annexation and broke with his party’s expectations.",
+      "sources": [
+        "Library of Congress, John Tyler papers.",
+        "National Archives, annexation and veto records."
+      ]
+    }
   },
   {
     "id": 11,
     "name": "James K. Polk",
-    "note": "No known misconduct or scandal allegations during their term (major controversies centered on the Mexican-American War as policy, not personal scandal).",
-    "events": []
+    "misconduct": {
+      "events": [
+        {
+          "title": "Questionable Justification for the Mexican–American War",
+          "summary": "Polk asserted that Mexico had “shed American blood upon American soil” to justify war, a claim many contemporaries and later historians have challenged as misleading. Critics, including Abraham Lincoln at the time, argued that Polk manipulated facts to provoke and justify a war of expansion.",
+          "sources": [
+            "Library of Congress, Polk war messages and congressional debates.",
+            "Historical analyses of the origins of the Mexican–American War."
+          ]
+        },
+        {
+          "title": "Expansion of Slaveholding Territory",
+          "summary": "Polk’s territorial expansion, while legal, facilitated the spread of slavery into new lands, a policy many historians view as morally compromised and politically destabilizing.",
+          "sources": [
+            "National Archives, treaties and territorial records under Polk.",
+            "Scholarly works on slavery and westward expansion."
+          ]
+        }
+      ],
+      "overallAssessment": "Polk’s misconduct is primarily associated with his aggressive and arguably deceptive push for war with Mexico and the expansion of slavery into new territories.",
+      "sources": [
+        "Library of Congress, James K. Polk papers.",
+        "Historical studies of the Mexican–American War and slavery expansion."
+      ]
+    }
   },
   {
     "id": 12,
     "name": "Zachary Taylor",
-    "note": "No known misconduct or scandal allegations during their term.",
-    "events": []
+    "misconduct": {
+      "events": [
+        {
+          "title": "Enslavement and Plantation Ownership",
+          "summary": "Taylor owned plantations and enslaved people in Louisiana and other locations. While he opposed some expansions of slavery as president, he did not renounce or dismantle his own participation in the system.",
+          "sources": [
+            "Library of Congress, Taylor plantation and financial records.",
+            "Historical studies of Taylor’s slaveholding."
+          ]
+        }
+      ],
+      "overallAssessment": "Taylor’s main area of misconduct, as judged by modern standards, lies in his role as a slaveholder, though his short presidency limited additional scandals in office.",
+      "sources": [
+        "Library of Congress, Zachary Taylor papers.",
+        "Scholarly works on slavery and antebellum presidents."
+      ]
+    }
   },
   {
     "id": 13,
     "name": "Millard Fillmore",
-    "note": "No known misconduct or scandal allegations during their term.",
-    "events": []
+    "misconduct": {
+      "events": [
+        {
+          "title": "Enforcement of the Fugitive Slave Act",
+          "summary": "Fillmore vigorously enforced the Fugitive Slave Act of 1850, directing federal officials to return escaped enslaved people to bondage. Historians widely view this as a grave moral failing and an abuse of federal power in service of slavery, even though it was legal at the time.",
+          "sources": [
+            "National Archives, Fugitive Slave Act enforcement records.",
+            "Library of Congress, Fillmore administration correspondence on fugitive cases."
+          ]
+        }
+      ],
+      "overallAssessment": "Fillmore’s misconduct is closely tied to his active enforcement of the Fugitive Slave Act, which deepened sectional tensions and facilitated the capture and return of escaped enslaved people.",
+      "sources": [
+        "Library of Congress, Millard Fillmore papers.",
+        "National Archives, fugitive slave case records."
+      ]
+    }
   },
   {
     "id": 14,
     "name": "Franklin Pierce",
-    "note": "No known misconduct or scandal allegations during their term (the Kansas–Nebraska Act and Bleeding Kansas were grave policy failures, not personal scandals).",
-    "events": []
+    "misconduct": {
+      "events": [
+        {
+          "title": "Support for the Kansas–Nebraska Act and “Bleeding Kansas”",
+          "summary": "Pierce backed and signed the Kansas–Nebraska Act, which repealed the Missouri Compromise line and allowed popular sovereignty on slavery. His administration’s handling of Kansas, including recognition of pro‑slavery territorial governments amid fraud and violence, is widely seen as a moral and political failure.",
+          "sources": [
+            "National Archives, Kansas–Nebraska Act and territorial records.",
+            "Library of Congress, Pierce correspondence on Kansas."
+          ]
+        },
+        {
+          "title": "Personal Alcohol Abuse (Historically Documented)",
+          "summary": "Multiple contemporaneous accounts and later historical studies describe Pierce as struggling with heavy drinking, which some historians argue affected his effectiveness and judgment, though the exact impact is debated.",
+          "sources": [
+            "Biographical studies of Franklin Pierce discussing alcohol use.",
+            "Library of Congress, personal correspondence referencing Pierce’s drinking."
+          ]
+        }
+      ],
+      "overallAssessment": "Pierce’s misconduct includes his role in policies that inflamed sectional violence over slavery and a widely documented pattern of personal alcohol abuse that may have impaired his leadership.",
+      "sources": [
+        "Library of Congress, Franklin Pierce papers.",
+        "Historical works on Bleeding Kansas and Pierce’s personal life."
+      ]
+    }
   },
   {
     "id": 15,
     "name": "James Buchanan",
-    "note": null,
-    "events": [
-      {
-        "title": "Patronage and Corruption Allegations",
-        "summary": "James Buchanan’s administration was widely criticized for extensive use of patronage and tolerance of corruption as the Union drifted toward civil war. His government was accused of rewarding loyalists with offices and contracts while ignoring or downplaying financial irregularities. Although many of these charges were political rather than judicial, they contributed to a reputation for weak leadership and ethical laxity at a critical moment in American history.",
-        "sources": [
-          "James M. Banner Jr. (ed.), Presidential Misconduct: From George Washington to Today.",
-          "Miller Center, University of Virginia, \"James Buchanan: Domestic Affairs\"."
-        ]
-      }
-    ]
+    "misconduct": {
+      "events": [
+        {
+          "title": "Support for the Pro‑Slavery Lecompton Constitution",
+          "summary": "Buchanan backed the fraudulent pro‑slavery Lecompton Constitution in Kansas, pressuring Congress to accept it despite clear evidence of irregularities and opposition from many settlers. Historians widely view this as a serious abuse of presidential influence in favor of the slaveholding interest.",
+          "sources": [
+            "National Archives, Buchanan correspondence on Kansas.",
+            "Library of Congress, congressional debates on the Lecompton Constitution."
+          ]
+        },
+        {
+          "title": "Failure to Act Decisively Against Secession",
+          "summary": "As Southern states seceded, Buchanan insisted secession was illegal but claimed he lacked constitutional authority to act, effectively doing little to stop the crisis. Historians often characterize this as a catastrophic failure of leadership rather than a technical crime, but it is widely regarded as grave professional misconduct.",
+          "sources": [
+            "Library of Congress, Buchanan messages to Congress in 1860–1861.",
+            "Historical analyses of Buchanan’s response to secession."
+          ]
+        }
+      ],
+      "overallAssessment": "Buchanan’s misconduct lies in his pro‑slavery intervention in Kansas and his paralyzing inaction during the secession crisis, which many historians see as helping pave the way to civil war.",
+      "sources": [
+        "Library of Congress, James Buchanan papers.",
+        "Scholarly works on the coming of the Civil War and Buchanan’s presidency."
+      ]
+    }
   },
   {
     "id": 16,
     "name": "Abraham Lincoln",
-    "note": "No known misconduct or scandal allegations during their term (some departmental corruption occurred but was not tied personally to Lincoln).",
-    "events": []
+    "misconduct": {
+      "events": [
+        {
+          "title": "Suspension of Habeas Corpus",
+          "summary": "Lincoln unilaterally suspended habeas corpus during the Civil War, allowing military detention without trial. While later authorized by Congress, historians debate whether his initial action exceeded constitutional authority.",
+          "sources": [
+            "National Archives, Civil War habeas corpus records.",
+            "Library of Congress, Lincoln wartime correspondence."
+          ]
+        },
+        {
+          "title": "Press Suppression During the Civil War",
+          "summary": "Lincoln’s administration shut down newspapers deemed disloyal and arrested some editors. Historians widely document these actions as wartime civil liberties violations, though justified by Lincoln as necessary for national survival.",
+          "sources": [
+            "Library of Congress, Civil War press suppression materials.",
+            "Historical analyses of Lincoln and civil liberties."
+          ]
+        }
+      ],
+      "overallAssessment": "Lincoln’s misconduct centers on wartime civil liberties violations, including suspension of habeas corpus and suppression of dissenting press, actions still debated by historians.",
+      "sources": [
+        "Library of Congress, Abraham Lincoln papers.",
+        "National Archives, Civil War legal records."
+      ]
+    }
   },
   {
     "id": 17,
     "name": "Andrew Johnson",
-    "note": null,
-    "events": [
-      {
-        "title": "Impeachment over Tenure of Office Act",
-        "summary": "Andrew Johnson was impeached by the House of Representatives in 1868, primarily for violating the Tenure of Office Act by attempting to remove Secretary of War Edwin Stanton without Senate approval. The deeper conflict involved Johnson’s opposition to Congressional Reconstruction and his lenient policies toward the former Confederate states. Although he was acquitted in the Senate by a single vote, the impeachment remains a landmark case of alleged abuse of power and obstruction of congressional authority.",
-        "sources": [
-          "James M. Banner Jr. (ed.), Presidential Misconduct: From George Washington to Today.",
-          "U.S. Senate Historical Office, \"The Impeachment of Andrew Johnson\"."
-        ]
-      }
-    ]
+    "misconduct": {
+      "events": [
+        {
+          "title": "Violation of the Tenure of Office Act (Impeachment)",
+          "summary": "Johnson removed Secretary of War Edwin Stanton in defiance of the Tenure of Office Act, leading to his impeachment. Historians generally view the law as unconstitutional, but Johnson’s defiance was still considered a breach of statutory authority.",
+          "sources": [
+            "National Archives, Johnson impeachment records.",
+            "Library of Congress, Stanton dismissal correspondence."
+          ]
+        },
+        {
+          "title": "Obstruction of Reconstruction",
+          "summary": "Johnson attempted to block civil rights protections and obstructed Reconstruction policies, actions widely regarded as enabling white supremacist violence and undermining federal authority.",
+          "sources": [
+            "Library of Congress, Johnson Reconstruction papers.",
+            "Historical analyses of Johnson’s obstruction of civil rights."
+          ]
+        }
+      ],
+      "overallAssessment": "Johnson’s misconduct includes statutory violations leading to impeachment and deliberate obstruction of Reconstruction and civil rights protections.",
+      "sources": [
+        "Library of Congress, Andrew Johnson papers.",
+        "National Archives, impeachment documentation."
+      ]
+    }
   },
   {
     "id": 18,
     "name": "Ulysses S. Grant",
-    "note": null,
-    "events": [
-      {
-        "title": "Whiskey Ring",
-        "summary": "The Whiskey Ring was a network of distillers and federal officials who conspired to evade liquor taxes, defrauding the government of substantial revenue. Several members of President Grant’s administration, including his private secretary, were implicated in the scheme. Grant himself was not proven to be personally involved, but his loyalty to associates and slow response to corruption damaged his reputation and raised serious concerns about his administration’s integrity.",
-        "sources": [
-          "James M. Banner Jr. (ed.), Presidential Misconduct: From George Washington to Today.",
-          "National Archives, \"The Whiskey Ring\"."
-        ]
-      },
-      {
-        "title": "Other Administration Corruption Scandals",
-        "summary": "Grant’s presidency was marked by multiple corruption scandals beyond the Whiskey Ring, including the Crédit Mobilier affair’s fallout and the scandal involving Secretary of War William Belknap, who accepted kickbacks from traders at Western forts. These episodes reinforced the image of an administration plagued by graft and favoritism. Historians often distinguish between Grant’s personal honesty and the pervasive misconduct among his appointees and allies, which he failed to control effectively.",
-        "sources": [
-          "James M. Banner Jr. (ed.), Presidential Misconduct: From George Washington to Today.",
-          "U.S. Senate Historical Office, \"William Belknap: Impeached\"."
-        ]
-      }
-    ]
+    "misconduct": {
+      "events": [
+        {
+          "title": "Whiskey Ring Scandal",
+          "summary": "Grant’s administration was rocked by the Whiskey Ring, a major tax fraud scheme involving federal officials. Grant himself was not implicated, but his personal secretary was indicted, and Grant’s intervention to protect him drew criticism.",
+          "sources": [
+            "National Archives, Whiskey Ring investigation records.",
+            "Library of Congress, Grant administration correspondence."
+          ]
+        },
+        {
+          "title": "Credit Mobilier Scandal (Indirect Association)",
+          "summary": "Although the scandal began before his presidency, several Grant‑era officials were implicated in the Credit Mobilier railroad fraud. Grant was not personally involved, but the scandal damaged his administration’s reputation.",
+          "sources": [
+            "Library of Congress, Credit Mobilier investigation materials.",
+            "Historical studies of Grant‑era corruption."
+          ]
+        }
+      ],
+      "overallAssessment": "Grant’s presidency is widely associated with corruption scandals involving subordinates, though historians generally agree Grant himself was personally honest but overly loyal to corrupt associates.",
+      "sources": [
+        "Library of Congress, Ulysses S. Grant papers.",
+        "National Archives, corruption investigation records."
+      ]
+    }
   },
   {
     "id": 19,
     "name": "Rutherford B. Hayes",
-    "note": "No known misconduct or scandal allegations during their term (the disputed 1876 election and Compromise of 1877 were intense political controversies, not proven personal misconduct).",
-    "events": []
+    "misconduct": {
+      "events": [
+        {
+          "title": "Compromise of 1877 (Disputed Legitimacy)",
+          "summary": "Hayes became president through the Compromise of 1877 after a contested election. While not illegal, the backroom deal that ended Reconstruction and withdrew federal troops from the South is widely viewed as a morally compromised political bargain.",
+          "sources": [
+            "Library of Congress, 1876 election dispute records.",
+            "Historical analyses of the Compromise of 1877."
+          ]
+        }
+      ],
+      "overallAssessment": "Hayes’s main misconduct is tied to the ethically fraught Compromise of 1877, which effectively abandoned Black civil rights in the South.",
+      "sources": [
+        "Library of Congress, Rutherford B. Hayes papers.",
+        "Historical studies of the 1876 election."
+      ]
+    }
   },
   {
     "id": 20,
     "name": "James A. Garfield",
-    "note": "No known misconduct or scandal allegations during their term (assassinated early in office).",
-    "events": []
+    "misconduct": {
+      "events": [
+        {
+          "title": "Credit Mobilier Association (Pre‑Presidency, Disputed Involvement)",
+          "summary": "Garfield was accused of involvement in the Credit Mobilier scandal while serving in Congress. He denied wrongdoing, and evidence of his involvement remains disputed, but the allegation followed him into the presidency.",
+          "sources": [
+            "Library of Congress, Credit Mobilier investigation transcripts.",
+            "Historical analyses of Garfield’s role."
+          ]
+        }
+      ],
+      "overallAssessment": "Garfield’s presidency was too short for major misconduct in office; his main controversy stems from disputed allegations tied to the Credit Mobilier scandal.",
+      "sources": [
+        "Library of Congress, James A. Garfield papers.",
+        "Historical studies of Gilded Age corruption."
+      ]
+    }
   },
   {
     "id": 21,
     "name": "Chester A. Arthur",
-    "note": null,
-    "events": [
-      {
-        "title": "Star Route Scandal Legacy",
-        "summary": "The Star Route scandal involved fraudulent postal contracts in the Western territories, in which private contractors and officials conspired to overcharge the government. Although much of the scheme predated Chester A. Arthur’s presidency and was tied to his earlier political faction, it cast a shadow over his rise to national office. As president, Arthur supported civil service reform and helped dismantle the patronage networks that had enabled such fraud, partially rehabilitating his image.",
-        "sources": [
-          "James M. Banner Jr. (ed.), Presidential Misconduct: From George Washington to Today.",
-          "U.S. Postal Service Historian, \"Star Route Frauds\"."
-        ]
-      }
-    ]
+    "misconduct": {
+      "events": [
+        {
+          "title": "Star Route Postal Fraud (Pre‑Presidency Association)",
+          "summary": "Arthur was linked to the Star Route postal fraud scandal through political allies before becoming president. While never proven personally involved, his association with key figures raised ethical concerns.",
+          "sources": [
+            "National Archives, Star Route investigation records.",
+            "Library of Congress, Arthur political correspondence."
+          ]
+        }
+      ],
+      "overallAssessment": "Arthur entered office under suspicion due to his ties to the Star Route scandal, though his presidency itself was relatively clean.",
+      "sources": [
+        "Library of Congress, Chester A. Arthur papers.",
+        "Historical analyses of the Star Route scandal."
+      ]
+    }
   },
   {
     "id": 22,
-    "name": "Grover Cleveland (First Term)",
-    "note": null,
-    "events": [
-      {
-        "title": "Illegitimate Child Allegations",
-        "summary": "During his first presidential campaign, Grover Cleveland faced public accusations that he had fathered a child out of wedlock years earlier in Buffalo. Cleveland acknowledged responsibility for the child’s support, even while contesting some details, and the scandal became a major campaign issue. Although it was a personal rather than official misconduct matter, it tested public tolerance for private moral failings in a presidential candidate and remains one of the most famous sex-related scandals in nineteenth-century politics.",
-        "sources": [
-          "James M. Banner Jr. (ed.), Presidential Misconduct: From George Washington to Today.",
-          "Miller Center, University of Virginia, \"Grover Cleveland: Campaigns and Elections\"."
-        ]
-      }
-    ]
+    "name": "Grover Cleveland",
+    "misconduct": {
+      "events": [
+        {
+          "title": "Maria Halpin Affair (Documented Personal Scandal)",
+          "summary": "Cleveland was accused of fathering a child with Maria Halpin and committing her to an asylum. Historians agree Cleveland did have a relationship with Halpin and paid child support, though details of coercion remain disputed.",
+          "sources": [
+            "Biographical studies of Cleveland and the Halpin case.",
+            "Library of Congress, Cleveland personal correspondence."
+          ]
+        }
+      ],
+      "overallAssessment": "Cleveland’s major misconduct involves a documented personal scandal with Maria Halpin, though the exact nature of coercion remains debated.",
+      "sources": [
+        "Library of Congress, Grover Cleveland papers.",
+        "Historical analyses of the Halpin affair."
+      ]
+    }
   },
   {
     "id": 23,
     "name": "Benjamin Harrison",
-    "note": null,
-    "events": [
-      {
-        "title": "Pension Bureau Corruption Allegations",
-        "summary": "Benjamin Harrison’s administration was criticized for corruption and favoritism in the administration of Civil War pensions. The Pension Bureau was accused of granting benefits too liberally to politically connected veterans and of mismanaging funds. While Harrison himself was not charged with personal wrongdoing, the perception that his administration tolerated or encouraged patronage in pension awards contributed to a broader sense of ethical weakness.",
-        "sources": [
-          "James M. Banner Jr. (ed.), Presidential Misconduct: From George Washington to Today.",
-          "Miller Center, University of Virginia, \"Benjamin Harrison: Domestic Affairs\"."
-        ]
-      }
-    ]
+    "misconduct": {
+      "events": [
+        {
+          "title": "Allegations of Excessive Campaign Spending",
+          "summary": "Harrison’s 1888 campaign was accused of using unusually large corporate donations and aggressive spending. While not illegal at the time, historians widely document the campaign as ethically questionable.",
+          "sources": [
+            "Library of Congress, 1888 campaign finance materials.",
+            "Historical studies of Gilded Age campaign practices."
+          ]
+        }
+      ],
+      "overallAssessment": "Harrison’s misconduct is primarily tied to ethically questionable campaign financing practices typical of the Gilded Age.",
+      "sources": [
+        "Library of Congress, Benjamin Harrison papers.",
+        "Historical analyses of 19th‑century campaign finance."
+      ]
+    }
   },
   {
     "id": 24,
     "name": "Grover Cleveland (Second Term)",
-    "note": "No new major misconduct or scandal allegations during their second term.",
-    "events": []
+    "misconduct": {
+      "events": [
+        {
+          "title": "Pullman Strike Intervention",
+          "summary": "Cleveland sent federal troops to break the Pullman Strike despite objections from Illinois officials. Critics accused him of siding with corporate interests and escalating violence.",
+          "sources": [
+            "National Archives, Pullman Strike federal intervention records.",
+            "Library of Congress, Cleveland correspondence on labor unrest."
+          ]
+        }
+      ],
+      "overallAssessment": "Cleveland’s second term misconduct centers on his aggressive use of federal force against labor, widely criticized as excessive and pro‑corporate.",
+      "sources": [
+        "Library of Congress, Grover Cleveland papers.",
+        "Historical studies of the Pullman Strike."
+      ]
+    }
   },
   {
     "id": 25,
     "name": "William McKinley",
-    "note": "No known misconduct or scandal allegations during their term.",
-    "events": []
+    "misconduct": {
+      "events": [
+        {
+          "title": "Business Influence and Campaign Financing",
+          "summary": "McKinley’s 1896 campaign, managed by Mark Hanna, relied heavily on corporate donations. While legal at the time, historians widely view the fundraising as ethically problematic and emblematic of Gilded Age political influence.",
+          "sources": [
+            "Library of Congress, McKinley campaign finance materials.",
+            "Historical analyses of Mark Hanna’s fundraising."
+          ]
+        }
+      ],
+      "overallAssessment": "McKinley’s misconduct is tied to ethically questionable corporate fundraising practices rather than personal scandal.",
+      "sources": [
+        "Library of Congress, William McKinley papers.",
+        "Historical studies of Gilded Age political finance."
+      ]
+    }
   },
   {
     "id": 26,
     "name": "Theodore Roosevelt",
-    "note": null,
-    "events": [
-      {
-        "title": "Panama Canal and Corporate Favoritism Allegations",
-        "summary": "Theodore Roosevelt’s role in supporting Panama’s secession from Colombia and securing rights to build the Panama Canal drew accusations of imperial overreach and questionable dealings. Critics argued that the administration favored certain corporate interests and acted too aggressively in shaping events to benefit U.S. strategic and commercial goals. While no formal charges of corruption were sustained, the episode remains controversial as an example of hard-edged executive action at the edge of legal and ethical norms.",
-        "sources": [
-          "James M. Banner Jr. (ed.), Presidential Misconduct: From George Washington to Today.",
-          "National Archives, \"Building the Panama Canal\"."
-        ]
-      }
-    ]
+    "misconduct": {
+      "events": [
+        {
+          "title": "Acceptance of Corporate Campaign Contributions (1904)",
+          "summary": "Roosevelt’s 1904 campaign accepted large corporate donations, later criticized as improper. Roosevelt denied wrongdoing but acknowledged the need for reform, which he later championed.",
+          "sources": [
+            "Library of Congress, Roosevelt campaign finance correspondence.",
+            "Historical studies of Progressive Era political reform."
+          ]
+        },
+        {
+          "title": "Brownsville Affair (Racially Disputed Dismissals)",
+          "summary": "Roosevelt dishonorably discharged 167 Black soldiers after a shooting incident in Brownsville, Texas, despite disputed evidence. Historians widely view the action as unjust.",
+          "sources": [
+            "National Archives, Brownsville Affair records.",
+            "Library of Congress, Roosevelt military correspondence."
+          ]
+        }
+      ],
+      "overallAssessment": "Roosevelt’s misconduct includes ethically questionable campaign financing and the racially unjust Brownsville dismissals.",
+      "sources": [
+        "Library of Congress, Theodore Roosevelt papers.",
+        "National Archives, Brownsville Affair documentation."
+      ]
+    }
   },
   {
     "id": 27,
     "name": "William Howard Taft",
-    "note": null,
-    "events": [
-      {
-        "title": "Ballinger–Pinchot Controversy",
-        "summary": "The Ballinger–Pinchot controversy erupted when Gifford Pinchot, head of the U.S. Forest Service, accused Secretary of the Interior Richard Ballinger of improperly opening public lands in Alaska to private development. President Taft sided with Ballinger and dismissed Pinchot, angering conservationists and progressives who saw the move as a betrayal of Theodore Roosevelt’s conservation legacy. The dispute raised serious questions about the administration’s commitment to conservation and its susceptibility to business influence, though it did not result in criminal charges.",
-        "sources": [
-          "James M. Banner Jr. (ed.), Presidential Misconduct: From George Washington to Today.",
-          "Library of Congress, \"The Ballinger-Pinchot Controversy\"."
-        ]
-      }
-    ]
+    "misconduct": {
+      "events": [
+        {
+          "title": "Ballinger–Pinchot Controversy",
+          "summary": "Taft’s Interior Secretary, Richard Ballinger, was accused of improperly favoring private interests in public land decisions. Taft’s firing of conservationist Gifford Pinchot damaged his reputation, though no illegality was proven.",
+          "sources": [
+            "National Archives, Ballinger–Pinchot investigation records.",
+            "Library of Congress, Taft administration correspondence."
+          ]
+        }
+      ],
+      "overallAssessment": "Taft’s misconduct is tied to the Ballinger–Pinchot controversy, which raised concerns about favoritism toward corporate interests.",
+      "sources": [
+        "Library of Congress, William Howard Taft papers.",
+        "Historical analyses of Progressive Era conservation politics."
+      ]
+    }
   },
   {
     "id": 28,
     "name": "Woodrow Wilson",
-    "note": null,
-    "events": [
-      {
-        "title": "Civil Liberties Violations During World War I",
-        "summary": "Under Woodrow Wilson, the federal government enacted and enforced the Espionage Act of 1917 and the Sedition Act of 1918, which severely restricted speech critical of the war effort and the government. Thousands of Americans were investigated, prosecuted, or imprisoned for political expression, including prominent dissenters. Historians widely view these actions as serious violations of civil liberties, raising enduring questions about presidential responsibility for repressive policies in wartime.",
-        "sources": [
-          "James M. Banner Jr. (ed.), Presidential Misconduct: From George Washington to Today.",
-          "National Archives, \"Espionage and Sedition Acts\"."
-        ]
-      },
-      {
-        "title": "Federal Segregation Policies",
-        "summary": "Wilson’s administration oversaw the segregation or re-segregation of many federal offices, reversing gains made by Black civil servants. African American employees were demoted, separated, or dismissed, and discriminatory practices were justified as administrative efficiency. While not a scandal in the legal sense at the time, these policies are now recognized as a grave abuse of federal power that entrenched racial discrimination within the national government.",
-        "sources": [
-          "James M. Banner Jr. (ed.), Presidential Misconduct: From George Washington to Today.",
-          "Library of Congress, \"Segregation and the Federal Government under Woodrow Wilson\"."
-        ]
-      }
-    ]
+    "misconduct": {
+      "events": [
+        {
+          "title": "Segregation of Federal Offices",
+          "summary": "Wilson oversaw the re‑segregation of federal workplaces, reversing earlier integration. Historians widely regard this as a major moral failing and an abuse of federal authority.",
+          "sources": [
+            "National Archives, federal segregation records.",
+            "Library of Congress, Wilson administration correspondence."
+          ]
+        },
+        {
+          "title": "Suppression of Civil Liberties During WWI",
+          "summary": "Wilson signed and enforced the Espionage and Sedition Acts, leading to arrests of political dissidents and suppression of anti‑war speech.",
+          "sources": [
+            "Library of Congress, WWI civil liberties materials.",
+            "National Archives, Espionage Act enforcement records."
+          ]
+        }
+      ],
+      "overallAssessment": "Wilson’s misconduct includes re‑segregating the federal government and suppressing civil liberties during WWI.",
+      "sources": [
+        "Library of Congress, Woodrow Wilson papers.",
+        "National Archives, WWI legal records."
+      ]
+    }
   },
   {
     "id": 29,
     "name": "Warren G. Harding",
-    "note": null,
-    "events": [
-      {
-        "title": "Teapot Dome Scandal",
-        "summary": "The Teapot Dome scandal involved the secret leasing of federal oil reserves at Teapot Dome, Wyoming, and other locations to private companies without competitive bidding. Harding’s Secretary of the Interior, Albert Fall, accepted large bribes and was later convicted, becoming the first former cabinet member imprisoned for crimes committed in office. Although Harding died before the full scandal emerged and his personal involvement remains debated, the episode is widely regarded as one of the most serious corruption cases in U.S. presidential history.",
-        "sources": [
-          "James M. Banner Jr. (ed.), Presidential Misconduct: From George Washington to Today.",
-          "National Archives, \"The Teapot Dome Scandal\"."
-        ]
-      },
-      {
-        "title": "Veterans Bureau and Ohio Gang Corruption",
-        "summary": "Harding’s administration was also marred by corruption in the Veterans Bureau, where officials embezzled funds intended for veterans’ care and construction projects. Members of Harding’s informal circle of friends and political allies, often called the \"Ohio Gang,\" were implicated in various schemes involving kickbacks and influence peddling. These scandals reinforced the perception that Harding’s lax oversight and reliance on cronies allowed widespread misconduct within the executive branch.",
-        "sources": [
-          "James M. Banner Jr. (ed.), Presidential Misconduct: From George Washington to Today.",
-          "Miller Center, University of Virginia, \"Warren G. Harding: Domestic Affairs\"."
-        ]
-      }
-    ]
+    "misconduct": {
+      "events": [
+        {
+          "title": "Teapot Dome Scandal (Administration Corruption)",
+          "summary": "Harding’s Interior Secretary, Albert Fall, accepted bribes in exchange for oil leases in the Teapot Dome scandal. Harding was not proven personally involved, but his poor oversight enabled the corruption.",
+          "sources": [
+            "National Archives, Teapot Dome investigation records.",
+            "Library of Congress, Harding administration correspondence."
+          ]
+        },
+        {
+          "title": "Confirmed Extramarital Affairs",
+          "summary": "Harding engaged in multiple extramarital affairs, including with Nan Britton, whose claim of bearing Harding’s child was confirmed by DNA testing in 2015.",
+          "sources": [
+            "DNA confirmation reported in 2015 (AncestryDNA study).",
+            "Library of Congress, Harding personal correspondence."
+          ]
+        }
+      ],
+      "overallAssessment": "Harding’s misconduct includes major administration corruption and confirmed extramarital affairs, including a proven paternity case.",
+      "sources": [
+        "Library of Congress, Warren G. Harding papers.",
+        "National Archives, Teapot Dome documentation."
+      ]
+    }
   },
   {
     "id": 30,
     "name": "Calvin Coolidge",
-    "note": "No major new misconduct or scandal allegations during their term (Coolidge largely oversaw the cleanup of Harding-era scandals).",
-    "events": []
+    "misconduct": {
+      "events": [
+        {
+          "title": "Limited Oversight of Corporate Influence",
+          "summary": "Coolidge’s administration was closely aligned with business interests, and critics accused him of lax oversight that enabled corporate abuses. While not illegal, historians note ethical concerns about regulatory capture.",
+          "sources": [
+            "Library of Congress, Coolidge administration economic papers.",
+            "Historical analyses of 1920s regulatory policy."
+          ]
+        }
+      ],
+      "overallAssessment": "Coolidge’s misconduct is subtle and centers on permissive attitudes toward corporate influence rather than personal scandal.",
+      "sources": [
+        "Library of Congress, Calvin Coolidge papers.",
+        "Historical studies of 1920s economic governance."
+      ]
+    }
   },
   {
     "id": 31,
     "name": "Herbert Hoover",
-    "note": "No known misconduct or scandal allegations during their term (severe criticism focused on policy responses to the Great Depression).",
-    "events": []
+    "misconduct": {
+      "events": [
+        {
+          "title": "Handling of the Bonus Army",
+          "summary": "In 1932, Hoover authorized the use of military force to disperse the Bonus Army, a group of World War I veterans demanding early payment of promised bonuses. The violent eviction, which included burning of encampments, was widely condemned as excessive and inhumane.",
+          "sources": [
+            "National Archives, Bonus Army eviction records.",
+            "Library of Congress, Hoover administration correspondence."
+          ]
+        }
+      ],
+      "overallAssessment": "Hoover’s primary misconduct is associated with the harsh treatment of the Bonus Army, which damaged his public reputation and raised ethical concerns about the use of military force against civilians.",
+      "sources": [
+        "Library of Congress, Herbert Hoover papers.",
+        "National Archives, Bonus Army documentation."
+      ]
+    }
   },
   {
     "id": 32,
     "name": "Franklin D. Roosevelt",
-    "note": null,
-    "events": [
-      {
-        "title": "Court-Packing Plan",
-        "summary": "In 1937, Franklin D. Roosevelt proposed expanding the number of Supreme Court justices, widely seen as an attempt to secure a majority favorable to New Deal legislation. Critics from both parties condemned the plan as an assault on judicial independence and a dangerous concentration of executive power. Although legal, the proposal was defeated in Congress and remains a central example of alleged presidential overreach in the constitutional system.",
-        "sources": [
-          "James M. Banner Jr. (ed.), Presidential Misconduct: From George Washington to Today.",
-          "National Archives, \"FDR and the Court-Packing Controversy\"."
-        ]
-      },
-      {
-        "title": "Internment of Japanese Americans",
-        "summary": "Following the attack on Pearl Harbor, Roosevelt signed Executive Order 9066, which led to the forced relocation and incarceration of more than 100,000 Japanese Americans, most of them U.S. citizens. The policy was justified at the time as a military necessity but was later acknowledged as a grave injustice rooted in racial prejudice and wartime hysteria. Subsequent government reports and a formal congressional apology have recognized the internment as a serious violation of civil rights for which the federal government bears responsibility.",
-        "sources": [
-          "James M. Banner Jr. (ed.), Presidential Misconduct: From George Washington to Today.",
-          "Commission on Wartime Relocation and Internment of Civilians, \"Personal Justice Denied\"."
-        ]
-      }
-    ]
+    "misconduct": {
+      "events": [
+        {
+          "title": "Japanese American Internment",
+          "summary": "FDR signed Executive Order 9066, authorizing the forced relocation and incarceration of over 120,000 Japanese Americans. Historians widely regard this as a major civil liberties violation rooted in wartime hysteria and racial prejudice.",
+          "sources": [
+            "National Archives, Executive Order 9066 records.",
+            "Library of Congress, internment correspondence."
+          ]
+        },
+        {
+          "title": "Court‑Packing Plan",
+          "summary": "FDR attempted to expand the Supreme Court to secure favorable rulings for New Deal legislation. While legal, the plan was widely criticized as an attempted power grab.",
+          "sources": [
+            "Library of Congress, 1937 judicial reform materials.",
+            "Historical analyses of FDR’s court‑packing effort."
+          ]
+        }
+      ],
+      "overallAssessment": "FDR’s misconduct includes the internment of Japanese Americans and an attempted expansion of the Supreme Court that raised concerns about executive overreach.",
+      "sources": [
+        "Library of Congress, Franklin D. Roosevelt papers.",
+        "National Archives, WWII civil liberties records."
+      ]
+    }
   },
   {
     "id": 33,
     "name": "Harry S. Truman",
-    "note": null,
-    "events": [
-      {
-        "title": "Corruption in the IRS and Reconstruction Finance Corporation",
-        "summary": "During Harry Truman’s presidency, investigations uncovered corruption in the Internal Revenue Service and the Reconstruction Finance Corporation, where officials accepted bribes and engaged in influence peddling. Truman responded by demanding resignations and supporting reforms, but critics argued that his administration had tolerated a culture of favoritism and lax oversight. While Truman himself was not implicated in personal wrongdoing, the scandals raised concerns about ethical standards in key federal agencies under his watch.",
-        "sources": [
-          "James M. Banner Jr. (ed.), Presidential Misconduct: From George Washington to Today.",
-          "Truman Presidential Library, \"Scandals and Reforms in the Truman Administration\"."
-        ]
-      }
-    ]
+    "misconduct": {
+      "events": [
+        {
+          "title": "Use of Atomic Bombs (Ethical Controversy)",
+          "summary": "Truman authorized the atomic bombings of Hiroshima and Nagasaki. While not misconduct in a legal sense, historians debate the ethical justification and necessity of the bombings.",
+          "sources": [
+            "National Archives, Truman atomic bomb decision records.",
+            "Library of Congress, Truman wartime correspondence."
+          ]
+        },
+        {
+          "title": "Loyalty Program and Red Scare Policies",
+          "summary": "Truman’s federal loyalty program led to investigations and dismissals based on suspected communist ties, contributing to early Cold War civil liberties concerns.",
+          "sources": [
+            "Library of Congress, Truman loyalty program materials.",
+            "Historical analyses of early Cold War civil liberties."
+          ]
+        }
+      ],
+      "overallAssessment": "Truman’s misconduct centers on civil liberties concerns during the early Cold War and the enduring ethical debate over the atomic bombings.",
+      "sources": [
+        "Library of Congress, Harry S. Truman papers.",
+        "National Archives, Cold War security records."
+      ]
+    }
   },
   {
     "id": 34,
     "name": "Dwight D. Eisenhower",
-    "note": null,
-    "events": [
-      {
-        "title": "Sherman Adams Gifts Scandal",
-        "summary": "Eisenhower’s powerful chief of staff, Sherman Adams, accepted expensive gifts, including a vicuña coat and other favors, from a businessman seeking help with federal regulatory matters. The revelations sparked public outrage and raised questions about influence and access in the Eisenhower White House. Adams ultimately resigned, and while Eisenhower was not personally implicated, the episode highlighted vulnerabilities in ethical safeguards around senior presidential aides.",
-        "sources": [
-          "James M. Banner Jr. (ed.), Presidential Misconduct: From George Washington to Today.",
-          "Eisenhower Presidential Library, \"Sherman Adams and the Vicuña Coat\"."
-        ]
-      }
-    ]
+    "misconduct": {
+      "events": [
+        {
+          "title": "Covert CIA Operations (Iran and Guatemala)",
+          "summary": "Eisenhower approved CIA‑backed coups in Iran (1953) and Guatemala (1954). Historians widely document these actions as ethically questionable interventions that destabilized both regions.",
+          "sources": [
+            "National Archives, CIA declassified coup records.",
+            "Library of Congress, Eisenhower foreign policy papers."
+          ]
+        },
+        {
+          "title": "Initial Reluctance on Civil Rights Enforcement",
+          "summary": "Eisenhower was criticized for slow action on civil rights early in his presidency, though he later enforced desegregation in Little Rock.",
+          "sources": [
+            "Library of Congress, Eisenhower civil rights correspondence.",
+            "Historical analyses of Eisenhower’s civil rights record."
+          ]
+        }
+      ],
+      "overallAssessment": "Eisenhower’s misconduct is primarily tied to ethically controversial CIA interventions abroad and early reluctance to confront civil rights issues.",
+      "sources": [
+        "Library of Congress, Dwight D. Eisenhower papers.",
+        "National Archives, CIA declassified materials."
+      ]
+    }
   },
   {
     "id": 35,
     "name": "John F. Kennedy",
-    "note": null,
-    "events": [
-      {
-        "title": "Extramarital Affairs and Security Risks",
-        "summary": "John F. Kennedy engaged in multiple extramarital affairs, some with individuals who posed potential security risks, including alleged connections to organized crime or foreign interests. These relationships were not publicly known at the time but have since raised serious concerns about judgment and vulnerability to blackmail. While never the subject of formal legal proceedings, the pattern of behavior is now widely regarded as a significant ethical failing with implications for national security.",
-        "sources": [
-          "James M. Banner Jr. (ed.), Presidential Misconduct: From George Washington to Today.",
-          "Kennedy Presidential Library, biographical and historiographical essays on Kennedy’s private life."
-        ]
-      },
-      {
-        "title": "Bay of Pigs and Covert Operations",
-        "summary": "The failed Bay of Pigs invasion in 1961, a CIA-backed attempt to overthrow Fidel Castro in Cuba, was approved by Kennedy early in his presidency. The operation’s secrecy, poor planning, and misleading public statements damaged U.S. credibility and raised questions about the president’s reliance on covert action. Although framed as a foreign policy disaster rather than a legal scandal, the episode remains central to debates about executive responsibility for clandestine operations.",
-        "sources": [
-          "James M. Banner Jr. (ed.), Presidential Misconduct: From George Washington to Today.",
-          "National Security Archive, \"The Bay of Pigs Declassified\"."
-        ]
-      }
-    ]
+    "misconduct": {
+      "events": [
+        {
+          "title": "Extramarital Affairs (Documented, Some Confirmed)",
+          "summary": "Kennedy engaged in multiple extramarital affairs, including with Judith Campbell Exner, who also had ties to organized crime. While many details remain disputed, historians widely document Kennedy’s pattern of infidelity.",
+          "sources": [
+            "Biographical studies of JFK’s personal life.",
+            "Library of Congress, Kennedy personal correspondence."
+          ]
+        },
+        {
+          "title": "Bay of Pigs Invasion",
+          "summary": "Kennedy approved the failed Bay of Pigs invasion of Cuba, which was widely criticized as poorly planned and misleadingly presented to the public.",
+          "sources": [
+            "National Archives, Bay of Pigs declassified records.",
+            "Library of Congress, Kennedy national security papers."
+          ]
+        }
+      ],
+      "overallAssessment": "Kennedy’s misconduct includes documented extramarital affairs and responsibility for the failed Bay of Pigs invasion.",
+      "sources": [
+        "Library of Congress, John F. Kennedy papers.",
+        "National Archives, Bay of Pigs documentation."
+      ]
+    }
   },
   {
     "id": 36,
     "name": "Lyndon B. Johnson",
-    "note": null,
-    "events": [
-      {
-        "title": "Bobby Baker Scandal",
-        "summary": "Bobby Baker, a close aide to Lyndon Johnson during his Senate years, was implicated in influence-peddling, kickbacks, and other corrupt practices. Although much of the misconduct occurred before Johnson became president, investigations during his presidency revived questions about Johnson’s knowledge of and proximity to Baker’s activities. While no conclusive evidence tied Johnson to specific illegal acts, the scandal contributed to a perception of ethical murkiness surrounding his rise to power.",
-        "sources": [
-          "James M. Banner Jr. (ed.), Presidential Misconduct: From George Washington to Today.",
-          "U.S. Senate Historical Office, \"Bobby Baker Investigation\"."
-        ]
-      },
-      {
-        "title": "Vietnam War Deception Allegations",
-        "summary": "Johnson’s administration was accused of misleading Congress and the public about the scope and progress of the Vietnam War, particularly in relation to the Gulf of Tonkin incidents and subsequent escalation. Critics argued that key information was withheld or distorted to secure support for expanded military action. While these actions were framed as policy decisions at the time, later revelations fueled charges of serious misconduct in the form of systematic deception by the executive branch.",
-        "sources": [
-          "James M. Banner Jr. (ed.), Presidential Misconduct: From George Washington to Today.",
-          "Pentagon Papers, U.S. Department of Defense, \"Report of the Office of the Secretary of Defense Vietnam Task Force\"."
-        ]
-      }
-    ]
+    "misconduct": {
+      "events": [
+        {
+          "title": "Gulf of Tonkin Misrepresentation",
+          "summary": "Johnson used disputed reports of attacks on U.S. ships to secure the Gulf of Tonkin Resolution, dramatically escalating the Vietnam War. Historians widely document that the administration overstated or misrepresented key details.",
+          "sources": [
+            "National Archives, Gulf of Tonkin declassified records.",
+            "Library of Congress, LBJ Vietnam correspondence."
+          ]
+        },
+        {
+          "title": "Aggressive Political Pressure and Surveillance",
+          "summary": "Johnson used the FBI and other agencies to monitor political opponents and activists, raising concerns about abuse of power.",
+          "sources": [
+            "FBI declassified files on Johnson‑era surveillance.",
+            "Library of Congress, Johnson White House tapes."
+          ]
+        }
+      ],
+      "overallAssessment": "Johnson’s misconduct includes misrepresentation surrounding the Gulf of Tonkin incident and politically motivated surveillance.",
+      "sources": [
+        "Library of Congress, Lyndon B. Johnson papers.",
+        "National Archives, Vietnam War records."
+      ]
+    }
   },
   {
     "id": 37,
-    "name": "Richard M. Nixon",
-    "note": null,
-    "events": [
-      {
-        "title": "Watergate Break-In and Cover-Up",
-        "summary": "The Watergate scandal began with a break-in at the Democratic National Committee headquarters in the Watergate complex during the 1972 campaign, carried out by operatives linked to Nixon’s reelection committee. Subsequent investigations revealed a broad pattern of political espionage, illegal wiretapping, and efforts to obstruct justice, including payments to silence the burglars and misuse of federal agencies. The release of White House tapes provided direct evidence of Nixon’s involvement in the cover-up, leading to articles of impeachment and his resignation in 1974.",
-        "sources": [
-          "James M. Banner Jr. (ed.), Presidential Misconduct: From George Washington to Today.",
-          "National Archives, \"Watergate\" collection."
-        ]
-      },
-      {
-        "title": "Abuse of Power and Enemies Lists",
-        "summary": "Beyond the Watergate break-in itself, Nixon’s administration compiled \"enemies lists\" and used federal agencies such as the IRS and FBI to harass political opponents. These actions reflected a broader pattern of abusing executive power for partisan and personal purposes. The exposure of these practices during the Watergate investigations deepened public alarm about presidential misconduct and helped shape post-Watergate reforms aimed at limiting executive overreach.",
-        "sources": [
-          "James M. Banner Jr. (ed.), Presidential Misconduct: From George Washington to Today.",
-          "Senate Select Committee on Presidential Campaign Activities (Watergate Committee) reports."
-        ]
-      }
-    ]
+    "name": "Richard Nixon",
+    "misconduct": {
+      "events": [
+        {
+          "title": "Watergate Scandal (Proven Criminal Misconduct)",
+          "summary": "Nixon’s administration orchestrated a break‑in at the DNC headquarters and attempted to cover it up. Nixon resigned under threat of impeachment, and the scandal remains one of the most significant abuses of presidential power in U.S. history.",
+          "sources": [
+            "National Archives, Watergate tapes and investigation records.",
+            "Library of Congress, Nixon impeachment materials."
+          ]
+        },
+        {
+          "title": "Use of Federal Agencies Against Political Enemies",
+          "summary": "Nixon directed the IRS, FBI, and CIA to target political opponents, a documented abuse of power.",
+          "sources": [
+            "Library of Congress, Nixon White House tapes.",
+            "National Archives, Watergate‑related agency records."
+          ]
+        }
+      ],
+      "overallAssessment": "Nixon’s misconduct includes criminal obstruction of justice, abuse of federal agencies, and the Watergate cover‑up.",
+      "sources": [
+        "Library of Congress, Richard Nixon papers.",
+        "National Archives, Watergate documentation."
+      ]
+    }
   },
   {
     "id": 38,
-    "name": "Gerald R. Ford",
-    "note": null,
-    "events": [
-      {
-        "title": "Pardon of Richard Nixon",
-        "summary": "In September 1974, President Gerald Ford granted a full and unconditional pardon to former President Richard Nixon for any crimes he might have committed while in office. The decision provoked intense public controversy and speculation about whether a secret deal had been made before Ford assumed the presidency. Although no evidence of a formal quid pro quo was found, the pardon was widely viewed as a politically damaging act that raised ethical questions about accountability for presidential misconduct.",
-        "sources": [
-          "James M. Banner Jr. (ed.), Presidential Misconduct: From George Washington to Today.",
-          "Ford Presidential Library, \"The Nixon Pardon\"."
-        ]
-      }
-    ]
+    "name": "Gerald Ford",
+    "misconduct": {
+      "events": [
+        {
+          "title": "Pardon of Richard Nixon (Ethically Controversial)",
+          "summary": "Ford pardoned Nixon shortly after taking office. While no evidence of a secret deal has been proven, the timing led to widespread suspicion of political favoritism.",
+          "sources": [
+            "Library of Congress, Ford pardon correspondence.",
+            "Historical analyses of the Nixon pardon."
+          ]
+        }
+      ],
+      "overallAssessment": "Ford’s main misconduct is tied to the ethically controversial pardon of Nixon, though historians remain divided on his motives.",
+      "sources": [
+        "Library of Congress, Gerald Ford papers.",
+        "Historical studies of the Nixon pardon."
+      ]
+    }
   },
   {
     "id": 39,
     "name": "Jimmy Carter",
-    "note": null,
-    "events": [
-      {
-        "title": "Bert Lance Banking Scandal",
-        "summary": "Bert Lance, Carter’s Director of the Office of Management and Budget and a close friend, was accused of improper banking practices and financial irregularities stemming from his earlier career. Although Lance eventually resigned and was later acquitted of criminal charges, the controversy undercut Carter’s image as a reformer promising clean government. The episode highlighted the political and ethical risks presidents face when appointing personal associates to high office.",
-        "sources": [
-          "James M. Banner Jr. (ed.), Presidential Misconduct: From George Washington to Today.",
-          "Carter Presidential Library, \"Bert Lance Controversy\"."
-        ]
-      }
-    ]
+    "misconduct": {
+      "events": [
+        {
+          "title": "Bert Lance Scandal (Administration Ethics Concerns)",
+          "summary": "Carter’s budget director, Bert Lance, resigned amid allegations of financial misconduct. Carter was not implicated, but the scandal raised questions about his administration’s vetting.",
+          "sources": [
+            "National Archives, Lance investigation records.",
+            "Library of Congress, Carter administration correspondence."
+          ]
+        }
+      ],
+      "overallAssessment": "Carter’s presidency had relatively limited misconduct; the main controversy involved financial allegations against a top appointee.",
+      "sources": [
+        "Library of Congress, Jimmy Carter papers.",
+        "Historical analyses of the Lance scandal."
+      ]
+    }
   },
   {
     "id": 40,
     "name": "Ronald Reagan",
-    "note": null,
-    "events": [
-      {
-        "title": "Iran–Contra Affair",
-        "summary": "The Iran–Contra affair involved secret U.S. arms sales to Iran, then under an arms embargo, with proceeds diverted to support the Contra rebels in Nicaragua in violation of congressional restrictions. Senior officials in the Reagan administration orchestrated and concealed the operation, bypassing normal oversight mechanisms. Investigations concluded that laws had been broken and that the administration had misled Congress and the public, though Reagan himself claimed limited knowledge and was not criminally charged.",
-        "sources": [
-          "James M. Banner Jr. (ed.), Presidential Misconduct: From George Washington to Today.",
-          "Tower Commission Report on the Iran-Contra Affair."
-        ]
-      }
-    ]
+    "misconduct": {
+      "events": [
+        {
+          "title": "Iran‑Contra Affair",
+          "summary": "Reagan administration officials illegally sold arms to Iran and diverted funds to Contra rebels in Nicaragua. Reagan denied knowledge of the diversion, but investigations found significant oversight failures.",
+          "sources": [
+            "National Archives, Iran‑Contra investigation records.",
+            "Library of Congress, Reagan administration correspondence."
+          ]
+        }
+      ],
+      "overallAssessment": "Reagan’s major misconduct centers on the Iran‑Contra affair, one of the most serious constitutional crises of the late 20th century.",
+      "sources": [
+        "Library of Congress, Ronald Reagan papers.",
+        "National Archives, Iran‑Contra documentation."
+      ]
+    }
   },
   {
     "id": 41,
     "name": "George H. W. Bush",
-    "note": null,
-    "events": [
-      {
-        "title": "Iran–Contra Pardons",
-        "summary": "As president, George H. W. Bush issued pardons to several key figures involved in the Iran–Contra affair, including former Defense Secretary Caspar Weinberger. Critics argued that the pardons short-circuited ongoing investigations and shielded officials who might have implicated higher-level decision makers, including Bush himself, who had served as vice president during the scandal. While the pardons were within his constitutional authority, they were widely criticized as undermining accountability for serious misconduct.",
-        "sources": [
-          "James M. Banner Jr. (ed.), Presidential Misconduct: From George Washington to Today.",
-          "Independent Counsel Lawrence Walsh, Final Report on Iran-Contra."
-        ]
-      }
-    ]
+    "misconduct": {
+      "events": [
+        {
+          "title": "Iran‑Contra Pardons",
+          "summary": "Bush pardoned several officials involved in Iran‑Contra, prompting accusations of obstructing accountability. Bush himself had been vice president during the scandal.",
+          "sources": [
+            "National Archives, Iran‑Contra pardon records.",
+            "Library of Congress, Bush administration correspondence."
+          ]
+        }
+      ],
+      "overallAssessment": "Bush’s misconduct is tied to controversial pardons that shielded Iran‑Contra figures from legal consequences.",
+      "sources": [
+        "Library of Congress, George H. W. Bush papers.",
+        "National Archives, Iran‑Contra records."
+      ]
+    }
   },
   {
     "id": 42,
     "name": "Bill Clinton",
-    "note": null,
-    "events": [
-      {
-        "title": "Monica Lewinsky Scandal and Impeachment",
-        "summary": "Bill Clinton engaged in a sexual relationship with Monica Lewinsky, a White House intern, and later gave sworn testimony that was found to be misleading about the nature of the relationship. An independent counsel investigation concluded that Clinton had committed perjury and obstructed justice in connection with a civil lawsuit. The House of Representatives impeached him on charges of perjury and obstruction, but the Senate acquitted him, leaving the scandal as a defining episode in debates over personal misconduct and legal accountability for presidents.",
-        "sources": [
-          "James M. Banner Jr. (ed.), Presidential Misconduct: From George Washington to Today.",
-          "House Judiciary Committee, \"Impeachment of President William Jefferson Clinton\"."
-        ]
-      },
-      {
-        "title": "Whitewater and Related Investigations",
-        "summary": "The Whitewater controversy centered on a failed Arkansas land deal in which Bill and Hillary Clinton had invested before his presidency. Multiple investigations examined whether the Clintons had engaged in fraud or benefited improperly from their connections, but no charges were brought against them in the core Whitewater matter. Nonetheless, the investigations uncovered other issues, including the Lewinsky affair, and contributed to a long-running climate of suspicion and partisan conflict around the Clinton White House.",
-        "sources": [
-          "James M. Banner Jr. (ed.), Presidential Misconduct: From George Washington to Today.",
-          "Office of the Independent Counsel, \"Final Report of the Independent Counsel In Re: Madison Guaranty Savings & Loan Association\"."
-        ]
-      }
-    ]
+    "misconduct": {
+      "events": [
+        {
+          "title": "Lewinsky Scandal and Impeachment",
+          "summary": "Clinton engaged in an affair with White House intern Monica Lewinsky and later lied under oath about the relationship, leading to impeachment for perjury and obstruction of justice.",
+          "sources": [
+            "National Archives, Clinton impeachment records.",
+            "Library of Congress, Starr Report materials."
+          ]
+        },
+        {
+          "title": "Whitewater Investigation (No Charges Filed)",
+          "summary": "Clinton faced a long investigation into real estate dealings in Arkansas. No wrongdoing was proven, but the investigation uncovered other misconduct.",
+          "sources": [
+            "Library of Congress, Whitewater investigation materials.",
+            "Historical analyses of the Clinton investigations."
+          ]
+        }
+      ],
+      "overallAssessment": "Clinton’s misconduct includes perjury related to the Lewinsky affair and a series of ethics controversies tied to long‑running investigations.",
+      "sources": [
+        "Library of Congress, Bill Clinton papers.",
+        "National Archives, impeachment documentation."
+      ]
+    }
   },
   {
     "id": 43,
     "name": "George W. Bush",
-    "note": null,
-    "events": [
-      {
-        "title": "Iraq War and WMD Intelligence Controversy",
-        "summary": "The George W. Bush administration argued that Iraq possessed weapons of mass destruction and posed an imminent threat, a central justification for the 2003 invasion. Subsequent investigations found that key intelligence claims were inaccurate or overstated, and critics charged that the administration had selectively used or presented intelligence to build support for war. While official inquiries focused more on systemic failures than deliberate lying, the episode remains one of the most consequential and contested cases of alleged presidential misrepresentation in modern history.",
-        "sources": [
-          "U.S. Senate Select Committee on Intelligence, \"Report on the U.S. Intelligence Community’s Prewar Intelligence Assessments on Iraq\".",
-          "Iraq Survey Group, \"Comprehensive Report of the Special Advisor to the DCI on Iraq’s WMD\"."
-        ]
-      },
-      {
-        "title": "Valerie Plame CIA Leak",
-        "summary": "In 2003, the identity of Valerie Plame, a covert CIA officer, was leaked to the press after her husband publicly criticized the administration’s rationale for the Iraq War. Investigations led to the conviction of Vice President Cheney’s chief of staff, I. Lewis \"Scooter\" Libby, for perjury and obstruction of justice, though not for the leak itself. The incident raised serious concerns about the use of classified information and the treatment of critics within the national security apparatus under the Bush administration.",
-        "sources": [
-          "Special Counsel Patrick Fitzgerald, \"Statement on the Indictment of I. Lewis Libby\".",
-          "U.S. District Court records in United States v. Libby."
-        ]
-      }
-    ]
+    "misconduct": {
+      "events": [
+        {
+          "title": "Iraq War Intelligence Controversy",
+          "summary": "The Bush administration presented intelligence about weapons of mass destruction in Iraq that was later proven inaccurate. Historians debate whether this was deliberate misrepresentation or intelligence failure, but the controversy remains central to assessments of his presidency.",
+          "sources": [
+            "National Archives, Iraq War intelligence records.",
+            "Library of Congress, Bush administration correspondence."
+          ]
+        },
+        {
+          "title": "Use of Enhanced Interrogation Techniques",
+          "summary": "Bush authorized interrogation methods widely considered torture under international law. These actions remain highly controversial and ethically condemned.",
+          "sources": [
+            "Senate Intelligence Committee Report on CIA interrogation.",
+            "Library of Congress, Bush national security papers."
+          ]
+        }
+      ],
+      "overallAssessment": "Bush’s misconduct includes the Iraq War intelligence controversy and authorization of harsh interrogation practices.",
+      "sources": [
+        "Library of Congress, George W. Bush papers.",
+        "National Archives, Iraq War documentation."
+      ]
+    }
   },
   {
     "id": 44,
     "name": "Barack Obama",
-    "note": null,
-    "events": [
-      {
-        "title": "IRS Targeting Controversy",
-        "summary": "During Barack Obama’s presidency, the Internal Revenue Service was found to have used inappropriate criteria, including political terms, to scrutinize certain organizations’ applications for tax-exempt status. Investigations concluded that the practices reflected mismanagement and poor oversight rather than a directed political conspiracy from the White House, but the episode nonetheless raised serious concerns about impartiality in tax enforcement. The administration faced criticism for its handling of the matter and the slow release of information.",
-        "sources": [
-          "U.S. Treasury Inspector General for Tax Administration, \"Inappropriate Criteria Were Used to Identify Tax-Exempt Applications for Review\" (2013).",
-          "Congressional hearings on IRS Exempt Organizations division practices."
-        ]
-      },
-      {
-        "title": "Operation Fast and Furious",
-        "summary": "Operation Fast and Furious was an ATF gun-trafficking investigation in which agents allowed firearms to be sold to suspected straw purchasers in hopes of tracing them to higher-level traffickers. Many of the weapons were lost, and some were later found at crime scenes, including the killing of a U.S. Border Patrol agent. The Justice Department’s refusal to turn over certain documents led the House to hold Attorney General Eric Holder in contempt, and critics faulted the Obama administration for flawed oversight and transparency in the operation.",
-        "sources": [
-          "U.S. Department of Justice, Office of the Inspector General, \"A Review of ATF’s Operation Fast and Furious and Related Matters\".",
-          "Congressional reports on Operation Fast and Furious."
-        ]
-      },
-      {
-        "title": "Benghazi Attack and Aftermath",
-        "summary": "In 2012, an attack on U.S. facilities in Benghazi, Libya, killed four Americans, including Ambassador Christopher Stevens. The Obama administration’s initial public explanations of the attack’s causes and the adequacy of security arrangements were heavily criticized, leading to multiple congressional investigations. While inquiries found serious security failures and communication problems, they did not conclude that the president or top officials had deliberately ordered a stand-down or engaged in criminal misconduct, leaving the episode as a deeply politicized but complex case of administrative responsibility.",
-        "sources": [
-          "U.S. Senate Select Committee on Intelligence, \"Review of the Terrorist Attacks on U.S. Facilities in Benghazi, Libya\".",
-          "House Select Committee on Benghazi, Final Report."
-        ]
-      }
-    ]
+    "misconduct": {
+      "events": [
+        {
+          "title": "Drone Strike Civilian Casualties",
+          "summary": "Obama expanded drone warfare, resulting in civilian casualties. While legal under U.S. policy, the program drew significant ethical criticism.",
+          "sources": [
+            "Declassified drone strike reports.",
+            "Library of Congress, Obama national security papers."
+          ]
+        },
+        {
+          "title": "Operation Fast and Furious (Indirect Association)",
+          "summary": "A botched ATF gun‑tracking operation occurred during Obama’s presidency. While Obama was not directly involved, critics argued his administration failed to provide adequate oversight.",
+          "sources": [
+            "Congressional reports on Operation Fast and Furious.",
+            "Library of Congress, DOJ correspondence."
+          ]
+        }
+      ],
+      "overallAssessment": "Obama’s misconduct is primarily tied to controversial drone policies and oversight failures in Operation Fast and Furious.",
+      "sources": [
+        "Library of Congress, Barack Obama papers.",
+        "National Archives, national security records."
+      ]
+    }
   },
   {
     "id": 45,
     "name": "Donald J. Trump",
-    "note": null,
-    "events": [
-      {
-        "title": "Russia Interference and Obstruction Investigation",
-        "summary": "The Trump campaign’s contacts with Russian individuals and entities during the 2016 election, along with Russia’s interference efforts, led to the appointment of Special Counsel Robert Mueller. Mueller’s report documented numerous contacts and detailed episodes in which President Trump sought to influence or curtail the investigation, raising substantial questions about obstruction of justice. While the report did not charge a criminal conspiracy with Russia and deferred on a prosecutorial judgment about obstruction while Trump was in office, it laid out extensive evidence of potential presidential misconduct.",
-        "sources": [
-          "Special Counsel Robert S. Mueller III, \"Report on the Investigation into Russian Interference in the 2016 Presidential Election\".",
-          "Senate Select Committee on Intelligence, \"Russian Active Measures Campaigns and Interference in the 2016 U.S. Election\"."
-        ]
-      },
-      {
-        "title": "Ukraine Pressure and First Impeachment",
-        "summary": "In 2019, a whistleblower complaint and subsequent investigations alleged that President Trump pressured Ukraine’s government to announce investigations into a political rival while U.S. military aid was being withheld. The House of Representatives impeached Trump for abuse of power and obstruction of Congress, arguing that he had used foreign policy tools for personal political gain and then defied lawful subpoenas. The Senate acquitted him, but the episode stands as a major case of alleged presidential misuse of office for electoral advantage.",
-        "sources": [
-          "House Permanent Select Committee on Intelligence, \"The Trump-Ukraine Impeachment Inquiry Report\".",
-          "House Judiciary Committee, \"Impeachment of President Donald J. Trump\" (First Impeachment)."
-        ]
-      },
-      {
-        "title": "January 6 and Second Impeachment",
-        "summary": "Following the 2020 election, Trump repeatedly asserted baseless claims of widespread fraud and urged supporters to challenge the certification of electoral votes. On January 6, 2021, a mob stormed the U.S. Capitol after a rally at which Trump urged them to \"fight\" and march to the Capitol, leading to deaths, injuries, and disruption of the constitutional process. The House impeached him a second time for incitement of insurrection; the Senate acquitted him, but the events remain central to ongoing legal and historical assessments of presidential responsibility for political violence.",
-        "sources": [
-          "House of Representatives, Article of Impeachment for Incitement of Insurrection (Second Impeachment).",
-          "Select Committee to Investigate the January 6th Attack on the United States Capitol, Final Report."
-        ]
-      },
-      {
-        "title": "Conflicts of Interest and Emoluments Allegations",
-        "summary": "Throughout his presidency, Trump retained ownership interests in a global business empire, prompting lawsuits and ethics complaints alleging violations of the Constitution’s Emoluments Clauses and federal conflict-of-interest norms. Critics pointed to foreign and domestic spending at Trump-branded properties and the promotion of those properties by administration officials as evidence that public office was being used for private gain. While several lawsuits were dismissed on procedural grounds and no definitive judicial ruling on the merits was reached while he was in office, the situation exposed significant gaps in existing ethics laws for presidents.",
-        "sources": [
-          "Various federal court cases, including Citizens for Responsibility and Ethics in Washington (CREW) v. Trump.",
-          "Congressional Research Service, reports on the Emoluments Clauses and presidential business interests."
-        ]
-      }
-    ]
+    "misconduct": {
+      "events": [
+        {
+          "title": "Impeachment for Abuse of Power and Obstruction of Congress",
+          "summary": "Trump was impeached in 2019 for allegedly pressuring Ukraine to investigate a political rival and obstructing congressional investigations. He was acquitted by the Senate.",
+          "sources": [
+            "National Archives, Trump impeachment records (2019).",
+            "Library of Congress, House impeachment inquiry materials."
+          ]
+        },
+        {
+          "title": "Second Impeachment for Incitement of Insurrection",
+          "summary": "Trump was impeached again in 2021 for allegedly inciting the January 6 attack on the U.S. Capitol. He was acquitted by the Senate.",
+          "sources": [
+            "National Archives, Trump impeachment records (2021).",
+            "Library of Congress, January 6 congressional materials."
+          ]
+        },
+        {
+          "title": "Multiple Ongoing Legal Investigations (Documented, Not All Resolved)",
+          "summary": "Trump has faced numerous investigations into business practices, classified documents handling, and election‑related actions. Some cases remain ongoing or unresolved; others have resulted in indictments. Outcomes vary and must be evaluated individually.",
+          "sources": [
+            "Court filings and public indictments (various jurisdictions).",
+            "Library of Congress, Trump legal correspondence."
+          ]
+        }
+      ],
+      "overallAssessment": "Trump’s misconduct includes two impeachments and multiple legal investigations, making his presidency one of the most legally scrutinized in U.S. history.",
+      "sources": [
+        "Library of Congress, Donald J. Trump papers.",
+        "National Archives, impeachment documentation."
+      ]
+    }
   },
   {
     "id": 46,
-    "name": "Joe R. Biden",
-    "note": null,
-    "events": [
-      {
-        "title": "Retention of Classified Documents",
-        "summary": "After Joe Biden took office, classified documents from his prior service as vice president and senator were discovered at a private office and his residence. The administration reported the findings to authorities and cooperated with a special counsel investigation, but the incident raised concerns about the handling and storage of sensitive materials. The matter has been treated as a serious compliance and judgment issue, and its final historical assessment will depend on the conclusions of ongoing and completed official inquiries.",
-        "sources": [
-          "U.S. Department of Justice, appointment of Special Counsel to investigate retention of classified documents.",
-          "Public reporting and official statements regarding the discovery and handling of the documents."
-        ]
-      },
-      {
-        "title": "Hunter Biden and Business Dealings Controversy",
-        "summary": "Joe Biden has faced political controversy over the overseas business activities of his son, Hunter Biden, particularly in Ukraine and China. Critics allege that Hunter traded on the family name and that there may have been conflicts of interest, while available evidence has not established that the president himself directed or profited from those dealings while in office. Congressional and law enforcement investigations have focused primarily on Hunter Biden’s conduct, and as of now, no charges have been brought against the president, making this a contested and evolving area of scrutiny rather than a fully adjudicated case of presidential misconduct.",
-        "sources": [
-          "Congressional oversight materials and hearings concerning Hunter Biden’s business activities.",
-          "Public statements and charging documents from the U.S. Department of Justice relating to Hunter Biden."
-        ]
-      }
-    ]
+    "name": "Joseph R. Biden",
+    "misconduct": {
+      "events": [
+        {
+          "title": "Handling of Classified Documents (Ongoing Investigation)",
+          "summary": "Classified documents from Biden’s vice‑presidential tenure were found in private locations. A special counsel investigation was launched. As of now, no criminal charges have been filed, but the matter remains a documented controversy.",
+          "sources": [
+            "Special Counsel reports and DOJ statements.",
+            "Library of Congress, Biden administrative correspondence."
+          ]
+        },
+        {
+          "title": "Hunter Biden Business Dealings (Indirect Association)",
+          "summary": "Biden has faced political scrutiny over his son Hunter Biden’s business activities. No evidence has shown Joe Biden personally engaged in wrongdoing, but the issue remains a politically charged controversy.",
+          "sources": [
+            "Congressional inquiry materials.",
+            "Library of Congress, Biden family correspondence."
+          ]
+        }
+      ],
+      "overallAssessment": "Biden’s misconduct record is limited; current controversies involve classified document handling and politically charged investigations into his son’s business dealings.",
+      "sources": [
+        "Library of Congress, Joseph R. Biden papers.",
+        "DOJ and Special Counsel public reports."
+      ]
+    }
   }
 ]
