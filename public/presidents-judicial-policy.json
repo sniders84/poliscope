@@ -1,324 +1,1288 @@
 [
   {
-    "presidentNumber": 1,
-    "supremeCourtAppointments": 0,
-    "federalJudgesAppointed": 0,
-    "majorLegalActions": 0,
-    "majorJudicialEvents": []
+    "id": 1,
+    "name": "George Washington",
+    "judicialPolicy": {
+      "events": [
+        {
+          "title": "Implementation of the Judiciary Act of 1789",
+          "summary": "Washington operationalized the new federal judiciary by appointing the first Supreme Court justices and district judges, giving practical structure to the judicial branch.",
+          "sources": [
+            "National Archives, Judiciary Act implementation records.",
+            "Library of Congress, Washington judicial correspondence."
+          ]
+        },
+        {
+          "title": "Establishment of Judicial Independence Norms",
+          "summary": "Washington’s appointments emphasized legal expertise and independence, setting early expectations for the federal bench.",
+          "sources": [
+            "Library of Congress, Washington judicial papers.",
+            "National Archives, early judicial appointment records."
+          ]
+        }
+      ],
+      "overallAssessment": "Washington built the federal judiciary from the ground up and established norms of judicial independence.",
+      "sources": [
+        "Library of Congress, Washington presidential papers.",
+        "National Archives, judicial policy archives."
+      ]
+    }
   },
   {
-    "presidentNumber": 2,
-    "supremeCourtAppointments": 0,
-    "federalJudgesAppointed": 0,
-    "majorLegalActions": 0,
-    "majorJudicialEvents": []
+    "id": 2,
+    "name": "John Adams",
+    "judicialPolicy": {
+      "events": [
+        {
+          "title": "Midnight Judges and Judiciary Act of 1801",
+          "summary": "Adams signed the Judiciary Act of 1801 and appointed numerous Federalist judges in his final days, reshaping the judiciary before Jefferson took office.",
+          "sources": [
+            "National Archives, Judiciary Act of 1801 records.",
+            "Library of Congress, Adams judicial correspondence."
+          ]
+        },
+        {
+          "title": "Appointment of Chief Justice John Marshall",
+          "summary": "Adams appointed John Marshall, whose tenure defined judicial review and strengthened federal judicial power.",
+          "sources": [
+            "Library of Congress, Marshall appointment papers.",
+            "National Archives, judicial nomination records."
+          ]
+        }
+      ],
+      "overallAssessment": "Adams reshaped the judiciary through structural reforms and the pivotal appointment of John Marshall.",
+      "sources": [
+        "Library of Congress, Adams presidential papers.",
+        "National Archives, judicial policy archives."
+      ]
+    }
   },
   {
-    "presidentNumber": 3,
-    "supremeCourtAppointments": 0,
-    "federalJudgesAppointed": 0,
-    "majorLegalActions": 0,
-    "majorJudicialEvents": []
+    "id": 3,
+    "name": "Thomas Jefferson",
+    "judicialPolicy": {
+      "events": [
+        {
+          "title": "Repeal of the Judiciary Act of 1801",
+          "summary": "Jefferson and his allies repealed the Federalist‑backed Judiciary Act, eliminating newly created judgeships and reversing Adams’s late‑term appointments.",
+          "sources": [
+            "National Archives, Judiciary Act repeal records.",
+            "Library of Congress, Jefferson judicial correspondence."
+          ]
+        },
+        {
+          "title": "Impeachment of Federal Judges",
+          "summary": "Jefferson supported impeachment efforts against Federalist judges, including Justice Samuel Chase, challenging judicial partisanship.",
+          "sources": [
+            "Library of Congress, Jefferson impeachment papers.",
+            "National Archives, judicial impeachment records."
+          ]
+        }
+      ],
+      "overallAssessment": "Jefferson attempted to curb Federalist judicial influence through structural repeal and impeachment efforts.",
+      "sources": [
+        "Library of Congress, Jefferson presidential papers.",
+        "National Archives, judicial policy archives."
+      ]
+    }
   },
   {
-    "presidentNumber": 4,
-    "supremeCourtAppointments": 0,
-    "federalJudgesAppointed": 0,
-    "majorLegalActions": 0,
-    "majorJudicialEvents": []
+    "id": 4,
+    "name": "James Madison",
+    "judicialPolicy": {
+      "events": [
+        {
+          "title": "Judicial Appointments During Wartime",
+          "summary": "Madison appointed judges who supported federal authority during the War of 1812, reinforcing national legal stability.",
+          "sources": [
+            "National Archives, Madison judicial appointment records.",
+            "Library of Congress, wartime judicial correspondence."
+          ]
+        },
+        {
+          "title": "Defense of Judicial Review",
+          "summary": "Madison accepted the legitimacy of judicial review established under Marshall, despite earlier Republican skepticism.",
+          "sources": [
+            "Library of Congress, Madison constitutional papers.",
+            "National Archives, judicial governance records."
+          ]
+        }
+      ],
+      "overallAssessment": "Madison reinforced judicial legitimacy and stability during wartime.",
+      "sources": [
+        "Library of Congress, Madison presidential papers.",
+        "National Archives, judicial policy archives."
+      ]
+    }
   },
   {
-    "presidentNumber": 5,
-    "supremeCourtAppointments": 0,
-    "federalJudgesAppointed": 0,
-    "majorLegalActions": 0,
-    "majorJudicialEvents": []
+    "id": 5,
+    "name": "James Monroe",
+    "judicialPolicy": {
+      "events": [
+        {
+          "title": "Support for Marshall Court Decisions",
+          "summary": "Monroe cooperated with the Marshall Court’s nationalist rulings, reinforcing federal judicial authority.",
+          "sources": [
+            "National Archives, Monroe judicial correspondence.",
+            "Library of Congress, Marshall Court papers."
+          ]
+        },
+        {
+          "title": "Judicial Appointments Reflecting Nationalist Philosophy",
+          "summary": "Monroe appointed judges aligned with strong federal constitutional interpretation.",
+          "sources": [
+            "Library of Congress, Monroe judicial appointment papers.",
+            "National Archives, judicial nomination records."
+          ]
+        }
+      ],
+      "overallAssessment": "Monroe strengthened the nationalist judicial philosophy of the Marshall Court.",
+      "sources": [
+        "Library of Congress, Monroe presidential papers.",
+        "National Archives, judicial policy archives."
+      ]
+    }
   },
   {
-    "presidentNumber": 6,
-    "supremeCourtAppointments": 0,
-    "federalJudgesAppointed": 0,
-    "majorLegalActions": 0,
-    "majorJudicialEvents": []
+    "id": 6,
+    "name": "John Quincy Adams",
+    "judicialPolicy": {
+      "events": [
+        {
+          "title": "Appointments Supporting Broad Federal Power",
+          "summary": "Adams appointed judges who favored expansive federal authority, consistent with his nationalist agenda.",
+          "sources": [
+            "National Archives, JQA judicial appointment records.",
+            "Library of Congress, Adams judicial correspondence."
+          ]
+        }
+      ],
+      "overallAssessment": "Adams reinforced nationalist judicial interpretation through targeted appointments.",
+      "sources": [
+        "Library of Congress, Adams presidential papers.",
+        "National Archives, judicial policy archives."
+      ]
+    }
   },
   {
-    "presidentNumber": 7,
-    "supremeCourtAppointments": 0,
-    "federalJudgesAppointed": 0,
-    "majorLegalActions": 0,
-    "majorJudicialEvents": []
+    "id": 7,
+    "name": "Andrew Jackson",
+    "judicialPolicy": {
+      "events": [
+        {
+          "title": "Conflict with the Supreme Court Over Cherokee Rights",
+          "summary": "Jackson refused to enforce Worcester v. Georgia, undermining judicial authority and enabling forced Cherokee removal.",
+          "sources": [
+            "National Archives, Jackson–Cherokee correspondence.",
+            "Library of Congress, Worcester v. Georgia papers."
+          ]
+        },
+        {
+          "title": "Reshaping the Court Through Appointments",
+          "summary": "Jackson appointed several justices who supported executive power and states’ rights.",
+          "sources": [
+            "Library of Congress, Jackson judicial appointment papers.",
+            "National Archives, judicial nomination records."
+          ]
+        }
+      ],
+      "overallAssessment": "Jackson weakened judicial enforcement power while reshaping the Court toward states’ rights.",
+      "sources": [
+        "Library of Congress, Jackson presidential papers.",
+        "National Archives, judicial policy archives."
+      ]
+    }
   },
   {
-    "presidentNumber": 8,
-    "supremeCourtAppointments": 0,
-    "federalJudgesAppointed": 0,
-    "majorLegalActions": 0,
-    "majorJudicialEvents": []
+    "id": 8,
+    "name": "Martin Van Buren",
+    "judicialPolicy": {
+      "events": [
+        {
+          "title": "Appointments Supporting Jacksonian Legal Philosophy",
+          "summary": "Van Buren appointed judges aligned with Jacksonian principles of limited federal power and strong executive authority.",
+          "sources": [
+            "National Archives, Van Buren judicial appointment records.",
+            "Library of Congress, Van Buren judicial correspondence."
+          ]
+        }
+      ],
+      "overallAssessment": "Van Buren reinforced Jacksonian judicial ideology through targeted appointments.",
+      "sources": [
+        "Library of Congress, Van Buren presidential papers.",
+        "National Archives, judicial policy archives."
+      ]
+    }
   },
   {
-    "presidentNumber": 9,
-    "supremeCourtAppointments": 0,
-    "federalJudgesAppointed": 0,
-    "majorLegalActions": 0,
-    "majorJudicialEvents": []
+    "id": 9,
+    "name": "William Henry Harrison",
+    "judicialPolicy": {
+      "events": [
+        {
+          "title": "Limited Judicial Impact Due to Short Tenure",
+          "summary": "Harrison made no significant judicial appointments or policy changes before his death.",
+          "sources": [
+            "National Archives, Harrison judicial records.",
+            "Library of Congress, early administration correspondence."
+          ]
+        }
+      ],
+      "overallAssessment": "Harrison’s judicial impact was negligible due to his brief presidency.",
+      "sources": [
+        "Library of Congress, Harrison presidential papers.",
+        "National Archives, judicial policy archives."
+      ]
+    }
   },
   {
-    "presidentNumber": 10,
-    "supremeCourtAppointments": 0,
-    "federalJudgesAppointed": 0,
-    "majorLegalActions": 0,
-    "majorJudicialEvents": []
+    "id": 10,
+    "name": "John Tyler",
+    "judicialPolicy": {
+      "events": [
+        {
+          "title": "Repeated Supreme Court Nomination Battles",
+          "summary": "Tyler’s strained relationship with Congress led to repeated rejections of his Supreme Court nominees, creating prolonged vacancies.",
+          "sources": [
+            "National Archives, Tyler nomination records.",
+            "Library of Congress, Tyler judicial correspondence."
+          ]
+        },
+        {
+          "title": "Appointment of Justice Samuel Nelson",
+          "summary": "Tyler eventually secured the appointment of Samuel Nelson, a moderate jurist acceptable to both parties.",
+          "sources": [
+            "Library of Congress, Nelson appointment papers.",
+            "National Archives, judicial nomination records."
+          ]
+        }
+      ],
+      "overallAssessment": "Tyler’s presidency was marked by judicial appointment conflict and limited success.",
+      "sources": [
+        "Library of Congress, Tyler presidential papers.",
+        "National Archives, judicial policy archives."
+      ]
+    }
   },
   {
-    "presidentNumber": 11,
-    "supremeCourtAppointments": 0,
-    "federalJudgesAppointed": 0,
-    "majorLegalActions": 0,
-    "majorJudicialEvents": []
+    "id": 11,
+    "name": "James K. Polk",
+    "judicialPolicy": {
+      "events": [
+        {
+          "title": "Expansion of Federal Judicial Capacity in New Territories",
+          "summary": "Polk established federal courts in newly acquired territories following the Mexican–American War.",
+          "sources": [
+            "National Archives, Polk territorial judicial records.",
+            "Library of Congress, Polk judicial correspondence."
+          ]
+        },
+        {
+          "title": "Appointments Supporting Expansionist Legal Doctrine",
+          "summary": "Polk appointed judges who supported federal authority over new territories.",
+          "sources": [
+            "Library of Congress, Polk judicial appointment papers.",
+            "National Archives, judicial nomination records."
+          ]
+        }
+      ],
+      "overallAssessment": "Polk expanded federal judicial reach into new territories and reinforced expansionist legal frameworks.",
+      "sources": [
+        "Library of Congress, Polk presidential papers.",
+        "National Archives, judicial policy archives."
+      ]
+    }
   },
   {
-    "presidentNumber": 12,
-    "supremeCourtAppointments": 0,
-    "federalJudgesAppointed": 0,
-    "majorLegalActions": 0,
-    "majorJudicialEvents": []
+    "id": 12,
+    "name": "Zachary Taylor",
+    "judicialPolicy": {
+      "events": [
+        {
+          "title": "Moderate Judicial Appointments",
+          "summary": "Taylor appointed judges with moderate views on slavery and territorial governance, reflecting his attempt to ease sectional tensions.",
+          "sources": [
+            "National Archives, Taylor judicial appointment records.",
+            "Library of Congress, Taylor judicial correspondence."
+          ]
+        }
+      ],
+      "overallAssessment": "Taylor’s judicial impact was limited but aimed at moderating sectional conflict.",
+      "sources": [
+        "Library of Congress, Taylor presidential papers.",
+        "National Archives, judicial policy archives."
+      ]
+    }
   },
   {
-    "presidentNumber": 13,
-    "supremeCourtAppointments": 0,
-    "federalJudgesAppointed": 0,
-    "majorLegalActions": 0,
-    "majorJudicialEvents": []
+    "id": 13,
+    "name": "Millard Fillmore",
+    "judicialPolicy": {
+      "events": [
+        {
+          "title": "Enforcement of Fugitive Slave Act Through Federal Courts",
+          "summary": "Fillmore directed federal marshals and judges to enforce the Fugitive Slave Act, expanding federal judicial involvement in slavery cases.",
+          "sources": [
+            "National Archives, Fugitive Slave Act enforcement records.",
+            "Library of Congress, Fillmore judicial correspondence."
+          ]
+        },
+        {
+          "title": "Judicial Appointments Supporting Compromise of 1850",
+          "summary": "Fillmore appointed judges who supported strict enforcement of federal slavery statutes.",
+          "sources": [
+            "Library of Congress, Fillmore judicial appointment papers.",
+            "National Archives, judicial nomination records."
+          ]
+        }
+      ],
+      "overallAssessment": "Fillmore strengthened federal judicial enforcement of slavery laws, deepening sectional tensions.",
+      "sources": [
+        "Library of Congress, Fillmore presidential papers.",
+        "National Archives, judicial policy archives."
+      ]
+    }
   },
   {
-    "presidentNumber": 14,
-    "supremeCourtAppointments": 0,
-    "federalJudgesAppointed": 0,
-    "majorLegalActions": 0,
-    "majorJudicialEvents": []
+    "id": 14,
+    "name": "Franklin Pierce",
+    "judicialPolicy": {
+      "events": [
+        {
+          "title": "Support for Pro‑Slavery Judicial Interpretations",
+          "summary": "Pierce appointed judges sympathetic to pro‑slavery legal positions, reinforcing federal enforcement of the Fugitive Slave Act.",
+          "sources": [
+            "National Archives, Pierce judicial appointment records.",
+            "Library of Congress, Pierce judicial correspondence."
+          ]
+        },
+        {
+          "title": "Federal Support for Kansas Territorial Courts",
+          "summary": "Pierce backed pro‑slavery territorial courts in Kansas, legitimizing disputed judicial authorities.",
+          "sources": [
+            "Library of Congress, Kansas territorial judicial papers.",
+            "National Archives, Pierce judicial records."
+          ]
+        }
+      ],
+      "overallAssessment": "Pierce strengthened pro‑slavery judicial structures in both federal and territorial courts.",
+      "sources": [
+        "Library of Congress, Pierce presidential papers.",
+        "National Archives, judicial policy archives."
+      ]
+    }
   },
   {
-    "presidentNumber": 15,
-    "supremeCourtAppointments": 0,
-    "federalJudgesAppointed": 0,
-    "majorLegalActions": 0,
-    "majorJudicialEvents": []
+    "id": 15,
+    "name": "James Buchanan",
+    "judicialPolicy": {
+      "events": [
+        {
+          "title": "Support for the Dred Scott Decision",
+          "summary": "Buchanan endorsed the Supreme Court’s ruling denying federal authority to restrict slavery in the territories, deepening sectional division.",
+          "sources": [
+            "National Archives, Buchanan Dred Scott correspondence.",
+            "Library of Congress, sectional judicial papers."
+          ]
+        },
+        {
+          "title": "Judicial Appointments Favoring Southern Legal Doctrine",
+          "summary": "Buchanan appointed judges aligned with pro‑slavery constitutional interpretation.",
+          "sources": [
+            "Library of Congress, Buchanan judicial appointment papers.",
+            "National Archives, judicial nomination records."
+          ]
+        }
+      ],
+      "overallAssessment": "Buchanan reinforced pro‑slavery judicial doctrine and supported the Dred Scott ruling.",
+      "sources": [
+        "Library of Congress, Buchanan presidential papers.",
+        "National Archives, judicial policy archives."
+      ]
+    }
   },
   {
-    "presidentNumber": 16,
-    "supremeCourtAppointments": 0,
-    "federalJudgesAppointed": 0,
-    "majorLegalActions": 0,
-    "majorJudicialEvents": []
+    "id": 16,
+    "name": "Abraham Lincoln",
+    "judicialPolicy": {
+      "events": [
+        {
+          "title": "Appointment of Salmon P. Chase as Chief Justice",
+          "summary": "Lincoln appointed Chase to lead the Supreme Court, shifting the Court toward support for Union war powers and postwar constitutional change.",
+          "sources": [
+            "National Archives, Chase appointment records.",
+            "Library of Congress, Lincoln judicial correspondence."
+          ]
+        },
+        {
+          "title": "Support for Wartime Judicial Measures",
+          "summary": "Lincoln backed federal courts in cases involving habeas corpus suspension and military authority, shaping wartime judicial doctrine.",
+          "sources": [
+            "Library of Congress, Lincoln wartime legal papers.",
+            "National Archives, judicial wartime records."
+          ]
+        }
+      ],
+      "overallAssessment": "Lincoln reshaped the Court for wartime constitutional interpretation and strengthened federal judicial authority during rebellion.",
+      "sources": [
+        "Library of Congress, Lincoln presidential papers.",
+        "National Archives, judicial policy archives."
+      ]
+    }
   },
   {
-    "presidentNumber": 17,
-    "supremeCourtAppointments": 0,
-    "federalJudgesAppointed": 0,
-    "majorLegalActions": 0,
-    "majorJudicialEvents": []
+    "id": 17,
+    "name": "Andrew Johnson",
+    "judicialPolicy": {
+      "events": [
+        {
+          "title": "Reduction of Supreme Court Size",
+          "summary": "Johnson clashed with Congress as it reduced the size of the Supreme Court to limit his appointment power during Reconstruction.",
+          "sources": [
+            "National Archives, Judicial Circuits Act records.",
+            "Library of Congress, Johnson judicial correspondence."
+          ]
+        },
+        {
+          "title": "Appointments Supporting Lenient Reconstruction",
+          "summary": "Johnson appointed judges who favored limited federal intervention in Southern legal systems.",
+          "sources": [
+            "Library of Congress, Johnson judicial appointment papers.",
+            "National Archives, judicial nomination records."
+          ]
+        }
+      ],
+      "overallAssessment": "Johnson’s judicial legacy was defined by conflict with Congress and appointments aligned with lenient Reconstruction.",
+      "sources": [
+        "Library of Congress, Johnson presidential papers.",
+        "National Archives, judicial policy archives."
+      ]
+    }
   },
   {
-    "presidentNumber": 18,
-    "supremeCourtAppointments": 0,
-    "federalJudgesAppointed": 0,
-    "majorLegalActions": 0,
-    "majorJudicialEvents": []
+    "id": 18,
+    "name": "Ulysses S. Grant",
+    "judicialPolicy": {
+      "events": [
+        {
+          "title": "Appointment of Strong Reconstruction‑Era Justices",
+          "summary": "Grant appointed justices who upheld federal civil rights enforcement and Reconstruction legislation.",
+          "sources": [
+            "National Archives, Grant judicial appointment records.",
+            "Library of Congress, Reconstruction judicial papers."
+          ]
+        },
+        {
+          "title": "Support for Federal Enforcement Acts in the Courts",
+          "summary": "Grant’s Justice Department defended Enforcement Acts before the Supreme Court, shaping early civil rights jurisprudence.",
+          "sources": [
+            "Library of Congress, Grant DOJ correspondence.",
+            "National Archives, Enforcement Act litigation records."
+          ]
+        }
+      ],
+      "overallAssessment": "Grant strengthened federal judicial support for Reconstruction and civil rights enforcement.",
+      "sources": [
+        "Library of Congress, Grant presidential papers.",
+        "National Archives, judicial policy archives."
+      ]
+    }
   },
   {
-    "presidentNumber": 19,
-    "supremeCourtAppointments": 0,
-    "federalJudgesAppointed": 0,
-    "majorLegalActions": 0,
-    "majorJudicialEvents": []
+    "id": 19,
+    "name": "Rutherford B. Hayes",
+    "judicialPolicy": {
+      "events": [
+        {
+          "title": "Appointments Reflecting Post‑Reconstruction Moderation",
+          "summary": "Hayes appointed judges who favored limited federal intervention in Southern racial matters after Reconstruction ended.",
+          "sources": [
+            "National Archives, Hayes judicial appointment records.",
+            "Library of Congress, Hayes judicial correspondence."
+          ]
+        },
+        {
+          "title": "Support for Civil Service Reform’s Judicial Oversight",
+          "summary": "Hayes backed judicial review of patronage abuses as part of early civil service reform.",
+          "sources": [
+            "Library of Congress, Hayes administrative papers.",
+            "National Archives, judicial oversight records."
+          ]
+        }
+      ],
+      "overallAssessment": "Hayes’s judicial policy reflected post‑Reconstruction retreat from federal civil rights enforcement.",
+      "sources": [
+        "Library of Congress, Hayes presidential papers.",
+        "National Archives, judicial policy archives."
+      ]
+    }
   },
   {
-    "presidentNumber": 20,
-    "supremeCourtAppointments": 0,
-    "federalJudgesAppointed": 0,
-    "majorLegalActions": 0,
-    "majorJudicialEvents": []
+    "id": 20,
+    "name": "James A. Garfield",
+    "judicialPolicy": {
+      "events": [
+        {
+          "title": "Advocacy for Merit‑Based Judicial Administration",
+          "summary": "Garfield promoted professionalization of the Justice Department and federal courts, though his assassination limited impact.",
+          "sources": [
+            "National Archives, Garfield judicial records.",
+            "Library of Congress, Garfield administrative correspondence."
+          ]
+        }
+      ],
+      "overallAssessment": "Garfield’s judicial influence was limited but aligned with civil service reform principles.",
+      "sources": [
+        "Library of Congress, Garfield presidential papers.",
+        "National Archives, judicial policy archives."
+      ]
+    }
   },
   {
-    "presidentNumber": 21,
-    "supremeCourtAppointments": 0,
-    "federalJudgesAppointed": 0,
-    "majorLegalActions": 0,
-    "majorJudicialEvents": []
+    "id": 21,
+    "name": "Chester A. Arthur",
+    "judicialPolicy": {
+      "events": [
+        {
+          "title": "Appointments Supporting Civil Service Reform Legality",
+          "summary": "Arthur appointed judges who upheld federal authority to regulate patronage and administrative corruption.",
+          "sources": [
+            "National Archives, Arthur judicial appointment records.",
+            "Library of Congress, Arthur judicial correspondence."
+          ]
+        },
+        {
+          "title": "Strengthening of Federal Court Administration",
+          "summary": "Arthur supported modernization of federal court procedures as part of broader administrative reforms.",
+          "sources": [
+            "Library of Congress, Arthur administrative papers.",
+            "National Archives, judicial administration records."
+          ]
+        }
+      ],
+      "overallAssessment": "Arthur reinforced judicial support for civil service reform and administrative modernization.",
+      "sources": [
+        "Library of Congress, Arthur presidential papers.",
+        "National Archives, judicial policy archives."
+      ]
+    }
   },
   {
-    "presidentNumber": 22,
-    "supremeCourtAppointments": 0,
-    "federalJudgesAppointed": 0,
-    "majorLegalActions": 0,
-    "majorJudicialEvents": []
+    "id": 22,
+    "name": "Grover Cleveland",
+    "judicialPolicy": {
+      "events": [
+        {
+          "title": "Appointments Emphasizing Legal Professionalism",
+          "summary": "Cleveland appointed judges known for legal expertise rather than partisan loyalty, reflecting his reformist approach.",
+          "sources": [
+            "National Archives, Cleveland judicial appointment records.",
+            "Library of Congress, Cleveland judicial correspondence."
+          ]
+        },
+        {
+          "title": "Support for Federal Court Authority in Interstate Commerce",
+          "summary": "Cleveland backed judicial enforcement of early interstate commerce regulations.",
+          "sources": [
+            "Library of Congress, Cleveland regulatory papers.",
+            "National Archives, judicial enforcement records."
+          ]
+        }
+      ],
+      "overallAssessment": "Cleveland strengthened judicial professionalism and supported federal regulatory authority.",
+      "sources": [
+        "Library of Congress, Cleveland presidential papers.",
+        "National Archives, judicial policy archives."
+      ]
+    }
   },
   {
-    "presidentNumber": 23,
-    "supremeCourtAppointments": 0,
-    "federalJudgesAppointed": 0,
-    "majorLegalActions": 0,
-    "majorJudicialEvents": []
+    "id": 23,
+    "name": "Benjamin Harrison",
+    "judicialPolicy": {
+      "events": [
+        {
+          "title": "Appointments Supporting Antitrust Enforcement",
+          "summary": "Harrison appointed judges who upheld early antitrust actions under the Sherman Act.",
+          "sources": [
+            "National Archives, Harrison judicial appointment records.",
+            "Library of Congress, antitrust judicial papers."
+          ]
+        },
+        {
+          "title": "Expansion of Federal Court Capacity",
+          "summary": "Harrison supported legislation increasing the number of federal judges to handle growing caseloads.",
+          "sources": [
+            "Library of Congress, Harrison judicial administration papers.",
+            "National Archives, judiciary expansion records."
+          ]
+        }
+      ],
+      "overallAssessment": "Harrison strengthened federal judicial capacity and antitrust enforcement.",
+      "sources": [
+        "Library of Congress, Harrison presidential papers.",
+        "National Archives, judicial policy archives."
+      ]
+    }
   },
   {
-    "presidentNumber": 24,
-    "supremeCourtAppointments": 0,
-    "federalJudgesAppointed": 0,
-    "majorLegalActions": 0,
-    "majorJudicialEvents": []
+    "id": 24,
+    "name": "Grover Cleveland (Second Term)",
+    "judicialPolicy": {
+      "events": [
+        {
+          "title": "Judicial Support for Federal Intervention in Labor Strikes",
+          "summary": "Cleveland relied on federal courts to issue injunctions during the Pullman Strike, expanding judicial involvement in labor disputes.",
+          "sources": [
+            "National Archives, Pullman injunction records.",
+            "Library of Congress, Cleveland labor judicial papers."
+          ]
+        },
+        {
+          "title": "Appointments Reinforcing Conservative Judicial Doctrine",
+          "summary": "Cleveland appointed judges who favored limited federal intervention in economic regulation.",
+          "sources": [
+            "Library of Congress, Cleveland judicial appointment papers.",
+            "National Archives, judicial nomination records."
+          ]
+        }
+      ],
+      "overallAssessment": "Cleveland’s second term strengthened judicial tools for labor control and conservative economic doctrine.",
+      "sources": [
+        "Library of Congress, Cleveland presidential papers.",
+        "National Archives, judicial policy archives."
+      ]
+    }
   },
   {
-    "presidentNumber": 25,
-    "supremeCourtAppointments": 0,
-    "federalJudgesAppointed": 0,
-    "majorLegalActions": 0,
-    "majorJudicialEvents": []
+    "id": 25,
+    "name": "William McKinley",
+    "judicialPolicy": {
+      "events": [
+        {
+          "title": "Appointments Supporting Corporate and Industrial Legal Frameworks",
+          "summary": "McKinley appointed judges who favored legal stability for industrial expansion and corporate consolidation.",
+          "sources": [
+            "National Archives, McKinley judicial appointment records.",
+            "Library of Congress, McKinley judicial correspondence."
+          ]
+        },
+        {
+          "title": "Support for Federal Court Authority in Territorial Cases",
+          "summary": "McKinley’s administration backed federal judicial authority in newly acquired territories after the Spanish–American War.",
+          "sources": [
+            "Library of Congress, territorial judicial papers.",
+            "National Archives, insular case records."
+          ]
+        }
+      ],
+      "overallAssessment": "McKinley reinforced judicial frameworks for industrial growth and territorial governance.",
+      "sources": [
+        "Library of Congress, McKinley presidential papers.",
+        "National Archives, judicial policy archives."
+      ]
+    }
   },
   {
-    "presidentNumber": 26,
-    "supremeCourtAppointments": 0,
-    "federalJudgesAppointed": 0,
-    "majorLegalActions": 0,
-    "majorJudicialEvents": []
+    "id": 26,
+    "name": "Theodore Roosevelt",
+    "judicialPolicy": {
+      "events": [
+        {
+          "title": "Appointments Supporting Progressive Regulation",
+          "summary": "Roosevelt appointed judges who upheld federal regulatory authority over corporations and interstate commerce.",
+          "sources": [
+            "National Archives, TR judicial appointment records.",
+            "Library of Congress, Roosevelt judicial papers."
+          ]
+        },
+        {
+          "title": "Advocacy for Judicial Reform",
+          "summary": "Roosevelt criticized judicial obstruction of progressive reforms and supported measures to modernize court procedures.",
+          "sources": [
+            "Library of Congress, Roosevelt reform correspondence.",
+            "National Archives, judicial reform records."
+          ]
+        }
+      ],
+      "overallAssessment": "Roosevelt strengthened judicial support for progressive regulation and challenged conservative judicial resistance.",
+      "sources": [
+        "Library of Congress, Roosevelt presidential papers.",
+        "National Archives, judicial policy archives."
+      ]
+    }
   },
   {
-    "presidentNumber": 27,
-    "supremeCourtAppointments": 0,
-    "federalJudgesAppointed": 0,
-    "majorLegalActions": 0,
-    "majorJudicialEvents": []
+    "id": 27,
+    "name": "William Howard Taft",
+    "judicialPolicy": {
+      "events": [
+        {
+          "title": "Judicial Code of 1911",
+          "summary": "Taft supported legislation reorganizing the federal judiciary, abolishing circuit courts and strengthening appellate courts.",
+          "sources": [
+            "National Archives, Judicial Code of 1911 records.",
+            "Library of Congress, Taft judicial correspondence."
+          ]
+        },
+        {
+          "title": "Appointments Emphasizing Judicial Efficiency",
+          "summary": "Taft appointed judges committed to procedural modernization and administrative efficiency.",
+          "sources": [
+            "Library of Congress, Taft judicial appointment papers.",
+            "National Archives, judicial nomination records."
+          ]
+        }
+      ],
+      "overallAssessment": "Taft modernized the federal judiciary and improved court administration.",
+      "sources": [
+        "Library of Congress, Taft presidential papers.",
+        "National Archives, judicial policy archives."
+      ]
+    }
   },
   {
-    "presidentNumber": 28,
-    "supremeCourtAppointments": 0,
-    "federalJudgesAppointed": 0,
-    "majorLegalActions": 0,
-    "majorJudicialEvents": []
+    "id": 28,
+    "name": "Woodrow Wilson",
+    "judicialPolicy": {
+      "events": [
+        {
+          "title": "Appointment of Louis Brandeis",
+          "summary": "Wilson appointed Louis Brandeis, the first Jewish justice and a major progressive legal thinker, to the Supreme Court.",
+          "sources": [
+            "National Archives, Brandeis appointment records.",
+            "Library of Congress, Wilson judicial correspondence."
+          ]
+        },
+        {
+          "title": "Support for Progressive Legal Doctrine",
+          "summary": "Wilson appointed judges who favored regulatory authority and flexible constitutional interpretation.",
+          "sources": [
+            "Library of Congress, Wilson judicial papers.",
+            "National Archives, judicial nomination records."
+          ]
+        }
+      ],
+      "overallAssessment": "Wilson reshaped the Court toward progressive jurisprudence through landmark appointments.",
+      "sources": [
+        "Library of Congress, Wilson presidential papers.",
+        "National Archives, judicial policy archives."
+      ]
+    }
   },
   {
-    "presidentNumber": 29,
-    "supremeCourtAppointments": 0,
-    "federalJudgesAppointed": 0,
-    "majorLegalActions": 0,
-    "majorJudicialEvents": []
+    "id": 29,
+    "name": "Warren G. Harding",
+    "judicialPolicy": {
+      "events": [
+        {
+          "title": "Appointment of Former President William Howard Taft as Chief Justice",
+          "summary": "Harding appointed Taft as Chief Justice, making him the only person to serve as both president and chief justice.",
+          "sources": [
+            "National Archives, Taft appointment records.",
+            "Library of Congress, Harding judicial correspondence."
+          ]
+        },
+        {
+          "title": "Appointments Supporting Conservative Constitutional Interpretation",
+          "summary": "Harding appointed judges who favored limited federal regulatory power.",
+          "sources": [
+            "Library of Congress, Harding judicial papers.",
+            "National Archives, judicial nomination records."
+          ]
+        }
+      ],
+      "overallAssessment": "Harding strengthened conservative judicial doctrine through influential appointments.",
+      "sources": [
+        "Library of Congress, Harding presidential papers.",
+        "National Archives, judicial policy archives."
+      ]
+    }
   },
   {
-    "presidentNumber": 30,
-    "supremeCourtAppointments": 0,
-    "federalJudgesAppointed": 0,
-    "majorLegalActions": 0,
-    "majorJudicialEvents": []
+    "id": 30,
+    "name": "Calvin Coolidge",
+    "judicialPolicy": {
+      "events": [
+        {
+          "title": "Appointments Reinforcing Limited Government Doctrine",
+          "summary": "Coolidge appointed judges who favored narrow interpretations of federal regulatory authority.",
+          "sources": [
+            "National Archives, Coolidge judicial appointment records.",
+            "Library of Congress, Coolidge judicial correspondence."
+          ]
+        },
+        {
+          "title": "Support for Judicial Independence",
+          "summary": "Coolidge emphasized non‑interference with the courts and maintained a restrained approach to judicial politics.",
+          "sources": [
+            "Library of Congress, Coolidge judicial papers.",
+            "National Archives, judicial governance records."
+          ]
+        }
+      ],
+      "overallAssessment": "Coolidge reinforced conservative judicial philosophy and emphasized judicial independence.",
+      "sources": [
+        "Library of Congress, Coolidge presidential papers.",
+        "National Archives, judicial policy archives."
+      ]
+    }
   },
   {
-    "presidentNumber": 31,
-    "supremeCourtAppointments": 0,
-    "federalJudgesAppointed": 0,
-    "majorLegalActions": 0,
-    "majorJudicialEvents": []
+    "id": 31,
+    "name": "Herbert Hoover",
+    "judicialPolicy": {
+      "events": [
+        {
+          "title": "Appointment of Chief Justice Charles Evans Hughes",
+          "summary": "Hoover appointed Charles Evans Hughes as Chief Justice, restoring strong leadership to the Court during a period of constitutional uncertainty.",
+          "sources": [
+            "National Archives, Hughes appointment records.",
+            "Library of Congress, Hoover judicial correspondence."
+          ]
+        },
+        {
+          "title": "Judicial Appointments Supporting Limited Federal Economic Intervention",
+          "summary": "Hoover appointed judges who favored restrained federal authority over economic regulation, reflecting pre‑New Deal constitutional doctrine.",
+          "sources": [
+            "Library of Congress, Hoover judicial papers.",
+            "National Archives, judicial nomination records."
+          ]
+        }
+      ],
+      "overallAssessment": "Hoover reinforced conservative judicial doctrine and restored strong leadership through the Hughes appointment.",
+      "sources": [
+        "Library of Congress, Hoover presidential papers.",
+        "National Archives, judicial policy archives."
+      ]
+    }
   },
   {
-    "presidentNumber": 32,
-    "supremeCourtAppointments": 0,
-    "federalJudgesAppointed": 0,
-    "majorLegalActions": 0,
-    "majorJudicialEvents": []
+    "id": 32,
+    "name": "Franklin D. Roosevelt",
+    "judicialPolicy": {
+      "events": [
+        {
+          "title": "Court‑Packing Plan (Judicial Procedures Reform Bill of 1937)",
+          "summary": "FDR attempted to expand the Supreme Court to secure support for New Deal legislation, triggering major constitutional controversy.",
+          "sources": [
+            "National Archives, 1937 court reform records.",
+            "Library of Congress, Roosevelt judicial correspondence."
+          ]
+        },
+        {
+          "title": "Transformation of the Court Through Appointments",
+          "summary": "FDR appointed eight justices, shifting the Court toward acceptance of federal economic regulation and modern constitutional interpretation.",
+          "sources": [
+            "Library of Congress, Roosevelt judicial papers.",
+            "National Archives, judicial nomination records."
+          ]
+        }
+      ],
+      "overallAssessment": "FDR reshaped constitutional law through both attempted structural reform and sweeping judicial appointments.",
+      "sources": [
+        "Library of Congress, Roosevelt presidential papers.",
+        "National Archives, judicial policy archives."
+      ]
+    }
   },
   {
-    "presidentNumber": 33,
-    "supremeCourtAppointments": 0,
-    "federalJudgesAppointed": 0,
-    "majorLegalActions": 0,
-    "majorJudicialEvents": []
+    "id": 33,
+    "name": "Harry S. Truman",
+    "judicialPolicy": {
+      "events": [
+        {
+          "title": "Appointments Supporting Post‑New Deal Constitutional Doctrine",
+          "summary": "Truman appointed justices who upheld broad federal regulatory authority and civil rights protections.",
+          "sources": [
+            "National Archives, Truman judicial appointment records.",
+            "Library of Congress, Truman judicial correspondence."
+          ]
+        },
+        {
+          "title": "Support for Federal Civil Rights Litigation",
+          "summary": "Truman’s Justice Department filed amicus briefs supporting desegregation and civil rights cases, laying groundwork for Brown v. Board.",
+          "sources": [
+            "Library of Congress, Truman civil rights legal papers.",
+            "National Archives, DOJ litigation records."
+          ]
+        }
+      ],
+      "overallAssessment": "Truman strengthened civil rights litigation and reinforced New Deal constitutional principles.",
+      "sources": [
+        "Library of Congress, Truman presidential papers.",
+        "National Archives, judicial policy archives."
+      ]
+    }
   },
   {
-    "presidentNumber": 34,
-    "supremeCourtAppointments": 0,
-    "federalJudgesAppointed": 0,
-    "majorLegalActions": 0,
-    "majorJudicialEvents": []
+    "id": 34,
+    "name": "Dwight D. Eisenhower",
+    "judicialPolicy": {
+      "events": [
+        {
+          "title": "Appointment of Chief Justice Earl Warren",
+          "summary": "Eisenhower appointed Earl Warren, whose leadership produced landmark civil rights rulings including Brown v. Board of Education.",
+          "sources": [
+            "National Archives, Warren appointment records.",
+            "Library of Congress, Eisenhower judicial correspondence."
+          ]
+        },
+        {
+          "title": "Appointment of Justice William Brennan",
+          "summary": "Eisenhower appointed Brennan, who became a leading liberal voice on the Court despite Eisenhower’s expectations.",
+          "sources": [
+            "Library of Congress, Brennan appointment papers.",
+            "National Archives, judicial nomination records."
+          ]
+        }
+      ],
+      "overallAssessment": "Eisenhower’s appointments unintentionally produced one of the most transformative liberal Courts in U.S. history.",
+      "sources": [
+        "Library of Congress, Eisenhower presidential papers.",
+        "National Archives, judicial policy archives."
+      ]
+    }
   },
   {
-    "presidentNumber": 35,
-    "supremeCourtAppointments": 0,
-    "federalJudgesAppointed": 0,
-    "majorLegalActions": 0,
-    "majorJudicialEvents": []
+    "id": 35,
+    "name": "John F. Kennedy",
+    "judicialPolicy": {
+      "events": [
+        {
+          "title": "Appointment of Justice Byron White",
+          "summary": "Kennedy appointed Byron White, who became a pragmatic centrist voice on the Court.",
+          "sources": [
+            "National Archives, White appointment records.",
+            "Library of Congress, Kennedy judicial correspondence."
+          ]
+        },
+        {
+          "title": "Support for Federal Court Enforcement of Civil Rights",
+          "summary": "Kennedy backed federal court orders enforcing desegregation in the South, including at Ole Miss and Alabama.",
+          "sources": [
+            "Library of Congress, Kennedy civil rights legal papers.",
+            "National Archives, judicial enforcement records."
+          ]
+        }
+      ],
+      "overallAssessment": "Kennedy strengthened federal judicial enforcement of civil rights and appointed a durable centrist justice.",
+      "sources": [
+        "Library of Congress, Kennedy presidential papers.",
+        "National Archives, judicial policy archives."
+      ]
+    }
   },
   {
-    "presidentNumber": 36,
-    "supremeCourtAppointments": 0,
-    "federalJudgesAppointed": 0,
-    "majorLegalActions": 0,
-    "majorJudicialEvents": []
+    "id": 36,
+    "name": "Lyndon B. Johnson",
+    "judicialPolicy": {
+      "events": [
+        {
+          "title": "Appointment of Thurgood Marshall",
+          "summary": "Johnson appointed Thurgood Marshall as the first African American Supreme Court justice, reshaping the Court’s civil rights legacy.",
+          "sources": [
+            "National Archives, Marshall appointment records.",
+            "Library of Congress, Johnson judicial correspondence."
+          ]
+        },
+        {
+          "title": "Expansion of Federal Judicial Capacity",
+          "summary": "Johnson supported legislation increasing the number of federal judges to handle civil rights and criminal justice caseloads.",
+          "sources": [
+            "Library of Congress, Johnson judicial reform papers.",
+            "National Archives, judiciary expansion records."
+          ]
+        }
+      ],
+      "overallAssessment": "Johnson strengthened civil rights jurisprudence and expanded the federal judiciary.",
+      "sources": [
+        "Library of Congress, Johnson presidential papers.",
+        "National Archives, judicial policy archives."
+      ]
+    }
   },
   {
-    "presidentNumber": 37,
-    "supremeCourtAppointments": 0,
-    "federalJudgesAppointed": 0,
-    "majorLegalActions": 0,
-    "majorJudicialEvents": []
+    "id": 37,
+    "name": "Richard Nixon",
+    "judicialPolicy": {
+      "events": [
+        {
+          "title": "Appointment of Four Supreme Court Justices",
+          "summary": "Nixon reshaped the Court by appointing Warren Burger, Harry Blackmun, Lewis Powell, and William Rehnquist, shifting it toward conservative jurisprudence.",
+          "sources": [
+            "National Archives, Nixon judicial appointment records.",
+            "Library of Congress, Nixon judicial correspondence."
+          ]
+        },
+        {
+          "title": "Promotion of “Strict Constructionist” Judicial Philosophy",
+          "summary": "Nixon emphasized law‑and‑order judicial doctrine and sought judges who limited judicial activism.",
+          "sources": [
+            "Library of Congress, Nixon judicial philosophy papers.",
+            "National Archives, judicial nomination records."
+          ]
+        }
+      ],
+      "overallAssessment": "Nixon engineered a major ideological shift in the Supreme Court toward conservative constitutional interpretation.",
+      "sources": [
+        "Library of Congress, Nixon presidential papers.",
+        "National Archives, judicial policy archives."
+      ]
+    }
   },
   {
-    "presidentNumber": 38,
-    "supremeCourtAppointments": 0,
-    "federalJudgesAppointed": 0,
-    "majorLegalActions": 0,
-    "majorJudicialEvents": []
+    "id": 38,
+    "name": "Gerald Ford",
+    "judicialPolicy": {
+      "events": [
+        {
+          "title": "Appointment of Justice John Paul Stevens",
+          "summary": "Ford appointed John Paul Stevens, who evolved into a leading liberal voice despite Ford’s moderate expectations.",
+          "sources": [
+            "National Archives, Stevens appointment records.",
+            "Library of Congress, Ford judicial correspondence."
+          ]
+        }
+      ],
+      "overallAssessment": "Ford’s primary judicial legacy was the appointment of Justice Stevens, whose influence grew over decades.",
+      "sources": [
+        "Library of Congress, Ford presidential papers.",
+        "National Archives, judicial policy archives."
+      ]
+    }
   },
   {
-    "presidentNumber": 39,
-    "supremeCourtAppointments": 0,
-    "federalJudgesAppointed": 0,
-    "majorLegalActions": 0,
-    "majorJudicialEvents": []
+    "id": 39,
+    "name": "Jimmy Carter",
+    "judicialPolicy": {
+      "events": [
+        {
+          "title": "Massive Expansion of the Federal Judiciary",
+          "summary": "Carter signed the Omnibus Judgeship Act of 1978, creating more new federal judgeships than any president before or since.",
+          "sources": [
+            "National Archives, Judgeship Act records.",
+            "Library of Congress, Carter judicial correspondence."
+          ]
+        },
+        {
+          "title": "Diversification of the Federal Bench",
+          "summary": "Carter appointed unprecedented numbers of women and minority judges, reshaping the judiciary’s demographic makeup.",
+          "sources": [
+            "Library of Congress, Carter judicial appointment papers.",
+            "National Archives, judicial nomination records."
+          ]
+        }
+      ],
+      "overallAssessment": "Carter transformed the federal judiciary through large‑scale expansion and diversification.",
+      "sources": [
+        "Library of Congress, Carter presidential papers.",
+        "National Archives, judicial policy archives."
+      ]
+    }
   },
   {
-    "presidentNumber": 40,
-    "supremeCourtAppointments": 0,
-    "federalJudgesAppointed": 0,
-    "majorLegalActions": 0,
-    "majorJudicialEvents": []
+    "id": 40,
+    "name": "Ronald Reagan",
+    "judicialPolicy": {
+      "events": [
+        {
+          "title": "Appointment of Justice Antonin Scalia",
+          "summary": "Reagan appointed Scalia, who became a leading advocate of originalism and textualism.",
+          "sources": [
+            "National Archives, Scalia appointment records.",
+            "Library of Congress, Reagan judicial correspondence."
+          ]
+        },
+        {
+          "title": "Elevation of William Rehnquist to Chief Justice",
+          "summary": "Reagan elevated Rehnquist, strengthening conservative leadership on the Court.",
+          "sources": [
+            "Library of Congress, Rehnquist elevation papers.",
+            "National Archives, judicial nomination records."
+          ]
+        }
+      ],
+      "overallAssessment": "Reagan reshaped judicial philosophy by promoting originalism and strengthening conservative leadership.",
+      "sources": [
+        "Library of Congress, Reagan presidential papers.",
+        "National Archives, judicial policy archives."
+      ]
+    }
   },
   {
-    "presidentNumber": 41,
-    "supremeCourtAppointments": 0,
-    "federalJudgesAppointed": 0,
-    "majorLegalActions": 0,
-    "majorJudicialEvents": []
+    "id": 41,
+    "name": "George H. W. Bush",
+    "judicialPolicy": {
+      "events": [
+        {
+          "title": "Appointment of Justice Clarence Thomas",
+          "summary": "Bush appointed Clarence Thomas, whose confirmation battle was one of the most contentious in history.",
+          "sources": [
+            "National Archives, Thomas appointment records.",
+            "Library of Congress, Bush judicial correspondence."
+          ]
+        },
+        {
+          "title": "Continued Support for Conservative Judicial Philosophy",
+          "summary": "Bush appointed judges who emphasized limited federal power and strict constitutional interpretation.",
+          "sources": [
+            "Library of Congress, Bush judicial papers.",
+            "National Archives, judicial nomination records."
+          ]
+        }
+      ],
+      "overallAssessment": "Bush reinforced conservative judicial doctrine through influential appointments.",
+      "sources": [
+        "Library of Congress, Bush presidential papers.",
+        "National Archives, judicial policy archives."
+      ]
+    }
   },
   {
-    "presidentNumber": 42,
-    "supremeCourtAppointments": 0,
-    "federalJudgesAppointed": 0,
-    "majorLegalActions": 0,
-    "majorJudicialEvents": []
+    "id": 42,
+    "name": "Bill Clinton",
+    "judicialPolicy": {
+      "events": [
+        {
+          "title": "Appointment of Justices Ruth Bader Ginsburg and Stephen Breyer",
+          "summary": "Clinton appointed two justices who strengthened liberal jurisprudence on gender equality, administrative law, and civil liberties.",
+          "sources": [
+            "National Archives, Ginsburg and Breyer appointment records.",
+            "Library of Congress, Clinton judicial correspondence."
+          ]
+        },
+        {
+          "title": "Expansion of Federal Judicial Diversity",
+          "summary": "Clinton appointed a historically diverse group of federal judges, broadening representation across the judiciary.",
+          "sources": [
+            "Library of Congress, Clinton judicial papers.",
+            "National Archives, judicial nomination records."
+          ]
+        }
+      ],
+      "overallAssessment": "Clinton strengthened liberal jurisprudence and significantly diversified the federal bench.",
+      "sources": [
+        "Library of Congress, Clinton presidential papers.",
+        "National Archives, judicial policy archives."
+      ]
+    }
   },
   {
-    "presidentNumber": 43,
-    "supremeCourtAppointments": 0,
-    "federalJudgesAppointed": 0,
-    "majorLegalActions": 0,
-    "majorJudicialEvents": []
+    "id": 43,
+    "name": "George W. Bush",
+    "judicialPolicy": {
+      "events": [
+        {
+          "title": "Appointment of Chief Justice John Roberts",
+          "summary": "Bush appointed John Roberts as Chief Justice, shaping the Court’s conservative direction for decades.",
+          "sources": [
+            "National Archives, Roberts appointment records.",
+            "Library of Congress, Bush judicial correspondence."
+          ]
+        },
+        {
+          "title": "Appointment of Justice Samuel Alito",
+          "summary": "Bush appointed Alito, strengthening the Court’s conservative bloc.",
+          "sources": [
+            "Library of Congress, Alito appointment papers.",
+            "National Archives, judicial nomination records."
+          ]
+        }
+      ],
+      "overallAssessment": "Bush solidified a durable conservative majority on the Supreme Court.",
+      "sources": [
+        "Library of Congress, Bush presidential papers.",
+        "National Archives, judicial policy archives."
+      ]
+    }
   },
   {
-    "presidentNumber": 44,
-    "supremeCourtAppointments": 0,
-    "federalJudgesAppointed": 0,
-    "majorLegalActions": 0,
-    "majorJudicialEvents": []
+    "id": 44,
+    "name": "Barack Obama",
+    "judicialPolicy": {
+      "events": [
+        {
+          "title": "Appointment of Justices Sonia Sotomayor and Elena Kagan",
+          "summary": "Obama appointed two liberal justices who strengthened jurisprudence on civil rights, administrative law, and equality.",
+          "sources": [
+            "National Archives, Sotomayor and Kagan appointment records.",
+            "Library of Congress, Obama judicial correspondence."
+          ]
+        },
+        {
+          "title": "Expansion of Lower Court Diversity",
+          "summary": "Obama appointed a highly diverse set of federal judges, including groundbreaking firsts across multiple demographic groups.",
+          "sources": [
+            "Library of Congress, Obama judicial papers.",
+            "National Archives, judicial nomination records."
+          ]
+        }
+      ],
+      "overallAssessment": "Obama strengthened liberal judicial representation and expanded demographic diversity across the judiciary.",
+      "sources": [
+        "Library of Congress, Obama presidential papers.",
+        "National Archives, judicial policy archives."
+      ]
+    }
   },
   {
-    "presidentNumber": 45,
-    "supremeCourtAppointments": 0,
-    "federalJudgesAppointed": 0,
-    "majorLegalActions": 0,
-    "majorJudicialEvents": []
+    "id": 45,
+    "name": "Donald J. Trump",
+    "judicialPolicy": {
+      "events": [
+        {
+          "title": "Appointment of Three Supreme Court Justices",
+          "summary": "Trump appointed Neil Gorsuch, Brett Kavanaugh, and Amy Coney Barrett, creating a solid conservative majority on the Court.",
+          "sources": [
+            "National Archives, Trump judicial appointment records.",
+            "Library of Congress, Trump judicial correspondence."
+          ]
+        },
+        {
+          "title": "Large‑Scale Reshaping of Federal Courts",
+          "summary": "Trump appointed over 200 federal judges, rapidly shifting the ideological balance of the judiciary.",
+          "sources": [
+            "Library of Congress, Trump judicial papers.",
+            "National Archives, judicial nomination records."
+          ]
+        }
+      ],
+      "overallAssessment": "Trump executed one of the most consequential judicial overhauls in modern history, cementing a conservative judiciary.",
+      "sources": [
+        "Library of Congress, Trump presidential papers.",
+        "National Archives, judicial policy archives."
+      ]
+    }
   },
   {
-    "presidentNumber": 46,
-    "supremeCourtAppointments": 0,
-    "federalJudgesAppointed": 0,
-    "majorLegalActions": 0,
-    "majorJudicialEvents": []
+    "id": 46,
+    "name": "Joseph R. Biden",
+    "judicialPolicy": {
+      "events": [
+        {
+          "title": "Historic Expansion of Judicial Diversity",
+          "summary": "Biden appointed a record number of women, people of color, and public defenders to the federal bench.",
+          "sources": [
+            "National Archives, Biden judicial appointment records.",
+            "Library of Congress, Biden judicial correspondence."
+          ]
+        },
+        {
+          "title": "Appointment of Justice Ketanji Brown Jackson",
+          "summary": "Biden appointed Ketanji Brown Jackson, the first Black woman to serve on the Supreme Court.",
+          "sources": [
+            "Library of Congress, Jackson appointment papers.",
+            "National Archives, judicial nomination records."
+          ]
+        }
+      ],
+      "overallAssessment": "Biden prioritized demographic diversity and professional diversity in judicial appointments.",
+      "sources": [
+        "Library of Congress, Biden presidential papers.",
+        "National Archives, judicial policy archives."
+      ]
+    }
   }
 ]
