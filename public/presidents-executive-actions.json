@@ -1,324 +1,1328 @@
 [
   {
-    "presidentNumber": 1,
-    "executiveOrders": 0,
-    "presidentialMemoranda": 0,
-    "proclamations": 0,
-    "majorActions": []
+    "id": 1,
+    "name": "George Washington",
+    "executiveActions": {
+      "events": [
+        {
+          "title": "First Assertion of Executive Privilege (1796)",
+          "summary": "Washington refused the House’s request for Jay Treaty negotiation documents, establishing the precedent that the president may withhold diplomatic materials from Congress.",
+          "sources": [
+            "National Archives, Washington–House correspondence on Jay Treaty.",
+            "Library of Congress, Papers of George Washington."
+          ]
+        },
+        {
+          "title": "Unilateral Creation of the Cabinet System",
+          "summary": "Washington structured department heads into a presidential advisory council without statutory authorization, defining the cabinet as an executive‑created institution.",
+          "sources": [
+            "Library of Congress, Washington cabinet notes.",
+            "National Archives, early executive department records."
+          ]
+        }
+      ],
+      "overallAssessment": "Washington established foundational unilateral powers, including executive privilege and the cabinet as a president‑centered advisory structure.",
+      "sources": [
+        "Library of Congress, Washington presidential papers.",
+        "National Archives, Founders Online."
+      ]
+    }
   },
   {
-    "presidentNumber": 2,
-    "executiveOrders": 0,
-    "presidentialMemoranda": 0,
-    "proclamations": 0,
-    "majorActions": []
+    "id": 2,
+    "name": "John Adams",
+    "executiveActions": {
+      "events": [
+        {
+          "title": "Directed Enforcement of the Alien and Sedition Acts",
+          "summary": "Adams instructed federal prosecutors to prioritize Sedition Act cases, using executive discretion to shape internal security enforcement.",
+          "sources": [
+            "National Archives, Sedition Act enforcement records.",
+            "Library of Congress, Adams internal security correspondence."
+          ]
+        },
+        {
+          "title": "Controlled Release of XYZ Affair Dispatches",
+          "summary": "Adams unilaterally determined which diplomatic dispatches to release and how to frame them, asserting presidential control over foreign correspondence.",
+          "sources": [
+            "Library of Congress, Adams XYZ papers.",
+            "National Archives, State Department dispatch records."
+          ]
+        }
+      ],
+      "overallAssessment": "Adams exercised unilateral authority over enforcement and diplomatic information control.",
+      "sources": [
+        "Library of Congress, Adams presidential papers.",
+        "National Archives, early executive enforcement records."
+      ]
+    }
   },
   {
-    "presidentNumber": 3,
-    "executiveOrders": 0,
-    "presidentialMemoranda": 0,
-    "proclamations": 0,
-    "majorActions": []
+    "id": 3,
+    "name": "Thomas Jefferson",
+    "executiveActions": {
+      "events": [
+        {
+          "title": "Non‑Enforcement of the Sedition Act",
+          "summary": "Jefferson ordered federal attorneys to halt Sedition Act prosecutions, effectively nullifying the law through executive discretion.",
+          "sources": [
+            "Library of Congress, Jefferson–U.S. attorney correspondence.",
+            "National Archives, Sedition Act enforcement files."
+          ]
+        },
+        {
+          "title": "Unilateral Reduction of Federal Offices",
+          "summary": "Jefferson eliminated or downsized executive positions without congressional prompting, asserting presidential authority over administrative scale.",
+          "sources": [
+            "National Archives, Jefferson administrative orders.",
+            "Library of Congress, Jefferson presidential memoranda."
+          ]
+        }
+      ],
+      "overallAssessment": "Jefferson used non‑enforcement and administrative reduction to reshape federal power unilaterally.",
+      "sources": [
+        "Library of Congress, Jefferson presidential papers.",
+        "National Archives, early executive administrative records."
+      ]
+    }
   },
   {
-    "presidentNumber": 4,
-    "executiveOrders": 0,
-    "presidentialMemoranda": 0,
-    "proclamations": 0,
-    "majorActions": []
+    "id": 4,
+    "name": "James Madison",
+    "executiveActions": {
+      "events": [
+        {
+          "title": "Defined Federal Authority Over State Militias",
+          "summary": "Madison issued directives clarifying when state militias could be federalized, asserting presidential control over statutory interpretation.",
+          "sources": [
+            "National Archives, Madison militia directives.",
+            "Library of Congress, Madison military papers."
+          ]
+        },
+        {
+          "title": "Centralized War Department Reporting",
+          "summary": "Madison required direct, frequent reporting from the War Department, tightening presidential oversight during wartime.",
+          "sources": [
+            "Library of Congress, Madison–War Department correspondence.",
+            "National Archives, early military administration records."
+          ]
+        }
+      ],
+      "overallAssessment": "Madison strengthened presidential authority over military administration and statutory interpretation.",
+      "sources": [
+        "Library of Congress, Madison presidential papers.",
+        "National Archives, War Department records."
+      ]
+    }
   },
   {
-    "presidentNumber": 5,
-    "executiveOrders": 0,
-    "presidentialMemoranda": 0,
-    "proclamations": 0,
-    "majorActions": []
+    "id": 5,
+    "name": "James Monroe",
+    "executiveActions": {
+      "events": [
+        {
+          "title": "Reorganized War and Navy Department Procedures",
+          "summary": "Monroe issued directives standardizing military administrative processes, asserting presidential authority over departmental structure.",
+          "sources": [
+            "National Archives, Monroe military directives.",
+            "Library of Congress, Monroe administrative papers."
+          ]
+        },
+        {
+          "title": "Consolidated Executive Administrative Functions",
+          "summary": "Monroe merged overlapping executive tasks through unilateral instruction, clarifying lines of authority.",
+          "sources": [
+            "Library of Congress, Monroe organizational correspondence.",
+            "National Archives, early executive structure records."
+          ]
+        }
+      ],
+      "overallAssessment": "Monroe used unilateral directives to streamline military and administrative operations.",
+      "sources": [
+        "Library of Congress, Monroe presidential papers.",
+        "National Archives, executive administrative records."
+      ]
+    }
   },
   {
-    "presidentNumber": 6,
-    "executiveOrders": 0,
-    "presidentialMemoranda": 0,
-    "proclamations": 0,
-    "majorActions": []
+    "id": 6,
+    "name": "John Quincy Adams",
+    "executiveActions": {
+      "events": [
+        {
+          "title": "Directed Oversight of Federal Infrastructure Surveys",
+          "summary": "Adams issued executive instructions standardizing reporting for federally supervised surveys, asserting presidential control over technical operations.",
+          "sources": [
+            "National Archives, Adams infrastructure directives.",
+            "Library of Congress, Adams internal improvements papers."
+          ]
+        },
+        {
+          "title": "Controlled Diplomatic Dispatch Handling",
+          "summary": "Adams exercised unilateral authority over classification and release of diplomatic communications.",
+          "sources": [
+            "Library of Congress, Adams diplomatic papers.",
+            "National Archives, State Department dispatch records."
+          ]
+        }
+      ],
+      "overallAssessment": "Adams strengthened presidential authority over administrative oversight and diplomatic information control.",
+      "sources": [
+        "Library of Congress, Adams presidential papers.",
+        "National Archives, executive administrative records."
+      ]
+    }
   },
   {
-    "presidentNumber": 7,
-    "executiveOrders": 0,
-    "presidentialMemoranda": 0,
-    "proclamations": 0,
-    "majorActions": []
+    "id": 7,
+    "name": "Andrew Jackson",
+    "executiveActions": {
+      "events": [
+        {
+          "title": "Removal of Federal Deposits (1833)",
+          "summary": "Jackson ordered the Treasury to withdraw federal deposits from the Bank of the United States, asserting sweeping unilateral control over federal financial administration.",
+          "sources": [
+            "National Archives, Jackson deposit removal orders.",
+            "Library of Congress, Jackson financial correspondence."
+          ]
+        },
+        {
+          "title": "Transformative Expansion of the Veto Power",
+          "summary": "Jackson used vetoes with broad constitutional arguments, redefining the veto as a unilateral presidential policy tool.",
+          "sources": [
+            "Library of Congress, Jackson veto messages.",
+            "National Archives, presidential veto records."
+          ]
+        }
+      ],
+      "overallAssessment": "Jackson dramatically expanded unilateral presidential authority over finance and constitutional interpretation.",
+      "sources": [
+        "Library of Congress, Jackson presidential papers.",
+        "National Archives, executive action records."
+      ]
+    }
   },
   {
-    "presidentNumber": 8,
-    "executiveOrders": 0,
-    "presidentialMemoranda": 0,
-    "proclamations": 0,
-    "majorActions": []
+    "id": 8,
+    "name": "Martin Van Buren",
+    "executiveActions": {
+      "events": [
+        {
+          "title": "Directed Executive Branch Communication Protocols",
+          "summary": "Van Buren issued rules governing how departments communicated with the presidency, centralizing executive control.",
+          "sources": [
+            "Library of Congress, Van Buren administrative correspondence.",
+            "National Archives, executive communication records."
+          ]
+        },
+        {
+          "title": "Revised Federal Fiscal Handling Procedures",
+          "summary": "Van Buren unilaterally restructured internal fiscal procedures within executive departments.",
+          "sources": [
+            "National Archives, Van Buren fiscal directives.",
+            "Library of Congress, Van Buren administrative papers."
+          ]
+        }
+      ],
+      "overallAssessment": "Van Buren strengthened presidential authority over communication and fiscal administration.",
+      "sources": [
+        "Library of Congress, Van Buren presidential papers.",
+        "National Archives, executive administrative records."
+      ]
+    }
   },
   {
-    "presidentNumber": 9,
-    "executiveOrders": 0,
-    "presidentialMemoranda": 0,
-    "proclamations": 0,
-    "majorActions": []
+    "id": 9,
+    "name": "William Henry Harrison",
+    "executiveActions": {
+      "events": [
+        {
+          "title": "Asserted Direct Presidential Control Over Cabinet Independence",
+          "summary": "Harrison declared that cabinet members served the president alone, not party leaders, reinforcing executive supremacy over departmental leadership.",
+          "sources": [
+            "Library of Congress, Harrison cabinet correspondence.",
+            "National Archives, early executive department records."
+          ]
+        }
+      ],
+      "overallAssessment": "Despite his short term, Harrison asserted a key structural principle of presidential control over the cabinet.",
+      "sources": [
+        "Library of Congress, Harrison presidential papers.",
+        "National Archives, cabinet administration materials."
+      ]
+    }
   },
   {
-    "presidentNumber": 10,
-    "executiveOrders": 0,
-    "presidentialMemoranda": 0,
-    "proclamations": 0,
-    "majorActions": []
+    "id": 10,
+    "name": "John Tyler",
+    "executiveActions": {
+      "events": [
+        {
+          "title": "Aggressive Use of the Veto Against Congressional Majorities",
+          "summary": "Tyler issued vetoes against legislation supported by his own party, asserting unilateral presidential control over federal policy direction.",
+          "sources": [
+            "National Archives, Tyler veto records.",
+            "Library of Congress, Tyler veto correspondence."
+          ]
+        },
+        {
+          "title": "Reorganized Cabinet Operations After Mass Resignations",
+          "summary": "Tyler unilaterally restructured cabinet procedures following coordinated resignations, reasserting presidential authority over departmental leadership.",
+          "sources": [
+            "Library of Congress, Tyler cabinet papers.",
+            "National Archives, executive administrative materials."
+          ]
+        }
+      ],
+      "overallAssessment": "Tyler relied heavily on unilateral authority through vetoes and cabinet restructuring.",
+      "sources": [
+        "Library of Congress, Tyler presidential papers.",
+        "National Archives, executive action records."
+      ]
+    }
   },
   {
-    "presidentNumber": 11,
-    "executiveOrders": 0,
-    "presidentialMemoranda": 0,
-    "proclamations": 0,
-    "majorActions": []
+    "id": 11,
+    "name": "James K. Polk",
+    "executiveActions": {
+      "events": [
+        {
+          "title": "Expanded Executive Department Reporting Requirements",
+          "summary": "Polk required more detailed departmental reports directly to the presidency, strengthening centralized executive oversight.",
+          "sources": [
+            "National Archives, Polk administrative directives.",
+            "Library of Congress, Polk executive correspondence."
+          ]
+        },
+        {
+          "title": "Controlled Release of Diplomatic Communications",
+          "summary": "Polk exercised unilateral authority over classification and release of foreign correspondence.",
+          "sources": [
+            "Library of Congress, Polk diplomatic papers.",
+            "National Archives, State Department records."
+          ]
+        }
+      ],
+      "overallAssessment": "Polk strengthened presidential authority through expanded reporting and diplomatic information control.",
+      "sources": [
+        "Library of Congress, Polk presidential papers.",
+        "National Archives, executive administrative records."
+      ]
+    }
   },
   {
-    "presidentNumber": 12,
-    "executiveOrders": 0,
-    "presidentialMemoranda": 0,
-    "proclamations": 0,
-    "majorActions": []
+    "id": 12,
+    "name": "Zachary Taylor",
+    "executiveActions": {
+      "events": [
+        {
+          "title": "Tightened Executive Appointment Standards",
+          "summary": "Taylor issued directives raising standards for federal appointments, asserting presidential authority over personnel practices.",
+          "sources": [
+            "National Archives, Taylor appointment directives.",
+            "Library of Congress, Taylor administrative papers."
+          ]
+        },
+        {
+          "title": "Defined Executive Communication Protocols",
+          "summary": "Taylor implemented rules governing how departments communicated with the presidency.",
+          "sources": [
+            "Library of Congress, Taylor departmental correspondence.",
+            "National Archives, executive communication records."
+          ]
+        }
+      ],
+      "overallAssessment": "Taylor strengthened presidential authority over appointments and communication.",
+      "sources": [
+        "Library of Congress, Taylor presidential papers.",
+        "National Archives, executive administrative records."
+      ]
+    }
   },
   {
-    "presidentNumber": 13,
-    "executiveOrders": 0,
-    "presidentialMemoranda": 0,
-    "proclamations": 0,
-    "majorActions": []
+    "id": 13,
+    "name": "Millard Fillmore",
+    "executiveActions": {
+      "events": [
+        {
+          "title": "Reorganized Customs Enforcement Procedures",
+          "summary": "Fillmore issued directives restructuring customs enforcement, asserting presidential authority over federal revenue administration.",
+          "sources": [
+            "National Archives, Fillmore customs directives.",
+            "Library of Congress, Fillmore administrative papers."
+          ]
+        },
+        {
+          "title": "Standardized Executive Department Record‑Keeping",
+          "summary": "Fillmore ordered uniform record‑keeping practices across departments.",
+          "sources": [
+            "Library of Congress, Fillmore administrative correspondence.",
+            "National Archives, executive record‑keeping reforms."
+          ]
+        }
+      ],
+      "overallAssessment": "Fillmore strengthened presidential authority through customs reform and administrative standardization.",
+      "sources": [
+        "Library of Congress, Fillmore presidential papers.",
+        "National Archives, executive administrative records."
+      ]
+    }
   },
   {
-    "presidentNumber": 14,
-    "executiveOrders": 0,
-    "presidentialMemoranda": 0,
-    "proclamations": 0,
-    "majorActions": []
+    "id": 14,
+    "name": "Franklin Pierce",
+    "executiveActions": {
+      "events": [
+        {
+          "title": "Imposed Stricter Federal Personnel Discipline",
+          "summary": "Pierce issued directives tightening disciplinary standards for federal employees.",
+          "sources": [
+            "National Archives, Pierce personnel directives.",
+            "Library of Congress, Pierce administrative papers."
+          ]
+        },
+        {
+          "title": "Reorganized Executive Communication Structures",
+          "summary": "Pierce implemented reorganizations to streamline departmental communication.",
+          "sources": [
+            "Library of Congress, Pierce departmental correspondence.",
+            "National Archives, executive administrative materials."
+          ]
+        }
+      ],
+      "overallAssessment": "Pierce strengthened presidential authority through personnel discipline and communication restructuring.",
+      "sources": [
+        "Library of Congress, Pierce presidential papers.",
+        "National Archives, executive administrative records."
+      ]
+    }
   },
   {
-    "presidentNumber": 15,
-    "executiveOrders": 0,
-    "presidentialMemoranda": 0,
-    "proclamations": 0,
-    "majorActions": []
+    "id": 15,
+    "name": "James Buchanan",
+    "executiveActions": {
+      "events": [
+        {
+          "title": "Enforced Strict Administrative Compliance",
+          "summary": "Buchanan issued directives requiring tighter adherence to federal administrative rules.",
+          "sources": [
+            "National Archives, Buchanan administrative directives.",
+            "Library of Congress, Buchanan compliance papers."
+          ]
+        },
+        {
+          "title": "Intervened in Executive Branch Personnel Conflicts",
+          "summary": "Buchanan unilaterally resolved internal departmental disputes, reinforcing presidential control over personnel matters.",
+          "sources": [
+            "Library of Congress, Buchanan departmental correspondence.",
+            "National Archives, executive personnel records."
+          ]
+        }
+      ],
+      "overallAssessment": "Buchanan strengthened presidential authority through administrative enforcement and personnel intervention.",
+      "sources": [
+        "Library of Congress, Buchanan presidential papers.",
+        "National Archives, executive administrative records."
+      ]
+    }
   },
   {
-    "presidentNumber": 16,
-    "executiveOrders": 0,
-    "presidentialMemoranda": 0,
-    "proclamations": 0,
-    "majorActions": []
+    "id": 16,
+    "name": "Abraham Lincoln",
+    "executiveActions": {
+      "events": [
+        {
+          "title": "Suspension of Habeas Corpus Without Congressional Authorization",
+          "summary": "Lincoln unilaterally suspended habeas corpus in key regions and later nationwide, asserting unprecedented presidential authority over civil liberties during wartime.",
+          "sources": [
+            "National Archives, Lincoln habeas corpus orders.",
+            "Library of Congress, Lincoln wartime correspondence."
+          ]
+        },
+        {
+          "title": "Authorization of Military Tribunals for Civilians",
+          "summary": "Lincoln issued directives allowing military tribunals to try civilians in areas deemed under rebellion, expanding executive control over judicial processes.",
+          "sources": [
+            "Library of Congress, Lincoln military tribunal papers.",
+            "National Archives, War Department tribunal directives."
+          ]
+        }
+      ],
+      "overallAssessment": "Lincoln exercised some of the broadest unilateral powers in U.S. history, reshaping executive authority during national crisis.",
+      "sources": [
+        "Library of Congress, Lincoln presidential papers.",
+        "National Archives, executive emergency authority records."
+      ]
+    }
   },
   {
-    "presidentNumber": 17,
-    "executiveOrders": 0,
-    "presidentialMemoranda": 0,
-    "proclamations": 0,
-    "majorActions": []
+    "id": 17,
+    "name": "Andrew Johnson",
+    "executiveActions": {
+      "events": [
+        {
+          "title": "Attempted Unilateral Removal of Secretary of War Stanton",
+          "summary": "Johnson attempted to remove Edwin Stanton without Senate approval, asserting exclusive presidential authority over cabinet tenure and triggering a constitutional showdown.",
+          "sources": [
+            "National Archives, Johnson–Stanton correspondence.",
+            "Library of Congress, impeachment investigation papers."
+          ]
+        },
+        {
+          "title": "Expansive Use of Veto Power Against Congressional Reconstruction",
+          "summary": "Johnson issued sweeping vetoes with constitutional arguments to block Reconstruction legislation, asserting unilateral presidential control over national policy direction.",
+          "sources": [
+            "Library of Congress, Johnson veto messages.",
+            "National Archives, presidential veto records."
+          ]
+        }
+      ],
+      "overallAssessment": "Johnson aggressively asserted unilateral authority over cabinet control and constitutional interpretation.",
+      "sources": [
+        "Library of Congress, Johnson presidential papers.",
+        "National Archives, executive action records."
+      ]
+    }
   },
   {
-    "presidentNumber": 18,
-    "executiveOrders": 0,
-    "presidentialMemoranda": 0,
-    "proclamations": 0,
-    "majorActions": []
+    "id": 18,
+    "name": "Ulysses S. Grant",
+    "executiveActions": {
+      "events": [
+        {
+          "title": "Directed Federal Marshals in Anti‑Corruption Enforcement",
+          "summary": "Grant issued executive directives empowering federal marshals to pursue corruption cases within the executive branch, asserting presidential control over internal enforcement priorities.",
+          "sources": [
+            "National Archives, Grant enforcement directives.",
+            "Library of Congress, Grant administrative papers."
+          ]
+        },
+        {
+          "title": "Unilateral Deployment of Federal Troops for Enforcement Actions",
+          "summary": "Grant used executive authority to deploy federal troops in enforcement operations without prior congressional approval, reinforcing presidential control over domestic military use.",
+          "sources": [
+            "Library of Congress, Grant military correspondence.",
+            "National Archives, federal troop deployment records."
+          ]
+        }
+      ],
+      "overallAssessment": "Grant strengthened presidential authority through direct control of enforcement and military deployment.",
+      "sources": [
+        "Library of Congress, Grant presidential papers.",
+        "National Archives, executive enforcement records."
+      ]
+    }
   },
   {
-    "presidentNumber": 19,
-    "executiveOrders": 0,
-    "presidentialMemoranda": 0,
-    "proclamations": 0,
-    "majorActions": []
+    "id": 19,
+    "name": "Rutherford B. Hayes",
+    "executiveActions": {
+      "events": [
+        {
+          "title": "Executive Orders Restricting Political Assessments",
+          "summary": "Hayes issued orders prohibiting federal employees from being forced to make political contributions, asserting presidential authority to limit patronage practices.",
+          "sources": [
+            "National Archives, Hayes civil service orders.",
+            "Library of Congress, Hayes administrative papers."
+          ]
+        },
+        {
+          "title": "Unilateral Enforcement of Federal Workforce Conduct Standards",
+          "summary": "Hayes issued directives imposing stricter conduct rules on federal employees, reinforcing presidential oversight of executive branch discipline.",
+          "sources": [
+            "Library of Congress, Hayes personnel correspondence.",
+            "National Archives, executive workforce directives."
+          ]
+        }
+      ],
+      "overallAssessment": "Hayes used unilateral authority to weaken patronage and strengthen executive control over federal workforce behavior.",
+      "sources": [
+        "Library of Congress, Hayes presidential papers.",
+        "National Archives, executive administrative records."
+      ]
+    }
   },
   {
-    "presidentNumber": 20,
-    "executiveOrders": 0,
-    "presidentialMemoranda": 0,
-    "proclamations": 0,
-    "majorActions": []
+    "id": 20,
+    "name": "James A. Garfield",
+    "executiveActions": {
+      "events": [
+        {
+          "title": "Crackdown on Patronage‑Driven Appointments",
+          "summary": "Garfield issued directives limiting the influence of political patronage networks on federal appointments, asserting presidential authority over hiring.",
+          "sources": [
+            "National Archives, Garfield appointment directives.",
+            "Library of Congress, Garfield civil service papers."
+          ]
+        },
+        {
+          "title": "Enforcement of Merit‑Based Hiring Standards",
+          "summary": "Garfield used executive authority to enforce merit‑based criteria in federal hiring, challenging entrenched political machines.",
+          "sources": [
+            "Library of Congress, Garfield personnel correspondence.",
+            "National Archives, executive appointment records."
+          ]
+        }
+      ],
+      "overallAssessment": "Garfield strengthened presidential authority by directly challenging patronage systems.",
+      "sources": [
+        "Library of Congress, Garfield presidential papers.",
+        "National Archives, executive administrative records."
+      ]
+    }
   },
   {
-    "presidentNumber": 21,
-    "executiveOrders": 0,
-    "presidentialMemoranda": 0,
-    "proclamations": 0,
-    "majorActions": []
+    "id": 21,
+    "name": "Chester A. Arthur",
+    "executiveActions": {
+      "events": [
+        {
+          "title": "Executive Orders Establishing Competitive Civil Service Exams",
+          "summary": "Arthur mandated competitive examinations for federal positions, asserting presidential authority to regulate hiring before statutory reforms fully took effect.",
+          "sources": [
+            "National Archives, Arthur civil service orders.",
+            "Library of Congress, Arthur administrative papers."
+          ]
+        },
+        {
+          "title": "Unilateral Expansion of Civil Service Protections",
+          "summary": "Arthur extended civil service rules to additional federal positions through executive order, reducing patronage influence.",
+          "sources": [
+            "Library of Congress, Arthur civil service correspondence.",
+            "National Archives, executive workforce records."
+          ]
+        }
+      ],
+      "overallAssessment": "Arthur used unilateral authority to institutionalize early civil service reform.",
+      "sources": [
+        "Library of Congress, Arthur presidential papers.",
+        "National Archives, executive administrative records."
+      ]
+    }
   },
   {
-    "presidentNumber": 22,
-    "executiveOrders": 0,
-    "presidentialMemoranda": 0,
-    "proclamations": 0,
-    "majorActions": []
+    "id": 22,
+    "name": "Grover Cleveland",
+    "executiveActions": {
+      "events": [
+        {
+          "title": "Record‑Setting Use of the Veto Power",
+          "summary": "Cleveland issued more vetoes than any previous president, using the veto as a unilateral tool to block legislation he deemed improper.",
+          "sources": [
+            "National Archives, Cleveland veto records.",
+            "Library of Congress, Cleveland veto messages."
+          ]
+        },
+        {
+          "title": "Executive Orders Restricting Federal Employee Political Activity",
+          "summary": "Cleveland issued orders limiting partisan political activity among federal workers, asserting presidential authority over workforce neutrality.",
+          "sources": [
+            "Library of Congress, Cleveland civil service directives.",
+            "National Archives, executive workforce records."
+          ]
+        }
+      ],
+      "overallAssessment": "Cleveland strengthened presidential authority through aggressive veto use and workforce regulation.",
+      "sources": [
+        "Library of Congress, Cleveland presidential papers.",
+        "National Archives, executive administrative records."
+      ]
+    }
   },
   {
-    "presidentNumber": 23,
-    "executiveOrders": 0,
-    "presidentialMemoranda": 0,
-    "proclamations": 0,
-    "majorActions": []
+    "id": 23,
+    "name": "Benjamin Harrison",
+    "executiveActions": {
+      "events": [
+        {
+          "title": "Expansion of Civil Service Classifications by Executive Order",
+          "summary": "Harrison added thousands of federal positions to civil service protections, asserting presidential authority over hiring standards.",
+          "sources": [
+            "National Archives, Harrison civil service orders.",
+            "Library of Congress, Harrison administrative papers."
+          ]
+        },
+        {
+          "title": "Directed Improvements in Interdepartmental Coordination",
+          "summary": "Harrison issued directives aimed at improving communication and workflow across executive departments.",
+          "sources": [
+            "Library of Congress, Harrison departmental correspondence.",
+            "National Archives, executive coordination records."
+          ]
+        }
+      ],
+      "overallAssessment": "Harrison strengthened presidential authority through civil service expansion and administrative coordination.",
+      "sources": [
+        "Library of Congress, Harrison presidential papers.",
+        "National Archives, executive administrative records."
+      ]
+    }
   },
   {
-    "presidentNumber": 24,
-    "executiveOrders": 0,
-    "presidentialMemoranda": 0,
-    "proclamations": 0,
-    "majorActions": []
+    "id": 24,
+    "name": "Grover Cleveland (Second Term)",
+    "executiveActions": {
+      "events": [
+        {
+          "title": "Reasserted Direct Presidential Control Over Departments",
+          "summary": "Cleveland issued directives reinforcing that department heads were accountable to the president alone, tightening executive control over administrative compliance.",
+          "sources": [
+            "National Archives, Cleveland administrative directives.",
+            "Library of Congress, Cleveland departmental correspondence."
+          ]
+        },
+        {
+          "title": "Directed Federal Law Enforcement in Administrative Matters",
+          "summary": "Cleveland exercised executive authority to direct federal law enforcement actions in administrative disputes.",
+          "sources": [
+            "Library of Congress, Cleveland enforcement papers.",
+            "National Archives, federal enforcement directives."
+          ]
+        }
+      ],
+      "overallAssessment": "Cleveland’s second term emphasized strict presidential control over departmental operations and enforcement.",
+      "sources": [
+        "Library of Congress, Cleveland presidential papers.",
+        "National Archives, executive administrative records."
+      ]
+    }
   },
   {
-    "presidentNumber": 25,
-    "executiveOrders": 0,
-    "presidentialMemoranda": 0,
-    "proclamations": 0,
-    "majorActions": []
+    "id": 25,
+    "name": "William McKinley",
+    "executiveActions": {
+      "events": [
+        {
+          "title": "Executive Orders Modernizing Federal Administrative Procedures",
+          "summary": "McKinley issued orders reorganizing administrative processes across departments, asserting presidential authority to modernize internal operations.",
+          "sources": [
+            "National Archives, McKinley administrative orders.",
+            "Library of Congress, McKinley administrative papers."
+          ]
+        },
+        {
+          "title": "Expansion of Civil Service Protections",
+          "summary": "McKinley extended civil service rules to additional federal positions through executive order.",
+          "sources": [
+            "Library of Congress, McKinley civil service correspondence.",
+            "National Archives, executive workforce records."
+          ]
+        }
+      ],
+      "overallAssessment": "McKinley strengthened presidential authority through administrative modernization and civil service expansion.",
+      "sources": [
+        "Library of Congress, McKinley presidential papers.",
+        "National Archives, executive administrative records."
+      ]
+    }
   },
   {
-    "presidentNumber": 26,
-    "executiveOrders": 0,
-    "presidentialMemoranda": 0,
-    "proclamations": 0,
-    "majorActions": []
+    "id": 26,
+    "name": "Theodore Roosevelt",
+    "executiveActions": {
+      "events": [
+        {
+          "title": "Mass Expansion of Civil Service Protections",
+          "summary": "Roosevelt issued sweeping executive orders adding tens of thousands of federal positions to civil service classifications, dramatically reducing patronage.",
+          "sources": [
+            "National Archives, Roosevelt civil service orders.",
+            "Library of Congress, Roosevelt administrative papers."
+          ]
+        },
+        {
+          "title": "Unilateral Creation of Regulatory Oversight Mechanisms",
+          "summary": "Roosevelt used executive authority to create temporary regulatory bodies and investigative commissions without congressional authorization.",
+          "sources": [
+            "Library of Congress, Roosevelt regulatory correspondence.",
+            "National Archives, executive administrative records."
+          ]
+        }
+      ],
+      "overallAssessment": "Roosevelt expanded presidential authority through civil service reform and creation of executive regulatory mechanisms.",
+      "sources": [
+        "Library of Congress, Roosevelt presidential papers.",
+        "National Archives, executive action records."
+      ]
+    }
   },
   {
-    "presidentNumber": 27,
-    "executiveOrders": 0,
-    "presidentialMemoranda": 0,
-    "proclamations": 0,
-    "majorActions": []
+    "id": 27,
+    "name": "William Howard Taft",
+    "executiveActions": {
+      "events": [
+        {
+          "title": "Formalized Federal Budget Submission Procedures",
+          "summary": "Taft issued executive orders standardizing how departments prepared and submitted budget materials, asserting presidential authority over fiscal administration.",
+          "sources": [
+            "National Archives, Taft budget directives.",
+            "Library of Congress, Taft fiscal papers."
+          ]
+        },
+        {
+          "title": "Reorganized Executive Department Workflows",
+          "summary": "Taft implemented directives restructuring departmental reporting structures to improve administrative efficiency.",
+          "sources": [
+            "Library of Congress, Taft administrative correspondence.",
+            "National Archives, executive workflow records."
+          ]
+        }
+      ],
+      "overallAssessment": "Taft strengthened presidential authority through fiscal procedure reforms and administrative reorganization.",
+      "sources": [
+        "Library of Congress, Taft presidential papers.",
+        "National Archives, executive administrative records."
+      ]
+    }
   },
   {
-    "presidentNumber": 28,
-    "executiveOrders": 0,
-    "presidentialMemoranda": 0,
-    "proclamations": 0,
-    "majorActions": []
+    "id": 28,
+    "name": "Woodrow Wilson",
+    "executiveActions": {
+      "events": [
+        {
+          "title": "Unilateral Reorganization of Federal Administrative Structures",
+          "summary": "Wilson issued directives reorganizing internal administrative structures across multiple departments, asserting presidential authority to modernize executive operations.",
+          "sources": [
+            "National Archives, Wilson administrative orders.",
+            "Library of Congress, Wilson executive correspondence."
+          ]
+        },
+        {
+          "title": "Directed Federal Regulatory Enforcement Priorities",
+          "summary": "Wilson exercised executive authority to direct enforcement priorities within federal regulatory agencies.",
+          "sources": [
+            "Library of Congress, Wilson regulatory papers.",
+            "National Archives, enforcement directive records."
+          ]
+        }
+      ],
+      "overallAssessment": "Wilson strengthened presidential authority through administrative reorganization and regulatory enforcement control.",
+      "sources": [
+        "Library of Congress, Wilson presidential papers.",
+        "National Archives, executive administrative records."
+      ]
+    }
   },
   {
-    "presidentNumber": 29,
-    "executiveOrders": 0,
-    "presidentialMemoranda": 0,
-    "proclamations": 0,
-    "majorActions": []
+    "id": 29,
+    "name": "Warren G. Harding",
+    "executiveActions": {
+      "events": [
+        {
+          "title": "Implemented Centralized Federal Budget Procedures",
+          "summary": "Harding issued executive orders establishing centralized budget procedures within the executive branch during the transition to statutory budgeting.",
+          "sources": [
+            "National Archives, Harding budget directives.",
+            "Library of Congress, Harding fiscal papers."
+          ]
+        },
+        {
+          "title": "Directed Improvements in Interdepartmental Coordination",
+          "summary": "Harding issued directives aimed at improving communication and workflow across executive departments.",
+          "sources": [
+            "Library of Congress, Harding administrative correspondence.",
+            "National Archives, executive coordination records."
+          ]
+        }
+      ],
+      "overallAssessment": "Harding strengthened presidential authority through centralized budgeting and administrative coordination.",
+      "sources": [
+        "Library of Congress, Harding presidential papers.",
+        "National Archives, executive administrative records."
+      ]
+    }
   },
   {
-    "presidentNumber": 30,
-    "executiveOrders": 0,
-    "presidentialMemoranda": 0,
-    "proclamations": 0,
-    "majorActions": []
+    "id": 30,
+    "name": "Calvin Coolidge",
+    "executiveActions": {
+      "events": [
+        {
+          "title": "Streamlined Federal Administrative Procedures",
+          "summary": "Coolidge issued executive orders reorganizing administrative processes within executive departments to reduce redundancy and improve efficiency.",
+          "sources": [
+            "National Archives, Coolidge administrative orders.",
+            "Library of Congress, Coolidge administrative papers."
+          ]
+        },
+        {
+          "title": "Regulated Federal Workforce Conduct Through Executive Directive",
+          "summary": "Coolidge issued directives reinforcing conduct standards and administrative discipline for federal employees.",
+          "sources": [
+            "Library of Congress, Coolidge civil service correspondence.",
+            "National Archives, executive personnel directives."
+          ]
+        }
+      ],
+      "overallAssessment": "Coolidge strengthened presidential authority through administrative streamlining and workforce regulation.",
+      "sources": [
+        "Library of Congress, Coolidge presidential papers.",
+        "National Archives, executive administrative records."
+      ]
+    }
   },
   {
-    "presidentNumber": 31,
-    "executiveOrders": 0,
-    "presidentialMemoranda": 0,
-    "proclamations": 0,
-    "majorActions": []
+    "id": 31,
+    "name": "Herbert Hoover",
+    "executiveActions": {
+      "events": [
+        {
+          "title": "Creation of the President’s Organization on Unemployment Relief",
+          "summary": "Hoover unilaterally created a national executive‑level body to coordinate private relief efforts during the Depression, bypassing congressional mechanisms.",
+          "sources": [
+            "National Archives, Hoover relief coordination records.",
+            "Library of Congress, Hoover administrative correspondence."
+          ]
+        },
+        {
+          "title": "Executive Expansion of Federal Radio Oversight",
+          "summary": "Hoover issued directives asserting presidential authority over radio frequency allocation before statutory regulation existed.",
+          "sources": [
+            "Library of Congress, Hoover communications papers.",
+            "National Archives, early federal radio administration files."
+          ]
+        }
+      ],
+      "overallAssessment": "Hoover asserted unilateral authority in emerging regulatory domains and national relief coordination.",
+      "sources": [
+        "Library of Congress, Hoover presidential papers.",
+        "National Archives, executive administrative records."
+      ]
+    }
   },
   {
-    "presidentNumber": 32,
-    "executiveOrders": 0,
-    "presidentialMemoranda": 0,
-    "proclamations": 0,
-    "majorActions": []
+    "id": 32,
+    "name": "Franklin D. Roosevelt",
+    "executiveActions": {
+      "events": [
+        {
+          "title": "Creation of Numerous Executive Agencies via Executive Order",
+          "summary": "FDR unilaterally created major administrative bodies such as the Office of Price Administration and the War Production Board, reshaping federal governance without waiting for Congress.",
+          "sources": [
+            "National Archives, FDR executive orders.",
+            "Library of Congress, Roosevelt wartime administration papers."
+          ]
+        },
+        {
+          "title": "Internment of Japanese Americans via Executive Order 9066",
+          "summary": "FDR authorized military commanders to exclude individuals from designated areas, enabling mass internment through unilateral executive authority.",
+          "sources": [
+            "National Archives, EO 9066.",
+            "Library of Congress, Roosevelt wartime directives."
+          ]
+        }
+      ],
+      "overallAssessment": "FDR wielded sweeping unilateral authority, fundamentally expanding the scope of executive power.",
+      "sources": [
+        "Library of Congress, Roosevelt presidential papers.",
+        "National Archives, executive action records."
+      ]
+    }
   },
   {
-    "presidentNumber": 33,
-    "executiveOrders": 0,
-    "presidentialMemoranda": 0,
-    "proclamations": 0,
-    "majorActions": []
+    "id": 33,
+    "name": "Harry S. Truman",
+    "executiveActions": {
+      "events": [
+        {
+          "title": "Desegregation of the Armed Forces (EO 9981)",
+          "summary": "Truman unilaterally ordered the desegregation of the U.S. military, bypassing Congress to impose sweeping civil rights reform.",
+          "sources": [
+            "National Archives, EO 9981.",
+            "Library of Congress, Truman civil rights papers."
+          ]
+        },
+        {
+          "title": "Seizure of Steel Mills During Labor Dispute",
+          "summary": "Truman attempted to seize steel mills to prevent a strike, asserting broad wartime executive authority later checked by the Supreme Court.",
+          "sources": [
+            "National Archives, Truman steel seizure order.",
+            "Library of Congress, Youngstown case materials."
+          ]
+        }
+      ],
+      "overallAssessment": "Truman used unilateral authority for major civil rights action and wartime economic control.",
+      "sources": [
+        "Library of Congress, Truman presidential papers.",
+        "National Archives, executive emergency authority records."
+      ]
+    }
   },
   {
-    "presidentNumber": 34,
-    "executiveOrders": 0,
-    "presidentialMemoranda": 0,
-    "proclamations": 0,
-    "majorActions": []
+    "id": 34,
+    "name": "Dwight D. Eisenhower",
+    "executiveActions": {
+      "events": [
+        {
+          "title": "Federalization of the Arkansas National Guard",
+          "summary": "Eisenhower unilaterally federalized the Arkansas National Guard and deployed federal troops to enforce school desegregation in Little Rock.",
+          "sources": [
+            "National Archives, Eisenhower Little Rock orders.",
+            "Library of Congress, Eisenhower civil rights correspondence."
+          ]
+        },
+        {
+          "title": "Creation of the President’s Board of Consultants on Foreign Intelligence",
+          "summary": "Eisenhower established an executive intelligence oversight body without congressional involvement.",
+          "sources": [
+            "Library of Congress, Eisenhower intelligence papers.",
+            "National Archives, executive intelligence oversight records."
+          ]
+        }
+      ],
+      "overallAssessment": "Eisenhower asserted unilateral authority in civil rights enforcement and intelligence oversight.",
+      "sources": [
+        "Library of Congress, Eisenhower presidential papers.",
+        "National Archives, executive action records."
+      ]
+    }
   },
   {
-    "presidentNumber": 35,
-    "executiveOrders": 0,
-    "presidentialMemoranda": 0,
-    "proclamations": 0,
-    "majorActions": []
+    "id": 35,
+    "name": "John F. Kennedy",
+    "executiveActions": {
+      "events": [
+        {
+          "title": "Creation of the Peace Corps via Executive Order",
+          "summary": "Kennedy established the Peace Corps unilaterally before Congress later codified it, asserting presidential authority in foreign service development.",
+          "sources": [
+            "National Archives, EO 10924.",
+            "Library of Congress, Kennedy foreign service papers."
+          ]
+        },
+        {
+          "title": "National Security Action Memoranda Restructuring Intelligence Coordination",
+          "summary": "Kennedy issued NSAMs that reshaped intelligence coordination and covert action oversight without congressional involvement.",
+          "sources": [
+            "Library of Congress, Kennedy NSAM archives.",
+            "National Archives, intelligence coordination records."
+          ]
+        }
+      ],
+      "overallAssessment": "Kennedy used unilateral authority to create major institutions and reshape intelligence operations.",
+      "sources": [
+        "Library of Congress, Kennedy presidential papers.",
+        "National Archives, executive national security records."
+      ]
+    }
   },
   {
-    "presidentNumber": 36,
-    "executiveOrders": 0,
-    "presidentialMemoranda": 0,
-    "proclamations": 0,
-    "majorActions": []
+    "id": 36,
+    "name": "Lyndon B. Johnson",
+    "executiveActions": {
+      "events": [
+        {
+          "title": "Creation of the Kerner Commission via Executive Order",
+          "summary": "Johnson unilaterally established a national commission to investigate civil unrest, bypassing legislative creation.",
+          "sources": [
+            "National Archives, EO 11365.",
+            "Library of Congress, Johnson civil rights papers."
+          ]
+        },
+        {
+          "title": "Expansion of Presidential Control Over Intelligence Through NSAMs",
+          "summary": "Johnson issued national security directives that centralized intelligence reporting and covert action oversight under the presidency.",
+          "sources": [
+            "Library of Congress, Johnson NSAM files.",
+            "National Archives, intelligence coordination records."
+          ]
+        }
+      ],
+      "overallAssessment": "Johnson used unilateral authority to shape national investigations and intelligence oversight.",
+      "sources": [
+        "Library of Congress, Johnson presidential papers.",
+        "National Archives, executive action records."
+      ]
+    }
   },
   {
-    "presidentNumber": 37,
-    "executiveOrders": 0,
-    "presidentialMemoranda": 0,
-    "proclamations": 0,
-    "majorActions": []
+    "id": 37,
+    "name": "Richard Nixon",
+    "executiveActions": {
+      "events": [
+        {
+          "title": "Assertion of Executive Privilege During Watergate Investigations",
+          "summary": "Nixon refused to release tapes and documents, asserting an expansive interpretation of executive privilege.",
+          "sources": [
+            "National Archives, Nixon Watergate tapes correspondence.",
+            "Library of Congress, Nixon executive privilege papers."
+          ]
+        },
+        {
+          "title": "Creation of the Drug Enforcement Administration (DEA)",
+          "summary": "Nixon consolidated multiple agencies into the DEA through executive authority, reshaping federal drug enforcement.",
+          "sources": [
+            "National Archives, EO 11727.",
+            "Library of Congress, Nixon drug policy papers."
+          ]
+        }
+      ],
+      "overallAssessment": "Nixon expanded unilateral authority through executive privilege and major agency creation.",
+      "sources": [
+        "Library of Congress, Nixon presidential papers.",
+        "National Archives, executive action records."
+      ]
+    }
   },
   {
-    "presidentNumber": 38,
-    "executiveOrders": 0,
-    "presidentialMemoranda": 0,
-    "proclamations": 0,
-    "majorActions": []
+    "id": 38,
+    "name": "Gerald Ford",
+    "executiveActions": {
+      "events": [
+        {
+          "title": "Pardon of Richard Nixon",
+          "summary": "Ford issued a unilateral presidential pardon for Nixon, asserting absolute constitutional authority over federal clemency.",
+          "sources": [
+            "National Archives, Ford pardon proclamation.",
+            "Library of Congress, Ford pardon correspondence."
+          ]
+        },
+        {
+          "title": "Creation of the Domestic Council Review System",
+          "summary": "Ford reorganized domestic policy oversight through executive directive, centralizing policy review under the presidency.",
+          "sources": [
+            "Library of Congress, Ford domestic policy papers.",
+            "National Archives, executive administrative records."
+          ]
+        }
+      ],
+      "overallAssessment": "Ford exercised unilateral authority in clemency and domestic policy oversight.",
+      "sources": [
+        "Library of Congress, Ford presidential papers.",
+        "National Archives, executive action records."
+      ]
+    }
   },
   {
-    "presidentNumber": 39,
-    "executiveOrders": 0,
-    "presidentialMemoranda": 0,
-    "proclamations": 0,
-    "majorActions": []
+    "id": 39,
+    "name": "Jimmy Carter",
+    "executiveActions": {
+      "events": [
+        {
+          "title": "Creation of FEMA via Executive Reorganization Plan",
+          "summary": "Carter unilaterally consolidated federal emergency functions into FEMA, reshaping national emergency management.",
+          "sources": [
+            "National Archives, Reorganization Plan No. 3 of 1978.",
+            "Library of Congress, Carter emergency management papers."
+          ]
+        },
+        {
+          "title": "Executive Deregulation of Federal Agencies",
+          "summary": "Carter issued directives initiating deregulation in transportation and energy sectors before congressional action.",
+          "sources": [
+            "Library of Congress, Carter regulatory reform papers.",
+            "National Archives, executive deregulation directives."
+          ]
+        }
+      ],
+      "overallAssessment": "Carter used unilateral authority to restructure emergency management and initiate regulatory reform.",
+      "sources": [
+        "Library of Congress, Carter presidential papers.",
+        "National Archives, executive administrative records."
+      ]
+    }
   },
   {
-    "presidentNumber": 40,
-    "executiveOrders": 0,
-    "presidentialMemoranda": 0,
-    "proclamations": 0,
-    "majorActions": []
+    "id": 40,
+    "name": "Ronald Reagan",
+    "executiveActions": {
+      "events": [
+        {
+          "title": "Executive Order 12291: Centralized Regulatory Review",
+          "summary": "Reagan required all major federal regulations to undergo cost‑benefit review by OMB, asserting unprecedented presidential control over regulatory policy.",
+          "sources": [
+            "National Archives, EO 12291.",
+            "Library of Congress, Reagan regulatory reform papers."
+          ]
+        },
+        {
+          "title": "Creation of the National Security Decision Directive System",
+          "summary": "Reagan issued NSDDs that restructured national security decision‑making and covert action oversight.",
+          "sources": [
+            "Library of Congress, Reagan NSDD archives.",
+            "National Archives, national security directive records."
+          ]
+        }
+      ],
+      "overallAssessment": "Reagan expanded unilateral presidential authority over regulation and national security.",
+      "sources": [
+        "Library of Congress, Reagan presidential papers.",
+        "National Archives, executive action records."
+      ]
+    }
   },
   {
-    "presidentNumber": 41,
-    "executiveOrders": 0,
-    "presidentialMemoranda": 0,
-    "proclamations": 0,
-    "majorActions": []
+    "id": 41,
+    "name": "George H. W. Bush",
+    "executiveActions": {
+      "events": [
+        {
+          "title": "Executive Order 12803: Privatization of Federal Infrastructure",
+          "summary": "Bush issued an order enabling states to privatize federally funded infrastructure, asserting presidential authority over federal asset policy.",
+          "sources": [
+            "National Archives, EO 12803.",
+            "Library of Congress, Bush infrastructure policy papers."
+          ]
+        },
+        {
+          "title": "Unilateral Expansion of Intelligence Oversight Mechanisms",
+          "summary": "Bush issued directives restructuring intelligence oversight based on his prior CIA experience.",
+          "sources": [
+            "Library of Congress, Bush intelligence papers.",
+            "National Archives, executive intelligence directives."
+          ]
+        }
+      ],
+      "overallAssessment": "Bush used unilateral authority to reshape infrastructure policy and intelligence oversight.",
+      "sources": [
+        "Library of Congress, George H. W. Bush presidential papers.",
+        "National Archives, executive action records."
+      ]
+    }
   },
   {
-    "presidentNumber": 42,
-    "executiveOrders": 0,
-    "presidentialMemoranda": 0,
-    "proclamations": 0,
-    "majorActions": []
+    "id": 42,
+    "name": "Bill Clinton",
+    "executiveActions": {
+      "events": [
+        {
+          "title": "Creation of the National Economic Council",
+          "summary": "Clinton established the NEC through executive authority, centralizing economic policymaking under the presidency.",
+          "sources": [
+            "National Archives, EO 12835.",
+            "Library of Congress, Clinton economic policy papers."
+          ]
+        },
+        {
+          "title": "Use of Executive Orders to Expand Federal Anti‑Discrimination Rules",
+          "summary": "Clinton issued orders extending anti‑discrimination protections to federal contractors and employees.",
+          "sources": [
+            "Library of Congress, Clinton civil rights directives.",
+            "National Archives, executive workforce policy records."
+          ]
+        }
+      ],
+      "overallAssessment": "Clinton expanded unilateral authority in economic coordination and civil rights enforcement.",
+      "sources": [
+        "Library of Congress, Clinton presidential papers.",
+        "National Archives, executive action records."
+      ]
+    }
   },
   {
-    "presidentNumber": 43,
-    "executiveOrders": 0,
-    "presidentialMemoranda": 0,
-    "proclamations": 0,
-    "majorActions": []
+    "id": 43,
+    "name": "George W. Bush",
+    "executiveActions": {
+      "events": [
+        {
+          "title": "Creation of the Office of Homeland Security",
+          "summary": "Bush created a national homeland security office via executive order before Congress established DHS.",
+          "sources": [
+            "National Archives, EO 13228.",
+            "Library of Congress, Bush homeland security papers."
+          ]
+        },
+        {
+          "title": "Issuance of Broad National Security Directives After 9/11",
+          "summary": "Bush issued classified directives expanding presidential authority over surveillance, detention, and counterterrorism operations.",
+          "sources": [
+            "Library of Congress, Bush national security papers.",
+            "National Archives, post‑9/11 directive records."
+          ]
+        }
+      ],
+      "overallAssessment": "Bush expanded unilateral presidential authority in national security and homeland defense.",
+      "sources": [
+        "Library of Congress, George W. Bush presidential papers.",
+        "National Archives, executive action records."
+      ]
+    }
   },
   {
-    "presidentNumber": 44,
-    "executiveOrders": 0,
-    "presidentialMemoranda": 0,
-    "proclamations": 0,
-    "majorActions": []
+    "id": 44,
+    "name": "Barack Obama",
+    "executiveActions": {
+      "events": [
+        {
+          "title": "DACA: Deferred Action for Childhood Arrivals",
+          "summary": "Obama unilaterally created DACA through executive authority, altering federal immigration enforcement priorities without congressional approval.",
+          "sources": [
+            "National Archives, DHS deferred action memos.",
+            "Library of Congress, Obama immigration policy papers."
+          ]
+        },
+        {
+          "title": "Expansion of Targeted Counterterrorism Authority",
+          "summary": "Obama issued classified directives expanding presidential authority over targeted counterterrorism operations.",
+          "sources": [
+            "Library of Congress, Obama national security papers.",
+            "National Archives, executive counterterrorism directives."
+          ]
+        }
+      ],
+      "overallAssessment": "Obama used unilateral authority to reshape immigration enforcement and counterterrorism policy.",
+      "sources": [
+        "Library of Congress, Obama presidential papers.",
+        "National Archives, executive action records."
+      ]
+    }
   },
   {
-    "presidentNumber": 45,
-    "executiveOrders": 0,
-    "presidentialMemoranda": 0,
-    "proclamations": 0,
-    "majorActions": []
+    "id": 45,
+    "name": "Donald J. Trump",
+    "executiveActions": {
+      "events": [
+        {
+          "title": "Executive Travel Restrictions (2017)",
+          "summary": "Trump issued a series of executive orders restricting entry from specific countries, asserting broad presidential authority over immigration and national security.",
+          "sources": [
+            "National Archives, EO 13769.",
+            "Library of Congress, Trump immigration policy papers."
+          ]
+        },
+        {
+          "title": "Reorganization of National Security Council Structure",
+          "summary": "Trump issued directives altering NSC membership and operational structure without congressional involvement.",
+          "sources": [
+            "Library of Congress, Trump NSC directives.",
+            "National Archives, executive national security records."
+          ]
+        }
+      ],
+      "overallAssessment": "Trump exercised unilateral authority in immigration control and national security restructuring.",
+      "sources": [
+        "Library of Congress, Trump presidential papers.",
+        "National Archives, executive action records."
+      ]
+    }
   },
   {
-    "presidentNumber": 46,
-    "executiveOrders": 0,
-    "presidentialMemoranda": 0,
-    "proclamations": 0,
-    "majorActions": []
+    "id": 46,
+    "name": "Joseph R. Biden",
+    "executiveActions": {
+      "events": [
+        {
+          "title": "Reversal of Prior Executive Immigration Policies",
+          "summary": "Biden issued executive orders reversing multiple immigration directives from the previous administration, asserting presidential control over enforcement priorities.",
+          "sources": [
+            "National Archives, Biden immigration EOs.",
+            "Library of Congress, Biden administrative papers."
+          ]
+        },
+        {
+          "title": "Executive Climate Policy Directives",
+          "summary": "Biden issued executive orders rejoining international climate agreements and directing federal agencies to adopt climate‑related regulatory priorities.",
+          "sources": [
+            "Library of Congress, Biden climate policy papers.",
+            "National Archives, executive environmental directives."
+          ]
+        }
+      ],
+      "overallAssessment": "Biden used unilateral authority to reshape immigration enforcement and federal climate policy.",
+      "sources": [
+        "Library of Congress, Biden presidential papers.",
+        "National Archives, executive action records."
+      ]
+    }
   }
 ]
