@@ -3704,6 +3704,9 @@ document.getElementById('scorecardModal')?.addEventListener('click', e => {
   }
 });
 
+}
+
+  
 // -----------------------------
 // SCORING LOGIC MODAL
 // -----------------------------
