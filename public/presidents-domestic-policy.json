@@ -3,28 +3,60 @@
     "id": 1,
     "name": "George Washington",
     "domesticPolicy": {
-      "events": [
+      "majorBillsPassed": [
         {
-          "title": "Suppression of the Whiskey Rebellion",
-          "summary": "Washington personally led federalized militia forces to suppress the Whiskey Rebellion, asserting federal supremacy over domestic resistance to national law.",
+          "title": "Judiciary Act of 1789",
+          "summary": "The Judiciary Act of 1789 established the federal court system, including district courts, circuit courts, and the Supreme Court’s structure. It created the office of Attorney General and defined federal judicial authority. Washington signed the act and appointed key figures, shaping the early balance between federal and state courts. The law provided the institutional backbone for federal judicial power and set precedents for constitutional interpretation.",
           "sources": [
-            "National Archives, Whiskey Rebellion correspondence.",
-            "Library of Congress, Washington domestic policy papers."
+            "https://history.state.gov/milestones/1784-1800/judiciary-act",
+            "https://www.britannica.com/topic/Judiciary-Act-of-1789"
           ]
         },
         {
-          "title": "Establishment of Federal Judicial Structures in Practice",
-          "summary": "Washington’s appointments and enforcement support operationalized the Judiciary Act of 1789, giving concrete form to the federal court system.",
+          "title": "Tariff Act of 1789",
+          "summary": "The Tariff Act of 1789 imposed duties on imports to raise revenue for the new federal government and protect emerging American industries. Washington supported the measure as essential to financial stability. The act marked the beginning of U.S. tariff policy and helped fund federal operations. It also signaled the federal government’s central role in economic regulation.",
           "sources": [
-            "Library of Congress, Washington judicial correspondence.",
-            "National Archives, early federal court records."
+            "https://www.britannica.com/topic/Tariff-of-1789",
+            "https://www.mountvernon.org/library/digitalhistory/digital-encyclopedia/article/tariff-of-1789/"
           ]
         }
       ],
-      "overallAssessment": "Washington defined federal supremacy and gave practical shape to the new national judiciary in domestic affairs.",
-      "sources": [
-        "Library of Congress, Washington presidential papers.",
-        "National Archives, early federal administration records."
+      "domesticInitiatives": [
+        {
+          "title": "Hamilton’s Financial Program",
+          "summary": "Under Washington, Treasury Secretary Alexander Hamilton implemented a sweeping financial program that included federal assumption of state debts, creation of a national bank, and excise taxes. Washington backed these measures, which stabilized national credit and strengthened federal authority. The program sparked intense political opposition and contributed to the emergence of political parties. It laid the foundation for American financial capitalism.",
+          "sources": [
+            "https://www.britannica.com/event/Hamiltons-financial-program",
+            "https://history.state.gov/milestones/1784-1800/hamilton-finance"
+          ]
+        },
+        {
+          "title": "Establishment of the National Bank",
+          "summary": "Washington signed the bill creating the First Bank of the United States in 1791 after consulting his cabinet on its constitutionality. The bank managed federal funds, issued currency, and facilitated tax collection. Its creation expanded federal economic power and sparked debates over strict versus broad constitutional interpretation. The bank became a central institution in early American finance.",
+          "sources": [
+            "https://www.britannica.com/topic/Bank-of-the-United-States",
+            "https://www.mountvernon.org/library/digitalhistory/digital-encyclopedia/article/bank-of-the-united-states/"
+          ]
+        }
+      ],
+      "domesticImpactIndex": 0,
+      "majorDomesticEvents": [
+        {
+          "title": "Whiskey Rebellion",
+          "summary": "The Whiskey Rebellion of 1794 erupted in western Pennsylvania over opposition to a federal excise tax on distilled spirits. Washington personally led militia forces to suppress the uprising, demonstrating the federal government’s willingness and ability to enforce its laws. The swift response established a precedent for federal authority over domestic unrest. It also highlighted tensions between frontier communities and the central government.",
+          "sources": [
+            "https://www.britannica.com/event/Whiskey-Rebellion",
+            "https://history.state.gov/milestones/1784-1800/whiskey-rebellion"
+          ]
+        },
+        {
+          "title": "Washington’s Farewell Address and Warning Against Faction",
+          "summary": "In his Farewell Address, Washington warned against political parties, sectionalism, and excessive partisanship. While not a law, the address shaped domestic political culture and guided future leaders. It reflected Washington’s concern that factional conflict could undermine republican government. The address became a foundational document in American political thought.",
+          "sources": [
+            "https://www.britannica.com/topic/Farewell-Address",
+            "https://www.archives.gov/milestone-documents/washingtons-farewell-address"
+          ]
+        }
       ]
     }
   },
@@ -32,28 +64,36 @@
     "id": 2,
     "name": "John Adams",
     "domesticPolicy": {
-      "events": [
+      "majorBillsPassed": [
         {
-          "title": "Alien and Sedition Acts Enforcement",
-          "summary": "Adams signed and enforced laws targeting dissent and foreign nationals, expanding federal power over speech and internal security.",
+          "title": "Alien and Sedition Acts",
+          "summary": "In 1798, Adams signed the Alien and Sedition Acts, a series of laws that expanded federal power to detain or deport non-citizens and criminalized criticism of the government. Supporters claimed the acts were necessary for national security amid tensions with France. Critics argued they violated free speech and targeted political opponents. The laws became a major domestic controversy and contributed to Adams’s electoral defeat.",
           "sources": [
-            "National Archives, Sedition Act enforcement records.",
-            "Library of Congress, Adams internal security papers."
-          ]
-        },
-        {
-          "title": "Creation of the Department of the Navy as a Domestic Security Tool",
-          "summary": "Adams strengthened naval capacity partly to protect domestic commerce and coastal security.",
-          "sources": [
-            "Library of Congress, Adams naval policy correspondence.",
-            "National Archives, Navy Department founding records."
+            "https://www.britannica.com/event/Alien-and-Sedition-Acts",
+            "https://history.state.gov/milestones/1784-1800/alien-and-sedition-acts"
           ]
         }
       ],
-      "overallAssessment": "Adams expanded federal internal security powers and built institutional capacity with domestic implications.",
-      "sources": [
-        "Library of Congress, Adams presidential papers.",
-        "National Archives, domestic security records."
+      "domesticInitiatives": [
+        {
+          "title": "Expansion of the U.S. Navy and Marine Corps",
+          "summary": "Adams oversaw significant expansion of the U.S. Navy and reestablishment of the Marine Corps in response to the Quasi-War with France. While driven by foreign tensions, the buildup had major domestic implications, including shipbuilding, port development, and institutional growth. Adams believed a strong navy was essential for national defense and commerce. The expansion laid groundwork for future naval power.",
+          "sources": [
+            "https://www.britannica.com/biography/John-Adams",
+            "https://www.history.navy.mil/browse-by-topic/heritage/birth-of-the-navy.html"
+          ]
+        }
+      ],
+      "domesticImpactIndex": 0,
+      "majorDomesticEvents": [
+        {
+          "title": "Virginia and Kentucky Resolutions Response",
+          "summary": "The Virginia and Kentucky Resolutions, authored by Madison and Jefferson, denounced the Alien and Sedition Acts as unconstitutional and asserted states’ rights to judge federal laws. Although Adams did not directly respond with new legislation, the controversy defined his domestic political environment. It intensified debates over federal versus state authority and civil liberties. The episode foreshadowed later constitutional conflicts.",
+          "sources": [
+            "https://www.britannica.com/event/Virginia-and-Kentucky-Resolutions",
+            "https://www.loc.gov/item/today-in-history/november-16/"
+          ]
+        }
       ]
     }
   },
@@ -61,28 +101,44 @@
     "id": 3,
     "name": "Thomas Jefferson",
     "domesticPolicy": {
-      "events": [
+      "majorBillsPassed": [
         {
-          "title": "Repeal of the Judiciary Act of 1801 and Confrontation with Federalist Judges",
-          "summary": "Jefferson supported repeal of Federalist judicial reforms and challenged lifetime Federalist control of the courts.",
+          "title": "Repeal of the Judiciary Act of 1801",
+          "summary": "Jefferson’s allies in Congress repealed the Judiciary Act of 1801, which had created new judgeships filled by Federalists in the final days of Adams’s presidency. Jefferson supported the repeal as a rollback of partisan court-packing. The move sparked the landmark case Marbury v. Madison, which established judicial review. The episode reshaped the balance among the branches of government.",
           "sources": [
-            "National Archives, Jefferson judicial correspondence.",
-            "Library of Congress, early judiciary reform papers."
-          ]
-        },
-        {
-          "title": "Reduction of Federal Domestic Presence",
-          "summary": "Jefferson cut federal offices and scaled back domestic enforcement structures, shifting power toward states and localities.",
-          "sources": [
-            "Library of Congress, Jefferson administrative papers.",
-            "National Archives, early domestic administration records."
+            "https://www.britannica.com/event/Judiciary-Act-of-1801",
+            "https://www.oyez.org/cases/1789-1850/5us137"
           ]
         }
       ],
-      "overallAssessment": "Jefferson reshaped domestic governance by weakening Federalist judicial and administrative structures.",
-      "sources": [
-        "Library of Congress, Jefferson presidential papers.",
-        "National Archives, domestic policy archives."
+      "domesticInitiatives": [
+        {
+          "title": "Reduction of Federal Debt and Government Size",
+          "summary": "Jefferson prioritized reducing the national debt and shrinking the federal bureaucracy. His administration cut military spending, eliminated internal taxes like the whiskey tax, and streamlined government operations. Jefferson believed limited government was essential to republican liberty. These policies reshaped the scope of federal power and influenced later debates over fiscal policy.",
+          "sources": [
+            "https://www.britannica.com/biography/Thomas-Jefferson",
+            "https://www.monticello.org/research-education/thomas-jefferson-encyclopedia/debt-national/"
+          ]
+        },
+        {
+          "title": "Louisiana Purchase Administration",
+          "summary": "Although fundamentally a foreign-policy transaction, the Louisiana Purchase had enormous domestic implications. Jefferson oversaw the incorporation of vast new territories into the United States, raising questions about slavery, governance, and constitutional authority. He supported exploration and settlement, including the Lewis and Clark Expedition. The purchase doubled the nation’s size and transformed domestic development.",
+          "sources": [
+            "https://www.britannica.com/event/Louisiana-Purchase",
+            "https://history.state.gov/milestones/1801-1829/louisiana-purchase"
+          ]
+        }
+      ],
+      "domesticImpactIndex": 0,
+      "majorDomesticEvents": [
+        {
+          "title": "Embargo Act of 1807 and Domestic Backlash",
+          "summary": "Jefferson signed the Embargo Act of 1807, halting American exports in an attempt to pressure Britain and France during the Napoleonic Wars. The policy devastated American merchants, shipowners, and port cities. Widespread smuggling and resistance followed. The embargo became one of the most unpopular domestic policies of the early republic and was eventually repealed. It highlighted the domestic costs of economic coercion.",
+          "sources": [
+            "https://www.britannica.com/event/Embargo-Act",
+            "https://history.state.gov/milestones/1801-1829/embargo-act"
+          ]
+        }
       ]
     }
   },
@@ -90,28 +146,44 @@
     "id": 4,
     "name": "James Madison",
     "domesticPolicy": {
-      "events": [
+      "majorBillsPassed": [
         {
-          "title": "War of 1812 Domestic Mobilization",
-          "summary": "Madison oversaw domestic mobilization, including militia disputes and internal security measures, testing federal authority over states in wartime.",
+          "title": "Second Bank of the United States Charter (1816)",
+          "summary": "Madison signed the charter for the Second Bank of the United States in 1816, reversing his earlier opposition to a national bank. The War of 1812 had exposed weaknesses in federal finance and currency stability. The new bank aimed to regulate credit, stabilize the currency, and support federal borrowing. Its creation marked a significant expansion of federal economic power.",
           "sources": [
-            "National Archives, Madison militia records.",
-            "Library of Congress, War of 1812 domestic correspondence."
+            "https://www.britannica.com/topic/Bank-of-the-United-States",
+            "https://www.federalreservehistory.org/essays/second-bank-of-the-us"
           ]
         },
         {
-          "title": "Support for Internal Improvements Debate",
-          "summary": "Madison wrestled with constitutional limits on federal funding for roads and canals, shaping early federalism debates.",
+          "title": "Tariff of 1816",
+          "summary": "Madison approved the Tariff of 1816, the first major protective tariff in U.S. history. The law aimed to shield American manufacturers from British competition after the War of 1812. It marked a shift toward using tariffs for industrial protection rather than solely for revenue. The tariff became a cornerstone of emerging economic nationalism.",
           "sources": [
-            "Library of Congress, Madison internal improvements papers.",
-            "National Archives, domestic policy records."
+            "https://www.britannica.com/topic/Tariff-of-1816",
+            "https://www.congress.gov/resources/display/content/History+of+Tariffs"
           ]
         }
       ],
-      "overallAssessment": "Madison’s domestic policy centered on federal–state power struggles during war and infrastructure debates.",
-      "sources": [
-        "Library of Congress, Madison presidential papers.",
-        "National Archives, domestic governance archives."
+      "domesticInitiatives": [
+        {
+          "title": "Support for Internal Improvements (Limited)",
+          "summary": "Madison supported the idea of internal improvements such as roads and canals but vetoed the Bonus Bill of 1817 on constitutional grounds, arguing that a constitutional amendment was needed for federal funding of such projects. His stance reflected ongoing debates over federal versus state responsibility for infrastructure. The issue remained central in later administrations.",
+          "sources": [
+            "https://www.britannica.com/biography/James-Madison",
+            "https://millercenter.org/president/madison/domestic-affairs"
+          ]
+        }
+      ],
+      "domesticImpactIndex": 0,
+      "majorDomesticEvents": [
+        {
+          "title": "Economic Dislocation After the War of 1812",
+          "summary": "The end of the War of 1812 brought economic turmoil, including inflation, debt, and banking instability. Madison’s administration faced pressure to stabilize the economy, leading to support for the Second Bank and protective tariffs. The period highlighted the challenges of transitioning from wartime to peacetime economies. It also accelerated debates over federal economic policy.",
+          "sources": [
+            "https://www.britannica.com/event/War-of-1812",
+            "https://millercenter.org/president/madison/domestic-affairs"
+          ]
+        }
       ]
     }
   },
@@ -119,28 +191,44 @@
     "id": 5,
     "name": "James Monroe",
     "domesticPolicy": {
-      "events": [
+      "majorBillsPassed": [
         {
-          "title": "Missouri Compromise Enforcement Context",
-          "summary": "Monroe presided over the admission of Missouri as a slave state and Maine as a free state, accepting a sectional line that structured domestic slavery politics.",
+          "title": "Missouri Compromise",
+          "summary": "Monroe signed the Missouri Compromise in 1820, admitting Missouri as a slave state and Maine as a free state while banning slavery north of latitude 36°30' in the Louisiana Territory (except Missouri). The compromise temporarily eased sectional tensions between North and South. It established a geographic line for the expansion of slavery. The agreement foreshadowed future conflicts over slavery and territorial expansion.",
           "sources": [
-            "National Archives, Missouri statehood records.",
-            "Library of Congress, Monroe slavery and sectional papers."
-          ]
-        },
-        {
-          "title": "Veterans’ Land and Pension Policies",
-          "summary": "Monroe supported domestic policies granting land and pensions to veterans, shaping settlement and social support.",
-          "sources": [
-            "Library of Congress, Monroe veterans’ policy papers.",
-            "National Archives, early pension records."
+            "https://www.britannica.com/event/Missouri-Compromise",
+            "https://history.state.gov/milestones/1801-1829/missouri-compromise"
           ]
         }
       ],
-      "overallAssessment": "Monroe’s domestic policy helped institutionalize sectional compromises and veterans’ benefits.",
-      "sources": [
-        "Library of Congress, Monroe presidential papers.",
-        "National Archives, domestic policy archives."
+      "domesticInitiatives": [
+        {
+          "title": "Era of Good Feelings and Party Unity",
+          "summary": "Monroe presided over the so-called Era of Good Feelings, marked by the decline of the Federalist Party and a temporary reduction in overt partisan conflict. He undertook national tours to promote unity and support for his administration. While underlying sectional and economic tensions persisted, Monroe’s leadership style emphasized reconciliation and national identity.",
+          "sources": [
+            "https://www.britannica.com/event/Era-of-Good-Feelings",
+            "https://millercenter.org/president/monroe/domestic-affairs"
+          ]
+        },
+        {
+          "title": "Support for Internal Improvements",
+          "summary": "Monroe supported certain internal improvements, such as roads and canals, but maintained a cautious view of federal authority. He signed bills funding specific projects while questioning broad constitutional justifications. His administration saw growth in infrastructure that facilitated westward expansion and economic integration. The debates over internal improvements continued to shape domestic politics.",
+          "sources": [
+            "https://millercenter.org/president/monroe/domestic-affairs",
+            "https://www.britannica.com/biography/James-Monroe"
+          ]
+        }
+      ],
+      "domesticImpactIndex": 0,
+      "majorDomesticEvents": [
+        {
+          "title": "Panic of 1819",
+          "summary": "The Panic of 1819 was the first major peacetime financial crisis in the United States, marked by bank failures, foreclosures, and widespread unemployment. Monroe’s administration faced public anger over economic hardship and the role of the Second Bank of the United States. The crisis exposed vulnerabilities in the young nation’s financial system and fueled distrust of banks and federal economic power. It also intensified sectional and class tensions.",
+          "sources": [
+            "https://www.britannica.com/event/Panic-of-1819",
+            "https://www.federalreservehistory.org/essays/panic-of-1819"
+          ]
+        }
       ]
     }
   },
@@ -148,28 +236,36 @@
     "id": 6,
     "name": "John Quincy Adams",
     "domesticPolicy": {
-      "events": [
+      "majorBillsPassed": [
         {
-          "title": "Promotion of National University and Scientific Institutions",
-          "summary": "Adams advocated federal support for education and scientific institutions, pushing a broad vision of national domestic development.",
+          "title": "Tariff of 1828 (Tariff of Abominations)",
+          "summary": "Although Adams did not design the Tariff of 1828, he signed it into law during the final months of his presidency. The tariff imposed extremely high duties on imported goods to protect Northern manufacturers. Southern states condemned it as economically harmful and unconstitutional. The tariff intensified sectional tensions and contributed to the Nullification Crisis under Andrew Jackson.",
           "sources": [
-            "National Archives, Adams education proposals.",
-            "Library of Congress, Adams domestic policy correspondence."
-          ]
-        },
-        {
-          "title": "Support for Expanded Internal Improvements",
-          "summary": "Adams backed federal involvement in roads and canals as domestic nation‑building tools.",
-          "sources": [
-            "Library of Congress, Adams internal improvements papers.",
-            "National Archives, infrastructure policy records."
+            "https://www.britannica.com/event/Tariff-of-Abominations",
+            "https://history.state.gov/milestones/1829-1837/nullification-crisis"
           ]
         }
       ],
-      "overallAssessment": "Adams advanced an ambitious federal role in education and infrastructure as domestic development pillars.",
-      "sources": [
-        "Library of Congress, Adams presidential papers.",
-        "National Archives, domestic development archives."
+      "domesticInitiatives": [
+        {
+          "title": "National Infrastructure and Internal Improvements Program",
+          "summary": "Adams championed an ambitious program of federally funded internal improvements, including roads, canals, and scientific institutions. He supported the construction of the Chesapeake and Ohio Canal and promoted national university and observatory proposals. His vision reflected a nationalist belief in federal leadership for economic development. Congress resisted many of his proposals, limiting their implementation.",
+          "sources": [
+            "https://www.britannica.com/biography/John-Quincy-Adams",
+            "https://millercenter.org/president/jqadams/domestic-affairs"
+          ]
+        }
+      ],
+      "domesticImpactIndex": 0,
+      "majorDomesticEvents": [
+        {
+          "title": "Expansion of the American System",
+          "summary": "Adams advanced Henry Clay’s American System, emphasizing protective tariffs, internal improvements, and a strong national bank. While Congress blocked many initiatives, Adams’s advocacy shaped national debates over federal economic power. His support for modernization and national planning influenced later Whig policies.",
+          "sources": [
+            "https://www.britannica.com/topic/American-System",
+            "https://millercenter.org/president/jqadams/domestic-affairs"
+          ]
+        }
       ]
     }
   },
@@ -177,28 +273,36 @@
     "id": 7,
     "name": "Andrew Jackson",
     "domesticPolicy": {
-      "events": [
+      "majorBillsPassed": [
         {
-          "title": "Indian Removal Policy",
-          "summary": "Jackson enforced and championed Indian removal, leading to forced relocations such as the Trail of Tears and reshaping domestic demographics and sovereignty.",
+          "title": "Indian Removal Act of 1830",
+          "summary": "Jackson signed the Indian Removal Act, authorizing the federal government to negotiate removal treaties with Native American tribes east of the Mississippi River. The act led to forced relocations, including the Trail of Tears, causing widespread suffering and death. Jackson defended the policy as necessary for national expansion. It remains one of the most controversial domestic actions in U.S. history.",
           "sources": [
-            "National Archives, Indian Removal records.",
-            "Library of Congress, Jackson Indian policy papers."
-          ]
-        },
-        {
-          "title": "Nullification Crisis Response",
-          "summary": "Jackson asserted federal supremacy over South Carolina’s nullification attempt, threatening force to maintain union and federal law.",
-          "sources": [
-            "Library of Congress, Jackson nullification correspondence.",
-            "National Archives, Proclamation to the People of South Carolina."
+            "https://www.britannica.com/event/Indian-Removal-Act",
+            "https://history.state.gov/milestones/1830-1860/indian-treaties"
           ]
         }
       ],
-      "overallAssessment": "Jackson’s domestic policy fused aggressive federal supremacy with coercive removal of Native nations.",
-      "sources": [
-        "Library of Congress, Jackson presidential papers.",
-        "National Archives, domestic conflict records."
+      "domesticInitiatives": [
+        {
+          "title": "Bank War and Veto of the Second Bank Recharter",
+          "summary": "Jackson vetoed the recharter of the Second Bank of the United States, arguing that it concentrated economic power and favored elites. He withdrew federal deposits and placed them in state 'pet banks.' The Bank War reshaped American finance, contributed to speculative booms, and weakened centralized monetary control. Jackson’s actions expanded presidential power and fueled partisan conflict.",
+          "sources": [
+            "https://www.britannica.com/event/Bank-War",
+            "https://millercenter.org/president/jackson/domestic-affairs"
+          ]
+        }
+      ],
+      "domesticImpactIndex": 0,
+      "majorDomesticEvents": [
+        {
+          "title": "Nullification Crisis",
+          "summary": "South Carolina declared the Tariffs of 1828 and 1832 unconstitutional and threatened secession. Jackson responded forcefully, asserting federal supremacy and requesting congressional authorization to use military force. A compromise tariff defused the crisis. Jackson’s stance reinforced federal authority but deepened sectional tensions.",
+          "sources": [
+            "https://www.britannica.com/event/Nullification-crisis",
+            "https://history.state.gov/milestones/1829-1837/nullification-crisis"
+          ]
+        }
       ]
     }
   },
@@ -206,28 +310,36 @@
     "id": 8,
     "name": "Martin Van Buren",
     "domesticPolicy": {
-      "events": [
+      "majorBillsPassed": [
         {
-          "title": "Continuation of Indian Removal",
-          "summary": "Van Buren oversaw key phases of forced Native relocation, including the execution of removal treaties negotiated under Jackson.",
+          "title": "Independent Treasury Act (1840)",
+          "summary": "Van Buren signed the Independent Treasury Act, creating a system of federal depositories separate from private banks. The system aimed to stabilize federal finances after the Panic of 1837. It reduced reliance on state banks and established a more secure method for handling government funds. The act was repealed by the Whigs but later restored.",
           "sources": [
-            "National Archives, Van Buren Indian policy records.",
-            "Library of Congress, removal implementation papers."
-          ]
-        },
-        {
-          "title": "Response to Domestic Unrest During the Panic of 1837",
-          "summary": "Van Buren managed domestic unrest and poor relief debates as economic crisis intensified social strain.",
-          "sources": [
-            "Library of Congress, Van Buren domestic crisis correspondence.",
-            "National Archives, local–federal relief records."
+            "https://www.britannica.com/topic/Independent-Treasury",
+            "https://millercenter.org/president/vanburen/domestic-affairs"
           ]
         }
       ],
-      "overallAssessment": "Van Buren’s domestic policy is marked by continued removal policies and limited federal response to social distress.",
-      "sources": [
-        "Library of Congress, Van Buren presidential papers.",
-        "National Archives, domestic policy archives."
+      "domesticInitiatives": [
+        {
+          "title": "Opposition to Texas Annexation",
+          "summary": "Van Buren opposed the immediate annexation of Texas, fearing it would inflame sectional tensions over slavery and provoke war with Mexico. His stance cost him political support among Southern Democrats. The issue dominated national politics and foreshadowed future conflicts over territorial expansion.",
+          "sources": [
+            "https://www.britannica.com/biography/Martin-Van-Buren",
+            "https://millercenter.org/president/vanburen/domestic-affairs"
+          ]
+        }
+      ],
+      "domesticImpactIndex": 0,
+      "majorDomesticEvents": [
+        {
+          "title": "Panic of 1837",
+          "summary": "Shortly after Van Buren took office, the nation plunged into a severe economic depression marked by bank failures, unemployment, and collapsing credit markets. Van Buren adhered to Jacksonian principles of limited government and rejected federal intervention. The crisis dominated his presidency and damaged his political standing.",
+          "sources": [
+            "https://www.britannica.com/event/Panic-of-1837",
+            "https://www.federalreservehistory.org/essays/panic-of-1837"
+          ]
+        }
       ]
     }
   },
@@ -235,49 +347,55 @@
     "id": 9,
     "name": "William Henry Harrison",
     "domesticPolicy": {
-      "events": [
+      "majorBillsPassed": [],
+      "domesticInitiatives": [
         {
-          "title": "Inaugural Signals of Whig Domestic Governance",
-          "summary": "Harrison’s brief tenure included signals of support for a stronger congressional role in domestic policy, though death prevented implementation.",
+          "title": "Whig Domestic Agenda (Unrealized)",
+          "summary": "Harrison intended to implement a broad Whig domestic program including a national bank, protective tariffs, and internal improvements. His month-long presidency prevented any of these initiatives from advancing. His administration’s domestic agenda was instead carried out—often contentiously—by his successor, John Tyler.",
           "sources": [
-            "Library of Congress, Harrison inaugural and policy drafts.",
-            "National Archives, early Whig domestic policy materials."
+            "https://www.britannica.com/biography/William-Henry-Harrison",
+            "https://millercenter.org/president/harrison/domestic-affairs"
           ]
         }
       ],
-      "overallAssessment": "Harrison’s domestic policy impact was minimal but aligned with Whig visions of congressional primacy.",
-      "sources": [
-        "Library of Congress, Harrison presidential papers.",
-        "National Archives, domestic policy records."
-      ]
+      "domesticImpactIndex": 0,
+      "majorDomesticEvents": []
     }
   },
   {
     "id": 10,
     "name": "John Tyler",
     "domesticPolicy": {
-      "events": [
+      "majorBillsPassed": [
         {
-          "title": "Vetoes of Whig Domestic Legislation",
-          "summary": "Tyler vetoed key Whig domestic bills, including bank and internal improvement measures, asserting presidential independence from party domestic agendas.",
+          "title": "Preemption Act of 1841",
+          "summary": "Tyler signed the Preemption Act, granting settlers the right to purchase public land they had already occupied. The law encouraged westward expansion and formalized squatter rights. It became a key component of federal land policy and shaped settlement patterns across the West.",
           "sources": [
-            "National Archives, Tyler veto messages.",
-            "Library of Congress, Tyler domestic policy correspondence."
-          ]
-        },
-        {
-          "title": "Handling of Statehood and Territorial Questions",
-          "summary": "Tyler’s domestic decisions on territorial governance and annexation debates shaped future sectional conflicts.",
-          "sources": [
-            "Library of Congress, Tyler territorial papers.",
-            "National Archives, domestic governance records."
+            "https://www.britannica.com/event/Preemption-Act",
+            "https://millercenter.org/president/tyler/domestic-affairs"
           ]
         }
       ],
-      "overallAssessment": "Tyler disrupted Whig domestic plans and influenced territorial governance debates.",
-      "sources": [
-        "Library of Congress, Tyler presidential papers.",
-        "National Archives, domestic policy archives."
+      "domesticInitiatives": [
+        {
+          "title": "Vetoes of Whig Economic Legislation",
+          "summary": "Tyler vetoed multiple Whig bills to reestablish a national bank and raise protective tariffs, arguing they exceeded constitutional limits. His vetoes triggered a political crisis, leading to his expulsion from the Whig Party. Tyler’s actions reshaped the balance between the presidency and Congress and highlighted divisions within the Whig coalition.",
+          "sources": [
+            "https://www.britannica.com/biography/John-Tyler",
+            "https://millercenter.org/president/tyler/domestic-affairs"
+          ]
+        }
+      ],
+      "domesticImpactIndex": 0,
+      "majorDomesticEvents": [
+        {
+          "title": "Cabinet Resignations and Whig Party Break",
+          "summary": "After Tyler vetoed key Whig bills, nearly his entire cabinet resigned in protest. The Whig Party formally expelled him, leaving Tyler politically isolated. The crisis underscored tensions over executive power and party loyalty. It remains one of the most dramatic domestic political ruptures in presidential history.",
+          "sources": [
+            "https://www.britannica.com/biography/John-Tyler",
+            "https://millercenter.org/president/tyler/domestic-affairs"
+          ]
+        }
       ]
     }
   },
@@ -285,28 +403,44 @@
     "id": 11,
     "name": "James K. Polk",
     "domesticPolicy": {
-      "events": [
+      "majorBillsPassed": [
         {
-          "title": "Territorial Governance After the Mexican–American War",
-          "summary": "Polk’s administration managed domestic governance of newly acquired territories, intensifying debates over slavery’s expansion.",
+          "title": "Walker Tariff of 1846",
+          "summary": "Polk signed the Walker Tariff, which significantly reduced tariff rates and shifted the United States toward a revenue‑based tariff system. The law reflected Democratic free‑trade principles and reversed the protectionist trend of earlier Whig policies. It stimulated trade and lowered consumer prices but angered Northern manufacturers who favored higher tariffs.",
           "sources": [
-            "National Archives, Polk territorial administration records.",
-            "Library of Congress, Polk domestic policy papers."
+            "https://www.britannica.com/topic/Walker-Tariff",
+            "https://millercenter.org/president/polk/domestic-affairs"
           ]
         },
         {
-          "title": "Support for the Independent Treasury as Domestic Framework",
-          "summary": "Polk’s fiscal structure also shaped domestic governance by defining how federal funds interacted with local economies.",
+          "title": "Independent Treasury Act of 1846",
+          "summary": "Polk restored the Independent Treasury System originally created under Van Buren. The act separated federal finances from private banks and required government funds to be stored in federal vaults. The system stabilized federal revenue handling and reduced reliance on state banks. It remained in place until the creation of the Federal Reserve.",
           "sources": [
-            "Library of Congress, Polk Treasury correspondence.",
-            "National Archives, domestic fiscal administration records."
+            "https://www.britannica.com/topic/Independent-Treasury",
+            "https://millercenter.org/president/polk/domestic-affairs"
           ]
         }
       ],
-      "overallAssessment": "Polk’s domestic policy centered on managing new territories and embedding fiscal structures with local impact.",
-      "sources": [
-        "Library of Congress, Polk presidential papers.",
-        "National Archives, domestic governance archives."
+      "domesticInitiatives": [
+        {
+          "title": "Expansion of the U.S. Postal System",
+          "summary": "Polk oversaw major expansion of the postal system, including new routes across western territories acquired during his presidency. The expansion improved communication, supported settlement, and strengthened federal presence in frontier regions. It reflected Polk’s commitment to national growth and infrastructure development.",
+          "sources": [
+            "https://millercenter.org/president/polk/domestic-affairs",
+            "https://www.britannica.com/biography/James-K-Polk"
+          ]
+        }
+      ],
+      "domesticImpactIndex": 0,
+      "majorDomesticEvents": [
+        {
+          "title": "Westward Expansion and Sectional Tensions",
+          "summary": "Polk’s territorial acquisitions intensified debates over the expansion of slavery. The Wilmot Proviso, though never passed, proposed banning slavery in territories gained from Mexico and sparked fierce sectional conflict. The controversy foreshadowed the political crises of the 1850s and reshaped domestic politics.",
+          "sources": [
+            "https://www.britannica.com/event/Wilmot-Proviso",
+            "https://millercenter.org/president/polk/domestic-affairs"
+          ]
+        }
       ]
     }
   },
@@ -314,20 +448,27 @@
     "id": 12,
     "name": "Zachary Taylor",
     "domesticPolicy": {
-      "events": [
+      "majorBillsPassed": [],
+      "domesticInitiatives": [
         {
           "title": "Opposition to the Expansion of Slavery into New Territories",
-          "summary": "Taylor opposed the extension of slavery into territories acquired from Mexico, shaping early debates that led to the Compromise of 1850.",
+          "summary": "Taylor opposed the expansion of slavery into territories acquired from Mexico, despite being a slaveholder himself. He encouraged California and New Mexico to apply for statehood with free constitutions, bypassing congressional debates. His stance angered Southern leaders and contributed to rising sectional tensions.",
           "sources": [
-            "National Archives, Taylor territorial correspondence.",
-            "Library of Congress, Taylor slavery policy papers."
+            "https://www.britannica.com/biography/Zachary-Taylor",
+            "https://millercenter.org/president/taylor/domestic-affairs"
           ]
         }
       ],
-      "overallAssessment": "Taylor’s short presidency influenced sectional domestic debates over slavery in the West.",
-      "sources": [
-        "Library of Congress, Taylor presidential papers.",
-        "National Archives, domestic policy records."
+      "domesticImpactIndex": 0,
+      "majorDomesticEvents": [
+        {
+          "title": "Prelude to the Compromise of 1850",
+          "summary": "Taylor’s firm opposition to Southern threats of secession and his refusal to support the expansion of slavery set the stage for the Compromise of 1850. Although he died before the compromise was enacted, his policies shaped the political environment. His unexpected death shifted the balance of power in Congress.",
+          "sources": [
+            "https://www.britannica.com/event/Compromise-of-1850",
+            "https://millercenter.org/president/taylor/domestic-affairs"
+          ]
+        }
       ]
     }
   },
@@ -335,28 +476,36 @@
     "id": 13,
     "name": "Millard Fillmore",
     "domesticPolicy": {
-      "events": [
+      "majorBillsPassed": [
         {
-          "title": "Enforcement of the Compromise of 1850",
-          "summary": "Fillmore signed and enforced the Compromise of 1850, including the Fugitive Slave Act, deepening federal involvement in slavery enforcement.",
+          "title": "Compromise of 1850",
+          "summary": "Fillmore signed the Compromise of 1850, a package of laws intended to ease sectional tensions. The compromise admitted California as a free state, strengthened the Fugitive Slave Act, abolished the slave trade in Washington, D.C., and allowed popular sovereignty in Utah and New Mexico. The measures temporarily reduced sectional conflict but deepened long‑term divisions.",
           "sources": [
-            "National Archives, Compromise of 1850 enforcement records.",
-            "Library of Congress, Fillmore domestic policy papers."
-          ]
-        },
-        {
-          "title": "Use of Federal Authority in Fugitive Slave Cases",
-          "summary": "Fillmore directed federal officials to enforce fugitive slave provisions despite Northern resistance.",
-          "sources": [
-            "Library of Congress, Fillmore enforcement correspondence.",
-            "National Archives, fugitive slave case records."
+            "https://www.britannica.com/event/Compromise-of-1850",
+            "https://millercenter.org/president/fillmore/domestic-affairs"
           ]
         }
       ],
-      "overallAssessment": "Fillmore’s domestic policy entrenched federal enforcement of slavery, intensifying sectional tensions.",
-      "sources": [
-        "Library of Congress, Fillmore presidential papers.",
-        "National Archives, domestic enforcement archives."
+      "domesticInitiatives": [
+        {
+          "title": "Enforcement of the Fugitive Slave Act",
+          "summary": "Fillmore vigorously enforced the Fugitive Slave Act, deploying federal marshals to capture escaped enslaved people and prosecute those who aided them. His enforcement angered Northern abolitionists and strengthened the anti‑slavery movement. The policy became one of the most divisive domestic issues of the decade.",
+          "sources": [
+            "https://www.britannica.com/topic/Fugitive-Slave-Acts",
+            "https://millercenter.org/president/fillmore/domestic-affairs"
+          ]
+        }
+      ],
+      "domesticImpactIndex": 0,
+      "majorDomesticEvents": [
+        {
+          "title": "Rise of the Anti‑Slavery Movement",
+          "summary": "The Fugitive Slave Act sparked widespread Northern resistance, including personal liberty laws, abolitionist activism, and the growth of the Underground Railroad. Fillmore’s enforcement policies intensified sectional polarization and contributed to the collapse of the Whig Party.",
+          "sources": [
+            "https://www.britannica.com/topic/Underground-Railroad",
+            "https://millercenter.org/president/fillmore/domestic-affairs"
+          ]
+        }
       ]
     }
   },
@@ -364,28 +513,36 @@
     "id": 14,
     "name": "Franklin Pierce",
     "domesticPolicy": {
-      "events": [
+      "majorBillsPassed": [
         {
-          "title": "Support for the Kansas–Nebraska Act",
-          "summary": "Pierce backed legislation allowing popular sovereignty on slavery in new territories, leading to violent conflict in “Bleeding Kansas.”",
+          "title": "Kansas–Nebraska Act",
+          "summary": "Pierce signed the Kansas–Nebraska Act in 1854, which repealed the Missouri Compromise and allowed settlers in Kansas and Nebraska to determine the status of slavery through popular sovereignty. The act ignited violent conflict in Kansas, destabilized national politics, and contributed to the rise of the Republican Party.",
           "sources": [
-            "National Archives, Pierce Kansas–Nebraska records.",
-            "Library of Congress, Pierce sectional policy papers."
-          ]
-        },
-        {
-          "title": "Use of Federal Power Against Anti‑Slavery Resistance",
-          "summary": "Pierce deployed federal authority to support pro‑slavery territorial governments.",
-          "sources": [
-            "Library of Congress, Pierce enforcement correspondence.",
-            "National Archives, territorial enforcement records."
+            "https://www.britannica.com/event/Kansas-Nebraska-Act",
+            "https://history.state.gov/milestones/1850-1860/kansas-nebraska"
           ]
         }
       ],
-      "overallAssessment": "Pierce’s domestic policy accelerated sectional violence by backing pro‑slavery territorial arrangements.",
-      "sources": [
-        "Library of Congress, Pierce presidential papers.",
-        "National Archives, domestic conflict archives."
+      "domesticInitiatives": [
+        {
+          "title": "Support for Southern Pro‑Slavery Policies",
+          "summary": "Pierce consistently supported Southern interests, including enforcement of the Fugitive Slave Act and pro‑slavery territorial governments. His administration backed the pro‑slavery Lecompton Constitution in Kansas, despite widespread fraud. These actions deepened sectional divisions and undermined national unity.",
+          "sources": [
+            "https://www.britannica.com/biography/Franklin-Pierce",
+            "https://millercenter.org/president/pierce/domestic-affairs"
+          ]
+        }
+      ],
+      "domesticImpactIndex": 0,
+      "majorDomesticEvents": [
+        {
+          "title": "Bleeding Kansas",
+          "summary": "Following the Kansas–Nebraska Act, violent clashes erupted between pro‑slavery and anti‑slavery settlers in Kansas. Pierce’s administration recognized a fraudulent pro‑slavery government, worsening the conflict. The violence became a national symbol of the failure of popular sovereignty and the deepening sectional crisis.",
+          "sources": [
+            "https://www.britannica.com/event/Bleeding-Kansas",
+            "https://history.state.gov/milestones/1850-1860/kansas-nebraska"
+          ]
+        }
       ]
     }
   },
@@ -393,28 +550,35 @@
     "id": 15,
     "name": "James Buchanan",
     "domesticPolicy": {
-      "events": [
+      "majorBillsPassed": [],
+      "domesticInitiatives": [
         {
-          "title": "Endorsement of the Dred Scott Decision",
-          "summary": "Buchanan publicly supported the Supreme Court’s Dred Scott ruling, reinforcing the denial of federal authority to restrict slavery in territories.",
+          "title": "Support for the Lecompton Constitution",
+          "summary": "Buchanan supported the pro‑slavery Lecompton Constitution in Kansas, despite evidence of electoral fraud and widespread opposition among settlers. His stance alienated Northern Democrats and deepened sectional divisions. Congress ultimately rejected the constitution. Buchanan’s actions weakened his political coalition and accelerated national polarization.",
           "sources": [
-            "National Archives, Buchanan Dred Scott correspondence.",
-            "Library of Congress, sectional crisis papers."
-          ]
-        },
-        {
-          "title": "Handling of Secession Crisis in Its Early Stages",
-          "summary": "Buchanan refused strong federal action as Southern states moved toward secession, shaping the domestic context Lincoln inherited.",
-          "sources": [
-            "Library of Congress, Buchanan secession correspondence.",
-            "National Archives, late‑term domestic policy records."
+            "https://www.britannica.com/event/Lecompton-Constitution",
+            "https://millercenter.org/president/buchanan/domestic-affairs"
           ]
         }
       ],
-      "overallAssessment": "Buchanan’s domestic policy deepened sectional division and left the Union vulnerable on the eve of war.",
-      "sources": [
-        "Library of Congress, Buchanan presidential papers.",
-        "National Archives, domestic crisis archives."
+      "domesticImpactIndex": 0,
+      "majorDomesticEvents": [
+        {
+          "title": "Dred Scott Decision Reaction",
+          "summary": "The Supreme Court’s Dred Scott decision declared that African Americans could not be citizens and that Congress could not ban slavery in the territories. Buchanan publicly supported the ruling and was suspected of influencing the Court. The decision inflamed sectional tensions and undermined efforts to find political compromise.",
+          "sources": [
+            "https://www.britannica.com/event/Dred-Scott-decision",
+            "https://millercenter.org/president/buchanan/domestic-affairs"
+          ]
+        },
+        {
+          "title": "Secession Crisis Begins",
+          "summary": "Following Lincoln’s election in 1860, Southern states began seceding from the Union. Buchanan argued that secession was illegal but claimed the federal government lacked constitutional authority to stop it. His inaction allowed the crisis to escalate. By the time he left office, seven states had seceded, and the Confederacy had formed.",
+          "sources": [
+            "https://www.britannica.com/event/American-Civil-War",
+            "https://millercenter.org/president/buchanan/domestic-affairs"
+          ]
+        }
       ]
     }
   },
@@ -422,28 +586,52 @@
     "id": 16,
     "name": "Abraham Lincoln",
     "domesticPolicy": {
-      "events": [
+      "majorBillsPassed": [
         {
-          "title": "Emancipation Proclamation (Domestic Enforcement Dimension)",
-          "summary": "Lincoln issued the Emancipation Proclamation, transforming the legal status of enslaved people in rebelling states and redefining federal domestic authority over slavery.",
+          "title": "Homestead Act of 1862",
+          "summary": "Lincoln signed the Homestead Act, granting 160 acres of public land to settlers who lived on and improved the land for five years. The act accelerated westward expansion, encouraged small-scale farming, and reshaped the demographic and economic landscape of the American West. It remains one of the most influential land policies in U.S. history.",
           "sources": [
-            "National Archives, Emancipation Proclamation records.",
-            "Library of Congress, Lincoln wartime domestic papers."
+            "https://www.britannica.com/event/Homestead-Act-United-States-1862",
+            "https://www.archives.gov/milestone-documents/homestead-act"
           ]
         },
         {
-          "title": "Suspension of Habeas Corpus in Domestic Context",
-          "summary": "Lincoln suspended habeas corpus in key regions, enabling federal detention of suspected rebels and dissenters within the Union.",
+          "title": "Morrill Land-Grant Act",
+          "summary": "Lincoln signed the Morrill Act, which granted federal land to states to fund colleges specializing in agriculture and mechanical arts. The act democratized higher education and laid the foundation for the modern land‑grant university system. It significantly expanded educational access and supported economic development.",
           "sources": [
-            "Library of Congress, Lincoln habeas corpus correspondence.",
-            "National Archives, domestic security directives."
+            "https://www.britannica.com/topic/Morrill-Act",
+            "https://www.archives.gov/milestone-documents/morrill-act"
+          ]
+        },
+        {
+          "title": "Pacific Railway Act",
+          "summary": "Lincoln approved the Pacific Railway Act, authorizing construction of the transcontinental railroad. The law provided land grants and loans to railroad companies, enabling rapid infrastructure expansion. The railroad transformed national commerce, migration, and communication.",
+          "sources": [
+            "https://www.britannica.com/topic/Pacific-Railway-Acts",
+            "https://www.archives.gov/milestone-documents/pacific-railway-act"
           ]
         }
       ],
-      "overallAssessment": "Lincoln reshaped domestic governance through emancipation policy and wartime federal authority expansion.",
-      "sources": [
-        "Library of Congress, Lincoln presidential papers.",
-        "National Archives, domestic wartime governance records."
+      "domesticInitiatives": [
+        {
+          "title": "Emancipation Proclamation (Domestic Impact)",
+          "summary": "Although issued as a wartime measure, the Emancipation Proclamation had profound domestic consequences. It redefined the Civil War as a struggle against slavery, authorized the enlistment of Black soldiers, and shifted national policy toward abolition. It transformed the social and political landscape of the United States.",
+          "sources": [
+            "https://www.britannica.com/event/Emancipation-Proclamation",
+            "https://www.archives.gov/exhibits/featured-documents/emancipation-proclamation"
+          ]
+        }
+      ],
+      "domesticImpactIndex": 0,
+      "majorDomesticEvents": [
+        {
+          "title": "Civil War Domestic Mobilization",
+          "summary": "Lincoln oversaw unprecedented domestic mobilization during the Civil War, including conscription, taxation, industrial expansion, and the suspension of habeas corpus. These actions expanded federal authority and reshaped the relationship between citizens and the national government. The war transformed American society and governance.",
+          "sources": [
+            "https://www.britannica.com/event/American-Civil-War",
+            "https://millercenter.org/president/lincoln/domestic-affairs"
+          ]
+        }
       ]
     }
   },
@@ -451,28 +639,35 @@
     "id": 17,
     "name": "Andrew Johnson",
     "domesticPolicy": {
-      "events": [
+      "majorBillsPassed": [],
+      "domesticInitiatives": [
         {
           "title": "Lenient Reconstruction Policies",
-          "summary": "Johnson implemented lenient readmission requirements for Southern states, allowing former Confederates to regain political power.",
+          "summary": "Johnson pursued a lenient approach to Reconstruction, quickly restoring Southern governments with minimal requirements. He opposed protections for formerly enslaved people and vetoed key civil rights legislation. His policies emboldened Southern states to enact Black Codes and resist racial equality.",
           "sources": [
-            "National Archives, Johnson Reconstruction directives.",
-            "Library of Congress, Johnson domestic policy papers."
-          ]
-        },
-        {
-          "title": "Vetoes of Civil Rights Legislation",
-          "summary": "Johnson vetoed the Civil Rights Act of 1866 and Freedmen’s Bureau expansion, opposing federal protection of freedpeople.",
-          "sources": [
-            "Library of Congress, Johnson veto messages.",
-            "National Archives, Reconstruction civil rights records."
+            "https://www.britannica.com/biography/Andrew-Johnson",
+            "https://millercenter.org/president/johnson/domestic-affairs"
           ]
         }
       ],
-      "overallAssessment": "Johnson’s domestic policy undermined federal Reconstruction efforts and empowered former Confederate elites.",
-      "sources": [
-        "Library of Congress, Johnson presidential papers.",
-        "National Archives, domestic Reconstruction archives."
+      "domesticImpactIndex": 0,
+      "majorDomesticEvents": [
+        {
+          "title": "Vetoes of Civil Rights Legislation",
+          "summary": "Johnson vetoed the Civil Rights Act of 1866 and the Freedmen’s Bureau Bill, arguing they exceeded federal authority. Congress overrode his vetoes, marking the first major legislative overrides in U.S. history. The conflict deepened divisions between Johnson and Congress and shaped the course of Reconstruction.",
+          "sources": [
+            "https://www.britannica.com/event/Civil-Rights-Act-United-States-1866",
+            "https://millercenter.org/president/johnson/domestic-affairs"
+          ]
+        },
+        {
+          "title": "Impeachment Crisis",
+          "summary": "Johnson’s violation of the Tenure of Office Act by attempting to remove Secretary of War Edwin Stanton led to his impeachment by the House of Representatives. He was acquitted in the Senate by one vote. The crisis highlighted tensions over executive power and Reconstruction policy.",
+          "sources": [
+            "https://www.britannica.com/event/Andrew-Johnson-impeachment",
+            "https://history.house.gov/Institution/Impeachment/Impeachment-Johnson/"
+          ]
+        }
       ]
     }
   },
@@ -480,28 +675,36 @@
     "id": 18,
     "name": "Ulysses S. Grant",
     "domesticPolicy": {
-      "events": [
+      "majorBillsPassed": [
         {
-          "title": "Enforcement Acts Against the Ku Klux Klan",
-          "summary": "Grant used federal power to suppress the KKK, deploying troops and federal marshals to protect civil rights.",
+          "title": "Civil Rights Act of 1875",
+          "summary": "Grant signed the Civil Rights Act of 1875, guaranteeing equal access to public accommodations and jury service regardless of race. Although later struck down by the Supreme Court, the act represented the last major Reconstruction civil rights measure. It reflected Grant’s commitment to protecting African American rights.",
           "sources": [
-            "National Archives, Enforcement Acts records.",
-            "Library of Congress, Grant civil rights correspondence."
-          ]
-        },
-        {
-          "title": "Civil Service Reform Initiatives",
-          "summary": "Grant implemented early civil service reforms to reduce patronage and corruption within federal agencies.",
-          "sources": [
-            "Library of Congress, Grant administrative reform papers.",
-            "National Archives, civil service directives."
+            "https://www.britannica.com/event/Civil-Rights-Act-United-States-1875",
+            "https://millercenter.org/president/grant/domestic-affairs"
           ]
         }
       ],
-      "overallAssessment": "Grant strengthened federal civil rights enforcement and initiated civil service reform.",
-      "sources": [
-        "Library of Congress, Grant presidential papers.",
-        "National Archives, domestic governance archives."
+      "domesticInitiatives": [
+        {
+          "title": "Enforcement Acts and Anti-Klan Measures",
+          "summary": "Grant aggressively enforced the Enforcement Acts, which targeted Ku Klux Klan violence and protected African American voting rights. He deployed federal troops and used federal courts to prosecute Klan members. These actions temporarily suppressed white supremacist terrorism in the South.",
+          "sources": [
+            "https://www.britannica.com/topic/Enforcement-Acts",
+            "https://history.state.gov/milestones/1866-1898/kkk"
+          ]
+        }
+      ],
+      "domesticImpactIndex": 0,
+      "majorDomesticEvents": [
+        {
+          "title": "Panic of 1873",
+          "summary": "A major financial crisis triggered by railroad overexpansion and banking failures plunged the nation into a severe depression. Grant adhered to hard‑money policies, vetoing inflationary measures. The depression weakened support for Reconstruction and reshaped national politics.",
+          "sources": [
+            "https://www.britannica.com/event/Panic-of-1873",
+            "https://www.federalreservehistory.org/essays/panic-of-1873"
+          ]
+        }
       ]
     }
   },
@@ -509,28 +712,35 @@
     "id": 19,
     "name": "Rutherford B. Hayes",
     "domesticPolicy": {
-      "events": [
+      "majorBillsPassed": [],
+      "domesticInitiatives": [
         {
-          "title": "End of Reconstruction",
-          "summary": "Hayes withdrew federal troops from the South, ending Reconstruction and shifting domestic power back to state governments.",
+          "title": "Civil Service Reform Efforts",
+          "summary": "Hayes initiated civil service reforms to reduce corruption and patronage. He issued executive orders prohibiting federal employees from being required to make political contributions and attempted to implement merit‑based hiring. His efforts laid groundwork for later reforms under Chester Arthur.",
           "sources": [
-            "National Archives, Hayes troop withdrawal records.",
-            "Library of Congress, Hayes domestic policy papers."
-          ]
-        },
-        {
-          "title": "Civil Service Reform Enforcement",
-          "summary": "Hayes enforced rules limiting political patronage, challenging entrenched party machines.",
-          "sources": [
-            "Library of Congress, Hayes civil service correspondence.",
-            "National Archives, domestic administrative records."
+            "https://www.britannica.com/biography/Rutherford-B-Hayes",
+            "https://millercenter.org/president/hayes/domestic-affairs"
           ]
         }
       ],
-      "overallAssessment": "Hayes ended Reconstruction and advanced early civil service reform.",
-      "sources": [
-        "Library of Congress, Hayes presidential papers.",
-        "National Archives, domestic policy archives."
+      "domesticImpactIndex": 0,
+      "majorDomesticEvents": [
+        {
+          "title": "End of Reconstruction",
+          "summary": "As part of the Compromise of 1877, Hayes withdrew federal troops from the South, effectively ending Reconstruction. The withdrawal allowed Southern states to impose segregation and disenfranchisement. The decision reshaped racial and political dynamics for generations.",
+          "sources": [
+            "https://www.britannica.com/event/Compromise-of-1877",
+            "https://millercenter.org/president/hayes/domestic-affairs"
+          ]
+        },
+        {
+          "title": "Great Railroad Strike of 1877",
+          "summary": "A nationwide railroad strike erupted over wage cuts and poor working conditions. Hayes deployed federal troops to suppress the unrest, resulting in violent clashes. The strike highlighted growing labor tensions and the federal government’s willingness to intervene on behalf of industry.",
+          "sources": [
+            "https://www.britannica.com/event/Great-Railroad-Strike-of-1877",
+            "https://www.archives.gov/education/lessons/railroad-strike-1877"
+          ]
+        }
       ]
     }
   },
@@ -538,28 +748,27 @@
     "id": 20,
     "name": "James A. Garfield",
     "domesticPolicy": {
-      "events": [
+      "majorBillsPassed": [],
+      "domesticInitiatives": [
         {
-          "title": "Aggressive Anti‑Patronage Stance",
-          "summary": "Garfield challenged the patronage system by resisting machine‑backed appointments, provoking political backlash.",
+          "title": "Civil Service Reform Advocacy",
+          "summary": "Garfield prioritized civil service reform, seeking to curb the spoils system and implement merit‑based hiring. He clashed with powerful party bosses, particularly Senator Roscoe Conkling. Garfield’s assassination by a disgruntled office seeker intensified public demand for reform and directly led to the Pendleton Act under Chester Arthur.",
           "sources": [
-            "National Archives, Garfield appointment records.",
-            "Library of Congress, Garfield civil service papers."
-          ]
-        },
-        {
-          "title": "Strengthening Federal Oversight of Executive Departments",
-          "summary": "Garfield sought to professionalize federal departments through merit‑based standards.",
-          "sources": [
-            "Library of Congress, Garfield administrative correspondence.",
-            "National Archives, domestic administrative records."
+            "https://www.britannica.com/biography/James-A-Garfield",
+            "https://millercenter.org/president/garfield/domestic-affairs"
           ]
         }
       ],
-      "overallAssessment": "Garfield’s domestic policy centered on dismantling patronage and strengthening federal professionalism.",
-      "sources": [
-        "Library of Congress, Garfield presidential papers.",
-        "National Archives, domestic governance archives."
+      "domesticImpactIndex": 0,
+      "majorDomesticEvents": [
+        {
+          "title": "Assassination and Aftermath",
+          "summary": "Garfield was shot by Charles Guiteau, a disgruntled office seeker, in 1881. His prolonged suffering and death shocked the nation and exposed the dangers of the patronage system. The tragedy galvanized support for civil service reform and reshaped national attitudes toward government corruption.",
+          "sources": [
+            "https://www.britannica.com/event/assassination-of-James-A-Garfield",
+            "https://millercenter.org/president/garfield/domestic-affairs"
+          ]
+        }
       ]
     }
   },
@@ -567,57 +776,73 @@
     "id": 21,
     "name": "Chester A. Arthur",
     "domesticPolicy": {
-      "events": [
+      "majorBillsPassed": [
         {
-          "title": "Pendleton Civil Service Reform Act",
-          "summary": "Arthur signed and implemented the Pendleton Act, establishing merit‑based federal hiring and reducing patronage.",
+          "title": "Pendleton Civil Service Reform Act (1883)",
+          "summary": "Arthur signed the Pendleton Act, establishing the modern merit-based civil service system. The law created the Civil Service Commission, mandated competitive examinations for federal jobs, and prohibited mandatory political contributions from federal employees. It marked a major shift away from the spoils system and laid the foundation for professionalized federal administration.",
           "sources": [
-            "National Archives, Pendleton Act records.",
-            "Library of Congress, Arthur civil service papers."
-          ]
-        },
-        {
-          "title": "Modernization of Federal Administration",
-          "summary": "Arthur reorganized customs houses and strengthened federal administrative standards.",
-          "sources": [
-            "Library of Congress, Arthur administrative correspondence.",
-            "National Archives, domestic administrative records."
+            "https://www.britannica.com/event/Pendleton-Civil-Service-Act",
+            "https://millercenter.org/president/arthur/domestic-affairs"
           ]
         }
       ],
-      "overallAssessment": "Arthur institutionalized civil service reform and modernized federal administration.",
-      "sources": [
-        "Library of Congress, Arthur presidential papers.",
-        "National Archives, domestic policy archives."
+      "domesticInitiatives": [
+        {
+          "title": "Modernization of the U.S. Navy (Domestic Industrial Impact)",
+          "summary": "Arthur supported the construction of steel-hulled warships, launching the 'New Navy' era. Although primarily a defense initiative, it stimulated domestic steel production, shipbuilding, and industrial modernization. The program strengthened American manufacturing capacity and signaled a shift toward technological modernization.",
+          "sources": [
+            "https://www.britannica.com/biography/Chester-A-Arthur",
+            "https://millercenter.org/president/arthur/domestic-affairs"
+          ]
+        }
+      ],
+      "domesticImpactIndex": 0,
+      "majorDomesticEvents": [
+        {
+          "title": "Chinese Exclusion Act Enforcement",
+          "summary": "Arthur enforced the Chinese Exclusion Act, the first major federal law restricting immigration based on nationality. Although he vetoed an earlier harsher version, he ultimately signed a revised bill. The act had profound domestic consequences, shaping immigration policy and fueling anti-Asian discrimination.",
+          "sources": [
+            "https://www.britannica.com/event/Chinese-Exclusion-Act",
+            "https://history.state.gov/milestones/1866-1898/chinese-immigration"
+          ]
+        }
       ]
     }
   },
   {
     "id": 22,
-    "name": "Grover Cleveland",
+    "name": "Grover Cleveland (First Term)",
     "domesticPolicy": {
-      "events": [
+      "majorBillsPassed": [
         {
-          "title": "Interstate Commerce Act Enforcement",
-          "summary": "Cleveland supported the creation and enforcement of the Interstate Commerce Commission to regulate railroads.",
+          "title": "Presidential Succession Act of 1886",
+          "summary": "Cleveland signed the Presidential Succession Act, which placed cabinet officers in the line of succession after the vice president. The law replaced the previous system involving congressional leaders. It strengthened continuity of government and clarified constitutional procedures.",
           "sources": [
-            "National Archives, ICC founding documents.",
-            "Library of Congress, Cleveland regulatory papers."
-          ]
-        },
-        {
-          "title": "Vetoes of Private Pension Bills",
-          "summary": "Cleveland vetoed hundreds of private pension bills to prevent what he viewed as abuse of federal benefits.",
-          "sources": [
-            "Library of Congress, Cleveland veto messages.",
-            "National Archives, domestic spending records."
+            "https://www.britannica.com/topic/Presidential-Succession-Act",
+            "https://millercenter.org/president/cleveland/domestic-affairs"
           ]
         }
       ],
-      "overallAssessment": "Cleveland strengthened federal regulatory oversight and enforced strict spending discipline.",
-      "sources": [
-        "Library of Congress, Cleveland presidential papers.",
-        "National Archives, domestic policy archives."
+      "domesticInitiatives": [
+        {
+          "title": "Civil Service Reform Expansion",
+          "summary": "Cleveland expanded the merit-based civil service system, adding thousands of federal positions to competitive examination requirements. He opposed patronage and vetoed numerous private pension bills he viewed as fraudulent. His reforms strengthened administrative professionalism and reduced corruption.",
+          "sources": [
+            "https://www.britannica.com/biography/Grover-Cleveland",
+            "https://millercenter.org/president/cleveland/domestic-affairs"
+          ]
+        }
+      ],
+      "domesticImpactIndex": 0,
+      "majorDomesticEvents": [
+        {
+          "title": "Interstate Commerce Act (1887)",
+          "summary": "Although passed at the end of Cleveland’s first term, he signed the Interstate Commerce Act, creating the Interstate Commerce Commission (ICC). The law regulated railroad rates and prohibited discriminatory practices. It marked the first major federal attempt to regulate private industry and set a precedent for future regulatory agencies.",
+          "sources": [
+            "https://www.britannica.com/event/Interstate-Commerce-Act",
+            "https://millercenter.org/president/cleveland/domestic-affairs"
+          ]
+        }
       ]
     }
   },
@@ -625,28 +850,44 @@
     "id": 23,
     "name": "Benjamin Harrison",
     "domesticPolicy": {
-      "events": [
+      "majorBillsPassed": [
         {
-          "title": "Sherman Antitrust Act Implementation",
-          "summary": "Harrison signed and initiated enforcement of the first federal antitrust law to curb monopolistic practices.",
+          "title": "Sherman Antitrust Act (1890)",
+          "summary": "Harrison signed the Sherman Antitrust Act, the first federal law aimed at curbing monopolies and anti-competitive business practices. Although initially weakly enforced, it established the legal foundation for future trust-busting efforts. The act reflected growing public concern over corporate power.",
           "sources": [
-            "National Archives, Sherman Act records.",
-            "Library of Congress, Harrison antitrust papers."
+            "https://www.britannica.com/event/Sherman-Antitrust-Act",
+            "https://millercenter.org/president/harrison/domestic-affairs"
           ]
         },
         {
-          "title": "Admission of Six New States",
-          "summary": "Harrison oversaw the admission of six Western states, shaping domestic governance and federal–state relations.",
+          "title": "Sherman Silver Purchase Act",
+          "summary": "Harrison approved the Sherman Silver Purchase Act, requiring the federal government to buy large quantities of silver to increase the money supply. The act aimed to appease silver interests but contributed to financial instability leading to the Panic of 1893.",
           "sources": [
-            "Library of Congress, Harrison statehood correspondence.",
-            "National Archives, domestic territorial records."
+            "https://www.britannica.com/event/Sherman-Silver-Purchase-Act",
+            "https://millercenter.org/president/harrison/domestic-affairs"
           ]
         }
       ],
-      "overallAssessment": "Harrison strengthened antitrust enforcement and expanded the Union’s domestic structure.",
-      "sources": [
-        "Library of Congress, Harrison presidential papers.",
-        "National Archives, domestic governance archives."
+      "domesticInitiatives": [
+        {
+          "title": "Support for Veterans’ Pensions",
+          "summary": "Harrison expanded pension benefits for Union veterans, signing the Dependent Pension Act. The law dramatically increased federal spending and reflected Republican support for veterans. It also contributed to rising federal deficits.",
+          "sources": [
+            "https://www.britannica.com/biography/Benjamin-Harrison",
+            "https://millercenter.org/president/harrison/domestic-affairs"
+          ]
+        }
+      ],
+      "domesticImpactIndex": 0,
+      "majorDomesticEvents": [
+        {
+          "title": "Admission of Six New States",
+          "summary": "Harrison oversaw the admission of North Dakota, South Dakota, Montana, Washington, Idaho, and Wyoming. This rapid expansion reshaped national politics and increased Western representation in Congress. It reflected Republican efforts to strengthen their political base.",
+          "sources": [
+            "https://www.britannica.com/biography/Benjamin-Harrison",
+            "https://millercenter.org/president/harrison/domestic-affairs"
+          ]
+        }
       ]
     }
   },
@@ -654,28 +895,35 @@
     "id": 24,
     "name": "Grover Cleveland (Second Term)",
     "domesticPolicy": {
-      "events": [
+      "majorBillsPassed": [],
+      "domesticInitiatives": [
         {
-          "title": "Pullman Strike Federal Intervention",
-          "summary": "Cleveland deployed federal troops to break the Pullman Strike, asserting federal authority over interstate commerce and labor unrest.",
+          "title": "Repeal of the Sherman Silver Purchase Act",
+          "summary": "Cleveland called a special session of Congress to repeal the Sherman Silver Purchase Act, arguing that excessive silver purchases destabilized the economy. The repeal aimed to restore confidence in the gold standard. The decision was controversial and deepened divisions within the Democratic Party.",
           "sources": [
-            "National Archives, Pullman Strike intervention records.",
-            "Library of Congress, Cleveland labor policy papers."
-          ]
-        },
-        {
-          "title": "Strengthening of Federal Regulatory Oversight",
-          "summary": "Cleveland expanded the ICC’s authority to regulate railroad practices.",
-          "sources": [
-            "Library of Congress, Cleveland ICC correspondence.",
-            "National Archives, regulatory enforcement records."
+            "https://www.britannica.com/event/Sherman-Silver-Purchase-Act",
+            "https://millercenter.org/president/cleveland/domestic-affairs"
           ]
         }
       ],
-      "overallAssessment": "Cleveland’s second term emphasized federal intervention in labor conflict and expanded regulatory oversight.",
-      "sources": [
-        "Library of Congress, Cleveland presidential papers.",
-        "National Archives, domestic policy archives."
+      "domesticImpactIndex": 0,
+      "majorDomesticEvents": [
+        {
+          "title": "Panic of 1893",
+          "summary": "A severe economic depression began shortly after Cleveland took office. Bank failures, railroad bankruptcies, and unemployment soared. Cleveland’s commitment to the gold standard limited federal intervention. The crisis reshaped national politics and contributed to the rise of the Populist movement.",
+          "sources": [
+            "https://www.britannica.com/event/Panic-of-1893",
+            "https://www.federalreservehistory.org/essays/panic-of-1893"
+          ]
+        },
+        {
+          "title": "Pullman Strike (1894)",
+          "summary": "Cleveland deployed federal troops to suppress the Pullman Strike, arguing that the strike interfered with mail delivery and interstate commerce. The intervention led to violent clashes and set a precedent for federal involvement in labor disputes. The strike highlighted tensions between labor and capital.",
+          "sources": [
+            "https://www.britannica.com/event/Pullman-Strike",
+            "https://millercenter.org/president/cleveland/domestic-affairs"
+          ]
+        }
       ]
     }
   },
@@ -683,28 +931,44 @@
     "id": 25,
     "name": "William McKinley",
     "domesticPolicy": {
-      "events": [
+      "majorBillsPassed": [
         {
-          "title": "Strengthening of Federal Administrative Capacity",
-          "summary": "McKinley modernized federal departments to support expanding national responsibilities.",
+          "title": "Dingley Tariff (1897)",
+          "summary": "McKinley signed the Dingley Tariff, raising tariff rates to historically high levels to protect American industries. The law reversed the tariff reductions of the Wilson–Gorman Act and strengthened Republican protectionist policy. It generated significant federal revenue and shaped trade policy for years.",
           "sources": [
-            "National Archives, McKinley administrative records.",
-            "Library of Congress, McKinley domestic policy papers."
+            "https://www.britannica.com/topic/Dingley-Tariff",
+            "https://millercenter.org/president/mckinley/domestic-affairs"
           ]
         },
         {
-          "title": "Support for Veterans’ Benefits Expansion",
-          "summary": "McKinley backed expanded pensions and support for Civil War veterans.",
+          "title": "Gold Standard Act (1900)",
+          "summary": "McKinley signed the Gold Standard Act, formally committing the United States to a gold-backed currency. The law ended decades of debate over bimetallism and stabilized the monetary system. It reassured financial markets and aligned the U.S. with major global economies.",
           "sources": [
-            "Library of Congress, McKinley veterans’ correspondence.",
-            "National Archives, domestic benefits records."
+            "https://www.britannica.com/event/Gold-Standard-Act",
+            "https://millercenter.org/president/mckinley/domestic-affairs"
           ]
         }
       ],
-      "overallAssessment": "McKinley strengthened federal administrative capacity and expanded veterans’ support.",
-      "sources": [
-        "Library of Congress, McKinley presidential papers.",
-        "National Archives, domestic governance archives."
+      "domesticInitiatives": [
+        {
+          "title": "Industrial Expansion and Trust Growth",
+          "summary": "McKinley presided over rapid industrial growth and consolidation, including the rise of major corporate trusts. While he did not aggressively enforce antitrust laws, his administration supported economic modernization and technological innovation. The era saw major advances in manufacturing and infrastructure.",
+          "sources": [
+            "https://www.britannica.com/biography/William-McKinley",
+            "https://millercenter.org/president/mckinley/domestic-affairs"
+          ]
+        }
+      ],
+      "domesticImpactIndex": 0,
+      "majorDomesticEvents": [
+        {
+          "title": "Economic Recovery from the Panic of 1893",
+          "summary": "McKinley’s presidency coincided with a strong economic recovery following the depression of the 1890s. Rising industrial output, increased gold supplies, and improved financial stability contributed to renewed prosperity. The recovery strengthened public confidence in Republican economic policies.",
+          "sources": [
+            "https://www.britannica.com/event/Panic-of-1893",
+            "https://millercenter.org/president/mckinley/domestic-affairs"
+          ]
+        }
       ]
     }
   },
@@ -712,28 +976,52 @@
     "id": 26,
     "name": "Theodore Roosevelt",
     "domesticPolicy": {
-      "events": [
+      "majorBillsPassed": [
         {
-          "title": "Square Deal Domestic Reforms",
-          "summary": "Roosevelt advanced consumer protection, labor mediation, and corporate regulation as part of his Square Deal agenda.",
+          "title": "Pure Food and Drug Act (1906)",
+          "summary": "Roosevelt signed the Pure Food and Drug Act, establishing federal regulation of food and medicine to prevent adulteration and mislabeling. The law created the foundation for the modern FDA. It responded to public outrage over unsafe products and industrial abuses exposed by muckraking journalists.",
           "sources": [
-            "National Archives, Roosevelt domestic reform records.",
-            "Library of Congress, Square Deal papers."
+            "https://www.britannica.com/event/Pure-Food-and-Drug-Act",
+            "https://millercenter.org/president/roosevelt/domestic-affairs"
           ]
         },
         {
-          "title": "Conservation and National Park Expansion",
-          "summary": "Roosevelt created national forests, wildlife refuges, and protected millions of acres through executive action.",
+          "title": "Meat Inspection Act (1906)",
+          "summary": "Passed alongside the Pure Food and Drug Act, the Meat Inspection Act mandated sanitary standards in meatpacking plants and required federal inspections. The law improved consumer safety and increased federal oversight of industry.",
           "sources": [
-            "Library of Congress, Roosevelt conservation papers.",
-            "National Archives, federal land management records."
+            "https://www.britannica.com/event/Meat-Inspection-Act",
+            "https://millercenter.org/president/roosevelt/domestic-affairs"
           ]
         }
       ],
-      "overallAssessment": "Roosevelt reshaped domestic governance through progressive reforms and conservation policy.",
-      "sources": [
-        "Library of Congress, Roosevelt presidential papers.",
-        "National Archives, domestic policy archives."
+      "domesticInitiatives": [
+        {
+          "title": "Trust-Busting and Antitrust Enforcement",
+          "summary": "Roosevelt aggressively enforced the Sherman Antitrust Act, targeting monopolies such as Northern Securities. He distinguished between 'good' and 'bad' trusts, seeking to regulate rather than eliminate all large corporations. His actions expanded federal regulatory power and reshaped American capitalism.",
+          "sources": [
+            "https://www.britannica.com/biography/Theodore-Roosevelt",
+            "https://millercenter.org/president/roosevelt/domestic-affairs"
+          ]
+        },
+        {
+          "title": "Conservation and National Parks Expansion",
+          "summary": "Roosevelt championed conservation, creating national parks, wildlife refuges, and national forests. He established the U.S. Forest Service and protected over 230 million acres of public land. His conservation legacy remains one of the most significant in U.S. history.",
+          "sources": [
+            "https://www.britannica.com/topic/conservation-movement",
+            "https://millercenter.org/president/roosevelt/domestic-affairs"
+          ]
+        }
+      ],
+      "domesticImpactIndex": 0,
+      "majorDomesticEvents": [
+        {
+          "title": "Coal Strike of 1902",
+          "summary": "Roosevelt intervened in the anthracite coal strike, mediating between miners and operators. He threatened to use federal troops to operate the mines if negotiations failed. The settlement marked the first time a president acted as a neutral arbiter in a labor dispute, signaling a shift in federal labor policy.",
+          "sources": [
+            "https://www.britannica.com/event/anthracite-coal-strike",
+            "https://millercenter.org/president/roosevelt/domestic-affairs"
+          ]
+        }
       ]
     }
   },
@@ -741,28 +1029,44 @@
     "id": 27,
     "name": "William Howard Taft",
     "domesticPolicy": {
-      "events": [
+      "majorBillsPassed": [
         {
-          "title": "Expansion of Antitrust Enforcement",
-          "summary": "Taft pursued more antitrust cases than Roosevelt, intensifying federal regulation of corporate behavior.",
+          "title": "Mann-Elkins Act (1910)",
+          "summary": "Taft signed the Mann-Elkins Act, strengthening the Interstate Commerce Commission and expanding its authority to regulate telephone, telegraph, and railroad rates. The law increased federal oversight of transportation and communications industries.",
           "sources": [
-            "National Archives, Taft antitrust records.",
-            "Library of Congress, Taft regulatory papers."
-          ]
-        },
-        {
-          "title": "Strengthening of Interstate Commerce Commission Authority",
-          "summary": "Taft expanded ICC powers to regulate railroad rates and practices.",
-          "sources": [
-            "Library of Congress, Taft ICC correspondence.",
-            "National Archives, regulatory enforcement records."
+            "https://www.britannica.com/event/Mann-Elkins-Act",
+            "https://millercenter.org/president/taft/domestic-affairs"
           ]
         }
       ],
-      "overallAssessment": "Taft expanded federal regulatory power and intensified antitrust enforcement.",
-      "sources": [
-        "Library of Congress, Taft presidential papers.",
-        "National Archives, domestic policy archives."
+      "domesticInitiatives": [
+        {
+          "title": "Antitrust Enforcement Expansion",
+          "summary": "Taft filed more antitrust lawsuits than Roosevelt, targeting major corporations such as Standard Oil and American Tobacco. His strict legalistic approach contrasted with Roosevelt’s selective enforcement. Taft’s actions intensified divisions within the Republican Party.",
+          "sources": [
+            "https://www.britannica.com/biography/William-Howard-Taft",
+            "https://millercenter.org/president/taft/domestic-affairs"
+          ]
+        },
+        {
+          "title": "Civil Service and Postal Reforms",
+          "summary": "Taft expanded civil service protections and reorganized the postal system to improve efficiency. He supported parcel post services and postal savings banks, increasing access to financial services for rural Americans.",
+          "sources": [
+            "https://millercenter.org/president/taft/domestic-affairs",
+            "https://www.britannica.com/biography/William-Howard-Taft"
+          ]
+        }
+      ],
+      "domesticImpactIndex": 0,
+      "majorDomesticEvents": [
+        {
+          "title": "Split of the Republican Party",
+          "summary": "Taft’s policies alienated progressive Republicans, leading to a split between Taft conservatives and Roosevelt progressives. The division weakened the party and contributed to Taft’s defeat in 1912. The split reshaped American political alignments.",
+          "sources": [
+            "https://www.britannica.com/event/United-States-presidential-election-of-1912",
+            "https://millercenter.org/president/taft/domestic-affairs"
+          ]
+        }
       ]
     }
   },
@@ -770,28 +1074,52 @@
     "id": 28,
     "name": "Woodrow Wilson",
     "domesticPolicy": {
-      "events": [
+      "majorBillsPassed": [
         {
-          "title": "Clayton Antitrust Act and FTC Creation",
-          "summary": "Wilson strengthened antitrust law and created the Federal Trade Commission to regulate unfair business practices.",
+          "title": "Federal Reserve Act (1913)",
+          "summary": "Wilson signed the Federal Reserve Act, creating the Federal Reserve System to stabilize the banking sector and regulate the money supply. The act established regional reserve banks and a central governing board. It remains the cornerstone of U.S. monetary policy.",
           "sources": [
-            "National Archives, Clayton Act records.",
-            "Library of Congress, Wilson regulatory papers."
+            "https://www.britannica.com/event/Federal-Reserve-System",
+            "https://millercenter.org/president/wilson/domestic-affairs"
           ]
         },
         {
-          "title": "Federal Child Labor Legislation",
-          "summary": "Wilson supported federal child labor restrictions, though early laws faced judicial challenges.",
+          "title": "Clayton Antitrust Act (1914)",
+          "summary": "Wilson approved the Clayton Antitrust Act, strengthening antitrust laws and exempting labor unions from prosecution under antitrust statutes. The act clarified illegal business practices and expanded protections for workers.",
           "sources": [
-            "Library of Congress, Wilson labor policy papers.",
-            "National Archives, domestic regulatory records."
+            "https://www.britannica.com/event/Clayton-Antitrust-Act",
+            "https://millercenter.org/president/wilson/domestic-affairs"
+          ]
+        },
+        {
+          "title": "Federal Trade Commission Act (1914)",
+          "summary": "Wilson signed the FTC Act, creating the Federal Trade Commission to regulate unfair business practices. The FTC became a major regulatory agency overseeing consumer protection and competition.",
+          "sources": [
+            "https://www.britannica.com/topic/Federal-Trade-Commission",
+            "https://millercenter.org/president/wilson/domestic-affairs"
           ]
         }
       ],
-      "overallAssessment": "Wilson expanded federal regulatory power and advanced early labor protections.",
-      "sources": [
-        "Library of Congress, Wilson presidential papers.",
-        "National Archives, domestic policy archives."
+      "domesticInitiatives": [
+        {
+          "title": "Progressive Labor Reforms",
+          "summary": "Wilson supported major labor reforms, including the Adamson Act establishing an eight-hour workday for railroad workers and the Keating-Owen Act restricting child labor. These measures expanded federal involvement in labor regulation.",
+          "sources": [
+            "https://www.britannica.com/event/Adamson-Act",
+            "https://millercenter.org/president/wilson/domestic-affairs"
+          ]
+        }
+      ],
+      "domesticImpactIndex": 0,
+      "majorDomesticEvents": [
+        {
+          "title": "Segregation of Federal Offices",
+          "summary": "Wilson’s administration implemented segregation in federal workplaces, reversing earlier integration. These policies institutionalized racial discrimination and harmed African American civil rights. The decision remains one of the most criticized aspects of his presidency.",
+          "sources": [
+            "https://www.britannica.com/biography/Woodrow-Wilson",
+            "https://millercenter.org/president/wilson/domestic-affairs"
+          ]
+        }
       ]
     }
   },
@@ -799,28 +1127,36 @@
     "id": 29,
     "name": "Warren G. Harding",
     "domesticPolicy": {
-      "events": [
+      "majorBillsPassed": [
         {
-          "title": "Veterans’ Bureau Creation",
-          "summary": "Harding established the Veterans’ Bureau to consolidate federal support for veterans’ health and benefits.",
+          "title": "Budget and Accounting Act (1921)",
+          "summary": "Harding signed the Budget and Accounting Act, creating the Bureau of the Budget (now OMB) and the General Accounting Office (now GAO). The law centralized federal budgeting and strengthened fiscal oversight. It remains a foundational element of federal financial management.",
           "sources": [
-            "National Archives, Veterans’ Bureau founding documents.",
-            "Library of Congress, Harding domestic policy papers."
-          ]
-        },
-        {
-          "title": "Immigration Restriction Act of 1921",
-          "summary": "Harding signed the first major quota‑based immigration law, reshaping domestic immigration policy.",
-          "sources": [
-            "Library of Congress, Harding immigration papers.",
-            "National Archives, quota system records."
+            "https://www.britannica.com/topic/Budget-and-Accounting-Act",
+            "https://millercenter.org/president/harding/domestic-affairs"
           ]
         }
       ],
-      "overallAssessment": "Harding reshaped immigration policy and expanded federal veterans’ services.",
-      "sources": [
-        "Library of Congress, Harding presidential papers.",
-        "National Archives, domestic policy archives."
+      "domesticInitiatives": [
+        {
+          "title": "Return to Normalcy Economic Policies",
+          "summary": "Harding promoted pro-business policies, tax cuts, and reduced government regulation. His administration emphasized economic recovery after World War I. These policies contributed to short-term growth but also enabled corruption within federal agencies.",
+          "sources": [
+            "https://www.britannica.com/biography/Warren-G-Harding",
+            "https://millercenter.org/president/harding/domestic-affairs"
+          ]
+        }
+      ],
+      "domesticImpactIndex": 0,
+      "majorDomesticEvents": [
+        {
+          "title": "Teapot Dome Scandal (Uncovered After His Death)",
+          "summary": "Although Harding was not directly implicated, his administration was rocked by the Teapot Dome scandal, involving bribery and illegal leasing of federal oil reserves. The scandal severely damaged public trust in government and remains one of the most infamous corruption cases in U.S. history.",
+          "sources": [
+            "https://www.britannica.com/event/Teapot-Dome-Scandal",
+            "https://millercenter.org/president/harding/domestic-affairs"
+          ]
+        }
       ]
     }
   },
@@ -828,28 +1164,36 @@
     "id": 30,
     "name": "Calvin Coolidge",
     "domesticPolicy": {
-      "events": [
+      "majorBillsPassed": [
         {
-          "title": "Indian Citizenship Act of 1924",
-          "summary": "Coolidge signed legislation granting U.S. citizenship to all Native Americans born in the United States.",
+          "title": "Revenue Acts of 1924 and 1926",
+          "summary": "Coolidge signed major tax reduction bills that lowered income tax rates and reduced federal revenue. The policies reflected his belief in limited government and pro-business economics. They contributed to economic expansion during the 1920s but also widened income inequality.",
           "sources": [
-            "National Archives, Indian Citizenship Act records.",
-            "Library of Congress, Coolidge Native policy papers."
-          ]
-        },
-        {
-          "title": "Limited Federal Intervention in Domestic Affairs",
-          "summary": "Coolidge maintained a restrained federal role in labor disputes and social policy, emphasizing state authority.",
-          "sources": [
-            "Library of Congress, Coolidge domestic correspondence.",
-            "National Archives, domestic governance records."
+            "https://www.britannica.com/event/Revenue-Act-United-States-1924",
+            "https://millercenter.org/president/coolidge/domestic-affairs"
           ]
         }
       ],
-      "overallAssessment": "Coolidge expanded Native citizenship while maintaining limited federal domestic intervention.",
-      "sources": [
-        "Library of Congress, Coolidge presidential papers.",
-        "National Archives, domestic policy archives."
+      "domesticInitiatives": [
+        {
+          "title": "Support for Business and Deregulation",
+          "summary": "Coolidge promoted a hands-off approach to economic regulation, famously stating that 'the business of America is business.' His administration reduced federal oversight and encouraged private-sector growth. The policies contributed to the economic boom of the 1920s.",
+          "sources": [
+            "https://www.britannica.com/biography/Calvin-Coolidge",
+            "https://millercenter.org/president/coolidge/domestic-affairs"
+          ]
+        }
+      ],
+      "domesticImpactIndex": 0,
+      "majorDomesticEvents": [
+        {
+          "title": "Rise of Consumer Culture",
+          "summary": "Coolidge presided over rapid growth in consumer spending, mass production, and technological innovation. Automobiles, radios, and household appliances transformed daily life. While prosperity increased, underlying economic weaknesses foreshadowed the Great Depression.",
+          "sources": [
+            "https://www.britannica.com/event/Roaring-Twenties",
+            "https://millercenter.org/president/coolidge/domestic-affairs"
+          ]
+        }
       ]
     }
   },
@@ -857,28 +1201,52 @@
     "id": 31,
     "name": "Herbert Hoover",
     "domesticPolicy": {
-      "events": [
+      "majorBillsPassed": [
         {
-          "title": "Limited Federal Relief Approach During the Great Depression",
-          "summary": "Hoover resisted direct federal relief to individuals, instead promoting voluntary cooperation and local responsibility, shaping early Depression‑era domestic responses.",
+          "title": "Reconstruction Finance Corporation Act (1932)",
+          "summary": "Hoover signed the Reconstruction Finance Corporation Act, creating a federal agency empowered to provide emergency loans to banks, railroads, and other large institutions. The RFC aimed to stabilize key sectors during the Great Depression. Critics argued it favored corporations over individuals, but it became a major tool for later New Deal programs.",
           "sources": [
-            "National Archives, Hoover domestic relief papers.",
-            "Library of Congress, Hoover Depression correspondence."
-          ]
-        },
-        {
-          "title": "Creation of the Federal Farm Board",
-          "summary": "Hoover established the Federal Farm Board to stabilize crop prices through cooperative marketing and federal loans.",
-          "sources": [
-            "Library of Congress, Hoover agricultural policy papers.",
-            "National Archives, Farm Board records."
+            "https://www.britannica.com/topic/Reconstruction-Finance-Corporation",
+            "https://millercenter.org/president/hoover/domestic-affairs"
           ]
         }
       ],
-      "overallAssessment": "Hoover’s domestic policy emphasized limited federal intervention and cooperative relief mechanisms during economic collapse.",
-      "sources": [
-        "Library of Congress, Hoover presidential papers.",
-        "National Archives, domestic policy archives."
+      "domesticInitiatives": [
+        {
+          "title": "Voluntary Cooperation Approach to the Great Depression",
+          "summary": "Hoover relied on voluntary cooperation between businesses and government to maintain wages and employment during the economic collapse. He resisted direct federal relief to individuals, believing it would undermine self-reliance. His approach proved insufficient as the crisis deepened, shaping public perception of his presidency.",
+          "sources": [
+            "https://www.britannica.com/biography/Herbert-Hoover",
+            "https://millercenter.org/president/hoover/domestic-affairs"
+          ]
+        },
+        {
+          "title": "Public Works Expansion (Hoover Dam)",
+          "summary": "Hoover supported major public works projects, most notably the Hoover Dam, to stimulate employment and infrastructure development. Although many projects were initiated before the Depression, they became symbols of federal intervention in economic recovery.",
+          "sources": [
+            "https://www.britannica.com/topic/Hoover-Dam",
+            "https://millercenter.org/president/hoover/domestic-affairs"
+          ]
+        }
+      ],
+      "domesticImpactIndex": 0,
+      "majorDomesticEvents": [
+        {
+          "title": "Great Depression Economic Collapse",
+          "summary": "The stock market crash of 1929 triggered a severe economic downturn marked by mass unemployment, bank failures, and widespread poverty. Hoover’s limited federal response drew criticism and contributed to his electoral defeat. The crisis reshaped American expectations of federal responsibility.",
+          "sources": [
+            "https://www.britannica.com/event/Great-Depression",
+            "https://millercenter.org/president/hoover/domestic-affairs"
+          ]
+        },
+        {
+          "title": "Bonus Army March (1932)",
+          "summary": "Thousands of World War I veterans marched on Washington demanding early payment of promised bonuses. Hoover ordered federal troops to disperse the encampment, resulting in violence and public outrage. The incident damaged Hoover’s reputation and highlighted the desperation of the Depression era.",
+          "sources": [
+            "https://www.britannica.com/event/Bonus-Army",
+            "https://millercenter.org/president/hoover/domestic-affairs"
+          ]
+        }
       ]
     }
   },
@@ -886,28 +1254,60 @@
     "id": 32,
     "name": "Franklin D. Roosevelt",
     "domesticPolicy": {
-      "events": [
+      "majorBillsPassed": [
         {
-          "title": "Social Security Act",
-          "summary": "FDR established Social Security, creating the foundation of the modern American social safety net.",
+          "title": "Social Security Act (1935)",
+          "summary": "Roosevelt signed the Social Security Act, creating old-age pensions, unemployment insurance, and aid to dependent children. It became the cornerstone of the American welfare state and fundamentally reshaped the relationship between citizens and the federal government.",
           "sources": [
-            "National Archives, Social Security Act records.",
-            "Library of Congress, New Deal domestic policy papers."
+            "https://www.britannica.com/topic/Social-Security-Act",
+            "https://millercenter.org/president/fdroosevelt/domestic-affairs"
           ]
         },
         {
-          "title": "National Labor Relations Act Enforcement",
-          "summary": "FDR strengthened federal protections for collective bargaining and labor rights.",
+          "title": "National Labor Relations Act (Wagner Act)",
+          "summary": "The Wagner Act guaranteed workers the right to unionize and bargain collectively. It established the National Labor Relations Board to enforce labor rights. The law strengthened organized labor and transformed American industrial relations.",
           "sources": [
-            "Library of Congress, FDR labor policy papers.",
-            "National Archives, NLRA enforcement records."
+            "https://www.britannica.com/event/Wagner-Act",
+            "https://millercenter.org/president/fdroosevelt/domestic-affairs"
+          ]
+        },
+        {
+          "title": "Fair Labor Standards Act (1938)",
+          "summary": "Roosevelt signed the FLSA, establishing a federal minimum wage, maximum work hours, and restrictions on child labor. The act set national labor standards that remain foundational today.",
+          "sources": [
+            "https://www.britannica.com/event/Fair-Labor-Standards-Act",
+            "https://millercenter.org/president/fdroosevelt/domestic-affairs"
           ]
         }
       ],
-      "overallAssessment": "FDR transformed domestic governance through social welfare expansion and labor protections.",
-      "sources": [
-        "Library of Congress, Roosevelt presidential papers.",
-        "National Archives, domestic policy archives."
+      "domesticInitiatives": [
+        {
+          "title": "New Deal Programs",
+          "summary": "Roosevelt launched sweeping New Deal programs to combat the Great Depression, including the CCC, WPA, TVA, and AAA. These initiatives provided jobs, built infrastructure, regulated industry, and expanded federal authority. The New Deal permanently altered American governance and economic policy.",
+          "sources": [
+            "https://www.britannica.com/event/New-Deal",
+            "https://millercenter.org/president/fdroosevelt/domestic-affairs"
+          ]
+        },
+        {
+          "title": "Court-Packing Plan",
+          "summary": "Frustrated by Supreme Court rulings against New Deal legislation, Roosevelt proposed expanding the Court to add additional justices. The plan faced bipartisan opposition and failed, but the Court soon shifted to uphold key New Deal laws. The episode raised concerns about executive overreach.",
+          "sources": [
+            "https://www.britannica.com/event/Court-packing-plan",
+            "https://millercenter.org/president/fdroosevelt/domestic-affairs"
+          ]
+        }
+      ],
+      "domesticImpactIndex": 0,
+      "majorDomesticEvents": [
+        {
+          "title": "Great Depression Relief and Recovery",
+          "summary": "Roosevelt’s presidency was defined by efforts to address mass unemployment, bank failures, and economic collapse. His policies stabilized the financial system, restored public confidence, and expanded federal responsibility for social welfare.",
+          "sources": [
+            "https://www.britannica.com/event/Great-Depression",
+            "https://millercenter.org/president/fdroosevelt/domestic-affairs"
+          ]
+        }
       ]
     }
   },
@@ -915,28 +1315,52 @@
     "id": 33,
     "name": "Harry S. Truman",
     "domesticPolicy": {
-      "events": [
-        {
-          "title": "Desegregation of the Federal Workforce",
-          "summary": "Truman issued executive orders ending racial discrimination in federal employment.",
-          "sources": [
-            "National Archives, Truman civil rights directives.",
-            "Library of Congress, Truman domestic policy papers."
-          ]
-        },
+      "majorBillsPassed": [
         {
           "title": "Housing Act of 1949",
-          "summary": "Truman expanded federal involvement in public housing and urban redevelopment.",
+          "summary": "Truman signed the Housing Act to fund urban redevelopment, slum clearance, and public housing construction. The law aimed to address postwar housing shortages and improve living conditions. It became a major component of mid‑century urban policy.",
           "sources": [
-            "Library of Congress, Truman housing policy papers.",
-            "National Archives, Housing Act records."
+            "https://www.britannica.com/topic/Housing-Act-of-1949",
+            "https://millercenter.org/president/truman/domestic-affairs"
           ]
         }
       ],
-      "overallAssessment": "Truman advanced civil rights in federal institutions and expanded federal housing policy.",
-      "sources": [
-        "Library of Congress, Truman presidential papers.",
-        "National Archives, domestic policy archives."
+      "domesticInitiatives": [
+        {
+          "title": "Fair Deal Program",
+          "summary": "Truman proposed the Fair Deal, an ambitious domestic agenda including national health insurance, civil rights protections, and expanded social welfare. Congress blocked many proposals, but Truman succeeded in raising the minimum wage and expanding Social Security. The Fair Deal extended New Deal principles into the postwar era.",
+          "sources": [
+            "https://www.britannica.com/event/Fair-Deal",
+            "https://millercenter.org/president/truman/domestic-affairs"
+          ]
+        },
+        {
+          "title": "Desegregation of the Armed Forces",
+          "summary": "Truman issued Executive Order 9981, mandating racial integration of the U.S. military. The order marked a major step in federal civil rights policy and set a precedent for later desegregation efforts.",
+          "sources": [
+            "https://www.britannica.com/topic/Executive-Order-9981",
+            "https://millercenter.org/president/truman/domestic-affairs"
+          ]
+        }
+      ],
+      "domesticImpactIndex": 0,
+      "majorDomesticEvents": [
+        {
+          "title": "Postwar Labor Strikes",
+          "summary": "A wave of major strikes erupted after World War II as workers demanded higher wages. Truman intervened in several disputes, including threatening to draft striking railroad workers into the military. The unrest shaped debates over labor rights and federal authority.",
+          "sources": [
+            "https://www.britannica.com/event/United-States-labor-unrest-of-1945-1946",
+            "https://millercenter.org/president/truman/domestic-affairs"
+          ]
+        },
+        {
+          "title": "Taft-Hartley Act Veto and Override",
+          "summary": "Truman vetoed the Taft-Hartley Act, which restricted labor union activities, but Congress overrode his veto. The law reshaped labor relations and limited union power for decades.",
+          "sources": [
+            "https://www.britannica.com/event/Taft-Hartley-Act",
+            "https://millercenter.org/president/truman/domestic-affairs"
+          ]
+        }
       ]
     }
   },
@@ -944,28 +1368,36 @@
     "id": 34,
     "name": "Dwight D. Eisenhower",
     "domesticPolicy": {
-      "events": [
+      "majorBillsPassed": [
         {
-          "title": "Civil Rights Act of 1957 Enforcement",
-          "summary": "Eisenhower enforced the first civil rights legislation since Reconstruction and strengthened federal voting rights oversight.",
+          "title": "Federal-Aid Highway Act of 1956",
+          "summary": "Eisenhower signed the Federal-Aid Highway Act, creating the Interstate Highway System. The project became the largest public works program in U.S. history, transforming transportation, commerce, and suburban development.",
           "sources": [
-            "National Archives, Civil Rights Act of 1957 records.",
-            "Library of Congress, Eisenhower civil rights papers."
-          ]
-        },
-        {
-          "title": "Federal Intervention in Little Rock",
-          "summary": "Eisenhower deployed federal troops to enforce school desegregation in Arkansas.",
-          "sources": [
-            "Library of Congress, Little Rock crisis correspondence.",
-            "National Archives, domestic enforcement records."
+            "https://www.britannica.com/topic/Federal-Aid-Highway-Act",
+            "https://millercenter.org/president/eisenhower/domestic-affairs"
           ]
         }
       ],
-      "overallAssessment": "Eisenhower strengthened federal civil rights enforcement and upheld desegregation mandates.",
-      "sources": [
-        "Library of Congress, Eisenhower presidential papers.",
-        "National Archives, domestic policy archives."
+      "domesticInitiatives": [
+        {
+          "title": "Moderate Republicanism",
+          "summary": "Eisenhower pursued a centrist domestic agenda, maintaining key New Deal programs while promoting fiscal responsibility. He expanded Social Security, supported public housing, and balanced the federal budget three times.",
+          "sources": [
+            "https://www.britannica.com/biography/Dwight-D-Eisenhower",
+            "https://millercenter.org/president/eisenhower/domestic-affairs"
+          ]
+        }
+      ],
+      "domesticImpactIndex": 0,
+      "majorDomesticEvents": [
+        {
+          "title": "Brown v. Board of Education and School Desegregation",
+          "summary": "The Supreme Court’s Brown decision declared school segregation unconstitutional. Eisenhower enforced desegregation by sending federal troops to Little Rock in 1957. His actions affirmed federal authority in civil rights enforcement.",
+          "sources": [
+            "https://www.britannica.com/event/Brown-v-Board-of-Education-of-Topeka",
+            "https://millercenter.org/president/eisenhower/domestic-affairs"
+          ]
+        }
       ]
     }
   },
@@ -973,28 +1405,35 @@
     "id": 35,
     "name": "John F. Kennedy",
     "domesticPolicy": {
-      "events": [
+      "majorBillsPassed": [],
+      "domesticInitiatives": [
         {
-          "title": "Federal Action on Civil Rights",
-          "summary": "Kennedy used federal authority to enforce desegregation at universities in Mississippi and Alabama.",
+          "title": "New Frontier Programs",
+          "summary": "Kennedy proposed the New Frontier, a domestic agenda focused on education funding, healthcare for the elderly, urban renewal, and poverty reduction. Many proposals stalled in Congress, but they laid the groundwork for later Great Society legislation.",
           "sources": [
-            "National Archives, Kennedy civil rights enforcement records.",
-            "Library of Congress, JFK domestic policy papers."
+            "https://www.britannica.com/event/New-Frontier",
+            "https://millercenter.org/president/kennedy/domestic-affairs"
           ]
         },
         {
-          "title": "Creation of the President’s Commission on the Status of Women",
-          "summary": "Kennedy established a commission to investigate gender inequality and recommend domestic policy reforms.",
+          "title": "Civil Rights Advocacy",
+          "summary": "Kennedy supported civil rights legislation and used federal authority to enforce desegregation, including sending federal marshals to protect Freedom Riders and ordering the integration of the University of Mississippi. His administration drafted the Civil Rights Act later passed under Lyndon Johnson.",
           "sources": [
-            "Library of Congress, Kennedy women’s policy papers.",
-            "National Archives, commission records."
+            "https://www.britannica.com/biography/John-F-Kennedy",
+            "https://millercenter.org/president/kennedy/domestic-affairs"
           ]
         }
       ],
-      "overallAssessment": "Kennedy advanced civil rights enforcement and initiated federal attention to gender equality.",
-      "sources": [
-        "Library of Congress, Kennedy presidential papers.",
-        "National Archives, domestic policy archives."
+      "domesticImpactIndex": 0,
+      "majorDomesticEvents": [
+        {
+          "title": "Space Race and NASA Expansion",
+          "summary": "Kennedy committed the nation to landing a man on the Moon before the end of the decade. This pledge accelerated federal investment in science, technology, and education. The space program became a major driver of innovation and national pride.",
+          "sources": [
+            "https://www.britannica.com/event/space-race",
+            "https://millercenter.org/president/kennedy/domestic-affairs"
+          ]
+        }
       ]
     }
   },
@@ -1002,28 +1441,60 @@
     "id": 36,
     "name": "Lyndon B. Johnson",
     "domesticPolicy": {
-      "events": [
+      "majorBillsPassed": [
         {
           "title": "Civil Rights Act of 1964",
-          "summary": "Johnson secured passage and enforcement of landmark civil rights legislation prohibiting segregation and discrimination.",
+          "summary": "Johnson signed the Civil Rights Act of 1964, outlawing segregation in public accommodations, banning employment discrimination, and strengthening federal enforcement mechanisms. It became one of the most significant civil rights laws in American history and marked a turning point in federal protection of individual rights.",
           "sources": [
-            "National Archives, Civil Rights Act records.",
-            "Library of Congress, Johnson civil rights papers."
+            "https://www.britannica.com/event/Civil-Rights-Act-United-States-1964",
+            "https://millercenter.org/president/johnson/domestic-affairs"
           ]
         },
         {
-          "title": "War on Poverty Programs",
-          "summary": "Johnson launched domestic initiatives including Head Start, Job Corps, and community action programs.",
+          "title": "Voting Rights Act of 1965",
+          "summary": "Johnson signed the Voting Rights Act, prohibiting racial discrimination in voting and authorizing federal oversight of elections in jurisdictions with histories of discrimination. The law dramatically increased Black voter registration and participation, reshaping American democracy.",
           "sources": [
-            "Library of Congress, Johnson anti‑poverty papers.",
-            "National Archives, Great Society domestic records."
+            "https://www.britannica.com/event/Voting-Rights-Act",
+            "https://millercenter.org/president/johnson/domestic-affairs"
+          ]
+        },
+        {
+          "title": "Medicare and Medicaid (1965)",
+          "summary": "Johnson signed amendments to the Social Security Act creating Medicare for seniors and Medicaid for low-income Americans. These programs transformed American healthcare and remain central pillars of the U.S. social safety net.",
+          "sources": [
+            "https://www.britannica.com/topic/Medicare-United-States-health-insurance-program",
+            "https://millercenter.org/president/johnson/domestic-affairs"
           ]
         }
       ],
-      "overallAssessment": "Johnson reshaped domestic governance through civil rights enforcement and anti‑poverty programs.",
-      "sources": [
-        "Library of Congress, Johnson presidential papers.",
-        "National Archives, domestic policy archives."
+      "domesticInitiatives": [
+        {
+          "title": "War on Poverty",
+          "summary": "Johnson launched the War on Poverty, creating programs such as Head Start, Job Corps, VISTA, and Community Action Agencies. These initiatives aimed to reduce poverty through education, job training, and community development. The programs expanded federal involvement in social welfare.",
+          "sources": [
+            "https://www.britannica.com/topic/War-on-Poverty",
+            "https://millercenter.org/president/johnson/domestic-affairs"
+          ]
+        },
+        {
+          "title": "Great Society Reforms",
+          "summary": "Johnson’s Great Society agenda included sweeping reforms in education, healthcare, housing, transportation, and environmental protection. Landmark laws included the Elementary and Secondary Education Act, Higher Education Act, and the creation of HUD and NEA. These reforms expanded federal responsibility for social equity.",
+          "sources": [
+            "https://www.britannica.com/topic/Great-Society",
+            "https://millercenter.org/president/johnson/domestic-affairs"
+          ]
+        }
+      ],
+      "domesticImpactIndex": 0,
+      "majorDomesticEvents": [
+        {
+          "title": "Urban Riots of the 1960s",
+          "summary": "Major riots erupted in cities such as Watts, Detroit, and Newark, driven by racial inequality, police brutality, and economic frustration. Johnson established the Kerner Commission, which concluded that the nation was moving toward 'two societies, one black, one white—separate and unequal.' The unrest shaped national debates on race and poverty.",
+          "sources": [
+            "https://www.britannica.com/event/Watts-Riots",
+            "https://millercenter.org/president/johnson/domestic-affairs"
+          ]
+        }
       ]
     }
   },
@@ -1031,28 +1502,52 @@
     "id": 37,
     "name": "Richard Nixon",
     "domesticPolicy": {
-      "events": [
+      "majorBillsPassed": [
         {
-          "title": "Creation of the Environmental Protection Agency",
-          "summary": "Nixon established the EPA, centralizing federal environmental regulation.",
+          "title": "Clean Air Act of 1970",
+          "summary": "Nixon signed the Clean Air Act, establishing comprehensive federal authority to regulate air pollution. The law created national air quality standards and required states to develop implementation plans. It remains one of the most important environmental laws in U.S. history.",
           "sources": [
-            "National Archives, EPA founding documents.",
-            "Library of Congress, Nixon environmental policy papers."
+            "https://www.britannica.com/event/Clean-Air-Act-United-States-1970",
+            "https://millercenter.org/president/nixon/domestic-affairs"
           ]
         },
         {
-          "title": "Expansion of Federal Drug Enforcement",
-          "summary": "Nixon launched the “War on Drugs,” increasing federal authority over drug enforcement.",
+          "title": "Title IX (1972)",
+          "summary": "Nixon signed Title IX, prohibiting sex discrimination in federally funded education programs. The law transformed women’s athletics, academic opportunities, and gender equality in education.",
           "sources": [
-            "Library of Congress, Nixon drug policy papers.",
-            "National Archives, domestic enforcement records."
+            "https://www.britannica.com/topic/Title-IX",
+            "https://millercenter.org/president/nixon/domestic-affairs"
           ]
         }
       ],
-      "overallAssessment": "Nixon expanded federal environmental regulation and domestic drug enforcement.",
-      "sources": [
-        "Library of Congress, Nixon presidential papers.",
-        "National Archives, domestic policy archives."
+      "domesticInitiatives": [
+        {
+          "title": "Creation of the Environmental Protection Agency (EPA)",
+          "summary": "Nixon established the EPA in 1970 to consolidate federal environmental responsibilities. The agency became central to enforcing pollution control laws and protecting natural resources.",
+          "sources": [
+            "https://www.britannica.com/topic/Environmental-Protection-Agency",
+            "https://millercenter.org/president/nixon/domestic-affairs"
+          ]
+        },
+        {
+          "title": "Wage and Price Controls",
+          "summary": "Facing inflation, Nixon imposed temporary wage and price controls in 1971. The policy marked a dramatic intervention in the economy and temporarily slowed inflation, though long-term effects were mixed.",
+          "sources": [
+            "https://www.britannica.com/event/wage-and-price-controls",
+            "https://millercenter.org/president/nixon/domestic-affairs"
+          ]
+        }
+      ],
+      "domesticImpactIndex": 0,
+      "majorDomesticEvents": [
+        {
+          "title": "Watergate Scandal",
+          "summary": "The Watergate break-in and subsequent cover-up led to a constitutional crisis, congressional investigations, and Nixon’s resignation. The scandal reshaped public trust in government and led to major reforms in campaign finance and executive accountability.",
+          "sources": [
+            "https://www.britannica.com/event/Watergate-Scandal",
+            "https://millercenter.org/president/nixon/domestic-affairs"
+          ]
+        }
       ]
     }
   },
@@ -1060,28 +1555,44 @@
     "id": 38,
     "name": "Gerald Ford",
     "domesticPolicy": {
-      "events": [
+      "majorBillsPassed": [
         {
-          "title": "Pardon of Richard Nixon",
-          "summary": "Ford issued a presidential pardon for Nixon, shaping domestic political reconciliation after Watergate.",
+          "title": "Education for All Handicapped Children Act (1975)",
+          "summary": "Ford signed the Education for All Handicapped Children Act, guaranteeing public education for children with disabilities. The law laid the foundation for modern special education programs and expanded civil rights protections.",
           "sources": [
-            "National Archives, Ford pardon proclamation.",
-            "Library of Congress, Ford domestic policy papers."
-          ]
-        },
-        {
-          "title": "Support for Deregulation Initiatives",
-          "summary": "Ford advanced early deregulation efforts in transportation and energy sectors.",
-          "sources": [
-            "Library of Congress, Ford regulatory reform papers.",
-            "National Archives, domestic regulatory records."
+            "https://www.britannica.com/topic/Education-for-All-Handicapped-Children-Act",
+            "https://millercenter.org/president/ford/domestic-affairs"
           ]
         }
       ],
-      "overallAssessment": "Ford’s domestic policy focused on political stabilization and early deregulation.",
-      "sources": [
-        "Library of Congress, Ford presidential papers.",
-        "National Archives, domestic policy archives."
+      "domesticInitiatives": [
+        {
+          "title": "WIN (Whip Inflation Now) Program",
+          "summary": "Ford launched the WIN campaign to combat inflation through voluntary citizen action, including reduced consumption and savings incentives. The program was widely mocked and had little economic impact, but it reflected Ford’s focus on inflation as the nation’s top domestic issue.",
+          "sources": [
+            "https://www.britannica.com/biography/Gerald-Ford",
+            "https://millercenter.org/president/ford/domestic-affairs"
+          ]
+        }
+      ],
+      "domesticImpactIndex": 0,
+      "majorDomesticEvents": [
+        {
+          "title": "Pardon of Richard Nixon",
+          "summary": "Ford issued a full pardon to Nixon for any crimes committed during the Watergate scandal. The decision was highly controversial and contributed to Ford’s political difficulties, but he argued it was necessary to help the nation move forward.",
+          "sources": [
+            "https://www.britannica.com/event/Watergate-Scandal",
+            "https://millercenter.org/president/ford/domestic-affairs"
+          ]
+        },
+        {
+          "title": "1970s Economic Stagflation",
+          "summary": "Ford faced severe economic challenges, including high inflation, unemployment, and slow growth. Stagflation undermined public confidence in government economic policy and shaped debates over regulation and monetary policy.",
+          "sources": [
+            "https://www.britannica.com/topic/stagflation",
+            "https://millercenter.org/president/ford/domestic-affairs"
+          ]
+        }
       ]
     }
   },
@@ -1089,28 +1600,60 @@
     "id": 39,
     "name": "Jimmy Carter",
     "domesticPolicy": {
-      "events": [
+      "majorBillsPassed": [
         {
-          "title": "Department of Education Creation",
-          "summary": "Carter established the Department of Education as a standalone federal agency.",
+          "title": "Department of Energy Organization Act (1977)",
+          "summary": "Carter signed legislation creating the Department of Energy to coordinate national energy policy. The department consolidated various agencies and focused on energy conservation, research, and regulation.",
           "sources": [
-            "National Archives, DOE founding documents.",
-            "Library of Congress, Carter education policy papers."
+            "https://www.britannica.com/topic/Department-of-Energy",
+            "https://millercenter.org/president/carter/domestic-affairs"
           ]
         },
         {
-          "title": "Expansion of Environmental and Energy Regulation",
-          "summary": "Carter strengthened federal environmental rules and created new energy conservation programs.",
+          "title": "Airline Deregulation Act (1978)",
+          "summary": "Carter signed the Airline Deregulation Act, ending federal control over airline routes and fares. The law increased competition, lowered prices, and reshaped the aviation industry.",
           "sources": [
-            "Library of Congress, Carter environmental policy papers.",
-            "National Archives, domestic regulatory records."
+            "https://www.britannica.com/event/Airline-Deregulation-Act",
+            "https://millercenter.org/president/carter/domestic-affairs"
           ]
         }
       ],
-      "overallAssessment": "Carter expanded federal roles in education, energy, and environmental regulation.",
-      "sources": [
-        "Library of Congress, Carter presidential papers.",
-        "National Archives, domestic policy archives."
+      "domesticInitiatives": [
+        {
+          "title": "Energy Conservation Policies",
+          "summary": "Carter emphasized energy conservation in response to the 1970s energy crises. He promoted fuel efficiency, alternative energy research, and reduced consumption. His policies laid groundwork for later environmental initiatives.",
+          "sources": [
+            "https://www.britannica.com/biography/Jimmy-Carter",
+            "https://millercenter.org/president/carter/domestic-affairs"
+          ]
+        },
+        {
+          "title": "Civil Service Reform Act (1978)",
+          "summary": "Carter signed the Civil Service Reform Act, reorganizing federal personnel systems, creating the Office of Personnel Management, and establishing the Merit Systems Protection Board. The law modernized federal employment practices.",
+          "sources": [
+            "https://www.britannica.com/topic/Civil-Service-Reform-Act",
+            "https://millercenter.org/president/carter/domestic-affairs"
+          ]
+        }
+      ],
+      "domesticImpactIndex": 0,
+      "majorDomesticEvents": [
+        {
+          "title": "1979 Energy Crisis",
+          "summary": "A second major energy crisis caused fuel shortages, long gas lines, and rising prices. Carter’s 'Crisis of Confidence' speech addressed national frustration and called for collective sacrifice. The crisis weakened public confidence in his leadership.",
+          "sources": [
+            "https://www.britannica.com/event/energy-crisis",
+            "https://millercenter.org/president/carter/domestic-affairs"
+          ]
+        },
+        {
+          "title": "Inflation and Economic Strain",
+          "summary": "High inflation, interest rates, and unemployment plagued Carter’s presidency. Economic instability contributed to political dissatisfaction and shaped the 1980 election.",
+          "sources": [
+            "https://www.britannica.com/topic/stagflation",
+            "https://millercenter.org/president/carter/domestic-affairs"
+          ]
+        }
       ]
     }
   },
@@ -1118,28 +1661,60 @@
     "id": 40,
     "name": "Ronald Reagan",
     "domesticPolicy": {
-      "events": [
+      "majorBillsPassed": [
         {
-          "title": "Reduction of Federal Domestic Regulation",
-          "summary": "Reagan reduced federal regulatory oversight across multiple domestic sectors.",
+          "title": "Economic Recovery Tax Act (1981)",
+          "summary": "Reagan signed the Economic Recovery Tax Act, implementing large tax cuts aimed at stimulating investment and economic growth. The law became a cornerstone of supply-side economics and reshaped federal fiscal policy.",
           "sources": [
-            "National Archives, Reagan deregulation records.",
-            "Library of Congress, Reagan domestic policy papers."
+            "https://www.britannica.com/event/Economic-Recovery-Tax-Act",
+            "https://millercenter.org/president/reagan/domestic-affairs"
           ]
         },
         {
-          "title": "War on Drugs Expansion",
-          "summary": "Reagan intensified federal drug enforcement and mandatory sentencing policies.",
+          "title": "Tax Reform Act of 1986",
+          "summary": "Reagan approved the Tax Reform Act, simplifying the tax code, reducing the number of tax brackets, and eliminating many deductions. It represented one of the most significant tax overhauls in U.S. history.",
           "sources": [
-            "Library of Congress, Reagan drug policy papers.",
-            "National Archives, domestic enforcement records."
+            "https://www.britannica.com/event/Tax-Reform-Act-United-States-1986",
+            "https://millercenter.org/president/reagan/domestic-affairs"
           ]
         }
       ],
-      "overallAssessment": "Reagan reshaped domestic governance through deregulation and expanded drug enforcement.",
-      "sources": [
-        "Library of Congress, Reagan presidential papers.",
-        "National Archives, domestic policy archives."
+      "domesticInitiatives": [
+        {
+          "title": "Deregulation Agenda",
+          "summary": "Reagan pursued extensive deregulation across industries including banking, telecommunications, and energy. His administration reduced federal oversight to encourage competition and private-sector growth. The long-term effects remain debated.",
+          "sources": [
+            "https://www.britannica.com/biography/Ronald-Reagan",
+            "https://millercenter.org/president/reagan/domestic-affairs"
+          ]
+        },
+        {
+          "title": "War on Drugs",
+          "summary": "Reagan expanded federal anti-drug efforts, increasing penalties for drug offenses and funding law enforcement. The policies contributed to rising incarceration rates and remain controversial for their social impact.",
+          "sources": [
+            "https://www.britannica.com/topic/war-on-drugs",
+            "https://millercenter.org/president/reagan/domestic-affairs"
+          ]
+        }
+      ],
+      "domesticImpactIndex": 0,
+      "majorDomesticEvents": [
+        {
+          "title": "1981–1982 Recession and Recovery",
+          "summary": "A severe recession early in Reagan’s presidency led to high unemployment and business failures. Subsequent economic recovery, driven by tax cuts and monetary policy, produced strong growth and declining inflation.",
+          "sources": [
+            "https://www.britannica.com/event/recession-of-1981-1982",
+            "https://millercenter.org/president/reagan/domestic-affairs"
+          ]
+        },
+        {
+          "title": "Air Traffic Controllers Strike (PATCO)",
+          "summary": "When air traffic controllers went on strike in 1981, Reagan fired over 11,000 workers who refused to return to work. The action demonstrated his firm stance against public-sector unions and reshaped labor relations.",
+          "sources": [
+            "https://www.britannica.com/event/PATCO-strike",
+            "https://millercenter.org/president/reagan/domestic-affairs"
+          ]
+        }
       ]
     }
   },
@@ -1147,28 +1722,52 @@
     "id": 41,
     "name": "George H. W. Bush",
     "domesticPolicy": {
-      "events": [
+      "majorBillsPassed": [
         {
-          "title": "Americans with Disabilities Act",
-          "summary": "Bush signed the ADA, establishing sweeping federal protections for individuals with disabilities.",
+          "title": "Americans with Disabilities Act (ADA) of 1990",
+          "summary": "Bush signed the ADA, prohibiting discrimination against individuals with disabilities in employment, public accommodations, transportation, and telecommunications. The law became one of the most significant civil rights measures since the 1960s and transformed accessibility standards nationwide.",
           "sources": [
-            "National Archives, ADA records.",
-            "Library of Congress, Bush civil rights papers."
+            "https://www.britannica.com/topic/Americans-with-Disabilities-Act",
+            "https://millercenter.org/president/bush/domestic-affairs"
           ]
         },
         {
-          "title": "Clean Air Act Amendments",
-          "summary": "Bush strengthened federal environmental regulation through major amendments targeting pollution and emissions.",
+          "title": "Clean Air Act Amendments of 1990",
+          "summary": "Bush approved major amendments to the Clean Air Act, strengthening regulations on air pollution, acid rain, and toxic emissions. The law introduced a cap‑and‑trade system for sulfur dioxide and expanded federal environmental oversight.",
           "sources": [
-            "Library of Congress, Bush environmental policy papers.",
-            "National Archives, Clean Air Act records."
+            "https://www.britannica.com/event/Clean-Air-Act-United-States-1990",
+            "https://millercenter.org/president/bush/domestic-affairs"
           ]
         }
       ],
-      "overallAssessment": "Bush expanded civil rights protections and strengthened environmental regulation.",
-      "sources": [
-        "Library of Congress, Bush presidential papers.",
-        "National Archives, domestic policy archives."
+      "domesticInitiatives": [
+        {
+          "title": "Education Reform (America 2000)",
+          "summary": "Bush launched America 2000, a national education strategy promoting school choice, higher standards, and voluntary national testing. While Congress did not enact the full plan, it influenced later education reforms.",
+          "sources": [
+            "https://millercenter.org/president/bush/domestic-affairs",
+            "https://www.britannica.com/biography/George-H-W-Bush"
+          ]
+        }
+      ],
+      "domesticImpactIndex": 0,
+      "majorDomesticEvents": [
+        {
+          "title": "1990–1991 Recession",
+          "summary": "A recession driven by high interest rates, reduced consumer spending, and the savings‑and‑loan crisis weakened Bush’s domestic standing. Rising unemployment and slow recovery contributed to political dissatisfaction.",
+          "sources": [
+            "https://www.britannica.com/event/recession-of-1990-1991",
+            "https://millercenter.org/president/bush/domestic-affairs"
+          ]
+        },
+        {
+          "title": "1990 Budget Deal",
+          "summary": "Bush agreed to a bipartisan budget deal that included spending cuts and tax increases, breaking his 'no new taxes' pledge. The decision reduced the deficit but damaged his political support within the Republican Party.",
+          "sources": [
+            "https://www.britannica.com/biography/George-H-W-Bush",
+            "https://millercenter.org/president/bush/domestic-affairs"
+          ]
+        }
       ]
     }
   },
@@ -1176,28 +1775,52 @@
     "id": 42,
     "name": "Bill Clinton",
     "domesticPolicy": {
-      "events": [
+      "majorBillsPassed": [
         {
-          "title": "Welfare Reform (PRWORA)",
-          "summary": "Clinton signed welfare reform legislation restructuring federal assistance programs and imposing work requirements.",
+          "title": "Family and Medical Leave Act (FMLA) of 1993",
+          "summary": "Clinton signed the FMLA, guaranteeing eligible workers up to 12 weeks of unpaid leave for family or medical reasons. The law expanded worker protections and became a cornerstone of modern labor policy.",
           "sources": [
-            "National Archives, PRWORA records.",
-            "Library of Congress, Clinton welfare policy papers."
+            "https://www.britannica.com/topic/Family-and-Medical-Leave-Act",
+            "https://millercenter.org/president/clinton/domestic-affairs"
           ]
         },
         {
-          "title": "Violence Against Women Act",
-          "summary": "Clinton enacted VAWA, expanding federal support for domestic violence prevention and enforcement.",
+          "title": "Welfare Reform (1996)",
+          "summary": "Clinton signed the Personal Responsibility and Work Opportunity Reconciliation Act, overhauling the welfare system by imposing work requirements and time limits on benefits. The law was controversial but reshaped federal social assistance programs.",
           "sources": [
-            "Library of Congress, Clinton VAWA papers.",
-            "National Archives, domestic violence policy records."
+            "https://www.britannica.com/event/Personal-Responsibility-and-Work-Opportunity-Reconciliation-Act",
+            "https://millercenter.org/president/clinton/domestic-affairs"
+          ]
+        },
+        {
+          "title": "Violent Crime Control and Law Enforcement Act (1994)",
+          "summary": "Clinton approved the largest crime bill in U.S. history, funding police hiring, prisons, and crime prevention programs. The law also included the federal assault weapons ban. Critics later argued it contributed to mass incarceration.",
+          "sources": [
+            "https://www.britannica.com/event/Violent-Crime-Control-and-Law-Enforcement-Act",
+            "https://millercenter.org/president/clinton/domestic-affairs"
           ]
         }
       ],
-      "overallAssessment": "Clinton reshaped welfare policy and expanded federal protections against domestic violence.",
-      "sources": [
-        "Library of Congress, Clinton presidential papers.",
-        "National Archives, domestic policy archives."
+      "domesticInitiatives": [
+        {
+          "title": "Balanced Budget and Economic Expansion",
+          "summary": "Clinton pursued deficit reduction through spending cuts and targeted tax increases. Combined with economic growth, these policies produced budget surpluses by the late 1990s. The era saw strong job creation and rising incomes.",
+          "sources": [
+            "https://www.britannica.com/biography/Bill-Clinton",
+            "https://millercenter.org/president/clinton/domestic-affairs"
+          ]
+        }
+      ],
+      "domesticImpactIndex": 0,
+      "majorDomesticEvents": [
+        {
+          "title": "Impeachment (1998–1999)",
+          "summary": "Clinton was impeached by the House on charges of perjury and obstruction of justice related to the Monica Lewinsky scandal. He was acquitted in the Senate and completed his term. The episode dominated national politics and polarized public opinion.",
+          "sources": [
+            "https://www.britannica.com/event/Clinton-impeachment",
+            "https://millercenter.org/president/clinton/domestic-affairs"
+          ]
+        }
       ]
     }
   },
@@ -1205,28 +1828,60 @@
     "id": 43,
     "name": "George W. Bush",
     "domesticPolicy": {
-      "events": [
+      "majorBillsPassed": [
         {
-          "title": "No Child Left Behind Act",
-          "summary": "Bush implemented sweeping federal education accountability standards.",
+          "title": "No Child Left Behind Act (2001)",
+          "summary": "Bush signed No Child Left Behind, expanding federal involvement in education through standardized testing, accountability measures, and school performance reporting. The law aimed to close achievement gaps but faced criticism for overemphasizing testing.",
           "sources": [
-            "National Archives, NCLB records.",
-            "Library of Congress, Bush education policy papers."
+            "https://www.britannica.com/event/No-Child-Left-Behind-Act",
+            "https://millercenter.org/president/gwbush/domestic-affairs"
           ]
         },
         {
-          "title": "Creation of the Department of Homeland Security",
-          "summary": "Bush reorganized domestic security by consolidating multiple agencies into DHS.",
+          "title": "Medicare Prescription Drug, Improvement, and Modernization Act (2003)",
+          "summary": "Bush created Medicare Part D, providing prescription drug coverage for seniors. It became one of the largest expansions of Medicare since its creation.",
           "sources": [
-            "Library of Congress, DHS founding papers.",
-            "National Archives, domestic security records."
+            "https://www.britannica.com/topic/Medicare-Part-D",
+            "https://millercenter.org/president/gwbush/domestic-affairs"
+          ]
+        },
+        {
+          "title": "Bush Tax Cuts (2001, 2003)",
+          "summary": "Bush enacted major tax cuts that reduced income tax rates, capital gains taxes, and estate taxes. Supporters argued they stimulated growth; critics said they increased deficits and favored high-income earners.",
+          "sources": [
+            "https://www.britannica.com/topic/George-W-Bush",
+            "https://millercenter.org/president/gwbush/domestic-affairs"
           ]
         }
       ],
-      "overallAssessment": "Bush reshaped education policy and reorganized domestic security infrastructure.",
-      "sources": [
-        "Library of Congress, Bush presidential papers.",
-        "National Archives, domestic policy archives."
+      "domesticInitiatives": [
+        {
+          "title": "Faith-Based and Community Initiatives",
+          "summary": "Bush expanded federal partnerships with religious and community organizations to deliver social services. The initiative aimed to increase local involvement in welfare programs but raised concerns about church–state separation.",
+          "sources": [
+            "https://www.britannica.com/topic/faith-based-initiative",
+            "https://millercenter.org/president/gwbush/domestic-affairs"
+          ]
+        }
+      ],
+      "domesticImpactIndex": 0,
+      "majorDomesticEvents": [
+        {
+          "title": "Hurricane Katrina Response",
+          "summary": "The federal response to Hurricane Katrina in 2005 was widely criticized as slow and ineffective. The disaster exposed weaknesses in emergency management and damaged Bush’s domestic credibility.",
+          "sources": [
+            "https://www.britannica.com/event/Hurricane-Katrina",
+            "https://millercenter.org/president/gwbush/domestic-affairs"
+          ]
+        },
+        {
+          "title": "2008 Financial Crisis",
+          "summary": "The collapse of major financial institutions triggered a global economic crisis. Bush signed the TARP bailout program to stabilize banks and prevent systemic collapse. The crisis reshaped economic policy and public attitudes toward regulation.",
+          "sources": [
+            "https://www.britannica.com/event/financial-crisis-of-2007-2008",
+            "https://millercenter.org/president/gwbush/domestic-affairs"
+          ]
+        }
       ]
     }
   },
@@ -1234,28 +1889,60 @@
     "id": 44,
     "name": "Barack Obama",
     "domesticPolicy": {
-      "events": [
+      "majorBillsPassed": [
         {
-          "title": "Affordable Care Act",
-          "summary": "Obama enacted the ACA, expanding federal involvement in health insurance regulation and access.",
+          "title": "Affordable Care Act (2010)",
+          "summary": "Obama signed the Affordable Care Act, expanding health insurance coverage through subsidies, Medicaid expansion, and insurance regulations. The law prohibited denial of coverage for preexisting conditions and created health insurance marketplaces. It became the most significant healthcare reform since Medicare and Medicaid.",
           "sources": [
-            "National Archives, ACA records.",
-            "Library of Congress, Obama health policy papers."
+            "https://www.britannica.com/topic/Patient-Protection-and-Affordable-Care-Act",
+            "https://millercenter.org/president/obama/domestic-affairs"
           ]
         },
         {
-          "title": "Repeal of “Don’t Ask, Don’t Tell”",
-          "summary": "Obama ended the ban on openly gay service members, reshaping federal personnel policy.",
+          "title": "Dodd–Frank Wall Street Reform and Consumer Protection Act (2010)",
+          "summary": "Obama approved Dodd–Frank to regulate financial institutions, increase oversight, and prevent another financial crisis. The law created the Consumer Financial Protection Bureau and imposed stricter rules on banks.",
           "sources": [
-            "Library of Congress, Obama civil rights papers.",
-            "National Archives, military personnel policy records."
+            "https://www.britannica.com/event/Dodd-Frank-Wall-Street-Reform-and-Consumer-Protection-Act",
+            "https://millercenter.org/president/obama/domestic-affairs"
           ]
         }
       ],
-      "overallAssessment": "Obama expanded federal health policy and advanced civil rights reforms.",
-      "sources": [
-        "Library of Congress, Obama presidential papers.",
-        "National Archives, domestic policy archives."
+      "domesticInitiatives": [
+        {
+          "title": "Economic Stimulus (ARRA)",
+          "summary": "Obama enacted the American Recovery and Reinvestment Act, a large stimulus package aimed at combating the Great Recession through infrastructure spending, tax cuts, and aid to states. The policy helped stabilize the economy and support job growth.",
+          "sources": [
+            "https://www.britannica.com/event/American-Recovery-and-Reinvestment-Act",
+            "https://millercenter.org/president/obama/domestic-affairs"
+          ]
+        },
+        {
+          "title": "Clean Energy and Climate Initiatives",
+          "summary": "Obama promoted renewable energy, fuel efficiency standards, and carbon regulation. His administration implemented the Clean Power Plan to reduce emissions from power plants, though it faced legal challenges.",
+          "sources": [
+            "https://www.britannica.com/biography/Barack-Obama",
+            "https://millercenter.org/president/obama/domestic-affairs"
+          ]
+        }
+      ],
+      "domesticImpactIndex": 0,
+      "majorDomesticEvents": [
+        {
+          "title": "Great Recession Recovery",
+          "summary": "Obama inherited the worst economic crisis since the Great Depression. His administration focused on stabilizing financial markets, rescuing the auto industry, and reducing unemployment. The recovery was gradual but sustained.",
+          "sources": [
+            "https://www.britannica.com/event/Great-Recession",
+            "https://millercenter.org/president/obama/domestic-affairs"
+          ]
+        },
+        {
+          "title": "Same-Sex Marriage Legalization (2015)",
+          "summary": "The Supreme Court’s Obergefell v. Hodges decision legalized same-sex marriage nationwide. Obama publicly supported the ruling, marking a major milestone in civil rights and social policy.",
+          "sources": [
+            "https://www.britannica.com/event/Obergefell-v-Hodges",
+            "https://millercenter.org/president/obama/domestic-affairs"
+          ]
+        }
       ]
     }
   },
@@ -1263,28 +1950,60 @@
     "id": 45,
     "name": "Donald J. Trump",
     "domesticPolicy": {
-      "events": [
+      "majorBillsPassed": [
         {
-          "title": "Criminal Justice Reform (First Step Act)",
-          "summary": "Trump signed bipartisan criminal justice reform legislation reducing certain mandatory minimums and expanding rehabilitation programs.",
+          "title": "Tax Cuts and Jobs Act (2017)",
+          "summary": "Trump signed the Tax Cuts and Jobs Act, reducing corporate tax rates, altering individual tax brackets, and modifying deductions. Supporters argued it stimulated economic growth; critics said it increased deficits and favored high-income earners.",
           "sources": [
-            "National Archives, First Step Act records.",
-            "Library of Congress, Trump criminal justice papers."
+            "https://www.britannica.com/topic/Tax-Cuts-and-Jobs-Act",
+            "https://millercenter.org/president/trump/domestic-affairs"
           ]
         },
         {
-          "title": "Federal Immigration Enforcement Expansion",
-          "summary": "Trump increased federal immigration enforcement and altered asylum and detention policies.",
+          "title": "First Step Act (2018)",
+          "summary": "Trump approved bipartisan criminal justice reform that reduced mandatory minimum sentences, expanded rehabilitation programs, and improved prison conditions. The law marked a significant shift in federal sentencing policy.",
           "sources": [
-            "Library of Congress, Trump immigration policy papers.",
-            "National Archives, domestic enforcement records."
+            "https://www.britannica.com/topic/First-Step-Act",
+            "https://millercenter.org/president/trump/domestic-affairs"
           ]
         }
       ],
-      "overallAssessment": "Trump reshaped criminal justice policy and expanded federal immigration enforcement.",
-      "sources": [
-        "Library of Congress, Trump presidential papers.",
-        "National Archives, domestic policy archives."
+      "domesticInitiatives": [
+        {
+          "title": "Deregulation Agenda",
+          "summary": "Trump pursued aggressive deregulation across environmental, financial, and labor sectors. His administration rolled back numerous Obama-era rules, arguing that deregulation would spur economic growth.",
+          "sources": [
+            "https://www.britannica.com/biography/Donald-Trump",
+            "https://millercenter.org/president/trump/domestic-affairs"
+          ]
+        },
+        {
+          "title": "COVID-19 Response Actions",
+          "summary": "Trump implemented travel restrictions, supported vaccine development through Operation Warp Speed, and signed relief packages including the CARES Act. The federal response drew both praise and criticism for its speed, coordination, and communication.",
+          "sources": [
+            "https://www.britannica.com/event/COVID-19-pandemic",
+            "https://millercenter.org/president/trump/domestic-affairs"
+          ]
+        }
+      ],
+      "domesticImpactIndex": 0,
+      "majorDomesticEvents": [
+        {
+          "title": "COVID-19 Pandemic",
+          "summary": "The pandemic dominated Trump’s final year in office, causing widespread economic disruption, school closures, and public health challenges. Federal and state responses varied widely, shaping national debates over public health and executive authority.",
+          "sources": [
+            "https://www.britannica.com/event/COVID-19-pandemic",
+            "https://millercenter.org/president/trump/domestic-affairs"
+          ]
+        },
+        {
+          "title": "Impeachments (2019 and 2021)",
+          "summary": "Trump was impeached twice by the House of Representatives—first over Ukraine-related charges, and later for incitement of insurrection following the January 6 Capitol attack. He was acquitted both times in the Senate. The events were unprecedented in U.S. history.",
+          "sources": [
+            "https://www.britannica.com/biography/Donald-Trump",
+            "https://millercenter.org/president/trump/domestic-affairs"
+          ]
+        }
       ]
     }
   },
@@ -1292,28 +2011,68 @@
     "id": 46,
     "name": "Joseph R. Biden",
     "domesticPolicy": {
-      "events": [
+      "majorBillsPassed": [
         {
-          "title": "Expansion of Federal COVID‑19 Response",
-          "summary": "Biden implemented nationwide vaccination, testing, and relief programs through federal coordination.",
+          "title": "American Rescue Plan Act (2021)",
+          "summary": "Biden signed the American Rescue Plan, a $1.9 trillion stimulus package providing direct payments to individuals, expanded unemployment benefits, funding for vaccine distribution, rental assistance, and support for schools. The law aimed to accelerate recovery from the COVID‑19 pandemic and stabilize the economy.",
           "sources": [
-            "National Archives, Biden COVID‑19 policy records.",
-            "Library of Congress, Biden domestic health papers."
+            "https://www.britannica.com/topic/American-Rescue-Plan-Act",
+            "https://millercenter.org/president/biden/domestic-affairs"
           ]
         },
         {
-          "title": "Federal Infrastructure and Broadband Expansion",
-          "summary": "Biden advanced domestic infrastructure investment including broadband, water systems, and transportation upgrades.",
+          "title": "Infrastructure Investment and Jobs Act (2021)",
+          "summary": "Biden approved a bipartisan infrastructure law allocating $1.2 trillion for roads, bridges, broadband expansion, clean water systems, and modernization of the electric grid. It represented one of the largest infrastructure investments in U.S. history and aimed to improve long‑term economic competitiveness.",
           "sources": [
-            "Library of Congress, Biden infrastructure papers.",
-            "National Archives, domestic infrastructure records."
+            "https://www.britannica.com/topic/Infrastructure-Investment-and-Jobs-Act",
+            "https://millercenter.org/president/biden/domestic-affairs"
+          ]
+        },
+        {
+          "title": "Inflation Reduction Act (2022)",
+          "summary": "Biden signed the Inflation Reduction Act, which included major climate investments, prescription drug price reforms, and corporate tax changes. The law aimed to reduce carbon emissions, lower healthcare costs, and increase federal revenue through a minimum corporate tax.",
+          "sources": [
+            "https://www.britannica.com/topic/Inflation-Reduction-Act",
+            "https://millercenter.org/president/biden/domestic-affairs"
           ]
         }
       ],
-      "overallAssessment": "Biden expanded federal public health response and domestic infrastructure investment.",
-      "sources": [
-        "Library of Congress, Biden presidential papers.",
-        "National Archives, domestic policy archives."
+      "domesticInitiatives": [
+        {
+          "title": "COVID‑19 Vaccination and Public Health Response",
+          "summary": "Biden implemented a national vaccination campaign, expanded testing, and coordinated federal support for states. His administration distributed hundreds of millions of vaccine doses and implemented workplace safety guidelines. The response aimed to reduce mortality and reopen the economy.",
+          "sources": [
+            "https://www.britannica.com/event/COVID-19-pandemic",
+            "https://millercenter.org/president/biden/domestic-affairs"
+          ]
+        },
+        {
+          "title": "Student Loan Relief Actions",
+          "summary": "Biden extended pauses on federal student loan payments and attempted to implement broad student debt cancellation. The Supreme Court struck down the initial cancellation plan, but the administration pursued alternative targeted relief programs. The actions sparked national debate over higher education costs.",
+          "sources": [
+            "https://www.britannica.com/biography/Joe-Biden",
+            "https://millercenter.org/president/biden/domestic-affairs"
+          ]
+        }
+      ],
+      "domesticImpactIndex": 0,
+      "majorDomesticEvents": [
+        {
+          "title": "Post‑Pandemic Economic Recovery and Inflation",
+          "summary": "The U.S. economy experienced rapid job growth following the pandemic, but inflation rose to its highest levels in decades. Biden’s administration implemented supply‑chain initiatives, released oil from the Strategic Petroleum Reserve, and supported Federal Reserve actions to stabilize prices.",
+          "sources": [
+            "https://www.britannica.com/topic/inflation",
+            "https://millercenter.org/president/biden/domestic-affairs"
+          ]
+        },
+        {
+          "title": "Supreme Court Decisions Reshaping Domestic Policy",
+          "summary": "Major Supreme Court rulings during Biden’s presidency—including the overturning of Roe v. Wade—reshaped national debates on reproductive rights, federal authority, and state power. The administration responded with executive actions and support for legislative protections.",
+          "sources": [
+            "https://www.britannica.com/event/Dobbs-v-Jackson-Womens-Health-Organization",
+            "https://millercenter.org/president/biden/domestic-affairs"
+          ]
+        }
       ]
     }
   }
