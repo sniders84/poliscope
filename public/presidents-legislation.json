@@ -3,1246 +3,2995 @@
     "id": 1,
     "name": "George Washington",
     "legislation": {
-      "events": [
+      "legislationOverview": "Washington’s legislative legacy established the foundational architecture of the federal government. His presidency saw the creation of the federal judiciary, the national bank, the revenue system, and the executive departments. Washington worked closely with Congress to define constitutional boundaries and set precedents for federal authority. His legislative actions shaped the early Republic’s financial stability, institutional legitimacy, and administrative structure. These laws became the bedrock of American governance for generations.",
+      
+      "majorLegislativeActions": [
         {
           "title": "Judiciary Act of 1789",
-          "summary": "Washington signed the Judiciary Act, establishing the federal court system, including district courts, circuit courts, and the Supreme Court’s structure.",
+          "summary": "This landmark act created the federal court system, including district courts, circuit courts, and the Supreme Court’s structure. It defined federal jurisdiction and established the office of Attorney General, forming the backbone of the American judiciary.",
           "sources": [
-            "National Archives, Judiciary Act of 1789 records.",
-            "Library of Congress, Washington legislative papers."
+            "National Archives: Judiciary Act of 1789",
+            "Library of Congress: Washington legislative papers"
           ]
         },
         {
           "title": "Bank Act of 1791",
-          "summary": "Washington signed legislation creating the First Bank of the United States after consulting his cabinet on constitutional concerns.",
+          "summary": "Washington signed the bill establishing the First Bank of the United States after consulting his cabinet on constitutional concerns. The bank stabilized federal finances, standardized currency, and strengthened national credit.",
           "sources": [
-            "Library of Congress, Washington financial legislation papers.",
-            "National Archives, Bank Act records."
+            "Library of Congress: Washington financial legislation papers",
+            "National Archives: Bank Act records"
           ]
         }
       ],
-      "overallAssessment": "Washington’s legislative legacy established foundational federal institutions and fiscal structures.",
-      "sources": [
-        "Library of Congress, Washington presidential papers.",
-        "National Archives, legislative archives."
+
+      "economicLegislation": [
+        {
+          "title": "Tariff Act of 1789",
+          "summary": "Washington signed the first major tariff law, providing essential revenue for the new federal government. It protected emerging American industries and established the foundation of federal fiscal policy.",
+          "sources": [
+            "National Archives: Tariff Act records",
+            "Library of Congress: Early federal revenue legislation"
+          ]
+        },
+        {
+          "title": "Coinage Act of 1792",
+          "summary": "This act created the U.S. Mint and established the dollar as the national currency. It standardized coinage and strengthened public confidence in federal monetary authority.",
+          "sources": [
+            "National Archives: Coinage Act documentation",
+            "U.S. Mint historical archives"
+          ]
+        }
+      ],
+
+      "domesticLegislation": [
+        {
+          "title": "Militia Acts of 1792",
+          "summary": "These acts organized state militias under federal standards and clarified presidential authority to call them into service. They strengthened national defense and provided a framework for domestic security.",
+          "sources": [
+            "Library of Congress: Militia Acts papers",
+            "National Archives: Early defense legislation"
+          ]
+        }
+      ],
+
+      "foreignLegislation": [
+        {
+          "title": "Neutrality Act Foundations (1794 precursor)",
+          "summary": "Washington signed early neutrality legislation that laid the groundwork for the more formal Neutrality Act of 1794. These measures asserted U.S. neutrality during European conflicts and regulated foreign military involvement on American soil.",
+          "sources": [
+            "Library of Congress: Washington foreign policy legislation",
+            "National Archives: Neutrality correspondence"
+          ]
+        }
+      ],
+
+      "governmentStructureLegislation": [
+        {
+          "title": "Residence Act of 1790",
+          "summary": "Washington signed the law establishing the permanent national capital along the Potomac River. It authorized the creation of Washington, D.C., and empowered the president to oversee its development.",
+          "sources": [
+            "National Archives: Residence Act records",
+            "Library of Congress: Capital establishment papers"
+          ]
+        },
+        {
+          "title": "Departmental Establishment Acts (1789–1790)",
+          "summary": "Washington signed legislation formally creating the Departments of State, War, and Treasury, defining their responsibilities and establishing the modern executive branch structure.",
+          "sources": [
+            "National Archives: Department establishment acts",
+            "Library of Congress: Washington administrative papers"
+          ]
+        }
       ]
     }
   },
+
   {
     "id": 2,
     "name": "John Adams",
     "legislation": {
-      "events": [
+      "legislationOverview": "Adams’ legislative legacy was shaped by rising tensions with France, domestic political conflict, and the expansion of federal authority. His presidency saw the passage of controversial security laws, the strengthening of naval power, and the development of early federal administrative structures. Adams’ legislative actions reflected the Federalist emphasis on national security and centralized authority. While some measures were deeply divisive, they significantly expanded the federal government’s capacity.",
+      
+      "majorLegislativeActions": [
         {
-          "title": "Alien and Sedition Acts",
-          "summary": "Adams signed a series of laws expanding federal authority over immigration and criminalizing certain forms of dissent.",
+          "title": "Alien and Sedition Acts (1798)",
+          "summary": "Adams signed a series of laws expanding federal power over immigration and criminalizing certain forms of dissent. These acts were highly controversial and contributed to the decline of the Federalist Party.",
           "sources": [
-            "National Archives, Sedition Act records.",
-            "Library of Congress, Adams legislative correspondence."
-          ]
-        },
-        {
-          "title": "Navy Department Establishment",
-          "summary": "Adams signed legislation creating the Department of the Navy to strengthen maritime defense.",
-          "sources": [
-            "Library of Congress, Adams naval legislation papers.",
-            "National Archives, Navy Department founding records."
+            "National Archives: Sedition Act records",
+            "Library of Congress: Adams legislative correspondence"
           ]
         }
       ],
-      "overallAssessment": "Adams expanded federal security powers and strengthened naval infrastructure through legislation.",
-      "sources": [
-        "Library of Congress, Adams presidential papers.",
-        "National Archives, legislative archives."
+
+      "economicLegislation": [
+        {
+          "title": "Direct Tax of 1798",
+          "summary": "Adams approved the first federal direct tax on property to fund military preparedness during tensions with France. The tax was unpopular and contributed to political backlash.",
+          "sources": [
+            "National Archives: Direct Tax records",
+            "Library of Congress: Federal taxation papers"
+          ]
+        }
+      ],
+
+      "domesticLegislation": [
+        {
+          "title": "Naturalization Act of 1798",
+          "summary": "Part of the Alien and Sedition package, this act extended the residency requirement for citizenship from 5 to 14 years. It reflected Federalist concerns about foreign influence.",
+          "sources": [
+            "Library of Congress: Naturalization Act papers",
+            "National Archives: Immigration legislation"
+          ]
+        }
+      ],
+
+      "foreignLegislation": [
+        {
+          "title": "Naval Expansion Acts (1798–1800)",
+          "summary": "Adams signed multiple laws expanding the U.S. Navy during the Quasi‑War with France. These acts funded new ships, authorized marine forces, and strengthened coastal defenses.",
+          "sources": [
+            "National Archives: Naval legislation records",
+            "Library of Congress: Adams naval papers"
+          ]
+        }
+      ],
+
+      "governmentStructureLegislation": [
+        {
+          "title": "Department of the Navy Establishment (1798)",
+          "summary": "Adams signed legislation creating the Department of the Navy, separating naval affairs from the War Department and strengthening maritime defense.",
+          "sources": [
+            "Library of Congress: Navy Department founding papers",
+            "National Archives: Department establishment records"
+          ]
+        },
+        {
+          "title": "Marine Corps Establishment Act (1798)",
+          "summary": "This act formally established the United States Marine Corps as a distinct military branch under the Department of the Navy.",
+          "sources": [
+            "National Archives: Marine Corps founding documents",
+            "Library of Congress: Military establishment papers"
+          ]
+        }
       ]
     }
   },
+
   {
     "id": 3,
     "name": "Thomas Jefferson",
     "legislation": {
-      "events": [
+      "legislationOverview": "Jefferson’s legislative legacy centered on reducing federal power, cutting taxes, and reshaping the nation’s economic and territorial landscape. His presidency saw the repeal of internal taxes, major reductions in federal spending, and the landmark Louisiana Purchase. Jefferson also enacted controversial trade restrictions that had sweeping economic consequences. His legislative actions reflected a vision of limited government, agrarian values, and territorial expansion.",
+      
+      "majorLegislativeActions": [
         {
-          "title": "Repeal of Internal Taxes",
-          "summary": "Jefferson signed legislation eliminating internal federal taxes, including the whiskey tax, reducing federal fiscal reach.",
+          "title": "Louisiana Purchase Authorization (1803)",
+          "summary": "Jefferson signed legislation approving the acquisition of the Louisiana Territory from France. This doubled the size of the United States and opened vast lands for settlement and exploration.",
           "sources": [
-            "National Archives, Jefferson tax repeal records.",
-            "Library of Congress, Jefferson legislative papers."
+            "National Archives: Louisiana Purchase documents",
+            "Library of Congress: Jefferson expansion papers"
+          ]
+        }
+      ],
+
+      "economicLegislation": [
+        {
+          "title": "Repeal of Internal Taxes (1802)",
+          "summary": "Jefferson eliminated federal internal taxes, including the whiskey tax, significantly reducing federal revenue but aligning with his limited‑government philosophy.",
+          "sources": [
+            "National Archives: Jefferson tax repeal records",
+            "Library of Congress: Jefferson fiscal papers"
           ]
         },
         {
           "title": "Embargo Act of 1807",
-          "summary": "Jefferson signed the Embargo Act, halting U.S. exports to pressure Britain and France, causing severe domestic economic disruption.",
+          "summary": "Jefferson halted U.S. exports to pressure Britain and France during the Napoleonic Wars. The embargo caused severe domestic economic disruption and became one of his most controversial policies.",
           "sources": [
-            "Library of Congress, Embargo Act correspondence.",
-            "National Archives, embargo enforcement records."
+            "Library of Congress: Embargo Act correspondence",
+            "National Archives: embargo enforcement records"
           ]
         }
       ],
-      "overallAssessment": "Jefferson reduced federal taxation but enacted the economically damaging Embargo Act.",
-      "sources": [
-        "Library of Congress, Jefferson presidential papers.",
-        "National Archives, legislative archives."
+
+      "domesticLegislation": [
+        {
+          "title": "Judiciary Act Repeal (1802)",
+          "summary": "Jefferson signed legislation repealing the Federalist‑backed Judiciary Act of 1801, eliminating newly created judgeships and reshaping the federal judiciary.",
+          "sources": [
+            "National Archives: Judiciary Act repeal records",
+            "Library of Congress: Jefferson judicial papers"
+          ]
+        }
+      ],
+
+      "foreignLegislation": [
+        {
+          "title": "Non‑Importation Act (1806)",
+          "summary": "Jefferson signed legislation restricting imports from Britain in response to maritime harassment. The act escalated economic tensions leading up to the Embargo Act.",
+          "sources": [
+            "Library of Congress: Non‑Importation Act papers",
+            "National Archives: trade restriction records"
+          ]
+        }
+      ],
+
+      "governmentStructureLegislation": [
+        {
+          "title": "Army and Navy Reduction Acts (1802–1803)",
+          "summary": "Jefferson reduced military spending and personnel, restructuring the armed forces to align with his limited‑government philosophy.",
+          "sources": [
+            "National Archives: Military reduction legislation",
+            "Library of Congress: Jefferson defense papers"
+          ]
+        }
       ]
     }
   },
+
   {
     "id": 4,
     "name": "James Madison",
     "legislation": {
-      "events": [
+      "legislationOverview": "Madison’s legislative legacy was shaped by the War of 1812, economic instability, and the need to rebuild national institutions. His presidency saw the re‑establishment of the national bank, the introduction of protective tariffs, and major military reforms. Madison’s legislative actions strengthened federal capacity after years of Jeffersonian retrenchment and helped stabilize the post‑war economy. His laws laid the groundwork for the emerging American system of national development.",
+      
+      "majorLegislativeActions": [
         {
-          "title": "Non‑Intercourse Act Revision",
-          "summary": "Madison signed legislation reopening trade with nations other than Britain and France, attempting to ease pre‑war tensions.",
+          "title": "Second Bank of the United States Charter (1816)",
+          "summary": "Madison signed the charter establishing the Second Bank to stabilize currency, regulate credit, and restore financial order after the War of 1812.",
           "sources": [
-            "National Archives, trade legislation records.",
-            "Library of Congress, Madison legislative correspondence."
-          ]
-        },
-        {
-          "title": "War of 1812 War Measures",
-          "summary": "Madison signed legislation authorizing military expansion and wartime financing.",
-          "sources": [
-            "Library of Congress, Madison wartime legislative papers.",
-            "National Archives, war authorization records."
+            "National Archives: Bank charter records",
+            "Library of Congress: Madison financial papers"
           ]
         }
       ],
-      "overallAssessment": "Madison’s legislative record centered on trade restrictions and wartime mobilization.",
-      "sources": [
-        "Library of Congress, Madison presidential papers.",
-        "National Archives, legislative archives."
+
+      "economicLegislation": [
+        {
+          "title": "Tariff of 1816",
+          "summary": "Madison approved the first protective tariff in U.S. history to support domestic manufacturing after the war. It marked a shift toward federal support for industry.",
+          "sources": [
+            "Library of Congress: Tariff of 1816 papers",
+            "National Archives: Early tariff legislation"
+          ]
+        }
+      ],
+
+      "domesticLegislation": [
+        {
+          "title": "Military Reorganization Acts (1812–1815)",
+          "summary": "Madison signed multiple laws expanding and reorganizing the Army and Navy during the War of 1812, strengthening national defense capabilities.",
+          "sources": [
+            "National Archives: War of 1812 military legislation",
+            "Library of Congress: Madison war papers"
+          ]
+        }
+      ],
+
+      "foreignLegislation": [
+        {
+          "title": "War of 1812 Declaration (1812)",
+          "summary": "Madison signed the congressional declaration of war against Britain, marking the first formal U.S. declaration of war.",
+          "sources": [
+            "National Archives: War declaration records",
+            "Library of Congress: Madison foreign policy papers"
+          ]
+        }
+      ],
+
+      "governmentStructureLegislation": [
+        {
+          "title": "Revenue and Customs Reforms (1815–1816)",
+          "summary": "Madison approved legislation strengthening customs enforcement and reorganizing revenue collection to stabilize federal finances after the war.",
+          "sources": [
+            "National Archives: Revenue reform records",
+            "Library of Congress: Madison administrative papers"
+          ]
+        }
       ]
     }
   },
+
   {
     "id": 5,
     "name": "James Monroe",
     "legislation": {
-      "events": [
+      "legislationOverview": "Monroe’s legislative legacy reflected national expansion, economic stabilization, and the strengthening of federal authority. His presidency saw the Missouri Compromise, major infrastructure funding, and military reforms. Monroe’s legislative actions helped manage sectional tensions, promote national development, and consolidate federal power during the Era of Good Feelings. His laws shaped the nation’s territorial growth and institutional maturity.",
+      
+      "majorLegislativeActions": [
         {
-          "title": "Missouri Compromise",
-          "summary": "Monroe signed the Missouri Compromise, admitting Missouri as a slave state and Maine as a free state while establishing a geographic slavery boundary.",
+          "title": "Missouri Compromise (1820)",
+          "summary": "Monroe signed the Missouri Compromise, admitting Missouri as a slave state and Maine as a free state while banning slavery north of 36°30'. The law temporarily eased sectional tensions.",
           "sources": [
-            "National Archives, Missouri Compromise records.",
-            "Library of Congress, Monroe legislative papers."
-          ]
-        },
-        {
-          "title": "Pension Expansion Acts",
-          "summary": "Monroe signed legislation expanding pensions for Revolutionary War veterans.",
-          "sources": [
-            "Library of Congress, Monroe pension legislation papers.",
-            "National Archives, veterans’ benefits records."
+            "Library of Congress: Missouri Compromise papers",
+            "National Archives: Compromise legislation"
           ]
         }
       ],
-      "overallAssessment": "Monroe’s legislative legacy is defined by the Missouri Compromise and expanded veterans’ benefits.",
-      "sources": [
-        "Library of Congress, Monroe presidential papers.",
-        "National Archives, legislative archives."
+
+      "economicLegislation": [
+        {
+          "title": "Tariff of 1816 Enforcement and Expansion",
+          "summary": "Monroe supported and signed tariff measures that strengthened domestic manufacturing and protected American industry during post‑war recovery.",
+          "sources": [
+            "National Archives: Tariff legislation",
+            "Library of Congress: Monroe economic papers"
+          ]
+        }
+      ],
+
+      "domesticLegislation": [
+        {
+          "title": "Internal Improvements Funding (1817–1823)",
+          "summary": "Monroe approved selective funding for roads, canals, and infrastructure projects, supporting national development while debating constitutional limits on federal spending.",
+          "sources": [
+            "Library of Congress: Internal improvements papers",
+            "National Archives: Infrastructure legislation"
+          ]
+        }
+      ],
+
+      "foreignLegislation": [
+        {
+          "title": "Florida Acquisition Implementation Acts (1819–1821)",
+          "summary": "Monroe signed legislation implementing the Adams–Onís Treaty, transferring Florida from Spain to the United States and establishing new territorial governance.",
+          "sources": [
+            "National Archives: Florida cession records",
+            "Library of Congress: Monroe foreign policy papers"
+          ]
+        }
+      ],
+
+      "governmentStructureLegislation": [
+        {
+          "title": "Army and Navy Reorganization Acts (1818–1821)",
+          "summary": "Monroe signed laws modernizing military structure, improving training, and strengthening coastal defenses during a period of national expansion.",
+          "sources": [
+            "National Archives: Military reorganization acts",
+            "Library of Congress: Monroe defense papers"
+          ]
+        }
       ]
     }
   },
-  {
+    {
     "id": 6,
     "name": "John Quincy Adams",
     "legislation": {
-      "events": [
+      "legislationOverview": "John Quincy Adams’ legislative legacy reflected his vision of a nationally integrated, infrastructure‑driven republic. Although Congress often resisted his ambitious internal improvements agenda, Adams signed key measures supporting transportation, scientific advancement, and federal investment in national development. His presidency strengthened the federal role in economic modernization and laid groundwork for future infrastructure expansion. Despite political opposition, Adams’ legislative actions reflected a forward‑looking national strategy.",
+      
+      "majorLegislativeActions": [
         {
-          "title": "Internal Improvements Advocacy",
-          "summary": "Adams supported federal funding for roads, canals, and scientific institutions, though Congress often resisted.",
+          "title": "Cumberland Road Extension Acts (1825–1828)",
+          "summary": "Adams signed multiple laws extending and funding the National Road, one of the earliest major federal infrastructure projects. These acts advanced national connectivity and economic integration.",
           "sources": [
-            "National Archives, Adams internal improvements records.",
-            "Library of Congress, Adams legislative correspondence."
+            "National Archives: Cumberland Road legislation",
+            "Library of Congress: Adams internal improvements papers"
           ]
         }
       ],
-      "overallAssessment": "Adams promoted ambitious national development legislation but achieved limited congressional support.",
-      "sources": [
-        "Library of Congress, Adams presidential papers.",
-        "National Archives, legislative archives."
+
+      "economicLegislation": [
+        {
+          "title": "Tariff of 1828 (Signed by Adams’ Administration)",
+          "summary": "Although controversial and later known as the 'Tariff of Abominations,' this tariff increased protective duties to support American manufacturing. It intensified sectional tensions but strengthened domestic industry.",
+          "sources": [
+            "Library of Congress: Tariff of 1828 papers",
+            "National Archives: Early tariff legislation"
+          ]
+        }
+      ],
+
+      "domesticLegislation": [
+        {
+          "title": "Internal Improvements Support Acts",
+          "summary": "Adams signed targeted infrastructure funding bills supporting canals, roads, and river improvements. These measures reflected his belief in federal leadership in national development.",
+          "sources": [
+            "National Archives: Internal improvements records",
+            "Library of Congress: Adams domestic policy papers"
+          ]
+        }
+      ],
+
+      "foreignLegislation": [
+        {
+          "title": "Commercial Treaties Implementation Acts",
+          "summary": "Adams signed legislation implementing commercial agreements with several nations, expanding U.S. trade access and strengthening diplomatic ties.",
+          "sources": [
+            "Library of Congress: Adams foreign policy papers",
+            "National Archives: Treaty implementation records"
+          ]
+        }
+      ],
+
+      "governmentStructureLegislation": [
+        {
+          "title": "Naval Expansion and Modernization Acts",
+          "summary": "Adams approved legislation strengthening naval infrastructure and shipbuilding capacity, reflecting his long‑standing support for maritime defense.",
+          "sources": [
+            "National Archives: Naval legislation",
+            "Library of Congress: Adams naval papers"
+          ]
+        }
       ]
     }
   },
+
   {
     "id": 7,
     "name": "Andrew Jackson",
     "legislation": {
-      "events": [
+      "legislationOverview": "Jackson’s legislative legacy was defined by populist reforms, aggressive use of executive power, and major shifts in federal authority. His presidency saw the dismantling of the national bank, sweeping changes to federal finance, and controversial Indian removal policies. Jackson’s legislative actions reshaped the balance between federal and state power, expanded presidential influence, and left enduring marks on economic and Native American policy. His laws reflected a transformative but polarizing vision of democracy.",
+      
+      "majorLegislativeActions": [
         {
-          "title": "Indian Removal Act",
-          "summary": "Jackson signed the Indian Removal Act, authorizing forced relocation of Native nations and enabling the Trail of Tears.",
+          "title": "Indian Removal Act (1830)",
+          "summary": "Jackson signed the Indian Removal Act, authorizing the forced relocation of Native American tribes from the Southeast. The law led to the Trail of Tears and remains one of the most controversial acts in U.S. history.",
           "sources": [
-            "National Archives, Indian Removal Act records.",
-            "Library of Congress, Jackson legislative papers."
-          ]
-        },
-        {
-          "title": "Veto of the Bank Recharter Bill",
-          "summary": "Jackson vetoed legislation rechartering the Second Bank of the United States, reshaping federal financial policy.",
-          "sources": [
-            "Library of Congress, Jackson veto messages.",
-            "National Archives, bank legislation records."
+            "National Archives: Indian Removal Act records",
+            "Library of Congress: Jackson Indian policy papers"
           ]
         }
       ],
-      "overallAssessment": "Jackson’s legislative legacy includes forced Native removal and dismantling the national bank.",
-      "sources": [
-        "Library of Congress, Jackson presidential papers.",
-        "National Archives, legislative archives."
+
+      "economicLegislation": [
+        {
+          "title": "Deposit and Fiscal Reorganization Acts (1833–1836)",
+          "summary": "Jackson supported legislation restructuring federal deposits after dismantling the Second Bank of the United States. These acts redistributed federal funds to state banks, reshaping national finance.",
+          "sources": [
+            "National Archives: Bank War documents",
+            "Library of Congress: Jackson financial papers"
+          ]
+        }
+      ],
+
+      "domesticLegislation": [
+        {
+          "title": "Cumberland Road Veto Override Legislation",
+          "summary": "Although Jackson vetoed several internal improvement bills, Congress passed modified versions he signed, reflecting ongoing national investment in infrastructure.",
+          "sources": [
+            "Library of Congress: Jackson infrastructure papers",
+            "National Archives: Road and canal legislation"
+          ]
+        }
+      ],
+
+      "foreignLegislation": [
+        {
+          "title": "French Indemnity Implementation Acts",
+          "summary": "Jackson signed legislation enforcing treaty payments from France after diplomatic tensions. These acts strengthened U.S. leverage in foreign financial disputes.",
+          "sources": [
+            "National Archives: French indemnity records",
+            "Library of Congress: Jackson foreign policy papers"
+          ]
+        }
+      ],
+
+      "governmentStructureLegislation": [
+        {
+          "title": "Reorganization of Federal Departments",
+          "summary": "Jackson approved legislation reorganizing federal offices and strengthening executive control over administrative functions, reflecting his assertive presidential philosophy.",
+          "sources": [
+            "National Archives: Administrative reform acts",
+            "Library of Congress: Jackson executive papers"
+          ]
+        }
       ]
     }
   },
+
   {
     "id": 8,
     "name": "Martin Van Buren",
     "legislation": {
-      "events": [
+      "legislationOverview": "Van Buren’s legislative legacy was dominated by the Panic of 1837 and the struggle to stabilize the national economy. His presidency saw the creation of the Independent Treasury system, efforts to manage financial collapse, and continued implementation of Indian removal policies. Van Buren’s legislative actions reflected a commitment to limited federal intervention while attempting to restore economic stability. His laws shaped the evolution of federal financial management.",
+      
+      "majorLegislativeActions": [
         {
-          "title": "Independent Treasury Act",
-          "summary": "Van Buren signed legislation creating the Independent Treasury system to separate federal funds from private banks.",
+          "title": "Independent Treasury Act (1840)",
+          "summary": "Van Buren signed the law creating an Independent Treasury system, separating federal funds from private banks. This reform aimed to stabilize federal finances after the Panic of 1837.",
           "sources": [
-            "National Archives, Independent Treasury records.",
-            "Library of Congress, Van Buren legislative papers."
+            "National Archives: Independent Treasury records",
+            "Library of Congress: Van Buren financial papers"
           ]
         }
       ],
-      "overallAssessment": "Van Buren’s major legislative achievement was establishing the Independent Treasury system.",
-      "sources": [
-        "Library of Congress, Van Buren presidential papers.",
-        "National Archives, legislative archives."
+
+      "economicLegislation": [
+        {
+          "title": "Panic of 1837 Relief Measures",
+          "summary": "Van Buren approved limited federal relief legislation addressing the economic crisis, including measures affecting land sales and credit availability.",
+          "sources": [
+            "Library of Congress: Panic of 1837 legislation",
+            "National Archives: Economic crisis records"
+          ]
+        }
+      ],
+
+      "domesticLegislation": [
+        {
+          "title": "Continued Indian Removal Implementation Acts",
+          "summary": "Van Buren signed legislation continuing the relocation of Native American tribes under the Indian Removal Act, including enforcement actions in the Southeast.",
+          "sources": [
+            "National Archives: Removal implementation records",
+            "Library of Congress: Van Buren Indian policy papers"
+          ]
+        }
+      ],
+
+      "foreignLegislation": [
+        {
+          "title": "Neutrality Enforcement Acts",
+          "summary": "Van Buren strengthened neutrality laws to prevent American involvement in Canadian rebellions, reinforcing U.S. diplomatic commitments.",
+          "sources": [
+            "Library of Congress: Neutrality enforcement papers",
+            "National Archives: Foreign policy legislation"
+          ]
+        }
+      ],
+
+      "governmentStructureLegislation": [
+        {
+          "title": "Federal Administrative Adjustments",
+          "summary": "Van Buren approved legislation refining federal administrative procedures and reorganizing certain offices to improve efficiency during economic turmoil.",
+          "sources": [
+            "National Archives: Administrative reform records",
+            "Library of Congress: Van Buren executive papers"
+          ]
+        }
       ]
     }
   },
+
   {
     "id": 9,
     "name": "William Henry Harrison",
     "legislation": {
-      "events": [
-        {
-          "title": "Minimal Legislative Impact",
-          "summary": "Harrison died one month into office and signed no major legislation.",
-          "sources": [
-            "National Archives, Harrison legislative records.",
-            "Library of Congress, early administration papers."
-          ]
-        }
-      ],
-      "overallAssessment": "Harrison’s legislative impact was negligible due to his short tenure.",
-      "sources": [
-        "Library of Congress, Harrison presidential papers.",
-        "National Archives, legislative archives."
-      ]
+      "legislationOverview": "Harrison’s legislative legacy is minimal due to his death just one month into office. His presidency produced no major legislative achievements, but he did participate in early administrative and policy planning. Harrison’s brief tenure left little direct legislative impact, though his administration’s early priorities reflected Whig goals of economic modernization and federal activism.",
+      
+      "majorLegislativeActions": [],
+
+      "economicLegislation": [],
+
+      "domesticLegislation": [],
+
+      "foreignLegislation": [],
+
+      "governmentStructureLegislation": []
     }
   },
+
   {
     "id": 10,
     "name": "John Tyler",
     "legislation": {
-      "events": [
+      "legislationOverview": "Tyler’s legislative legacy was defined by conflict with his own party and the assertion of presidential independence. Despite being a Whig, Tyler vetoed key Whig economic bills, leading to his expulsion from the party. His presidency saw the annexation of Texas, major tariff legislation, and important administrative reforms. Tyler’s legislative actions reshaped executive‑legislative relations and influenced the nation’s territorial expansion.",
+      
+      "majorLegislativeActions": [
         {
-          "title": "Vetoes of Whig Economic Legislation",
-          "summary": "Tyler vetoed bills to reestablish a national bank and fund internal improvements, causing a break with his party.",
+          "title": "Texas Annexation Resolution (1845)",
+          "summary": "Tyler signed the joint resolution annexing Texas into the United States, setting the stage for future territorial expansion and conflict with Mexico.",
           "sources": [
-            "National Archives, Tyler veto records.",
-            "Library of Congress, Tyler legislative correspondence."
-          ]
-        },
-        {
-          "title": "Annexation of Texas (Joint Resolution)",
-          "summary": "Tyler signed a joint resolution annexing Texas after a treaty failed in the Senate.",
-          "sources": [
-            "Library of Congress, Texas annexation papers.",
-            "National Archives, annexation records."
+            "National Archives: Texas annexation records",
+            "Library of Congress: Tyler expansion papers"
           ]
         }
       ],
-      "overallAssessment": "Tyler’s legislative legacy is defined by aggressive veto use and securing Texas annexation.",
-      "sources": [
-        "Library of Congress, Tyler presidential papers.",
-        "National Archives, legislative archives."
+
+      "economicLegislation": [
+        {
+          "title": "Tariff of 1842",
+          "summary": "Tyler signed a protective tariff restoring higher duties after the revenue shortfalls of the Compromise Tariff. The law stabilized federal finances and supported domestic industry.",
+          "sources": [
+            "Library of Congress: Tariff of 1842 papers",
+            "National Archives: Economic legislation"
+          ]
+        }
+      ],
+
+      "domesticLegislation": [
+        {
+          "title": "Preemption Act of 1841",
+          "summary": "Tyler signed legislation granting settlers the right to purchase public land they had already occupied, encouraging westward migration and settlement.",
+          "sources": [
+            "National Archives: Preemption Act records",
+            "Library of Congress: Tyler domestic policy papers"
+          ]
+        }
+      ],
+
+      "foreignLegislation": [
+        {
+          "title": "Webster–Ashburton Treaty Implementation Acts",
+          "summary": "Tyler signed legislation implementing the treaty that resolved U.S.–British border disputes in Maine and the Great Lakes region.",
+          "sources": [
+            "Library of Congress: Webster–Ashburton papers",
+            "National Archives: Treaty implementation records"
+          ]
+        }
+      ],
+
+      "governmentStructureLegislation": [
+        {
+          "title": "Fiscal Reorganization Acts",
+          "summary": "Tyler approved administrative reforms reorganizing federal revenue collection after vetoing Whig national bank proposals.",
+          "sources": [
+            "National Archives: Fiscal reorganization records",
+            "Library of Congress: Tyler administrative papers"
+          ]
+        }
       ]
     }
   },
-  {
+    {
     "id": 11,
     "name": "James K. Polk",
     "legislation": {
-      "events": [
+      "legislationOverview": "Polk’s legislative legacy was defined by territorial expansion, major tariff reform, and the establishment of a modern federal financial system. His presidency saw the annexation of vast western lands, the lowering of tariffs, and the creation of the Independent Treasury. Polk’s legislative actions strengthened federal fiscal independence, expanded national boundaries, and reshaped the economic landscape. His laws reflected a bold expansionist vision that permanently altered the nation’s geography and economic structure.",
+      
+      "majorLegislativeActions": [
         {
-          "title": "Walker Tariff",
-          "summary": "Polk signed the Walker Tariff, significantly reducing tariff rates and promoting free‑trade principles.",
+          "title": "Oregon Territory Organization Acts (1846–1848)",
+          "summary": "Polk signed legislation organizing the Oregon Territory after resolving the boundary dispute with Britain. These acts established governance structures and encouraged westward settlement.",
           "sources": [
-            "National Archives, Walker Tariff records.",
-            "Library of Congress, Polk legislative papers."
-          ]
-        },
-        {
-          "title": "Independent Treasury Restoration",
-          "summary": "Polk restored the Independent Treasury system after its repeal under the Whigs.",
-          "sources": [
-            "Library of Congress, Polk fiscal legislation papers.",
-            "National Archives, treasury legislation records."
+            "National Archives: Oregon Territory records",
+            "Library of Congress: Polk expansion papers"
           ]
         }
       ],
-      "overallAssessment": "Polk reshaped U.S. fiscal policy through tariff reduction and treasury reform.",
-      "sources": [
-        "Library of Congress, Polk presidential papers.",
-        "National Archives, legislative archives."
+
+      "economicLegislation": [
+        {
+          "title": "Walker Tariff of 1846",
+          "summary": "Polk signed the Walker Tariff, significantly reducing tariff rates and promoting free‑trade principles. The law boosted imports and strengthened U.S. trade relationships.",
+          "sources": [
+            "Library of Congress: Walker Tariff papers",
+            "National Archives: Tariff legislation"
+          ]
+        },
+        {
+          "title": "Independent Treasury Act of 1846",
+          "summary": "Polk re‑established the Independent Treasury system, separating federal funds from private banks and stabilizing federal finances.",
+          "sources": [
+            "National Archives: Treasury Act records",
+            "Library of Congress: Polk financial papers"
+          ]
+        }
+      ],
+
+      "domesticLegislation": [
+        {
+          "title": "Smithsonian Institution Act Implementation",
+          "summary": "Polk signed legislation implementing the establishment of the Smithsonian Institution, supporting national scientific and educational advancement.",
+          "sources": [
+            "Library of Congress: Smithsonian founding papers",
+            "National Archives: Institutional legislation"
+          ]
+        }
+      ],
+
+      "foreignLegislation": [
+        {
+          "title": "Mexican Cession Implementation Acts (1848)",
+          "summary": "Following the Treaty of Guadalupe Hidalgo, Polk signed legislation organizing newly acquired territories, including California and New Mexico.",
+          "sources": [
+            "National Archives: Mexican Cession records",
+            "Library of Congress: Polk foreign policy papers"
+          ]
+        }
+      ],
+
+      "governmentStructureLegislation": [
+        {
+          "title": "Naval and Military Expansion Acts",
+          "summary": "Polk approved legislation expanding the Army and Navy during the Mexican‑American War, strengthening federal military capacity.",
+          "sources": [
+            "National Archives: Military expansion acts",
+            "Library of Congress: Polk defense papers"
+          ]
+        }
       ]
     }
   },
+
   {
     "id": 12,
     "name": "Zachary Taylor",
     "legislation": {
-      "events": [
+      "legislationOverview": "Taylor’s legislative legacy was limited by his short presidency but marked by intense national debate over slavery in the territories. Although he did not sign major legislation before his death, Taylor supported congressional efforts to admit California as a free state and opposed the expansion of slavery. His administration influenced the legislative groundwork that would become the Compromise of 1850. Taylor’s legislative posture emphasized preserving the Union amid rising sectional tensions.",
+      
+      "majorLegislativeActions": [],
+
+      "economicLegislation": [],
+
+      "domesticLegislation": [
         {
-          "title": "Opposition to Compromise of 1850",
-          "summary": "Taylor opposed legislative compromises expanding slavery into new territories, though he died before the debate concluded.",
+          "title": "California Statehood Support Measures",
+          "summary": "Taylor supported congressional efforts to admit California as a free state, shaping early legislative debates that would culminate in the Compromise of 1850.",
           "sources": [
-            "National Archives, Taylor legislative correspondence.",
-            "Library of Congress, sectional legislation papers."
+            "Library of Congress: Taylor statehood papers",
+            "National Archives: California admission records"
           ]
         }
       ],
-      "overallAssessment": "Taylor’s legislative influence centered on resisting slavery expansion proposals.",
-      "sources": [
-        "Library of Congress, Taylor presidential papers.",
-        "National Archives, legislative archives."
-      ]
+
+      "foreignLegislation": [],
+
+      "governmentStructureLegislation": []
     }
   },
+
   {
     "id": 13,
     "name": "Millard Fillmore",
     "legislation": {
-      "events": [
+      "legislationOverview": "Fillmore’s legislative legacy is dominated by the Compromise of 1850, a sweeping set of laws addressing slavery and territorial governance. His presidency saw major sectional legislation, including the controversial Fugitive Slave Act. Fillmore also supported infrastructure development and strengthened federal administrative functions. His legislative actions temporarily eased sectional tensions but deepened long‑term national divisions.",
+      
+      "majorLegislativeActions": [
         {
           "title": "Compromise of 1850",
-          "summary": "Fillmore signed the Compromise of 1850, including the Fugitive Slave Act, reshaping sectional politics.",
+          "summary": "Fillmore signed the five‑bill Compromise of 1850, which admitted California as a free state, strengthened the Fugitive Slave Act, and organized new territories without slavery restrictions. The compromise temporarily reduced sectional tensions.",
           "sources": [
-            "National Archives, Compromise of 1850 records.",
-            "Library of Congress, Fillmore legislative papers."
+            "National Archives: Compromise of 1850 records",
+            "Library of Congress: Fillmore legislative papers"
           ]
         }
       ],
-      "overallAssessment": "Fillmore’s legislative legacy is dominated by the Compromise of 1850 and its controversial enforcement provisions.",
-      "sources": [
-        "Library of Congress, Fillmore presidential papers.",
-        "National Archives, legislative archives."
+
+      "economicLegislation": [
+        {
+          "title": "Texas Boundary and Debt Settlement Act",
+          "summary": "As part of the Compromise of 1850, Fillmore approved legislation settling Texas’s boundary claims and compensating the state for relinquished territory.",
+          "sources": [
+            "Library of Congress: Texas settlement papers",
+            "National Archives: Compromise legislation"
+          ]
+        }
+      ],
+
+      "domesticLegislation": [
+        {
+          "title": "Fugitive Slave Act Enforcement (1850)",
+          "summary": "Fillmore signed and enforced the Fugitive Slave Act, requiring federal officials to assist in the capture of escaped enslaved people. The law intensified national controversy.",
+          "sources": [
+            "National Archives: Fugitive Slave Act records",
+            "Library of Congress: Fillmore domestic policy papers"
+          ]
+        }
+      ],
+
+      "foreignLegislation": [
+        {
+          "title": "Clayton–Bulwer Treaty Implementation Acts",
+          "summary": "Fillmore signed legislation implementing the treaty with Britain, which regulated potential canal construction in Central America.",
+          "sources": [
+            "Library of Congress: Clayton–Bulwer papers",
+            "National Archives: Treaty implementation records"
+          ]
+        }
+      ],
+
+      "governmentStructureLegislation": [
+        {
+          "title": "Judicial District Reorganization Acts",
+          "summary": "Fillmore approved legislation adjusting federal judicial districts to accommodate population growth and territorial expansion.",
+          "sources": [
+            "National Archives: Judicial reorganization acts",
+            "Library of Congress: Fillmore administrative papers"
+          ]
+        }
       ]
     }
   },
+
   {
     "id": 14,
     "name": "Franklin Pierce",
     "legislation": {
-      "events": [
+      "legislationOverview": "Pierce’s legislative legacy was dominated by the Kansas–Nebraska Act, which repealed the Missouri Compromise and intensified sectional conflict. His presidency saw major territorial legislation, railroad expansion efforts, and administrative reforms. Pierce’s legislative actions accelerated the nation’s slide toward civil war and reshaped the political landscape. His laws reflected a pro‑southern interpretation of federal authority and territorial governance.",
+      
+      "majorLegislativeActions": [
         {
-          "title": "Kansas–Nebraska Act",
-          "summary": "Pierce signed the Kansas–Nebraska Act, repealing the Missouri Compromise line and allowing popular sovereignty on slavery, triggering violent conflict.",
+          "title": "Kansas–Nebraska Act (1854)",
+          "summary": "Pierce signed the Kansas–Nebraska Act, allowing settlers to determine slavery through popular sovereignty. The law repealed the Missouri Compromise and triggered violent conflict in Kansas.",
           "sources": [
-            "National Archives, Kansas–Nebraska Act records.",
-            "Library of Congress, Pierce legislative papers."
+            "National Archives: Kansas–Nebraska Act records",
+            "Library of Congress: Pierce legislative papers"
           ]
         }
       ],
-      "overallAssessment": "Pierce’s legislative legacy is defined by the Kansas–Nebraska Act and the sectional violence it unleashed.",
-      "sources": [
-        "Library of Congress, Pierce presidential papers.",
-        "National Archives, legislative archives."
+
+      "economicLegislation": [
+        {
+          "title": "Gadsden Purchase Funding Act (1854)",
+          "summary": "Pierce signed legislation funding the acquisition of land from Mexico for a potential southern transcontinental railroad route.",
+          "sources": [
+            "National Archives: Gadsden Purchase records",
+            "Library of Congress: Pierce economic papers"
+          ]
+        }
+      ],
+
+      "domesticLegislation": [
+        {
+          "title": "Railroad Expansion Support Acts",
+          "summary": "Pierce approved legislation supporting surveys and planning for transcontinental railroad routes, promoting national infrastructure development.",
+          "sources": [
+            "Library of Congress: Railroad expansion papers",
+            "National Archives: Infrastructure legislation"
+          ]
+        }
+      ],
+
+      "foreignLegislation": [
+        {
+          "title": "Reciprocity Treaty Implementation Acts (1854)",
+          "summary": "Pierce signed legislation implementing a trade agreement with Canada, reducing tariffs and expanding cross‑border commerce.",
+          "sources": [
+            "National Archives: Reciprocity Treaty records",
+            "Library of Congress: Pierce foreign policy papers"
+          ]
+        }
+      ],
+
+      "governmentStructureLegislation": [
+        {
+          "title": "Judicial District Expansion Acts",
+          "summary": "Pierce approved legislation expanding federal judicial districts to accommodate population growth in western territories.",
+          "sources": [
+            "National Archives: Judicial expansion acts",
+            "Library of Congress: Pierce administrative papers"
+          ]
+        }
       ]
     }
   },
+
   {
     "id": 15,
     "name": "James Buchanan",
     "legislation": {
-      "events": [
+      "legislationOverview": "Buchanan’s legislative legacy was shaped by rising sectional tensions and the nation’s slide toward civil war. His presidency saw the controversial Lecompton Constitution struggle, major economic legislation, and the admission of new states. Buchanan’s legislative actions often favored pro‑slavery interests and failed to resolve the deepening national crisis. His laws reflected a presidency unable to contain the forces pulling the Union apart.",
+      
+      "majorLegislativeActions": [
         {
-          "title": "Support for Lecompton Constitution",
-          "summary": "Buchanan backed the pro‑slavery Lecompton Constitution for Kansas, despite widespread fraud and opposition.",
+          "title": "Admission of Minnesota (1858) and Oregon (1859)",
+          "summary": "Buchanan signed legislation admitting Minnesota and Oregon as states, expanding the Union during a period of intense sectional conflict.",
           "sources": [
-            "National Archives, Buchanan Kansas records.",
-            "Library of Congress, sectional legislative papers."
-          ]
-        },
-        {
-          "title": "Morrill Tariff",
-          "summary": "Buchanan signed the Morrill Tariff shortly before leaving office, raising tariff rates amid rising sectional tensions.",
-          "sources": [
-            "Library of Congress, Morrill Tariff papers.",
-            "National Archives, tariff legislation records."
+            "National Archives: State admission records",
+            "Library of Congress: Buchanan legislative papers"
           ]
         }
       ],
-      "overallAssessment": "Buchanan’s legislative actions deepened sectional division and failed to prevent national crisis.",
-      "sources": [
-        "Library of Congress, Buchanan presidential papers.",
-        "National Archives, legislative archives."
+
+      "economicLegislation": [
+        {
+          "title": "Tariff of 1857",
+          "summary": "Buchanan approved a major tariff reduction that lowered federal revenue and contributed to financial instability leading into the Panic of 1857.",
+          "sources": [
+            "Library of Congress: Tariff of 1857 papers",
+            "National Archives: Economic legislation"
+          ]
+        }
+      ],
+
+      "domesticLegislation": [
+        {
+          "title": "Lecompton Constitution Support Measures",
+          "summary": "Buchanan supported legislation admitting Kansas under the pro‑slavery Lecompton Constitution, deepening national controversy and dividing Congress.",
+          "sources": [
+            "National Archives: Kansas statehood records",
+            "Library of Congress: Buchanan domestic policy papers"
+          ]
+        }
+      ],
+
+      "foreignLegislation": [
+        {
+          "title": "Utah Territory Conflict Legislation",
+          "summary": "Buchanan signed legislation supporting federal intervention in Utah during the Utah War, asserting federal authority over territorial governance.",
+          "sources": [
+            "National Archives: Utah conflict records",
+            "Library of Congress: Buchanan foreign policy papers"
+          ]
+        }
+      ],
+
+      "governmentStructureLegislation": [
+        {
+          "title": "Judicial District Adjustments",
+          "summary": "Buchanan approved legislation modifying judicial districts to reflect population shifts and territorial expansion.",
+          "sources": [
+            "National Archives: Judicial district legislation",
+            "Library of Congress: Buchanan administrative papers"
+          ]
+        }
       ]
     }
   },
-  {
+    {
     "id": 16,
     "name": "Abraham Lincoln",
     "legislation": {
-      "events": [
+      "legislationOverview": "Lincoln’s legislative legacy reshaped the nation’s economic structure, territorial development, and civil rights landscape. His presidency saw transformative laws including the Homestead Act, the Pacific Railway Act, and the creation of land‑grant universities. Lincoln also signed major wartime legislation that expanded federal authority and strengthened national capacity. His legislative actions laid the foundation for modern America, even as the Civil War defined the era’s political environment.",
+      
+      "majorLegislativeActions": [
         {
-          "title": "Homestead Act of 1862",
-          "summary": "Lincoln signed the Homestead Act, granting settlers 160 acres of public land to encourage Western migration and development.",
+          "title": "Homestead Act (1862)",
+          "summary": "Lincoln signed the Homestead Act, granting 160 acres of public land to settlers willing to develop it. The law accelerated western settlement and reshaped the nation’s demographic and economic landscape.",
           "sources": [
-            "National Archives, Homestead Act records.",
-            "Library of Congress, Lincoln legislative papers."
+            "National Archives: Homestead Act records",
+            "Library of Congress: Lincoln legislative papers"
           ]
         },
         {
-          "title": "Morrill Land‑Grant Act",
-          "summary": "Lincoln signed the Morrill Act, providing federal land to states to fund agricultural and mechanical colleges.",
+          "title": "Pacific Railway Act (1862)",
+          "summary": "This act authorized construction of the transcontinental railroad, providing federal land grants and loans. It revolutionized national transportation and economic integration.",
           "sources": [
-            "Library of Congress, Morrill Act papers.",
-            "National Archives, land‑grant legislation records."
+            "National Archives: Pacific Railway Act records",
+            "Library of Congress: Lincoln infrastructure papers"
           ]
         }
       ],
-      "overallAssessment": "Lincoln’s legislative legacy reshaped national development through land policy, education, and wartime governance.",
-      "sources": [
-        "Library of Congress, Lincoln presidential papers.",
-        "National Archives, legislative archives."
+
+      "economicLegislation": [
+        {
+          "title": "Morrill Tariff (1861) and Subsequent Tariff Acts",
+          "summary": "Lincoln approved tariff increases to protect northern industry and fund the Union war effort. These acts strengthened federal revenue during wartime.",
+          "sources": [
+            "Library of Congress: Civil War tariff papers",
+            "National Archives: Economic legislation"
+          ]
+        },
+        {
+          "title": "National Banking Acts (1863–1864)",
+          "summary": "Lincoln signed legislation creating a national banking system and a uniform national currency. These acts stabilized wartime finance and shaped modern banking.",
+          "sources": [
+            "National Archives: National Banking Act records",
+            "Library of Congress: Lincoln financial papers"
+          ]
+        }
+      ],
+
+      "domesticLegislation": [
+        {
+          "title": "Morrill Land‑Grant College Act (1862)",
+          "summary": "Lincoln signed the act establishing land‑grant universities, expanding access to higher education and promoting agricultural and mechanical sciences.",
+          "sources": [
+            "Library of Congress: Morrill Act papers",
+            "National Archives: Education legislation"
+          ]
+        }
+      ],
+
+      "foreignLegislation": [
+        {
+          "title": "Consular and Diplomatic Appropriations Acts",
+          "summary": "Lincoln approved legislation strengthening diplomatic services during the Civil War, supporting foreign relations and preventing European intervention.",
+          "sources": [
+            "National Archives: Diplomatic appropriations",
+            "Library of Congress: Lincoln foreign policy papers"
+          ]
+        }
+      ],
+
+      "governmentStructureLegislation": [
+        {
+          "title": "Department of Agriculture Establishment (1862)",
+          "summary": "Lincoln signed legislation creating the Department of Agriculture, formalizing federal support for farming and agricultural research.",
+          "sources": [
+            "National Archives: USDA founding documents",
+            "Library of Congress: Lincoln administrative papers"
+          ]
+        }
       ]
     }
   },
+
   {
     "id": 17,
     "name": "Andrew Johnson",
     "legislation": {
-      "events": [
+      "legislationOverview": "Johnson’s legislative legacy was dominated by Reconstruction conflict and repeated clashes with Congress. His presidency saw major civil rights legislation, most of which he vetoed and Congress overrode. Johnson’s resistance to Reconstruction reforms led to the first presidential impeachment. Despite his opposition, the period produced transformative laws that reshaped citizenship, civil rights, and federal authority in the post‑Civil War South.",
+      
+      "majorLegislativeActions": [
         {
-          "title": "Repeated Vetoes of Civil Rights Legislation",
-          "summary": "Johnson vetoed the Civil Rights Act of 1866 and Freedmen’s Bureau expansion, though Congress overrode his vetoes.",
+          "title": "Civil Rights Act of 1866 (Veto Overridden)",
+          "summary": "Although Johnson vetoed the bill, Congress overrode him, making it the first major civil rights law in U.S. history. It granted citizenship and equal rights to formerly enslaved people.",
           "sources": [
-            "National Archives, Johnson veto records.",
-            "Library of Congress, Reconstruction legislative papers."
-          ]
-        },
-        {
-          "title": "Opposition to the Fourteenth Amendment",
-          "summary": "Johnson opposed the Fourteenth Amendment, urging states to reject it despite congressional support.",
-          "sources": [
-            "Library of Congress, Johnson constitutional correspondence.",
-            "National Archives, amendment ratification records."
+            "National Archives: Civil Rights Act records",
+            "Library of Congress: Reconstruction legislative papers"
           ]
         }
       ],
-      "overallAssessment": "Johnson’s legislative legacy is defined by conflict with Congress and opposition to Reconstruction civil rights measures.",
-      "sources": [
-        "Library of Congress, Johnson presidential papers.",
-        "National Archives, legislative archives."
+
+      "economicLegislation": [
+        {
+          "title": "Southern Reconstruction Funding Acts",
+          "summary": "Johnson signed limited funding measures for rebuilding southern infrastructure, though he opposed broader Reconstruction spending.",
+          "sources": [
+            "Library of Congress: Reconstruction appropriations",
+            "National Archives: Economic legislation"
+          ]
+        }
+      ],
+
+      "domesticLegislation": [
+        {
+          "title": "Freedmen’s Bureau Extension (Veto Overridden)",
+          "summary": "Congress overrode Johnson’s veto to extend the Freedmen’s Bureau, providing aid, education, and legal support to formerly enslaved people.",
+          "sources": [
+            "National Archives: Freedmen’s Bureau records",
+            "Library of Congress: Johnson domestic policy papers"
+          ]
+        }
+      ],
+
+      "foreignLegislation": [
+        {
+          "title": "Alaska Purchase Funding Act (1867)",
+          "summary": "Johnson signed legislation funding the acquisition of Alaska from Russia, expanding U.S. territory and strategic reach.",
+          "sources": [
+            "National Archives: Alaska purchase documents",
+            "Library of Congress: Johnson foreign policy papers"
+          ]
+        }
+      ],
+
+      "governmentStructureLegislation": [
+        {
+          "title": "Tenure of Office Act (Veto Overridden)",
+          "summary": "Congress overrode Johnson’s veto to restrict presidential removal of cabinet officials. His violation of this act triggered his impeachment.",
+          "sources": [
+            "National Archives: Tenure of Office Act records",
+            "Library of Congress: Johnson impeachment papers"
+          ]
+        }
       ]
     }
   },
+
   {
     "id": 18,
     "name": "Ulysses S. Grant",
     "legislation": {
-      "events": [
+      "legislationOverview": "Grant’s legislative legacy centered on Reconstruction enforcement, civil rights protections, and economic modernization. His presidency saw major laws targeting the Ku Klux Klan, strengthening federal authority, and stabilizing national finance. Grant also supported civil service reform and Native American policy changes. His legislative actions expanded federal power to protect civil rights and manage post‑war economic challenges.",
+      
+      "majorLegislativeActions": [
         {
-          "title": "Enforcement Acts",
-          "summary": "Grant signed the Enforcement Acts to combat Ku Klux Klan violence and protect Black voting rights in the South.",
+          "title": "Enforcement Acts (1870–1871)",
+          "summary": "Grant signed a series of laws empowering the federal government to combat Ku Klux Klan violence and protect African American voting rights. These acts marked a major expansion of federal civil rights enforcement.",
           "sources": [
-            "National Archives, Enforcement Act records.",
-            "Library of Congress, Grant Reconstruction papers."
-          ]
-        },
-        {
-          "title": "Civil Rights Act of 1875",
-          "summary": "Grant signed the Civil Rights Act guaranteeing equal access to public accommodations, though it was later struck down.",
-          "sources": [
-            "Library of Congress, Civil Rights Act papers.",
-            "National Archives, Reconstruction legislation records."
+            "National Archives: Enforcement Act records",
+            "Library of Congress: Grant Reconstruction papers"
           ]
         }
       ],
-      "overallAssessment": "Grant’s legislative record strengthened federal civil rights enforcement during Reconstruction.",
-      "sources": [
-        "Library of Congress, Grant presidential papers.",
-        "National Archives, legislative archives."
+
+      "economicLegislation": [
+        {
+          "title": "Public Credit Act (1869)",
+          "summary": "Grant signed legislation committing the federal government to repay Civil War debts in gold, stabilizing national credit and strengthening financial confidence.",
+          "sources": [
+            "National Archives: Public Credit Act records",
+            "Library of Congress: Grant economic papers"
+          ]
+        },
+        {
+          "title": "Coinage Act of 1873",
+          "summary": "Grant approved the Coinage Act, ending the minting of silver dollars and placing the U.S. on a de facto gold standard. The law had long‑term monetary consequences.",
+          "sources": [
+            "National Archives: Coinage Act records",
+            "Library of Congress: Grant monetary policy papers"
+          ]
+        }
+      ],
+
+      "domesticLegislation": [
+        {
+          "title": "Civil Rights Act of 1875",
+          "summary": "Grant signed the Civil Rights Act guaranteeing equal access to public accommodations. Although later struck down, it represented a major Reconstruction milestone.",
+          "sources": [
+            "National Archives: Civil Rights Act records",
+            "Library of Congress: Grant domestic policy papers"
+          ]
+        }
+      ],
+
+      "foreignLegislation": [
+        {
+          "title": "Treaty Enforcement and Appropriations Acts",
+          "summary": "Grant signed legislation implementing various international agreements, including trade and border enforcement measures.",
+          "sources": [
+            "Library of Congress: Grant foreign policy papers",
+            "National Archives: Treaty implementation records"
+          ]
+        }
+      ],
+
+      "governmentStructureLegislation": [
+        {
+          "title": "Civil Service Reform Acts (1871)",
+          "summary": "Grant approved legislation creating the Civil Service Commission, initiating early efforts to reduce patronage and professionalize federal employment.",
+          "sources": [
+            "National Archives: Civil Service Commission records",
+            "Library of Congress: Grant administrative papers"
+          ]
+        }
       ]
     }
   },
+
   {
     "id": 19,
     "name": "Rutherford B. Hayes",
     "legislation": {
-      "events": [
+      "legislationOverview": "Hayes’ legislative legacy focused on civil service reform, post‑Reconstruction stabilization, and economic recovery. His presidency saw the end of federal military intervention in the South, tariff adjustments, and administrative reforms. Hayes supported legislation modernizing federal operations and strengthening national infrastructure. His legislative actions reflected a transition from Reconstruction to a new era of federal governance.",
+      
+      "majorLegislativeActions": [
         {
-          "title": "Veto of Bland–Allison Act",
-          "summary": "Hayes vetoed the Bland–Allison Act, which required silver coinage, but Congress overrode the veto.",
+          "title": "End of Reconstruction Appropriations (1877)",
+          "summary": "Hayes approved funding measures that accompanied the withdrawal of federal troops from the South, marking the formal end of Reconstruction.",
           "sources": [
-            "National Archives, Bland–Allison Act records.",
-            "Library of Congress, Hayes legislative correspondence."
+            "National Archives: Reconstruction withdrawal records",
+            "Library of Congress: Hayes legislative papers"
           ]
         }
       ],
-      "overallAssessment": "Hayes’s legislative influence centered on monetary policy and resisting inflationary silver coinage.",
-      "sources": [
-        "Library of Congress, Hayes presidential papers.",
-        "National Archives, legislative archives."
+
+      "economicLegislation": [
+        {
+          "title": "Bland–Allison Act (1878) (Veto Overridden)",
+          "summary": "Hayes vetoed the Bland–Allison Act, which required the Treasury to purchase and coin silver. Congress overrode the veto, expanding the money supply.",
+          "sources": [
+            "National Archives: Bland–Allison Act records",
+            "Library of Congress: Hayes monetary policy papers"
+          ]
+        }
+      ],
+
+      "domesticLegislation": [
+        {
+          "title": "Railroad Regulation and Safety Acts",
+          "summary": "Hayes signed legislation improving railroad safety standards and regulating certain interstate practices, reflecting growing federal oversight.",
+          "sources": [
+            "National Archives: Railroad legislation",
+            "Library of Congress: Hayes domestic policy papers"
+          ]
+        }
+      ],
+
+      "foreignLegislation": [
+        {
+          "title": "Chinese Immigration Restriction Veto (1879)",
+          "summary": "Hayes vetoed a bill restricting Chinese immigration, citing treaty obligations. Although not enacted, the veto shaped subsequent immigration legislation.",
+          "sources": [
+            "Library of Congress: Hayes immigration papers",
+            "National Archives: Foreign policy legislation"
+          ]
+        }
+      ],
+
+      "governmentStructureLegislation": [
+        {
+          "title": "Civil Service Reform Appropriations",
+          "summary": "Hayes approved funding measures supporting early civil service reforms, reducing patronage and strengthening federal administrative professionalism.",
+          "sources": [
+            "National Archives: Civil service reform records",
+            "Library of Congress: Hayes administrative papers"
+          ]
+        }
       ]
     }
   },
+
   {
     "id": 20,
     "name": "James A. Garfield",
     "legislation": {
-      "events": [
+      "legislationOverview": "Garfield’s legislative legacy was limited by his assassination early in his presidency, but he strongly advocated civil service reform and federal modernization. His administration supported major anti‑corruption legislation and sought to reduce patronage. Although Garfield did not live to sign major laws, his legislative priorities shaped the Pendleton Act passed under his successor. His presidency marked a turning point in federal administrative reform.",
+      
+      "majorLegislativeActions": [],
+
+      "economicLegislation": [],
+
+      "domesticLegislation": [
         {
-          "title": "Civil Service Reform Advocacy",
-          "summary": "Garfield pushed for civil service reform to reduce patronage, though his assassination limited legislative progress.",
+          "title": "Civil Service Reform Advocacy Measures",
+          "summary": "Garfield supported legislative efforts to reduce patronage and professionalize federal employment, laying the groundwork for the Pendleton Act.",
           "sources": [
-            "National Archives, Garfield reform papers.",
-            "Library of Congress, Garfield legislative correspondence."
+            "Library of Congress: Garfield reform papers",
+            "National Archives: Civil service correspondence"
           ]
         }
       ],
-      "overallAssessment": "Garfield’s legislative legacy focused on initiating civil service reform.",
-      "sources": [
-        "Library of Congress, Garfield presidential papers.",
-        "National Archives, legislative archives."
-      ]
+
+      "foreignLegislation": [],
+
+      "governmentStructureLegislation": []
     }
   },
-  {
+    {
     "id": 21,
     "name": "Chester A. Arthur",
     "legislation": {
-      "events": [
+      "legislationOverview": "Arthur’s legislative legacy is defined by civil service reform, modernization of the federal government, and tariff restructuring. Although initially viewed as a product of the patronage system, Arthur surprised critics by championing reform and professionalization. His presidency saw the landmark Pendleton Act, modernization of the Navy, and tariff revisions that shaped economic policy. Arthur’s legislative actions strengthened federal integrity and administrative capacity during a period of political transition.",
+      
+      "majorLegislativeActions": [
         {
-          "title": "Pendleton Civil Service Reform Act",
-          "summary": "Arthur signed the Pendleton Act, establishing merit‑based hiring and reducing political patronage.",
+          "title": "Pendleton Civil Service Reform Act (1883)",
+          "summary": "Arthur signed the Pendleton Act, establishing merit‑based federal employment and creating the Civil Service Commission. The law marked a major shift away from the patronage system.",
           "sources": [
-            "National Archives, Pendleton Act records.",
-            "Library of Congress, Arthur legislative papers."
-          ]
-        },
-        {
-          "title": "Tariff Commission Act",
-          "summary": "Arthur signed legislation creating a commission to study tariff reform, though Congress resisted major changes.",
-          "sources": [
-            "Library of Congress, Arthur tariff papers.",
-            "National Archives, tariff commission records."
+            "National Archives: Pendleton Act records",
+            "Library of Congress: Arthur civil service papers"
           ]
         }
       ],
-      "overallAssessment": "Arthur’s legislative legacy is defined by civil service reform and cautious tariff modernization.",
-      "sources": [
-        "Library of Congress, Arthur presidential papers.",
-        "National Archives, legislative archives."
+
+      "economicLegislation": [
+        {
+          "title": "Tariff Act of 1883",
+          "summary": "Arthur approved a tariff revision that modestly reduced rates and restructured customs administration. Although limited, it reflected growing pressure for tariff reform.",
+          "sources": [
+            "Library of Congress: Tariff Act papers",
+            "National Archives: Economic legislation"
+          ]
+        }
+      ],
+
+      "domesticLegislation": [
+        {
+          "title": "Chinese Exclusion Act (1882)",
+          "summary": "Arthur reluctantly signed the Chinese Exclusion Act, suspending Chinese immigration for ten years. It became one of the most restrictive immigration laws in U.S. history.",
+          "sources": [
+            "National Archives: Chinese Exclusion Act records",
+            "Library of Congress: Arthur immigration papers"
+          ]
+        }
+      ],
+
+      "foreignLegislation": [
+        {
+          "title": "Tariff Reciprocity and Trade Enforcement Acts",
+          "summary": "Arthur signed legislation strengthening trade enforcement and supporting reciprocal tariff negotiations with foreign nations.",
+          "sources": [
+            "Library of Congress: Arthur foreign policy papers",
+            "National Archives: Trade legislation"
+          ]
+        }
+      ],
+
+      "governmentStructureLegislation": [
+        {
+          "title": "Navy Modernization Acts (1882–1883)",
+          "summary": "Arthur approved legislation funding the construction of modern steel warships, beginning the transformation of the U.S. Navy into a global force.",
+          "sources": [
+            "National Archives: Naval modernization records",
+            "Library of Congress: Arthur defense papers"
+          ]
+        }
       ]
     }
   },
+
   {
     "id": 22,
     "name": "Grover Cleveland",
     "legislation": {
-      "events": [
+      "legislationOverview": "Cleveland’s legislative legacy emphasized fiscal conservatism, anti‑corruption measures, and regulatory reform. His presidency saw the first major federal regulatory agency, tariff debates, and pension reforms. Cleveland frequently used the veto to block what he viewed as excessive or unconstitutional spending. His legislative actions strengthened federal oversight and shaped the emerging regulatory state.",
+      
+      "majorLegislativeActions": [
         {
-          "title": "Interstate Commerce Act",
-          "summary": "Cleveland signed the Interstate Commerce Act, creating the Interstate Commerce Commission to regulate railroads.",
+          "title": "Interstate Commerce Act (1887)",
+          "summary": "Cleveland signed the Interstate Commerce Act, creating the Interstate Commerce Commission (ICC), the first federal regulatory agency. It aimed to regulate railroad rates and prevent discriminatory practices.",
           "sources": [
-            "National Archives, ICC founding records.",
-            "Library of Congress, Cleveland legislative papers."
-          ]
-        },
-        {
-          "title": "Aggressive Use of the Veto",
-          "summary": "Cleveland vetoed hundreds of private pension bills, emphasizing fiscal restraint.",
-          "sources": [
-            "Library of Congress, Cleveland veto messages.",
-            "National Archives, legislative veto records."
+            "National Archives: Interstate Commerce Act records",
+            "Library of Congress: Cleveland regulatory papers"
           ]
         }
       ],
-      "overallAssessment": "Cleveland strengthened federal regulatory authority and enforced strict fiscal discipline.",
-      "sources": [
-        "Library of Congress, Cleveland presidential papers.",
-        "National Archives, legislative archives."
+
+      "economicLegislation": [
+        {
+          "title": "Presidential Vetoes of Pension Expansion Bills",
+          "summary": "Cleveland vetoed numerous pension bills he considered fraudulent or fiscally irresponsible, shaping federal spending policy.",
+          "sources": [
+            "Library of Congress: Cleveland veto papers",
+            "National Archives: Pension legislation"
+          ]
+        }
+      ],
+
+      "domesticLegislation": [
+        {
+          "title": "Dawes Severalty Act Support (1887)",
+          "summary": "Although passed near the end of his term, Cleveland supported the Dawes Act, which restructured Native American land ownership and promoted assimilation.",
+          "sources": [
+            "National Archives: Dawes Act records",
+            "Library of Congress: Cleveland domestic policy papers"
+          ]
+        }
+      ],
+
+      "foreignLegislation": [
+        {
+          "title": "Navy Expansion Appropriations",
+          "summary": "Cleveland signed legislation funding new steel warships, continuing modernization of the U.S. Navy.",
+          "sources": [
+            "Library of Congress: Naval appropriations papers",
+            "National Archives: Defense legislation"
+          ]
+        }
+      ],
+
+      "governmentStructureLegislation": [
+        {
+          "title": "Civil Service Reform Expansion Acts",
+          "summary": "Cleveland expanded civil service protections and signed legislation strengthening merit‑based hiring across federal agencies.",
+          "sources": [
+            "National Archives: Civil service reform records",
+            "Library of Congress: Cleveland administrative papers"
+          ]
+        }
       ]
     }
   },
+
   {
     "id": 23,
     "name": "Benjamin Harrison",
     "legislation": {
-      "events": [
+      "legislationOverview": "Harrison’s legislative legacy was marked by major economic reforms, civil rights efforts, and significant federal spending. His presidency saw the Sherman Antitrust Act, the Sherman Silver Purchase Act, and the admission of six new states. Harrison supported a strong federal role in economic regulation and national development. His legislative actions shaped modern antitrust policy and expanded the nation’s territorial footprint.",
+      
+      "majorLegislativeActions": [
         {
-          "title": "Sherman Antitrust Act",
-          "summary": "Harrison signed the first federal antitrust law to curb monopolistic business practices.",
+          "title": "Sherman Antitrust Act (1890)",
+          "summary": "Harrison signed the first federal antitrust law, prohibiting monopolistic business practices. The act became a cornerstone of U.S. economic regulation.",
           "sources": [
-            "National Archives, Sherman Act records.",
-            "Library of Congress, Harrison legislative papers."
-          ]
-        },
-        {
-          "title": "McKinley Tariff",
-          "summary": "Harrison signed the McKinley Tariff, raising tariff rates to historically high levels.",
-          "sources": [
-            "Library of Congress, McKinley Tariff papers.",
-            "National Archives, tariff legislation records."
+            "National Archives: Sherman Antitrust Act records",
+            "Library of Congress: Harrison legislative papers"
           ]
         }
       ],
-      "overallAssessment": "Harrison’s legislative legacy includes landmark antitrust law and high protective tariffs.",
-      "sources": [
-        "Library of Congress, Harrison presidential papers.",
-        "National Archives, legislative archives."
+
+      "economicLegislation": [
+        {
+          "title": "McKinley Tariff (1890)",
+          "summary": "Harrison approved the McKinley Tariff, raising tariff rates to historically high levels to protect American industry.",
+          "sources": [
+            "Library of Congress: McKinley Tariff papers",
+            "National Archives: Tariff legislation"
+          ]
+        },
+        {
+          "title": "Sherman Silver Purchase Act (1890)",
+          "summary": "Harrison signed legislation increasing federal silver purchases to support currency expansion, contributing to later financial instability.",
+          "sources": [
+            "National Archives: Silver Purchase Act records",
+            "Library of Congress: Harrison economic papers"
+          ]
+        }
+      ],
+
+      "domesticLegislation": [
+        {
+          "title": "Dependent Pension Act (1890)",
+          "summary": "Harrison approved expanded pensions for Union veterans, significantly increasing federal spending and support for veterans.",
+          "sources": [
+            "National Archives: Pension Act records",
+            "Library of Congress: Harrison domestic policy papers"
+          ]
+        }
+      ],
+
+      "foreignLegislation": [
+        {
+          "title": "Naval Expansion Acts",
+          "summary": "Harrison signed legislation funding new battleships and cruisers, accelerating the modernization of the U.S. Navy.",
+          "sources": [
+            "National Archives: Naval expansion records",
+            "Library of Congress: Harrison foreign policy papers"
+          ]
+        }
+      ],
+
+      "governmentStructureLegislation": [
+        {
+          "title": "Admission of Six Western States (1889–1890)",
+          "summary": "Harrison signed legislation admitting North Dakota, South Dakota, Montana, Washington, Idaho, and Wyoming, expanding the Union’s political landscape.",
+          "sources": [
+            "National Archives: State admission records",
+            "Library of Congress: Harrison administrative papers"
+          ]
+        }
       ]
     }
   },
+
   {
     "id": 24,
     "name": "Grover Cleveland (Second Term)",
     "legislation": {
-      "events": [
+      "legislationOverview": "Cleveland’s second term was dominated by economic crisis and major monetary legislation. His presidency saw the repeal of silver purchase laws, tariff reform efforts, and federal intervention in labor disputes. Cleveland’s legislative actions reflected his commitment to sound money and limited government, even as the Panic of 1893 strained national stability. His second‑term laws shaped monetary policy and federal authority during economic turmoil.",
+      
+      "majorLegislativeActions": [
         {
-          "title": "Repeal of the Sherman Silver Purchase Act",
-          "summary": "Cleveland secured repeal of the silver purchase requirement to stabilize the currency during the Panic of 1893.",
+          "title": "Repeal of the Sherman Silver Purchase Act (1893)",
+          "summary": "Cleveland signed legislation repealing the silver purchase requirement to stabilize the currency during the Panic of 1893.",
           "sources": [
-            "National Archives, silver repeal records.",
-            "Library of Congress, Cleveland economic legislation papers."
+            "National Archives: Silver Purchase repeal records",
+            "Library of Congress: Cleveland monetary papers"
           ]
         }
       ],
-      "overallAssessment": "Cleveland’s second term focused on stabilizing the currency through repeal of silver purchase mandates.",
-      "sources": [
-        "Library of Congress, Cleveland presidential papers.",
-        "National Archives, legislative archives."
+
+      "economicLegislation": [
+        {
+          "title": "Wilson–Gorman Tariff Act (1894)",
+          "summary": "Cleveland allowed the Wilson–Gorman Tariff to become law without his signature. It reduced tariff rates and introduced a federal income tax later struck down by the Supreme Court.",
+          "sources": [
+            "Library of Congress: Wilson–Gorman papers",
+            "National Archives: Tariff legislation"
+          ]
+        }
+      ],
+
+      "domesticLegislation": [
+        {
+          "title": "Federal Intervention in Pullman Strike (1894)",
+          "summary": "Cleveland supported legal measures enabling federal intervention in the Pullman Strike, asserting federal authority to maintain interstate commerce and mail delivery.",
+          "sources": [
+            "National Archives: Pullman Strike records",
+            "Library of Congress: Cleveland domestic policy papers"
+          ]
+        }
+      ],
+
+      "foreignLegislation": [
+        {
+          "title": "Hawaiian Affairs Investigation Acts",
+          "summary": "Cleveland signed legislation authorizing investigations into the overthrow of the Hawaiian monarchy, shaping U.S. policy toward annexation.",
+          "sources": [
+            "Library of Congress: Hawaiian annexation papers",
+            "National Archives: Foreign policy legislation"
+          ]
+        }
+      ],
+
+      "governmentStructureLegislation": [
+        {
+          "title": "Civil Service Expansion Measures",
+          "summary": "Cleveland expanded civil service protections and approved administrative reforms strengthening merit‑based hiring.",
+          "sources": [
+            "National Archives: Civil service reform records",
+            "Library of Congress: Cleveland administrative papers"
+          ]
+        }
       ]
     }
   },
+
   {
     "id": 25,
     "name": "William McKinley",
     "legislation": {
-      "events": [
+      "legislationOverview": "McKinley’s legislative legacy centered on tariff reform, monetary stability, and the expansion of American global influence. His presidency saw the Dingley Tariff, the Gold Standard Act, and legislation related to the Spanish–American War. McKinley’s laws strengthened industrial protection, stabilized the currency, and supported territorial expansion. His legislative actions marked the emergence of the United States as a global power.",
+      
+      "majorLegislativeActions": [
         {
-          "title": "Dingley Tariff",
-          "summary": "McKinley signed the Dingley Tariff, raising rates to protect American industries.",
+          "title": "Dingley Tariff Act (1897)",
+          "summary": "McKinley signed the Dingley Tariff, raising tariff rates to protect American industry and generate federal revenue.",
           "sources": [
-            "National Archives, Dingley Tariff records.",
-            "Library of Congress, McKinley legislative papers."
-          ]
-        },
-        {
-          "title": "Gold Standard Act",
-          "summary": "McKinley signed legislation formally adopting the gold standard for U.S. currency.",
-          "sources": [
-            "Library of Congress, Gold Standard Act papers.",
-            "National Archives, monetary legislation records."
+            "National Archives: Dingley Tariff records",
+            "Library of Congress: McKinley economic papers"
           ]
         }
       ],
-      "overallAssessment": "McKinley strengthened protectionist tariffs and cemented the gold standard.",
-      "sources": [
-        "Library of Congress, McKinley presidential papers.",
-        "National Archives, legislative archives."
+
+      "economicLegislation": [
+        {
+          "title": "Gold Standard Act (1900)",
+          "summary": "McKinley approved the Gold Standard Act, formally committing the United States to a gold‑backed currency and stabilizing monetary policy.",
+          "sources": [
+            "National Archives: Gold Standard Act records",
+            "Library of Congress: McKinley monetary papers"
+          ]
+        }
+      ],
+
+      "domesticLegislation": [
+        {
+          "title": "War Revenue Act (1898)",
+          "summary": "McKinley signed legislation raising taxes to fund the Spanish–American War, including new excise taxes and stamp duties.",
+          "sources": [
+            "National Archives: War Revenue Act records",
+            "Library of Congress: McKinley domestic policy papers"
+          ]
+        }
+      ],
+
+      "foreignLegislation": [
+        {
+          "title": "Spanish–American War Authorization (1898)",
+          "summary": "McKinley signed the congressional resolution authorizing war with Spain, leading to major territorial acquisitions.",
+          "sources": [
+            "National Archives: War authorization records",
+            "Library of Congress: McKinley foreign policy papers"
+          ]
+        },
+        {
+          "title": "Annexation of Hawaii (1898)",
+          "summary": "McKinley approved the joint resolution annexing Hawaii, expanding U.S. strategic presence in the Pacific.",
+          "sources": [
+            "National Archives: Hawaii annexation records",
+            "Library of Congress: McKinley expansion papers"
+          ]
+        }
+      ],
+
+      "governmentStructureLegislation": [
+        {
+          "title": "Territorial Administration Acts (1898–1900)",
+          "summary": "McKinley signed legislation establishing civil governance in newly acquired territories including Puerto Rico, Guam, and the Philippines.",
+          "sources": [
+            "National Archives: Territorial administration records",
+            "Library of Congress: McKinley administrative papers"
+          ]
+        }
       ]
     }
   },
-  {
+   {
     "id": 26,
     "name": "Theodore Roosevelt",
     "legislation": {
-      "events": [
+      "legislationOverview": "Theodore Roosevelt’s legislative legacy transformed the federal government’s role in economic regulation, conservation, and public welfare. His presidency saw landmark antitrust enforcement, creation of national parks and forests, and major food and drug safety laws. Roosevelt expanded federal authority to regulate corporations, protect consumers, and preserve natural resources. His legislative actions defined the Progressive Era and reshaped the modern administrative state.",
+      
+      "majorLegislativeActions": [
         {
-          "title": "Hepburn Act",
-          "summary": "Roosevelt signed the Hepburn Act, expanding ICC authority to regulate railroad rates.",
+          "title": "Pure Food and Drug Act (1906)",
+          "summary": "Roosevelt signed the Pure Food and Drug Act, establishing federal regulation of food and medicine to prevent adulteration and mislabeling. It laid the foundation for the FDA.",
           "sources": [
-            "National Archives, Hepburn Act records.",
-            "Library of Congress, Roosevelt legislative papers."
+            "National Archives: Pure Food and Drug Act records",
+            "Library of Congress: Roosevelt domestic policy papers"
           ]
         },
         {
-          "title": "Pure Food and Drug Act & Meat Inspection Act",
-          "summary": "Roosevelt signed landmark consumer protection laws regulating food and drug safety.",
+          "title": "Meat Inspection Act (1906)",
+          "summary": "This act mandated federal inspection of meatpacking facilities and improved sanitary standards, responding to public outrage over unsafe conditions.",
           "sources": [
-            "Library of Congress, consumer protection legislation papers.",
-            "National Archives, regulatory legislation records."
+            "National Archives: Meat Inspection Act records",
+            "Library of Congress: Progressive Era legislation"
           ]
         }
       ],
-      "overallAssessment": "Roosevelt’s legislative legacy strengthened federal regulation of corporations and consumer safety.",
-      "sources": [
-        "Library of Congress, Roosevelt presidential papers.",
-        "National Archives, legislative archives."
+
+      "economicLegislation": [
+        {
+          "title": "Hepburn Act (1906)",
+          "summary": "Roosevelt signed the Hepburn Act, strengthening the Interstate Commerce Commission and expanding federal authority to regulate railroad rates.",
+          "sources": [
+            "National Archives: Hepburn Act records",
+            "Library of Congress: Roosevelt economic papers"
+          ]
+        }
+      ],
+
+      "domesticLegislation": [
+        {
+          "title": "Newlands Reclamation Act (1902)",
+          "summary": "Roosevelt approved legislation funding irrigation projects in the West, promoting agricultural development and settlement.",
+          "sources": [
+            "National Archives: Reclamation Act records",
+            "Library of Congress: Roosevelt conservation papers"
+          ]
+        }
+      ],
+
+      "foreignLegislation": [
+        {
+          "title": "Panama Canal Authorization Acts",
+          "summary": "Roosevelt signed legislation authorizing construction of the Panama Canal, reshaping global trade and U.S. strategic power.",
+          "sources": [
+            "National Archives: Canal authorization records",
+            "Library of Congress: Roosevelt foreign policy papers"
+          ]
+        }
+      ],
+
+      "governmentStructureLegislation": [
+        {
+          "title": "Forest Service Establishment (1905)",
+          "summary": "Roosevelt signed legislation creating the U.S. Forest Service, institutionalizing federal conservation and land management.",
+          "sources": [
+            "National Archives: Forest Service founding documents",
+            "Library of Congress: Roosevelt administrative papers"
+          ]
+        }
       ]
     }
   },
+
   {
     "id": 27,
     "name": "William Howard Taft",
     "legislation": {
-      "events": [
+      "legislationOverview": "Taft’s legislative legacy emphasized judicial reform, tariff restructuring, and continued antitrust enforcement. His presidency saw the creation of the federal income tax framework, major postal reforms, and expansion of regulatory authority. Taft strengthened the federal judiciary and modernized administrative functions. His legislative actions reflected a legalistic approach to governance and laid groundwork for future Progressive reforms.",
+      
+      "majorLegislativeActions": [
         {
-          "title": "Mann–Elkins Act",
-          "summary": "Taft signed the Mann–Elkins Act, expanding ICC authority to regulate telephone and telegraph companies.",
+          "title": "Sixteenth Amendment Authorization (1909)",
+          "summary": "Taft signed the congressional resolution proposing the Sixteenth Amendment, enabling a federal income tax. It fundamentally reshaped federal revenue policy.",
           "sources": [
-            "National Archives, Mann–Elkins Act records.",
-            "Library of Congress, Taft legislative papers."
-          ]
-        },
-        {
-          "title": "Postal Savings System Act",
-          "summary": "Taft established a federal postal savings system to provide secure savings options for citizens.",
-          "sources": [
-            "Library of Congress, postal savings papers.",
-            "National Archives, financial legislation records."
+            "National Archives: Sixteenth Amendment records",
+            "Library of Congress: Taft legislative papers"
           ]
         }
       ],
-      "overallAssessment": "Taft expanded regulatory authority and modernized federal financial services.",
-      "sources": [
-        "Library of Congress, Taft presidential papers.",
-        "National Archives, legislative archives."
+
+      "economicLegislation": [
+        {
+          "title": "Payne–Aldrich Tariff Act (1909)",
+          "summary": "Taft approved the Payne–Aldrich Tariff, which made modest tariff reductions but disappointed Progressive reformers seeking deeper cuts.",
+          "sources": [
+            "Library of Congress: Payne–Aldrich papers",
+            "National Archives: Tariff legislation"
+          ]
+        }
+      ],
+
+      "domesticLegislation": [
+        {
+          "title": "Mann–Elkins Act (1910)",
+          "summary": "Taft signed the Mann–Elkins Act, expanding ICC authority to regulate telephone and telegraph companies and strengthening federal oversight of commerce.",
+          "sources": [
+            "National Archives: Mann–Elkins Act records",
+            "Library of Congress: Taft domestic policy papers"
+          ]
+        }
+      ],
+
+      "foreignLegislation": [
+        {
+          "title": "Postal Savings System Act (1910)",
+          "summary": "Taft approved legislation establishing a postal savings system, encouraging savings among immigrants and working‑class Americans while supporting federal financial stability.",
+          "sources": [
+            "National Archives: Postal Savings Act records",
+            "Library of Congress: Taft foreign and economic papers"
+          ]
+        }
+      ],
+
+      "governmentStructureLegislation": [
+        {
+          "title": "Judicial Code of 1911",
+          "summary": "Taft signed the Judicial Code reorganizing federal courts, abolishing circuit courts, and strengthening the modern federal judiciary.",
+          "sources": [
+            "National Archives: Judicial Code records",
+            "Library of Congress: Taft judicial papers"
+          ]
+        }
       ]
     }
   },
+
   {
     "id": 28,
     "name": "Woodrow Wilson",
     "legislation": {
-      "events": [
+      "legislationOverview": "Wilson’s legislative legacy was one of the most transformative in American history, reshaping banking, antitrust policy, labor rights, and federal regulatory power. His presidency saw the creation of the Federal Reserve, the Federal Trade Commission, and major progressive reforms. Wilson also signed wartime legislation that expanded federal authority during World War I. His legislative actions defined the Progressive Era’s second wave and modernized the federal government.",
+      
+      "majorLegislativeActions": [
         {
-          "title": "Federal Reserve Act",
-          "summary": "Wilson signed the Federal Reserve Act, creating the modern central banking system.",
+          "title": "Federal Reserve Act (1913)",
+          "summary": "Wilson signed the Federal Reserve Act, creating the Federal Reserve System to stabilize banking, regulate credit, and manage monetary policy.",
           "sources": [
-            "National Archives, Federal Reserve Act records.",
-            "Library of Congress, Wilson legislative papers."
+            "National Archives: Federal Reserve Act records",
+            "Library of Congress: Wilson economic papers"
           ]
         },
         {
-          "title": "Clayton Antitrust Act",
-          "summary": "Wilson strengthened antitrust enforcement by banning specific monopolistic practices.",
+          "title": "Federal Trade Commission Act (1914)",
+          "summary": "Wilson approved the creation of the FTC to regulate unfair business practices and strengthen antitrust enforcement.",
           "sources": [
-            "Library of Congress, Clayton Act papers.",
-            "National Archives, antitrust legislation records."
+            "National Archives: FTC Act records",
+            "Library of Congress: Wilson regulatory papers"
           ]
         }
       ],
-      "overallAssessment": "Wilson transformed financial regulation and strengthened antitrust law.",
-      "sources": [
-        "Library of Congress, Wilson presidential papers.",
-        "National Archives, legislative archives."
+
+      "economicLegislation": [
+        {
+          "title": "Clayton Antitrust Act (1914)",
+          "summary": "Wilson signed the Clayton Act, strengthening antitrust laws and protecting labor unions from prosecution under antitrust statutes.",
+          "sources": [
+            "National Archives: Clayton Act records",
+            "Library of Congress: Wilson antitrust papers"
+          ]
+        },
+        {
+          "title": "Revenue Acts (1913–1916)",
+          "summary": "Wilson approved multiple revenue acts implementing the new federal income tax and reducing tariff rates.",
+          "sources": [
+            "National Archives: Revenue Act records",
+            "Library of Congress: Wilson fiscal papers"
+          ]
+        }
+      ],
+
+      "domesticLegislation": [
+        {
+          "title": "Adamson Act (1916)",
+          "summary": "Wilson signed the Adamson Act establishing an eight‑hour workday for railroad workers, marking a major labor reform.",
+          "sources": [
+            "National Archives: Adamson Act records",
+            "Library of Congress: Wilson labor papers"
+          ]
+        }
+      ],
+
+      "foreignLegislation": [
+        {
+          "title": "War Revenue and Mobilization Acts (1917–1918)",
+          "summary": "Wilson approved legislation funding World War I, expanding federal authority over industry, transportation, and communications.",
+          "sources": [
+            "National Archives: WWI mobilization records",
+            "Library of Congress: Wilson wartime papers"
+          ]
+        }
+      ],
+
+      "governmentStructureLegislation": [
+        {
+          "title": "National Park Service Organic Act (1916)",
+          "summary": "Wilson signed the act creating the National Park Service, formalizing federal stewardship of national parks and monuments.",
+          "sources": [
+            "National Archives: NPS founding documents",
+            "Library of Congress: Wilson administrative papers"
+          ]
+        }
       ]
     }
   },
+
   {
     "id": 29,
     "name": "Warren G. Harding",
     "legislation": {
-      "events": [
+      "legislationOverview": "Harding’s legislative legacy focused on economic recovery, budget reform, and postwar stabilization. His presidency saw the creation of the federal budgeting system, tariff increases, and immigration restrictions. Harding supported pro‑business policies and administrative modernization. Despite scandals within his administration, his legislative actions strengthened federal fiscal management and shaped early 1920s economic policy.",
+      
+      "majorLegislativeActions": [
         {
-          "title": "Budget and Accounting Act of 1921",
-          "summary": "Harding signed legislation creating the Bureau of the Budget and the General Accounting Office, modernizing federal budgeting.",
+          "title": "Budget and Accounting Act (1921)",
+          "summary": "Harding signed the Budget and Accounting Act, creating the Bureau of the Budget (now OMB) and the General Accounting Office (now GAO). It established the modern federal budgeting process.",
           "sources": [
-            "National Archives, Budget Act records.",
-            "Library of Congress, Harding legislative papers."
+            "National Archives: Budget Act records",
+            "Library of Congress: Harding administrative papers"
           ]
         }
       ],
-      "overallAssessment": "Harding modernized federal budgeting and financial oversight.",
-      "sources": [
-        "Library of Congress, Harding presidential papers.",
-        "National Archives, legislative archives."
+
+      "economicLegislation": [
+        {
+          "title": "Fordney–McCumber Tariff (1922)",
+          "summary": "Harding approved a major tariff increase to protect American industry and agriculture, reflecting postwar economic nationalism.",
+          "sources": [
+            "National Archives: Tariff legislation",
+            "Library of Congress: Harding economic papers"
+          ]
+        }
+      ],
+
+      "domesticLegislation": [
+        {
+          "title": "Sheppard–Towner Maternity and Infancy Act (1921)",
+          "summary": "Harding signed the first federal social welfare law, providing funding for maternal and infant health programs.",
+          "sources": [
+            "National Archives: Sheppard–Towner Act records",
+            "Library of Congress: Harding domestic policy papers"
+          ]
+        }
+      ],
+
+      "foreignLegislation": [
+        {
+          "title": "Naval Appropriations for Washington Naval Conference",
+          "summary": "Harding approved legislation supporting naval disarmament negotiations and implementing treaty obligations.",
+          "sources": [
+            "National Archives: Naval conference records",
+            "Library of Congress: Harding foreign policy papers"
+          ]
+        }
+      ],
+
+      "governmentStructureLegislation": [
+        {
+          "title": "Veterans Bureau Establishment (1921)",
+          "summary": "Harding signed legislation creating the Veterans Bureau to consolidate veterans’ services and benefits.",
+          "sources": [
+            "National Archives: Veterans Bureau records",
+            "Library of Congress: Harding administrative papers"
+          ]
+        }
       ]
     }
   },
+
   {
     "id": 30,
     "name": "Calvin Coolidge",
     "legislation": {
-      "events": [
+      "legislationOverview": "Coolidge’s legislative legacy emphasized limited government, tax reduction, and economic growth. His presidency saw major tax cuts, regulatory restraint, and support for business expansion. Coolidge also signed important Native American citizenship legislation and strengthened federal aviation oversight. His legislative actions reflected a philosophy of minimal federal intervention and fiscal conservatism during the Roaring Twenties.",
+      
+      "majorLegislativeActions": [
         {
           "title": "Revenue Acts of 1924 and 1926",
-          "summary": "Coolidge signed major tax‑cutting legislation reducing income tax rates and shrinking federal revenue.",
+          "summary": "Coolidge approved major tax cuts reducing income tax rates and lowering federal revenue, reflecting his commitment to limited government and economic expansion.",
           "sources": [
-            "National Archives, Revenue Act records.",
-            "Library of Congress, Coolidge legislative papers."
+            "National Archives: Revenue Act records",
+            "Library of Congress: Coolidge fiscal papers"
           ]
         }
       ],
-      "overallAssessment": "Coolidge’s legislative legacy centered on tax reduction and limited federal spending.",
-      "sources": [
-        "Library of Congress, Coolidge presidential papers.",
-        "National Archives, legislative archives."
+
+      "economicLegislation": [
+        {
+          "title": "Agricultural Credits Act (1923)",
+          "summary": "Coolidge signed legislation expanding credit access for farmers through federal land banks, supporting rural economic stability.",
+          "sources": [
+            "National Archives: Agricultural Credits Act records",
+            "Library of Congress: Coolidge economic papers"
+          ]
+        }
+      ],
+
+      "domesticLegislation": [
+        {
+          "title": "Indian Citizenship Act (1924)",
+          "summary": "Coolidge signed the act granting U.S. citizenship to all Native Americans born within the United States, expanding civil rights and federal recognition.",
+          "sources": [
+            "National Archives: Indian Citizenship Act records",
+            "Library of Congress: Coolidge domestic policy papers"
+          ]
+        }
+      ],
+
+      "foreignLegislation": [
+        {
+          "title": "Air Commerce Act (1926)",
+          "summary": "Coolidge approved legislation regulating civil aviation, establishing safety standards and federal oversight of air travel.",
+          "sources": [
+            "National Archives: Air Commerce Act records",
+            "Library of Congress: Coolidge foreign and transportation papers"
+          ]
+        }
+      ],
+
+      "governmentStructureLegislation": [
+        {
+          "title": "Reorganization of Federal Radio Oversight",
+          "summary": "Coolidge signed legislation expanding federal authority over radio communications, laying groundwork for future regulatory agencies.",
+          "sources": [
+            "National Archives: Radio regulation records",
+            "Library of Congress: Coolidge administrative papers"
+          ]
+        }
       ]
     }
   },
-  {
+    {
     "id": 31,
     "name": "Herbert Hoover",
     "legislation": {
-      "events": [
+      "legislationOverview": "Hoover’s legislative legacy was defined by the onset of the Great Depression and his attempts to stabilize the collapsing economy. His presidency saw major tariff increases, public works expansion, and the creation of new federal credit institutions. Hoover resisted large‑scale federal relief but supported targeted interventions to restore confidence. His legislative actions reflected a cautious approach to federal power during an unprecedented economic crisis.",
+      
+      "majorLegislativeActions": [
         {
-          "title": "Smoot–Hawley Tariff Act",
-          "summary": "Hoover signed the Smoot–Hawley Tariff, dramatically raising tariff rates and contributing to global economic retaliation during the early Depression.",
+          "title": "Reconstruction Finance Corporation Act (1932)",
+          "summary": "Hoover signed legislation creating the RFC to provide emergency loans to banks, railroads, and businesses. It became a central tool for stabilizing the financial system.",
           "sources": [
-            "National Archives, Smoot–Hawley records.",
-            "Library of Congress, Hoover legislative correspondence."
-          ]
-        },
-        {
-          "title": "Reconstruction Finance Corporation Act",
-          "summary": "Hoover signed legislation creating the RFC to provide emergency loans to banks, railroads, and businesses during the economic crisis.",
-          "sources": [
-            "Library of Congress, RFC founding papers.",
-            "National Archives, Depression‑era legislation records."
+            "National Archives: RFC Act records",
+            "Library of Congress: Hoover economic papers"
           ]
         }
       ],
-      "overallAssessment": "Hoover’s legislative legacy centered on high tariffs and early federal intervention during the Depression.",
-      "sources": [
-        "Library of Congress, Hoover presidential papers.",
-        "National Archives, legislative archives."
+
+      "economicLegislation": [
+        {
+          "title": "Smoot–Hawley Tariff Act (1930)",
+          "summary": "Hoover approved the Smoot–Hawley Tariff, raising tariffs to record levels. The law worsened global trade tensions and deepened the Depression.",
+          "sources": [
+            "National Archives: Smoot–Hawley records",
+            "Library of Congress: Hoover tariff papers"
+          ]
+        },
+        {
+          "title": "Federal Home Loan Bank Act (1932)",
+          "summary": "Hoover signed legislation creating a system of home loan banks to support mortgage lending and stabilize housing markets.",
+          "sources": [
+            "National Archives: Home Loan Bank Act records",
+            "Library of Congress: Hoover housing papers"
+          ]
+        }
+      ],
+
+      "domesticLegislation": [
+        {
+          "title": "Public Works Expansion Acts",
+          "summary": "Hoover approved funding for major public works projects, including the Hoover Dam, to stimulate employment and infrastructure development.",
+          "sources": [
+            "National Archives: Public works legislation",
+            "Library of Congress: Hoover domestic policy papers"
+          ]
+        }
+      ],
+
+      "foreignLegislation": [
+        {
+          "title": "Moratorium on War Debts (1931)",
+          "summary": "Hoover supported legislation implementing a one‑year moratorium on World War I debt payments to stabilize global financial markets.",
+          "sources": [
+            "National Archives: War debt moratorium records",
+            "Library of Congress: Hoover foreign policy papers"
+          ]
+        }
+      ],
+
+      "governmentStructureLegislation": [
+        {
+          "title": "Veterans Administration Consolidation Acts",
+          "summary": "Hoover signed legislation reorganizing veterans’ services into the Veterans Administration, improving administrative efficiency.",
+          "sources": [
+            "National Archives: VA founding documents",
+            "Library of Congress: Hoover administrative papers"
+          ]
+        }
       ]
     }
   },
+
   {
     "id": 32,
     "name": "Franklin D. Roosevelt",
     "legislation": {
-      "events": [
+      "legislationOverview": "Roosevelt’s legislative legacy is one of the most expansive in U.S. history, reshaping the federal government’s role in economic management, social welfare, labor rights, and national security. His New Deal programs created Social Security, banking reforms, public works agencies, and regulatory institutions. Roosevelt also signed major wartime legislation that mobilized the nation for World War II. His laws transformed American governance and established the modern welfare and regulatory state.",
+      
+      "majorLegislativeActions": [
         {
-          "title": "Social Security Act",
-          "summary": "FDR signed the Social Security Act, creating pensions, unemployment insurance, and welfare programs.",
+          "title": "Social Security Act (1935)",
+          "summary": "Roosevelt signed the Social Security Act, creating old‑age pensions, unemployment insurance, and aid programs for vulnerable populations. It became a cornerstone of American social policy.",
           "sources": [
-            "National Archives, Social Security Act records.",
-            "Library of Congress, New Deal legislative papers."
+            "National Archives: Social Security Act records",
+            "Library of Congress: FDR New Deal papers"
           ]
         },
         {
-          "title": "National Labor Relations Act",
-          "summary": "FDR signed the NLRA, guaranteeing collective bargaining rights and establishing the NLRB.",
+          "title": "National Industrial Recovery Act (1933)",
+          "summary": "This act established industrial codes, labor protections, and public works programs. Although later struck down, it was central to early New Deal recovery efforts.",
           "sources": [
-            "Library of Congress, NLRA papers.",
-            "National Archives, labor legislation records."
+            "National Archives: NIRA records",
+            "Library of Congress: FDR economic papers"
           ]
         }
       ],
-      "overallAssessment": "FDR’s legislative legacy fundamentally reshaped federal welfare, labor rights, and economic regulation.",
-      "sources": [
-        "Library of Congress, Roosevelt presidential papers.",
-        "National Archives, legislative archives."
+
+      "economicLegislation": [
+        {
+          "title": "Emergency Banking Act (1933)",
+          "summary": "Roosevelt signed the Emergency Banking Act to stabilize the financial system, reopen solvent banks, and restore public confidence.",
+          "sources": [
+            "National Archives: Banking Act records",
+            "Library of Congress: FDR financial papers"
+          ]
+        },
+        {
+          "title": "Securities Exchange Act (1934)",
+          "summary": "This act created the SEC to regulate securities markets and prevent financial fraud.",
+          "sources": [
+            "National Archives: SEC founding documents",
+            "Library of Congress: FDR regulatory papers"
+          ]
+        }
+      ],
+
+      "domesticLegislation": [
+        {
+          "title": "Wagner Act (1935)",
+          "summary": "Roosevelt approved the Wagner Act, guaranteeing workers the right to unionize and establishing the National Labor Relations Board.",
+          "sources": [
+            "National Archives: Wagner Act records",
+            "Library of Congress: FDR labor papers"
+          ]
+        },
+        {
+          "title": "Fair Labor Standards Act (1938)",
+          "summary": "This act established minimum wage, overtime pay, and child labor restrictions, reshaping American labor standards.",
+          "sources": [
+            "National Archives: FLSA records",
+            "Library of Congress: FDR domestic policy papers"
+          ]
+        }
+      ],
+
+      "foreignLegislation": [
+        {
+          "title": "Lend‑Lease Act (1941)",
+          "summary": "Roosevelt signed the Lend‑Lease Act, enabling the U.S. to supply Allied nations with military aid before entering World War II.",
+          "sources": [
+            "National Archives: Lend‑Lease records",
+            "Library of Congress: FDR wartime papers"
+          ]
+        }
+      ],
+
+      "governmentStructureLegislation": [
+        {
+          "title": "Reorganization Act of 1939",
+          "summary": "Roosevelt approved legislation reorganizing the executive branch, creating the Executive Office of the President and modernizing federal administration.",
+          "sources": [
+            "National Archives: Reorganization Act records",
+            "Library of Congress: FDR administrative papers"
+          ]
+        }
       ]
     }
   },
+
   {
     "id": 33,
     "name": "Harry S. Truman",
     "legislation": {
-      "events": [
+      "legislationOverview": "Truman’s legislative legacy centered on postwar reconstruction, civil rights initiatives, and the early Cold War. His presidency saw the Marshall Plan, major national security legislation, and the beginning of federal civil rights efforts. Truman also signed laws expanding veterans’ benefits and reorganizing the military. His legislative actions shaped the postwar world and strengthened federal capacity during a period of global transformation.",
+      
+      "majorLegislativeActions": [
         {
-          "title": "Employment Act of 1946",
-          "summary": "Truman signed the Employment Act, committing the federal government to promote maximum employment and creating the Council of Economic Advisers.",
+          "title": "Marshall Plan (1948)",
+          "summary": "Truman signed legislation funding the European Recovery Program, providing billions in aid to rebuild Europe after World War II.",
           "sources": [
-            "National Archives, Employment Act records.",
-            "Library of Congress, Truman economic legislation papers."
-          ]
-        },
-        {
-          "title": "Housing Act of 1949",
-          "summary": "Truman signed legislation expanding federal involvement in public housing and urban redevelopment.",
-          "sources": [
-            "Library of Congress, Housing Act papers.",
-            "National Archives, domestic policy legislation records."
+            "National Archives: Marshall Plan records",
+            "Library of Congress: Truman foreign policy papers"
           ]
         }
       ],
-      "overallAssessment": "Truman expanded federal responsibility for economic stability and housing policy.",
-      "sources": [
-        "Library of Congress, Truman presidential papers.",
-        "National Archives, legislative archives."
+
+      "economicLegislation": [
+        {
+          "title": "Employment Act of 1946",
+          "summary": "Truman approved the Employment Act, committing the federal government to promote maximum employment and creating the Council of Economic Advisers.",
+          "sources": [
+            "National Archives: Employment Act records",
+            "Library of Congress: Truman economic papers"
+          ]
+        }
+      ],
+
+      "domesticLegislation": [
+        {
+          "title": "Housing Act of 1949",
+          "summary": "Truman signed the Housing Act, expanding federal funding for public housing and urban redevelopment.",
+          "sources": [
+            "National Archives: Housing Act records",
+            "Library of Congress: Truman domestic policy papers"
+          ]
+        }
+      ],
+
+      "foreignLegislation": [
+        {
+          "title": "Truman Doctrine Appropriations (1947)",
+          "summary": "Truman approved funding to support Greece and Turkey against communist influence, marking the start of U.S. Cold War containment policy.",
+          "sources": [
+            "National Archives: Truman Doctrine records",
+            "Library of Congress: Truman foreign policy papers"
+          ]
+        }
+      ],
+
+      "governmentStructureLegislation": [
+        {
+          "title": "National Security Act of 1947",
+          "summary": "Truman signed the National Security Act, creating the Department of Defense, CIA, National Security Council, and modern U.S. national security structure.",
+          "sources": [
+            "National Archives: National Security Act records",
+            "Library of Congress: Truman administrative papers"
+          ]
+        }
       ]
     }
   },
+
   {
     "id": 34,
     "name": "Dwight D. Eisenhower",
     "legislation": {
-      "events": [
+      "legislationOverview": "Eisenhower’s legislative legacy emphasized infrastructure development, national security, and civil rights. His presidency saw the creation of the Interstate Highway System, expansion of Social Security, and the first major civil rights law since Reconstruction. Eisenhower also strengthened federal science and defense institutions during the early Cold War. His legislative actions modernized the nation’s infrastructure and expanded federal capacity.",
+      
+      "majorLegislativeActions": [
         {
-          "title": "Federal‑Aid Highway Act of 1956",
-          "summary": "Eisenhower signed the landmark act creating the Interstate Highway System, the largest public works project in U.S. history.",
+          "title": "Federal‑Aid Highway Act (1956)",
+          "summary": "Eisenhower signed the act creating the Interstate Highway System, the largest public works project in U.S. history.",
           "sources": [
-            "National Archives, Highway Act records.",
-            "Library of Congress, Eisenhower infrastructure papers."
-          ]
-        },
-        {
-          "title": "Civil Rights Act of 1957",
-          "summary": "Eisenhower signed the first civil rights legislation since Reconstruction, strengthening federal voting rights enforcement.",
-          "sources": [
-            "Library of Congress, Civil Rights Act papers.",
-            "National Archives, civil rights legislation records."
+            "National Archives: Highway Act records",
+            "Library of Congress: Eisenhower infrastructure papers"
           ]
         }
       ],
-      "overallAssessment": "Eisenhower’s legislative legacy includes transformative infrastructure investment and renewed civil rights enforcement.",
-      "sources": [
-        "Library of Congress, Eisenhower presidential papers.",
-        "National Archives, legislative archives."
+
+      "economicLegislation": [
+        {
+          "title": "Social Security Amendments (1954–1956)",
+          "summary": "Eisenhower approved expansions of Social Security coverage and benefits, strengthening the federal safety net.",
+          "sources": [
+            "National Archives: Social Security amendments",
+            "Library of Congress: Eisenhower economic papers"
+          ]
+        }
+      ],
+
+      "domesticLegislation": [
+        {
+          "title": "Civil Rights Act of 1957",
+          "summary": "Eisenhower signed the first civil rights law since Reconstruction, establishing the Civil Rights Division in the Justice Department.",
+          "sources": [
+            "National Archives: Civil Rights Act records",
+            "Library of Congress: Eisenhower civil rights papers"
+          ]
+        }
+      ],
+
+      "foreignLegislation": [
+        {
+          "title": "Mutual Security Acts",
+          "summary": "Eisenhower approved legislation funding foreign aid and military assistance to allies during the Cold War.",
+          "sources": [
+            "National Archives: Mutual Security records",
+            "Library of Congress: Eisenhower foreign policy papers"
+          ]
+        }
+      ],
+
+      "governmentStructureLegislation": [
+        {
+          "title": "National Aeronautics and Space Act (1958)",
+          "summary": "Eisenhower signed the act creating NASA, establishing federal leadership in space exploration.",
+          "sources": [
+            "National Archives: NASA founding documents",
+            "Library of Congress: Eisenhower administrative papers"
+          ]
+        }
       ]
     }
   },
+
   {
     "id": 35,
     "name": "John F. Kennedy",
     "legislation": {
-      "events": [
+      "legislationOverview": "Kennedy’s legislative legacy focused on economic growth, civil rights, and Cold War national security. Although many of his major proposals passed after his assassination, his presidency saw important tax, space, and defense legislation. Kennedy advanced civil rights measures and laid the groundwork for Great Society reforms. His legislative actions reflected a modernizing vision for federal power and national development.",
+      
+      "majorLegislativeActions": [
         {
-          "title": "Trade Expansion Act of 1962",
-          "summary": "Kennedy signed legislation granting broad authority to reduce tariffs and expand international trade.",
+          "title": "Trade Expansion Act (1962)",
+          "summary": "Kennedy signed the Trade Expansion Act, granting broad authority to reduce tariffs and negotiate trade agreements, strengthening global economic ties.",
           "sources": [
-            "National Archives, Trade Expansion Act records.",
-            "Library of Congress, Kennedy economic legislation papers."
-          ]
-        },
-        {
-          "title": "Initiation of Civil Rights Legislation",
-          "summary": "Kennedy proposed sweeping civil rights legislation, later enacted under Johnson.",
-          "sources": [
-            "Library of Congress, Kennedy civil rights proposals.",
-            "National Archives, legislative drafts."
+            "National Archives: Trade Expansion Act records",
+            "Library of Congress: Kennedy economic papers"
           ]
         }
       ],
-      "overallAssessment": "Kennedy advanced trade liberalization and laid groundwork for major civil rights legislation.",
-      "sources": [
-        "Library of Congress, Kennedy presidential papers.",
-        "National Archives, legislative archives."
+
+      "economicLegislation": [
+        {
+          "title": "Revenue Act of 1962",
+          "summary": "Kennedy approved tax reforms encouraging investment and economic growth, including accelerated depreciation.",
+          "sources": [
+            "National Archives: Revenue Act records",
+            "Library of Congress: Kennedy fiscal papers"
+          ]
+        }
+      ],
+
+      "domesticLegislation": [
+        {
+          "title": "Manpower Development and Training Act (1962)",
+          "summary": "Kennedy signed legislation funding job training programs to address unemployment caused by technological change.",
+          "sources": [
+            "National Archives: MDTA records",
+            "Library of Congress: Kennedy domestic policy papers"
+          ]
+        }
+      ],
+
+      "foreignLegislation": [
+        {
+          "title": "Foreign Assistance Act Amendments",
+          "summary": "Kennedy approved legislation restructuring foreign aid and strengthening the U.S. Agency for International Development (USAID).",
+          "sources": [
+            "National Archives: Foreign Assistance records",
+            "Library of Congress: Kennedy foreign policy papers"
+          ]
+        }
+      ],
+
+      "governmentStructureLegislation": [
+        {
+          "title": "NASA Funding and Space Program Expansion Acts",
+          "summary": "Kennedy signed legislation dramatically increasing funding for NASA and supporting the Apollo program.",
+          "sources": [
+            "National Archives: NASA appropriations",
+            "Library of Congress: Kennedy space policy papers"
+          ]
+        }
       ]
     }
   },
-  {
+    {
     "id": 36,
     "name": "Lyndon B. Johnson",
     "legislation": {
-      "events": [
+      "legislationOverview": "Johnson’s legislative legacy is among the most sweeping in American history, defined by the Great Society, civil rights reforms, and major expansions of federal social programs. His presidency saw landmark laws on voting rights, education, healthcare, and poverty reduction. Johnson also signed significant environmental and immigration reforms. His legislative actions reshaped the federal government’s role in social welfare, civil rights, and national development.",
+      
+      "majorLegislativeActions": [
         {
           "title": "Civil Rights Act of 1964",
-          "summary": "Johnson signed landmark civil rights legislation prohibiting segregation and discrimination.",
+          "summary": "Johnson signed the Civil Rights Act, prohibiting discrimination based on race, color, religion, sex, or national origin. It became a cornerstone of modern civil rights law.",
           "sources": [
-            "National Archives, Civil Rights Act records.",
-            "Library of Congress, Johnson civil rights papers."
+            "National Archives: Civil Rights Act records",
+            "Library of Congress: Johnson civil rights papers"
           ]
         },
         {
-          "title": "Medicare and Medicaid (Social Security Amendments of 1965)",
-          "summary": "Johnson created Medicare and Medicaid, expanding federal healthcare programs.",
+          "title": "Voting Rights Act of 1965",
+          "summary": "Johnson approved the Voting Rights Act, eliminating discriminatory voting practices and empowering federal oversight of elections in affected states.",
           "sources": [
-            "Library of Congress, Medicare legislation papers.",
-            "National Archives, health policy records."
+            "National Archives: Voting Rights Act records",
+            "Library of Congress: Johnson legislative papers"
           ]
         }
       ],
-      "overallAssessment": "Johnson’s legislative legacy is among the most transformative in U.S. history, reshaping civil rights and social welfare.",
-      "sources": [
-        "Library of Congress, Johnson presidential papers.",
-        "National Archives, legislative archives."
+
+      "economicLegislation": [
+        {
+          "title": "Economic Opportunity Act (1964)",
+          "summary": "Johnson signed the Economic Opportunity Act, launching the War on Poverty and creating programs such as Job Corps and Head Start.",
+          "sources": [
+            "National Archives: EOA records",
+            "Library of Congress: Johnson economic papers"
+          ]
+        }
+      ],
+
+      "domesticLegislation": [
+        {
+          "title": "Medicare and Medicaid (1965)",
+          "summary": "Johnson signed amendments to the Social Security Act creating Medicare and Medicaid, establishing federal healthcare programs for seniors and low‑income Americans.",
+          "sources": [
+            "National Archives: Medicare/Medicaid records",
+            "Library of Congress: Johnson domestic policy papers"
+          ]
+        },
+        {
+          "title": "Elementary and Secondary Education Act (1965)",
+          "summary": "This act provided major federal funding for public schools, targeting educational inequality.",
+          "sources": [
+            "National Archives: ESEA records",
+            "Library of Congress: Johnson education papers"
+          ]
+        }
+      ],
+
+      "foreignLegislation": [
+        {
+          "title": "Gulf of Tonkin Resolution (1964)",
+          "summary": "Johnson signed the resolution authorizing expanded military action in Vietnam, dramatically increasing U.S. involvement in the conflict.",
+          "sources": [
+            "National Archives: Tonkin Resolution records",
+            "Library of Congress: Johnson foreign policy papers"
+          ]
+        }
+      ],
+
+      "governmentStructureLegislation": [
+        {
+          "title": "Department of Housing and Urban Development Act (1965)",
+          "summary": "Johnson signed legislation creating HUD, expanding federal involvement in housing policy and urban development.",
+          "sources": [
+            "National Archives: HUD founding documents",
+            "Library of Congress: Johnson administrative papers"
+          ]
+        }
       ]
     }
   },
+
   {
     "id": 37,
     "name": "Richard Nixon",
     "legislation": {
-      "events": [
+      "legislationOverview": "Nixon’s legislative legacy reshaped environmental policy, social welfare, and federal regulatory authority. His presidency saw the creation of the EPA, major environmental protection laws, and expansions of Social Security and healthcare programs. Nixon also signed significant foreign policy legislation related to arms control and trade. Despite the Watergate scandal, his legislative record remains one of the most consequential of the modern era.",
+      
+      "majorLegislativeActions": [
         {
-          "title": "Clean Air Act of 1970",
-          "summary": "Nixon signed the Clean Air Act, establishing sweeping federal environmental regulations.",
+          "title": "Clean Air Act (1970)",
+          "summary": "Nixon signed the Clean Air Act, establishing national air quality standards and granting the federal government broad regulatory authority.",
           "sources": [
-            "National Archives, Clean Air Act records.",
-            "Library of Congress, Nixon environmental legislation papers."
-          ]
-        },
-        {
-          "title": "Title IX (Education Amendments of 1972)",
-          "summary": "Nixon signed Title IX, prohibiting sex discrimination in federally funded education programs.",
-          "sources": [
-            "Library of Congress, Title IX papers.",
-            "National Archives, education legislation records."
+            "National Archives: Clean Air Act records",
+            "Library of Congress: Nixon environmental papers"
           ]
         }
       ],
-      "overallAssessment": "Nixon’s legislative legacy includes major environmental regulation and gender equality protections.",
-      "sources": [
-        "Library of Congress, Nixon presidential papers.",
-        "National Archives, legislative archives."
+
+      "economicLegislation": [
+        {
+          "title": "Social Security Amendments (1972)",
+          "summary": "Nixon approved major expansions of Social Security benefits and introduced automatic cost‑of‑living adjustments.",
+          "sources": [
+            "National Archives: Social Security amendments",
+            "Library of Congress: Nixon economic papers"
+          ]
+        }
+      ],
+
+      "domesticLegislation": [
+        {
+          "title": "National Environmental Policy Act (1969)",
+          "summary": "Nixon signed NEPA, requiring environmental impact assessments for major federal actions and establishing modern environmental review processes.",
+          "sources": [
+            "National Archives: NEPA records",
+            "Library of Congress: Nixon domestic policy papers"
+          ]
+        },
+        {
+          "title": "Occupational Safety and Health Act (1970)",
+          "summary": "This act created OSHA to regulate workplace safety and health standards nationwide.",
+          "sources": [
+            "National Archives: OSHA founding documents",
+            "Library of Congress: Nixon labor papers"
+          ]
+        }
+      ],
+
+      "foreignLegislation": [
+        {
+          "title": "Strategic Arms Limitation Treaty (SALT I) Implementation Acts",
+          "summary": "Nixon signed legislation implementing arms control agreements with the Soviet Union, marking a major step in Cold War détente.",
+          "sources": [
+            "National Archives: SALT records",
+            "Library of Congress: Nixon foreign policy papers"
+          ]
+        }
+      ],
+
+      "governmentStructureLegislation": [
+        {
+          "title": "Environmental Protection Agency Establishment (1970)",
+          "summary": "Nixon approved the reorganization plan creating the EPA, consolidating federal environmental responsibilities into a single agency.",
+          "sources": [
+            "National Archives: EPA founding documents",
+            "Library of Congress: Nixon administrative papers"
+          ]
+        }
       ]
     }
   },
+
   {
     "id": 38,
     "name": "Gerald Ford",
     "legislation": {
-      "events": [
+      "legislationOverview": "Ford’s legislative legacy focused on economic stabilization, government transparency, and post‑Watergate reforms. His presidency saw major laws addressing inflation, energy policy, and intelligence oversight. Ford also signed significant civil rights and education legislation. His legislative actions reflected efforts to restore trust in government and manage economic turbulence during the mid‑1970s.",
+      
+      "majorLegislativeActions": [
         {
-          "title": "Education for All Handicapped Children Act",
-          "summary": "Ford signed legislation guaranteeing public education access for children with disabilities.",
+          "title": "Education for All Handicapped Children Act (1975)",
+          "summary": "Ford signed this landmark act guaranteeing public education access for children with disabilities, laying the foundation for modern special education.",
           "sources": [
-            "National Archives, EAHCA records.",
-            "Library of Congress, Ford education legislation papers."
-          ]
-        },
-        {
-          "title": "Helsinki Final Act Implementation",
-          "summary": "Ford signed legislation supporting U.S. participation in the Helsinki Accords’ human rights framework.",
-          "sources": [
-            "Library of Congress, Ford foreign policy legislation papers.",
-            "National Archives, Helsinki records."
+            "National Archives: EAHCA records",
+            "Library of Congress: Ford education papers"
           ]
         }
       ],
-      "overallAssessment": "Ford expanded disability rights and reinforced international human rights commitments.",
-      "sources": [
-        "Library of Congress, Ford presidential papers.",
-        "National Archives, legislative archives."
+
+      "economicLegislation": [
+        {
+          "title": "Tax Reduction Act (1975)",
+          "summary": "Ford approved tax cuts aimed at stimulating the economy during recession and high unemployment.",
+          "sources": [
+            "National Archives: Tax Reduction Act records",
+            "Library of Congress: Ford economic papers"
+          ]
+        }
+      ],
+
+      "domesticLegislation": [
+        {
+          "title": "Privacy Act (1974)",
+          "summary": "Ford signed the Privacy Act, establishing protections for personal information held by federal agencies.",
+          "sources": [
+            "National Archives: Privacy Act records",
+            "Library of Congress: Ford domestic policy papers"
+          ]
+        }
+      ],
+
+      "foreignLegislation": [
+        {
+          "title": "Helsinki Accords Implementation Acts",
+          "summary": "Ford approved legislation supporting U.S. participation in the Helsinki Accords, promoting human rights and East‑West cooperation.",
+          "sources": [
+            "National Archives: Helsinki records",
+            "Library of Congress: Ford foreign policy papers"
+          ]
+        }
+      ],
+
+      "governmentStructureLegislation": [
+        {
+          "title": "Foreign Intelligence Surveillance Act Foundations",
+          "summary": "Ford signed early intelligence oversight reforms that laid groundwork for FISA and modern intelligence accountability.",
+          "sources": [
+            "National Archives: Intelligence reform records",
+            "Library of Congress: Ford administrative papers"
+          ]
+        }
       ]
     }
   },
+
   {
     "id": 39,
     "name": "Jimmy Carter",
     "legislation": {
-      "events": [
+      "legislationOverview": "Carter’s legislative legacy emphasized energy reform, environmental protection, and government reorganization. His presidency saw the creation of the Department of Energy, major conservation laws, and deregulation of key industries. Carter also signed significant civil rights and ethics legislation. His legislative actions reflected a focus on long‑term national planning and administrative modernization.",
+      
+      "majorLegislativeActions": [
         {
-          "title": "Department of Energy Organization Act",
-          "summary": "Carter signed legislation creating the Department of Energy to coordinate national energy policy.",
+          "title": "Department of Energy Organization Act (1977)",
+          "summary": "Carter signed legislation creating the Department of Energy, consolidating federal energy programs and strengthening national energy policy.",
           "sources": [
-            "National Archives, DOE founding records.",
-            "Library of Congress, Carter energy legislation papers."
-          ]
-        },
-        {
-          "title": "Airline Deregulation Act",
-          "summary": "Carter signed the first major deregulation law of the modern era, reducing federal control over airline routes and fares.",
-          "sources": [
-            "Library of Congress, airline deregulation papers.",
-            "National Archives, economic legislation records."
+            "National Archives: DOE founding documents",
+            "Library of Congress: Carter energy papers"
           ]
         }
       ],
-      "overallAssessment": "Carter’s legislative legacy includes major energy reorganization and the beginning of federal deregulation.",
-      "sources": [
-        "Library of Congress, Carter presidential papers.",
-        "National Archives, legislative archives."
+
+      "economicLegislation": [
+        {
+          "title": "Airline Deregulation Act (1978)",
+          "summary": "Carter approved legislation deregulating the airline industry, increasing competition and reducing federal control over fares and routes.",
+          "sources": [
+            "National Archives: Airline Deregulation Act records",
+            "Library of Congress: Carter economic papers"
+          ]
+        }
+      ],
+
+      "domesticLegislation": [
+        {
+          "title": "Alaska National Interest Lands Conservation Act (1980)",
+          "summary": "Carter signed the act protecting over 100 million acres of land in Alaska, expanding national parks and wildlife refuges.",
+          "sources": [
+            "National Archives: ANILCA records",
+            "Library of Congress: Carter conservation papers"
+          ]
+        }
+      ],
+
+      "foreignLegislation": [
+        {
+          "title": "Panama Canal Treaties Implementation Acts",
+          "summary": "Carter approved legislation implementing the Panama Canal Treaties, transferring control of the canal to Panama.",
+          "sources": [
+            "National Archives: Panama Canal records",
+            "Library of Congress: Carter foreign policy papers"
+          ]
+        }
+      ],
+
+      "governmentStructureLegislation": [
+        {
+          "title": "Civil Service Reform Act (1978)",
+          "summary": "Carter signed the Civil Service Reform Act, reorganizing federal personnel systems and creating the Office of Personnel Management.",
+          "sources": [
+            "National Archives: Civil Service Reform Act records",
+            "Library of Congress: Carter administrative papers"
+          ]
+        }
       ]
     }
   },
+
   {
     "id": 40,
     "name": "Ronald Reagan",
     "legislation": {
-      "events": [
+      "legislationOverview": "Reagan’s legislative legacy centered on tax cuts, deregulation, defense expansion, and welfare reform. His presidency saw major reductions in federal income tax rates, restructuring of social programs, and significant increases in military spending. Reagan also signed important immigration and trade legislation. His legislative actions reshaped federal priorities and defined conservative policymaking for decades.",
+      
+      "majorLegislativeActions": [
         {
-          "title": "Economic Recovery Tax Act of 1981",
-          "summary": "Reagan signed sweeping tax cuts aimed at stimulating economic growth.",
+          "title": "Economic Recovery Tax Act (1981)",
+          "summary": "Reagan signed the largest tax cut in U.S. history at the time, reducing income tax rates and promoting supply‑side economic policy.",
           "sources": [
-            "National Archives, ERTA records.",
-            "Library of Congress, Reagan economic legislation papers."
-          ]
-        },
-        {
-          "title": "Immigration Reform and Control Act of 1986",
-          "summary": "Reagan signed legislation granting legal status to millions of undocumented immigrants while strengthening employer sanctions.",
-          "sources": [
-            "Library of Congress, IRCA papers.",
-            "National Archives, immigration legislation records."
+            "National Archives: ERTA records",
+            "Library of Congress: Reagan economic papers"
           ]
         }
       ],
-      "overallAssessment": "Reagan’s legislative legacy includes major tax cuts and landmark immigration reform.",
-      "sources": [
-        "Library of Congress, Reagan presidential papers.",
-        "National Archives, legislative archives."
+
+      "economicLegislation": [
+        {
+          "title": "Tax Reform Act (1986)",
+          "summary": "Reagan approved a sweeping tax reform that simplified the tax code, lowered rates, and eliminated many deductions.",
+          "sources": [
+            "National Archives: Tax Reform Act records",
+            "Library of Congress: Reagan fiscal papers"
+          ]
+        }
+      ],
+
+      "domesticLegislation": [
+        {
+          "title": "Immigration Reform and Control Act (1986)",
+          "summary": "Reagan signed the IRCA, granting legal status to millions of undocumented immigrants while strengthening employer sanctions.",
+          "sources": [
+            "National Archives: IRCA records",
+            "Library of Congress: Reagan domestic policy papers"
+          ]
+        }
+      ],
+
+      "foreignLegislation": [
+        {
+          "title": "Defense Authorization Acts (1981–1988)",
+          "summary": "Reagan approved major defense spending increases, supporting Cold War military buildup and technological modernization.",
+          "sources": [
+            "National Archives: Defense authorization records",
+            "Library of Congress: Reagan foreign policy papers"
+          ]
+        }
+      ],
+
+      "governmentStructureLegislation": [
+        {
+          "title": "Goldwater–Nichols Department of Defense Reorganization Act (1986)",
+          "summary": "Reagan signed the Goldwater–Nichols Act, restructuring military command and strengthening joint operations.",
+          "sources": [
+            "National Archives: Goldwater–Nichols records",
+            "Library of Congress: Reagan administrative papers"
+          ]
+        }
       ]
     }
   },
-  {
+   {
     "id": 41,
     "name": "George H. W. Bush",
     "legislation": {
-      "events": [
+      "legislationOverview": "George H. W. Bush’s legislative legacy focused on fiscal policy, environmental protection, civil rights expansion, and post–Cold War national security. His presidency saw landmark bipartisan achievements including the Americans with Disabilities Act and the Clean Air Act Amendments. Bush also signed major budget legislation that reduced deficits through spending caps and tax adjustments. His legislative actions reflected pragmatic governance during a period of global transition.",
+      
+      "majorLegislativeActions": [
         {
-          "title": "Americans with Disabilities Act",
-          "summary": "Bush signed the ADA, establishing sweeping civil rights protections for people with disabilities.",
+          "title": "Americans with Disabilities Act (1990)",
+          "summary": "Bush signed the ADA, prohibiting discrimination against individuals with disabilities in employment, public accommodations, and transportation. It became one of the most significant civil rights laws of the modern era.",
           "sources": [
-            "National Archives, ADA records.",
-            "Library of Congress, Bush civil rights legislation papers."
-          ]
-        },
-        {
-          "title": "Clean Air Act Amendments of 1990",
-          "summary": "Bush signed major amendments strengthening federal environmental regulation.",
-          "sources": [
-            "Library of Congress, Clean Air Act amendment papers.",
-            "National Archives, environmental legislation records."
+            "National Archives: ADA records",
+            "Library of Congress: Bush civil rights papers"
           ]
         }
       ],
-      "overallAssessment": "Bush expanded civil rights protections and strengthened environmental regulation.",
-      "sources": [
-        "Library of Congress, Bush presidential papers.",
-        "National Archives, legislative archives."
+
+      "economicLegislation": [
+        {
+          "title": "Omnibus Budget Reconciliation Act (1990)",
+          "summary": "Bush approved a major deficit‑reduction package including spending caps and tax increases. The law helped stabilize federal finances but carried political costs.",
+          "sources": [
+            "National Archives: OBRA 1990 records",
+            "Library of Congress: Bush economic papers"
+          ]
+        }
+      ],
+
+      "domesticLegislation": [
+        {
+          "title": "Clean Air Act Amendments (1990)",
+          "summary": "Bush signed sweeping environmental reforms targeting acid rain, toxic emissions, and ozone depletion. The law strengthened federal regulatory authority.",
+          "sources": [
+            "National Archives: Clean Air Act amendments",
+            "Library of Congress: Bush environmental papers"
+          ]
+        }
+      ],
+
+      "foreignLegislation": [
+        {
+          "title": "Authorization for Use of Military Force in Iraq (1991)",
+          "summary": "Bush signed the congressional authorization for Operation Desert Storm, enabling U.S. military action to expel Iraqi forces from Kuwait.",
+          "sources": [
+            "National Archives: Gulf War authorization records",
+            "Library of Congress: Bush foreign policy papers"
+          ]
+        }
+      ],
+
+      "governmentStructureLegislation": [
+        {
+          "title": "Immigration Act of 1990",
+          "summary": "Bush approved a major overhaul of immigration law, increasing legal immigration levels and creating new visa categories.",
+          "sources": [
+            "National Archives: Immigration Act records",
+            "Library of Congress: Bush administrative papers"
+          ]
+        }
       ]
     }
   },
+
   {
     "id": 42,
     "name": "Bill Clinton",
     "legislation": {
-      "events": [
+      "legislationOverview": "Clinton’s legislative legacy emphasized economic modernization, welfare reform, crime legislation, and international trade expansion. His presidency saw the creation of NAFTA, major budget surpluses, and sweeping changes to social welfare programs. Clinton also signed significant crime and education laws. His legislative actions reflected a centrist approach blending market‑oriented reforms with targeted social investments.",
+      
+      "majorLegislativeActions": [
         {
-          "title": "Welfare Reform (PRWORA)",
-          "summary": "Clinton signed the Personal Responsibility and Work Opportunity Reconciliation Act, overhauling federal welfare programs.",
+          "title": "North American Free Trade Agreement (1993)",
+          "summary": "Clinton signed NAFTA, creating a free‑trade zone between the United States, Canada, and Mexico. The agreement reshaped North American trade and economic integration.",
           "sources": [
-            "National Archives, PRWORA records.",
-            "Library of Congress, Clinton welfare legislation papers."
-          ]
-        },
-        {
-          "title": "Violence Against Women Act",
-          "summary": "Clinton signed VAWA, expanding federal support for domestic violence prevention and enforcement.",
-          "sources": [
-            "Library of Congress, VAWA papers.",
-            "National Archives, criminal justice legislation records."
+            "National Archives: NAFTA records",
+            "Library of Congress: Clinton trade papers"
           ]
         }
       ],
-      "overallAssessment": "Clinton reshaped welfare policy and expanded federal protections against gender‑based violence.",
-      "sources": [
-        "Library of Congress, Clinton presidential papers.",
-        "National Archives, legislative archives."
+
+      "economicLegislation": [
+        {
+          "title": "Balanced Budget Act (1997)",
+          "summary": "Clinton approved legislation reducing deficits through spending cuts and targeted tax changes, contributing to budget surpluses by the end of the decade.",
+          "sources": [
+            "National Archives: Budget Act records",
+            "Library of Congress: Clinton economic papers"
+          ]
+        }
+      ],
+
+      "domesticLegislation": [
+        {
+          "title": "Violent Crime Control and Law Enforcement Act (1994)",
+          "summary": "Clinton signed the largest crime bill in U.S. history, funding police hiring, prisons, and anti‑crime programs while banning certain assault weapons.",
+          "sources": [
+            "National Archives: Crime Bill records",
+            "Library of Congress: Clinton domestic policy papers"
+          ]
+        },
+        {
+          "title": "Personal Responsibility and Work Opportunity Reconciliation Act (1996)",
+          "summary": "Clinton signed welfare reform legislation replacing AFDC with TANF, imposing work requirements and time limits on benefits.",
+          "sources": [
+            "National Archives: Welfare reform records",
+            "Library of Congress: Clinton welfare papers"
+          ]
+        }
+      ],
+
+      "foreignLegislation": [
+        {
+          "title": "NATO Enlargement Acts",
+          "summary": "Clinton approved legislation supporting NATO expansion to include former Eastern Bloc nations, reshaping post–Cold War security.",
+          "sources": [
+            "National Archives: NATO expansion records",
+            "Library of Congress: Clinton foreign policy papers"
+          ]
+        }
+      ],
+
+      "governmentStructureLegislation": [
+        {
+          "title": "Digital Millennium Copyright Act (1998)",
+          "summary": "Clinton signed the DMCA, modernizing copyright law for the digital age and strengthening intellectual property protections.",
+          "sources": [
+            "National Archives: DMCA records",
+            "Library of Congress: Clinton administrative papers"
+          ]
+        }
       ]
     }
   },
+
   {
     "id": 43,
     "name": "George W. Bush",
     "legislation": {
-      "events": [
+      "legislationOverview": "George W. Bush’s legislative legacy was shaped by national security, tax policy, education reform, and healthcare expansion. His presidency saw the creation of the Department of Homeland Security, major tax cuts, and the Medicare Part D prescription drug benefit. Bush also signed significant education reforms and wartime authorizations. His legislative actions reflected a blend of conservative economic policy and expansive national security measures.",
+      
+      "majorLegislativeActions": [
         {
-          "title": "No Child Left Behind Act",
-          "summary": "Bush signed sweeping education reform legislation emphasizing testing and accountability.",
+          "title": "USA PATRIOT Act (2001)",
+          "summary": "Bush signed the PATRIOT Act, expanding federal surveillance and counterterrorism powers in response to the September 11 attacks.",
           "sources": [
-            "National Archives, NCLB records.",
-            "Library of Congress, Bush education legislation papers."
-          ]
-        },
-        {
-          "title": "USA PATRIOT Act",
-          "summary": "Bush signed the PATRIOT Act, expanding federal surveillance and counterterrorism powers after 9/11.",
-          "sources": [
-            "Library of Congress, PATRIOT Act papers.",
-            "National Archives, national security legislation records."
+            "National Archives: PATRIOT Act records",
+            "Library of Congress: Bush national security papers"
           ]
         }
       ],
-      "overallAssessment": "Bush’s legislative legacy includes major education reform and expanded national security authority.",
-      "sources": [
-        "Library of Congress, Bush presidential papers.",
-        "National Archives, legislative archives."
+
+      "economicLegislation": [
+        {
+          "title": "Economic Growth and Tax Relief Reconciliation Act (2001)",
+          "summary": "Bush approved major tax cuts reducing income tax rates and expanding credits, shaping early‑2000s fiscal policy.",
+          "sources": [
+            "National Archives: EGTRRA records",
+            "Library of Congress: Bush economic papers"
+          ]
+        }
+      ],
+
+      "domesticLegislation": [
+        {
+          "title": "No Child Left Behind Act (2002)",
+          "summary": "Bush signed sweeping education reform requiring standardized testing and accountability measures for public schools.",
+          "sources": [
+            "National Archives: NCLB records",
+            "Library of Congress: Bush education papers"
+          ]
+        },
+        {
+          "title": "Medicare Prescription Drug, Improvement, and Modernization Act (2003)",
+          "summary": "Bush approved the creation of Medicare Part D, expanding prescription drug coverage for seniors.",
+          "sources": [
+            "National Archives: Medicare Part D records",
+            "Library of Congress: Bush healthcare papers"
+          ]
+        }
+      ],
+
+      "foreignLegislation": [
+        {
+          "title": "Authorization for Use of Military Force Against Iraq (2002)",
+          "summary": "Bush signed the authorization enabling the U.S. invasion of Iraq, reshaping U.S. foreign policy for decades.",
+          "sources": [
+            "National Archives: Iraq AUMF records",
+            "Library of Congress: Bush foreign policy papers"
+          ]
+        }
+      ],
+
+      "governmentStructureLegislation": [
+        {
+          "title": "Homeland Security Act (2002)",
+          "summary": "Bush signed legislation creating the Department of Homeland Security, consolidating federal security agencies after 9/11.",
+          "sources": [
+            "National Archives: DHS founding documents",
+            "Library of Congress: Bush administrative papers"
+          ]
+        }
       ]
     }
   },
+
   {
     "id": 44,
     "name": "Barack Obama",
     "legislation": {
-      "events": [
+      "legislationOverview": "Obama’s legislative legacy centered on healthcare reform, economic recovery, financial regulation, and civil rights expansion. His presidency saw the Affordable Care Act, Dodd‑Frank financial reforms, and major stimulus legislation following the Great Recession. Obama also signed significant laws on education, veterans’ benefits, and social equality. His legislative actions reshaped federal involvement in healthcare, finance, and social policy.",
+      
+      "majorLegislativeActions": [
         {
-          "title": "Affordable Care Act",
-          "summary": "Obama signed the ACA, expanding health insurance coverage and regulating insurance markets.",
+          "title": "Affordable Care Act (2010)",
+          "summary": "Obama signed the ACA, expanding health insurance coverage, regulating insurance markets, and creating health exchanges. It became the most significant healthcare reform since Medicare.",
           "sources": [
-            "National Archives, ACA records.",
-            "Library of Congress, Obama health legislation papers."
-          ]
-        },
-        {
-          "title": "Dodd–Frank Wall Street Reform Act",
-          "summary": "Obama signed Dodd–Frank, overhauling financial regulation after the Great Recession.",
-          "sources": [
-            "Library of Congress, Dodd–Frank papers.",
-            "National Archives, financial legislation records."
+            "National Archives: ACA records",
+            "Library of Congress: Obama healthcare papers"
           ]
         }
       ],
-      "overallAssessment": "Obama’s legislative legacy includes major healthcare expansion and financial regulatory reform.",
-      "sources": [
-        "Library of Congress, Obama presidential papers.",
-        "National Archives, legislative archives."
+
+      "economicLegislation": [
+        {
+          "title": "American Recovery and Reinvestment Act (2009)",
+          "summary": "Obama approved a major stimulus package including tax cuts, infrastructure spending, and aid to states to counter the Great Recession.",
+          "sources": [
+            "National Archives: ARRA records",
+            "Library of Congress: Obama economic papers"
+          ]
+        },
+        {
+          "title": "Dodd–Frank Wall Street Reform and Consumer Protection Act (2010)",
+          "summary": "This act overhauled financial regulation, created the CFPB, and strengthened oversight of banks and financial institutions.",
+          "sources": [
+            "National Archives: Dodd–Frank records",
+            "Library of Congress: Obama financial papers"
+          ]
+        }
+      ],
+
+      "domesticLegislation": [
+        {
+          "title": "Don't Ask, Don't Tell Repeal Act (2010)",
+          "summary": "Obama signed legislation ending the ban on openly gay service members in the U.S. military.",
+          "sources": [
+            "National Archives: DADT repeal records",
+            "Library of Congress: Obama civil rights papers"
+          ]
+        }
+      ],
+
+      "foreignLegislation": [
+        {
+          "title": "New START Treaty Implementation Acts",
+          "summary": "Obama approved legislation implementing the New START arms reduction treaty with Russia.",
+          "sources": [
+            "National Archives: New START records",
+            "Library of Congress: Obama foreign policy papers"
+          ]
+        }
+      ],
+
+      "governmentStructureLegislation": [
+        {
+          "title": "VA Reform and Modernization Acts",
+          "summary": "Obama signed legislation improving veterans’ healthcare access and restructuring VA administration following systemic failures.",
+          "sources": [
+            "National Archives: VA reform records",
+            "Library of Congress: Obama administrative papers"
+          ]
+        }
       ]
     }
   },
+
   {
     "id": 45,
-    "name": "Donald J. Trump",
+    "name": "Donald Trump",
     "legislation": {
-      "events": [
+      "legislationOverview": "Trump’s legislative legacy centered on tax reform, deregulation, criminal justice reform, and pandemic‑related emergency legislation. His presidency saw the largest tax overhaul in decades, major criminal justice reforms, and significant COVID‑19 relief packages. Trump also signed trade and national security legislation reshaping U.S. economic and foreign policy. His legislative actions reflected a mix of conservative economic priorities and crisis‑driven policymaking.",
+      
+      "majorLegislativeActions": [
         {
-          "title": "Tax Cuts and Jobs Act",
-          "summary": "Trump signed the TCJA, reducing corporate tax rates and restructuring individual tax brackets.",
+          "title": "Tax Cuts and Jobs Act (2017)",
+          "summary": "Trump signed the TCJA, reducing corporate tax rates, restructuring individual tax brackets, and overhauling deductions. It became the most significant tax reform since 1986.",
           "sources": [
-            "National Archives, TCJA records.",
-            "Library of Congress, Trump tax legislation papers."
-          ]
-        },
-        {
-          "title": "First Step Act",
-          "summary": "Trump signed bipartisan criminal justice reform legislation reducing certain mandatory minimums and expanding rehabilitation programs.",
-          "sources": [
-            "Library of Congress, First Step Act papers.",
-            "National Archives, criminal justice legislation records."
+            "National Archives: TCJA records",
+            "Library of Congress: Trump economic papers"
           ]
         }
       ],
-      "overallAssessment": "Trump’s legislative legacy centers on major tax reform and bipartisan criminal justice changes.",
-      "sources": [
-        "Library of Congress, Trump presidential papers.",
-        "National Archives, legislative archives."
+
+      "economicLegislation": [
+        {
+          "title": "CARES Act (2020)",
+          "summary": "Trump approved the CARES Act, a massive COVID‑19 relief package providing direct payments, business loans, and expanded unemployment benefits.",
+          "sources": [
+            "National Archives: CARES Act records",
+            "Library of Congress: Trump pandemic papers"
+          ]
+        }
+      ],
+
+      "domesticLegislation": [
+        {
+          "title": "First Step Act (2018)",
+          "summary": "Trump signed bipartisan criminal justice reform expanding rehabilitation programs and reducing certain mandatory minimum sentences.",
+          "sources": [
+            "National Archives: First Step Act records",
+            "Library of Congress: Trump domestic policy papers"
+          ]
+        }
+      ],
+
+      "foreignLegislation": [
+        {
+          "title": "USMCA Implementation Act (2020)",
+          "summary": "Trump approved legislation implementing the U.S.–Mexico–Canada Agreement, replacing NAFTA and updating North American trade rules.",
+          "sources": [
+            "National Archives: USMCA records",
+            "Library of Congress: Trump trade papers"
+          ]
+        }
+      ],
+
+      "governmentStructureLegislation": [
+        {
+          "title": "VA MISSION Act (2018)",
+          "summary": "Trump signed the VA MISSION Act, expanding veterans’ access to private healthcare and consolidating VA community care programs.",
+          "sources": [
+            "National Archives: VA MISSION Act records",
+            "Library of Congress: Trump administrative papers"
+          ]
+        }
       ]
     }
   },
-  {
+    {
     "id": 46,
-    "name": "Joseph R. Biden",
+    "name": "Joe Biden",
     "legislation": {
-      "events": [
+      "legislationOverview": "Biden’s legislative legacy centers on large‑scale economic recovery, infrastructure modernization, climate investment, and expanded social support programs. His presidency saw the passage of the American Rescue Plan, the bipartisan Infrastructure Investment and Jobs Act, and the Inflation Reduction Act—one of the most significant climate and industrial policy laws in U.S. history. Biden also signed major semiconductor, veterans’ health, and gun safety legislation. His legislative actions reflect an effort to rebuild national capacity, strengthen domestic manufacturing, and expand federal support for families, workers, and public health.",
+      
+      "majorLegislativeActions": [
         {
-          "title": "American Rescue Plan Act",
-          "summary": "Biden signed the ARPA, providing large‑scale economic relief, expanded child tax credits, and public health funding.",
+          "title": "American Rescue Plan Act (2021)",
+          "summary": "Biden signed the American Rescue Plan, a $1.9 trillion economic relief package providing direct payments, expanded unemployment benefits, child tax credits, and funding for vaccines and schools. It aimed to accelerate recovery from the COVID‑19 pandemic.",
           "sources": [
-            "National Archives, ARPA records.",
-            "Library of Congress, Biden economic legislation papers."
+            "National Archives: ARPA records",
+            "Library of Congress: Biden economic recovery papers"
           ]
         },
         {
-          "title": "Infrastructure Investment and Jobs Act",
-          "summary": "Biden signed a bipartisan infrastructure law funding transportation, broadband, water systems, and energy projects.",
+          "title": "Inflation Reduction Act (2022)",
+          "summary": "Biden approved the IRA, a sweeping law investing in clean energy, climate resilience, healthcare subsidies, and corporate tax reforms. It represents the largest climate investment in U.S. history.",
           "sources": [
-            "Library of Congress, infrastructure legislation papers.",
-            "National Archives, domestic investment records."
+            "National Archives: IRA legislative records",
+            "Library of Congress: Biden climate policy papers"
           ]
         }
       ],
-      "overallAssessment": "Biden’s legislative legacy includes major economic relief and long‑term infrastructure investment.",
-      "sources": [
-        "Library of Congress, Biden presidential papers.",
-        "National Archives, legislative archives."
+
+      "economicLegislation": [
+        {
+          "title": "CHIPS and Science Act (2022)",
+          "summary": "Biden signed the CHIPS Act, providing major incentives for domestic semiconductor manufacturing and scientific research to strengthen U.S. technological competitiveness.",
+          "sources": [
+            "National Archives: CHIPS Act records",
+            "Library of Congress: Biden technology policy papers"
+          ]
+        }
+      ],
+
+      "domesticLegislation": [
+        {
+          "title": "Infrastructure Investment and Jobs Act (2021)",
+          "summary": "Biden approved a bipartisan $1.2 trillion infrastructure law funding roads, bridges, broadband, water systems, and clean energy projects nationwide.",
+          "sources": [
+            "National Archives: Infrastructure Act records",
+            "Library of Congress: Biden infrastructure papers"
+          ]
+        },
+        {
+          "title": "Bipartisan Safer Communities Act (2022)",
+          "summary": "Biden signed the first major federal gun safety law in decades, expanding background checks, funding mental health programs, and supporting state red‑flag laws.",
+          "sources": [
+            "National Archives: Safer Communities Act records",
+            "Library of Congress: Biden domestic policy papers"
+          ]
+        },
+        {
+          "title": "PACT Act (2022)",
+          "summary": "Biden approved the PACT Act, expanding healthcare and benefits for veterans exposed to toxic burn pits and other hazardous substances.",
+          "sources": [
+            "National Archives: PACT Act records",
+            "Library of Congress: Biden veterans policy papers"
+          ]
+        }
+      ],
+
+      "foreignLegislation": [
+        {
+          "title": "Ukraine Security Assistance and Lend‑Lease Acts (2022)",
+          "summary": "Biden signed legislation providing military and humanitarian aid to Ukraine and authorizing expedited defense support during the Russian invasion.",
+          "sources": [
+            "National Archives: Ukraine assistance records",
+            "Library of Congress: Biden foreign policy papers"
+          ]
+        }
+      ],
+
+      "governmentStructureLegislation": [
+        {
+          "title": "Postal Service Reform Act (2022)",
+          "summary": "Biden signed bipartisan legislation overhauling USPS finances, eliminating pre‑funding mandates, and improving service transparency.",
+          "sources": [
+            "National Archives: USPS Reform Act records",
+            "Library of Congress: Biden administrative papers"
+          ]
+        }
       ]
     }
   }
 ]
+
+ 
+
+
+ 
+
+
+
