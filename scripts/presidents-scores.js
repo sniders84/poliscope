@@ -1,108 +1,95 @@
 // scripts/presidents-scores.js
-// Computes era-normalized presidential power scores.
+// Compute metric scores, powerScore, eraNormalizedScore, and rank
 
-const fs = require("fs");
-const path = require("path");
-const ERAS = require("./presidential-eras");
+const fs = require('fs');
+const path = require('path');
+const eras = require('./presidential-eras');
 
-const PUBLIC_DIR = path.join(__dirname, "..", "public");
-const INPUT_FILE = path.join(PUBLIC_DIR, "presidents-rankings.json");
-const OUTPUT_FILE = path.join(PUBLIC_DIR, "presidents-rankings.json");
+const ROOT = path.join(__dirname, '..');
+const RANKINGS_PATH = path.join(ROOT, 'data', 'presidents-rankings.json');
 
-// Metric weights
-const WEIGHTS = {
-  crisisManagementScore: 0.20,
-  foreignPolicyScore: 0.15,
-  domesticPolicyScore: 0.15,
-  economicPolicyScore: 0.15,
-  judicialPolicyScore: 0.10,
-  legislationScore: 0.15,
-  misconductScore: 0.10
+// Adjust these weights as you refine philosophy
+const METRIC_WEIGHTS = {
+  crisisManagement: 1.4,
+  domesticPolicy: 1.2,
+  economicPolicy: 1.3,
+  foreignPolicy: 1.2,
+  judicialPolicy: 1.0,
+  legislation: 1.1,
+  misconduct: -1.3 // negative weight
 };
 
-function clamp(n, min, max) {
-  return Math.min(Math.max(n, min), max);
+function loadRankings() {
+  const raw = fs.readFileSync(RANKINGS_PATH, 'utf8');
+  return JSON.parse(raw);
 }
 
-// Positive/negative event scoring
-function scorePositiveMetric(metric) {
-  if (!metric || !metric.events) return 50;
+function computePowerScore(scores) {
+  let num = 0;
+  let den = 0;
 
-  let score = 50;
-  for (const event of metric.events) {
-    const text = event.summary.toLowerCase();
-    const negative = ["crisis", "failure", "violence", "scandal", "abuse", "disaster"];
-    const positive = ["success", "reform", "improvement", "strengthened", "protected"];
-
-    if (positive.some(k => text.includes(k))) score += 10;
-    if (negative.some(k => text.includes(k))) score -= 10;
+  for (const [metric, weight] of Object.entries(METRIC_WEIGHTS)) {
+    const value = scores[metric] || 0;
+    num += value * weight;
+    den += Math.abs(weight);
   }
-  return clamp(score, 0, 100);
+
+  return den === 0 ? 0 : num / den;
 }
 
-function scoreMisconduct(metric) {
-  if (!metric || !metric.events) return 100;
-  return clamp(100 - metric.events.length * 10, 0, 100);
+function buildEraMap() {
+  const map = new Map();
+  for (const [eraName, ids] of Object.entries(eras)) {
+    ids.forEach(id => map.set(id, eraName));
+  }
+  return map;
 }
 
-function computeRawScores(p) {
-  const m = p.metrics;
-
-  return {
-    crisisManagementScore: scorePositiveMetric(m.crisisManagement),
-    foreignPolicyScore: scorePositiveMetric(m.foreignPolicy),
-    domesticPolicyScore: scorePositiveMetric(m.domesticPolicy),
-    economicPolicyScore: scorePositiveMetric(m.economicPolicy),
-    judicialPolicyScore: scorePositiveMetric(m.judicialPolicy),
-    legislationScore: scorePositiveMetric(m.legislation),
-    misconductScore: scoreMisconduct(m.misconduct)
-  };
-}
-
-function normalizeEraScores(presidents) {
-  const values = presidents.map(p => p.rawComposite);
-  const min = Math.min(...values);
-  const max = Math.max(...values);
-
+function computeEraNormalizedScores(presidents, eraMap) {
+  const byEra = {};
   presidents.forEach(p => {
-    p.normalized = max === min ? 50 : ((p.rawComposite - min) / (max - min)) * 100;
+    const era = eraMap.get(p.id) || 'unknown';
+    if (!byEra[era]) byEra[era] = [];
+    byEra[era].push(p);
   });
+
+  for (const [era, list] of Object.entries(byEra)) {
+    const scores = list.map(p => p.scores.powerScore);
+    const mean = scores.reduce((a, b) => a + b, 0) / (scores.length || 1);
+    const variance =
+      scores.reduce((a, b) => a + Math.pow(b - mean, 2), 0) / (scores.length || 1);
+    const std = Math.sqrt(variance) || 1;
+
+    list.forEach(p => {
+      p.scores.eraNormalizedScore = (p.scores.powerScore - mean) / std;
+    });
+  }
 }
 
 function main() {
-  const data = JSON.parse(fs.readFileSync(INPUT_FILE, "utf8"));
+  const rankings = loadRankings();
+  const eraMap = buildEraMap();
 
-  // Group presidents by era
-  const eraBuckets = {};
-  for (const [era, ids] of Object.entries(ERAS)) {
-    eraBuckets[era] = data.filter(p => ids.includes(p.id));
-  }
+  // 1) Compute powerScore for each president
+  rankings.forEach(p => {
+    p.scores.powerScore = computePowerScore(p.scores);
+  });
 
-  // Score each era
-  for (const [era, presidents] of Object.entries(eraBuckets)) {
-    presidents.forEach(p => {
-      const raw = computeRawScores(p);
-      const rawComposite = Object.entries(raw).reduce(
-        (sum, [key, val]) => sum + val * WEIGHTS[key],
-        0
-      );
+  // 2) Compute era-normalized scores
+  computeEraNormalizedScores(rankings, eraMap);
 
-      p.rawScores = raw;
-      p.rawComposite = rawComposite;
-    });
+  // 3) Rank by powerScore (desc)
+  const sorted = [...rankings].sort((a, b) => b.scores.powerScore - a.scores.powerScore);
+  sorted.forEach((p, idx) => {
+    p.scores.rank = idx + 1;
+  });
 
-    normalizeEraScores(presidents);
+  // Write back in original id order but with updated scores
+  const byId = new Map(sorted.map(p => [p.id, p]));
+  const final = rankings.map(p => byId.get(p.id));
 
-    presidents.forEach(p => {
-      p.scores = {
-        ...p.rawScores,
-        powerScore: Math.round(p.normalized)
-      };
-    });
-  }
-
-  fs.writeFileSync(OUTPUT_FILE, JSON.stringify(data, null, 2), "utf8");
-  console.log(`Presidential scores computed → ${OUTPUT_FILE}`);
+  fs.writeFileSync(RANKINGS_PATH, JSON.stringify(final, null, 2), 'utf8');
+  console.log('presidents-scores: computed powerScore, eraNormalizedScore, and rank');
 }
 
 main();
