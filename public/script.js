@@ -3157,6 +3157,48 @@ document.getElementById('rate-me-btn').onclick = function() {
   const tableBody = document.querySelector('#rankings-leaderboard tbody');
   if (!officeSel || !categorySel || !tableBody) return;
 
+  // Dynamically filter category options based on selected office
+  function updateCategoryVisibility() {
+    const office = officeSel.value.toLowerCase();
+
+    Array.from(categorySel.options).forEach(opt => {
+      const tag = opt.dataset.office;
+
+      // Always show powerScore
+      if (opt.value === "powerScore") {
+        opt.hidden = false;
+        return;
+      }
+
+      // Shared categories (misconductCount, misconductTags)
+      if (tag === "shared") {
+        opt.hidden = false;
+        return;
+      }
+
+      // Legislative offices
+      if (office === "senator" || office === "u.s. representative") {
+        opt.hidden = (tag !== "legislative");
+        return;
+      }
+
+      // Presidential office
+      if (office === "president") {
+        opt.hidden = (tag !== "president");
+        return;
+      }
+
+      // All other offices (governor, lt. governor, vice president)
+      opt.hidden = true;
+    });
+
+    // Reset to powerScore to avoid invalid selections
+    categorySel.value = "powerScore";
+  }
+
+  officeSel.addEventListener('change', updateCategoryVisibility);
+  updateCategoryVisibility();
+
   // -----------------------------
   // LEGISLATOR WEIGHTS (UNCHANGED)
   // -----------------------------
