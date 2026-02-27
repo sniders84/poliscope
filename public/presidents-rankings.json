@@ -1,17 +1,3452 @@
-{
-  "id": 9001,
-  "name": "Jane Doe",
-  "office": "Governor",
-  "party": "D",
-  "state": "NC",
-  "executive_orders": 15,
-  "vetoes": 3,
-  "budgets_proposed": 4,
-  "appointments_confirmed": 27,
-  "leadership_score": 8,
-  "working_with_legislature": 6,
-  "crisis_response": 7,
-  "misconduct": 0,
-  "missed_duties": 1,
-  "ratings_score": 82
-}
+[
+  {
+    "name": "Joe Biden",
+    "termStart": "2021-01-20",
+    "termEnd": "2025-01-20",
+    "party": "Democratic",
+    "metrics": {
+      "crisisManagement": {
+        "crisisOverview": "",
+        "majorCrises": [],
+        "wartimeLeadership": [],
+        "domesticUnrest": [],
+        "disasterResponse": [],
+        "internationalCrises": []
+      },
+      "domesticPolicy": {
+        "domesticOverview": "",
+        "socialPolicy": [],
+        "civilRights": [],
+        "educationPolicy": [],
+        "healthcarePolicy": [],
+        "infrastructureAndUrbanPolicy": []
+      },
+      "economicPolicy": {
+        "economicOverview": "",
+        "fiscalPolicy": [],
+        "monetaryAndFinancialPolicy": [],
+        "tradeAndIndustrialPolicy": [],
+        "laborAndEmploymentPolicy": [],
+        "economicCrisisManagement": []
+      },
+      "foreignPolicy": {
+        "foreignPolicyOverview": "",
+        "diplomacyAndAlliances": [],
+        "warAndMilitaryInterventions": [],
+        "internationalInstitutionsAndAgreements": [],
+        "humanRightsAndDemocracyPromotion": [],
+        "globalEconomicAndSecurityPolicy": []
+      },
+      "judicialPolicy": {
+        "judicialOverview": "",
+        "supremeCourtAppointments": [],
+        "lowerCourtAppointments": [],
+        "judicialPhilosophyAndDoctrine": [],
+        "civilLibertiesAndRightsJurisprudence": [],
+        "separationOfPowersAndExecutiveAuthority": []
+      },
+      "legislation": {
+        "legislationOverview": "",
+        "majorLegislativeActions": [],
+        "economicLegislation": [],
+        "domesticLegislation": [],
+        "foreignLegislation": [],
+        "governmentStructureLegislation": []
+      },
+      "misconduct": {
+        "misconductOverview": "",
+        "corruptionAndAbuseOfPower": [],
+        "civilRightsAndLibertiesViolations": [],
+        "warCrimesAndHumanRightsAbuses": [],
+        "democraticNormsAndRuleOfLawErosion": []
+      }
+    },
+    "scores": {
+      "crisisManagement": 0,
+      "domesticPolicy": 0,
+      "economicPolicy": 0,
+      "foreignPolicy": 0,
+      "judicialPolicy": 0,
+      "legislation": 0,
+      "misconduct": 0,
+      "powerScore": 0,
+      "eraNormalizedScore": 0,
+      "rank": 46
+    }
+  },
+  {
+    "name": "Joe Biden",
+    "termStart": "2021-01-20",
+    "termEnd": "2025-01-20",
+    "party": "Democratic",
+    "metrics": {
+      "crisisManagement": {
+        "crisisOverview": "",
+        "majorCrises": [],
+        "wartimeLeadership": [],
+        "domesticUnrest": [],
+        "disasterResponse": [],
+        "internationalCrises": []
+      },
+      "domesticPolicy": {
+        "domesticOverview": "",
+        "socialPolicy": [],
+        "civilRights": [],
+        "educationPolicy": [],
+        "healthcarePolicy": [],
+        "infrastructureAndUrbanPolicy": []
+      },
+      "economicPolicy": {
+        "economicOverview": "",
+        "fiscalPolicy": [],
+        "monetaryAndFinancialPolicy": [],
+        "tradeAndIndustrialPolicy": [],
+        "laborAndEmploymentPolicy": [],
+        "economicCrisisManagement": []
+      },
+      "foreignPolicy": {
+        "foreignPolicyOverview": "",
+        "diplomacyAndAlliances": [],
+        "warAndMilitaryInterventions": [],
+        "internationalInstitutionsAndAgreements": [],
+        "humanRightsAndDemocracyPromotion": [],
+        "globalEconomicAndSecurityPolicy": []
+      },
+      "judicialPolicy": {
+        "judicialOverview": "",
+        "supremeCourtAppointments": [],
+        "lowerCourtAppointments": [],
+        "judicialPhilosophyAndDoctrine": [],
+        "civilLibertiesAndRightsJurisprudence": [],
+        "separationOfPowersAndExecutiveAuthority": []
+      },
+      "legislation": {
+        "legislationOverview": "",
+        "majorLegislativeActions": [],
+        "economicLegislation": [],
+        "domesticLegislation": [],
+        "foreignLegislation": [],
+        "governmentStructureLegislation": []
+      },
+      "misconduct": {
+        "misconductOverview": "",
+        "corruptionAndAbuseOfPower": [],
+        "civilRightsAndLibertiesViolations": [],
+        "warCrimesAndHumanRightsAbuses": [],
+        "democraticNormsAndRuleOfLawErosion": []
+      }
+    },
+    "scores": {
+      "crisisManagement": 0,
+      "domesticPolicy": 0,
+      "economicPolicy": 0,
+      "foreignPolicy": 0,
+      "judicialPolicy": 0,
+      "legislation": 0,
+      "misconduct": 0,
+      "powerScore": 0,
+      "eraNormalizedScore": 0,
+      "rank": 46
+    }
+  },
+  {
+    "name": "Joe Biden",
+    "termStart": "2021-01-20",
+    "termEnd": "2025-01-20",
+    "party": "Democratic",
+    "metrics": {
+      "crisisManagement": {
+        "crisisOverview": "",
+        "majorCrises": [],
+        "wartimeLeadership": [],
+        "domesticUnrest": [],
+        "disasterResponse": [],
+        "internationalCrises": []
+      },
+      "domesticPolicy": {
+        "domesticOverview": "",
+        "socialPolicy": [],
+        "civilRights": [],
+        "educationPolicy": [],
+        "healthcarePolicy": [],
+        "infrastructureAndUrbanPolicy": []
+      },
+      "economicPolicy": {
+        "economicOverview": "",
+        "fiscalPolicy": [],
+        "monetaryAndFinancialPolicy": [],
+        "tradeAndIndustrialPolicy": [],
+        "laborAndEmploymentPolicy": [],
+        "economicCrisisManagement": []
+      },
+      "foreignPolicy": {
+        "foreignPolicyOverview": "",
+        "diplomacyAndAlliances": [],
+        "warAndMilitaryInterventions": [],
+        "internationalInstitutionsAndAgreements": [],
+        "humanRightsAndDemocracyPromotion": [],
+        "globalEconomicAndSecurityPolicy": []
+      },
+      "judicialPolicy": {
+        "judicialOverview": "",
+        "supremeCourtAppointments": [],
+        "lowerCourtAppointments": [],
+        "judicialPhilosophyAndDoctrine": [],
+        "civilLibertiesAndRightsJurisprudence": [],
+        "separationOfPowersAndExecutiveAuthority": []
+      },
+      "legislation": {
+        "legislationOverview": "",
+        "majorLegislativeActions": [],
+        "economicLegislation": [],
+        "domesticLegislation": [],
+        "foreignLegislation": [],
+        "governmentStructureLegislation": []
+      },
+      "misconduct": {
+        "misconductOverview": "",
+        "corruptionAndAbuseOfPower": [],
+        "civilRightsAndLibertiesViolations": [],
+        "warCrimesAndHumanRightsAbuses": [],
+        "democraticNormsAndRuleOfLawErosion": []
+      }
+    },
+    "scores": {
+      "crisisManagement": 0,
+      "domesticPolicy": 0,
+      "economicPolicy": 0,
+      "foreignPolicy": 0,
+      "judicialPolicy": 0,
+      "legislation": 0,
+      "misconduct": 0,
+      "powerScore": 0,
+      "eraNormalizedScore": 0,
+      "rank": 46
+    }
+  },
+  {
+    "name": "Joe Biden",
+    "termStart": "2021-01-20",
+    "termEnd": "2025-01-20",
+    "party": "Democratic",
+    "metrics": {
+      "crisisManagement": {
+        "crisisOverview": "",
+        "majorCrises": [],
+        "wartimeLeadership": [],
+        "domesticUnrest": [],
+        "disasterResponse": [],
+        "internationalCrises": []
+      },
+      "domesticPolicy": {
+        "domesticOverview": "",
+        "socialPolicy": [],
+        "civilRights": [],
+        "educationPolicy": [],
+        "healthcarePolicy": [],
+        "infrastructureAndUrbanPolicy": []
+      },
+      "economicPolicy": {
+        "economicOverview": "",
+        "fiscalPolicy": [],
+        "monetaryAndFinancialPolicy": [],
+        "tradeAndIndustrialPolicy": [],
+        "laborAndEmploymentPolicy": [],
+        "economicCrisisManagement": []
+      },
+      "foreignPolicy": {
+        "foreignPolicyOverview": "",
+        "diplomacyAndAlliances": [],
+        "warAndMilitaryInterventions": [],
+        "internationalInstitutionsAndAgreements": [],
+        "humanRightsAndDemocracyPromotion": [],
+        "globalEconomicAndSecurityPolicy": []
+      },
+      "judicialPolicy": {
+        "judicialOverview": "",
+        "supremeCourtAppointments": [],
+        "lowerCourtAppointments": [],
+        "judicialPhilosophyAndDoctrine": [],
+        "civilLibertiesAndRightsJurisprudence": [],
+        "separationOfPowersAndExecutiveAuthority": []
+      },
+      "legislation": {
+        "legislationOverview": "",
+        "majorLegislativeActions": [],
+        "economicLegislation": [],
+        "domesticLegislation": [],
+        "foreignLegislation": [],
+        "governmentStructureLegislation": []
+      },
+      "misconduct": {
+        "misconductOverview": "",
+        "corruptionAndAbuseOfPower": [],
+        "civilRightsAndLibertiesViolations": [],
+        "warCrimesAndHumanRightsAbuses": [],
+        "democraticNormsAndRuleOfLawErosion": []
+      }
+    },
+    "scores": {
+      "crisisManagement": 0,
+      "domesticPolicy": 0,
+      "economicPolicy": 0,
+      "foreignPolicy": 0,
+      "judicialPolicy": 0,
+      "legislation": 0,
+      "misconduct": 0,
+      "powerScore": 0,
+      "eraNormalizedScore": 0,
+      "rank": 46
+    }
+  },
+  {
+    "name": "Joe Biden",
+    "termStart": "2021-01-20",
+    "termEnd": "2025-01-20",
+    "party": "Democratic",
+    "metrics": {
+      "crisisManagement": {
+        "crisisOverview": "",
+        "majorCrises": [],
+        "wartimeLeadership": [],
+        "domesticUnrest": [],
+        "disasterResponse": [],
+        "internationalCrises": []
+      },
+      "domesticPolicy": {
+        "domesticOverview": "",
+        "socialPolicy": [],
+        "civilRights": [],
+        "educationPolicy": [],
+        "healthcarePolicy": [],
+        "infrastructureAndUrbanPolicy": []
+      },
+      "economicPolicy": {
+        "economicOverview": "",
+        "fiscalPolicy": [],
+        "monetaryAndFinancialPolicy": [],
+        "tradeAndIndustrialPolicy": [],
+        "laborAndEmploymentPolicy": [],
+        "economicCrisisManagement": []
+      },
+      "foreignPolicy": {
+        "foreignPolicyOverview": "",
+        "diplomacyAndAlliances": [],
+        "warAndMilitaryInterventions": [],
+        "internationalInstitutionsAndAgreements": [],
+        "humanRightsAndDemocracyPromotion": [],
+        "globalEconomicAndSecurityPolicy": []
+      },
+      "judicialPolicy": {
+        "judicialOverview": "",
+        "supremeCourtAppointments": [],
+        "lowerCourtAppointments": [],
+        "judicialPhilosophyAndDoctrine": [],
+        "civilLibertiesAndRightsJurisprudence": [],
+        "separationOfPowersAndExecutiveAuthority": []
+      },
+      "legislation": {
+        "legislationOverview": "",
+        "majorLegislativeActions": [],
+        "economicLegislation": [],
+        "domesticLegislation": [],
+        "foreignLegislation": [],
+        "governmentStructureLegislation": []
+      },
+      "misconduct": {
+        "misconductOverview": "",
+        "corruptionAndAbuseOfPower": [],
+        "civilRightsAndLibertiesViolations": [],
+        "warCrimesAndHumanRightsAbuses": [],
+        "democraticNormsAndRuleOfLawErosion": []
+      }
+    },
+    "scores": {
+      "crisisManagement": 0,
+      "domesticPolicy": 0,
+      "economicPolicy": 0,
+      "foreignPolicy": 0,
+      "judicialPolicy": 0,
+      "legislation": 0,
+      "misconduct": 0,
+      "powerScore": 0,
+      "eraNormalizedScore": 0,
+      "rank": 46
+    }
+  },
+  {
+    "name": "Joe Biden",
+    "termStart": "2021-01-20",
+    "termEnd": "2025-01-20",
+    "party": "Democratic",
+    "metrics": {
+      "crisisManagement": {
+        "crisisOverview": "",
+        "majorCrises": [],
+        "wartimeLeadership": [],
+        "domesticUnrest": [],
+        "disasterResponse": [],
+        "internationalCrises": []
+      },
+      "domesticPolicy": {
+        "domesticOverview": "",
+        "socialPolicy": [],
+        "civilRights": [],
+        "educationPolicy": [],
+        "healthcarePolicy": [],
+        "infrastructureAndUrbanPolicy": []
+      },
+      "economicPolicy": {
+        "economicOverview": "",
+        "fiscalPolicy": [],
+        "monetaryAndFinancialPolicy": [],
+        "tradeAndIndustrialPolicy": [],
+        "laborAndEmploymentPolicy": [],
+        "economicCrisisManagement": []
+      },
+      "foreignPolicy": {
+        "foreignPolicyOverview": "",
+        "diplomacyAndAlliances": [],
+        "warAndMilitaryInterventions": [],
+        "internationalInstitutionsAndAgreements": [],
+        "humanRightsAndDemocracyPromotion": [],
+        "globalEconomicAndSecurityPolicy": []
+      },
+      "judicialPolicy": {
+        "judicialOverview": "",
+        "supremeCourtAppointments": [],
+        "lowerCourtAppointments": [],
+        "judicialPhilosophyAndDoctrine": [],
+        "civilLibertiesAndRightsJurisprudence": [],
+        "separationOfPowersAndExecutiveAuthority": []
+      },
+      "legislation": {
+        "legislationOverview": "",
+        "majorLegislativeActions": [],
+        "economicLegislation": [],
+        "domesticLegislation": [],
+        "foreignLegislation": [],
+        "governmentStructureLegislation": []
+      },
+      "misconduct": {
+        "misconductOverview": "",
+        "corruptionAndAbuseOfPower": [],
+        "civilRightsAndLibertiesViolations": [],
+        "warCrimesAndHumanRightsAbuses": [],
+        "democraticNormsAndRuleOfLawErosion": []
+      }
+    },
+    "scores": {
+      "crisisManagement": 0,
+      "domesticPolicy": 0,
+      "economicPolicy": 0,
+      "foreignPolicy": 0,
+      "judicialPolicy": 0,
+      "legislation": 0,
+      "misconduct": 0,
+      "powerScore": 0,
+      "eraNormalizedScore": 0,
+      "rank": 46
+    }
+  },
+  {
+    "name": "Joe Biden",
+    "termStart": "2021-01-20",
+    "termEnd": "2025-01-20",
+    "party": "Democratic",
+    "metrics": {
+      "crisisManagement": {
+        "crisisOverview": "",
+        "majorCrises": [],
+        "wartimeLeadership": [],
+        "domesticUnrest": [],
+        "disasterResponse": [],
+        "internationalCrises": []
+      },
+      "domesticPolicy": {
+        "domesticOverview": "",
+        "socialPolicy": [],
+        "civilRights": [],
+        "educationPolicy": [],
+        "healthcarePolicy": [],
+        "infrastructureAndUrbanPolicy": []
+      },
+      "economicPolicy": {
+        "economicOverview": "",
+        "fiscalPolicy": [],
+        "monetaryAndFinancialPolicy": [],
+        "tradeAndIndustrialPolicy": [],
+        "laborAndEmploymentPolicy": [],
+        "economicCrisisManagement": []
+      },
+      "foreignPolicy": {
+        "foreignPolicyOverview": "",
+        "diplomacyAndAlliances": [],
+        "warAndMilitaryInterventions": [],
+        "internationalInstitutionsAndAgreements": [],
+        "humanRightsAndDemocracyPromotion": [],
+        "globalEconomicAndSecurityPolicy": []
+      },
+      "judicialPolicy": {
+        "judicialOverview": "",
+        "supremeCourtAppointments": [],
+        "lowerCourtAppointments": [],
+        "judicialPhilosophyAndDoctrine": [],
+        "civilLibertiesAndRightsJurisprudence": [],
+        "separationOfPowersAndExecutiveAuthority": []
+      },
+      "legislation": {
+        "legislationOverview": "",
+        "majorLegislativeActions": [],
+        "economicLegislation": [],
+        "domesticLegislation": [],
+        "foreignLegislation": [],
+        "governmentStructureLegislation": []
+      },
+      "misconduct": {
+        "misconductOverview": "",
+        "corruptionAndAbuseOfPower": [],
+        "civilRightsAndLibertiesViolations": [],
+        "warCrimesAndHumanRightsAbuses": [],
+        "democraticNormsAndRuleOfLawErosion": []
+      }
+    },
+    "scores": {
+      "crisisManagement": 0,
+      "domesticPolicy": 0,
+      "economicPolicy": 0,
+      "foreignPolicy": 0,
+      "judicialPolicy": 0,
+      "legislation": 0,
+      "misconduct": 0,
+      "powerScore": 0,
+      "eraNormalizedScore": 0,
+      "rank": 46
+    }
+  },
+  {
+    "name": "Joe Biden",
+    "termStart": "2021-01-20",
+    "termEnd": "2025-01-20",
+    "party": "Democratic",
+    "metrics": {
+      "crisisManagement": {
+        "crisisOverview": "",
+        "majorCrises": [],
+        "wartimeLeadership": [],
+        "domesticUnrest": [],
+        "disasterResponse": [],
+        "internationalCrises": []
+      },
+      "domesticPolicy": {
+        "domesticOverview": "",
+        "socialPolicy": [],
+        "civilRights": [],
+        "educationPolicy": [],
+        "healthcarePolicy": [],
+        "infrastructureAndUrbanPolicy": []
+      },
+      "economicPolicy": {
+        "economicOverview": "",
+        "fiscalPolicy": [],
+        "monetaryAndFinancialPolicy": [],
+        "tradeAndIndustrialPolicy": [],
+        "laborAndEmploymentPolicy": [],
+        "economicCrisisManagement": []
+      },
+      "foreignPolicy": {
+        "foreignPolicyOverview": "",
+        "diplomacyAndAlliances": [],
+        "warAndMilitaryInterventions": [],
+        "internationalInstitutionsAndAgreements": [],
+        "humanRightsAndDemocracyPromotion": [],
+        "globalEconomicAndSecurityPolicy": []
+      },
+      "judicialPolicy": {
+        "judicialOverview": "",
+        "supremeCourtAppointments": [],
+        "lowerCourtAppointments": [],
+        "judicialPhilosophyAndDoctrine": [],
+        "civilLibertiesAndRightsJurisprudence": [],
+        "separationOfPowersAndExecutiveAuthority": []
+      },
+      "legislation": {
+        "legislationOverview": "",
+        "majorLegislativeActions": [],
+        "economicLegislation": [],
+        "domesticLegislation": [],
+        "foreignLegislation": [],
+        "governmentStructureLegislation": []
+      },
+      "misconduct": {
+        "misconductOverview": "",
+        "corruptionAndAbuseOfPower": [],
+        "civilRightsAndLibertiesViolations": [],
+        "warCrimesAndHumanRightsAbuses": [],
+        "democraticNormsAndRuleOfLawErosion": []
+      }
+    },
+    "scores": {
+      "crisisManagement": 0,
+      "domesticPolicy": 0,
+      "economicPolicy": 0,
+      "foreignPolicy": 0,
+      "judicialPolicy": 0,
+      "legislation": 0,
+      "misconduct": 0,
+      "powerScore": 0,
+      "eraNormalizedScore": 0,
+      "rank": 46
+    }
+  },
+  {
+    "name": "Joe Biden",
+    "termStart": "2021-01-20",
+    "termEnd": "2025-01-20",
+    "party": "Democratic",
+    "metrics": {
+      "crisisManagement": {
+        "crisisOverview": "",
+        "majorCrises": [],
+        "wartimeLeadership": [],
+        "domesticUnrest": [],
+        "disasterResponse": [],
+        "internationalCrises": []
+      },
+      "domesticPolicy": {
+        "domesticOverview": "",
+        "socialPolicy": [],
+        "civilRights": [],
+        "educationPolicy": [],
+        "healthcarePolicy": [],
+        "infrastructureAndUrbanPolicy": []
+      },
+      "economicPolicy": {
+        "economicOverview": "",
+        "fiscalPolicy": [],
+        "monetaryAndFinancialPolicy": [],
+        "tradeAndIndustrialPolicy": [],
+        "laborAndEmploymentPolicy": [],
+        "economicCrisisManagement": []
+      },
+      "foreignPolicy": {
+        "foreignPolicyOverview": "",
+        "diplomacyAndAlliances": [],
+        "warAndMilitaryInterventions": [],
+        "internationalInstitutionsAndAgreements": [],
+        "humanRightsAndDemocracyPromotion": [],
+        "globalEconomicAndSecurityPolicy": []
+      },
+      "judicialPolicy": {
+        "judicialOverview": "",
+        "supremeCourtAppointments": [],
+        "lowerCourtAppointments": [],
+        "judicialPhilosophyAndDoctrine": [],
+        "civilLibertiesAndRightsJurisprudence": [],
+        "separationOfPowersAndExecutiveAuthority": []
+      },
+      "legislation": {
+        "legislationOverview": "",
+        "majorLegislativeActions": [],
+        "economicLegislation": [],
+        "domesticLegislation": [],
+        "foreignLegislation": [],
+        "governmentStructureLegislation": []
+      },
+      "misconduct": {
+        "misconductOverview": "",
+        "corruptionAndAbuseOfPower": [],
+        "civilRightsAndLibertiesViolations": [],
+        "warCrimesAndHumanRightsAbuses": [],
+        "democraticNormsAndRuleOfLawErosion": []
+      }
+    },
+    "scores": {
+      "crisisManagement": 0,
+      "domesticPolicy": 0,
+      "economicPolicy": 0,
+      "foreignPolicy": 0,
+      "judicialPolicy": 0,
+      "legislation": 0,
+      "misconduct": 0,
+      "powerScore": 0,
+      "eraNormalizedScore": 0,
+      "rank": 46
+    }
+  },
+  {
+    "name": "Joe Biden",
+    "termStart": "2021-01-20",
+    "termEnd": "2025-01-20",
+    "party": "Democratic",
+    "metrics": {
+      "crisisManagement": {
+        "crisisOverview": "",
+        "majorCrises": [],
+        "wartimeLeadership": [],
+        "domesticUnrest": [],
+        "disasterResponse": [],
+        "internationalCrises": []
+      },
+      "domesticPolicy": {
+        "domesticOverview": "",
+        "socialPolicy": [],
+        "civilRights": [],
+        "educationPolicy": [],
+        "healthcarePolicy": [],
+        "infrastructureAndUrbanPolicy": []
+      },
+      "economicPolicy": {
+        "economicOverview": "",
+        "fiscalPolicy": [],
+        "monetaryAndFinancialPolicy": [],
+        "tradeAndIndustrialPolicy": [],
+        "laborAndEmploymentPolicy": [],
+        "economicCrisisManagement": []
+      },
+      "foreignPolicy": {
+        "foreignPolicyOverview": "",
+        "diplomacyAndAlliances": [],
+        "warAndMilitaryInterventions": [],
+        "internationalInstitutionsAndAgreements": [],
+        "humanRightsAndDemocracyPromotion": [],
+        "globalEconomicAndSecurityPolicy": []
+      },
+      "judicialPolicy": {
+        "judicialOverview": "",
+        "supremeCourtAppointments": [],
+        "lowerCourtAppointments": [],
+        "judicialPhilosophyAndDoctrine": [],
+        "civilLibertiesAndRightsJurisprudence": [],
+        "separationOfPowersAndExecutiveAuthority": []
+      },
+      "legislation": {
+        "legislationOverview": "",
+        "majorLegislativeActions": [],
+        "economicLegislation": [],
+        "domesticLegislation": [],
+        "foreignLegislation": [],
+        "governmentStructureLegislation": []
+      },
+      "misconduct": {
+        "misconductOverview": "",
+        "corruptionAndAbuseOfPower": [],
+        "civilRightsAndLibertiesViolations": [],
+        "warCrimesAndHumanRightsAbuses": [],
+        "democraticNormsAndRuleOfLawErosion": []
+      }
+    },
+    "scores": {
+      "crisisManagement": 0,
+      "domesticPolicy": 0,
+      "economicPolicy": 0,
+      "foreignPolicy": 0,
+      "judicialPolicy": 0,
+      "legislation": 0,
+      "misconduct": 0,
+      "powerScore": 0,
+      "eraNormalizedScore": 0,
+      "rank": 46
+    }
+  },
+  {
+    "name": "Joe Biden",
+    "termStart": "2021-01-20",
+    "termEnd": "2025-01-20",
+    "party": "Democratic",
+    "metrics": {
+      "crisisManagement": {
+        "crisisOverview": "",
+        "majorCrises": [],
+        "wartimeLeadership": [],
+        "domesticUnrest": [],
+        "disasterResponse": [],
+        "internationalCrises": []
+      },
+      "domesticPolicy": {
+        "domesticOverview": "",
+        "socialPolicy": [],
+        "civilRights": [],
+        "educationPolicy": [],
+        "healthcarePolicy": [],
+        "infrastructureAndUrbanPolicy": []
+      },
+      "economicPolicy": {
+        "economicOverview": "",
+        "fiscalPolicy": [],
+        "monetaryAndFinancialPolicy": [],
+        "tradeAndIndustrialPolicy": [],
+        "laborAndEmploymentPolicy": [],
+        "economicCrisisManagement": []
+      },
+      "foreignPolicy": {
+        "foreignPolicyOverview": "",
+        "diplomacyAndAlliances": [],
+        "warAndMilitaryInterventions": [],
+        "internationalInstitutionsAndAgreements": [],
+        "humanRightsAndDemocracyPromotion": [],
+        "globalEconomicAndSecurityPolicy": []
+      },
+      "judicialPolicy": {
+        "judicialOverview": "",
+        "supremeCourtAppointments": [],
+        "lowerCourtAppointments": [],
+        "judicialPhilosophyAndDoctrine": [],
+        "civilLibertiesAndRightsJurisprudence": [],
+        "separationOfPowersAndExecutiveAuthority": []
+      },
+      "legislation": {
+        "legislationOverview": "",
+        "majorLegislativeActions": [],
+        "economicLegislation": [],
+        "domesticLegislation": [],
+        "foreignLegislation": [],
+        "governmentStructureLegislation": []
+      },
+      "misconduct": {
+        "misconductOverview": "",
+        "corruptionAndAbuseOfPower": [],
+        "civilRightsAndLibertiesViolations": [],
+        "warCrimesAndHumanRightsAbuses": [],
+        "democraticNormsAndRuleOfLawErosion": []
+      }
+    },
+    "scores": {
+      "crisisManagement": 0,
+      "domesticPolicy": 0,
+      "economicPolicy": 0,
+      "foreignPolicy": 0,
+      "judicialPolicy": 0,
+      "legislation": 0,
+      "misconduct": 0,
+      "powerScore": 0,
+      "eraNormalizedScore": 0,
+      "rank": 46
+    }
+  },
+  {
+    "name": "Joe Biden",
+    "termStart": "2021-01-20",
+    "termEnd": "2025-01-20",
+    "party": "Democratic",
+    "metrics": {
+      "crisisManagement": {
+        "crisisOverview": "",
+        "majorCrises": [],
+        "wartimeLeadership": [],
+        "domesticUnrest": [],
+        "disasterResponse": [],
+        "internationalCrises": []
+      },
+      "domesticPolicy": {
+        "domesticOverview": "",
+        "socialPolicy": [],
+        "civilRights": [],
+        "educationPolicy": [],
+        "healthcarePolicy": [],
+        "infrastructureAndUrbanPolicy": []
+      },
+      "economicPolicy": {
+        "economicOverview": "",
+        "fiscalPolicy": [],
+        "monetaryAndFinancialPolicy": [],
+        "tradeAndIndustrialPolicy": [],
+        "laborAndEmploymentPolicy": [],
+        "economicCrisisManagement": []
+      },
+      "foreignPolicy": {
+        "foreignPolicyOverview": "",
+        "diplomacyAndAlliances": [],
+        "warAndMilitaryInterventions": [],
+        "internationalInstitutionsAndAgreements": [],
+        "humanRightsAndDemocracyPromotion": [],
+        "globalEconomicAndSecurityPolicy": []
+      },
+      "judicialPolicy": {
+        "judicialOverview": "",
+        "supremeCourtAppointments": [],
+        "lowerCourtAppointments": [],
+        "judicialPhilosophyAndDoctrine": [],
+        "civilLibertiesAndRightsJurisprudence": [],
+        "separationOfPowersAndExecutiveAuthority": []
+      },
+      "legislation": {
+        "legislationOverview": "",
+        "majorLegislativeActions": [],
+        "economicLegislation": [],
+        "domesticLegislation": [],
+        "foreignLegislation": [],
+        "governmentStructureLegislation": []
+      },
+      "misconduct": {
+        "misconductOverview": "",
+        "corruptionAndAbuseOfPower": [],
+        "civilRightsAndLibertiesViolations": [],
+        "warCrimesAndHumanRightsAbuses": [],
+        "democraticNormsAndRuleOfLawErosion": []
+      }
+    },
+    "scores": {
+      "crisisManagement": 0,
+      "domesticPolicy": 0,
+      "economicPolicy": 0,
+      "foreignPolicy": 0,
+      "judicialPolicy": 0,
+      "legislation": 0,
+      "misconduct": 0,
+      "powerScore": 0,
+      "eraNormalizedScore": 0,
+      "rank": 46
+    }
+  },
+  {
+    "name": "Joe Biden",
+    "termStart": "2021-01-20",
+    "termEnd": "2025-01-20",
+    "party": "Democratic",
+    "metrics": {
+      "crisisManagement": {
+        "crisisOverview": "",
+        "majorCrises": [],
+        "wartimeLeadership": [],
+        "domesticUnrest": [],
+        "disasterResponse": [],
+        "internationalCrises": []
+      },
+      "domesticPolicy": {
+        "domesticOverview": "",
+        "socialPolicy": [],
+        "civilRights": [],
+        "educationPolicy": [],
+        "healthcarePolicy": [],
+        "infrastructureAndUrbanPolicy": []
+      },
+      "economicPolicy": {
+        "economicOverview": "",
+        "fiscalPolicy": [],
+        "monetaryAndFinancialPolicy": [],
+        "tradeAndIndustrialPolicy": [],
+        "laborAndEmploymentPolicy": [],
+        "economicCrisisManagement": []
+      },
+      "foreignPolicy": {
+        "foreignPolicyOverview": "",
+        "diplomacyAndAlliances": [],
+        "warAndMilitaryInterventions": [],
+        "internationalInstitutionsAndAgreements": [],
+        "humanRightsAndDemocracyPromotion": [],
+        "globalEconomicAndSecurityPolicy": []
+      },
+      "judicialPolicy": {
+        "judicialOverview": "",
+        "supremeCourtAppointments": [],
+        "lowerCourtAppointments": [],
+        "judicialPhilosophyAndDoctrine": [],
+        "civilLibertiesAndRightsJurisprudence": [],
+        "separationOfPowersAndExecutiveAuthority": []
+      },
+      "legislation": {
+        "legislationOverview": "",
+        "majorLegislativeActions": [],
+        "economicLegislation": [],
+        "domesticLegislation": [],
+        "foreignLegislation": [],
+        "governmentStructureLegislation": []
+      },
+      "misconduct": {
+        "misconductOverview": "",
+        "corruptionAndAbuseOfPower": [],
+        "civilRightsAndLibertiesViolations": [],
+        "warCrimesAndHumanRightsAbuses": [],
+        "democraticNormsAndRuleOfLawErosion": []
+      }
+    },
+    "scores": {
+      "crisisManagement": 0,
+      "domesticPolicy": 0,
+      "economicPolicy": 0,
+      "foreignPolicy": 0,
+      "judicialPolicy": 0,
+      "legislation": 0,
+      "misconduct": 0,
+      "powerScore": 0,
+      "eraNormalizedScore": 0,
+      "rank": 46
+    }
+  },
+  {
+    "name": "Joe Biden",
+    "termStart": "2021-01-20",
+    "termEnd": "2025-01-20",
+    "party": "Democratic",
+    "metrics": {
+      "crisisManagement": {
+        "crisisOverview": "",
+        "majorCrises": [],
+        "wartimeLeadership": [],
+        "domesticUnrest": [],
+        "disasterResponse": [],
+        "internationalCrises": []
+      },
+      "domesticPolicy": {
+        "domesticOverview": "",
+        "socialPolicy": [],
+        "civilRights": [],
+        "educationPolicy": [],
+        "healthcarePolicy": [],
+        "infrastructureAndUrbanPolicy": []
+      },
+      "economicPolicy": {
+        "economicOverview": "",
+        "fiscalPolicy": [],
+        "monetaryAndFinancialPolicy": [],
+        "tradeAndIndustrialPolicy": [],
+        "laborAndEmploymentPolicy": [],
+        "economicCrisisManagement": []
+      },
+      "foreignPolicy": {
+        "foreignPolicyOverview": "",
+        "diplomacyAndAlliances": [],
+        "warAndMilitaryInterventions": [],
+        "internationalInstitutionsAndAgreements": [],
+        "humanRightsAndDemocracyPromotion": [],
+        "globalEconomicAndSecurityPolicy": []
+      },
+      "judicialPolicy": {
+        "judicialOverview": "",
+        "supremeCourtAppointments": [],
+        "lowerCourtAppointments": [],
+        "judicialPhilosophyAndDoctrine": [],
+        "civilLibertiesAndRightsJurisprudence": [],
+        "separationOfPowersAndExecutiveAuthority": []
+      },
+      "legislation": {
+        "legislationOverview": "",
+        "majorLegislativeActions": [],
+        "economicLegislation": [],
+        "domesticLegislation": [],
+        "foreignLegislation": [],
+        "governmentStructureLegislation": []
+      },
+      "misconduct": {
+        "misconductOverview": "",
+        "corruptionAndAbuseOfPower": [],
+        "civilRightsAndLibertiesViolations": [],
+        "warCrimesAndHumanRightsAbuses": [],
+        "democraticNormsAndRuleOfLawErosion": []
+      }
+    },
+    "scores": {
+      "crisisManagement": 0,
+      "domesticPolicy": 0,
+      "economicPolicy": 0,
+      "foreignPolicy": 0,
+      "judicialPolicy": 0,
+      "legislation": 0,
+      "misconduct": 0,
+      "powerScore": 0,
+      "eraNormalizedScore": 0,
+      "rank": 46
+    }
+  },
+  {
+    "name": "Joe Biden",
+    "termStart": "2021-01-20",
+    "termEnd": "2025-01-20",
+    "party": "Democratic",
+    "metrics": {
+      "crisisManagement": {
+        "crisisOverview": "",
+        "majorCrises": [],
+        "wartimeLeadership": [],
+        "domesticUnrest": [],
+        "disasterResponse": [],
+        "internationalCrises": []
+      },
+      "domesticPolicy": {
+        "domesticOverview": "",
+        "socialPolicy": [],
+        "civilRights": [],
+        "educationPolicy": [],
+        "healthcarePolicy": [],
+        "infrastructureAndUrbanPolicy": []
+      },
+      "economicPolicy": {
+        "economicOverview": "",
+        "fiscalPolicy": [],
+        "monetaryAndFinancialPolicy": [],
+        "tradeAndIndustrialPolicy": [],
+        "laborAndEmploymentPolicy": [],
+        "economicCrisisManagement": []
+      },
+      "foreignPolicy": {
+        "foreignPolicyOverview": "",
+        "diplomacyAndAlliances": [],
+        "warAndMilitaryInterventions": [],
+        "internationalInstitutionsAndAgreements": [],
+        "humanRightsAndDemocracyPromotion": [],
+        "globalEconomicAndSecurityPolicy": []
+      },
+      "judicialPolicy": {
+        "judicialOverview": "",
+        "supremeCourtAppointments": [],
+        "lowerCourtAppointments": [],
+        "judicialPhilosophyAndDoctrine": [],
+        "civilLibertiesAndRightsJurisprudence": [],
+        "separationOfPowersAndExecutiveAuthority": []
+      },
+      "legislation": {
+        "legislationOverview": "",
+        "majorLegislativeActions": [],
+        "economicLegislation": [],
+        "domesticLegislation": [],
+        "foreignLegislation": [],
+        "governmentStructureLegislation": []
+      },
+      "misconduct": {
+        "misconductOverview": "",
+        "corruptionAndAbuseOfPower": [],
+        "civilRightsAndLibertiesViolations": [],
+        "warCrimesAndHumanRightsAbuses": [],
+        "democraticNormsAndRuleOfLawErosion": []
+      }
+    },
+    "scores": {
+      "crisisManagement": 0,
+      "domesticPolicy": 0,
+      "economicPolicy": 0,
+      "foreignPolicy": 0,
+      "judicialPolicy": 0,
+      "legislation": 0,
+      "misconduct": 0,
+      "powerScore": 0,
+      "eraNormalizedScore": 0,
+      "rank": 46
+    }
+  },
+  {
+    "name": "Joe Biden",
+    "termStart": "2021-01-20",
+    "termEnd": "2025-01-20",
+    "party": "Democratic",
+    "metrics": {
+      "crisisManagement": {
+        "crisisOverview": "",
+        "majorCrises": [],
+        "wartimeLeadership": [],
+        "domesticUnrest": [],
+        "disasterResponse": [],
+        "internationalCrises": []
+      },
+      "domesticPolicy": {
+        "domesticOverview": "",
+        "socialPolicy": [],
+        "civilRights": [],
+        "educationPolicy": [],
+        "healthcarePolicy": [],
+        "infrastructureAndUrbanPolicy": []
+      },
+      "economicPolicy": {
+        "economicOverview": "",
+        "fiscalPolicy": [],
+        "monetaryAndFinancialPolicy": [],
+        "tradeAndIndustrialPolicy": [],
+        "laborAndEmploymentPolicy": [],
+        "economicCrisisManagement": []
+      },
+      "foreignPolicy": {
+        "foreignPolicyOverview": "",
+        "diplomacyAndAlliances": [],
+        "warAndMilitaryInterventions": [],
+        "internationalInstitutionsAndAgreements": [],
+        "humanRightsAndDemocracyPromotion": [],
+        "globalEconomicAndSecurityPolicy": []
+      },
+      "judicialPolicy": {
+        "judicialOverview": "",
+        "supremeCourtAppointments": [],
+        "lowerCourtAppointments": [],
+        "judicialPhilosophyAndDoctrine": [],
+        "civilLibertiesAndRightsJurisprudence": [],
+        "separationOfPowersAndExecutiveAuthority": []
+      },
+      "legislation": {
+        "legislationOverview": "",
+        "majorLegislativeActions": [],
+        "economicLegislation": [],
+        "domesticLegislation": [],
+        "foreignLegislation": [],
+        "governmentStructureLegislation": []
+      },
+      "misconduct": {
+        "misconductOverview": "",
+        "corruptionAndAbuseOfPower": [],
+        "civilRightsAndLibertiesViolations": [],
+        "warCrimesAndHumanRightsAbuses": [],
+        "democraticNormsAndRuleOfLawErosion": []
+      }
+    },
+    "scores": {
+      "crisisManagement": 0,
+      "domesticPolicy": 0,
+      "economicPolicy": 0,
+      "foreignPolicy": 0,
+      "judicialPolicy": 0,
+      "legislation": 0,
+      "misconduct": 0,
+      "powerScore": 0,
+      "eraNormalizedScore": 0,
+      "rank": 46
+    }
+  },
+  {
+    "name": "Joe Biden",
+    "termStart": "2021-01-20",
+    "termEnd": "2025-01-20",
+    "party": "Democratic",
+    "metrics": {
+      "crisisManagement": {
+        "crisisOverview": "",
+        "majorCrises": [],
+        "wartimeLeadership": [],
+        "domesticUnrest": [],
+        "disasterResponse": [],
+        "internationalCrises": []
+      },
+      "domesticPolicy": {
+        "domesticOverview": "",
+        "socialPolicy": [],
+        "civilRights": [],
+        "educationPolicy": [],
+        "healthcarePolicy": [],
+        "infrastructureAndUrbanPolicy": []
+      },
+      "economicPolicy": {
+        "economicOverview": "",
+        "fiscalPolicy": [],
+        "monetaryAndFinancialPolicy": [],
+        "tradeAndIndustrialPolicy": [],
+        "laborAndEmploymentPolicy": [],
+        "economicCrisisManagement": []
+      },
+      "foreignPolicy": {
+        "foreignPolicyOverview": "",
+        "diplomacyAndAlliances": [],
+        "warAndMilitaryInterventions": [],
+        "internationalInstitutionsAndAgreements": [],
+        "humanRightsAndDemocracyPromotion": [],
+        "globalEconomicAndSecurityPolicy": []
+      },
+      "judicialPolicy": {
+        "judicialOverview": "",
+        "supremeCourtAppointments": [],
+        "lowerCourtAppointments": [],
+        "judicialPhilosophyAndDoctrine": [],
+        "civilLibertiesAndRightsJurisprudence": [],
+        "separationOfPowersAndExecutiveAuthority": []
+      },
+      "legislation": {
+        "legislationOverview": "",
+        "majorLegislativeActions": [],
+        "economicLegislation": [],
+        "domesticLegislation": [],
+        "foreignLegislation": [],
+        "governmentStructureLegislation": []
+      },
+      "misconduct": {
+        "misconductOverview": "",
+        "corruptionAndAbuseOfPower": [],
+        "civilRightsAndLibertiesViolations": [],
+        "warCrimesAndHumanRightsAbuses": [],
+        "democraticNormsAndRuleOfLawErosion": []
+      }
+    },
+    "scores": {
+      "crisisManagement": 0,
+      "domesticPolicy": 0,
+      "economicPolicy": 0,
+      "foreignPolicy": 0,
+      "judicialPolicy": 0,
+      "legislation": 0,
+      "misconduct": 0,
+      "powerScore": 0,
+      "eraNormalizedScore": 0,
+      "rank": 46
+    }
+  },
+  {
+    "name": "Joe Biden",
+    "termStart": "2021-01-20",
+    "termEnd": "2025-01-20",
+    "party": "Democratic",
+    "metrics": {
+      "crisisManagement": {
+        "crisisOverview": "",
+        "majorCrises": [],
+        "wartimeLeadership": [],
+        "domesticUnrest": [],
+        "disasterResponse": [],
+        "internationalCrises": []
+      },
+      "domesticPolicy": {
+        "domesticOverview": "",
+        "socialPolicy": [],
+        "civilRights": [],
+        "educationPolicy": [],
+        "healthcarePolicy": [],
+        "infrastructureAndUrbanPolicy": []
+      },
+      "economicPolicy": {
+        "economicOverview": "",
+        "fiscalPolicy": [],
+        "monetaryAndFinancialPolicy": [],
+        "tradeAndIndustrialPolicy": [],
+        "laborAndEmploymentPolicy": [],
+        "economicCrisisManagement": []
+      },
+      "foreignPolicy": {
+        "foreignPolicyOverview": "",
+        "diplomacyAndAlliances": [],
+        "warAndMilitaryInterventions": [],
+        "internationalInstitutionsAndAgreements": [],
+        "humanRightsAndDemocracyPromotion": [],
+        "globalEconomicAndSecurityPolicy": []
+      },
+      "judicialPolicy": {
+        "judicialOverview": "",
+        "supremeCourtAppointments": [],
+        "lowerCourtAppointments": [],
+        "judicialPhilosophyAndDoctrine": [],
+        "civilLibertiesAndRightsJurisprudence": [],
+        "separationOfPowersAndExecutiveAuthority": []
+      },
+      "legislation": {
+        "legislationOverview": "",
+        "majorLegislativeActions": [],
+        "economicLegislation": [],
+        "domesticLegislation": [],
+        "foreignLegislation": [],
+        "governmentStructureLegislation": []
+      },
+      "misconduct": {
+        "misconductOverview": "",
+        "corruptionAndAbuseOfPower": [],
+        "civilRightsAndLibertiesViolations": [],
+        "warCrimesAndHumanRightsAbuses": [],
+        "democraticNormsAndRuleOfLawErosion": []
+      }
+    },
+    "scores": {
+      "crisisManagement": 0,
+      "domesticPolicy": 0,
+      "economicPolicy": 0,
+      "foreignPolicy": 0,
+      "judicialPolicy": 0,
+      "legislation": 0,
+      "misconduct": 0,
+      "powerScore": 0,
+      "eraNormalizedScore": 0,
+      "rank": 46
+    }
+  },
+  {
+    "name": "Joe Biden",
+    "termStart": "2021-01-20",
+    "termEnd": "2025-01-20",
+    "party": "Democratic",
+    "metrics": {
+      "crisisManagement": {
+        "crisisOverview": "",
+        "majorCrises": [],
+        "wartimeLeadership": [],
+        "domesticUnrest": [],
+        "disasterResponse": [],
+        "internationalCrises": []
+      },
+      "domesticPolicy": {
+        "domesticOverview": "",
+        "socialPolicy": [],
+        "civilRights": [],
+        "educationPolicy": [],
+        "healthcarePolicy": [],
+        "infrastructureAndUrbanPolicy": []
+      },
+      "economicPolicy": {
+        "economicOverview": "",
+        "fiscalPolicy": [],
+        "monetaryAndFinancialPolicy": [],
+        "tradeAndIndustrialPolicy": [],
+        "laborAndEmploymentPolicy": [],
+        "economicCrisisManagement": []
+      },
+      "foreignPolicy": {
+        "foreignPolicyOverview": "",
+        "diplomacyAndAlliances": [],
+        "warAndMilitaryInterventions": [],
+        "internationalInstitutionsAndAgreements": [],
+        "humanRightsAndDemocracyPromotion": [],
+        "globalEconomicAndSecurityPolicy": []
+      },
+      "judicialPolicy": {
+        "judicialOverview": "",
+        "supremeCourtAppointments": [],
+        "lowerCourtAppointments": [],
+        "judicialPhilosophyAndDoctrine": [],
+        "civilLibertiesAndRightsJurisprudence": [],
+        "separationOfPowersAndExecutiveAuthority": []
+      },
+      "legislation": {
+        "legislationOverview": "",
+        "majorLegislativeActions": [],
+        "economicLegislation": [],
+        "domesticLegislation": [],
+        "foreignLegislation": [],
+        "governmentStructureLegislation": []
+      },
+      "misconduct": {
+        "misconductOverview": "",
+        "corruptionAndAbuseOfPower": [],
+        "civilRightsAndLibertiesViolations": [],
+        "warCrimesAndHumanRightsAbuses": [],
+        "democraticNormsAndRuleOfLawErosion": []
+      }
+    },
+    "scores": {
+      "crisisManagement": 0,
+      "domesticPolicy": 0,
+      "economicPolicy": 0,
+      "foreignPolicy": 0,
+      "judicialPolicy": 0,
+      "legislation": 0,
+      "misconduct": 0,
+      "powerScore": 0,
+      "eraNormalizedScore": 0,
+      "rank": 46
+    }
+  },
+  {
+    "name": "Joe Biden",
+    "termStart": "2021-01-20",
+    "termEnd": "2025-01-20",
+    "party": "Democratic",
+    "metrics": {
+      "crisisManagement": {
+        "crisisOverview": "",
+        "majorCrises": [],
+        "wartimeLeadership": [],
+        "domesticUnrest": [],
+        "disasterResponse": [],
+        "internationalCrises": []
+      },
+      "domesticPolicy": {
+        "domesticOverview": "",
+        "socialPolicy": [],
+        "civilRights": [],
+        "educationPolicy": [],
+        "healthcarePolicy": [],
+        "infrastructureAndUrbanPolicy": []
+      },
+      "economicPolicy": {
+        "economicOverview": "",
+        "fiscalPolicy": [],
+        "monetaryAndFinancialPolicy": [],
+        "tradeAndIndustrialPolicy": [],
+        "laborAndEmploymentPolicy": [],
+        "economicCrisisManagement": []
+      },
+      "foreignPolicy": {
+        "foreignPolicyOverview": "",
+        "diplomacyAndAlliances": [],
+        "warAndMilitaryInterventions": [],
+        "internationalInstitutionsAndAgreements": [],
+        "humanRightsAndDemocracyPromotion": [],
+        "globalEconomicAndSecurityPolicy": []
+      },
+      "judicialPolicy": {
+        "judicialOverview": "",
+        "supremeCourtAppointments": [],
+        "lowerCourtAppointments": [],
+        "judicialPhilosophyAndDoctrine": [],
+        "civilLibertiesAndRightsJurisprudence": [],
+        "separationOfPowersAndExecutiveAuthority": []
+      },
+      "legislation": {
+        "legislationOverview": "",
+        "majorLegislativeActions": [],
+        "economicLegislation": [],
+        "domesticLegislation": [],
+        "foreignLegislation": [],
+        "governmentStructureLegislation": []
+      },
+      "misconduct": {
+        "misconductOverview": "",
+        "corruptionAndAbuseOfPower": [],
+        "civilRightsAndLibertiesViolations": [],
+        "warCrimesAndHumanRightsAbuses": [],
+        "democraticNormsAndRuleOfLawErosion": []
+      }
+    },
+    "scores": {
+      "crisisManagement": 0,
+      "domesticPolicy": 0,
+      "economicPolicy": 0,
+      "foreignPolicy": 0,
+      "judicialPolicy": 0,
+      "legislation": 0,
+      "misconduct": 0,
+      "powerScore": 0,
+      "eraNormalizedScore": 0,
+      "rank": 46
+    }
+  },
+  {
+    "name": "Joe Biden",
+    "termStart": "2021-01-20",
+    "termEnd": "2025-01-20",
+    "party": "Democratic",
+    "metrics": {
+      "crisisManagement": {
+        "crisisOverview": "",
+        "majorCrises": [],
+        "wartimeLeadership": [],
+        "domesticUnrest": [],
+        "disasterResponse": [],
+        "internationalCrises": []
+      },
+      "domesticPolicy": {
+        "domesticOverview": "",
+        "socialPolicy": [],
+        "civilRights": [],
+        "educationPolicy": [],
+        "healthcarePolicy": [],
+        "infrastructureAndUrbanPolicy": []
+      },
+      "economicPolicy": {
+        "economicOverview": "",
+        "fiscalPolicy": [],
+        "monetaryAndFinancialPolicy": [],
+        "tradeAndIndustrialPolicy": [],
+        "laborAndEmploymentPolicy": [],
+        "economicCrisisManagement": []
+      },
+      "foreignPolicy": {
+        "foreignPolicyOverview": "",
+        "diplomacyAndAlliances": [],
+        "warAndMilitaryInterventions": [],
+        "internationalInstitutionsAndAgreements": [],
+        "humanRightsAndDemocracyPromotion": [],
+        "globalEconomicAndSecurityPolicy": []
+      },
+      "judicialPolicy": {
+        "judicialOverview": "",
+        "supremeCourtAppointments": [],
+        "lowerCourtAppointments": [],
+        "judicialPhilosophyAndDoctrine": [],
+        "civilLibertiesAndRightsJurisprudence": [],
+        "separationOfPowersAndExecutiveAuthority": []
+      },
+      "legislation": {
+        "legislationOverview": "",
+        "majorLegislativeActions": [],
+        "economicLegislation": [],
+        "domesticLegislation": [],
+        "foreignLegislation": [],
+        "governmentStructureLegislation": []
+      },
+      "misconduct": {
+        "misconductOverview": "",
+        "corruptionAndAbuseOfPower": [],
+        "civilRightsAndLibertiesViolations": [],
+        "warCrimesAndHumanRightsAbuses": [],
+        "democraticNormsAndRuleOfLawErosion": []
+      }
+    },
+    "scores": {
+      "crisisManagement": 0,
+      "domesticPolicy": 0,
+      "economicPolicy": 0,
+      "foreignPolicy": 0,
+      "judicialPolicy": 0,
+      "legislation": 0,
+      "misconduct": 0,
+      "powerScore": 0,
+      "eraNormalizedScore": 0,
+      "rank": 46
+    }
+  },
+  {
+    "name": "Joe Biden",
+    "termStart": "2021-01-20",
+    "termEnd": "2025-01-20",
+    "party": "Democratic",
+    "metrics": {
+      "crisisManagement": {
+        "crisisOverview": "",
+        "majorCrises": [],
+        "wartimeLeadership": [],
+        "domesticUnrest": [],
+        "disasterResponse": [],
+        "internationalCrises": []
+      },
+      "domesticPolicy": {
+        "domesticOverview": "",
+        "socialPolicy": [],
+        "civilRights": [],
+        "educationPolicy": [],
+        "healthcarePolicy": [],
+        "infrastructureAndUrbanPolicy": []
+      },
+      "economicPolicy": {
+        "economicOverview": "",
+        "fiscalPolicy": [],
+        "monetaryAndFinancialPolicy": [],
+        "tradeAndIndustrialPolicy": [],
+        "laborAndEmploymentPolicy": [],
+        "economicCrisisManagement": []
+      },
+      "foreignPolicy": {
+        "foreignPolicyOverview": "",
+        "diplomacyAndAlliances": [],
+        "warAndMilitaryInterventions": [],
+        "internationalInstitutionsAndAgreements": [],
+        "humanRightsAndDemocracyPromotion": [],
+        "globalEconomicAndSecurityPolicy": []
+      },
+      "judicialPolicy": {
+        "judicialOverview": "",
+        "supremeCourtAppointments": [],
+        "lowerCourtAppointments": [],
+        "judicialPhilosophyAndDoctrine": [],
+        "civilLibertiesAndRightsJurisprudence": [],
+        "separationOfPowersAndExecutiveAuthority": []
+      },
+      "legislation": {
+        "legislationOverview": "",
+        "majorLegislativeActions": [],
+        "economicLegislation": [],
+        "domesticLegislation": [],
+        "foreignLegislation": [],
+        "governmentStructureLegislation": []
+      },
+      "misconduct": {
+        "misconductOverview": "",
+        "corruptionAndAbuseOfPower": [],
+        "civilRightsAndLibertiesViolations": [],
+        "warCrimesAndHumanRightsAbuses": [],
+        "democraticNormsAndRuleOfLawErosion": []
+      }
+    },
+    "scores": {
+      "crisisManagement": 0,
+      "domesticPolicy": 0,
+      "economicPolicy": 0,
+      "foreignPolicy": 0,
+      "judicialPolicy": 0,
+      "legislation": 0,
+      "misconduct": 0,
+      "powerScore": 0,
+      "eraNormalizedScore": 0,
+      "rank": 46
+    }
+  },
+  {
+    "name": "Joe Biden",
+    "termStart": "2021-01-20",
+    "termEnd": "2025-01-20",
+    "party": "Democratic",
+    "metrics": {
+      "crisisManagement": {
+        "crisisOverview": "",
+        "majorCrises": [],
+        "wartimeLeadership": [],
+        "domesticUnrest": [],
+        "disasterResponse": [],
+        "internationalCrises": []
+      },
+      "domesticPolicy": {
+        "domesticOverview": "",
+        "socialPolicy": [],
+        "civilRights": [],
+        "educationPolicy": [],
+        "healthcarePolicy": [],
+        "infrastructureAndUrbanPolicy": []
+      },
+      "economicPolicy": {
+        "economicOverview": "",
+        "fiscalPolicy": [],
+        "monetaryAndFinancialPolicy": [],
+        "tradeAndIndustrialPolicy": [],
+        "laborAndEmploymentPolicy": [],
+        "economicCrisisManagement": []
+      },
+      "foreignPolicy": {
+        "foreignPolicyOverview": "",
+        "diplomacyAndAlliances": [],
+        "warAndMilitaryInterventions": [],
+        "internationalInstitutionsAndAgreements": [],
+        "humanRightsAndDemocracyPromotion": [],
+        "globalEconomicAndSecurityPolicy": []
+      },
+      "judicialPolicy": {
+        "judicialOverview": "",
+        "supremeCourtAppointments": [],
+        "lowerCourtAppointments": [],
+        "judicialPhilosophyAndDoctrine": [],
+        "civilLibertiesAndRightsJurisprudence": [],
+        "separationOfPowersAndExecutiveAuthority": []
+      },
+      "legislation": {
+        "legislationOverview": "",
+        "majorLegislativeActions": [],
+        "economicLegislation": [],
+        "domesticLegislation": [],
+        "foreignLegislation": [],
+        "governmentStructureLegislation": []
+      },
+      "misconduct": {
+        "misconductOverview": "",
+        "corruptionAndAbuseOfPower": [],
+        "civilRightsAndLibertiesViolations": [],
+        "warCrimesAndHumanRightsAbuses": [],
+        "democraticNormsAndRuleOfLawErosion": []
+      }
+    },
+    "scores": {
+      "crisisManagement": 0,
+      "domesticPolicy": 0,
+      "economicPolicy": 0,
+      "foreignPolicy": 0,
+      "judicialPolicy": 0,
+      "legislation": 0,
+      "misconduct": 0,
+      "powerScore": 0,
+      "eraNormalizedScore": 0,
+      "rank": 46
+    }
+  },
+  {
+    "name": "Joe Biden",
+    "termStart": "2021-01-20",
+    "termEnd": "2025-01-20",
+    "party": "Democratic",
+    "metrics": {
+      "crisisManagement": {
+        "crisisOverview": "",
+        "majorCrises": [],
+        "wartimeLeadership": [],
+        "domesticUnrest": [],
+        "disasterResponse": [],
+        "internationalCrises": []
+      },
+      "domesticPolicy": {
+        "domesticOverview": "",
+        "socialPolicy": [],
+        "civilRights": [],
+        "educationPolicy": [],
+        "healthcarePolicy": [],
+        "infrastructureAndUrbanPolicy": []
+      },
+      "economicPolicy": {
+        "economicOverview": "",
+        "fiscalPolicy": [],
+        "monetaryAndFinancialPolicy": [],
+        "tradeAndIndustrialPolicy": [],
+        "laborAndEmploymentPolicy": [],
+        "economicCrisisManagement": []
+      },
+      "foreignPolicy": {
+        "foreignPolicyOverview": "",
+        "diplomacyAndAlliances": [],
+        "warAndMilitaryInterventions": [],
+        "internationalInstitutionsAndAgreements": [],
+        "humanRightsAndDemocracyPromotion": [],
+        "globalEconomicAndSecurityPolicy": []
+      },
+      "judicialPolicy": {
+        "judicialOverview": "",
+        "supremeCourtAppointments": [],
+        "lowerCourtAppointments": [],
+        "judicialPhilosophyAndDoctrine": [],
+        "civilLibertiesAndRightsJurisprudence": [],
+        "separationOfPowersAndExecutiveAuthority": []
+      },
+      "legislation": {
+        "legislationOverview": "",
+        "majorLegislativeActions": [],
+        "economicLegislation": [],
+        "domesticLegislation": [],
+        "foreignLegislation": [],
+        "governmentStructureLegislation": []
+      },
+      "misconduct": {
+        "misconductOverview": "",
+        "corruptionAndAbuseOfPower": [],
+        "civilRightsAndLibertiesViolations": [],
+        "warCrimesAndHumanRightsAbuses": [],
+        "democraticNormsAndRuleOfLawErosion": []
+      }
+    },
+    "scores": {
+      "crisisManagement": 0,
+      "domesticPolicy": 0,
+      "economicPolicy": 0,
+      "foreignPolicy": 0,
+      "judicialPolicy": 0,
+      "legislation": 0,
+      "misconduct": 0,
+      "powerScore": 0,
+      "eraNormalizedScore": 0,
+      "rank": 46
+    }
+  },
+  {
+    "name": "Joe Biden",
+    "termStart": "2021-01-20",
+    "termEnd": "2025-01-20",
+    "party": "Democratic",
+    "metrics": {
+      "crisisManagement": {
+        "crisisOverview": "",
+        "majorCrises": [],
+        "wartimeLeadership": [],
+        "domesticUnrest": [],
+        "disasterResponse": [],
+        "internationalCrises": []
+      },
+      "domesticPolicy": {
+        "domesticOverview": "",
+        "socialPolicy": [],
+        "civilRights": [],
+        "educationPolicy": [],
+        "healthcarePolicy": [],
+        "infrastructureAndUrbanPolicy": []
+      },
+      "economicPolicy": {
+        "economicOverview": "",
+        "fiscalPolicy": [],
+        "monetaryAndFinancialPolicy": [],
+        "tradeAndIndustrialPolicy": [],
+        "laborAndEmploymentPolicy": [],
+        "economicCrisisManagement": []
+      },
+      "foreignPolicy": {
+        "foreignPolicyOverview": "",
+        "diplomacyAndAlliances": [],
+        "warAndMilitaryInterventions": [],
+        "internationalInstitutionsAndAgreements": [],
+        "humanRightsAndDemocracyPromotion": [],
+        "globalEconomicAndSecurityPolicy": []
+      },
+      "judicialPolicy": {
+        "judicialOverview": "",
+        "supremeCourtAppointments": [],
+        "lowerCourtAppointments": [],
+        "judicialPhilosophyAndDoctrine": [],
+        "civilLibertiesAndRightsJurisprudence": [],
+        "separationOfPowersAndExecutiveAuthority": []
+      },
+      "legislation": {
+        "legislationOverview": "",
+        "majorLegislativeActions": [],
+        "economicLegislation": [],
+        "domesticLegislation": [],
+        "foreignLegislation": [],
+        "governmentStructureLegislation": []
+      },
+      "misconduct": {
+        "misconductOverview": "",
+        "corruptionAndAbuseOfPower": [],
+        "civilRightsAndLibertiesViolations": [],
+        "warCrimesAndHumanRightsAbuses": [],
+        "democraticNormsAndRuleOfLawErosion": []
+      }
+    },
+    "scores": {
+      "crisisManagement": 0,
+      "domesticPolicy": 0,
+      "economicPolicy": 0,
+      "foreignPolicy": 0,
+      "judicialPolicy": 0,
+      "legislation": 0,
+      "misconduct": 0,
+      "powerScore": 0,
+      "eraNormalizedScore": 0,
+      "rank": 46
+    }
+  },
+  {
+    "name": "Joe Biden",
+    "termStart": "2021-01-20",
+    "termEnd": "2025-01-20",
+    "party": "Democratic",
+    "metrics": {
+      "crisisManagement": {
+        "crisisOverview": "",
+        "majorCrises": [],
+        "wartimeLeadership": [],
+        "domesticUnrest": [],
+        "disasterResponse": [],
+        "internationalCrises": []
+      },
+      "domesticPolicy": {
+        "domesticOverview": "",
+        "socialPolicy": [],
+        "civilRights": [],
+        "educationPolicy": [],
+        "healthcarePolicy": [],
+        "infrastructureAndUrbanPolicy": []
+      },
+      "economicPolicy": {
+        "economicOverview": "",
+        "fiscalPolicy": [],
+        "monetaryAndFinancialPolicy": [],
+        "tradeAndIndustrialPolicy": [],
+        "laborAndEmploymentPolicy": [],
+        "economicCrisisManagement": []
+      },
+      "foreignPolicy": {
+        "foreignPolicyOverview": "",
+        "diplomacyAndAlliances": [],
+        "warAndMilitaryInterventions": [],
+        "internationalInstitutionsAndAgreements": [],
+        "humanRightsAndDemocracyPromotion": [],
+        "globalEconomicAndSecurityPolicy": []
+      },
+      "judicialPolicy": {
+        "judicialOverview": "",
+        "supremeCourtAppointments": [],
+        "lowerCourtAppointments": [],
+        "judicialPhilosophyAndDoctrine": [],
+        "civilLibertiesAndRightsJurisprudence": [],
+        "separationOfPowersAndExecutiveAuthority": []
+      },
+      "legislation": {
+        "legislationOverview": "",
+        "majorLegislativeActions": [],
+        "economicLegislation": [],
+        "domesticLegislation": [],
+        "foreignLegislation": [],
+        "governmentStructureLegislation": []
+      },
+      "misconduct": {
+        "misconductOverview": "",
+        "corruptionAndAbuseOfPower": [],
+        "civilRightsAndLibertiesViolations": [],
+        "warCrimesAndHumanRightsAbuses": [],
+        "democraticNormsAndRuleOfLawErosion": []
+      }
+    },
+    "scores": {
+      "crisisManagement": 0,
+      "domesticPolicy": 0,
+      "economicPolicy": 0,
+      "foreignPolicy": 0,
+      "judicialPolicy": 0,
+      "legislation": 0,
+      "misconduct": 0,
+      "powerScore": 0,
+      "eraNormalizedScore": 0,
+      "rank": 46
+    }
+  },
+  {
+    "name": "Joe Biden",
+    "termStart": "2021-01-20",
+    "termEnd": "2025-01-20",
+    "party": "Democratic",
+    "metrics": {
+      "crisisManagement": {
+        "crisisOverview": "",
+        "majorCrises": [],
+        "wartimeLeadership": [],
+        "domesticUnrest": [],
+        "disasterResponse": [],
+        "internationalCrises": []
+      },
+      "domesticPolicy": {
+        "domesticOverview": "",
+        "socialPolicy": [],
+        "civilRights": [],
+        "educationPolicy": [],
+        "healthcarePolicy": [],
+        "infrastructureAndUrbanPolicy": []
+      },
+      "economicPolicy": {
+        "economicOverview": "",
+        "fiscalPolicy": [],
+        "monetaryAndFinancialPolicy": [],
+        "tradeAndIndustrialPolicy": [],
+        "laborAndEmploymentPolicy": [],
+        "economicCrisisManagement": []
+      },
+      "foreignPolicy": {
+        "foreignPolicyOverview": "",
+        "diplomacyAndAlliances": [],
+        "warAndMilitaryInterventions": [],
+        "internationalInstitutionsAndAgreements": [],
+        "humanRightsAndDemocracyPromotion": [],
+        "globalEconomicAndSecurityPolicy": []
+      },
+      "judicialPolicy": {
+        "judicialOverview": "",
+        "supremeCourtAppointments": [],
+        "lowerCourtAppointments": [],
+        "judicialPhilosophyAndDoctrine": [],
+        "civilLibertiesAndRightsJurisprudence": [],
+        "separationOfPowersAndExecutiveAuthority": []
+      },
+      "legislation": {
+        "legislationOverview": "",
+        "majorLegislativeActions": [],
+        "economicLegislation": [],
+        "domesticLegislation": [],
+        "foreignLegislation": [],
+        "governmentStructureLegislation": []
+      },
+      "misconduct": {
+        "misconductOverview": "",
+        "corruptionAndAbuseOfPower": [],
+        "civilRightsAndLibertiesViolations": [],
+        "warCrimesAndHumanRightsAbuses": [],
+        "democraticNormsAndRuleOfLawErosion": []
+      }
+    },
+    "scores": {
+      "crisisManagement": 0,
+      "domesticPolicy": 0,
+      "economicPolicy": 0,
+      "foreignPolicy": 0,
+      "judicialPolicy": 0,
+      "legislation": 0,
+      "misconduct": 0,
+      "powerScore": 0,
+      "eraNormalizedScore": 0,
+      "rank": 46
+    }
+  },
+  {
+    "name": "Joe Biden",
+    "termStart": "2021-01-20",
+    "termEnd": "2025-01-20",
+    "party": "Democratic",
+    "metrics": {
+      "crisisManagement": {
+        "crisisOverview": "",
+        "majorCrises": [],
+        "wartimeLeadership": [],
+        "domesticUnrest": [],
+        "disasterResponse": [],
+        "internationalCrises": []
+      },
+      "domesticPolicy": {
+        "domesticOverview": "",
+        "socialPolicy": [],
+        "civilRights": [],
+        "educationPolicy": [],
+        "healthcarePolicy": [],
+        "infrastructureAndUrbanPolicy": []
+      },
+      "economicPolicy": {
+        "economicOverview": "",
+        "fiscalPolicy": [],
+        "monetaryAndFinancialPolicy": [],
+        "tradeAndIndustrialPolicy": [],
+        "laborAndEmploymentPolicy": [],
+        "economicCrisisManagement": []
+      },
+      "foreignPolicy": {
+        "foreignPolicyOverview": "",
+        "diplomacyAndAlliances": [],
+        "warAndMilitaryInterventions": [],
+        "internationalInstitutionsAndAgreements": [],
+        "humanRightsAndDemocracyPromotion": [],
+        "globalEconomicAndSecurityPolicy": []
+      },
+      "judicialPolicy": {
+        "judicialOverview": "",
+        "supremeCourtAppointments": [],
+        "lowerCourtAppointments": [],
+        "judicialPhilosophyAndDoctrine": [],
+        "civilLibertiesAndRightsJurisprudence": [],
+        "separationOfPowersAndExecutiveAuthority": []
+      },
+      "legislation": {
+        "legislationOverview": "",
+        "majorLegislativeActions": [],
+        "economicLegislation": [],
+        "domesticLegislation": [],
+        "foreignLegislation": [],
+        "governmentStructureLegislation": []
+      },
+      "misconduct": {
+        "misconductOverview": "",
+        "corruptionAndAbuseOfPower": [],
+        "civilRightsAndLibertiesViolations": [],
+        "warCrimesAndHumanRightsAbuses": [],
+        "democraticNormsAndRuleOfLawErosion": []
+      }
+    },
+    "scores": {
+      "crisisManagement": 0,
+      "domesticPolicy": 0,
+      "economicPolicy": 0,
+      "foreignPolicy": 0,
+      "judicialPolicy": 0,
+      "legislation": 0,
+      "misconduct": 0,
+      "powerScore": 0,
+      "eraNormalizedScore": 0,
+      "rank": 46
+    }
+  },
+  {
+    "name": "Joe Biden",
+    "termStart": "2021-01-20",
+    "termEnd": "2025-01-20",
+    "party": "Democratic",
+    "metrics": {
+      "crisisManagement": {
+        "crisisOverview": "",
+        "majorCrises": [],
+        "wartimeLeadership": [],
+        "domesticUnrest": [],
+        "disasterResponse": [],
+        "internationalCrises": []
+      },
+      "domesticPolicy": {
+        "domesticOverview": "",
+        "socialPolicy": [],
+        "civilRights": [],
+        "educationPolicy": [],
+        "healthcarePolicy": [],
+        "infrastructureAndUrbanPolicy": []
+      },
+      "economicPolicy": {
+        "economicOverview": "",
+        "fiscalPolicy": [],
+        "monetaryAndFinancialPolicy": [],
+        "tradeAndIndustrialPolicy": [],
+        "laborAndEmploymentPolicy": [],
+        "economicCrisisManagement": []
+      },
+      "foreignPolicy": {
+        "foreignPolicyOverview": "",
+        "diplomacyAndAlliances": [],
+        "warAndMilitaryInterventions": [],
+        "internationalInstitutionsAndAgreements": [],
+        "humanRightsAndDemocracyPromotion": [],
+        "globalEconomicAndSecurityPolicy": []
+      },
+      "judicialPolicy": {
+        "judicialOverview": "",
+        "supremeCourtAppointments": [],
+        "lowerCourtAppointments": [],
+        "judicialPhilosophyAndDoctrine": [],
+        "civilLibertiesAndRightsJurisprudence": [],
+        "separationOfPowersAndExecutiveAuthority": []
+      },
+      "legislation": {
+        "legislationOverview": "",
+        "majorLegislativeActions": [],
+        "economicLegislation": [],
+        "domesticLegislation": [],
+        "foreignLegislation": [],
+        "governmentStructureLegislation": []
+      },
+      "misconduct": {
+        "misconductOverview": "",
+        "corruptionAndAbuseOfPower": [],
+        "civilRightsAndLibertiesViolations": [],
+        "warCrimesAndHumanRightsAbuses": [],
+        "democraticNormsAndRuleOfLawErosion": []
+      }
+    },
+    "scores": {
+      "crisisManagement": 0,
+      "domesticPolicy": 0,
+      "economicPolicy": 0,
+      "foreignPolicy": 0,
+      "judicialPolicy": 0,
+      "legislation": 0,
+      "misconduct": 0,
+      "powerScore": 0,
+      "eraNormalizedScore": 0,
+      "rank": 46
+    }
+  },
+  {
+    "name": "Joe Biden",
+    "termStart": "2021-01-20",
+    "termEnd": "2025-01-20",
+    "party": "Democratic",
+    "metrics": {
+      "crisisManagement": {
+        "crisisOverview": "",
+        "majorCrises": [],
+        "wartimeLeadership": [],
+        "domesticUnrest": [],
+        "disasterResponse": [],
+        "internationalCrises": []
+      },
+      "domesticPolicy": {
+        "domesticOverview": "",
+        "socialPolicy": [],
+        "civilRights": [],
+        "educationPolicy": [],
+        "healthcarePolicy": [],
+        "infrastructureAndUrbanPolicy": []
+      },
+      "economicPolicy": {
+        "economicOverview": "",
+        "fiscalPolicy": [],
+        "monetaryAndFinancialPolicy": [],
+        "tradeAndIndustrialPolicy": [],
+        "laborAndEmploymentPolicy": [],
+        "economicCrisisManagement": []
+      },
+      "foreignPolicy": {
+        "foreignPolicyOverview": "",
+        "diplomacyAndAlliances": [],
+        "warAndMilitaryInterventions": [],
+        "internationalInstitutionsAndAgreements": [],
+        "humanRightsAndDemocracyPromotion": [],
+        "globalEconomicAndSecurityPolicy": []
+      },
+      "judicialPolicy": {
+        "judicialOverview": "",
+        "supremeCourtAppointments": [],
+        "lowerCourtAppointments": [],
+        "judicialPhilosophyAndDoctrine": [],
+        "civilLibertiesAndRightsJurisprudence": [],
+        "separationOfPowersAndExecutiveAuthority": []
+      },
+      "legislation": {
+        "legislationOverview": "",
+        "majorLegislativeActions": [],
+        "economicLegislation": [],
+        "domesticLegislation": [],
+        "foreignLegislation": [],
+        "governmentStructureLegislation": []
+      },
+      "misconduct": {
+        "misconductOverview": "",
+        "corruptionAndAbuseOfPower": [],
+        "civilRightsAndLibertiesViolations": [],
+        "warCrimesAndHumanRightsAbuses": [],
+        "democraticNormsAndRuleOfLawErosion": []
+      }
+    },
+    "scores": {
+      "crisisManagement": 0,
+      "domesticPolicy": 0,
+      "economicPolicy": 0,
+      "foreignPolicy": 0,
+      "judicialPolicy": 0,
+      "legislation": 0,
+      "misconduct": 0,
+      "powerScore": 0,
+      "eraNormalizedScore": 0,
+      "rank": 46
+    }
+  },
+  {
+    "name": "Joe Biden",
+    "termStart": "2021-01-20",
+    "termEnd": "2025-01-20",
+    "party": "Democratic",
+    "metrics": {
+      "crisisManagement": {
+        "crisisOverview": "",
+        "majorCrises": [],
+        "wartimeLeadership": [],
+        "domesticUnrest": [],
+        "disasterResponse": [],
+        "internationalCrises": []
+      },
+      "domesticPolicy": {
+        "domesticOverview": "",
+        "socialPolicy": [],
+        "civilRights": [],
+        "educationPolicy": [],
+        "healthcarePolicy": [],
+        "infrastructureAndUrbanPolicy": []
+      },
+      "economicPolicy": {
+        "economicOverview": "",
+        "fiscalPolicy": [],
+        "monetaryAndFinancialPolicy": [],
+        "tradeAndIndustrialPolicy": [],
+        "laborAndEmploymentPolicy": [],
+        "economicCrisisManagement": []
+      },
+      "foreignPolicy": {
+        "foreignPolicyOverview": "",
+        "diplomacyAndAlliances": [],
+        "warAndMilitaryInterventions": [],
+        "internationalInstitutionsAndAgreements": [],
+        "humanRightsAndDemocracyPromotion": [],
+        "globalEconomicAndSecurityPolicy": []
+      },
+      "judicialPolicy": {
+        "judicialOverview": "",
+        "supremeCourtAppointments": [],
+        "lowerCourtAppointments": [],
+        "judicialPhilosophyAndDoctrine": [],
+        "civilLibertiesAndRightsJurisprudence": [],
+        "separationOfPowersAndExecutiveAuthority": []
+      },
+      "legislation": {
+        "legislationOverview": "",
+        "majorLegislativeActions": [],
+        "economicLegislation": [],
+        "domesticLegislation": [],
+        "foreignLegislation": [],
+        "governmentStructureLegislation": []
+      },
+      "misconduct": {
+        "misconductOverview": "",
+        "corruptionAndAbuseOfPower": [],
+        "civilRightsAndLibertiesViolations": [],
+        "warCrimesAndHumanRightsAbuses": [],
+        "democraticNormsAndRuleOfLawErosion": []
+      }
+    },
+    "scores": {
+      "crisisManagement": 0,
+      "domesticPolicy": 0,
+      "economicPolicy": 0,
+      "foreignPolicy": 0,
+      "judicialPolicy": 0,
+      "legislation": 0,
+      "misconduct": 0,
+      "powerScore": 0,
+      "eraNormalizedScore": 0,
+      "rank": 46
+    }
+  },
+  {
+    "name": "Joe Biden",
+    "termStart": "2021-01-20",
+    "termEnd": "2025-01-20",
+    "party": "Democratic",
+    "metrics": {
+      "crisisManagement": {
+        "crisisOverview": "",
+        "majorCrises": [],
+        "wartimeLeadership": [],
+        "domesticUnrest": [],
+        "disasterResponse": [],
+        "internationalCrises": []
+      },
+      "domesticPolicy": {
+        "domesticOverview": "",
+        "socialPolicy": [],
+        "civilRights": [],
+        "educationPolicy": [],
+        "healthcarePolicy": [],
+        "infrastructureAndUrbanPolicy": []
+      },
+      "economicPolicy": {
+        "economicOverview": "",
+        "fiscalPolicy": [],
+        "monetaryAndFinancialPolicy": [],
+        "tradeAndIndustrialPolicy": [],
+        "laborAndEmploymentPolicy": [],
+        "economicCrisisManagement": []
+      },
+      "foreignPolicy": {
+        "foreignPolicyOverview": "",
+        "diplomacyAndAlliances": [],
+        "warAndMilitaryInterventions": [],
+        "internationalInstitutionsAndAgreements": [],
+        "humanRightsAndDemocracyPromotion": [],
+        "globalEconomicAndSecurityPolicy": []
+      },
+      "judicialPolicy": {
+        "judicialOverview": "",
+        "supremeCourtAppointments": [],
+        "lowerCourtAppointments": [],
+        "judicialPhilosophyAndDoctrine": [],
+        "civilLibertiesAndRightsJurisprudence": [],
+        "separationOfPowersAndExecutiveAuthority": []
+      },
+      "legislation": {
+        "legislationOverview": "",
+        "majorLegislativeActions": [],
+        "economicLegislation": [],
+        "domesticLegislation": [],
+        "foreignLegislation": [],
+        "governmentStructureLegislation": []
+      },
+      "misconduct": {
+        "misconductOverview": "",
+        "corruptionAndAbuseOfPower": [],
+        "civilRightsAndLibertiesViolations": [],
+        "warCrimesAndHumanRightsAbuses": [],
+        "democraticNormsAndRuleOfLawErosion": []
+      }
+    },
+    "scores": {
+      "crisisManagement": 0,
+      "domesticPolicy": 0,
+      "economicPolicy": 0,
+      "foreignPolicy": 0,
+      "judicialPolicy": 0,
+      "legislation": 0,
+      "misconduct": 0,
+      "powerScore": 0,
+      "eraNormalizedScore": 0,
+      "rank": 46
+    }
+  },
+  {
+    "name": "Joe Biden",
+    "termStart": "2021-01-20",
+    "termEnd": "2025-01-20",
+    "party": "Democratic",
+    "metrics": {
+      "crisisManagement": {
+        "crisisOverview": "",
+        "majorCrises": [],
+        "wartimeLeadership": [],
+        "domesticUnrest": [],
+        "disasterResponse": [],
+        "internationalCrises": []
+      },
+      "domesticPolicy": {
+        "domesticOverview": "",
+        "socialPolicy": [],
+        "civilRights": [],
+        "educationPolicy": [],
+        "healthcarePolicy": [],
+        "infrastructureAndUrbanPolicy": []
+      },
+      "economicPolicy": {
+        "economicOverview": "",
+        "fiscalPolicy": [],
+        "monetaryAndFinancialPolicy": [],
+        "tradeAndIndustrialPolicy": [],
+        "laborAndEmploymentPolicy": [],
+        "economicCrisisManagement": []
+      },
+      "foreignPolicy": {
+        "foreignPolicyOverview": "",
+        "diplomacyAndAlliances": [],
+        "warAndMilitaryInterventions": [],
+        "internationalInstitutionsAndAgreements": [],
+        "humanRightsAndDemocracyPromotion": [],
+        "globalEconomicAndSecurityPolicy": []
+      },
+      "judicialPolicy": {
+        "judicialOverview": "",
+        "supremeCourtAppointments": [],
+        "lowerCourtAppointments": [],
+        "judicialPhilosophyAndDoctrine": [],
+        "civilLibertiesAndRightsJurisprudence": [],
+        "separationOfPowersAndExecutiveAuthority": []
+      },
+      "legislation": {
+        "legislationOverview": "",
+        "majorLegislativeActions": [],
+        "economicLegislation": [],
+        "domesticLegislation": [],
+        "foreignLegislation": [],
+        "governmentStructureLegislation": []
+      },
+      "misconduct": {
+        "misconductOverview": "",
+        "corruptionAndAbuseOfPower": [],
+        "civilRightsAndLibertiesViolations": [],
+        "warCrimesAndHumanRightsAbuses": [],
+        "democraticNormsAndRuleOfLawErosion": []
+      }
+    },
+    "scores": {
+      "crisisManagement": 0,
+      "domesticPolicy": 0,
+      "economicPolicy": 0,
+      "foreignPolicy": 0,
+      "judicialPolicy": 0,
+      "legislation": 0,
+      "misconduct": 0,
+      "powerScore": 0,
+      "eraNormalizedScore": 0,
+      "rank": 46
+    }
+  },
+  {
+    "name": "Joe Biden",
+    "termStart": "2021-01-20",
+    "termEnd": "2025-01-20",
+    "party": "Democratic",
+    "metrics": {
+      "crisisManagement": {
+        "crisisOverview": "",
+        "majorCrises": [],
+        "wartimeLeadership": [],
+        "domesticUnrest": [],
+        "disasterResponse": [],
+        "internationalCrises": []
+      },
+      "domesticPolicy": {
+        "domesticOverview": "",
+        "socialPolicy": [],
+        "civilRights": [],
+        "educationPolicy": [],
+        "healthcarePolicy": [],
+        "infrastructureAndUrbanPolicy": []
+      },
+      "economicPolicy": {
+        "economicOverview": "",
+        "fiscalPolicy": [],
+        "monetaryAndFinancialPolicy": [],
+        "tradeAndIndustrialPolicy": [],
+        "laborAndEmploymentPolicy": [],
+        "economicCrisisManagement": []
+      },
+      "foreignPolicy": {
+        "foreignPolicyOverview": "",
+        "diplomacyAndAlliances": [],
+        "warAndMilitaryInterventions": [],
+        "internationalInstitutionsAndAgreements": [],
+        "humanRightsAndDemocracyPromotion": [],
+        "globalEconomicAndSecurityPolicy": []
+      },
+      "judicialPolicy": {
+        "judicialOverview": "",
+        "supremeCourtAppointments": [],
+        "lowerCourtAppointments": [],
+        "judicialPhilosophyAndDoctrine": [],
+        "civilLibertiesAndRightsJurisprudence": [],
+        "separationOfPowersAndExecutiveAuthority": []
+      },
+      "legislation": {
+        "legislationOverview": "",
+        "majorLegislativeActions": [],
+        "economicLegislation": [],
+        "domesticLegislation": [],
+        "foreignLegislation": [],
+        "governmentStructureLegislation": []
+      },
+      "misconduct": {
+        "misconductOverview": "",
+        "corruptionAndAbuseOfPower": [],
+        "civilRightsAndLibertiesViolations": [],
+        "warCrimesAndHumanRightsAbuses": [],
+        "democraticNormsAndRuleOfLawErosion": []
+      }
+    },
+    "scores": {
+      "crisisManagement": 0,
+      "domesticPolicy": 0,
+      "economicPolicy": 0,
+      "foreignPolicy": 0,
+      "judicialPolicy": 0,
+      "legislation": 0,
+      "misconduct": 0,
+      "powerScore": 0,
+      "eraNormalizedScore": 0,
+      "rank": 46
+    }
+  },
+  {
+    "name": "Joe Biden",
+    "termStart": "2021-01-20",
+    "termEnd": "2025-01-20",
+    "party": "Democratic",
+    "metrics": {
+      "crisisManagement": {
+        "crisisOverview": "",
+        "majorCrises": [],
+        "wartimeLeadership": [],
+        "domesticUnrest": [],
+        "disasterResponse": [],
+        "internationalCrises": []
+      },
+      "domesticPolicy": {
+        "domesticOverview": "",
+        "socialPolicy": [],
+        "civilRights": [],
+        "educationPolicy": [],
+        "healthcarePolicy": [],
+        "infrastructureAndUrbanPolicy": []
+      },
+      "economicPolicy": {
+        "economicOverview": "",
+        "fiscalPolicy": [],
+        "monetaryAndFinancialPolicy": [],
+        "tradeAndIndustrialPolicy": [],
+        "laborAndEmploymentPolicy": [],
+        "economicCrisisManagement": []
+      },
+      "foreignPolicy": {
+        "foreignPolicyOverview": "",
+        "diplomacyAndAlliances": [],
+        "warAndMilitaryInterventions": [],
+        "internationalInstitutionsAndAgreements": [],
+        "humanRightsAndDemocracyPromotion": [],
+        "globalEconomicAndSecurityPolicy": []
+      },
+      "judicialPolicy": {
+        "judicialOverview": "",
+        "supremeCourtAppointments": [],
+        "lowerCourtAppointments": [],
+        "judicialPhilosophyAndDoctrine": [],
+        "civilLibertiesAndRightsJurisprudence": [],
+        "separationOfPowersAndExecutiveAuthority": []
+      },
+      "legislation": {
+        "legislationOverview": "",
+        "majorLegislativeActions": [],
+        "economicLegislation": [],
+        "domesticLegislation": [],
+        "foreignLegislation": [],
+        "governmentStructureLegislation": []
+      },
+      "misconduct": {
+        "misconductOverview": "",
+        "corruptionAndAbuseOfPower": [],
+        "civilRightsAndLibertiesViolations": [],
+        "warCrimesAndHumanRightsAbuses": [],
+        "democraticNormsAndRuleOfLawErosion": []
+      }
+    },
+    "scores": {
+      "crisisManagement": 0,
+      "domesticPolicy": 0,
+      "economicPolicy": 0,
+      "foreignPolicy": 0,
+      "judicialPolicy": 0,
+      "legislation": 0,
+      "misconduct": 0,
+      "powerScore": 0,
+      "eraNormalizedScore": 0,
+      "rank": 46
+    }
+  },
+  {
+    "name": "Joe Biden",
+    "termStart": "2021-01-20",
+    "termEnd": "2025-01-20",
+    "party": "Democratic",
+    "metrics": {
+      "crisisManagement": {
+        "crisisOverview": "",
+        "majorCrises": [],
+        "wartimeLeadership": [],
+        "domesticUnrest": [],
+        "disasterResponse": [],
+        "internationalCrises": []
+      },
+      "domesticPolicy": {
+        "domesticOverview": "",
+        "socialPolicy": [],
+        "civilRights": [],
+        "educationPolicy": [],
+        "healthcarePolicy": [],
+        "infrastructureAndUrbanPolicy": []
+      },
+      "economicPolicy": {
+        "economicOverview": "",
+        "fiscalPolicy": [],
+        "monetaryAndFinancialPolicy": [],
+        "tradeAndIndustrialPolicy": [],
+        "laborAndEmploymentPolicy": [],
+        "economicCrisisManagement": []
+      },
+      "foreignPolicy": {
+        "foreignPolicyOverview": "",
+        "diplomacyAndAlliances": [],
+        "warAndMilitaryInterventions": [],
+        "internationalInstitutionsAndAgreements": [],
+        "humanRightsAndDemocracyPromotion": [],
+        "globalEconomicAndSecurityPolicy": []
+      },
+      "judicialPolicy": {
+        "judicialOverview": "",
+        "supremeCourtAppointments": [],
+        "lowerCourtAppointments": [],
+        "judicialPhilosophyAndDoctrine": [],
+        "civilLibertiesAndRightsJurisprudence": [],
+        "separationOfPowersAndExecutiveAuthority": []
+      },
+      "legislation": {
+        "legislationOverview": "",
+        "majorLegislativeActions": [],
+        "economicLegislation": [],
+        "domesticLegislation": [],
+        "foreignLegislation": [],
+        "governmentStructureLegislation": []
+      },
+      "misconduct": {
+        "misconductOverview": "",
+        "corruptionAndAbuseOfPower": [],
+        "civilRightsAndLibertiesViolations": [],
+        "warCrimesAndHumanRightsAbuses": [],
+        "democraticNormsAndRuleOfLawErosion": []
+      }
+    },
+    "scores": {
+      "crisisManagement": 0,
+      "domesticPolicy": 0,
+      "economicPolicy": 0,
+      "foreignPolicy": 0,
+      "judicialPolicy": 0,
+      "legislation": 0,
+      "misconduct": 0,
+      "powerScore": 0,
+      "eraNormalizedScore": 0,
+      "rank": 46
+    }
+  },
+  {
+    "name": "Joe Biden",
+    "termStart": "2021-01-20",
+    "termEnd": "2025-01-20",
+    "party": "Democratic",
+    "metrics": {
+      "crisisManagement": {
+        "crisisOverview": "",
+        "majorCrises": [],
+        "wartimeLeadership": [],
+        "domesticUnrest": [],
+        "disasterResponse": [],
+        "internationalCrises": []
+      },
+      "domesticPolicy": {
+        "domesticOverview": "",
+        "socialPolicy": [],
+        "civilRights": [],
+        "educationPolicy": [],
+        "healthcarePolicy": [],
+        "infrastructureAndUrbanPolicy": []
+      },
+      "economicPolicy": {
+        "economicOverview": "",
+        "fiscalPolicy": [],
+        "monetaryAndFinancialPolicy": [],
+        "tradeAndIndustrialPolicy": [],
+        "laborAndEmploymentPolicy": [],
+        "economicCrisisManagement": []
+      },
+      "foreignPolicy": {
+        "foreignPolicyOverview": "",
+        "diplomacyAndAlliances": [],
+        "warAndMilitaryInterventions": [],
+        "internationalInstitutionsAndAgreements": [],
+        "humanRightsAndDemocracyPromotion": [],
+        "globalEconomicAndSecurityPolicy": []
+      },
+      "judicialPolicy": {
+        "judicialOverview": "",
+        "supremeCourtAppointments": [],
+        "lowerCourtAppointments": [],
+        "judicialPhilosophyAndDoctrine": [],
+        "civilLibertiesAndRightsJurisprudence": [],
+        "separationOfPowersAndExecutiveAuthority": []
+      },
+      "legislation": {
+        "legislationOverview": "",
+        "majorLegislativeActions": [],
+        "economicLegislation": [],
+        "domesticLegislation": [],
+        "foreignLegislation": [],
+        "governmentStructureLegislation": []
+      },
+      "misconduct": {
+        "misconductOverview": "",
+        "corruptionAndAbuseOfPower": [],
+        "civilRightsAndLibertiesViolations": [],
+        "warCrimesAndHumanRightsAbuses": [],
+        "democraticNormsAndRuleOfLawErosion": []
+      }
+    },
+    "scores": {
+      "crisisManagement": 0,
+      "domesticPolicy": 0,
+      "economicPolicy": 0,
+      "foreignPolicy": 0,
+      "judicialPolicy": 0,
+      "legislation": 0,
+      "misconduct": 0,
+      "powerScore": 0,
+      "eraNormalizedScore": 0,
+      "rank": 46
+    }
+  },
+  {
+    "name": "Joe Biden",
+    "termStart": "2021-01-20",
+    "termEnd": "2025-01-20",
+    "party": "Democratic",
+    "metrics": {
+      "crisisManagement": {
+        "crisisOverview": "",
+        "majorCrises": [],
+        "wartimeLeadership": [],
+        "domesticUnrest": [],
+        "disasterResponse": [],
+        "internationalCrises": []
+      },
+      "domesticPolicy": {
+        "domesticOverview": "",
+        "socialPolicy": [],
+        "civilRights": [],
+        "educationPolicy": [],
+        "healthcarePolicy": [],
+        "infrastructureAndUrbanPolicy": []
+      },
+      "economicPolicy": {
+        "economicOverview": "",
+        "fiscalPolicy": [],
+        "monetaryAndFinancialPolicy": [],
+        "tradeAndIndustrialPolicy": [],
+        "laborAndEmploymentPolicy": [],
+        "economicCrisisManagement": []
+      },
+      "foreignPolicy": {
+        "foreignPolicyOverview": "",
+        "diplomacyAndAlliances": [],
+        "warAndMilitaryInterventions": [],
+        "internationalInstitutionsAndAgreements": [],
+        "humanRightsAndDemocracyPromotion": [],
+        "globalEconomicAndSecurityPolicy": []
+      },
+      "judicialPolicy": {
+        "judicialOverview": "",
+        "supremeCourtAppointments": [],
+        "lowerCourtAppointments": [],
+        "judicialPhilosophyAndDoctrine": [],
+        "civilLibertiesAndRightsJurisprudence": [],
+        "separationOfPowersAndExecutiveAuthority": []
+      },
+      "legislation": {
+        "legislationOverview": "",
+        "majorLegislativeActions": [],
+        "economicLegislation": [],
+        "domesticLegislation": [],
+        "foreignLegislation": [],
+        "governmentStructureLegislation": []
+      },
+      "misconduct": {
+        "misconductOverview": "",
+        "corruptionAndAbuseOfPower": [],
+        "civilRightsAndLibertiesViolations": [],
+        "warCrimesAndHumanRightsAbuses": [],
+        "democraticNormsAndRuleOfLawErosion": []
+      }
+    },
+    "scores": {
+      "crisisManagement": 0,
+      "domesticPolicy": 0,
+      "economicPolicy": 0,
+      "foreignPolicy": 0,
+      "judicialPolicy": 0,
+      "legislation": 0,
+      "misconduct": 0,
+      "powerScore": 0,
+      "eraNormalizedScore": 0,
+      "rank": 46
+    }
+  },
+  {
+    "name": "Joe Biden",
+    "termStart": "2021-01-20",
+    "termEnd": "2025-01-20",
+    "party": "Democratic",
+    "metrics": {
+      "crisisManagement": {
+        "crisisOverview": "",
+        "majorCrises": [],
+        "wartimeLeadership": [],
+        "domesticUnrest": [],
+        "disasterResponse": [],
+        "internationalCrises": []
+      },
+      "domesticPolicy": {
+        "domesticOverview": "",
+        "socialPolicy": [],
+        "civilRights": [],
+        "educationPolicy": [],
+        "healthcarePolicy": [],
+        "infrastructureAndUrbanPolicy": []
+      },
+      "economicPolicy": {
+        "economicOverview": "",
+        "fiscalPolicy": [],
+        "monetaryAndFinancialPolicy": [],
+        "tradeAndIndustrialPolicy": [],
+        "laborAndEmploymentPolicy": [],
+        "economicCrisisManagement": []
+      },
+      "foreignPolicy": {
+        "foreignPolicyOverview": "",
+        "diplomacyAndAlliances": [],
+        "warAndMilitaryInterventions": [],
+        "internationalInstitutionsAndAgreements": [],
+        "humanRightsAndDemocracyPromotion": [],
+        "globalEconomicAndSecurityPolicy": []
+      },
+      "judicialPolicy": {
+        "judicialOverview": "",
+        "supremeCourtAppointments": [],
+        "lowerCourtAppointments": [],
+        "judicialPhilosophyAndDoctrine": [],
+        "civilLibertiesAndRightsJurisprudence": [],
+        "separationOfPowersAndExecutiveAuthority": []
+      },
+      "legislation": {
+        "legislationOverview": "",
+        "majorLegislativeActions": [],
+        "economicLegislation": [],
+        "domesticLegislation": [],
+        "foreignLegislation": [],
+        "governmentStructureLegislation": []
+      },
+      "misconduct": {
+        "misconductOverview": "",
+        "corruptionAndAbuseOfPower": [],
+        "civilRightsAndLibertiesViolations": [],
+        "warCrimesAndHumanRightsAbuses": [],
+        "democraticNormsAndRuleOfLawErosion": []
+      }
+    },
+    "scores": {
+      "crisisManagement": 0,
+      "domesticPolicy": 0,
+      "economicPolicy": 0,
+      "foreignPolicy": 0,
+      "judicialPolicy": 0,
+      "legislation": 0,
+      "misconduct": 0,
+      "powerScore": 0,
+      "eraNormalizedScore": 0,
+      "rank": 46
+    }
+  },
+  {
+    "name": "Joe Biden",
+    "termStart": "2021-01-20",
+    "termEnd": "2025-01-20",
+    "party": "Democratic",
+    "metrics": {
+      "crisisManagement": {
+        "crisisOverview": "",
+        "majorCrises": [],
+        "wartimeLeadership": [],
+        "domesticUnrest": [],
+        "disasterResponse": [],
+        "internationalCrises": []
+      },
+      "domesticPolicy": {
+        "domesticOverview": "",
+        "socialPolicy": [],
+        "civilRights": [],
+        "educationPolicy": [],
+        "healthcarePolicy": [],
+        "infrastructureAndUrbanPolicy": []
+      },
+      "economicPolicy": {
+        "economicOverview": "",
+        "fiscalPolicy": [],
+        "monetaryAndFinancialPolicy": [],
+        "tradeAndIndustrialPolicy": [],
+        "laborAndEmploymentPolicy": [],
+        "economicCrisisManagement": []
+      },
+      "foreignPolicy": {
+        "foreignPolicyOverview": "",
+        "diplomacyAndAlliances": [],
+        "warAndMilitaryInterventions": [],
+        "internationalInstitutionsAndAgreements": [],
+        "humanRightsAndDemocracyPromotion": [],
+        "globalEconomicAndSecurityPolicy": []
+      },
+      "judicialPolicy": {
+        "judicialOverview": "",
+        "supremeCourtAppointments": [],
+        "lowerCourtAppointments": [],
+        "judicialPhilosophyAndDoctrine": [],
+        "civilLibertiesAndRightsJurisprudence": [],
+        "separationOfPowersAndExecutiveAuthority": []
+      },
+      "legislation": {
+        "legislationOverview": "",
+        "majorLegislativeActions": [],
+        "economicLegislation": [],
+        "domesticLegislation": [],
+        "foreignLegislation": [],
+        "governmentStructureLegislation": []
+      },
+      "misconduct": {
+        "misconductOverview": "",
+        "corruptionAndAbuseOfPower": [],
+        "civilRightsAndLibertiesViolations": [],
+        "warCrimesAndHumanRightsAbuses": [],
+        "democraticNormsAndRuleOfLawErosion": []
+      }
+    },
+    "scores": {
+      "crisisManagement": 0,
+      "domesticPolicy": 0,
+      "economicPolicy": 0,
+      "foreignPolicy": 0,
+      "judicialPolicy": 0,
+      "legislation": 0,
+      "misconduct": 0,
+      "powerScore": 0,
+      "eraNormalizedScore": 0,
+      "rank": 46
+    }
+  },
+  {
+    "name": "Joe Biden",
+    "termStart": "2021-01-20",
+    "termEnd": "2025-01-20",
+    "party": "Democratic",
+    "metrics": {
+      "crisisManagement": {
+        "crisisOverview": "",
+        "majorCrises": [],
+        "wartimeLeadership": [],
+        "domesticUnrest": [],
+        "disasterResponse": [],
+        "internationalCrises": []
+      },
+      "domesticPolicy": {
+        "domesticOverview": "",
+        "socialPolicy": [],
+        "civilRights": [],
+        "educationPolicy": [],
+        "healthcarePolicy": [],
+        "infrastructureAndUrbanPolicy": []
+      },
+      "economicPolicy": {
+        "economicOverview": "",
+        "fiscalPolicy": [],
+        "monetaryAndFinancialPolicy": [],
+        "tradeAndIndustrialPolicy": [],
+        "laborAndEmploymentPolicy": [],
+        "economicCrisisManagement": []
+      },
+      "foreignPolicy": {
+        "foreignPolicyOverview": "",
+        "diplomacyAndAlliances": [],
+        "warAndMilitaryInterventions": [],
+        "internationalInstitutionsAndAgreements": [],
+        "humanRightsAndDemocracyPromotion": [],
+        "globalEconomicAndSecurityPolicy": []
+      },
+      "judicialPolicy": {
+        "judicialOverview": "",
+        "supremeCourtAppointments": [],
+        "lowerCourtAppointments": [],
+        "judicialPhilosophyAndDoctrine": [],
+        "civilLibertiesAndRightsJurisprudence": [],
+        "separationOfPowersAndExecutiveAuthority": []
+      },
+      "legislation": {
+        "legislationOverview": "",
+        "majorLegislativeActions": [],
+        "economicLegislation": [],
+        "domesticLegislation": [],
+        "foreignLegislation": [],
+        "governmentStructureLegislation": []
+      },
+      "misconduct": {
+        "misconductOverview": "",
+        "corruptionAndAbuseOfPower": [],
+        "civilRightsAndLibertiesViolations": [],
+        "warCrimesAndHumanRightsAbuses": [],
+        "democraticNormsAndRuleOfLawErosion": []
+      }
+    },
+    "scores": {
+      "crisisManagement": 0,
+      "domesticPolicy": 0,
+      "economicPolicy": 0,
+      "foreignPolicy": 0,
+      "judicialPolicy": 0,
+      "legislation": 0,
+      "misconduct": 0,
+      "powerScore": 0,
+      "eraNormalizedScore": 0,
+      "rank": 46
+    }
+  },
+  {
+    "name": "Joe Biden",
+    "termStart": "2021-01-20",
+    "termEnd": "2025-01-20",
+    "party": "Democratic",
+    "metrics": {
+      "crisisManagement": {
+        "crisisOverview": "",
+        "majorCrises": [],
+        "wartimeLeadership": [],
+        "domesticUnrest": [],
+        "disasterResponse": [],
+        "internationalCrises": []
+      },
+      "domesticPolicy": {
+        "domesticOverview": "",
+        "socialPolicy": [],
+        "civilRights": [],
+        "educationPolicy": [],
+        "healthcarePolicy": [],
+        "infrastructureAndUrbanPolicy": []
+      },
+      "economicPolicy": {
+        "economicOverview": "",
+        "fiscalPolicy": [],
+        "monetaryAndFinancialPolicy": [],
+        "tradeAndIndustrialPolicy": [],
+        "laborAndEmploymentPolicy": [],
+        "economicCrisisManagement": []
+      },
+      "foreignPolicy": {
+        "foreignPolicyOverview": "",
+        "diplomacyAndAlliances": [],
+        "warAndMilitaryInterventions": [],
+        "internationalInstitutionsAndAgreements": [],
+        "humanRightsAndDemocracyPromotion": [],
+        "globalEconomicAndSecurityPolicy": []
+      },
+      "judicialPolicy": {
+        "judicialOverview": "",
+        "supremeCourtAppointments": [],
+        "lowerCourtAppointments": [],
+        "judicialPhilosophyAndDoctrine": [],
+        "civilLibertiesAndRightsJurisprudence": [],
+        "separationOfPowersAndExecutiveAuthority": []
+      },
+      "legislation": {
+        "legislationOverview": "",
+        "majorLegislativeActions": [],
+        "economicLegislation": [],
+        "domesticLegislation": [],
+        "foreignLegislation": [],
+        "governmentStructureLegislation": []
+      },
+      "misconduct": {
+        "misconductOverview": "",
+        "corruptionAndAbuseOfPower": [],
+        "civilRightsAndLibertiesViolations": [],
+        "warCrimesAndHumanRightsAbuses": [],
+        "democraticNormsAndRuleOfLawErosion": []
+      }
+    },
+    "scores": {
+      "crisisManagement": 0,
+      "domesticPolicy": 0,
+      "economicPolicy": 0,
+      "foreignPolicy": 0,
+      "judicialPolicy": 0,
+      "legislation": 0,
+      "misconduct": 0,
+      "powerScore": 0,
+      "eraNormalizedScore": 0,
+      "rank": 46
+    }
+  },
+  {
+    "name": "Joe Biden",
+    "termStart": "2021-01-20",
+    "termEnd": "2025-01-20",
+    "party": "Democratic",
+    "metrics": {
+      "crisisManagement": {
+        "crisisOverview": "",
+        "majorCrises": [],
+        "wartimeLeadership": [],
+        "domesticUnrest": [],
+        "disasterResponse": [],
+        "internationalCrises": []
+      },
+      "domesticPolicy": {
+        "domesticOverview": "",
+        "socialPolicy": [],
+        "civilRights": [],
+        "educationPolicy": [],
+        "healthcarePolicy": [],
+        "infrastructureAndUrbanPolicy": []
+      },
+      "economicPolicy": {
+        "economicOverview": "",
+        "fiscalPolicy": [],
+        "monetaryAndFinancialPolicy": [],
+        "tradeAndIndustrialPolicy": [],
+        "laborAndEmploymentPolicy": [],
+        "economicCrisisManagement": []
+      },
+      "foreignPolicy": {
+        "foreignPolicyOverview": "",
+        "diplomacyAndAlliances": [],
+        "warAndMilitaryInterventions": [],
+        "internationalInstitutionsAndAgreements": [],
+        "humanRightsAndDemocracyPromotion": [],
+        "globalEconomicAndSecurityPolicy": []
+      },
+      "judicialPolicy": {
+        "judicialOverview": "",
+        "supremeCourtAppointments": [],
+        "lowerCourtAppointments": [],
+        "judicialPhilosophyAndDoctrine": [],
+        "civilLibertiesAndRightsJurisprudence": [],
+        "separationOfPowersAndExecutiveAuthority": []
+      },
+      "legislation": {
+        "legislationOverview": "",
+        "majorLegislativeActions": [],
+        "economicLegislation": [],
+        "domesticLegislation": [],
+        "foreignLegislation": [],
+        "governmentStructureLegislation": []
+      },
+      "misconduct": {
+        "misconductOverview": "",
+        "corruptionAndAbuseOfPower": [],
+        "civilRightsAndLibertiesViolations": [],
+        "warCrimesAndHumanRightsAbuses": [],
+        "democraticNormsAndRuleOfLawErosion": []
+      }
+    },
+    "scores": {
+      "crisisManagement": 0,
+      "domesticPolicy": 0,
+      "economicPolicy": 0,
+      "foreignPolicy": 0,
+      "judicialPolicy": 0,
+      "legislation": 0,
+      "misconduct": 0,
+      "powerScore": 0,
+      "eraNormalizedScore": 0,
+      "rank": 46
+    }
+  },
+  {
+    "name": "Joe Biden",
+    "termStart": "2021-01-20",
+    "termEnd": "2025-01-20",
+    "party": "Democratic",
+    "metrics": {
+      "crisisManagement": {
+        "crisisOverview": "",
+        "majorCrises": [],
+        "wartimeLeadership": [],
+        "domesticUnrest": [],
+        "disasterResponse": [],
+        "internationalCrises": []
+      },
+      "domesticPolicy": {
+        "domesticOverview": "",
+        "socialPolicy": [],
+        "civilRights": [],
+        "educationPolicy": [],
+        "healthcarePolicy": [],
+        "infrastructureAndUrbanPolicy": []
+      },
+      "economicPolicy": {
+        "economicOverview": "",
+        "fiscalPolicy": [],
+        "monetaryAndFinancialPolicy": [],
+        "tradeAndIndustrialPolicy": [],
+        "laborAndEmploymentPolicy": [],
+        "economicCrisisManagement": []
+      },
+      "foreignPolicy": {
+        "foreignPolicyOverview": "",
+        "diplomacyAndAlliances": [],
+        "warAndMilitaryInterventions": [],
+        "internationalInstitutionsAndAgreements": [],
+        "humanRightsAndDemocracyPromotion": [],
+        "globalEconomicAndSecurityPolicy": []
+      },
+      "judicialPolicy": {
+        "judicialOverview": "",
+        "supremeCourtAppointments": [],
+        "lowerCourtAppointments": [],
+        "judicialPhilosophyAndDoctrine": [],
+        "civilLibertiesAndRightsJurisprudence": [],
+        "separationOfPowersAndExecutiveAuthority": []
+      },
+      "legislation": {
+        "legislationOverview": "",
+        "majorLegislativeActions": [],
+        "economicLegislation": [],
+        "domesticLegislation": [],
+        "foreignLegislation": [],
+        "governmentStructureLegislation": []
+      },
+      "misconduct": {
+        "misconductOverview": "",
+        "corruptionAndAbuseOfPower": [],
+        "civilRightsAndLibertiesViolations": [],
+        "warCrimesAndHumanRightsAbuses": [],
+        "democraticNormsAndRuleOfLawErosion": []
+      }
+    },
+    "scores": {
+      "crisisManagement": 0,
+      "domesticPolicy": 0,
+      "economicPolicy": 0,
+      "foreignPolicy": 0,
+      "judicialPolicy": 0,
+      "legislation": 0,
+      "misconduct": 0,
+      "powerScore": 0,
+      "eraNormalizedScore": 0,
+      "rank": 46
+    }
+  },
+  {
+    "name": "Joe Biden",
+    "termStart": "2021-01-20",
+    "termEnd": "2025-01-20",
+    "party": "Democratic",
+    "metrics": {
+      "crisisManagement": {
+        "crisisOverview": "",
+        "majorCrises": [],
+        "wartimeLeadership": [],
+        "domesticUnrest": [],
+        "disasterResponse": [],
+        "internationalCrises": []
+      },
+      "domesticPolicy": {
+        "domesticOverview": "",
+        "socialPolicy": [],
+        "civilRights": [],
+        "educationPolicy": [],
+        "healthcarePolicy": [],
+        "infrastructureAndUrbanPolicy": []
+      },
+      "economicPolicy": {
+        "economicOverview": "",
+        "fiscalPolicy": [],
+        "monetaryAndFinancialPolicy": [],
+        "tradeAndIndustrialPolicy": [],
+        "laborAndEmploymentPolicy": [],
+        "economicCrisisManagement": []
+      },
+      "foreignPolicy": {
+        "foreignPolicyOverview": "",
+        "diplomacyAndAlliances": [],
+        "warAndMilitaryInterventions": [],
+        "internationalInstitutionsAndAgreements": [],
+        "humanRightsAndDemocracyPromotion": [],
+        "globalEconomicAndSecurityPolicy": []
+      },
+      "judicialPolicy": {
+        "judicialOverview": "",
+        "supremeCourtAppointments": [],
+        "lowerCourtAppointments": [],
+        "judicialPhilosophyAndDoctrine": [],
+        "civilLibertiesAndRightsJurisprudence": [],
+        "separationOfPowersAndExecutiveAuthority": []
+      },
+      "legislation": {
+        "legislationOverview": "",
+        "majorLegislativeActions": [],
+        "economicLegislation": [],
+        "domesticLegislation": [],
+        "foreignLegislation": [],
+        "governmentStructureLegislation": []
+      },
+      "misconduct": {
+        "misconductOverview": "",
+        "corruptionAndAbuseOfPower": [],
+        "civilRightsAndLibertiesViolations": [],
+        "warCrimesAndHumanRightsAbuses": [],
+        "democraticNormsAndRuleOfLawErosion": []
+      }
+    },
+    "scores": {
+      "crisisManagement": 0,
+      "domesticPolicy": 0,
+      "economicPolicy": 0,
+      "foreignPolicy": 0,
+      "judicialPolicy": 0,
+      "legislation": 0,
+      "misconduct": 0,
+      "powerScore": 0,
+      "eraNormalizedScore": 0,
+      "rank": 46
+    }
+  },
+  {
+    "name": "Joe Biden",
+    "termStart": "2021-01-20",
+    "termEnd": "2025-01-20",
+    "party": "Democratic",
+    "metrics": {
+      "crisisManagement": {
+        "crisisOverview": "",
+        "majorCrises": [],
+        "wartimeLeadership": [],
+        "domesticUnrest": [],
+        "disasterResponse": [],
+        "internationalCrises": []
+      },
+      "domesticPolicy": {
+        "domesticOverview": "",
+        "socialPolicy": [],
+        "civilRights": [],
+        "educationPolicy": [],
+        "healthcarePolicy": [],
+        "infrastructureAndUrbanPolicy": []
+      },
+      "economicPolicy": {
+        "economicOverview": "",
+        "fiscalPolicy": [],
+        "monetaryAndFinancialPolicy": [],
+        "tradeAndIndustrialPolicy": [],
+        "laborAndEmploymentPolicy": [],
+        "economicCrisisManagement": []
+      },
+      "foreignPolicy": {
+        "foreignPolicyOverview": "",
+        "diplomacyAndAlliances": [],
+        "warAndMilitaryInterventions": [],
+        "internationalInstitutionsAndAgreements": [],
+        "humanRightsAndDemocracyPromotion": [],
+        "globalEconomicAndSecurityPolicy": []
+      },
+      "judicialPolicy": {
+        "judicialOverview": "",
+        "supremeCourtAppointments": [],
+        "lowerCourtAppointments": [],
+        "judicialPhilosophyAndDoctrine": [],
+        "civilLibertiesAndRightsJurisprudence": [],
+        "separationOfPowersAndExecutiveAuthority": []
+      },
+      "legislation": {
+        "legislationOverview": "",
+        "majorLegislativeActions": [],
+        "economicLegislation": [],
+        "domesticLegislation": [],
+        "foreignLegislation": [],
+        "governmentStructureLegislation": []
+      },
+      "misconduct": {
+        "misconductOverview": "",
+        "corruptionAndAbuseOfPower": [],
+        "civilRightsAndLibertiesViolations": [],
+        "warCrimesAndHumanRightsAbuses": [],
+        "democraticNormsAndRuleOfLawErosion": []
+      }
+    },
+    "scores": {
+      "crisisManagement": 0,
+      "domesticPolicy": 0,
+      "economicPolicy": 0,
+      "foreignPolicy": 0,
+      "judicialPolicy": 0,
+      "legislation": 0,
+      "misconduct": 0,
+      "powerScore": 0,
+      "eraNormalizedScore": 0,
+      "rank": 46
+    }
+  }
+]
