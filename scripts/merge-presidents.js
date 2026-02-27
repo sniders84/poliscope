@@ -1,63 +1,72 @@
 // scripts/merge-presidents.js
-// Merges bootstrap presidents with all metric files using Option B schema.
+// Merge metric JSON files into presidents-rankings.json
 
-const fs = require("fs");
-const path = require("path");
+const fs = require('fs');
+const path = require('path');
 
-const PUBLIC_DIR = path.join(__dirname, "..", "public");
-const OUTPUT_FILE = path.join(PUBLIC_DIR, "presidents-rankings.json");
+const ROOT = path.join(__dirname, '..');
+const DATA = p => path.join(ROOT, 'data', p);
 
-// Metric files using Option B schema
-const METRIC_FILES = {
-  crisisManagement: "presidents-crisis-management.json",
-  foreignPolicy: "presidents-foreign-policy.json",
-  domesticPolicy: "presidents-domestic-policy.json",
-  economicPolicy: "presidents-economic-policy.json",
-  judicialPolicy: "presidents-judicial-policy.json",
-  legislation: "presidents-legislation.json",
-  misconduct: "presidents-misconduct.json"
+const RANKINGS_PATH = DATA('presidents-rankings.json');
+
+const FILES = {
+  crisisManagement: DATA('presidents-crisis-management.json'),
+  domesticPolicy: DATA('presidents-domestic-policy.json'),
+  economicPolicy: DATA('presidents-economic-policy.json'),
+  foreignPolicy: DATA('presidents-foreign-policy.json'),
+  judicialPolicy: DATA('presidents-judicial-policy.json'),
+  legislation: DATA('presidents-legislation.json'),
+  misconduct: DATA('presidents-misconduct.json')
 };
 
-function loadJSON(filePath) {
-  return JSON.parse(fs.readFileSync(filePath, "utf8"));
+function loadJson(pathname) {
+  const raw = fs.readFileSync(pathname, 'utf8');
+  return JSON.parse(raw);
+}
+
+function indexById(arr) {
+  const map = new Map();
+  arr.forEach(item => map.set(item.id, item));
+  return map;
 }
 
 function main() {
-  // Load bootstrap rankings file
-  const rankingsPath = path.join(PUBLIC_DIR, "presidents-rankings.json");
-  const rankings = loadJSON(rankingsPath);
+  const rankings = loadJson(RANKINGS_PATH);
+  const rankingsById = indexById(rankings);
 
-  // Load each metric dataset
-  const metricData = {};
-  for (const [metricName, fileName] of Object.entries(METRIC_FILES)) {
-    const filePath = path.join(PUBLIC_DIR, fileName);
-    metricData[metricName] = loadJSON(filePath);
+  const metricsData = {};
+  for (const [key, filePath] of Object.entries(FILES)) {
+    metricsData[key] = indexById(loadJson(filePath));
   }
 
-  // Merge metrics into each president
-  const enriched = rankings.map((president) => {
-    const id = president.id;
+  rankings.forEach(p => {
+    const id = p.id;
 
-    for (const [metricName, dataset] of Object.entries(metricData)) {
-      const match = dataset.find((p) => p.id === id);
-
-      // Insert metric block or fallback empty block
-      president.metrics[metricName] =
-        match && match[metricName]
-          ? match[metricName]
-          : {
-              events: [],
-              overallAssessment: "",
-              sources: []
-            };
+    if (metricsData.crisisManagement.has(id)) {
+      p.metrics.crisisManagement = metricsData.crisisManagement.get(id).crisisManagement;
     }
-
-    return president;
+    if (metricsData.domesticPolicy.has(id)) {
+      p.metrics.domesticPolicy = metricsData.domesticPolicy.get(id).domesticPolicy;
+    }
+    if (metricsData.economicPolicy.has(id)) {
+      p.metrics.economicPolicy = metricsData.economicPolicy.get(id).economicPolicy;
+    }
+    if (metricsData.foreignPolicy.has(id)) {
+      p.metrics.foreignPolicy = metricsData.foreignPolicy.get(id).foreignPolicy;
+    }
+    if (metricsData.judicialPolicy.has(id)) {
+      p.metrics.judicialPolicy = metricsData.judicialPolicy.get(id).judicialPolicy;
+    }
+    if (metricsData.legislation.has(id)) {
+      p.metrics.legislation = metricsData.legislation.get(id).legislation;
+    }
+    if (metricsData.misconduct.has(id)) {
+      p.metrics.misconduct = metricsData.misconduct.get(id).misconduct;
+    }
   });
 
-  // Write merged output
-  fs.writeFileSync(OUTPUT_FILE, JSON.stringify(enriched, null, 2), "utf8");
-  console.log(`Presidents merged successfully → ${OUTPUT_FILE}`);
+  fs.writeFileSync(RANKINGS_PATH, JSON.stringify(rankings, null, 2), 'utf8');
+  console.log('merge-presidents: merged metrics into presidents-rankings.json');
 }
 
 main();
