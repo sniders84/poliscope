@@ -1,4 +1,5 @@
 // scripts/presidential-eras.js
+// Era groupings for fair, era-normalized presidential scoring
 
 module.exports = {
   founding: [1, 2, 3, 4, 5],                     // Washington → Monroe
