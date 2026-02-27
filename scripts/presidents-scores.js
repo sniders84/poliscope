@@ -6,7 +6,9 @@ const path = require('path');
 const eras = require('./presidential-eras');
 
 const ROOT = path.join(__dirname, '..');
-const RANKINGS_PATH = path.join(ROOT, 'data', 'presidents-rankings.json');
+
+// FIXED: rankings file is in /public, not /data
+const RANKINGS_PATH = path.join(ROOT, 'public', 'presidents-rankings.json');
 
 // Adjust these weights as you refine philosophy
 const METRIC_WEIGHTS = {
