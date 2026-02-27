@@ -3475,27 +3475,25 @@ document.getElementById('rate-me-btn').onclick = function() {
       });
     }
 
-    if (Array.isArray(person.misconductConsequences) && person.misconductConsequences.length) {
-      person.misconductConsequences.forEach(c => {
-        const consRow = document.createElement('tr');
-        consRow.innerHTML = `
-          <td>Consequence</td>
-          <td colspan="3">${c.date || ''} — ${c.text || ''} 
-            ${c.link ? `<a href="${c.link}" target="_blank" rel="noopener noreferrer">[source]</a>` : ''}
-          </td>
-        `;
-        tbody.appendChild(consRow);
-      });
-    }
-  }
-
-  // -----------------------------
-  // OPEN MODAL
-  // -----------------------------
-  const modal = document.getElementById('scorecardModal');
-  modal.classList.add('is-open', 'modal-dark');
-  modal.setAttribute('aria-hidden', 'false');
+   if (Array.isArray(person.misconductConsequences) && person.misconductConsequences.length) {
+  person.misconductConsequences.forEach(c => {
+    const consRow = document.createElement('tr');
+    consRow.innerHTML = `
+      <td>Consequence</td>
+      <td colspan="3">${c.date || ''} — ${c.text || ''} 
+        ${c.link ? `<a href="${c.link}" target="_blank" rel="noopener noreferrer">[source]</a>` : ''}
+      </td>
+    `;
+    tbody.appendChild(consRow);
+  });
 }
+
+// -----------------------------
+// OPEN MODAL
+// -----------------------------
+const modal = document.getElementById('scorecardModal');
+modal.classList.add('is-open', 'modal-dark');
+modal.setAttribute('aria-hidden', 'false');
 
 // Merge rankings JSON with info JSON by slug + misconduct
 function mergeData(rankings, info, misconduct = []) {
