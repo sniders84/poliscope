@@ -3475,6 +3475,14 @@ function mergeData(rankings, info, misconduct = []) {
 // -----------------------------
 // MAIN RENDER FUNCTION
 // -----------------------------
+
+// INSERTED HERE — this fixes the "ordinalSuffix is not defined" crash
+function ordinalSuffix(n) {
+  const s = ["th", "st", "nd", "rd"];
+  const v = n % 100;
+  return n + (s[(v - 20) % 10] || s[v] || s[0]);
+}
+
 async function render() {
   const selectedOffice = officeSel.value.toLowerCase();
   const selectedCategory = categorySel.value;
