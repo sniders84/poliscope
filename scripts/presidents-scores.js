@@ -1,4 +1,5 @@
 // scripts/presidents-scores.js
+// Computes era-normalized presidential power scores.
 
 const fs = require("fs");
 const path = require("path");
@@ -8,6 +9,7 @@ const PUBLIC_DIR = path.join(__dirname, "..", "public");
 const INPUT_FILE = path.join(PUBLIC_DIR, "presidents-rankings.json");
 const OUTPUT_FILE = path.join(PUBLIC_DIR, "presidents-rankings.json");
 
+// Metric weights
 const WEIGHTS = {
   crisisManagementScore: 0.20,
   foreignPolicyScore: 0.15,
@@ -22,6 +24,7 @@ function clamp(n, min, max) {
   return Math.min(Math.max(n, min), max);
 }
 
+// Positive/negative event scoring
 function scorePositiveMetric(metric) {
   if (!metric || !metric.events) return 50;
 
@@ -69,11 +72,13 @@ function normalizeEraScores(presidents) {
 function main() {
   const data = JSON.parse(fs.readFileSync(INPUT_FILE, "utf8"));
 
+  // Group presidents by era
   const eraBuckets = {};
   for (const [era, ids] of Object.entries(ERAS)) {
     eraBuckets[era] = data.filter(p => ids.includes(p.id));
   }
 
+  // Score each era
   for (const [era, presidents] of Object.entries(eraBuckets)) {
     presidents.forEach(p => {
       const raw = computeRawScores(p);
