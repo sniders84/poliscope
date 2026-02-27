@@ -5,18 +5,22 @@ const fs = require('fs');
 const path = require('path');
 
 const ROOT = path.join(__dirname, '..');
-const DATA = p => path.join(ROOT, 'data', p);
 
-const RANKINGS_PATH = DATA('presidents-rankings.json');
+// FIXED: point to /public instead of /data
+const PUBLIC = p => path.join(ROOT, 'public', p);
 
+// FIXED: rankings file is in /public
+const RANKINGS_PATH = PUBLIC('presidents-rankings.json');
+
+// FIXED: all metric files are in /public
 const FILES = {
-  crisisManagement: DATA('presidents-crisis-management.json'),
-  domesticPolicy: DATA('presidents-domestic-policy.json'),
-  economicPolicy: DATA('presidents-economic-policy.json'),
-  foreignPolicy: DATA('presidents-foreign-policy.json'),
-  judicialPolicy: DATA('presidents-judicial-policy.json'),
-  legislation: DATA('presidents-legislation.json'),
-  misconduct: DATA('presidents-misconduct.json')
+  crisisManagement: PUBLIC('presidents-crisis-management.json'),
+  domesticPolicy: PUBLIC('presidents-domestic-policy.json'),
+  economicPolicy: PUBLIC('presidents-economic-policy.json'),
+  foreignPolicy: PUBLIC('presidents-foreign-policy.json'),
+  judicialPolicy: PUBLIC('presidents-judicial-policy.json'),
+  legislation: PUBLIC('presidents-legislation.json'),
+  misconduct: PUBLIC('presidents-misconduct.json')
 };
 
 function loadJson(pathname) {
