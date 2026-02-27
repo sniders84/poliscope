@@ -96,7 +96,7 @@ function main() {
   const presidents = loadPresidents();
 
   const rankings = presidents.map(p => ({
-    id: p.id,
+    id: p.presidentNumber,
     name: p.name,
     termStart: p.termStart,
     termEnd: p.termEnd,
