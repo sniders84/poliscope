@@ -5,7 +5,11 @@ const fs = require('fs');
 const path = require('path');
 
 const ROOT = path.join(__dirname, '..');
-const ROSTER_PATH = path.join(ROOT, 'data', 'presidents.json');
+
+// FIXED: read from the correct roster file in /public
+const ROSTER_PATH = path.join(ROOT, 'public', 'presidents.json');
+
+// Output stays in /public
 const RANKINGS_PATH = path.join(ROOT, 'public', 'presidents-rankings.json');
 
 function loadPresidents() {
@@ -20,7 +24,7 @@ function buildEmptyMetrics() {
       majorCrises: [],
       wartimeLeadership: [],
       domesticUnrest: [],
-     disasterResponse: [],
+      disasterResponse: [],
       internationalCrises: []
     },
     domesticPolicy: {
