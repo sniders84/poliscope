@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   push:
     paths:
-      - "data/presidents.json"
+      - "public/presidents.json"
       - "data/presidents-*.json"
       - "scripts/bootstrap-presidents.js"
       - "scripts/merge-presidents.js"
@@ -44,7 +44,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/presidents-rankings.json
+          git add public/presidents-rankings.json
           if git diff --cached --quiet; then
             echo "No changes to commit."
           else
