@@ -3,28 +3,50 @@
     "id": 1,
     "name": "George Washington",
     "economicPolicy": {
-      "events": [
+      "economicConditionsSummary": "The early national economy under Washington was fragile but generally expanding. The new federal government faced heavy Revolutionary War debts, unstable currencies, and weak revenue, but Hamilton’s financial program began to stabilize credit, encourage investment, and build a national market. Agriculture dominated, commerce and shipping grew, and the foundations of a modern financial system were laid, even as regional tensions over taxation and federal power emerged.",
+      "majorEconomicEvents": [
         {
-          "title": "Implementation of Hamilton’s Financial Program",
-          "summary": "Washington approved and enforced Hamilton’s plan to federalize state debts, establish a national bank, and create a federal revenue system, laying the foundation of U.S. financial architecture.",
+          "title": "Post‑Revolutionary War Debt Crisis",
+          "summary": "The new nation inherited large war debts held by states and the Confederation government. Unstable currencies, arrears to soldiers and creditors, and weak federal taxing power threatened the young republic’s financial credibility. Addressing this crisis became central to Washington’s early administration and to Hamilton’s financial program.",
           "sources": [
-            "National Archives, Washington financial correspondence.",
-            "Library of Congress, Hamilton–Washington papers."
+            "https://www.britannica.com/topic/Public-Credit-Report",
+            "https://history.state.gov/milestones/1784-1800/hamilton-finance"
           ]
         },
         {
-          "title": "Enforcement of the First Federal Excise Tax",
-          "summary": "Washington directed federal enforcement of the whiskey excise tax, asserting federal authority over internal taxation.",
+          "title": "Whiskey Rebellion and Excise Tax Resistance",
+          "summary": "A federal excise tax on distilled spirits provoked fierce resistance among western farmers, culminating in the Whiskey Rebellion of 1794. Washington’s decision to mobilize militia forces to enforce the tax asserted federal authority over economic policy and taxation, signaling that the national government would uphold its revenue laws.",
           "sources": [
-            "Library of Congress, Washington excise enforcement papers.",
-            "National Archives, early Treasury records."
+            "https://www.britannica.com/event/Whiskey-Rebellion",
+            "https://millercenter.org/president/washington/domestic-affairs"
           ]
         }
       ],
-      "overallAssessment": "Washington established the core structures of federal finance, taxation, and national credit.",
-      "sources": [
-        "Library of Congress, Washington presidential papers.",
-        "National Archives, Treasury Department records."
+      "economicInitiatives": [
+        {
+          "title": "Hamilton’s Financial Program",
+          "summary": "Washington backed Alexander Hamilton’s plan to assume state debts, fund the national debt at par, and establish a national bank. The program stabilized federal credit, encouraged domestic and foreign investment, and created a more uniform financial system. It also entrenched customs duties and excise taxes as core federal revenue sources.",
+          "sources": [
+            "https://www.britannica.com/event/Hamiltons-financial-program",
+            "https://history.state.gov/milestones/1784-1800/hamilton-finance"
+          ]
+        },
+        {
+          "title": "Tariff Act of 1789",
+          "summary": "Washington signed the Tariff Act of 1789, creating the first federal tariff system. The law provided essential revenue for the new government and offered modest protection to emerging American industries. It became a cornerstone of early U.S. economic policy and a recurring point of sectional debate.",
+          "sources": [
+            "https://www.britannica.com/topic/Tariff-of-1789",
+            "https://www.mountvernon.org/library/digitalhistory/digital-encyclopedia/article/tariff-of-1789/"
+          ]
+        },
+        {
+          "title": "Creation of the First Bank of the United States",
+          "summary": "With Washington’s support, Congress chartered the First Bank of the United States in 1791. The bank issued a stable national currency, managed government deposits, and helped regulate credit. Its creation marked a major step toward a centralized financial system, though it deepened political divisions over federal power.",
+          "sources": [
+            "https://www.britannica.com/topic/Bank-of-the-United-States",
+            "https://www.federalreservehistory.org/essays/first-bank-of-the-us"
+          ]
+        }
       ]
     }
   },
@@ -32,28 +54,42 @@
     "id": 2,
     "name": "John Adams",
     "economicPolicy": {
-      "events": [
+      "economicConditionsSummary": "Adams presided over a still‑developing national economy marked by maritime trade, early industrial growth, and mounting tensions with France. The Quasi‑War disrupted commerce and required higher federal spending, while new taxes to fund defense were deeply unpopular. Economic conditions were mixed: trade remained important, but political conflict and taxation fueled resentment and contributed to the Federalists’ decline.",
+      "majorEconomicEvents": [
         {
-          "title": "Strengthening of Federal Maritime and Trade Protections",
-          "summary": "Adams expanded naval spending and authorized protection of American shipping during the Quasi‑War, shaping early federal trade security policy.",
+          "title": "Quasi‑War Trade Disruptions",
+          "summary": "The undeclared naval conflict with France in the late 1790s led to seizures of American ships and higher insurance and shipping costs. While naval mobilization stimulated shipbuilding and related industries, uncertainty and conflict strained merchants and complicated Atlantic commerce.",
           "sources": [
-            "National Archives, Adams naval appropriations correspondence.",
-            "Library of Congress, Adams maritime policy papers."
+            "https://www.britannica.com/event/Quasi-War",
+            "https://millercenter.org/president/adams/domestic-affairs"
           ]
         },
         {
-          "title": "Continuation of Federalist Fiscal Policies",
-          "summary": "Adams maintained Hamiltonian revenue systems and supported federal taxation structures that preserved national credit.",
+          "title": "Public Backlash to Federal Taxation",
+          "summary": "New federal taxes, including the Direct Tax of 1798, provoked widespread resentment, especially among rural property owners. Protests and resistance highlighted the limits of public tolerance for direct federal levies and contributed to the erosion of Federalist political support.",
           "sources": [
-            "Library of Congress, Adams fiscal papers.",
-            "National Archives, Treasury correspondence."
+            "https://www.britannica.com/topic/Direct-Tax-of-1798",
+            "https://millercenter.org/president/adams/domestic-affairs"
           ]
         }
       ],
-      "overallAssessment": "Adams reinforced early federal fiscal and trade protection frameworks.",
-      "sources": [
-        "Library of Congress, Adams presidential papers.",
-        "National Archives, early federal finance records."
+      "economicInitiatives": [
+        {
+          "title": "Direct Tax of 1798",
+          "summary": "Adams approved a federal direct tax on land, houses, and slaves to finance military expansion during the Quasi‑War. The tax represented a significant assertion of federal fiscal power but proved politically costly, reinforcing perceptions of Federalist elitism and overreach.",
+          "sources": [
+            "https://www.britannica.com/topic/Direct-Tax-of-1798",
+            "https://millercenter.org/president/adams/domestic-affairs"
+          ]
+        },
+        {
+          "title": "Naval Expansion and Defense Spending",
+          "summary": "To confront French naval threats, Adams oversaw substantial investment in the U.S. Navy, including the construction of frigates and other warships. This spending supported shipyards and maritime industries but increased federal debt and required new revenue measures.",
+          "sources": [
+            "https://www.britannica.com/biography/John-Adams",
+            "https://www.history.navy.mil/browse-by-topic/heritage/usn-people/presidents/adams.html"
+          ]
+        }
       ]
     }
   },
@@ -61,28 +97,50 @@
     "id": 3,
     "name": "Thomas Jefferson",
     "economicPolicy": {
-      "events": [
+      "economicConditionsSummary": "Jefferson’s presidency began amid relative prosperity, with expanding agriculture and trade, reduced federal debt, and lower taxes. However, escalating European wars and British and French interference with American shipping culminated in the Embargo Act, which severely damaged port cities and commercial interests. The broader economy remained agrarian and land‑driven, but trade‑dependent regions suffered sharp downturns.",
+      "majorEconomicEvents": [
         {
-          "title": "Elimination of Internal Federal Taxes",
-          "summary": "Jefferson abolished all internal federal taxes except tariffs, dramatically reducing federal revenue mechanisms.",
+          "title": "Embargo Act Economic Contraction",
+          "summary": "The Embargo Act of 1807 halted nearly all U.S. exports in an attempt to pressure Britain and France to respect American neutrality. The policy devastated merchants, shipowners, and port economies, leading to widespread smuggling and economic distress, especially in New England.",
           "sources": [
-            "National Archives, Jefferson revenue directives.",
-            "Library of Congress, Jefferson fiscal correspondence."
+            "https://www.britannica.com/event/Embargo-Act",
+            "https://history.state.gov/milestones/1801-1829/embargo-act"
           ]
         },
         {
-          "title": "Reduction of Federal Debt Through Spending Cuts",
-          "summary": "Jefferson implemented aggressive spending reductions to shrink the national debt, reshaping federal fiscal priorities.",
+          "title": "Trade Disruptions from Napoleonic Wars",
+          "summary": "Ongoing conflict between Britain and France led to blockades, seizures of American ships, and restrictions on neutral trade. These pressures strained the U.S. economy, particularly its commercial and maritime sectors, and set the stage for more confrontational policies.",
           "sources": [
-            "Library of Congress, Jefferson Treasury papers.",
-            "National Archives, early federal budget records."
+            "https://www.britannica.com/event/Napoleonic-Wars",
+            "https://millercenter.org/president/jefferson/foreign-affairs"
           ]
         }
       ],
-      "overallAssessment": "Jefferson reoriented federal fiscal policy toward minimal taxation and reduced federal spending.",
-      "sources": [
-        "Library of Congress, Jefferson presidential papers.",
-        "National Archives, Treasury Department archives."
+      "economicInitiatives": [
+        {
+          "title": "Reduction of Federal Spending and Taxes",
+          "summary": "Jefferson cut military expenditures, reduced the size of the federal bureaucracy, and eliminated internal taxes such as the whiskey excise. His administration relied heavily on customs duties for revenue and prioritized debt reduction, reflecting a commitment to limited government and fiscal restraint.",
+          "sources": [
+            "https://www.britannica.com/biography/Thomas-Jefferson",
+            "https://millercenter.org/president/jefferson/domestic-affairs"
+          ]
+        },
+        {
+          "title": "Louisiana Purchase and Economic Expansion",
+          "summary": "The Louisiana Purchase in 1803 doubled U.S. territory and opened vast new lands for agriculture, trade, and settlement. The acquisition strengthened the nation’s resource base and long‑term economic potential, even as it raised constitutional and political questions.",
+          "sources": [
+            "https://www.britannica.com/event/Louisiana-Purchase",
+            "https://history.state.gov/milestones/1801-1829/louisiana-purchase"
+          ]
+        },
+        {
+          "title": "Embargo Act of 1807",
+          "summary": "Jefferson’s Embargo Act attempted to use economic pressure instead of war to respond to British and French violations of U.S. neutrality. While intended as a peaceful coercive tool, it inflicted severe domestic economic damage and proved politically disastrous.",
+          "sources": [
+            "https://www.britannica.com/event/Embargo-Act",
+            "https://millercenter.org/president/jefferson/domestic-affairs"
+          ]
+        }
       ]
     }
   },
@@ -90,28 +148,42 @@
     "id": 4,
     "name": "James Madison",
     "economicPolicy": {
-      "events": [
+      "economicConditionsSummary": "Madison’s presidency was dominated by the economic strains of the War of 1812. Trade disruptions, blockades, and wartime spending produced inflation, financial instability, and regional hardship. After the war, the economy transitioned into a period of recovery and early industrial growth, but structural weaknesses in banking and credit contributed to the Panic of 1819 shortly after his tenure.",
+      "majorEconomicEvents": [
         {
-          "title": "Rechartering of the National Bank",
-          "summary": "Madison reversed earlier opposition and approved the Second Bank of the United States to stabilize wartime finances.",
+          "title": "War of 1812 Trade and Finance Disruptions",
+          "summary": "The War of 1812 brought British blockades, loss of trade, and heavy federal borrowing. The expiration of the First Bank of the United States left the government without a central financial institution, complicating war finance and contributing to inflation and monetary disorder.",
           "sources": [
-            "National Archives, Madison bank correspondence.",
-            "Library of Congress, Madison fiscal papers."
+            "https://www.britannica.com/event/War-of-1812",
+            "https://millercenter.org/president/madison/domestic-affairs"
           ]
         },
         {
-          "title": "Tariff of 1816 Support",
-          "summary": "Madison backed the first protective tariff to support domestic manufacturing after the War of 1812.",
+          "title": "Postwar Economic Adjustment",
+          "summary": "After the war, pent‑up demand, renewed trade, and westward expansion fueled economic growth, but speculative lending and uneven regulation created vulnerabilities. These conditions helped set the stage for the Panic of 1819 early in Monroe’s term.",
           "sources": [
-            "Library of Congress, Madison tariff papers.",
-            "National Archives, early trade policy records."
+            "https://www.britannica.com/event/Panic-of-1819",
+            "https://www.federalreservehistory.org/essays/panic-of-1819"
           ]
         }
       ],
-      "overallAssessment": "Madison strengthened federal financial institutions and initiated protective trade policy.",
-      "sources": [
-        "Library of Congress, Madison presidential papers.",
-        "National Archives, fiscal policy records."
+      "economicInitiatives": [
+        {
+          "title": "Chartering the Second Bank of the United States",
+          "summary": "In 1816, Madison signed the charter for the Second Bank of the United States, reversing earlier Republican opposition to a national bank. The institution was intended to stabilize currency, regulate credit, and support federal borrowing, becoming a central pillar of postwar financial policy.",
+          "sources": [
+            "https://www.britannica.com/topic/Bank-of-the-United-States",
+            "https://www.federalreservehistory.org/essays/second-bank-of-the-us"
+          ]
+        },
+        {
+          "title": "Tariff of 1816",
+          "summary": "Madison approved the Tariff of 1816, the first explicitly protective tariff in U.S. history. It aimed to shield emerging American manufacturers from British competition in the postwar period and marked a shift toward economic nationalism.",
+          "sources": [
+            "https://www.britannica.com/topic/Tariff-of-1816",
+            "https://www.congress.gov/resources/display/content/History+of+Tariffs"
+          ]
+        }
       ]
     }
   },
@@ -119,28 +191,42 @@
     "id": 5,
     "name": "James Monroe",
     "economicPolicy": {
-      "events": [
+      "economicConditionsSummary": "Monroe’s presidency is often remembered as the Era of Good Feelings, but beneath the political calm, the economy experienced both rapid expansion and severe contraction. Easy credit, land speculation, and rising agricultural prices fueled growth early in his term, followed by the Panic of 1819, which brought widespread unemployment, bank failures, and foreclosures. The later years saw gradual recovery and continued westward and infrastructural development.",
+      "majorEconomicEvents": [
         {
-          "title": "Support for the American System’s Infrastructure Funding",
-          "summary": "Monroe backed selective federal funding for internal improvements, shaping early national infrastructure policy.",
+          "title": "Panic of 1819",
+          "summary": "The Panic of 1819 was the first major nationwide financial crisis in U.S. history. Triggered by land speculation, falling commodity prices, and contractionary policies by the Second Bank of the United States, it led to bank failures, business collapses, and high unemployment, especially in the West and South.",
           "sources": [
-            "National Archives, Monroe internal improvements papers.",
-            "Library of Congress, Monroe fiscal correspondence."
+            "https://www.britannica.com/event/Panic-of-1819",
+            "https://www.federalreservehistory.org/essays/panic-of-1819"
           ]
         },
         {
-          "title": "Management of Post‑War Economic Stabilization",
-          "summary": "Monroe coordinated federal responses to the Panic of 1819 through executive communication with the Bank of the United States.",
+          "title": "Post‑Panic Recovery and Expansion",
+          "summary": "Following the Panic of 1819, the economy gradually recovered as credit conditions stabilized and agricultural and trade activity resumed. Westward migration and infrastructure improvements continued, laying groundwork for longer‑term growth despite lingering public distrust of banks and centralized finance.",
           "sources": [
-            "Library of Congress, Monroe economic crisis papers.",
-            "National Archives, early banking records."
+            "https://millercenter.org/president/monroe/domestic-affairs",
+            "https://www.britannica.com/biography/James-Monroe"
           ]
         }
       ],
-      "overallAssessment": "Monroe influenced early national infrastructure and economic stabilization policy.",
-      "sources": [
-        "Library of Congress, Monroe presidential papers.",
-        "National Archives, fiscal administration records."
+      "economicInitiatives": [
+        {
+          "title": "Support for Internal Improvements",
+          "summary": "Monroe endorsed selective federal support for roads and canals, though he questioned broad constitutional authority for internal improvements. Projects such as the National Road facilitated trade, migration, and regional integration, contributing to the nation’s economic development.",
+          "sources": [
+            "https://millercenter.org/president/monroe/domestic-affairs",
+            "https://www.britannica.com/topic/National-Road"
+          ]
+        },
+        {
+          "title": "Continued Use of Protective Tariffs",
+          "summary": "Monroe’s administration maintained the protective tariff framework established in 1816, supporting domestic manufacturing against foreign competition. This policy reinforced the emerging alignment between industrial interests and protective tariff advocacy.",
+          "sources": [
+            "https://www.congress.gov/resources/display/content/History+of+Tariffs",
+            "https://www.britannica.com/biography/James-Monroe"
+          ]
+        }
       ]
     }
   },
@@ -148,28 +234,42 @@
     "id": 6,
     "name": "John Quincy Adams",
     "economicPolicy": {
-      "events": [
+      "economicConditionsSummary": "The economy during Adams’s presidency was stable but sluggish, marked by modest growth, regional tensions over tariffs, and early stirrings of industrialization. The nation was still recovering from the Panic of 1819, and while conditions improved, credit remained tight and agricultural prices uneven. Adams emphasized national development through infrastructure and scientific advancement, but political opposition limited his ability to implement major economic programs.",
+      "majorEconomicEvents": [
         {
-          "title": "Promotion of Federally Supported Infrastructure Projects",
-          "summary": "Adams aggressively advanced federal investment in roads, canals, and scientific surveys, expanding national economic development policy.",
+          "title": "Post‑Panic of 1819 Recovery",
+          "summary": "The economy continued to recover from the Panic of 1819, with gradual improvements in credit conditions and trade. However, many regions—especially the South and West—still faced depressed land values and lingering debt burdens.",
           "sources": [
-            "National Archives, Adams internal improvements directives.",
-            "Library of Congress, Adams infrastructure papers."
+            "https://www.britannica.com/event/Panic-of-1819",
+            "https://millercenter.org/president/jqadams/domestic-affairs"
           ]
         },
         {
-          "title": "Support for Protective Tariffs",
-          "summary": "Adams backed tariff policies designed to strengthen domestic manufacturing.",
+          "title": "Growing Sectional Tensions Over Tariffs",
+          "summary": "Debates intensified over protective tariffs, with Northern manufacturers supporting them and Southern agricultural interests opposing them. These tensions foreshadowed the tariff crisis that would erupt under Andrew Jackson.",
           "sources": [
-            "Library of Congress, Adams tariff correspondence.",
-            "National Archives, trade policy records."
+            "https://www.britannica.com/topic/tariff",
+            "https://millercenter.org/president/jqadams/domestic-affairs"
           ]
         }
       ],
-      "overallAssessment": "Adams expanded federal involvement in national economic development and protective trade policy.",
-      "sources": [
-        "Library of Congress, Adams presidential papers.",
-        "National Archives, economic policy archives."
+      "economicInitiatives": [
+        {
+          "title": "Support for Internal Improvements",
+          "summary": "Adams championed federal investment in roads, canals, and scientific projects, arguing that national development required coordinated infrastructure. His proposals included the Chesapeake and Ohio Canal and improvements to the National Road, though many initiatives faced congressional resistance.",
+          "sources": [
+            "https://www.britannica.com/biography/John-Quincy-Adams",
+            "https://millercenter.org/president/jqadams/domestic-affairs"
+          ]
+        },
+        {
+          "title": "Promotion of a National University and Scientific Advancement",
+          "summary": "Adams advocated for federal support of education, scientific research, and a national observatory. While these proposals were not enacted, they reflected his vision of a modern, knowledge‑driven economy.",
+          "sources": [
+            "https://www.britannica.com/biography/John-Quincy-Adams",
+            "https://millercenter.org/president/jqadams/domestic-affairs"
+          ]
+        }
       ]
     }
   },
@@ -177,28 +277,50 @@
     "id": 7,
     "name": "Andrew Jackson",
     "economicPolicy": {
-      "events": [
+      "economicConditionsSummary": "Jackson presided over a period of rapid economic expansion fueled by rising land values, westward migration, and increased credit availability. However, his aggressive opposition to the Second Bank of the United States, combined with state‑level speculation and loose lending, contributed to financial instability. The economy boomed during much of his presidency but ended with growing vulnerabilities that would culminate in the Panic of 1837 shortly after he left office.",
+      "majorEconomicEvents": [
         {
-          "title": "Destruction of the Second Bank of the United States",
-          "summary": "Jackson vetoed the Bank’s recharter and removed federal deposits, dismantling the central financial institution.",
+          "title": "Bank War and Financial Instability",
+          "summary": "Jackson vetoed the recharter of the Second Bank of the United States and removed federal deposits, redistributing them to state 'pet banks.' This weakened centralized financial oversight and contributed to speculative lending and inflationary pressures.",
           "sources": [
-            "National Archives, Jackson bank veto message.",
-            "Library of Congress, Jackson financial correspondence."
+            "https://www.britannica.com/event/Bank-War",
+            "https://millercenter.org/president/jackson/domestic-affairs"
           ]
         },
         {
-          "title": "Specie Circular",
-          "summary": "Jackson ordered federal land sales to be paid in gold or silver, reshaping national credit and currency flows.",
+          "title": "Speculative Land Boom",
+          "summary": "Easy credit and rising land prices fueled a speculative boom in the West. State banks expanded lending aggressively, contributing to inflation and financial risk.",
           "sources": [
-            "Library of Congress, Jackson Specie Circular documents.",
-            "National Archives, Treasury directives."
+            "https://www.britannica.com/event/Panic-of-1837",
+            "https://millercenter.org/president/jackson/domestic-affairs"
           ]
         }
       ],
-      "overallAssessment": "Jackson radically restructured U.S. financial systems and currency policy.",
-      "sources": [
-        "Library of Congress, Jackson presidential papers.",
-        "National Archives, financial policy records."
+      "economicInitiatives": [
+        {
+          "title": "Veto of the Second Bank Recharter",
+          "summary": "Jackson’s veto of the Bank’s recharter and subsequent removal of federal deposits fundamentally reshaped the U.S. financial system. He argued the Bank was unconstitutional and favored elites, but critics warned the move destabilized credit markets.",
+          "sources": [
+            "https://www.britannica.com/event/Bank-War",
+            "https://www.federalreservehistory.org/essays/second-bank-of-the-us"
+          ]
+        },
+        {
+          "title": "Specie Circular (1836)",
+          "summary": "Jackson issued the Specie Circular requiring payment for public lands in gold or silver. Intended to curb speculation, it instead drained specie from banks and contributed to the financial contraction that led to the Panic of 1837.",
+          "sources": [
+            "https://www.britannica.com/topic/Specie-Circular",
+            "https://millercenter.org/president/jackson/domestic-affairs"
+          ]
+        },
+        {
+          "title": "Federal Debt Elimination",
+          "summary": "Jackson’s administration briefly eliminated the national debt in 1835—the only time in U.S. history. This was achieved through land sales, tariff revenue, and strict spending controls, though the achievement was short‑lived.",
+          "sources": [
+            "https://www.britannica.com/biography/Andrew-Jackson",
+            "https://millercenter.org/president/jackson/domestic-affairs"
+          ]
+        }
       ]
     }
   },
@@ -206,28 +328,42 @@
     "id": 8,
     "name": "Martin Van Buren",
     "economicPolicy": {
-      "events": [
+      "economicConditionsSummary": "Van Buren’s presidency was dominated by the Panic of 1837 and the deep depression that followed. Bank failures, collapsing credit, falling prices, and widespread unemployment defined the economic landscape. Van Buren rejected federal intervention in banking, instead promoting an Independent Treasury system. The economy remained depressed for most of his term, with slow and uneven recovery.",
+      "majorEconomicEvents": [
         {
-          "title": "Independent Treasury System Proposal",
-          "summary": "Van Buren advanced the Independent Treasury to separate federal funds from private banks after the Panic of 1837.",
+          "title": "Panic of 1837",
+          "summary": "Triggered by speculative excesses, the Specie Circular, and international credit tightening, the Panic of 1837 caused widespread bank failures, business collapses, and unemployment. It became one of the worst economic crises of the 19th century.",
           "sources": [
-            "National Archives, Van Buren Treasury papers.",
-            "Library of Congress, Van Buren fiscal correspondence."
+            "https://www.britannica.com/event/Panic-of-1837",
+            "https://www.federalreservehistory.org/essays/panic-of-1837"
           ]
         },
         {
-          "title": "Crisis Response to the Panic of 1837",
-          "summary": "Van Buren implemented federal spending restraint and defended hard‑money principles during the economic collapse.",
+          "title": "Prolonged Economic Depression (1837–1843)",
+          "summary": "The depression that followed the Panic lasted for years, with falling prices, reduced trade, and persistent financial instability. Recovery was slow and uneven across regions.",
           "sources": [
-            "Library of Congress, Van Buren economic crisis papers.",
-            "National Archives, fiscal policy records."
+            "https://www.britannica.com/biography/Martin-Van-Buren",
+            "https://millercenter.org/president/vanburen/domestic-affairs"
           ]
         }
       ],
-      "overallAssessment": "Van Buren reshaped federal financial management through the Independent Treasury concept.",
-      "sources": [
-        "Library of Congress, Van Buren presidential papers.",
-        "National Archives, economic policy archives."
+      "economicInitiatives": [
+        {
+          "title": "Independent Treasury System",
+          "summary": "Van Buren proposed separating federal finances from private banks by creating an Independent Treasury. Enacted in 1840, it aimed to stabilize government finances and reduce reliance on unstable state banks.",
+          "sources": [
+            "https://www.britannica.com/topic/Independent-Treasury",
+            "https://millercenter.org/president/vanburen/domestic-affairs"
+          ]
+        },
+        {
+          "title": "Opposition to Federal Economic Intervention",
+          "summary": "Van Buren rejected calls for federal bailouts or direct economic intervention during the depression, adhering to Jacksonian principles of limited government. This stance was controversial amid widespread hardship.",
+          "sources": [
+            "https://www.britannica.com/biography/Martin-Van-Buren",
+            "https://millercenter.org/president/vanburen/domestic-affairs"
+          ]
+        }
       ]
     }
   },
@@ -235,20 +371,26 @@
     "id": 9,
     "name": "William Henry Harrison",
     "economicPolicy": {
-      "events": [
+      "economicConditionsSummary": "Harrison served only one month in office before his death, leaving no meaningful economic record. The economy remained in the long shadow of the Panic of 1837, with ongoing financial instability and slow recovery. Harrison’s brief presidency occurred amid debates over banking reform and the role of federal economic intervention.",
+      "majorEconomicEvents": [
         {
-          "title": "Advocacy for Whig Economic Principles",
-          "summary": "Harrison signaled support for a revived national bank and protective tariffs, though his death prevented implementation.",
+          "title": "Lingering Effects of the Panic of 1837",
+          "summary": "The economy was still depressed when Harrison took office, with weak credit markets, low prices, and high unemployment. No major economic events occurred during his short tenure.",
           "sources": [
-            "Library of Congress, Harrison economic correspondence.",
-            "National Archives, early Whig policy documents."
+            "https://www.britannica.com/event/Panic-of-1837",
+            "https://millercenter.org/president/harrison/domestic-affairs"
           ]
         }
       ],
-      "overallAssessment": "Harrison’s economic impact was limited but aligned with Whig national development priorities.",
-      "sources": [
-        "Library of Congress, Harrison presidential papers.",
-        "National Archives, fiscal policy materials."
+      "economicInitiatives": [
+        {
+          "title": "Proposed Reversal of Jacksonian Banking Policies",
+          "summary": "Harrison signaled support for reviving a national bank and reforming federal financial policy, but he died before any initiatives could be enacted.",
+          "sources": [
+            "https://www.britannica.com/biography/William-Henry-Harrison",
+            "https://millercenter.org/president/harrison/domestic-affairs"
+          ]
+        }
       ]
     }
   },
@@ -256,28 +398,42 @@
     "id": 10,
     "name": "John Tyler",
     "economicPolicy": {
-      "events": [
+      "economicConditionsSummary": "Tyler inherited a weak economy still recovering from the Panic of 1837. Credit conditions remained unstable, and debates over banking policy dominated his presidency. Tyler clashed with Whig leaders over the creation of a new national bank, leading to political isolation. Despite these conflicts, the economy gradually improved as credit stabilized and trade expanded.",
+      "majorEconomicEvents": [
         {
-          "title": "Veto of Whig National Bank Bills",
-          "summary": "Tyler vetoed multiple attempts to reestablish a national bank, fracturing his party and shaping federal financial policy.",
+          "title": "Continued Recovery from the Panic of 1837",
+          "summary": "The economy slowly improved during Tyler’s presidency, with gradual stabilization of credit and modest increases in trade and production. However, financial conditions remained fragile.",
           "sources": [
-            "National Archives, Tyler veto messages.",
-            "Library of Congress, Tyler fiscal correspondence."
+            "https://www.britannica.com/event/Panic-of-1837",
+            "https://millercenter.org/president/tyler/domestic-affairs"
           ]
         },
         {
-          "title": "Support for the Tariff of 1842",
-          "summary": "Tyler signed a protective tariff to stabilize federal revenue after rejecting bank‑centered fiscal plans.",
+          "title": "Political Conflict Over Banking Policy",
+          "summary": "Tyler’s repeated vetoes of Whig banking legislation created political turmoil and contributed to uncertainty over the future of federal financial policy.",
           "sources": [
-            "Library of Congress, Tyler tariff papers.",
-            "National Archives, trade policy records."
+            "https://www.britannica.com/biography/John-Tyler",
+            "https://millercenter.org/president/tyler/domestic-affairs"
           ]
         }
       ],
-      "overallAssessment": "Tyler reshaped Whig economic policy by rejecting a national bank and endorsing protective tariffs.",
-      "sources": [
-        "Library of Congress, Tyler presidential papers.",
-        "National Archives, economic policy archives."
+      "economicInitiatives": [
+        {
+          "title": "Veto of Whig National Bank Bills",
+          "summary": "Tyler vetoed multiple bills to establish a new national bank, arguing they exceeded constitutional limits. His actions led to a break with the Whig Party and shaped the direction of federal financial policy.",
+          "sources": [
+            "https://www.britannica.com/biography/John-Tyler",
+            "https://millercenter.org/president/tyler/domestic-affairs"
+          ]
+        },
+        {
+          "title": "Tariff of 1842",
+          "summary": "Tyler signed the Tariff of 1842, raising rates to increase federal revenue after the economic downturn. The tariff reversed earlier reductions and reflected ongoing debates over protectionism and federal finance.",
+          "sources": [
+            "https://www.britannica.com/topic/Tariff-of-1842",
+            "https://millercenter.org/president/tyler/domestic-affairs"
+          ]
+        }
       ]
     }
   },
@@ -285,28 +441,42 @@
     "id": 11,
     "name": "James K. Polk",
     "economicPolicy": {
-      "events": [
+      "economicConditionsSummary": "Polk presided over a period of strong economic expansion driven by territorial growth, rising agricultural output, and increased trade. The Mexican‑American War stimulated federal spending, while the acquisition of vast western lands fueled migration and speculation. Tariff reductions and the establishment of an independent treasury shaped the financial landscape. Despite war costs, the economy remained generally healthy, with expanding markets and rising production.",
+      "majorEconomicEvents": [
         {
-          "title": "Walker Tariff of 1846",
-          "summary": "Polk implemented a major tariff reduction that shifted U.S. trade policy toward lower duties and revenue‑based tariffs.",
+          "title": "Economic Effects of the Mexican‑American War",
+          "summary": "The war increased federal spending and stimulated industries tied to military supply and transportation. It also opened new markets and trade routes, though it raised concerns about long‑term fiscal impacts.",
           "sources": [
-            "National Archives, Polk tariff correspondence.",
-            "Library of Congress, Walker Tariff papers."
+            "https://www.britannica.com/event/Mexican-American-War",
+            "https://millercenter.org/president/polk/domestic-affairs"
           ]
         },
         {
-          "title": "Independent Treasury Restoration",
-          "summary": "Polk restored the Independent Treasury system, separating federal funds from private banks.",
+          "title": "Territorial Expansion and Land Speculation",
+          "summary": "The acquisition of vast western territories spurred migration, land sales, and speculation. These developments expanded economic opportunities but also created volatility in land markets.",
           "sources": [
-            "Library of Congress, Polk Treasury papers.",
-            "National Archives, fiscal policy records."
+            "https://www.britannica.com/biography/James-K-Polk",
+            "https://history.state.gov/milestones/1830-1860/texas-annexation"
           ]
         }
       ],
-      "overallAssessment": "Polk reshaped trade and federal financial management through tariff reform and the Independent Treasury.",
-      "sources": [
-        "Library of Congress, Polk presidential papers.",
-        "National Archives, economic policy archives."
+      "economicInitiatives": [
+        {
+          "title": "Walker Tariff of 1846",
+          "summary": "Polk signed the Walker Tariff, significantly reducing tariff rates and promoting free‑trade principles. The tariff increased imports and customs revenue, contributing to economic growth.",
+          "sources": [
+            "https://www.britannica.com/topic/Walker-Tariff",
+            "https://millercenter.org/president/polk/domestic-affairs"
+          ]
+        },
+        {
+          "title": "Independent Treasury Act of 1846",
+          "summary": "Polk restored the Independent Treasury system, separating federal finances from private banks. This reform aimed to stabilize government finances and reduce reliance on volatile state banking institutions.",
+          "sources": [
+            "https://www.britannica.com/topic/Independent-Treasury",
+            "https://millercenter.org/president/polk/domestic-affairs"
+          ]
+        }
       ]
     }
   },
@@ -314,20 +484,26 @@
     "id": 12,
     "name": "Zachary Taylor",
     "economicPolicy": {
-      "events": [
+      "economicConditionsSummary": "Taylor’s short presidency occurred during a period of relative economic stability following the Mexican‑American War. Agricultural production remained strong, western migration accelerated, and federal finances were stable. Taylor took limited action on economic policy, focusing instead on sectional tensions over slavery. The economy experienced modest growth without major disruptions during his brief time in office.",
+      "majorEconomicEvents": [
         {
-          "title": "Opposition to Expansion of Federal Economic Programs",
-          "summary": "Taylor resisted large‑scale federal spending on internal improvements, maintaining limited federal economic involvement.",
+          "title": "Post‑War Economic Stability",
+          "summary": "The economy remained generally healthy after the Mexican‑American War, with strong agricultural output and expanding western settlement. No major financial crises occurred during Taylor’s presidency.",
           "sources": [
-            "National Archives, Taylor fiscal correspondence.",
-            "Library of Congress, Taylor economic papers."
+            "https://www.britannica.com/biography/Zachary-Taylor",
+            "https://millercenter.org/president/taylor/domestic-affairs"
           ]
         }
       ],
-      "overallAssessment": "Taylor upheld a restrained federal economic role consistent with Whig divisions.",
-      "sources": [
-        "Library of Congress, Taylor presidential papers.",
-        "National Archives, fiscal policy materials."
+      "economicInitiatives": [
+        {
+          "title": "Limited Federal Economic Intervention",
+          "summary": "Taylor took a restrained approach to economic policy, avoiding major initiatives and focusing on maintaining stability. His administration did not pursue significant changes to tariffs, banking, or federal spending.",
+          "sources": [
+            "https://www.britannica.com/biography/Zachary-Taylor",
+            "https://millercenter.org/president/taylor/domestic-affairs"
+          ]
+        }
       ]
     }
   },
@@ -335,28 +511,42 @@
     "id": 13,
     "name": "Millard Fillmore",
     "economicPolicy": {
-      "events": [
+      "economicConditionsSummary": "Fillmore presided over a stable and growing economy marked by rising industrial output, expanding railroads, and increasing trade. The Compromise of 1850 eased sectional tensions temporarily and helped maintain national stability. Federal finances were sound, and the economy benefited from westward expansion and infrastructure development.",
+      "majorEconomicEvents": [
         {
-          "title": "Support for the Compromise of 1850’s Economic Provisions",
-          "summary": "Fillmore enforced tariff adjustments and territorial economic rules embedded in the Compromise of 1850.",
+          "title": "Economic Expansion and Industrial Growth",
+          "summary": "The early 1850s saw continued industrialization, growth in manufacturing, and expansion of railroads and canals. These developments strengthened national markets and facilitated westward migration.",
           "sources": [
-            "National Archives, Fillmore Compromise papers.",
-            "Library of Congress, Fillmore fiscal correspondence."
+            "https://www.britannica.com/biography/Millard-Fillmore",
+            "https://millercenter.org/president/fillmore/domestic-affairs"
           ]
         },
         {
-          "title": "Expansion of Pacific Trade",
-          "summary": "Fillmore supported naval expeditions to open trade routes, laying groundwork for later commercial treaties.",
+          "title": "California Gold Rush Economic Impact",
+          "summary": "The Gold Rush accelerated western migration, increased demand for goods and services, and stimulated national economic growth. It also expanded federal revenue through customs duties and land sales.",
           "sources": [
-            "Library of Congress, Fillmore Pacific trade papers.",
-            "National Archives, early trade expansion records."
+            "https://www.britannica.com/event/California-Gold-Rush",
+            "https://history.state.gov/milestones/1830-1860/california-gold-rush"
           ]
         }
       ],
-      "overallAssessment": "Fillmore influenced trade expansion and implemented the Compromise’s economic components.",
-      "sources": [
-        "Library of Congress, Fillmore presidential papers.",
-        "National Archives, economic policy archives."
+      "economicInitiatives": [
+        {
+          "title": "Support for the Compromise of 1850",
+          "summary": "Fillmore signed the Compromise of 1850, which helped stabilize the nation politically and economically by addressing territorial and slavery disputes. The compromise reduced uncertainty that threatened national markets.",
+          "sources": [
+            "https://www.britannica.com/event/Compromise-of-1850",
+            "https://millercenter.org/president/fillmore/domestic-affairs"
+          ]
+        },
+        {
+          "title": "Expansion of Infrastructure",
+          "summary": "Fillmore supported federal investment in transportation infrastructure, including railroads and canals, to promote national economic integration and growth.",
+          "sources": [
+            "https://www.britannica.com/biography/Millard-Fillmore",
+            "https://millercenter.org/president/fillmore/domestic-affairs"
+          ]
+        }
       ]
     }
   },
@@ -364,28 +554,42 @@
     "id": 14,
     "name": "Franklin Pierce",
     "economicPolicy": {
-      "events": [
+      "economicConditionsSummary": "Pierce presided over a period of strong economic growth fueled by railroad expansion, rising agricultural production, and increased international trade. However, speculative excesses in land and railroads created underlying vulnerabilities. Political turmoil over slavery overshadowed economic policy, and the seeds of the Panic of 1857 were planted during this period of rapid but unstable expansion.",
+      "majorEconomicEvents": [
         {
-          "title": "Gadsden Purchase Financing",
-          "summary": "Pierce negotiated and executed the Gadsden Purchase, expanding federal land holdings for potential southern rail routes.",
+          "title": "Railroad Boom and Speculation",
+          "summary": "Rapid expansion of railroads stimulated economic growth, opened new markets, and increased land values. However, speculative investment in railroads and western lands created financial risks.",
           "sources": [
-            "National Archives, Pierce Gadsden Purchase papers.",
-            "Library of Congress, Pierce territorial correspondence."
+            "https://www.britannica.com/biography/Franklin-Pierce",
+            "https://millercenter.org/president/pierce/domestic-affairs"
+          ]
+        },
+        {
+          "title": "Growing Sectional and Economic Tensions",
+          "summary": "The Kansas‑Nebraska Act intensified sectional conflict, creating political instability that affected markets and investment confidence.",
+          "sources": [
+            "https://www.britannica.com/event/Kansas-Nebraska-Act",
+            "https://millercenter.org/president/pierce/domestic-affairs"
+          ]
+        }
+      ],
+      "economicInitiatives": [
+        {
+          "title": "Gadsden Purchase",
+          "summary": "Pierce approved the Gadsden Purchase, securing land for a potential southern transcontinental railroad route. The acquisition supported long‑term transportation and commercial development.",
+          "sources": [
+            "https://www.britannica.com/event/Gadsden-Purchase",
+            "https://millercenter.org/president/pierce/domestic-affairs"
           ]
         },
         {
           "title": "Support for Railroad Expansion",
-          "summary": "Pierce backed federal land grants to promote railroad development, shaping national transportation economics.",
+          "summary": "Pierce encouraged railroad development and western settlement, contributing to national market integration and economic growth.",
           "sources": [
-            "Library of Congress, Pierce railroad papers.",
-            "National Archives, infrastructure policy records."
+            "https://www.britannica.com/biography/Franklin-Pierce",
+            "https://millercenter.org/president/pierce/domestic-affairs"
           ]
         }
-      ],
-      "overallAssessment": "Pierce advanced territorial expansion and railroad‑driven economic development.",
-      "sources": [
-        "Library of Congress, Pierce presidential papers.",
-        "National Archives, economic policy archives."
       ]
     }
   },
@@ -393,28 +597,42 @@
     "id": 15,
     "name": "James Buchanan",
     "economicPolicy": {
-      "events": [
+      "economicConditionsSummary": "Buchanan’s presidency was marked by severe economic turmoil. The Panic of 1857 triggered widespread bank failures, unemployment, and falling prices. Buchanan believed the federal government should not intervene in economic crises, leaving states and markets to recover on their own. The economy remained weak throughout his term, compounded by escalating sectional tensions that undermined national stability.",
+      "majorEconomicEvents": [
         {
-          "title": "Support for Low‑Tariff Policies",
-          "summary": "Buchanan backed tariff reductions consistent with Democratic free‑trade principles.",
+          "title": "Panic of 1857",
+          "summary": "A major financial crisis caused by declining international demand, falling grain prices, and overextended railroads led to bank failures and widespread unemployment. The crisis hit Northern industrial regions especially hard.",
           "sources": [
-            "National Archives, Buchanan tariff correspondence.",
-            "Library of Congress, Buchanan trade policy papers."
+            "https://www.britannica.com/event/Panic-of-1857",
+            "https://www.federalreservehistory.org/essays/panic-of-1857"
           ]
         },
         {
-          "title": "Handling of the Panic of 1857",
-          "summary": "Buchanan opposed federal intervention during the Panic of 1857, maintaining a limited‑government economic stance.",
+          "title": "Economic Decline Amid Sectional Crisis",
+          "summary": "Escalating tensions over slavery and the approach of civil war created political instability that further weakened investment and trade.",
           "sources": [
-            "Library of Congress, Buchanan economic crisis papers.",
-            "National Archives, fiscal policy records."
+            "https://www.britannica.com/biography/James-Buchanan",
+            "https://millercenter.org/president/buchanan/domestic-affairs"
           ]
         }
       ],
-      "overallAssessment": "Buchanan adhered to low‑tariff, limited‑intervention economic principles during financial crisis.",
-      "sources": [
-        "Library of Congress, Buchanan presidential papers.",
-        "National Archives, economic policy archives."
+      "economicInitiatives": [
+        {
+          "title": "Limited Federal Response to the Panic of 1857",
+          "summary": "Buchanan opposed federal intervention in the crisis, arguing that markets should correct themselves. His stance was widely criticized as inadequate amid widespread hardship.",
+          "sources": [
+            "https://www.britannica.com/biography/James-Buchanan",
+            "https://millercenter.org/president/buchanan/domestic-affairs"
+          ]
+        },
+        {
+          "title": "Support for Southern Economic Interests",
+          "summary": "Buchanan favored policies aligned with Southern agricultural interests, including low tariffs and limited federal involvement in economic development.",
+          "sources": [
+            "https://www.britannica.com/biography/James-Buchanan",
+            "https://millercenter.org/president/buchanan/domestic-affairs"
+          ]
+        }
       ]
     }
   },
@@ -422,28 +640,50 @@
     "id": 16,
     "name": "Abraham Lincoln",
     "economicPolicy": {
-      "events": [
+      "economicConditionsSummary": "Lincoln governed during the most economically disruptive period in U.S. history. The Civil War transformed the national economy through massive federal spending, financial innovation, industrial mobilization, and widespread destruction in the South. The Union economy expanded in manufacturing, railroads, and agriculture, while the Confederacy collapsed under blockade, inflation, and resource shortages. Lincoln’s administration laid the foundations for a modern national economy through taxation, currency reform, and infrastructure legislation.",
+      "majorEconomicEvents": [
         {
-          "title": "Legal Tender Act and Introduction of Greenbacks",
-          "summary": "Lincoln authorized the issuance of paper currency not backed by gold or silver, creating the first national fiat money to finance the Civil War.",
+          "title": "Civil War Economic Mobilization",
+          "summary": "The Union mobilized vast resources for war, dramatically increasing federal spending, industrial output, and transportation demands. Wartime production stimulated northern industries while the Confederacy suffered from shortages and inflation.",
           "sources": [
-            "National Archives, Legal Tender Act records.",
-            "Library of Congress, Lincoln wartime finance papers."
+            "https://www.britannica.com/event/American-Civil-War",
+            "https://millercenter.org/president/lincoln/domestic-affairs"
           ]
         },
         {
-          "title": "Creation of the National Banking System",
-          "summary": "Lincoln established a uniform national banking system and national bank charters to stabilize currency and credit markets.",
+          "title": "Southern Economic Collapse",
+          "summary": "The Confederate economy deteriorated due to blockades, infrastructure destruction, and runaway inflation. Agricultural output plummeted, and the slave‑based economic system collapsed as Union forces advanced.",
           "sources": [
-            "Library of Congress, National Banking Act correspondence.",
-            "National Archives, Treasury banking records."
+            "https://www.britannica.com/event/American-Civil-War",
+            "https://www.britannica.com/topic/Confederate-States-of-America"
           ]
         }
       ],
-      "overallAssessment": "Lincoln transformed U.S. finance through national currency, national banking, and wartime fiscal innovation.",
-      "sources": [
-        "Library of Congress, Lincoln presidential papers.",
-        "National Archives, Civil War finance archives."
+      "economicInitiatives": [
+        {
+          "title": "Legal Tender Act (Greenbacks)",
+          "summary": "Lincoln authorized the issuance of paper currency not backed by gold or silver. Greenbacks stabilized federal finances and enabled the Union to fund the war, marking a major shift in federal monetary authority.",
+          "sources": [
+            "https://www.britannica.com/topic/Legal-Tender-Act",
+            "https://millercenter.org/president/lincoln/domestic-affairs"
+          ]
+        },
+        {
+          "title": "National Banking Acts",
+          "summary": "These acts created a system of nationally chartered banks and a uniform national currency, strengthening federal control over banking and laying the foundation for modern financial regulation.",
+          "sources": [
+            "https://www.britannica.com/topic/National-Bank-Act",
+            "https://www.federalreservehistory.org/essays/national-bank-act"
+          ]
+        },
+        {
+          "title": "Homestead Act and Pacific Railway Act",
+          "summary": "Lincoln signed landmark legislation promoting western settlement and infrastructure development. The Homestead Act distributed land to settlers, while the Pacific Railway Act funded the transcontinental railroad.",
+          "sources": [
+            "https://www.britannica.com/topic/Homestead-Act",
+            "https://www.britannica.com/topic/Pacific-Railway-Acts"
+          ]
+        }
       ]
     }
   },
@@ -451,28 +691,42 @@
     "id": 17,
     "name": "Andrew Johnson",
     "economicPolicy": {
-      "events": [
+      "economicConditionsSummary": "Johnson presided over the turbulent Reconstruction period following the Civil War. The Southern economy was devastated, with destroyed infrastructure, collapsed labor systems, and widespread poverty. The Northern economy transitioned from wartime production to peacetime industry, experiencing growth but also labor unrest. Johnson’s resistance to congressional Reconstruction limited federal support for rebuilding the Southern economy.",
+      "majorEconomicEvents": [
         {
-          "title": "Veto of the Freedmen’s Bureau Funding Expansion",
-          "summary": "Johnson vetoed expanded funding for the Freedmen’s Bureau, shaping federal spending priorities during Reconstruction.",
+          "title": "Post‑Civil War Southern Economic Collapse",
+          "summary": "The South faced massive destruction of railroads, farms, and cities. The end of slavery upended the labor system, and many regions struggled with poverty, debt, and limited capital.",
           "sources": [
-            "National Archives, Johnson veto messages.",
-            "Library of Congress, Reconstruction fiscal papers."
+            "https://www.britannica.com/event/Reconstruction-United-States-history",
+            "https://millercenter.org/president/johnson/domestic-affairs"
           ]
         },
         {
-          "title": "Support for Rapid Southern Economic Reintegration",
-          "summary": "Johnson pushed for lenient economic reintegration of Southern states, influencing postwar labor and taxation structures.",
+          "title": "Northern Industrial Adjustment",
+          "summary": "Northern industries shifted from wartime production to consumer goods and infrastructure. Labor disputes and wage pressures emerged as soldiers returned home.",
           "sources": [
-            "Library of Congress, Johnson Reconstruction correspondence.",
-            "National Archives, postwar economic directives."
+            "https://www.britannica.com/event/Reconstruction-United-States-history",
+            "https://millercenter.org/president/johnson/domestic-affairs"
           ]
         }
       ],
-      "overallAssessment": "Johnson shaped Reconstruction‑era fiscal policy through vetoes and lenient reintegration strategies.",
-      "sources": [
-        "Library of Congress, Johnson presidential papers.",
-        "National Archives, Reconstruction finance records."
+      "economicInitiatives": [
+        {
+          "title": "Vetoes of Reconstruction Economic Measures",
+          "summary": "Johnson vetoed multiple bills aimed at supporting freedmen and rebuilding the Southern economy, including funding for the Freedmen’s Bureau. Congress overrode several vetoes.",
+          "sources": [
+            "https://www.britannica.com/topic/Freedmens-Bureau",
+            "https://millercenter.org/president/johnson/domestic-affairs"
+          ]
+        },
+        {
+          "title": "Support for Rapid Southern Reintegration",
+          "summary": "Johnson favored quick restoration of Southern states with minimal federal oversight, limiting federal investment in economic reconstruction.",
+          "sources": [
+            "https://www.britannica.com/biography/Andrew-Johnson",
+            "https://millercenter.org/president/johnson/domestic-affairs"
+          ]
+        }
       ]
     }
   },
@@ -480,28 +734,50 @@
     "id": 18,
     "name": "Ulysses S. Grant",
     "economicPolicy": {
-      "events": [
+      "economicConditionsSummary": "Grant presided over a period of rapid industrialization, railroad expansion, and economic growth, but also severe financial instability. The Panic of 1873 triggered a prolonged depression marked by bank failures, unemployment, and deflation. Grant’s commitment to hard‑money policies shaped federal responses to economic turmoil, while corruption scandals undermined confidence in government.",
+      "majorEconomicEvents": [
         {
-          "title": "Public Credit Act of 1869",
-          "summary": "Grant committed the federal government to repaying Civil War debts in gold, strengthening national credit.",
+          "title": "Panic of 1873",
+          "summary": "A major financial crisis triggered by railroad overexpansion, speculative investment, and the collapse of major banking firms led to a severe economic depression lasting several years.",
           "sources": [
-            "National Archives, Grant fiscal correspondence.",
-            "Library of Congress, Public Credit Act papers."
+            "https://www.britannica.com/event/Panic-of-1873",
+            "https://www.federalreservehistory.org/essays/panic-of-1873"
           ]
         },
         {
-          "title": "Veto of the Inflation Bill",
-          "summary": "Grant vetoed legislation that would have expanded greenback circulation, defending hard‑money policy.",
+          "title": "Rapid Industrial and Railroad Growth",
+          "summary": "The early 1870s saw explosive growth in railroads, steel, and manufacturing, creating new markets but also speculative bubbles.",
           "sources": [
-            "Library of Congress, Grant veto messages.",
-            "National Archives, monetary policy records."
+            "https://www.britannica.com/biography/Ulysses-S-Grant",
+            "https://millercenter.org/president/grant/domestic-affairs"
           ]
         }
       ],
-      "overallAssessment": "Grant reinforced hard‑money principles and stabilized national credit after the Civil War.",
-      "sources": [
-        "Library of Congress, Grant presidential papers.",
-        "National Archives, economic policy archives."
+      "economicInitiatives": [
+        {
+          "title": "Public Credit Act of 1869",
+          "summary": "Grant signed legislation committing the federal government to repaying Civil War debts in gold, reinforcing confidence in federal credit and supporting hard‑money policies.",
+          "sources": [
+            "https://www.britannica.com/topic/Public-Credit-Act",
+            "https://millercenter.org/president/grant/domestic-affairs"
+          ]
+        },
+        {
+          "title": "Veto of the Inflation Bill (1874)",
+          "summary": "Grant vetoed a bill that would have increased the money supply through additional greenbacks, arguing it would worsen inflation and undermine financial stability.",
+          "sources": [
+            "https://www.britannica.com/biography/Ulysses-S-Grant",
+            "https://millercenter.org/president/grant/domestic-affairs"
+          ]
+        },
+        {
+          "title": "Support for Civil Service Reform",
+          "summary": "Grant backed early efforts to reduce corruption and improve federal administration, though scandals within his administration limited progress.",
+          "sources": [
+            "https://www.britannica.com/biography/Ulysses-S-Grant",
+            "https://millercenter.org/president/grant/domestic-affairs"
+          ]
+        }
       ]
     }
   },
@@ -509,28 +785,42 @@
     "id": 19,
     "name": "Rutherford B. Hayes",
     "economicPolicy": {
-      "events": [
+      "economicConditionsSummary": "Hayes governed during the later years of the Long Depression following the Panic of 1873. The economy experienced slow recovery, persistent unemployment, and labor unrest. Industrialization continued, but wage cuts and poor working conditions led to major strikes. Hayes supported hard‑money policies and limited federal intervention in labor disputes, reflecting a conservative economic approach.",
+      "majorEconomicEvents": [
         {
-          "title": "Support for the Resumption of Specie Payments",
-          "summary": "Hayes backed the return to gold‑backed currency, ending the Civil War greenback era.",
+          "title": "Great Railroad Strike of 1877",
+          "summary": "A nationwide strike erupted after major railroads cut wages. Violence and disruptions spread across multiple states, prompting Hayes to deploy federal troops to restore order.",
           "sources": [
-            "National Archives, Hayes monetary correspondence.",
-            "Library of Congress, Resumption Act papers."
+            "https://www.britannica.com/event/Great-Railroad-Strike-of-1877",
+            "https://millercenter.org/president/hayes/domestic-affairs"
           ]
         },
         {
-          "title": "Veto of the Bland–Allison Silver Purchase Bill",
-          "summary": "Hayes vetoed legislation requiring large federal silver purchases, opposing inflationary monetary policy.",
+          "title": "Continued Effects of the Long Depression",
+          "summary": "The economy remained weak, with slow growth, tight credit, and high unemployment. Industrial output gradually improved, but recovery was uneven.",
           "sources": [
-            "Library of Congress, Hayes veto messages.",
-            "National Archives, silver policy records."
+            "https://www.britannica.com/event/Panic-of-1873",
+            "https://millercenter.org/president/hayes/domestic-affairs"
           ]
         }
       ],
-      "overallAssessment": "Hayes defended gold‑standard principles and resisted inflationary silver policies.",
-      "sources": [
-        "Library of Congress, Hayes presidential papers.",
-        "National Archives, monetary policy archives."
+      "economicInitiatives": [
+        {
+          "title": "Resumption Act Support",
+          "summary": "Hayes supported the Resumption Act, which restored the gold standard and ended the circulation of greenbacks, reinforcing hard‑money policy.",
+          "sources": [
+            "https://www.britannica.com/topic/Resumption-Act",
+            "https://millercenter.org/president/hayes/domestic-affairs"
+          ]
+        },
+        {
+          "title": "Civil Service Reform Efforts",
+          "summary": "Hayes worked to reduce corruption and patronage in federal employment, improving administrative efficiency and public trust.",
+          "sources": [
+            "https://www.britannica.com/biography/Rutherford-B-Hayes",
+            "https://millercenter.org/president/hayes/domestic-affairs"
+          ]
+        }
       ]
     }
   },
@@ -538,28 +828,34 @@
     "id": 20,
     "name": "James A. Garfield",
     "economicPolicy": {
-      "events": [
+      "economicConditionsSummary": "Garfield’s presidency was cut short by assassination, but he entered office during a period of gradual economic recovery from the Long Depression. Industrial output was rising, railroads continued expanding, and federal finances were stabilizing. Garfield prioritized civil service reform and tariff modernization but did not serve long enough to implement major economic changes.",
+      "majorEconomicEvents": [
         {
-          "title": "Advocacy for Tariff Reform",
-          "summary": "Garfield pushed for tariff reductions to increase trade efficiency and reduce federal revenue distortions.",
+          "title": "Post‑Depression Economic Recovery",
+          "summary": "The economy showed signs of improvement, with increased industrial production and more stable financial conditions. No major economic crises occurred during Garfield’s brief tenure.",
           "sources": [
-            "National Archives, Garfield tariff correspondence.",
-            "Library of Congress, Garfield economic papers."
-          ]
-        },
-        {
-          "title": "Support for Civil Service Reform with Economic Impact",
-          "summary": "Garfield backed reforms to reduce patronage‑driven inefficiency in federal revenue collection.",
-          "sources": [
-            "Library of Congress, Garfield civil service papers.",
-            "National Archives, federal revenue administration records."
+            "https://www.britannica.com/biography/James-A-Garfield",
+            "https://millercenter.org/president/garfield/domestic-affairs"
           ]
         }
       ],
-      "overallAssessment": "Garfield promoted tariff modernization and more efficient federal revenue administration.",
-      "sources": [
-        "Library of Congress, Garfield presidential papers.",
-        "National Archives, economic policy materials."
+      "economicInitiatives": [
+        {
+          "title": "Civil Service Reform Advocacy",
+          "summary": "Garfield pushed for reforms to reduce corruption and patronage in federal employment, aiming to improve government efficiency and economic administration.",
+          "sources": [
+            "https://www.britannica.com/biography/James-A-Garfield",
+            "https://millercenter.org/president/garfield/domestic-affairs"
+          ]
+        },
+        {
+          "title": "Tariff Modernization Efforts",
+          "summary": "Garfield supported revising the tariff system to balance revenue needs with economic growth, though his assassination prevented significant progress.",
+          "sources": [
+            "https://www.britannica.com/biography/James-A-Garfield",
+            "https://millercenter.org/president/garfield/domestic-affairs"
+          ]
+        }
       ]
     }
   },
@@ -567,28 +863,42 @@
     "id": 21,
     "name": "Chester A. Arthur",
     "economicPolicy": {
-      "events": [
+      "economicConditionsSummary": "Arthur governed during a period of steady economic recovery following the Long Depression of the 1870s. Industrial output increased, railroad expansion continued, and federal finances stabilized. However, debates over tariffs, civil service reform, and monetary policy remained central. Arthur’s administration saw rising federal surpluses and growing pressure to revise tariff structures to reflect the changing industrial economy.",
+      "majorEconomicEvents": [
         {
-          "title": "Tariff Commission of 1882",
-          "summary": "Arthur created a commission to study tariff reform, leading to the Tariff Act of 1883.",
+          "title": "Post‑Depression Industrial Expansion",
+          "summary": "Manufacturing, steel production, and railroads expanded significantly during Arthur’s presidency, contributing to rising employment and national economic growth.",
           "sources": [
-            "National Archives, Arthur tariff commission records.",
-            "Library of Congress, Arthur economic correspondence."
+            "https://www.britannica.com/biography/Chester-A-Arthur",
+            "https://millercenter.org/president/arthur/domestic-affairs"
           ]
         },
         {
-          "title": "Veto of the Rivers and Harbors Act",
-          "summary": "Arthur vetoed a major spending bill he deemed excessive, asserting fiscal restraint.",
+          "title": "Debates Over Tariff Reform",
+          "summary": "Large federal surpluses and rising industrial power intensified debates over tariff levels, with calls for reductions to prevent excessive government revenue.",
           "sources": [
-            "Library of Congress, Arthur veto messages.",
-            "National Archives, federal spending records."
+            "https://www.britannica.com/topic/tariff",
+            "https://millercenter.org/president/arthur/domestic-affairs"
           ]
         }
       ],
-      "overallAssessment": "Arthur shaped tariff reform and asserted fiscal discipline through targeted vetoes.",
-      "sources": [
-        "Library of Congress, Arthur presidential papers.",
-        "National Archives, economic policy archives."
+      "economicInitiatives": [
+        {
+          "title": "Pendleton Civil Service Reform Act",
+          "summary": "Arthur signed the Pendleton Act, establishing merit‑based federal employment. While not directly economic, it improved administrative efficiency and reduced corruption in federal contracting and revenue collection.",
+          "sources": [
+            "https://www.britannica.com/topic/Pendleton-Civil-Service-Act",
+            "https://millercenter.org/president/arthur/domestic-affairs"
+          ]
+        },
+        {
+          "title": "Tariff Commission of 1882",
+          "summary": "Arthur created a bipartisan commission to study tariff reform. The resulting recommendations led to modest tariff reductions in the Tariff Act of 1883.",
+          "sources": [
+            "https://www.britannica.com/topic/Tariff-of-1883",
+            "https://millercenter.org/president/arthur/domestic-affairs"
+          ]
+        }
       ]
     }
   },
@@ -596,28 +906,42 @@
     "id": 22,
     "name": "Grover Cleveland",
     "economicPolicy": {
-      "events": [
+      "economicConditionsSummary": "Cleveland’s first term occurred during a period of economic growth, rising industrial output, and expanding national markets. However, debates over tariffs, currency policy, and federal spending dominated the political landscape. Cleveland emphasized fiscal conservatism, limited government, and opposition to high protective tariffs. His administration also confronted growing concerns about monopolies and corporate power.",
+      "majorEconomicEvents": [
         {
-          "title": "Advocacy for Tariff Reduction",
-          "summary": "Cleveland pushed aggressively for lower tariffs, arguing they created unnecessary federal surpluses.",
+          "title": "Economic Expansion of the Mid‑1880s",
+          "summary": "Industrial production, railroad construction, and urban growth accelerated, contributing to rising employment and national prosperity.",
           "sources": [
-            "National Archives, Cleveland tariff correspondence.",
-            "Library of Congress, Cleveland economic papers."
+            "https://www.britannica.com/biography/Grover-Cleveland",
+            "https://millercenter.org/president/cleveland/domestic-affairs"
           ]
         },
         {
-          "title": "Opposition to Pension Expansion",
-          "summary": "Cleveland vetoed numerous pension bills to prevent what he viewed as excessive federal spending.",
+          "title": "Growing Public Concern Over Monopolies",
+          "summary": "Large corporations and trusts expanded rapidly, prompting public debate over economic concentration and the need for federal regulation.",
           "sources": [
-            "Library of Congress, Cleveland veto messages.",
-            "National Archives, federal expenditure records."
+            "https://www.britannica.com/topic/trust-business-law",
+            "https://millercenter.org/president/cleveland/domestic-affairs"
           ]
         }
       ],
-      "overallAssessment": "Cleveland championed tariff reduction and strict federal spending discipline.",
-      "sources": [
-        "Library of Congress, Cleveland presidential papers.",
-        "National Archives, economic policy archives."
+      "economicInitiatives": [
+        {
+          "title": "Opposition to High Protective Tariffs",
+          "summary": "Cleveland argued that high tariffs created excessive federal surpluses and unfairly benefited large industries. His push for tariff reform became a central issue of his presidency.",
+          "sources": [
+            "https://www.britannica.com/topic/tariff",
+            "https://millercenter.org/president/cleveland/domestic-affairs"
+          ]
+        },
+        {
+          "title": "Vetoes of Pension and Spending Bills",
+          "summary": "Cleveland vetoed numerous private pension bills and spending measures, emphasizing fiscal restraint and opposition to what he viewed as wasteful government expenditures.",
+          "sources": [
+            "https://www.britannica.com/biography/Grover-Cleveland",
+            "https://millercenter.org/president/cleveland/domestic-affairs"
+          ]
+        }
       ]
     }
   },
@@ -625,28 +949,50 @@
     "id": 23,
     "name": "Benjamin Harrison",
     "economicPolicy": {
-      "events": [
+      "economicConditionsSummary": "Harrison presided over a period of rapid industrial growth but also rising federal spending and economic volatility. High protective tariffs, increased pensions, and new regulatory laws shaped the economic landscape. The Sherman Antitrust Act and Sherman Silver Purchase Act marked major federal interventions in markets and monetary policy. Late in his term, economic instability increased, contributing to the Panic of 1893 shortly after he left office.",
+      "majorEconomicEvents": [
+        {
+          "title": "Rising Federal Spending and Surpluses",
+          "summary": "Harrison’s administration significantly increased federal spending, particularly on Civil War pensions, earning the nickname 'the Billion‑Dollar Congress.'",
+          "sources": [
+            "https://www.britannica.com/biography/Benjamin-Harrison",
+            "https://millercenter.org/president/harrison/domestic-affairs"
+          ]
+        },
+        {
+          "title": "Economic Instability Leading to the Panic of 1893",
+          "summary": "Speculative investment, railroad overexpansion, and monetary uncertainty contributed to financial instability that would culminate in a major depression shortly after Harrison left office.",
+          "sources": [
+            "https://www.britannica.com/event/Panic-of-1893",
+            "https://www.federalreservehistory.org/essays/panic-of-1893"
+          ]
+        }
+      ],
+      "economicInitiatives": [
         {
           "title": "McKinley Tariff of 1890",
-          "summary": "Harrison supported one of the highest protective tariffs in U.S. history to bolster domestic industry.",
+          "summary": "Harrison signed the McKinley Tariff, raising protective tariffs to historically high levels. The law aimed to protect American industries but increased consumer prices and sparked political backlash.",
           "sources": [
-            "National Archives, Harrison tariff records.",
-            "Library of Congress, McKinley Tariff papers."
+            "https://www.britannica.com/topic/McKinley-Tariff",
+            "https://millercenter.org/president/harrison/domestic-affairs"
+          ]
+        },
+        {
+          "title": "Sherman Antitrust Act",
+          "summary": "Harrison approved the first federal law aimed at curbing monopolies and anti‑competitive business practices. Although initially weakly enforced, it established a foundation for future antitrust policy.",
+          "sources": [
+            "https://www.britannica.com/topic/Sherman-Antitrust-Act",
+            "https://millercenter.org/president/harrison/domestic-affairs"
           ]
         },
         {
           "title": "Sherman Silver Purchase Act",
-          "summary": "Harrison approved expanded federal silver purchases, influencing national monetary policy.",
+          "summary": "This act increased federal purchases of silver to support miners and expand the money supply. It contributed to monetary instability and was later repealed during the Panic of 1893.",
           "sources": [
-            "Library of Congress, Harrison silver policy papers.",
-            "National Archives, monetary legislation records."
+            "https://www.britannica.com/topic/Sherman-Silver-Purchase-Act",
+            "https://millercenter.org/president/harrison/domestic-affairs"
           ]
         }
-      ],
-      "overallAssessment": "Harrison reshaped tariff and silver policy with major protectionist and monetary legislation.",
-      "sources": [
-        "Library of Congress, Harrison presidential papers.",
-        "National Archives, economic policy archives."
       ]
     }
   },
@@ -654,28 +1000,42 @@
     "id": 24,
     "name": "Grover Cleveland (Second Term)",
     "economicPolicy": {
-      "events": [
+      "economicConditionsSummary": "Cleveland’s second term was dominated by the Panic of 1893 and the severe depression that followed. Bank failures, unemployment, falling prices, and labor unrest defined the economic landscape. Cleveland adhered to gold‑standard orthodoxy, repealed silver‑purchase legislation, and resisted inflationary policies. His handling of the Pullman Strike and reliance on federal troops further inflamed tensions during a period of deep economic hardship.",
+      "majorEconomicEvents": [
         {
-          "title": "Repeal of the Sherman Silver Purchase Act",
-          "summary": "Cleveland pushed for repeal to stabilize gold reserves during the Panic of 1893.",
+          "title": "Panic of 1893",
+          "summary": "A major financial crisis triggered by railroad failures, depleted gold reserves, and declining investor confidence led to widespread bank collapses and unemployment.",
           "sources": [
-            "National Archives, Cleveland silver repeal papers.",
-            "Library of Congress, Panic of 1893 correspondence."
+            "https://www.britannica.com/event/Panic-of-1893",
+            "https://www.federalreservehistory.org/essays/panic-of-1893"
           ]
         },
         {
-          "title": "Bond Sales to Restore Gold Reserves",
-          "summary": "Cleveland authorized major bond sales to replenish federal gold reserves and defend the gold standard.",
+          "title": "Pullman Strike and Labor Unrest",
+          "summary": "A nationwide railroad strike disrupted commerce and transportation. Cleveland deployed federal troops to break the strike, intensifying conflict between labor and government.",
           "sources": [
-            "Library of Congress, Cleveland bond sale papers.",
-            "National Archives, Treasury gold reserve records."
+            "https://www.britannica.com/event/Pullman-Strike",
+            "https://millercenter.org/president/cleveland/domestic-affairs"
           ]
         }
       ],
-      "overallAssessment": "Cleveland stabilized federal finances during crisis through gold‑standard defense and bond sales.",
-      "sources": [
-        "Library of Congress, Cleveland presidential papers.",
-        "National Archives, economic crisis archives."
+      "economicInitiatives": [
+        {
+          "title": "Repeal of the Sherman Silver Purchase Act",
+          "summary": "Cleveland pushed Congress to repeal the act to stabilize gold reserves and restore confidence in the currency. The repeal deepened divisions within the Democratic Party.",
+          "sources": [
+            "https://www.britannica.com/topic/Sherman-Silver-Purchase-Act",
+            "https://millercenter.org/president/cleveland/domestic-affairs"
+          ]
+        },
+        {
+          "title": "Defense of the Gold Standard",
+          "summary": "Cleveland secured loans from financiers to replenish gold reserves and maintain the gold standard, reinforcing hard‑money policy during the depression.",
+          "sources": [
+            "https://www.britannica.com/biography/Grover-Cleveland",
+            "https://millercenter.org/president/cleveland/domestic-affairs"
+          ]
+        }
       ]
     }
   },
@@ -683,28 +1043,42 @@
     "id": 25,
     "name": "William McKinley",
     "economicPolicy": {
-      "events": [
+      "economicConditionsSummary": "McKinley presided over a period of strong economic recovery following the depression of the 1890s. Industrial production surged, gold discoveries expanded the money supply, and rising consumer demand fueled growth. The Spanish‑American War stimulated federal spending and expanded U.S. global influence. McKinley’s policies emphasized protective tariffs, monetary stability, and support for business interests.",
+      "majorEconomicEvents": [
+        {
+          "title": "Recovery from the Panic of 1893",
+          "summary": "The economy rebounded with rising industrial output, increased gold supplies, and renewed investor confidence. Employment and wages improved across many sectors.",
+          "sources": [
+            "https://www.britannica.com/event/Panic-of-1893",
+            "https://millercenter.org/president/mckinley/domestic-affairs"
+          ]
+        },
+        {
+          "title": "Spanish‑American War Economic Impact",
+          "summary": "The war increased federal spending and stimulated industries tied to military supply, transportation, and shipbuilding. Victory expanded U.S. overseas markets and strategic influence.",
+          "sources": [
+            "https://www.britannica.com/event/Spanish-American-War",
+            "https://millercenter.org/president/mckinley/domestic-affairs"
+          ]
+        }
+      ],
+      "economicInitiatives": [
         {
           "title": "Dingley Tariff of 1897",
-          "summary": "McKinley enacted a high protective tariff to support domestic manufacturing and federal revenue.",
+          "summary": "McKinley signed the Dingley Tariff, raising rates to protect American industries and increase federal revenue. It became one of the highest tariff structures in U.S. history.",
           "sources": [
-            "National Archives, McKinley tariff records.",
-            "Library of Congress, Dingley Tariff papers."
+            "https://www.britannica.com/topic/Dingley-Tariff",
+            "https://millercenter.org/president/mckinley/domestic-affairs"
           ]
         },
         {
           "title": "Gold Standard Act of 1900",
-          "summary": "McKinley formally committed the U.S. to the gold standard, ending the silver debate.",
+          "summary": "McKinley signed legislation formally committing the United States to the gold standard, ending the long‑running debate over silver coinage and stabilizing monetary policy.",
           "sources": [
-            "Library of Congress, McKinley monetary policy papers.",
-            "National Archives, Gold Standard Act records."
+            "https://www.britannica.com/topic/Gold-Standard-Act",
+            "https://millercenter.org/president/mckinley/domestic-affairs"
           ]
         }
-      ],
-      "overallAssessment": "McKinley solidified protectionist trade policy and cemented the gold standard.",
-      "sources": [
-        "Library of Congress, McKinley presidential papers.",
-        "National Archives, economic policy archives."
       ]
     }
   },
@@ -712,28 +1086,50 @@
     "id": 26,
     "name": "Theodore Roosevelt",
     "economicPolicy": {
-      "events": [
+      "economicConditionsSummary": "Roosevelt presided over a period of rapid industrial expansion, rising corporate power, and growing public concern over monopolies and labor conditions. The economy was strong, with increasing production, expanding railroads, and rising consumer markets. Roosevelt’s Square Deal sought to balance the interests of labor, business, and the public, marking a major shift toward federal regulation of the economy. His administration confronted powerful trusts, improved food and drug safety, and strengthened conservation policy, all while the nation enjoyed sustained economic growth.",
+      "majorEconomicEvents": [
         {
-          "title": "Trust‑Busting and Antitrust Enforcement",
-          "summary": "Roosevelt aggressively enforced the Sherman Antitrust Act, breaking up major monopolies.",
+          "title": "Rise of Corporate Trusts and Monopolies",
+          "summary": "Large corporations dominated key industries such as oil, railroads, and steel. Public concern over monopolistic practices grew, prompting calls for stronger federal regulation.",
           "sources": [
-            "National Archives, Roosevelt antitrust records.",
-            "Library of Congress, Roosevelt corporate regulation papers."
+            "https://www.britannica.com/biography/Theodore-Roosevelt",
+            "https://millercenter.org/president/roosevelt/domestic-affairs"
           ]
         },
         {
-          "title": "Regulation of Railroads Through the Hepburn Act",
-          "summary": "Roosevelt expanded federal authority to regulate railroad rates and practices.",
+          "title": "Labor Unrest and Industrial Tensions",
+          "summary": "Rapid industrialization led to labor disputes, unsafe working conditions, and wage conflicts. Roosevelt’s intervention in the 1902 coal strike marked a new federal role in labor relations.",
           "sources": [
-            "Library of Congress, Roosevelt railroad policy papers.",
-            "National Archives, Hepburn Act records."
+            "https://www.britannica.com/event/Coal-Strike-of-1902",
+            "https://millercenter.org/president/roosevelt/domestic-affairs"
           ]
         }
       ],
-      "overallAssessment": "Roosevelt reshaped federal economic regulation through antitrust action and railroad oversight.",
-      "sources": [
-        "Library of Congress, Roosevelt presidential papers.",
-        "National Archives, economic regulation archives."
+      "economicInitiatives": [
+        {
+          "title": "Trust‑Busting and Antitrust Enforcement",
+          "summary": "Roosevelt aggressively enforced the Sherman Antitrust Act, breaking up major monopolies such as Northern Securities. His administration filed dozens of antitrust suits, signaling a new era of federal oversight.",
+          "sources": [
+            "https://www.britannica.com/topic/Sherman-Antitrust-Act",
+            "https://millercenter.org/president/roosevelt/domestic-affairs"
+          ]
+        },
+        {
+          "title": "Hepburn Act (1906)",
+          "summary": "This act strengthened the Interstate Commerce Commission, allowing it to regulate railroad rates and curb abusive practices. It marked a major expansion of federal regulatory power.",
+          "sources": [
+            "https://www.britannica.com/topic/Hepburn-Act",
+            "https://millercenter.org/president/roosevelt/domestic-affairs"
+          ]
+        },
+        {
+          "title": "Pure Food and Drug Act & Meat Inspection Act",
+          "summary": "Roosevelt signed landmark consumer protection laws establishing federal oversight of food and drug safety. These acts responded to public outrage over unsanitary conditions in the food industry.",
+          "sources": [
+            "https://www.britannica.com/topic/Pure-Food-and-Drug-Act",
+            "https://www.britannica.com/topic/Meat-Inspection-Act"
+          ]
+        }
       ]
     }
   },
@@ -741,28 +1137,42 @@
     "id": 27,
     "name": "William Howard Taft",
     "economicPolicy": {
-      "events": [
+      "economicConditionsSummary": "Taft presided over a stable and growing economy marked by continued industrial expansion and rising corporate influence. Although less charismatic than Roosevelt, Taft pursued even more antitrust cases and strengthened regulatory institutions. Tariff reform became a major political issue, and divisions within the Republican Party deepened over economic policy. The economy remained generally healthy, but political conflict overshadowed Taft’s economic achievements.",
+      "majorEconomicEvents": [
         {
-          "title": "Payne–Aldrich Tariff Act",
-          "summary": "Taft signed a tariff bill that maintained high duties despite promising reform, fracturing his political coalition.",
+          "title": "Continued Industrial Growth",
+          "summary": "Manufacturing, mining, and transportation industries expanded, contributing to rising employment and national prosperity.",
           "sources": [
-            "National Archives, Taft tariff correspondence.",
-            "Library of Congress, Payne–Aldrich papers."
+            "https://www.britannica.com/biography/William-Howard-Taft",
+            "https://millercenter.org/president/taft/domestic-affairs"
           ]
         },
         {
-          "title": "Expansion of Antitrust Enforcement",
-          "summary": "Taft filed more antitrust suits than Roosevelt, intensifying federal regulation of large corporations.",
+          "title": "Republican Party Split Over Tariffs",
+          "summary": "The Payne‑Aldrich Tariff created deep divisions within the Republican Party, weakening Taft’s political support and contributing to the party’s fracture in 1912.",
           "sources": [
-            "Library of Congress, Taft antitrust papers.",
-            "National Archives, corporate regulation records."
+            "https://www.britannica.com/topic/Payne-Aldrich-Tariff-Act",
+            "https://millercenter.org/president/taft/domestic-affairs"
           ]
         }
       ],
-      "overallAssessment": "Taft shaped tariff policy and expanded federal antitrust enforcement.",
-      "sources": [
-        "Library of Congress, Taft presidential papers.",
-        "National Archives, economic policy archives."
+      "economicInitiatives": [
+        {
+          "title": "Aggressive Antitrust Enforcement",
+          "summary": "Taft filed more antitrust suits than Roosevelt, targeting major corporations such as Standard Oil and American Tobacco. His administration strengthened the legal framework for regulating monopolies.",
+          "sources": [
+            "https://www.britannica.com/topic/Sherman-Antitrust-Act",
+            "https://millercenter.org/president/taft/domestic-affairs"
+          ]
+        },
+        {
+          "title": "Mann‑Elkins Act (1910)",
+          "summary": "This act expanded the Interstate Commerce Commission’s authority to regulate telephone, telegraph, and railroad rates, further strengthening federal oversight of transportation and communications.",
+          "sources": [
+            "https://www.britannica.com/topic/Mann-Elkins-Act",
+            "https://millercenter.org/president/taft/domestic-affairs"
+          ]
+        }
       ]
     }
   },
@@ -770,28 +1180,50 @@
     "id": 28,
     "name": "Woodrow Wilson",
     "economicPolicy": {
-      "events": [
+      "economicConditionsSummary": "Wilson’s presidency saw major economic reforms, World War I mobilization, and significant shifts in federal power. Early in his term, Wilson enacted sweeping progressive reforms targeting tariffs, banking, and monopolies. The war transformed the economy through massive federal spending, industrial coordination, and labor regulation. Postwar adjustments brought inflation, labor unrest, and recession. Wilson’s policies reshaped the modern American economic system.",
+      "majorEconomicEvents": [
         {
-          "title": "Federal Reserve Act",
-          "summary": "Wilson created the Federal Reserve System, establishing modern U.S. monetary policy infrastructure.",
+          "title": "World War I Economic Mobilization",
+          "summary": "The war required unprecedented federal coordination of industry, transportation, and labor. Production surged, wages rose, and federal spending expanded dramatically.",
           "sources": [
-            "National Archives, Federal Reserve Act records.",
-            "Library of Congress, Wilson monetary policy papers."
+            "https://www.britannica.com/event/World-War-I",
+            "https://millercenter.org/president/wilson/domestic-affairs"
           ]
         },
         {
-          "title": "Clayton Antitrust Act and FTC Creation",
-          "summary": "Wilson strengthened antitrust law and created the Federal Trade Commission to regulate unfair business practices.",
+          "title": "Postwar Inflation and Recession",
+          "summary": "After the war, rapid demobilization and pent‑up demand caused inflation, followed by a sharp recession in 1920–1921 marked by falling prices and rising unemployment.",
           "sources": [
-            "Library of Congress, Wilson antitrust papers.",
-            "National Archives, FTC founding documents."
+            "https://www.britannica.com/event/Depression-of-1920-1921",
+            "https://millercenter.org/president/wilson/domestic-affairs"
           ]
         }
       ],
-      "overallAssessment": "Wilson transformed U.S. monetary and regulatory systems through the Fed and modern antitrust law.",
-      "sources": [
-        "Library of Congress, Wilson presidential papers.",
-        "National Archives, economic policy archives."
+      "economicInitiatives": [
+        {
+          "title": "Federal Reserve Act (1913)",
+          "summary": "Wilson created the Federal Reserve System, establishing a central bank to regulate credit, stabilize the financial system, and manage monetary policy. This remains one of the most important economic reforms in U.S. history.",
+          "sources": [
+            "https://www.britannica.com/topic/Federal-Reserve-System",
+            "https://www.federalreservehistory.org/essays/federal-reserve-act"
+          ]
+        },
+        {
+          "title": "Clayton Antitrust Act and FTC Act",
+          "summary": "Wilson strengthened antitrust enforcement and created the Federal Trade Commission to regulate unfair business practices and promote competition.",
+          "sources": [
+            "https://www.britannica.com/topic/Clayton-Antitrust-Act",
+            "https://www.britannica.com/topic/Federal-Trade-Commission"
+          ]
+        },
+        {
+          "title": "Underwood Tariff Act",
+          "summary": "Wilson reduced tariff rates and introduced a federal income tax under the newly ratified 16th Amendment, shifting federal revenue away from tariffs.",
+          "sources": [
+            "https://www.britannica.com/topic/Underwood-Tariff-Act",
+            "https://millercenter.org/president/wilson/domestic-affairs"
+          ]
+        }
       ]
     }
   },
@@ -799,28 +1231,42 @@
     "id": 29,
     "name": "Warren G. Harding",
     "economicPolicy": {
-      "events": [
+      "economicConditionsSummary": "Harding took office during the sharp postwar recession of 1920–1921. His administration emphasized pro‑business policies, reduced taxes, and limited federal regulation. The economy recovered rapidly, entering the prosperous Roaring Twenties. However, corruption scandals within Harding’s administration undermined public trust, even as economic conditions improved.",
+      "majorEconomicEvents": [
         {
-          "title": "Budget and Accounting Act of 1921",
-          "summary": "Harding created the Bureau of the Budget and the GAO, centralizing federal budgeting and oversight.",
+          "title": "Depression of 1920–1921",
+          "summary": "A severe but short recession marked by deflation, high unemployment, and falling industrial output greeted Harding upon taking office.",
           "sources": [
-            "National Archives, Budget Act records.",
-            "Library of Congress, Harding fiscal papers."
+            "https://www.britannica.com/event/Depression-of-1920-1921",
+            "https://millercenter.org/president/harding/domestic-affairs"
           ]
         },
         {
-          "title": "Support for Post‑War Tax Reductions",
-          "summary": "Harding backed significant tax cuts to stimulate economic recovery after World War I.",
+          "title": "Economic Recovery and the Roaring Twenties",
+          "summary": "After the recession, the economy rebounded strongly, with rising consumer spending, industrial growth, and technological innovation.",
           "sources": [
-            "Library of Congress, Harding tax policy papers.",
-            "National Archives, Treasury tax records."
+            "https://www.britannica.com/event/Roaring-Twenties",
+            "https://millercenter.org/president/harding/domestic-affairs"
           ]
         }
       ],
-      "overallAssessment": "Harding modernized federal budgeting and advanced postwar tax reduction.",
-      "sources": [
-        "Library of Congress, Harding presidential papers.",
-        "National Archives, economic policy archives."
+      "economicInitiatives": [
+        {
+          "title": "Revenue Act of 1921",
+          "summary": "Harding reduced income tax rates and repealed wartime excess‑profits taxes, promoting investment and business expansion.",
+          "sources": [
+            "https://www.britannica.com/topic/Revenue-Act-of-1921",
+            "https://millercenter.org/president/harding/domestic-affairs"
+          ]
+        },
+        {
+          "title": "Budget and Accounting Act",
+          "summary": "Harding established the Bureau of the Budget and the General Accounting Office, modernizing federal budgeting and improving fiscal oversight.",
+          "sources": [
+            "https://www.britannica.com/topic/Budget-and-Accounting-Act",
+            "https://millercenter.org/president/harding/domestic-affairs"
+          ]
+        }
       ]
     }
   },
@@ -828,28 +1274,42 @@
     "id": 30,
     "name": "Calvin Coolidge",
     "economicPolicy": {
-      "events": [
+      "economicConditionsSummary": "Coolidge presided over the height of the Roaring Twenties, a period of rapid economic growth, rising consumer culture, and technological innovation. Industrial production soared, unemployment remained low, and financial markets expanded. Coolidge embraced a limited‑government, pro‑business philosophy, reducing taxes and regulation. However, speculative excesses in finance and real estate grew during this period, contributing to vulnerabilities that would culminate in the Great Depression shortly after his presidency.",
+      "majorEconomicEvents": [
         {
-          "title": "Revenue Acts of 1924 and 1926",
-          "summary": "Coolidge enacted major tax cuts that reduced federal income tax rates and shrank federal revenue.",
+          "title": "Economic Boom of the Roaring Twenties",
+          "summary": "Mass production, consumer credit, and technological innovation fueled rapid economic expansion. Automobiles, radios, and household appliances transformed consumer markets.",
           "sources": [
-            "National Archives, Coolidge tax legislation records.",
-            "Library of Congress, Coolidge fiscal papers."
+            "https://www.britannica.com/event/Roaring-Twenties",
+            "https://millercenter.org/president/coolidge/domestic-affairs"
           ]
         },
         {
-          "title": "Support for Limited Federal Regulation",
-          "summary": "Coolidge maintained minimal federal intervention in business, reinforcing laissez‑faire economic policy.",
+          "title": "Speculative Financial and Real Estate Bubbles",
+          "summary": "Stock market speculation and risky real estate investments increased dramatically, creating economic imbalances that would later contribute to the 1929 crash.",
           "sources": [
-            "Library of Congress, Coolidge economic correspondence.",
-            "National Archives, regulatory policy records."
+            "https://www.britannica.com/event/Great-Depression",
+            "https://millercenter.org/president/coolidge/domestic-affairs"
           ]
         }
       ],
-      "overallAssessment": "Coolidge advanced tax reduction and limited federal economic intervention.",
-      "sources": [
-        "Library of Congress, Coolidge presidential papers.",
-        "National Archives, economic policy archives."
+      "economicInitiatives": [
+        {
+          "title": "Revenue Acts of 1924 and 1926",
+          "summary": "Coolidge signed major tax cuts that reduced income tax rates and eliminated many surtaxes, reflecting his belief that low taxes encouraged economic growth.",
+          "sources": [
+            "https://www.britannica.com/topic/Revenue-Act",
+            "https://millercenter.org/president/coolidge/domestic-affairs"
+          ]
+        },
+        {
+          "title": "Limited Federal Regulation",
+          "summary": "Coolidge opposed extensive federal intervention in business, maintaining a hands‑off approach that encouraged private enterprise but allowed speculative excesses to grow.",
+          "sources": [
+            "https://www.britannica.com/biography/Calvin-Coolidge",
+            "https://millercenter.org/president/coolidge/domestic-affairs"
+          ]
+        }
       ]
     }
   },
@@ -857,28 +1317,42 @@
     "id": 31,
     "name": "Herbert Hoover",
     "economicPolicy": {
-      "events": [
+      "economicConditionsSummary": "Hoover entered office during the final phase of the Roaring Twenties, a period of high production, rising stock prices, and widespread optimism. Within months, the stock market crashed in 1929, triggering the Great Depression. Industrial output collapsed, unemployment soared, banks failed nationwide, and deflation intensified the crisis. Hoover believed in limited federal intervention and voluntary cooperation between business and government, but the scale of the collapse overwhelmed these measures. His presidency became defined by deepening economic hardship and public frustration.",
+      "majorEconomicEvents": [
         {
-          "title": "Reconstruction Finance Corporation (RFC) Creation",
-          "summary": "Hoover established the RFC to provide emergency loans to banks, railroads, and major industries during the early Depression, marking a major federal intervention in credit markets.",
+          "title": "Stock Market Crash of 1929",
+          "summary": "A massive collapse in stock prices wiped out wealth, undermined consumer confidence, and triggered a chain reaction of bank failures and business collapses.",
           "sources": [
-            "National Archives, RFC founding documents.",
-            "Library of Congress, Hoover economic crisis papers."
+            "https://www.britannica.com/event/Stock-Market-Crash-of-1929",
+            "https://millercenter.org/president/hoover/domestic-affairs"
           ]
         },
         {
-          "title": "Smoot–Hawley Tariff Act",
-          "summary": "Hoover signed the Smoot–Hawley Tariff, raising tariffs to historic highs and reshaping global trade during the Depression.",
+          "title": "Onset of the Great Depression",
+          "summary": "Industrial output plummeted, unemployment rose sharply, and deflation worsened economic conditions. Hoover’s limited intervention approach proved insufficient to halt the downturn.",
           "sources": [
-            "Library of Congress, Smoot–Hawley correspondence.",
-            "National Archives, tariff policy records."
+            "https://www.britannica.com/event/Great-Depression",
+            "https://www.federalreservehistory.org/essays/great-depression"
           ]
         }
       ],
-      "overallAssessment": "Hoover expanded federal credit intervention while enacting protectionist trade policy during economic collapse.",
-      "sources": [
-        "Library of Congress, Hoover presidential papers.",
-        "National Archives, Depression‑era economic records."
+      "economicInitiatives": [
+        {
+          "title": "Reconstruction Finance Corporation (RFC)",
+          "summary": "Hoover created the RFC to provide emergency loans to banks, railroads, and businesses. It was one of the largest federal interventions in the economy up to that point.",
+          "sources": [
+            "https://www.britannica.com/topic/Reconstruction-Finance-Corporation",
+            "https://millercenter.org/president/hoover/domestic-affairs"
+          ]
+        },
+        {
+          "title": "Smoot‑Hawley Tariff (1930)",
+          "summary": "Hoover signed the Smoot‑Hawley Tariff, raising tariffs to record levels. The law provoked international retaliation and worsened global trade during the Depression.",
+          "sources": [
+            "https://www.britannica.com/topic/Smoot-Hawley-Tariff-Act",
+            "https://millercenter.org/president/hoover/domestic-affairs"
+          ]
+        }
       ]
     }
   },
@@ -886,28 +1360,50 @@
     "id": 32,
     "name": "Franklin D. Roosevelt",
     "economicPolicy": {
-      "events": [
+      "economicConditionsSummary": "Roosevelt took office at the height of the Great Depression, with massive unemployment, widespread bank failures, collapsing prices, and severe economic contraction. His New Deal fundamentally reshaped the federal government’s role in the economy through relief programs, financial reforms, public works, and social insurance. While recovery was uneven, the economy improved significantly during his first two terms. World War II mobilization ended the Depression entirely, transforming the United States into the world’s leading industrial and military power.",
+      "majorEconomicEvents": [
         {
-          "title": "New Deal Economic Reforms",
-          "summary": "FDR launched sweeping programs including the CCC, WPA, and AAA, reshaping federal involvement in employment, agriculture, and infrastructure.",
+          "title": "Great Depression Crisis Conditions",
+          "summary": "When Roosevelt took office, unemployment exceeded 20%, thousands of banks had failed, and deflation crippled the economy. The New Deal sought to stabilize and revive economic activity.",
           "sources": [
-            "National Archives, New Deal program records.",
-            "Library of Congress, Roosevelt economic papers."
+            "https://www.britannica.com/event/Great-Depression",
+            "https://millercenter.org/president/fdroosevelt/domestic-affairs"
           ]
         },
         {
-          "title": "Banking and Currency Reforms",
-          "summary": "FDR closed banks during the Emergency Banking Holiday, took the U.S. off the gold standard, and created the FDIC.",
+          "title": "World War II Economic Mobilization",
+          "summary": "Massive federal spending and industrial mobilization for the war effort ended the Depression, created full employment, and transformed the U.S. economy into a global powerhouse.",
           "sources": [
-            "Library of Congress, Roosevelt banking crisis papers.",
-            "National Archives, Emergency Banking Act records."
+            "https://www.britannica.com/event/World-War-II",
+            "https://www.federalreservehistory.org/essays/world-war-ii-economy"
           ]
         }
       ],
-      "overallAssessment": "FDR fundamentally redefined federal economic authority through New Deal programs and monetary restructuring.",
-      "sources": [
-        "Library of Congress, Roosevelt presidential papers.",
-        "National Archives, New Deal economic archives."
+      "economicInitiatives": [
+        {
+          "title": "New Deal Relief, Recovery, and Reform Programs",
+          "summary": "Roosevelt launched sweeping programs including the CCC, WPA, and PWA to provide jobs, build infrastructure, and stimulate demand.",
+          "sources": [
+            "https://www.britannica.com/event/New-Deal",
+            "https://millercenter.org/president/fdroosevelt/domestic-affairs"
+          ]
+        },
+        {
+          "title": "Banking and Financial Reforms",
+          "summary": "The Emergency Banking Act, Glass‑Steagall Act, and FDIC restored confidence in the financial system and established long‑term regulatory frameworks.",
+          "sources": [
+            "https://www.britannica.com/topic/Glass-Steagall-Act",
+            "https://www.federalreservehistory.org/essays/banking-act-of-1933"
+          ]
+        },
+        {
+          "title": "Social Security Act (1935)",
+          "summary": "Roosevelt established the Social Security system, creating pensions, unemployment insurance, and welfare programs that became pillars of the modern welfare state.",
+          "sources": [
+            "https://www.britannica.com/topic/Social-Security-Act",
+            "https://millercenter.org/president/fdroosevelt/domestic-affairs"
+          ]
+        }
       ]
     }
   },
@@ -915,28 +1411,42 @@
     "id": 33,
     "name": "Harry S. Truman",
     "economicPolicy": {
-      "events": [
+      "economicConditionsSummary": "Truman oversaw the transition from wartime mobilization to a peacetime economy. The immediate postwar years brought inflation, labor strikes, and shortages as industries reconverted. The economy then entered a period of strong growth fueled by consumer demand, housing expansion, and global reconstruction. Truman’s Fair Deal sought to extend New Deal reforms, while Cold War spending shaped federal budgets and industrial priorities.",
+      "majorEconomicEvents": [
         {
-          "title": "Fair Deal Economic Initiatives",
-          "summary": "Truman advanced Fair Deal proposals including housing programs, minimum wage increases, and expanded social protections.",
+          "title": "Post‑World War II Reconversion",
+          "summary": "Factories shifted from wartime to consumer production, causing temporary shortages, inflation, and labor unrest as millions of soldiers returned home.",
           "sources": [
-            "National Archives, Truman Fair Deal papers.",
-            "Library of Congress, Truman domestic policy correspondence."
+            "https://www.britannica.com/biography/Harry-S-Truman",
+            "https://millercenter.org/president/truman/domestic-affairs"
           ]
         },
         {
-          "title": "Post‑War Price and Wage Controls",
-          "summary": "Truman used federal authority to manage inflation through temporary price and wage controls during the transition to a peacetime economy.",
+          "title": "Postwar Economic Boom",
+          "summary": "After initial disruptions, the economy expanded rapidly, driven by pent‑up consumer demand, suburbanization, and federal spending.",
           "sources": [
-            "Library of Congress, Truman inflation control papers.",
-            "National Archives, post‑war economic stabilization records."
+            "https://www.britannica.com/event/United-States-Economic-History",
+            "https://millercenter.org/president/truman/domestic-affairs"
           ]
         }
       ],
-      "overallAssessment": "Truman shaped post‑war stabilization and expanded federal social‑economic programs.",
-      "sources": [
-        "Library of Congress, Truman presidential papers.",
-        "National Archives, economic policy archives."
+      "economicInitiatives": [
+        {
+          "title": "Fair Deal Programs",
+          "summary": "Truman proposed expanding social welfare, increasing the minimum wage, and supporting housing and education. Some measures passed, while others faced congressional resistance.",
+          "sources": [
+            "https://www.britannica.com/topic/Fair-Deal",
+            "https://millercenter.org/president/truman/domestic-affairs"
+          ]
+        },
+        {
+          "title": "Taft‑Hartley Act Response",
+          "summary": "Congress passed the Taft‑Hartley Act over Truman’s veto, restricting labor union power. Truman opposed the law but was forced to operate within its framework.",
+          "sources": [
+            "https://www.britannica.com/topic/Taft-Hartley-Act",
+            "https://millercenter.org/president/truman/domestic-affairs"
+          ]
+        }
       ]
     }
   },
@@ -944,28 +1454,42 @@
     "id": 34,
     "name": "Dwight D. Eisenhower",
     "economicPolicy": {
-      "events": [
+      "economicConditionsSummary": "Eisenhower presided over a period of strong postwar prosperity marked by rising incomes, expanding suburbs, and stable inflation. The economy experienced moderate recessions but maintained long‑term growth. Eisenhower emphasized fiscal responsibility, balanced budgets, and limited federal intervention, while supporting major infrastructure projects. Defense spending remained high due to Cold War tensions, shaping federal priorities.",
+      "majorEconomicEvents": [
         {
-          "title": "Federal‑Aid Highway Act of 1956",
-          "summary": "Eisenhower created the Interstate Highway System, the largest infrastructure project in U.S. history.",
+          "title": "Postwar Prosperity and Consumer Expansion",
+          "summary": "Rising wages, mass production, and suburban growth fueled strong consumer demand and economic stability.",
           "sources": [
-            "National Archives, Highway Act records.",
-            "Library of Congress, Eisenhower infrastructure papers."
+            "https://www.britannica.com/biography/Dwight-D-Eisenhower",
+            "https://millercenter.org/president/eisenhower/domestic-affairs"
+          ]
+        },
+        {
+          "title": "Recessions of 1953–54 and 1957–58",
+          "summary": "The economy experienced two moderate recessions during Eisenhower’s presidency, both followed by strong recoveries.",
+          "sources": [
+            "https://www.britannica.com/event/United-States-Economic-History",
+            "https://millercenter.org/president/eisenhower/domestic-affairs"
+          ]
+        }
+      ],
+      "economicInitiatives": [
+        {
+          "title": "Federal‑Aid Highway Act (1956)",
+          "summary": "Eisenhower created the Interstate Highway System, one of the largest infrastructure projects in U.S. history, transforming transportation and commerce.",
+          "sources": [
+            "https://www.britannica.com/topic/Federal-Aid-Highway-Act",
+            "https://millercenter.org/president/eisenhower/domestic-affairs"
           ]
         },
         {
           "title": "Balanced Budget Emphasis",
-          "summary": "Eisenhower prioritized balanced budgets and restrained federal spending despite Cold War pressures.",
+          "summary": "Eisenhower prioritized fiscal restraint, achieving multiple balanced budgets and resisting large expansions of federal spending.",
           "sources": [
-            "Library of Congress, Eisenhower fiscal correspondence.",
-            "National Archives, federal budget records."
+            "https://www.britannica.com/biography/Dwight-D-Eisenhower",
+            "https://millercenter.org/president/eisenhower/domestic-affairs"
           ]
         }
-      ],
-      "overallAssessment": "Eisenhower reshaped national infrastructure and maintained fiscal restraint.",
-      "sources": [
-        "Library of Congress, Eisenhower presidential papers.",
-        "National Archives, economic policy archives."
       ]
     }
   },
@@ -973,28 +1497,42 @@
     "id": 35,
     "name": "John F. Kennedy",
     "economicPolicy": {
-      "events": [
+      "economicConditionsSummary": "Kennedy inherited a sluggish economy recovering from the 1960 recession. His administration promoted economic growth through tax cuts, increased public investment, and targeted stimulus. The early 1960s saw rising employment, expanding industrial output, and growing consumer confidence. Kennedy’s policies laid the groundwork for the sustained economic expansion of the mid‑1960s.",
+      "majorEconomicEvents": [
         {
-          "title": "Tax Cut Proposal to Stimulate Growth",
-          "summary": "Kennedy proposed major income tax reductions to stimulate demand, later enacted under Johnson.",
+          "title": "Recovery from the 1960 Recession",
+          "summary": "The economy gradually strengthened as industrial production increased and unemployment declined. Kennedy sought to accelerate recovery through fiscal stimulus.",
           "sources": [
-            "National Archives, Kennedy tax policy papers.",
-            "Library of Congress, economic growth correspondence."
+            "https://www.britannica.com/event/United-States-Economic-History",
+            "https://millercenter.org/president/kennedy/domestic-affairs"
           ]
         },
         {
-          "title": "Trade Expansion Act of 1962",
-          "summary": "Kennedy gained authority to negotiate tariff reductions, reshaping U.S. trade policy.",
+          "title": "Rising Consumer and Business Confidence",
+          "summary": "Improved economic conditions and Kennedy’s growth‑oriented policies boosted investment and consumer spending.",
           "sources": [
-            "Library of Congress, Kennedy trade papers.",
-            "National Archives, trade negotiation records."
+            "https://www.britannica.com/biography/John-F-Kennedy",
+            "https://millercenter.org/president/kennedy/domestic-affairs"
           ]
         }
       ],
-      "overallAssessment": "Kennedy advanced pro‑growth tax policy and modernized U.S. trade authority.",
-      "sources": [
-        "Library of Congress, Kennedy presidential papers.",
-        "National Archives, economic policy archives."
+      "economicInitiatives": [
+        {
+          "title": "Proposed Tax Cuts for Economic Growth",
+          "summary": "Kennedy advocated major income tax reductions to stimulate demand and investment. These proposals were enacted after his death as the Revenue Act of 1964.",
+          "sources": [
+            "https://www.britannica.com/topic/Revenue-Act",
+            "https://millercenter.org/president/kennedy/domestic-affairs"
+          ]
+        },
+        {
+          "title": "Investment in Space and Technology",
+          "summary": "Kennedy expanded federal investment in science, technology, and space exploration, stimulating high‑tech industries and research sectors.",
+          "sources": [
+            "https://www.britannica.com/event/Space-Race",
+            "https://millercenter.org/president/kennedy/domestic-affairs"
+          ]
+        }
       ]
     }
   },
@@ -1002,28 +1540,50 @@
     "id": 36,
     "name": "Lyndon B. Johnson",
     "economicPolicy": {
-      "events": [
+      "economicConditionsSummary": "Johnson presided over one of the strongest periods of economic growth in U.S. history, with low unemployment, rising wages, and expanding consumer demand. The Great Society programs expanded federal involvement in health care, education, and poverty reduction. However, escalating Vietnam War spending without corresponding tax increases fueled inflationary pressures. By the end of Johnson’s presidency, the economy showed signs of overheating, setting the stage for the stagflation of the 1970s.",
+      "majorEconomicEvents": [
         {
-          "title": "Great Society Economic Programs",
-          "summary": "Johnson expanded federal economic involvement through Medicare, Medicaid, and anti‑poverty programs.",
+          "title": "Vietnam War Spending Surge",
+          "summary": "Massive defense spending stimulated economic growth but contributed to rising inflation and federal deficits as the war escalated.",
           "sources": [
-            "National Archives, Great Society records.",
-            "Library of Congress, Johnson domestic policy papers."
+            "https://www.britannica.com/event/Vietnam-War",
+            "https://millercenter.org/president/lbjohnson/domestic-affairs"
           ]
         },
         {
-          "title": "Revenue Act of 1964 Implementation",
-          "summary": "Johnson enacted Kennedy’s tax cuts, stimulating economic expansion.",
+          "title": "War on Poverty and Social Spending Expansion",
+          "summary": "Johnson’s Great Society programs increased federal spending on education, health care, and welfare, expanding the social safety net and stimulating demand.",
           "sources": [
-            "Library of Congress, Johnson tax policy papers.",
-            "National Archives, fiscal policy records."
+            "https://www.britannica.com/event/Great-Society",
+            "https://millercenter.org/president/lbjohnson/domestic-affairs"
           ]
         }
       ],
-      "overallAssessment": "Johnson expanded federal social‑economic programs and enacted major tax reductions.",
-      "sources": [
-        "Library of Congress, Johnson presidential papers.",
-        "National Archives, economic policy archives."
+      "economicInitiatives": [
+        {
+          "title": "Economic Opportunity Act (1964)",
+          "summary": "Johnson launched the War on Poverty through programs such as Job Corps, Head Start, and community action agencies aimed at reducing poverty and expanding opportunity.",
+          "sources": [
+            "https://www.britannica.com/topic/Economic-Opportunity-Act",
+            "https://millercenter.org/president/lbjohnson/domestic-affairs"
+          ]
+        },
+        {
+          "title": "Medicare and Medicaid",
+          "summary": "Johnson created Medicare and Medicaid, establishing federal health insurance for seniors and low-income Americans and transforming the U.S. health care system.",
+          "sources": [
+            "https://www.britannica.com/topic/Medicare",
+            "https://www.britannica.com/topic/Medicaid"
+          ]
+        },
+        {
+          "title": "Tax Surcharge of 1968",
+          "summary": "To combat rising inflation and deficits, Johnson signed a temporary tax increase, though it came too late to prevent economic overheating.",
+          "sources": [
+            "https://www.britannica.com/biography/Lyndon-B-Johnson",
+            "https://millercenter.org/president/lbjohnson/domestic-affairs"
+          ]
+        }
       ]
     }
   },
@@ -1031,28 +1591,42 @@
     "id": 37,
     "name": "Richard Nixon",
     "economicPolicy": {
-      "events": [
+      "economicConditionsSummary": "Nixon governed during a turbulent economic period marked by rising inflation, slowing growth, and increasing global competition. The Bretton Woods system collapsed, ending the gold standard and ushering in floating exchange rates. Nixon imposed wage and price controls to combat inflation, but these measures produced distortions and shortages. The 1973 oil crisis triggered recession and further inflation, contributing to the era of stagflation.",
+      "majorEconomicEvents": [
         {
-          "title": "End of the Gold Standard (Nixon Shock)",
-          "summary": "Nixon suspended dollar convertibility to gold, ending the Bretton Woods system and reshaping global finance.",
+          "title": "End of the Bretton Woods System",
+          "summary": "Nixon suspended dollar convertibility to gold in 1971, effectively ending the Bretton Woods fixed exchange rate system and reshaping global finance.",
           "sources": [
-            "National Archives, Nixon monetary policy papers.",
-            "Library of Congress, Bretton Woods dissolution documents."
+            "https://www.britannica.com/event/Bretton-Woods-Conference",
+            "https://www.federalreservehistory.org/essays/gold-convertibility-ends"
           ]
         },
         {
-          "title": "Wage and Price Controls",
-          "summary": "Nixon imposed nationwide wage and price controls to combat inflation, a major federal intervention.",
+          "title": "1973 Oil Crisis",
+          "summary": "An OPEC oil embargo caused energy shortages, soaring fuel prices, and recession, intensifying inflationary pressures.",
           "sources": [
-            "Library of Congress, Nixon inflation control papers.",
-            "National Archives, economic stabilization records."
+            "https://www.britannica.com/event/oil-crisis",
+            "https://millercenter.org/president/nixon/domestic-affairs"
           ]
         }
       ],
-      "overallAssessment": "Nixon transformed global monetary policy and used aggressive federal controls to fight inflation.",
-      "sources": [
-        "Library of Congress, Nixon presidential papers.",
-        "National Archives, economic policy archives."
+      "economicInitiatives": [
+        {
+          "title": "Wage and Price Controls (1971)",
+          "summary": "Nixon imposed temporary wage and price freezes to combat inflation. Initially popular, the controls distorted markets and failed to provide long-term stability.",
+          "sources": [
+            "https://www.britannica.com/topic/wage-and-price-controls",
+            "https://millercenter.org/president/nixon/domestic-affairs"
+          ]
+        },
+        {
+          "title": "Environmental and Regulatory Expansion",
+          "summary": "Nixon created the EPA and signed major environmental laws, increasing federal regulation of pollution and industry.",
+          "sources": [
+            "https://www.britannica.com/topic/Environmental-Protection-Agency",
+            "https://millercenter.org/president/nixon/domestic-affairs"
+          ]
+        }
       ]
     }
   },
@@ -1060,28 +1634,42 @@
     "id": 38,
     "name": "Gerald Ford",
     "economicPolicy": {
-      "events": [
+      "economicConditionsSummary": "Ford inherited an economy suffering from high inflation, recession, and the lingering effects of the oil crisis. Unemployment rose sharply, and consumer confidence fell. Ford emphasized fiscal restraint and anti-inflation measures, but economic conditions remained difficult. His presidency marked the height of 1970s stagflation, with simultaneous inflation and economic stagnation.",
+      "majorEconomicEvents": [
         {
-          "title": "WIN (Whip Inflation Now) Program",
-          "summary": "Ford launched a national anti‑inflation campaign emphasizing voluntary restraint and fiscal discipline.",
+          "title": "1974–1975 Recession",
+          "summary": "A deep recession caused rising unemployment, falling industrial output, and declining consumer spending.",
           "sources": [
-            "National Archives, Ford inflation papers.",
-            "Library of Congress, WIN program documents."
+            "https://www.britannica.com/event/United-States-Economic-History",
+            "https://millercenter.org/president/ford/domestic-affairs"
+          ]
+        },
+        {
+          "title": "Stagflation Crisis",
+          "summary": "The economy experienced both high inflation and slow growth, challenging traditional economic policy tools.",
+          "sources": [
+            "https://www.britannica.com/topic/stagflation",
+            "https://millercenter.org/president/ford/domestic-affairs"
+          ]
+        }
+      ],
+      "economicInitiatives": [
+        {
+          "title": "WIN (Whip Inflation Now)",
+          "summary": "Ford launched a voluntary anti-inflation campaign encouraging personal savings and reduced consumption. The program was widely mocked and ineffective.",
+          "sources": [
+            "https://www.britannica.com/topic/Whip-Inflation-Now",
+            "https://millercenter.org/president/ford/domestic-affairs"
           ]
         },
         {
           "title": "Tax Reduction Act of 1975",
-          "summary": "Ford enacted temporary tax cuts to counter recessionary pressures.",
+          "summary": "Ford signed a major tax cut to stimulate demand and reduce unemployment during the recession.",
           "sources": [
-            "Library of Congress, Ford tax policy papers.",
-            "National Archives, recession response records."
+            "https://www.britannica.com/topic/Tax-Reduction-Act",
+            "https://millercenter.org/president/ford/domestic-affairs"
           ]
         }
-      ],
-      "overallAssessment": "Ford attempted inflation control while using tax cuts to counter recession.",
-      "sources": [
-        "Library of Congress, Ford presidential papers.",
-        "National Archives, economic policy archives."
       ]
     }
   },
@@ -1089,28 +1677,42 @@
     "id": 39,
     "name": "Jimmy Carter",
     "economicPolicy": {
-      "events": [
+      "economicConditionsSummary": "Carter faced persistent inflation, slow growth, and energy shortages. The late 1970s saw rising oil prices, declining productivity, and worsening public confidence. Carter pursued deregulation in transportation and energy while promoting conservation and alternative energy development. Inflation reached double digits by the end of his term, contributing to economic instability and political dissatisfaction.",
+      "majorEconomicEvents": [
         {
-          "title": "Deregulation of Airlines, Trucking, and Railroads",
-          "summary": "Carter signed major deregulation laws that reshaped transportation markets.",
+          "title": "1979 Oil Crisis",
+          "summary": "A second major oil shock caused fuel shortages, soaring prices, and renewed recessionary pressures.",
           "sources": [
-            "National Archives, Carter deregulation records.",
-            "Library of Congress, transportation policy papers."
+            "https://www.britannica.com/event/oil-crisis",
+            "https://millercenter.org/president/carter/domestic-affairs"
           ]
         },
         {
-          "title": "Creation of the Department of Energy",
-          "summary": "Carter consolidated federal energy programs to address the energy crisis.",
+          "title": "High Inflation and Economic Malaise",
+          "summary": "Inflation, unemployment, and interest rates all rose, creating widespread economic frustration and declining consumer confidence.",
           "sources": [
-            "Library of Congress, Carter energy policy papers.",
-            "National Archives, DOE founding documents."
+            "https://www.britannica.com/topic/stagflation",
+            "https://millercenter.org/president/carter/domestic-affairs"
           ]
         }
       ],
-      "overallAssessment": "Carter advanced major deregulation and reorganized federal energy policy.",
-      "sources": [
-        "Library of Congress, Carter presidential papers.",
-        "National Archives, economic policy archives."
+      "economicInitiatives": [
+        {
+          "title": "Airline and Trucking Deregulation",
+          "summary": "Carter signed major deregulation laws that increased competition and reduced federal control over transportation industries.",
+          "sources": [
+            "https://www.britannica.com/topic/Airline-Deregulation-Act",
+            "https://millercenter.org/president/carter/domestic-affairs"
+          ]
+        },
+        {
+          "title": "Energy Policy and Conservation Measures",
+          "summary": "Carter promoted energy conservation, alternative fuels, and the creation of the Department of Energy to address long-term energy challenges.",
+          "sources": [
+            "https://www.britannica.com/topic/Department-of-Energy",
+            "https://millercenter.org/president/carter/domestic-affairs"
+          ]
+        }
       ]
     }
   },
@@ -1118,28 +1720,50 @@
     "id": 40,
     "name": "Ronald Reagan",
     "economicPolicy": {
-      "events": [
+      "economicConditionsSummary": "Reagan inherited high inflation, high unemployment, and slow growth. His administration implemented supply-side economic policies emphasizing tax cuts, deregulation, and reduced federal spending growth. Inflation fell sharply, economic growth accelerated, and unemployment eventually declined. However, federal deficits increased significantly, and income inequality widened. The 1980s saw major shifts in monetary policy, financial markets, and global economic integration.",
+      "majorEconomicEvents": [
         {
-          "title": "Economic Recovery Tax Act of 1981",
-          "summary": "Reagan enacted one of the largest tax cuts in U.S. history, reducing marginal rates across the board.",
+          "title": "1981–1982 Recession",
+          "summary": "A severe recession caused by tight monetary policy to combat inflation led to high unemployment and business failures before recovery began.",
           "sources": [
-            "National Archives, Reagan tax policy records.",
-            "Library of Congress, ERTA papers."
+            "https://www.britannica.com/event/United-States-Economic-History",
+            "https://millercenter.org/president/reagan/domestic-affairs"
           ]
         },
         {
-          "title": "Deregulation and Reduction of Federal Economic Controls",
-          "summary": "Reagan reduced federal regulatory burdens across multiple sectors, reshaping economic governance.",
+          "title": "Economic Expansion of the Mid‑1980s",
+          "summary": "After the recession, the economy grew rapidly, with rising investment, declining inflation, and strong consumer spending.",
           "sources": [
-            "Library of Congress, Reagan deregulation papers.",
-            "National Archives, regulatory policy archives."
+            "https://www.britannica.com/biography/Ronald-Reagan",
+            "https://millercenter.org/president/reagan/domestic-affairs"
           ]
         }
       ],
-      "overallAssessment": "Reagan redefined federal economic policy through tax cuts and deregulation.",
-      "sources": [
-        "Library of Congress, Reagan presidential papers.",
-        "National Archives, economic policy archives."
+      "economicInitiatives": [
+        {
+          "title": "Economic Recovery Tax Act (1981)",
+          "summary": "Reagan enacted one of the largest tax cuts in U.S. history, reducing income tax rates and promoting investment.",
+          "sources": [
+            "https://www.britannica.com/topic/Economic-Recovery-Tax-Act",
+            "https://millercenter.org/president/reagan/domestic-affairs"
+          ]
+        },
+        {
+          "title": "Deregulation of Key Industries",
+          "summary": "Reagan reduced federal regulation in banking, energy, telecommunications, and transportation, promoting market competition but contributing to later financial instability.",
+          "sources": [
+            "https://www.britannica.com/topic/deregulation",
+            "https://millercenter.org/president/reagan/domestic-affairs"
+          ]
+        },
+        {
+          "title": "Tax Reform Act of 1986",
+          "summary": "Reagan simplified the tax code, lowered rates, and eliminated many deductions, creating a more streamlined federal tax system.",
+          "sources": [
+            "https://www.britannica.com/topic/Tax-Reform-Act-of-1986",
+            "https://millercenter.org/president/reagan/domestic-affairs"
+          ]
+        }
       ]
     }
   },
@@ -1147,28 +1771,42 @@
     "id": 41,
     "name": "George H. W. Bush",
     "economicPolicy": {
-      "events": [
+      "economicConditionsSummary": "Bush governed during a period of slowing economic growth, rising deficits, and increasing global competition. The late 1980s saw the tail end of the Reagan expansion, but structural weaknesses—including high savings‑and‑loan failures, defense cuts after the Cold War, and a real estate downturn—contributed to the recession of 1990–1991. Bush prioritized fiscal responsibility, culminating in a politically costly decision to raise taxes despite his earlier pledge. The economy began recovering late in his term, but unemployment remained elevated.",
+      "majorEconomicEvents": [
         {
-          "title": "1990 Budget Agreement",
-          "summary": "Bush negotiated a deficit‑reduction package including spending cuts and tax increases.",
+          "title": "Recession of 1990–1991",
+          "summary": "A mild but persistent recession driven by declining consumer confidence, defense cutbacks, and the savings‑and‑loan crisis led to rising unemployment and slow growth.",
           "sources": [
-            "National Archives, Bush budget papers.",
-            "Library of Congress, 1990 budget agreement documents."
+            "https://www.britannica.com/event/United-States-Economic-History",
+            "https://millercenter.org/president/bush/domestic-affairs"
           ]
         },
         {
-          "title": "Savings and Loan Crisis Resolution",
-          "summary": "Bush implemented measures to stabilize the financial system after widespread S&L failures.",
+          "title": "Savings and Loan Crisis",
+          "summary": "Hundreds of savings‑and‑loan institutions failed due to risky lending and deregulation, requiring a massive federal bailout and contributing to rising deficits.",
           "sources": [
-            "Library of Congress, Bush financial crisis papers.",
-            "National Archives, S&L resolution records."
+            "https://www.britannica.com/event/Savings-and-Loan-Crisis",
+            "https://millercenter.org/president/bush/domestic-affairs"
           ]
         }
       ],
-      "overallAssessment": "Bush pursued deficit reduction and financial stabilization during the S&L crisis.",
-      "sources": [
-        "Library of Congress, Bush presidential papers.",
-        "National Archives, economic policy archives."
+      "economicInitiatives": [
+        {
+          "title": "1990 Budget Agreement",
+          "summary": "Bush agreed to raise taxes and cut spending to reduce the federal deficit, breaking his 'no new taxes' pledge but stabilizing long‑term fiscal policy.",
+          "sources": [
+            "https://www.britannica.com/biography/George-H-W-Bush",
+            "https://millercenter.org/president/bush/domestic-affairs"
+          ]
+        },
+        {
+          "title": "Resolution Trust Corporation",
+          "summary": "Bush created the RTC to manage and liquidate failed savings‑and‑loan institutions, helping resolve the financial crisis.",
+          "sources": [
+            "https://www.britannica.com/event/Savings-and-Loan-Crisis",
+            "https://millercenter.org/president/bush/domestic-affairs"
+          ]
+        }
       ]
     }
   },
@@ -1176,28 +1814,50 @@
     "id": 42,
     "name": "Bill Clinton",
     "economicPolicy": {
-      "events": [
+      "economicConditionsSummary": "Clinton presided over one of the longest economic expansions in U.S. history. The 1990s saw rapid job growth, low inflation, rising productivity, and the emergence of the digital economy. Deficits turned into surpluses through spending restraint, tax increases, and strong growth. Globalization accelerated through trade agreements such as NAFTA and the creation of the WTO. The decade ended with the dot‑com boom, marked by soaring technology investment and stock market speculation.",
+      "majorEconomicEvents": [
         {
-          "title": "1993 Deficit Reduction Act",
-          "summary": "Clinton enacted tax increases and spending restraints to reduce the federal deficit.",
+          "title": "1990s Economic Expansion",
+          "summary": "Strong job creation, low inflation, and rising productivity fueled sustained economic growth, supported by technological innovation and expanding global trade.",
           "sources": [
-            "National Archives, Clinton budget records.",
-            "Library of Congress, 1993 fiscal policy papers."
+            "https://www.britannica.com/biography/Bill-Clinton",
+            "https://millercenter.org/president/clinton/domestic-affairs"
           ]
         },
         {
-          "title": "NAFTA and Trade Liberalization",
-          "summary": "Clinton implemented NAFTA and expanded U.S. participation in global trade agreements.",
+          "title": "Dot‑Com Boom",
+          "summary": "Rapid growth in internet‑based companies drove investment and stock market gains, contributing to economic optimism but also speculative excess.",
           "sources": [
-            "Library of Congress, Clinton trade papers.",
-            "National Archives, NAFTA implementation records."
+            "https://www.britannica.com/topic/dot-com-bubble",
+            "https://millercenter.org/president/clinton/domestic-affairs"
           ]
         }
       ],
-      "overallAssessment": "Clinton advanced deficit reduction and expanded U.S. trade liberalization.",
-      "sources": [
-        "Library of Congress, Clinton presidential papers.",
-        "National Archives, economic policy archives."
+      "economicInitiatives": [
+        {
+          "title": "1993 Deficit Reduction Act",
+          "summary": "Clinton raised taxes on higher incomes and cut spending growth, helping reduce deficits and restore fiscal stability.",
+          "sources": [
+            "https://www.britannica.com/topic/Omnibus-Budget-Reconciliation-Act-of-1993",
+            "https://millercenter.org/president/clinton/domestic-affairs"
+          ]
+        },
+        {
+          "title": "North American Free Trade Agreement (NAFTA)",
+          "summary": "Clinton signed NAFTA, expanding trade between the U.S., Canada, and Mexico and accelerating economic integration.",
+          "sources": [
+            "https://www.britannica.com/event/North-American-Free-Trade-Agreement",
+            "https://millercenter.org/president/clinton/domestic-affairs"
+          ]
+        },
+        {
+          "title": "Welfare Reform (1996)",
+          "summary": "Clinton signed welfare reform legislation that imposed work requirements and time limits on benefits, reshaping social policy.",
+          "sources": [
+            "https://www.britannica.com/topic/Personal-Responsibility-and-Work-Opportunity-Reconciliation-Act",
+            "https://millercenter.org/president/clinton/domestic-affairs"
+          ]
+        }
       ]
     }
   },
@@ -1205,28 +1865,42 @@
     "id": 43,
     "name": "George W. Bush",
     "economicPolicy": {
-      "events": [
+      "economicConditionsSummary": "Bush’s presidency was shaped by the aftermath of the dot‑com crash, the September 11 attacks, wars in Afghanistan and Iraq, and the 2008 financial crisis. Early 2000s tax cuts stimulated growth but increased deficits. The housing bubble expanded rapidly due to low interest rates, lax lending standards, and financial innovation. The collapse of the housing market triggered the worst economic crisis since the Great Depression, leading to massive federal intervention to stabilize the financial system.",
+      "majorEconomicEvents": [
         {
-          "title": "2001 and 2003 Tax Cuts",
-          "summary": "Bush enacted major tax reductions affecting income, dividends, and capital gains.",
+          "title": "Dot‑Com Recession and 9/11 Economic Shock",
+          "summary": "The early 2000s saw recession, declining investment, and disruptions from the September 11 attacks, followed by a gradual recovery.",
           "sources": [
-            "National Archives, Bush tax policy records.",
-            "Library of Congress, EGTRRA and JGTRRA papers."
+            "https://www.britannica.com/event/September-11-attacks",
+            "https://millercenter.org/president/bush/domestic-affairs"
           ]
         },
         {
-          "title": "TARP and Financial Crisis Response",
-          "summary": "Bush authorized emergency measures to stabilize financial markets during the 2008 crisis.",
+          "title": "Great Recession and Financial Crisis of 2008",
+          "summary": "A collapse in housing prices, mortgage‑backed securities, and major financial institutions triggered a global crisis, requiring unprecedented federal intervention.",
           "sources": [
-            "Library of Congress, Bush crisis papers.",
-            "National Archives, TARP implementation records."
+            "https://www.britannica.com/event/Great-Recession",
+            "https://www.federalreservehistory.org/essays/great-recession"
           ]
         }
       ],
-      "overallAssessment": "Bush reshaped tax policy and initiated emergency financial stabilization during crisis.",
-      "sources": [
-        "Library of Congress, Bush presidential papers.",
-        "National Archives, economic policy archives."
+      "economicInitiatives": [
+        {
+          "title": "2001 and 2003 Tax Cuts",
+          "summary": "Bush enacted major tax reductions aimed at stimulating growth, lowering income tax rates, and reducing taxes on dividends and capital gains.",
+          "sources": [
+            "https://www.britannica.com/topic/George-W-Bush",
+            "https://millercenter.org/president/bush/domestic-affairs"
+          ]
+        },
+        {
+          "title": "Troubled Asset Relief Program (TARP)",
+          "summary": "Bush signed TARP to stabilize the financial system by purchasing distressed assets and injecting capital into banks during the 2008 crisis.",
+          "sources": [
+            "https://www.britannica.com/topic/Troubled-Asset-Relief-Program",
+            "https://millercenter.org/president/bush/domestic-affairs"
+          ]
+        }
       ]
     }
   },
@@ -1234,28 +1908,50 @@
     "id": 44,
     "name": "Barack Obama",
     "economicPolicy": {
-      "events": [
+      "economicConditionsSummary": "Obama took office during the depths of the Great Recession, with collapsing financial markets, rising unemployment, and widespread foreclosures. His administration implemented large‑scale stimulus measures, financial reforms, and rescue programs for the auto industry. The economy gradually recovered, with steady job growth and rising consumer confidence. However, the recovery was uneven, and political polarization shaped debates over deficits, taxes, and health care.",
+      "majorEconomicEvents": [
         {
-          "title": "American Recovery and Reinvestment Act",
-          "summary": "Obama enacted a large stimulus package to counter the Great Recession.",
+          "title": "Great Recession Recovery",
+          "summary": "The economy slowly improved after 2009, with declining unemployment, rising GDP, and stabilization of financial markets.",
           "sources": [
-            "National Archives, ARRA records.",
-            "Library of Congress, Obama economic recovery papers."
+            "https://www.britannica.com/event/Great-Recession",
+            "https://millercenter.org/president/obama/domestic-affairs"
           ]
         },
         {
-          "title": "Dodd–Frank Financial Reform",
-          "summary": "Obama implemented sweeping financial regulations to reduce systemic risk.",
+          "title": "Eurozone Crisis and Global Volatility",
+          "summary": "International financial instability affected U.S. markets and slowed global growth during Obama’s first term.",
           "sources": [
-            "Library of Congress, Dodd–Frank papers.",
-            "National Archives, financial regulatory records."
+            "https://www.britannica.com/event/European-sovereign-debt-crisis",
+            "https://millercenter.org/president/obama/domestic-affairs"
           ]
         }
       ],
-      "overallAssessment": "Obama pursued stimulus spending and major financial regulatory reform.",
-      "sources": [
-        "Library of Congress, Obama presidential papers.",
-        "National Archives, economic policy archives."
+      "economicInitiatives": [
+        {
+          "title": "American Recovery and Reinvestment Act (2009)",
+          "summary": "Obama enacted a large stimulus package including tax cuts, infrastructure spending, and aid to states to counter the recession.",
+          "sources": [
+            "https://www.britannica.com/topic/American-Recovery-and-Reinvestment-Act",
+            "https://millercenter.org/president/obama/domestic-affairs"
+          ]
+        },
+        {
+          "title": "Dodd‑Frank Financial Reform",
+          "summary": "Obama signed sweeping financial regulations to prevent future crises, including consumer protections and oversight of large financial institutions.",
+          "sources": [
+            "https://www.britannica.com/topic/Dodd-Frank-Wall-Street-Reform-and-Consumer-Protection-Act",
+            "https://millercenter.org/president/obama/domestic-affairs"
+          ]
+        },
+        {
+          "title": "Affordable Care Act",
+          "summary": "Obama expanded health insurance coverage and reformed the health care system, with major economic implications for households and employers.",
+          "sources": [
+            "https://www.britannica.com/topic/Patient-Protection-and-Affordable-Care-Act",
+            "https://millercenter.org/president/obama/domestic-affairs"
+          ]
+        }
       ]
     }
   },
@@ -1263,57 +1959,117 @@
     "id": 45,
     "name": "Donald J. Trump",
     "economicPolicy": {
-      "events": [
+      "economicConditionsSummary": "Trump’s presidency saw strong economic growth and low unemployment during its first three years, driven by tax cuts, deregulation, and continued post‑recession expansion. The COVID‑19 pandemic in 2020 caused a historic economic collapse, with mass unemployment, business closures, and unprecedented federal intervention. The economy partially recovered through stimulus measures, but the pandemic reshaped labor markets, supply chains, and fiscal policy.",
+      "majorEconomicEvents": [
         {
-          "title": "Tax Cuts and Jobs Act of 2017",
-          "summary": "Trump enacted major tax reductions affecting individuals and corporations.",
+          "title": "Pre‑Pandemic Economic Expansion",
+          "summary": "The economy experienced low unemployment, rising wages, and strong stock market performance from 2017 to early 2020.",
           "sources": [
-            "National Archives, TCJA records.",
-            "Library of Congress, Trump tax policy papers."
+            "https://www.britannica.com/biography/Donald-Trump",
+            "https://millercenter.org/president/trump/domestic-affairs"
           ]
         },
         {
-          "title": "Trade War Tariffs",
-          "summary": "Trump imposed tariffs on China and other nations, reshaping global trade relationships.",
+          "title": "COVID‑19 Pandemic Economic Collapse",
+          "summary": "The pandemic triggered mass layoffs, business shutdowns, and severe disruptions to global supply chains, prompting massive federal stimulus.",
           "sources": [
-            "Library of Congress, Trump trade policy papers.",
-            "National Archives, tariff action records."
+            "https://www.britannica.com/event/COVID-19-pandemic",
+            "https://millercenter.org/president/trump/domestic-affairs"
           ]
         }
       ],
-      "overallAssessment": "Trump reshaped tax policy and trade relations through major tax cuts and tariff actions.",
-      "sources": [
-        "Library of Congress, Trump presidential papers.",
-        "National Archives, economic policy archives."
+      "economicInitiatives": [
+        {
+          "title": "Tax Cuts and Jobs Act (2017)",
+          "summary": "Trump enacted major tax cuts for individuals and corporations, aiming to stimulate investment and economic growth.",
+          "sources": [
+            "https://www.britannica.com/topic/Tax-Cuts-and-Jobs-Act",
+            "https://millercenter.org/president/trump/domestic-affairs"
+          ]
+        },
+        {
+          "title": "Deregulation Initiatives",
+          "summary": "Trump reduced federal regulations across multiple sectors, including energy, finance, and environmental policy, to promote business activity.",
+          "sources": [
+            "https://www.britannica.com/biography/Donald-Trump",
+            "https://millercenter.org/president/trump/domestic-affairs"
+          ]
+        },
+        {
+          "title": "CARES Act (2020)",
+          "summary": "Trump signed the CARES Act, providing direct payments to households, expanded unemployment benefits, and loans to businesses to mitigate the economic impact of COVID‑19.",
+          "sources": [
+            "https://www.britannica.com/topic/Coronavirus-Aid-Relief-and-Economic-Security-Act",
+            "https://millercenter.org/president/trump/domestic-affairs"
+          ]
+        }
       ]
     }
   },
   {
     "id": 46,
-    "name": "Joseph R. Biden",
+    "name": "Joe Biden",
     "economicPolicy": {
-      "events": [
+      "economicConditionsSummary": "Biden’s presidency has been defined by recovery from the COVID‑19 pandemic, major federal stimulus spending, supply‑chain disruptions, and the highest inflation rates in decades. Early in his term, the economy rebounded rapidly as vaccines rolled out and businesses reopened, producing strong job growth and rising wages. However, global supply constraints, energy shocks, and pent‑up demand contributed to significant inflationary pressures. Biden pursued large-scale industrial policy initiatives focused on infrastructure, clean energy, semiconductor manufacturing, and domestic production. The labor market remained historically strong, but inflation, interest rate hikes, and geopolitical instability shaped the broader economic environment.",
+      "majorEconomicEvents": [
         {
-          "title": "American Rescue Plan",
-          "summary": "Biden enacted a large stimulus package to support households, businesses, and state governments during the pandemic recovery.",
+          "title": "Post‑Pandemic Economic Recovery",
+          "summary": "The economy experienced rapid job growth and rising consumer demand as businesses reopened and federal stimulus measures supported households and firms. Unemployment fell sharply from pandemic highs.",
           "sources": [
-            "National Archives, ARP records.",
-            "Library of Congress, Biden economic recovery papers."
+            "https://www.britannica.com/biography/Joe-Biden",
+            "https://millercenter.org/president/biden/domestic-affairs"
           ]
         },
         {
-          "title": "Infrastructure Investment and Jobs Act Implementation",
-          "summary": "Biden advanced major federal infrastructure spending across transportation, broadband, and utilities.",
+          "title": "Inflation Surge of 2021–2022",
+          "summary": "Inflation reached its highest levels since the early 1980s due to supply‑chain disruptions, energy price spikes, strong consumer demand, and global instability. The Federal Reserve responded with aggressive interest rate hikes.",
           "sources": [
-            "Library of Congress, Biden infrastructure papers.",
-            "National Archives, infrastructure policy records."
+            "https://www.britannica.com/topic/inflation",
+            "https://www.federalreservehistory.org/essays/inflation-2021-2022"
+          ]
+        },
+        {
+          "title": "Global Supply Chain and Energy Shocks",
+          "summary": "Pandemic disruptions, semiconductor shortages, and geopolitical tensions—including the war in Ukraine—created bottlenecks and contributed to rising prices for goods, food, and energy.",
+          "sources": [
+            "https://www.britannica.com/event/Russian-invasion-of-Ukraine-2022",
+            "https://millercenter.org/president/biden/domestic-affairs"
           ]
         }
       ],
-      "overallAssessment": "Biden pursued large‑scale stimulus and infrastructure investment.",
-      "sources": [
-        "Library of Congress, Biden presidential papers.",
-        "National Archives, economic policy archives."
+      "economicInitiatives": [
+        {
+          "title": "American Rescue Plan (2021)",
+          "summary": "Biden enacted a $1.9 trillion stimulus package providing direct payments, expanded unemployment benefits, child tax credits, and aid to state and local governments to support recovery from the pandemic.",
+          "sources": [
+            "https://www.britannica.com/topic/American-Rescue-Plan-Act",
+            "https://millercenter.org/president/biden/domestic-affairs"
+          ]
+        },
+        {
+          "title": "Infrastructure Investment and Jobs Act",
+          "summary": "Biden signed a bipartisan infrastructure law funding transportation, broadband, water systems, and energy modernization, representing one of the largest infrastructure investments in decades.",
+          "sources": [
+            "https://www.britannica.com/topic/Infrastructure-Investment-and-Jobs-Act",
+            "https://millercenter.org/president/biden/domestic-affairs"
+          ]
+        },
+        {
+          "title": "CHIPS and Science Act",
+          "summary": "This law provided major incentives for domestic semiconductor manufacturing and research to reduce reliance on foreign supply chains and strengthen U.S. technological competitiveness.",
+          "sources": [
+            "https://www.britannica.com/topic/CHIPS-and-Science-Act",
+            "https://millercenter.org/president/biden/domestic-affairs"
+          ]
+        },
+        {
+          "title": "Inflation Reduction Act",
+          "summary": "Biden enacted legislation focused on clean energy investment, climate initiatives, prescription drug pricing reforms, and deficit reduction through corporate tax changes.",
+          "sources": [
+            "https://www.britannica.com/topic/Inflation-Reduction-Act",
+            "https://millercenter.org/president/biden/domestic-affairs"
+          ]
+        }
       ]
     }
   }
