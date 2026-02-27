@@ -96,7 +96,9 @@ function main() {
   const presidents = loadPresidents();
 
   const rankings = presidents.map(p => ({
+    // FIXED: use presidentNumber as the unique ID
     id: p.presidentNumber,
+
     name: p.name,
     termStart: p.termStart,
     termEnd: p.termEnd,
