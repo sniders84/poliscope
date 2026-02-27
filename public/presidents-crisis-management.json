@@ -5,18 +5,34 @@
     "crisisManagement": {
       "events": [
         {
-          "title": "Whiskey Rebellion",
-          "summary": "Washington personally led federalized militia forces to suppress the Whiskey Rebellion, asserting federal authority over violent tax resistance and preventing the young republic from fragmenting under domestic insurrection.",
+          "title": "Whiskey Rebellion (Domestic Tax Revolt)",
+          "summary": "The Whiskey Rebellion of 1794 was a violent protest in western Pennsylvania against the federal excise tax on distilled spirits, which many small farmers saw as an unfair burden. Local resistance escalated from petitions and noncompliance to intimidation of tax collectors and the formation of armed groups. Washington first attempted to resolve the crisis through proclamations and the use of federal commissioners to negotiate with the rebels. When those efforts failed, he invoked the Militia Act and personally oversaw the mobilization of a large militia force from several states. The mere presence of this force caused the rebellion to collapse with minimal bloodshed. Washington then offered clemency to most participants, with only a few prosecutions, signaling both firmness in upholding federal law and restraint in punishment.",
           "sources": [
-            "National Archives, Whiskey Rebellion correspondence.",
-            "Library of Congress, Washington domestic crisis papers."
+            "https://www.mountvernon.org/library/digitalhistory/digital-encyclopedia/article/whiskey-rebellion/",
+            "https://www.archives.gov/milestone-documents/whiskey-rebellion-proclamation"
+          ]
+        },
+        {
+          "title": "Neutrality in the French Revolutionary Wars (Foreign Policy Crisis)",
+          "summary": "During the 1790s, revolutionary France went to war with Britain and other European powers, putting intense pressure on the United States to choose sides. Many Americans favored France due to its support in the American Revolution, while others feared entanglement in European conflicts and preferred closer ties with Britain. Washington issued the Proclamation of Neutrality in 1793, asserting that the United States would remain impartial in the conflict. The arrival of French envoy Edmond-Charles Genêt, who tried to recruit American privateers and rally public opinion against neutrality, created a diplomatic crisis. Washington insisted on Genêt’s recall and maintained the neutrality policy despite fierce domestic criticism. His handling of the crisis helped establish the principle that foreign policy would be directed by the federal executive, not by popular agitation or foreign agents.",
+          "sources": [
+            "https://www.archives.gov/milestone-documents/proclamation-of-neutrality",
+            "https://history.state.gov/milestones/1784-1800/french-revolution"
+          ]
+        },
+        {
+          "title": "Jay Treaty Backlash (Foreign Policy and Domestic Legitimacy)",
+          "summary": "The Jay Treaty of 1794, negotiated with Great Britain to resolve lingering issues from the Revolutionary War and to avert renewed conflict, sparked a major political and legitimacy crisis at home. Many Americans believed the treaty conceded too much to Britain and betrayed France, leading to protests, public burnings of the treaty, and denunciations of Washington himself. Washington nonetheless signed and defended the treaty, arguing that it was necessary to avoid war and stabilize trade. The controversy hardened emerging party lines between Federalists and Democratic-Republicans and tested Washington’s personal authority. Despite the uproar, the treaty helped secure a decade of relative peace with Britain and clarified several outstanding disputes, demonstrating Washington’s willingness to endure political damage for what he saw as the national interest.",
+          "sources": [
+            "https://history.state.gov/milestones/1784-1800/jay-treaty",
+            "https://www.mountvernon.org/library/digitalhistory/digital-encyclopedia/article/jay-treaty/"
           ]
         }
       ],
-      "overallAssessment": "Washington managed the first major domestic uprising by combining force with measured clemency, cementing federal supremacy in crises.",
+      "overallAssessment": "Washington’s crisis management established core precedents for federal authority and executive leadership. In the Whiskey Rebellion, he combined negotiation with a carefully calibrated show of force, demonstrating that the federal government could and would enforce its laws without descending into civil war. In foreign affairs, his insistence on neutrality during the French Revolutionary Wars and his defense of the Jay Treaty showed a willingness to endure intense domestic criticism to keep the fragile republic out of great-power conflict. These decisions were controversial in their time but helped stabilize the new government and define the presidency as a steadying, rather than inflaming, force in moments of national stress.",
       "sources": [
-        "Library of Congress, Washington presidential papers.",
-        "National Archives, early federal crisis records."
+        "https://www.mountvernon.org/library/digitalhistory/digital-encyclopedia/article/whiskey-rebellion/",
+        "https://history.state.gov/milestones/1784-1800/jay-treaty"
       ]
     }
   },
@@ -26,18 +42,26 @@
     "crisisManagement": {
       "events": [
         {
-          "title": "Quasi‑War with France",
-          "summary": "Adams expanded the Navy and authorized limited naval conflict with France while resisting full‑scale war, balancing national honor with the risk of escalation.",
+          "title": "Alien and Sedition Acts Crisis (Domestic Civil Liberties and Dissent)",
+          "summary": "During the late 1790s, amid rising tensions with France, Adams and the Federalist-controlled Congress enacted the Alien and Sedition Acts. These laws extended the residency requirement for citizenship, allowed the president to detain or deport non-citizens deemed dangerous, and criminalized certain forms of criticism of the federal government. Supporters argued that the measures were necessary to protect national security from foreign influence and internal subversion, while opponents saw them as a direct assault on free speech and political opposition. The laws were used to prosecute Republican newspaper editors and critics, deepening partisan divisions and fueling accusations of tyranny. Adams did not personally direct every prosecution, but his willingness to sign and defend the acts damaged his legitimacy and cast a long shadow over his crisis leadership.",
           "sources": [
-            "National Archives, Adams naval and diplomatic records.",
-            "Library of Congress, Quasi‑War correspondence."
+            "https://www.archives.gov/milestone-documents/alien-and-sedition-acts",
+            "https://www.loc.gov/classroom-materials/united-states-history-primary-source-timeline/national-expansion-and-reform-1815-1880/alien-and-sedition-acts/"
+          ]
+        },
+        {
+          "title": "Quasi-War with France (Naval Conflict and War Avoidance)",
+          "summary": "The Quasi-War with France, an undeclared naval conflict from 1798 to 1800, arose after French privateers began seizing American ships in response to the Jay Treaty with Britain. The XYZ Affair, in which French agents demanded bribes to begin negotiations, inflamed American public opinion and led to calls for full-scale war. Adams authorized a naval buildup and allowed American warships to engage French vessels, resulting in numerous captures at sea. However, he resisted intense pressure from his own party to declare war and instead pursued a second diplomatic mission. The Convention of 1800 ended the conflict and terminated the old alliance with France, avoiding a potentially disastrous war for the young republic.",
+          "sources": [
+            "https://history.state.gov/milestones/1784-1800/quasi-war",
+            "https://www.masshist.org/adams/education/module2"
           ]
         }
       ],
-      "overallAssessment": "Adams managed an undeclared naval war by strengthening defenses yet avoiding a broader conflict that could have destabilized the young republic.",
+      "overallAssessment": "Adams’s crisis management is defined by a stark contrast between his foreign and domestic responses. In foreign affairs, he showed notable restraint and strategic judgment by avoiding a full-scale war with France despite enormous political pressure, choosing negotiation over escalation once the United States had demonstrated its ability to defend its shipping. Domestically, his support for the Alien and Sedition Acts represented a serious overreach that curtailed civil liberties and deepened partisan hostility. Taken together, his record shows a president capable of prudence in international crises but prone to misjudgment when confronting internal dissent.",
       "sources": [
-        "Library of Congress, Adams presidential papers.",
-        "National Archives, early foreign crisis records."
+        "https://history.state.gov/milestones/1784-1800/quasi-war",
+        "https://www.archives.gov/milestone-documents/alien-and-sedition-acts"
       ]
     }
   },
@@ -47,26 +71,26 @@
     "crisisManagement": {
       "events": [
         {
-          "title": "Barbary Pirates Conflict",
-          "summary": "Jefferson deployed naval forces against the Barbary states to end tribute payments, managing a maritime security crisis without a large standing army.",
+          "title": "Embargo Act of 1807 (Economic and Foreign Policy Crisis)",
+          "summary": "Jefferson faced escalating British and French interference with American shipping during the Napoleonic Wars, including British impressment of American sailors and seizures of neutral ships. Rather than resort to war, he championed the Embargo Act of 1807, which halted nearly all American exports in an attempt to pressure Britain and France economically. The policy inflicted severe economic pain on American merchants, shipowners, and port cities, particularly in New England, while failing to significantly alter British or French behavior. Smuggling became widespread, and domestic opposition surged as the embargo dragged on. Jefferson eventually signed measures that partially relaxed the embargo near the end of his term, but the episode left a legacy of economic disruption and political backlash.",
           "sources": [
-            "National Archives, Barbary War naval records.",
-            "Library of Congress, Jefferson foreign crisis papers."
+            "https://history.state.gov/milestones/1801-1829/embargo",
+            "https://www.loc.gov/item/today-in-history/december-22/"
           ]
         },
         {
-          "title": "Embargo Crisis of 1807",
-          "summary": "Jefferson imposed a sweeping embargo to avoid war with Britain and France, triggering severe domestic economic backlash and widespread evasion.",
+          "title": "Burr Conspiracy (Domestic Security and Treason Crisis)",
+          "summary": "Former Vice President Aaron Burr became embroiled in a murky scheme in the West that Jefferson and others believed might involve secession or an unauthorized military expedition against Spanish territory. Jefferson treated the matter as a grave national security threat, issuing proclamations, directing federal officials to act, and ultimately ordering Burr’s arrest. Burr was tried for treason in a highly publicized case, but Chief Justice John Marshall’s strict definition of treason and the lack of direct evidence led to an acquittal. Jefferson’s aggressive pursuit of Burr reflected his fear of disunion and foreign entanglements on the frontier, but it also raised concerns about executive influence over prosecutions and the use of political power against a rival.",
           "sources": [
-            "Library of Congress, Jefferson embargo correspondence.",
-            "National Archives, embargo enforcement records."
+            "https://www.archives.gov/publications/prologue/2008/spring/burr",
+            "https://www.monticello.org/research-education/thomas-jefferson-encyclopedia/burr-conspiracy/"
           ]
         }
       ],
-      "overallAssessment": "Jefferson used naval force abroad and sweeping embargo at home, avoiding war but creating a major self‑inflicted economic crisis.",
+      "overallAssessment": "Jefferson’s crisis management reveals a leader deeply committed to avoiding war but willing to impose sweeping domestic sacrifices to do so. The Embargo Act was an ambitious attempt to use economic pressure instead of military force, yet it backfired by harming Americans more than the European powers it targeted and by fueling widespread evasion and resentment. His handling of the Burr conspiracy showed vigilance against potential disunion and unauthorized military ventures but also highlighted tensions between national security and civil liberties. Overall, Jefferson’s responses were driven by principle but often proved costly and politically damaging in practice.",
       "sources": [
-        "Library of Congress, Jefferson presidential papers.",
-        "National Archives, early crisis management records."
+        "https://history.state.gov/milestones/1801-1829/embargo",
+        "https://www.archives.gov/publications/prologue/2008/spring/burr"
       ]
     }
   },
@@ -76,18 +100,26 @@
     "crisisManagement": {
       "events": [
         {
-          "title": "War of 1812 and Burning of Washington",
-          "summary": "Madison led the nation through the War of 1812, including the British burning of Washington, relying on militia, limited federal capacity, and eventual diplomatic settlement.",
+          "title": "War of 1812 (Foreign and Military Crisis)",
+          "summary": "Madison led the United States into the War of 1812 in response to British impressment of American sailors, trade restrictions, and British support for Native resistance on the frontier. The country entered the war with a small, poorly prepared army and deep regional divisions over the wisdom of the conflict. Early campaigns against Canada failed, and in 1814 British forces captured Washington, D.C., burning the Capitol and the White House in a humiliating blow to national pride. Despite these setbacks, American forces achieved important defensive victories at Baltimore and on the Great Lakes, and Andrew Jackson’s triumph at New Orleans, though occurring after the peace treaty, boosted morale. The Treaty of Ghent ended the war without major territorial changes but helped solidify American independence and fostered a postwar surge of nationalism.",
           "sources": [
-            "National Archives, War of 1812 records.",
-            "Library of Congress, Madison wartime correspondence."
+            "https://history.state.gov/milestones/1801-1829/war-of-1812",
+            "https://www.whitehousehistory.org/the-burning-of-washington"
+          ]
+        },
+        {
+          "title": "Hartford Convention (Domestic Political and Secession Threat)",
+          "summary": "As the War of 1812 dragged on and New England’s maritime economy suffered under British blockades and federal policies, Federalist leaders in the region convened the Hartford Convention in 1814. Delegates debated constitutional amendments to limit the power of the federal government and, in some circles, even discussed the possibility of secession. Madison did not move to suppress the convention by force, despite its provocative overtones, and allowed the political process to play out. The war’s end and the victory at New Orleans undercut the convention’s influence, and the Federalist Party’s reputation was badly damaged. Madison’s restrained response avoided turning a regional political revolt into a broader constitutional or military confrontation.",
+          "sources": [
+            "https://www.loc.gov/item/today-in-history/december-15/",
+            "https://www.britannica.com/event/Hartford-Convention"
           ]
         }
       ],
-      "overallAssessment": "Madison’s crisis management was marked by early military failures but eventual survival of the republic and affirmation of U.S. independence.",
+      "overallAssessment": "Madison’s crisis management during the War of 1812 exposed serious weaknesses in American military preparedness and strategic planning, culminating in the burning of the capital. Yet he remained in Washington during the crisis and continued to support the war effort, and the eventual peace, combined with key defensive victories, helped restore national confidence. His handling of the Hartford Convention showed a notable tolerance for dissent, avoiding a heavy-handed response that might have escalated regional discontent into open rebellion. Overall, Madison’s record is mixed: he presided over a poorly executed war but emerged with the country intact and, in some ways, more unified.",
       "sources": [
-        "Library of Congress, Madison presidential papers.",
-        "National Archives, wartime crisis records."
+        "https://history.state.gov/milestones/1801-1829/war-of-1812",
+        "https://www.britannica.com/event/Hartford-Convention"
       ]
     }
   },
@@ -97,26 +129,26 @@
     "crisisManagement": {
       "events": [
         {
-          "title": "Panic of 1819",
-          "summary": "Monroe presided over the first major U.S. peacetime financial crisis, responding with limited federal intervention and leaving most relief to states and private actors.",
+          "title": "Panic of 1819 (Economic Crisis)",
+          "summary": "The Panic of 1819 was the first major peacetime financial crisis in U.S. history, marked by a collapse in land values, widespread bank failures, and a sharp contraction in credit. Many Americans faced unemployment, debt, and foreclosure as the speculative boom of the postwar years unwound. The federal government had limited tools and a limited conception of its role in economic stabilization, and Monroe largely refrained from direct intervention. He supported some measures, such as allowing the Second Bank of the United States to tighten credit and work through its problems, but did not push for sweeping federal relief. The crisis fueled popular distrust of banks and elites and contributed to the rise of more populist political movements in the following decades.",
           "sources": [
-            "National Archives, Panic of 1819 fiscal records.",
-            "Library of Congress, Monroe economic crisis papers."
+            "https://www.federalreservehistory.org/essays/panic-of-1819",
+            "https://www.britannica.com/event/Panic-of-1819"
           ]
         },
         {
-          "title": "Missouri Crisis",
-          "summary": "Monroe oversaw the political crisis over Missouri’s admission, accepting the Missouri Compromise line to avert immediate sectional rupture.",
+          "title": "Missouri Crisis and the Missouri Compromise (Sectional and Constitutional Crisis)",
+          "summary": "The debate over Missouri’s admission to the Union as a slave state in 1819–1820 triggered a major sectional crisis between North and South. Northern politicians objected to the expansion of slavery into the Louisiana Purchase territory, while Southern leaders insisted on maintaining parity in the Senate and protecting slaveholding interests. The resulting Missouri Compromise admitted Missouri as a slave state and Maine as a free state and drew a line at 36°30' north latitude, above which slavery would be prohibited in most of the remaining Louisiana territory. Monroe supported the compromise and signed it into law, helping to defuse the immediate crisis. However, the agreement was a temporary patch that left the underlying conflict over slavery unresolved and foreshadowed the deeper sectional ruptures that would eventually lead to civil war.",
           "sources": [
-            "Library of Congress, Monroe Missouri correspondence.",
-            "National Archives, Missouri statehood records."
+            "https://history.state.gov/milestones/1801-1829/missouri-compromise",
+            "https://www.loc.gov/classroom-materials/united-states-history-primary-source-timeline/expansion-and-reform-1801-1861/missouri-compromise/"
           ]
         }
       ],
-      "overallAssessment": "Monroe managed early financial and sectional crises with minimal federal economic action but acceptance of a fragile political compromise.",
+      "overallAssessment": "Monroe’s crisis management style was cautious and conciliatory, reflecting an era often remembered as the “Era of Good Feelings” but marked by serious underlying tensions. In the Panic of 1819, he largely deferred to existing financial institutions and market forces, offering little direct federal relief to those suffering from the downturn. In the Missouri crisis, he backed a compromise that preserved the Union’s immediate stability but entrenched a sectional balance that would later prove unsustainable. His leadership helped avoid short-term rupture but did little to resolve the deeper structural conflicts facing the nation.",
       "sources": [
-        "Library of Congress, Monroe presidential papers.",
-        "National Archives, crisis management archives."
+        "https://www.federalreservehistory.org/essays/panic-of-1819",
+        "https://history.state.gov/milestones/1801-1829/missouri-compromise"
       ]
     }
   },
@@ -126,18 +158,34 @@
     "crisisManagement": {
       "events": [
         {
-          "title": "Contested Legitimacy after the 1824 Election",
-          "summary": "Adams governed under the cloud of the “corrupt bargain” accusation, managing a legitimacy crisis without major institutional breakdown but with persistent political opposition.",
+          "title": "Tariff of Abominations Backlash (Domestic Sectional Crisis)",
+          "summary": "The Tariff of 1828, passed at the end of Adams’s term, triggered intense Southern anger due to its high protective rates that favored Northern manufacturers. Although Adams did not design the final version of the tariff, he supported protective policies and was blamed for the outcome. Southern leaders denounced the tariff as unconstitutional and economically ruinous, laying the groundwork for the doctrine of nullification. Adams faced growing hostility in Congress and the South, which weakened his political standing and contributed to his defeat in the 1828 election. The crisis revealed deepening sectional tensions that would continue to escalate in the decades ahead.",
           "sources": [
-            "National Archives, 1824 election records.",
-            "Library of Congress, Adams political correspondence."
+            "https://www.britannica.com/event/Tariff-of-Abominations",
+            "https://www.loc.gov/item/today-in-history/may-19/"
+          ]
+        },
+        {
+          "title": "Georgia–Creek Conflict (Domestic Federal Authority Crisis)",
+          "summary": "During Adams’s presidency, the state of Georgia aggressively pushed to seize Creek lands despite federal treaties guaranteeing Creek sovereignty. Georgia’s actions challenged federal authority and threatened to provoke violent conflict between settlers and Native communities. Adams attempted to uphold federal treaty obligations, but Georgia defied him and continued its encroachments. His inability to enforce federal authority against a defiant state exposed the limits of presidential power in the face of state resistance. The crisis foreshadowed the later Indian Removal era and highlighted the growing tension between federal commitments and expansionist pressures.",
+          "sources": [
+            "https://www.britannica.com/topic/Creek-War",
+            "https://www.loc.gov/item/today-in-history/february-12/"
+          ]
+        },
+        {
+          "title": "Panama Congress Controversy (Foreign Policy Crisis)",
+          "summary": "Adams supported sending U.S. delegates to the Panama Congress, a hemispheric meeting organized by Simón Bolívar to promote cooperation among the newly independent Latin American republics. Southern politicians fiercely opposed participation, fearing discussions of slavery and racial equality. The debate became a major political battle in Congress, with opponents delaying funding and appointments. Although delegates were eventually approved, they arrived too late to participate meaningfully. The controversy weakened Adams politically and highlighted the growing sectional divide over foreign policy and slavery.",
+          "sources": [
+            "https://history.state.gov/milestones/1801-1829/panama-congress",
+            "https://www.britannica.com/event/Panama-Congress"
           ]
         }
       ],
-      "overallAssessment": "Adams faced a political legitimacy crisis he never fully dispelled, but institutions remained intact and peaceful transfer of power followed.",
+      "overallAssessment": "John Quincy Adams faced crises rooted in sectional tension, state defiance, and ideological conflict over America’s role in the world. His principled commitment to federal authority and hemispheric cooperation often clashed with rising populist and sectional forces. The Tariff of Abominations backlash and the Georgia–Creek conflict exposed the limits of presidential power in an era of expanding states’ rights sentiment. The Panama Congress controversy demonstrated how foreign policy could become entangled in domestic disputes over slavery. Adams’s crisis leadership was intellectually consistent but politically costly, contributing to his defeat and signaling the turbulent era to come.",
       "sources": [
-        "Library of Congress, Adams presidential papers.",
-        "National Archives, early electoral crisis records."
+        "https://www.britannica.com/event/Tariff-of-Abominations",
+        "https://history.state.gov/milestones/1801-1829/panama-congress"
       ]
     }
   },
@@ -147,26 +195,34 @@
     "crisisManagement": {
       "events": [
         {
-          "title": "Nullification Crisis",
-          "summary": "Jackson confronted South Carolina’s attempt to nullify federal tariffs, threatening force, securing a Force Bill, and accepting a compromise tariff to defuse secession talk.",
+          "title": "Nullification Crisis (Domestic Constitutional Crisis)",
+          "summary": "The Nullification Crisis erupted when South Carolina declared the Tariffs of 1828 and 1832 unconstitutional and asserted the right to nullify federal law. Jackson viewed nullification as a direct threat to the Union and responded forcefully. He issued a proclamation denouncing the doctrine, sought congressional authority to use military force, and quietly prepared federal troops. At the same time, he supported a compromise tariff to defuse tensions. The crisis ended when South Carolina backed down after Congress passed both the Force Bill and a compromise tariff. Jackson’s handling of the crisis reinforced federal supremacy and demonstrated his willingness to confront secessionist impulses head-on.",
           "sources": [
-            "National Archives, Jackson nullification records.",
-            "Library of Congress, Jackson crisis correspondence."
+            "https://www.britannica.com/event/Nullification-Crisis",
+            "https://www.loc.gov/item/today-in-history/december-10/"
           ]
         },
         {
-          "title": "Bank War as Political‑Economic Crisis",
-          "summary": "Jackson’s destruction of the Second Bank triggered intense financial and political turmoil, which he framed as a struggle against concentrated power.",
+          "title": "Bank War (Domestic Economic and Institutional Crisis)",
+          "summary": "Jackson’s battle against the Second Bank of the United States became a major political and economic crisis. He believed the Bank wielded excessive power and favored elites, and he vetoed its recharter in 1832. Jackson then ordered federal deposits removed from the Bank and placed in state “pet banks,” triggering financial instability and a showdown with Congress. Critics accused him of abusing executive power, while supporters praised his populist stance. The conflict destabilized the financial system and contributed to speculative excesses that would later culminate in the Panic of 1837. The Bank War reshaped American economic policy and expanded presidential authority.",
           "sources": [
-            "Library of Congress, Jackson bank war papers.",
-            "National Archives, financial crisis records."
+            "https://www.britannica.com/event/Bank-War",
+            "https://www.loc.gov/item/today-in-history/july-10/"
+          ]
+        },
+        {
+          "title": "Indian Removal Crisis (Domestic Humanitarian and Constitutional Crisis)",
+          "summary": "Jackson championed the Indian Removal Act of 1830, which authorized the forced relocation of Native nations from the Southeast to lands west of the Mississippi. Despite Supreme Court rulings affirming Native sovereignty, Jackson supported state efforts to seize Native lands and refused to enforce federal protections. The resulting removals, including the Cherokee Trail of Tears, caused immense suffering and death. The crisis involved conflicts between federal authority, state power, and judicial rulings, with Jackson siding firmly with expansionist states. The episode remains one of the most controversial and consequential actions of his presidency.",
+          "sources": [
+            "https://www.britannica.com/event/Trail-of-Tears",
+            "https://www.loc.gov/item/today-in-history/may-28/"
           ]
         }
       ],
-      "overallAssessment": "Jackson managed existential threats to federal authority with aggressive rhetoric and force readiness, averting immediate disunion but fueling long‑term instability.",
+      "overallAssessment": "Jackson’s crisis leadership was defined by aggressive assertions of executive authority and a willingness to confront opponents directly. His firm stance during the Nullification Crisis preserved the Union and reinforced federal supremacy. However, his handling of the Bank War destabilized the financial system and expanded presidential power in ways that alarmed critics. His support for Indian Removal produced one of the most tragic and controversial episodes in American history, marked by humanitarian catastrophe and constitutional conflict. Jackson’s crisis record is a mix of decisive action, institutional strain, and enduring moral controversy.",
       "sources": [
-        "Library of Congress, Jackson presidential papers.",
-        "National Archives, crisis management archives."
+        "https://www.britannica.com/event/Nullification-Crisis",
+        "https://www.britannica.com/event/Trail-of-Tears"
       ]
     }
   },
@@ -176,18 +232,26 @@
     "crisisManagement": {
       "events": [
         {
-          "title": "Panic of 1837",
-          "summary": "Van Buren faced a severe financial collapse and widespread unemployment, adhering to hard‑money principles and proposing the Independent Treasury instead of direct federal relief.",
+          "title": "Panic of 1837 (Economic Collapse)",
+          "summary": "Van Buren inherited a fragile economy destabilized by Jackson’s Bank War, speculative lending, and international credit contractions. Within months of taking office, banks suspended specie payments, businesses failed, and unemployment soared. Van Buren rejected federal intervention, adhering to a limited-government philosophy that left relief efforts to states and private charities. He proposed the Independent Treasury system to separate federal funds from private banks, but it faced fierce opposition and was not fully implemented until later. The depression persisted for years, damaging Van Buren’s popularity and contributing to his defeat in 1840.",
           "sources": [
-            "National Archives, Panic of 1837 records.",
-            "Library of Congress, Van Buren economic crisis papers."
+            "https://www.britannica.com/event/Panic-of-1837",
+            "https://www.loc.gov/item/today-in-history/may-10/"
+          ]
+        },
+        {
+          "title": "Canadian Rebellion Border Crisis (Foreign and Domestic Security Crisis)",
+          "summary": "Rebellions in Canada in 1837–1838 spilled over into the United States as American sympathizers launched unauthorized raids across the border. The most serious incident occurred when British forces destroyed the American steamer Caroline, killing an American citizen and sparking public outrage. Van Buren deployed federal troops to enforce neutrality laws and prevent further incursions. His restraint helped avoid a broader conflict with Britain, despite intense domestic pressure for retaliation. The crisis highlighted the challenges of managing border security and public sentiment during international unrest.",
+          "sources": [
+            "https://www.britannica.com/event/Caroline-affair",
+            "https://history.state.gov/milestones/1830-1860/caroline-affair"
           ]
         }
       ],
-      "overallAssessment": "Van Buren’s crisis management prioritized financial orthodoxy over aggressive relief, deepening his political unpopularity during prolonged hardship.",
+      "overallAssessment": "Van Buren’s presidency was dominated by the Panic of 1837, a severe economic crisis that he addressed with ideological consistency but limited practical relief. His refusal to intervene aggressively reflected his commitment to limited government but left many Americans suffering. In foreign affairs, his cautious handling of the Canadian border crisis prevented escalation and demonstrated diplomatic restraint. Overall, Van Buren’s crisis leadership was principled but politically costly, shaped by forces largely beyond his control.",
       "sources": [
-        "Library of Congress, Van Buren presidential papers.",
-        "National Archives, crisis management records."
+        "https://www.britannica.com/event/Panic-of-1837",
+        "https://www.britannica.com/event/Caroline-affair"
       ]
     }
   },
@@ -197,18 +261,17 @@
     "crisisManagement": {
       "events": [
         {
-          "title": "Succession Crisis Triggered by His Death",
-          "summary": "Harrison’s death after a month in office created the first presidential succession test, resolved by Tyler asserting full presidential authority.",
+          "title": "Presidential Succession Crisis (Constitutional Crisis)",
+          "summary": "Harrison died just one month after taking office, creating the first presidential succession crisis in U.S. history. The Constitution was ambiguous about whether the vice president became president or merely acted as president. Harrison’s death forced an immediate constitutional interpretation with no precedent to guide it. Vice President John Tyler asserted that he was fully president, not an acting placeholder, and took the presidential oath. Although some members of Congress objected, Tyler’s claim was ultimately accepted, establishing a critical precedent for future successions. Harrison’s brief presidency thus triggered a foundational constitutional clarification.",
           "sources": [
-            "National Archives, Harrison death and succession records.",
-            "Library of Congress, early succession correspondence."
+            "https://www.britannica.com/biography/William-Henry-Harrison",
+            "https://www.loc.gov/item/today-in-history/april-4/"
           ]
         }
       ],
-      "overallAssessment": "Harrison did not manage crises himself, but his death forced a constitutional precedent on succession that shaped future crisis handling.",
+      "overallAssessment": "Harrison’s presidency was too short for him to face traditional policy crises, but his death created a constitutional emergency that shaped the future of presidential succession. The resolution of this crisis, largely through Tyler’s actions, established a precedent that would guide the nation for more than a century until the 25th Amendment codified the practice. Harrison’s crisis legacy lies not in his actions but in the constitutional implications of his sudden death.",
       "sources": [
-        "Library of Congress, Harrison presidential papers.",
-        "National Archives, early constitutional crisis records."
+        "https://www.britannica.com/biography/William-Henry-Harrison"
       ]
     }
   },
@@ -218,26 +281,34 @@
     "crisisManagement": {
       "events": [
         {
-          "title": "Succession Legitimacy Crisis",
-          "summary": "Tyler insisted he was fully president, not merely acting, during the first succession crisis, establishing a durable precedent for future transitions.",
+          "title": "Succession Legitimacy Crisis (Domestic Constitutional Crisis)",
+          "summary": "Tyler’s assumption of the presidency after Harrison’s death sparked a major constitutional debate. Many in Congress argued that he was merely an acting president, while Tyler insisted he was fully president with all associated powers. Tyler refused to accept correspondence addressed to him as “Acting President” and asserted executive authority in appointments and policy decisions. His firm stance established the precedent that the vice president becomes president upon the death of the incumbent. Although controversial at the time, this interpretation became widely accepted and shaped future successions.",
           "sources": [
-            "National Archives, Tyler succession records.",
-            "Library of Congress, Tyler constitutional correspondence."
+            "https://www.britannica.com/biography/John-Tyler",
+            "https://www.loc.gov/item/today-in-history/april-6/"
           ]
         },
         {
-          "title": "Cabinet and Party Revolt",
-          "summary": "Tyler faced mass cabinet resignations and expulsion from the Whig Party over vetoes, managing a governance crisis with a reduced political base.",
+          "title": "Dorr Rebellion (Domestic Insurrection Crisis)",
+          "summary": "The Dorr Rebellion in Rhode Island arose from disputes over outdated voting laws that restricted suffrage to property owners. Reformers led by Thomas Dorr established a rival government and attempted to seize state institutions. Tyler refused to intervene militarily unless state authorities requested federal assistance, emphasizing restraint and constitutional process. The rebellion collapsed after limited violence, and Rhode Island eventually adopted a new constitution expanding voting rights. Tyler’s cautious approach avoided federal overreach while allowing reform to proceed.",
           "sources": [
-            "Library of Congress, Tyler cabinet papers.",
-            "National Archives, executive–legislative conflict records."
+            "https://www.britannica.com/event/Dorr-Rebellion",
+            "https://www.loc.gov/item/today-in-history/may-18/"
+          ]
+        },
+        {
+          "title": "Webster–Ashburton Negotiations (Foreign Border Crisis)",
+          "summary": "Tyler inherited ongoing tensions with Britain over the U.S.–Canada border, particularly in Maine, where local militias had clashed in the Aroostook War. Secretary of State Daniel Webster negotiated the Webster–Ashburton Treaty, which resolved the border dispute, addressed extradition issues, and reduced the risk of further conflict. Tyler supported the treaty despite political opposition and sectional tensions. The agreement stabilized relations with Britain and helped prevent a potentially serious international confrontation.",
+          "sources": [
+            "https://history.state.gov/milestones/1830-1860/webster-ashburton",
+            "https://www.britannica.com/event/Webster-Ashburton-Treaty"
           ]
         }
       ],
-      "overallAssessment": "Tyler stabilized the succession question but governed amid persistent political crisis and party isolation.",
+      "overallAssessment": "Tyler’s presidency was shaped by constitutional uncertainty, domestic unrest, and delicate foreign negotiations. His firm assertion of presidential authority after Harrison’s death established a critical succession precedent. His restrained handling of the Dorr Rebellion balanced federal authority with respect for state sovereignty. In foreign affairs, his support for the Webster–Ashburton Treaty helped resolve long-standing tensions with Britain. Tyler’s crisis leadership was cautious but consequential, particularly in constitutional matters.",
       "sources": [
-        "Library of Congress, Tyler presidential papers.",
-        "National Archives, crisis management archives."
+        "https://www.britannica.com/biography/John-Tyler",
+        "https://history.state.gov/milestones/1830-1860/webster-ashburton"
       ]
     }
   },
@@ -247,18 +318,26 @@
     "crisisManagement": {
       "events": [
         {
-          "title": "Mexican–American War",
-          "summary": "Polk managed a controversial war of expansion, overseeing military campaigns and domestic opposition while achieving territorial gains.",
+          "title": "Mexican-American War (Foreign and Military Crisis)",
+          "summary": "Polk’s expansionist agenda led to escalating tensions with Mexico over the annexation of Texas and disputed territory along the Rio Grande. After a skirmish between U.S. and Mexican forces, Polk declared that American blood had been shed on American soil and sought a declaration of war. The conflict resulted in major U.S. victories and the capture of Mexico City, but it was controversial domestically, with critics accusing Polk of provoking the war to expand slavery. The war reshaped North America, adding vast territories to the United States. It also intensified sectional tensions that would later erupt into civil war.",
           "sources": [
-            "National Archives, Mexican–American War records.",
-            "Library of Congress, Polk wartime correspondence."
+            "https://www.britannica.com/event/Mexican-American-War",
+            "https://history.state.gov/milestones/1830-1860/war"
+          ]
+        },
+        {
+          "title": "Oregon Boundary Dispute (Foreign Territorial Crisis)",
+          "summary": "Polk campaigned on the slogan “Fifty-four forty or fight,” asserting U.S. claims to the entire Oregon Territory up to the Russian boundary. Tensions with Britain rose as both nations asserted competing claims. Polk ultimately negotiated the Oregon Treaty of 1846, establishing the 49th parallel as the boundary. The compromise avoided war with Britain while securing significant territory for the United States. The crisis demonstrated Polk’s willingness to balance bold rhetoric with pragmatic diplomacy.",
+          "sources": [
+            "https://history.state.gov/milestones/1830-1860/oregon-territory",
+            "https://www.britannica.com/event/Oregon-Treaty"
           ]
         }
       ],
-      "overallAssessment": "Polk successfully executed a major war but intensified sectional tensions over slavery in the new territories.",
+      "overallAssessment": "Polk’s crisis leadership was defined by territorial expansion and military conflict. His handling of the Mexican-American War achieved dramatic gains for the United States but at the cost of significant domestic controversy and heightened sectional tensions. His resolution of the Oregon dispute showed diplomatic flexibility that prevented a two-front conflict. Polk’s crises reshaped the nation’s geography and set the stage for future conflicts over slavery and governance.",
       "sources": [
-        "Library of Congress, Polk presidential papers.",
-        "National Archives, war crisis records."
+        "https://www.britannica.com/event/Mexican-American-War",
+        "https://history.state.gov/milestones/1830-1860/oregon-territory"
       ]
     }
   },
@@ -268,546 +347,913 @@
     "crisisManagement": {
       "events": [
         {
-          "title": "Sectional Crisis over Slavery in the Mexican Cession",
-          "summary": "Taylor opposed the expansion of slavery into new territories and threatened to use force against secessionists, but his death cut short his approach.",
+          "title": "Compromise of 1850 Crisis (Domestic Sectional Crisis)",
+          "summary": "Taylor took office amid fierce debates over whether territories acquired from Mexico would permit slavery. Southern leaders threatened secession if slavery was restricted, while Northern politicians opposed its expansion. Taylor, a slaveholder himself, surprised many by opposing the extension of slavery into the new territories and resisting Southern demands. He threatened to use military force against secessionists, asserting that disunion was treason. Taylor’s sudden death in 1850 left the crisis unresolved, and the Compromise of 1850 was enacted under his successor.",
           "sources": [
-            "National Archives, Taylor sectional crisis records.",
-            "Library of Congress, Taylor crisis correspondence."
+            "https://www.britannica.com/event/Compromise-of-1850",
+            "https://www.loc.gov/item/today-in-history/july-9/"
           ]
         }
       ],
-      "overallAssessment": "Taylor confronted early secession talk with a hard line but did not live to see the crisis resolved.",
+      "overallAssessment": "Taylor’s presidency was dominated by the escalating sectional crisis over slavery in the territories. His firm stance against secession and his willingness to confront Southern extremists demonstrated a commitment to preserving the Union. His unexpected death prevented him from shaping the final compromise, leaving his crisis legacy defined by his strong but unfinished opposition to disunion.",
       "sources": [
-        "Library of Congress, Taylor presidential papers.",
-        "National Archives, sectional crisis records."
+        "https://www.britannica.com/event/Compromise-of-1850"
       ]
     }
   },
   {
-    "id": 13,
-    "name": "Millard Fillmore",
-    "crisisManagement": {
-      "events": [
-        {
-          "title": "Compromise of 1850 Implementation",
-          "summary": "Fillmore signed and enforced the Compromise of 1850, including the Fugitive Slave Act, aiming to calm sectional tensions while provoking intense Northern backlash.",
-          "sources": [
-            "National Archives, Compromise of 1850 enforcement records.",
-            "Library of Congress, Fillmore crisis papers."
-          ]
-        }
-      ],
-      "overallAssessment": "Fillmore temporarily eased congressional deadlock but deepened moral and political crisis over slavery enforcement.",
-      "sources": [
-        "Library of Congress, Fillmore presidential papers.",
-        "National Archives, crisis management archives."
-      ]
-    }
-  },
-  {
-    "id": 14,
-    "name": "Franklin Pierce",
-    "crisisManagement": {
-      "events": [
-        {
-          "title": "Bleeding Kansas",
-          "summary": "Pierce backed pro‑slavery territorial authorities and used federal power against anti‑slavery settlers, allowing violence and chaos to escalate in Kansas.",
-          "sources": [
-            "National Archives, Kansas territorial records.",
-            "Library of Congress, Pierce sectional crisis correspondence."
-          ]
-        }
-      ],
-      "overallAssessment": "Pierce’s handling of the Kansas crisis inflamed sectional conflict and undermined confidence in federal neutrality.",
-      "sources": [
-        "Library of Congress, Pierce presidential papers.",
-        "National Archives, domestic crisis records."
-      ]
-    }
-  },
-  {
-    "id": 15,
-    "name": "James Buchanan",
-    "crisisManagement": {
-      "events": [
-        {
-          "title": "Secession Winter of 1860–1861",
-          "summary": "Buchanan watched multiple Southern states secede while insisting he lacked constitutional authority to coerce them, leaving federal forts vulnerable and the crisis to his successor.",
-          "sources": [
-            "National Archives, Buchanan secession records.",
-            "Library of Congress, Buchanan late‑term correspondence."
-          ]
-        }
-      ],
-      "overallAssessment": "Buchanan’s passivity during the secession crisis is widely judged as catastrophic, failing to contain the slide toward civil war.",
-      "sources": [
-        "Library of Congress, Buchanan presidential papers.",
-        "National Archives, pre‑Civil War crisis archives."
-      ]
-    }
-  },
-  {
-    "id": 31,
-    "name": "Herbert Hoover",
-    "crisisManagement": {
-      "events": [
-        {
-          "title": "Great Depression Initial Collapse",
-          "summary": "Hoover faced the 1929 stock market crash and ensuing economic collapse, relying on voluntary cooperation and limited federal intervention as unemployment and bank failures surged.",
-          "sources": [
-            "National Archives, Hoover Depression records.",
-            "Library of Congress, Hoover crisis correspondence."
-          ]
-        },
-        {
-          "title": "Bonus Army Confrontation",
-          "summary": "Hoover ordered federal troops to disperse World War I veterans demanding early bonus payments, resulting in violent clashes and national outrage.",
-          "sources": [
-            "Library of Congress, Bonus Army papers.",
-            "National Archives, domestic military deployment records."
-          ]
-        }
-      ],
-      "overallAssessment": "Hoover’s crisis management relied on limited federal action and forceful responses to unrest, deepening public dissatisfaction during economic collapse.",
-      "sources": [
-        "Library of Congress, Hoover presidential papers.",
-        "National Archives, crisis management archives."
-      ]
-    }
-  },
-  {
-    "id": 32,
-    "name": "Franklin D. Roosevelt",
-    "crisisManagement": {
-      "events": [
-        {
-          "title": "Banking Crisis of 1933",
-          "summary": "FDR declared a national bank holiday and pushed emergency legislation to stabilize the financial system during widespread bank failures.",
-          "sources": [
-            "National Archives, Emergency Banking Act records.",
-            "Library of Congress, FDR banking crisis papers."
-          ]
-        },
-        {
-          "title": "World War II Homefront Mobilization",
-          "summary": "FDR oversaw unprecedented domestic mobilization, including rationing, war production, and internal security measures.",
-          "sources": [
-            "Library of Congress, WWII homefront documents.",
-            "National Archives, wartime domestic policy records."
-          ]
-        }
-      ],
-      "overallAssessment": "FDR managed the Depression and WWII through sweeping federal mobilization and emergency authority.",
-      "sources": [
-        "Library of Congress, Roosevelt presidential papers.",
-        "National Archives, crisis management archives."
-      ]
-    }
-  },
-  {
-    "id": 33,
-    "name": "Harry S. Truman",
-    "crisisManagement": {
-      "events": [
-        {
-          "title": "Post‑War Reconversion Crisis",
-          "summary": "Truman navigated labor strikes, inflation, and economic instability as the nation transitioned from wartime to peacetime production.",
-          "sources": [
-            "National Archives, Truman reconversion records.",
-            "Library of Congress, Truman labor crisis papers."
-          ]
-        },
-        {
-          "title": "Korean War Outbreak",
-          "summary": "Truman committed U.S. forces to Korea under UN authority, managing a major military crisis without a formal declaration of war.",
-          "sources": [
-            "Library of Congress, Truman Korean War correspondence.",
-            "National Archives, wartime crisis records."
-          ]
-        }
-      ],
-      "overallAssessment": "Truman confronted post‑war domestic turmoil and the sudden outbreak of the Korean War with assertive federal action.",
-      "sources": [
-        "Library of Congress, Truman presidential papers.",
-        "National Archives, crisis management archives."
-      ]
-    }
-  },
-  {
-    "id": 34,
-    "name": "Dwight D. Eisenhower",
-    "crisisManagement": {
-      "events": [
-        {
-          "title": "Little Rock School Desegregation Crisis",
-          "summary": "Eisenhower deployed federal troops to enforce desegregation at Little Rock Central High School, asserting federal authority over state resistance.",
-          "sources": [
-            "National Archives, Little Rock deployment records.",
-            "Library of Congress, Eisenhower civil rights papers."
-          ]
-        },
-        {
-          "title": "Cold War Nuclear Tensions",
-          "summary": "Eisenhower managed escalating nuclear tensions through brinkmanship and civil defense planning.",
-          "sources": [
-            "Library of Congress, Eisenhower national security papers.",
-            "National Archives, Cold War crisis records."
-          ]
-        }
-      ],
-      "overallAssessment": "Eisenhower balanced domestic civil rights enforcement with Cold War nuclear crisis management.",
-      "sources": [
-        "Library of Congress, Eisenhower presidential papers.",
-        "National Archives, crisis management archives."
-      ]
-    }
-  },
-  {
-    "id": 35,
-    "name": "John F. Kennedy",
-    "crisisManagement": {
-      "events": [
-        {
-          "title": "Cuban Missile Crisis",
-          "summary": "Kennedy confronted the Soviet deployment of nuclear missiles in Cuba, imposing a naval quarantine and negotiating withdrawal to avert nuclear war.",
-          "sources": [
-            "National Archives, missile crisis records.",
-            "Library of Congress, Kennedy national security papers."
-          ]
-        },
-        {
-          "title": "Ole Miss Integration Crisis",
-          "summary": "Kennedy deployed federal marshals and troops to enforce the enrollment of James Meredith at the University of Mississippi.",
-          "sources": [
-            "Library of Congress, Kennedy civil rights enforcement papers.",
-            "National Archives, domestic deployment records."
-          ]
-        }
-      ],
-      "overallAssessment": "Kennedy managed the most dangerous nuclear confrontation in history while enforcing civil rights under violent resistance.",
-      "sources": [
-        "Library of Congress, Kennedy presidential papers.",
-        "National Archives, crisis management archives."
-      ]
-    }
-  },
-  {
-    "id": 36,
-    "name": "Lyndon B. Johnson",
-    "crisisManagement": {
-      "events": [
-        {
-          "title": "Vietnam War Escalation",
-          "summary": "Johnson dramatically escalated U.S. involvement in Vietnam, managing domestic unrest and political backlash as casualties rose.",
-          "sources": [
-            "National Archives, Vietnam War escalation records.",
-            "Library of Congress, Johnson wartime correspondence."
-          ]
-        },
-        {
-          "title": "Urban Riots of the 1960s",
-          "summary": "Johnson faced widespread urban unrest, deploying federal troops in several cities and commissioning the Kerner Report.",
-          "sources": [
-            "Library of Congress, Johnson domestic crisis papers.",
-            "National Archives, riot response records."
-          ]
-        }
-      ],
-      "overallAssessment": "Johnson confronted simultaneous crises of war abroad and civil unrest at home, stretching federal capacity.",
-      "sources": [
-        "Library of Congress, Johnson presidential papers.",
-        "National Archives, crisis management archives."
-      ]
-    }
-  },
-  {
-    "id": 37,
-    "name": "Richard Nixon",
-    "crisisManagement": {
-      "events": [
-        {
-          "title": "Watergate Scandal",
-          "summary": "Nixon faced a constitutional crisis over the Watergate break‑in and cover‑up, resisting investigations until releasing tapes under court order.",
-          "sources": [
-            "National Archives, Watergate tapes and records.",
-            "Library of Congress, Nixon crisis correspondence."
-          ]
-        },
-        {
-          "title": "Vietnam War Drawdown",
-          "summary": "Nixon managed the withdrawal of U.S. forces from Vietnam while expanding bombing campaigns, navigating intense domestic opposition.",
-          "sources": [
-            "Library of Congress, Nixon Vietnam papers.",
-            "National Archives, wartime crisis records."
-          ]
-        }
-      ],
-      "overallAssessment": "Nixon’s presidency was defined by constitutional crisis and controversial wartime decision‑making.",
-      "sources": [
-        "Library of Congress, Nixon presidential papers.",
-        "National Archives, crisis management archives."
-      ]
-    }
-  },
-  {
-    "id": 38,
-    "name": "Gerald Ford",
-    "crisisManagement": {
-      "events": [
-        {
-          "title": "Post‑Watergate Legitimacy Crisis",
-          "summary": "Ford sought to stabilize the nation after Nixon’s resignation, issuing a controversial pardon to accelerate political healing.",
-          "sources": [
-            "National Archives, Ford pardon records.",
-            "Library of Congress, Ford domestic crisis papers."
-          ]
-        },
-        {
-          "title": "Fall of Saigon",
-          "summary": "Ford managed the final evacuation of U.S. personnel and allies from Vietnam as the South Vietnamese government collapsed.",
-          "sources": [
-            "Library of Congress, Ford Vietnam evacuation papers.",
-            "National Archives, crisis evacuation records."
-          ]
-        }
-      ],
-      "overallAssessment": "Ford’s crisis management focused on restoring trust in government and handling the chaotic end of the Vietnam War.",
-      "sources": [
-        "Library of Congress, Ford presidential papers.",
-        "National Archives, crisis management archives."
-      ]
-    }
-  },
-  {
-    "id": 39,
-    "name": "Jimmy Carter",
-    "crisisManagement": {
-      "events": [
-        {
-          "title": "Iran Hostage Crisis",
-          "summary": "Carter faced a prolonged hostage crisis after militants seized the U.S. embassy in Tehran, culminating in a failed rescue attempt.",
-          "sources": [
-            "National Archives, Iran hostage crisis records.",
-            "Library of Congress, Carter national security papers."
-          ]
-        },
-        {
-          "title": "Energy Crisis",
-          "summary": "Carter confronted fuel shortages and rising energy prices, implementing conservation measures and creating the Department of Energy.",
-          "sources": [
-            "Library of Congress, Carter energy crisis papers.",
-            "National Archives, domestic crisis records."
-          ]
-        }
-      ],
-      "overallAssessment": "Carter’s presidency was dominated by international hostage standoff and domestic energy instability.",
-      "sources": [
-        "Library of Congress, Carter presidential papers.",
-        "National Archives, crisis management archives."
-      ]
-    }
-  },
-  {
-    "id": 40,
-    "name": "Ronald Reagan",
-    "crisisManagement": {
-      "events": [
-        {
-          "title": "Assassination Attempt",
-          "summary": "Reagan survived an assassination attempt in 1981, maintaining public confidence through rapid recovery and stable leadership.",
-          "sources": [
-            "National Archives, Reagan shooting records.",
-            "Library of Congress, Reagan crisis correspondence."
-          ]
-        },
-        {
-          "title": "Iran‑Contra Affair",
-          "summary": "Reagan faced a major scandal involving covert arms sales and unauthorized funding of Nicaraguan rebels, prompting investigations and public controversy.",
-          "sources": [
-            "Library of Congress, Iran‑Contra papers.",
-            "National Archives, crisis investigation records."
-          ]
-        }
-      ],
-      "overallAssessment": "Reagan managed both a personal security crisis and a major constitutional scandal with mixed public reactions.",
-      "sources": [
-        "Library of Congress, Reagan presidential papers.",
-        "National Archives, crisis management archives."
-      ]
-    }
-  },
-  {
-    "id": 41,
-    "name": "George H. W. Bush",
-    "crisisManagement": {
-      "events": [
-        {
-          "title": "Gulf War Mobilization",
-          "summary": "Bush assembled a broad coalition and launched Operation Desert Storm to expel Iraqi forces from Kuwait.",
-          "sources": [
-            "National Archives, Gulf War records.",
-            "Library of Congress, Bush national security papers."
-          ]
-        },
-        {
-          "title": "1992 Los Angeles Riots",
-          "summary": "Bush deployed federal troops to restore order during widespread unrest following the Rodney King verdict.",
-          "sources": [
-            "Library of Congress, Bush domestic crisis papers.",
-            "National Archives, riot response records."
-          ]
-        }
-      ],
-      "overallAssessment": "Bush managed major military conflict abroad and domestic unrest at home with decisive federal action.",
-      "sources": [
-        "Library of Congress, Bush presidential papers.",
-        "National Archives, crisis management archives."
-      ]
-    }
-  },
-  {
-    "id": 42,
-    "name": "Bill Clinton",
-    "crisisManagement": {
-      "events": [
-        {
-          "title": "Oklahoma City Bombing",
-          "summary": "Clinton responded to the deadliest domestic terror attack in U.S. history with federal investigations and anti‑terrorism legislation.",
-          "sources": [
-            "National Archives, Oklahoma City bombing records.",
-            "Library of Congress, Clinton crisis correspondence."
-          ]
-        },
-        {
-          "title": "Impeachment Crisis",
-          "summary": "Clinton faced impeachment over perjury and obstruction allegations, navigating a constitutional and political crisis while maintaining public support.",
-          "sources": [
-            "Library of Congress, Clinton impeachment papers.",
-            "National Archives, constitutional crisis records."
-          ]
-        }
-      ],
-      "overallAssessment": "Clinton managed domestic terrorism and a constitutional crisis while maintaining governmental continuity.",
-      "sources": [
-        "Library of Congress, Clinton presidential papers.",
-        "National Archives, crisis management archives."
-      ]
-    }
-  },
-  {
-    "id": 43,
-    "name": "George W. Bush",
-    "crisisManagement": {
-      "events": [
-        {
-          "title": "September 11 Attacks",
-          "summary": "Bush led the federal response to the 9/11 terrorist attacks, initiating homeland security reforms and military action abroad.",
-          "sources": [
-            "National Archives, 9/11 response records.",
-            "Library of Congress, Bush national security papers."
-          ]
-        },
-        {
-          "title": "Hurricane Katrina",
-          "summary": "Bush faced intense criticism for the federal government’s slow and disorganized response to Hurricane Katrina’s devastation.",
-          "sources": [
-            "Library of Congress, Katrina response papers.",
-            "National Archives, domestic disaster records."
-          ]
-        }
-      ],
-      "overallAssessment": "Bush’s crisis management ranged from decisive national security action after 9/11 to widely criticized disaster response during Katrina.",
-      "sources": [
-        "Library of Congress, Bush presidential papers.",
-        "National Archives, crisis management archives."
-      ]
-    }
-  },
-  {
-    "id": 44,
-    "name": "Barack Obama",
-    "crisisManagement": {
-      "events": [
-        {
-          "title": "Great Recession Response",
-          "summary": "Obama implemented stimulus spending, auto industry rescue, and financial stabilization measures to address the economic crisis.",
-          "sources": [
-            "National Archives, recession response records.",
-            "Library of Congress, Obama economic crisis papers."
-          ]
-        },
-        {
-          "title": "Deepwater Horizon Oil Spill",
-          "summary": "Obama oversaw federal response to the largest marine oil spill in U.S. history, imposing new offshore drilling regulations.",
-          "sources": [
-            "Library of Congress, Deepwater Horizon papers.",
-            "National Archives, environmental crisis records."
-          ]
-        }
-      ],
-      "overallAssessment": "Obama managed economic collapse and major environmental disaster with large‑scale federal intervention.",
-      "sources": [
-        "Library of Congress, Obama presidential papers.",
-        "National Archives, crisis management archives."
-      ]
-    }
-  },
-  {
-    "id": 45,
-    "name": "Donald J. Trump",
-    "crisisManagement": {
-      "events": [
-        {
-          "title": "COVID‑19 Pandemic Response",
-          "summary": "Trump managed the early federal response to COVID‑19, including travel restrictions, emergency declarations, and vaccine development support.",
-          "sources": [
-            "National Archives, COVID‑19 federal response records.",
-            "Library of Congress, Trump pandemic papers."
-          ]
-        },
-        {
-          "title": "2020 Civil Unrest",
-          "summary": "Trump oversaw federal responses to nationwide protests and unrest following police‑involved killings, deploying federal personnel in several cities.",
-          "sources": [
-            "Library of Congress, Trump domestic crisis papers.",
-            "National Archives, federal deployment records."
-          ]
-        }
-      ],
-      "overallAssessment": "Trump’s crisis management centered on pandemic response and domestic unrest during a polarized period.",
-      "sources": [
-        "Library of Congress, Trump presidential papers.",
-        "National Archives, crisis management archives."
-      ]
-    }
-  },
-  {
-    "id": 46,
-    "name": "Joseph R. Biden",
-    "crisisManagement": {
-      "events": [
-        {
-          "title": "COVID‑19 Pandemic Continuation",
-          "summary": "Biden expanded vaccination campaigns, federal testing programs, and economic relief measures to manage ongoing pandemic impacts.",
-          "sources": [
-            "National Archives, Biden COVID‑19 response records.",
-            "Library of Congress, Biden domestic health papers."
-          ]
-        },
-        {
-          "title": "Afghanistan Withdrawal Crisis",
-          "summary": "Biden oversaw the rapid withdrawal of U.S. forces from Afghanistan, managing chaotic evacuations and global scrutiny.",
-          "sources": [
-            "Library of Congress, Afghanistan withdrawal papers.",
-            "National Archives, crisis evacuation records."
-          ]
-        }
-      ],
-      "overallAssessment": "Biden’s crisis management focused on pandemic stabilization and the turbulent end of the Afghanistan conflict.",
-      "sources": [
-        "Library of Congress, Biden presidential papers.",
-        "National Archives, crisis management archives."
-      ]
-    }
+  "id": 13,
+  "name": "Millard Fillmore",
+  "crisisManagement": {
+    "events": [
+      {
+        "title": "Compromise of 1850 Enforcement (Domestic Sectional Crisis)",
+        "summary": "Fillmore assumed the presidency after Zachary Taylor’s death in the midst of the sectional crisis over slavery in the territories. Unlike Taylor, who had resisted Southern demands, Fillmore supported Henry Clay’s Compromise of 1850 as a way to preserve the Union. The compromise admitted California as a free state, adjusted Texas’s borders, and allowed popular sovereignty in some territories, but its most explosive element was the Fugitive Slave Act. Fillmore signed the package into law and directed federal officials to enforce the fugitive slave provisions, which required the return of escaped enslaved people and penalized those who aided them. Enforcement of the law inflamed Northern opinion, led to dramatic rescues and confrontations, and deepened sectional mistrust. Fillmore believed he was averting disunion, but his actions helped radicalize opposition to slavery in the North.",
+        "sources": [
+          "https://www.britannica.com/event/Compromise-of-1850",
+          "https://www.loc.gov/classroom-materials/united-states-history-primary-source-timeline/expansion-and-reform-1801-1861/compromise-of-1850/"
+        ]
+      },
+      {
+        "title": "Fugitive Slave Act Enforcement (Domestic Law-and-Order Crisis)",
+        "summary": "The Fugitive Slave Act of 1850 quickly became one of the most controversial laws in American history. Fillmore’s administration insisted on strict enforcement, arguing that upholding federal law was essential to preserving the Union and maintaining Southern support for the compromise. Federal marshals and commissioners pursued alleged fugitives in Northern states, often with the assistance of local law enforcement, leading to high-profile cases such as the rendition of Anthony Burns. Northern communities responded with protests, legal resistance, and personal liberty laws designed to obstruct enforcement. The resulting clashes turned the issue of slavery from a distant moral question into an immediate, local crisis for many Northerners. Fillmore’s commitment to enforcement stabilized relations with the South in the short term but intensified sectional polarization.",
+        "sources": [
+          "https://www.britannica.com/topic/Fugitive-Slave-Acts",
+          "https://www.loc.gov/item/today-in-history/may-24/"
+        ]
+      }
+    ],
+    "overallAssessment": "Fillmore’s crisis leadership was defined by his embrace and enforcement of the Compromise of 1850, particularly the Fugitive Slave Act. He saw the compromise as a necessary sacrifice to preserve the Union and believed that strict enforcement of federal law was a constitutional duty. In practice, his actions temporarily eased Southern fears but inflamed Northern outrage, helping to transform antislavery sentiment into a more organized political force. Fillmore managed the immediate sectional crisis without war, but his choices contributed to the hardening of positions that made future compromise more difficult.",
+    "sources": [
+      "https://www.britannica.com/event/Compromise-of-1850",
+      "https://www.britannica.com/topic/Fugitive-Slave-Acts"
+    ]
   }
+},
+{
+  "id": 14,
+  "name": "Franklin Pierce",
+  "crisisManagement": {
+    "events": [
+      {
+        "title": "Kansas–Nebraska Act and Bleeding Kansas (Domestic Sectional and Violence Crisis)",
+        "summary": "Pierce’s presidency was dominated by the fallout from the Kansas–Nebraska Act of 1854, which effectively repealed the Missouri Compromise by allowing popular sovereignty to determine the status of slavery in the territories. The law opened Kansas to pro- and antislavery settlers who flooded the territory, leading to fraudulent elections, rival governments, and escalating violence. Pierce’s administration recognized a proslavery territorial government widely seen as illegitimate and used federal authority to support it. As guerrilla warfare and reprisals spread, the territory descended into what became known as Bleeding Kansas. Pierce’s failure to act as a neutral arbiter or to curb the violence undermined confidence in federal institutions and deepened sectional hatred.",
+        "sources": [
+          "https://www.britannica.com/event/Kansas-Nebraska-Act",
+          "https://www.britannica.com/event/Bleeding-Kansas"
+        ]
+      },
+      {
+        "title": "Anthony Burns Case and Northern Backlash (Domestic Law-and-Order Crisis)",
+        "summary": "In 1854, the capture and rendition of Anthony Burns, an escaped enslaved man living in Boston, became a national flashpoint. Pierce’s administration insisted on enforcing the Fugitive Slave Act, deploying federal troops to ensure Burns’s return to slavery despite massive public protests. The spectacle of armed soldiers escorting Burns through hostile crowds in Boston shocked Northern opinion and was widely reported in the press. Pierce’s determination to uphold the law pleased many Southern leaders but further alienated Northern moderates. The case symbolized the moral and political costs of enforcing proslavery laws in free states and intensified resistance to the Democratic administration.",
+        "sources": [
+          "https://www.loc.gov/item/today-in-history/may-24/",
+          "https://www.britannica.com/biography/Anthony-Burns"
+        ]
+      }
+    ],
+    "overallAssessment": "Pierce’s crisis management accelerated the nation’s slide toward civil war. His support for the Kansas–Nebraska Act and his administration’s handling of Bleeding Kansas legitimized proslavery aggression and discredited the idea of neutral federal oversight. His rigid enforcement of the Fugitive Slave Act in cases like Anthony Burns’s deepened Northern outrage and eroded faith in the federal government’s moral authority. Rather than containing sectional conflict, Pierce’s responses inflamed it, leaving the country more polarized and unstable than when he took office.",
+    "sources": [
+      "https://www.britannica.com/event/Kansas-Nebraska-Act",
+      "https://www.britannica.com/event/Bleeding-Kansas"
+    ]
+  }
+},
+{
+  "id": 15,
+  "name": "James Buchanan",
+  "crisisManagement": {
+    "events": [
+      {
+        "title": "Dred Scott Decision and Federal Legitimacy Crisis",
+        "summary": "Early in Buchanan’s presidency, the Supreme Court issued the Dred Scott decision, ruling that African Americans could not be citizens and that Congress lacked authority to prohibit slavery in the territories. Buchanan had privately encouraged a broad ruling in the case, hoping it would settle the slavery question. Instead, the decision outraged Northerners, emboldened proslavery forces, and further discredited the Court in the eyes of many. Buchanan publicly endorsed the ruling and urged acceptance, aligning his administration with a deeply divisive judgment. The crisis undermined the perceived neutrality of both the presidency and the judiciary on the slavery issue.",
+        "sources": [
+          "https://www.britannica.com/event/Dred-Scott-decision",
+          "https://www.loc.gov/item/today-in-history/march-6/"
+        ]
+      },
+      {
+        "title": "Bleeding Kansas and Lecompton Constitution (Domestic Sectional Crisis)",
+        "summary": "Buchanan inherited the ongoing crisis in Kansas, where pro- and antislavery forces continued to clash. A proslavery convention drafted the Lecompton Constitution, which did not reflect the will of the majority of settlers. Buchanan endorsed the Lecompton Constitution and pushed for Kansas’s admission as a slave state, despite widespread evidence of fraud and coercion. This stance split the Democratic Party, alienated Northern Democrats like Stephen Douglas, and intensified sectional tensions. Congress ultimately rejected the Lecompton Constitution, but the episode further eroded trust in Buchanan’s leadership.",
+        "sources": [
+          "https://www.britannica.com/event/Lecompton-Constitution",
+          "https://www.britannica.com/event/Bleeding-Kansas"
+        ]
+      },
+      {
+        "title": "Secession Winter of 1860–1861 (Domestic Disunion Crisis)",
+        "summary": "After Abraham Lincoln’s election in 1860, Southern states began to secede from the Union, starting with South Carolina in December. Buchanan believed secession was illegal but also believed the federal government lacked constitutional authority to coerce states back into the Union. His administration took limited action as state after state left, and federal forts and arsenals in the South were seized. Buchanan’s cabinet fractured, with several Southern members resigning. By the time he left office, seven states had formed the Confederate States of America, and the Union was on the brink of war. His passivity during the secession winter is widely regarded as one of the greatest failures of presidential crisis leadership.",
+        "sources": [
+          "https://www.britannica.com/biography/James-Buchanan-president-of-United-States",
+          "https://www.britannica.com/event/American-Civil-War/The-secession-crisis"
+        ]
+      }
+    ],
+    "overallAssessment": "Buchanan’s presidency was consumed by the deepening sectional crisis over slavery and the Union. His endorsement of the Dred Scott decision and the Lecompton Constitution aligned the federal government with proslavery positions that many Northerners saw as illegitimate and unjust. When secession began after Lincoln’s election, Buchanan acknowledged its illegality but refused to act decisively to stop it, leaving the Union to unravel on his watch. His crisis management combined constitutional rigidity, political miscalculation, and dangerous inaction, making his tenure a cautionary example of failed presidential leadership in the face of national disintegration.",
+    "sources": [
+      "https://www.britannica.com/biography/James-Buchanan-president-of-United-States",
+      "https://www.britannica.com/event/Dred-Scott-decision"
+    ]
+  }
+},
+  {
+  "id": 16,
+  "name": "Abraham Lincoln",
+  "crisisManagement": {
+    "events": [
+      {
+        "title": "Secession and Fort Sumter (Domestic Disunion Crisis)",
+        "summary": "Lincoln entered office facing the most severe constitutional crisis in American history: seven Southern states had already seceded, and more were poised to follow. The immediate flashpoint was Fort Sumter, a federal installation in Charleston Harbor that was running out of supplies. Lincoln chose to send a relief expedition rather than abandon the fort, signaling that the federal government would maintain its authority without initiating hostilities. Confederate forces fired on the fort in April 1861, prompting Lincoln to call for 75,000 volunteers to suppress the rebellion. This action triggered the secession of four additional states and marked the beginning of the Civil War. Lincoln’s handling of the crisis demonstrated a careful balance between asserting federal authority and avoiding actions that could be construed as aggression.",
+        "sources": []
+      },
+      {
+        "title": "Civil War (Domestic and Military National Survival Crisis)",
+        "summary": "The Civil War dominated Lincoln’s presidency and represented an existential crisis for the United States. Lincoln navigated immense military, political, and constitutional challenges, including early battlefield defeats, divided public opinion, and the need to maintain support in border states. He expanded presidential powers by suspending habeas corpus in certain areas, authorizing military arrests, and issuing executive orders to maintain national security. The Emancipation Proclamation reframed the war as a struggle against slavery, altering its moral and political dimensions. Lincoln faced constant pressure from Radical Republicans, Peace Democrats, and military commanders, yet maintained a steady strategic vision. His leadership ultimately preserved the Union and set the stage for the abolition of slavery.",
+        "sources": []
+      },
+      {
+        "title": "Draft Riots of 1863 (Domestic Civil Unrest Crisis)",
+        "summary": "The Enrollment Act of 1863, which instituted the first federal draft, sparked violent resistance in several Northern cities, most notably New York. Protesters targeted government buildings, wealthy citizens, and African Americans, whom they blamed for the war. Local authorities were overwhelmed, forcing Lincoln to divert federal troops from the battlefield to restore order. The riots exposed deep racial and class tensions in the North and challenged the administration’s ability to maintain domestic stability during wartime. Lincoln’s decisive use of federal force ended the violence but highlighted the fragility of Northern unity.",
+        "sources": []
+      }
+    ],
+    "overallAssessment": "Lincoln’s crisis leadership was defined by his navigation of the Civil War, the greatest internal crisis in American history. He balanced constitutional constraints with the necessity of preserving the Union, expanding presidential authority when required while maintaining democratic legitimacy. His strategic patience, moral clarity, and political skill enabled him to manage military setbacks, domestic unrest, and intense factional pressures. Lincoln’s decisions reshaped the nation’s constitutional and moral landscape, making his crisis management one of the most consequential in world history.",
+    "sources": []
+  }
+},
+{
+  "id": 17,
+  "name": "Andrew Johnson",
+  "crisisManagement": {
+    "events": [
+      {
+        "title": "Reconstruction Policy Conflict (Domestic Constitutional Crisis)",
+        "summary": "Johnson inherited the enormous task of Reconstruction after Lincoln’s assassination. He pursued a lenient approach toward the former Confederate states, rapidly restoring their governments with minimal conditions. This brought him into direct conflict with Radical Republicans in Congress, who sought stronger protections for freedpeople and more stringent requirements for readmission. Johnson vetoed major Reconstruction legislation, including the Civil Rights Act of 1866 and the Freedmen’s Bureau Bill, only to have Congress override him. His resistance to congressional authority created a constitutional showdown over the balance of power between branches. The crisis destabilized Reconstruction and undermined federal efforts to secure civil rights.",
+        "sources": []
+      },
+      {
+        "title": "Impeachment Crisis (Domestic Constitutional Crisis)",
+        "summary": "Johnson’s dismissal of Secretary of War Edwin Stanton, in violation of the Tenure of Office Act, triggered the first presidential impeachment in American history. The House charged him with high crimes and misdemeanors, largely rooted in his obstruction of Reconstruction policies. The Senate trial became a national spectacle, testing the boundaries of presidential authority and congressional oversight. Johnson narrowly avoided removal by a single vote, but his political power was effectively destroyed. The crisis clarified, though imperfectly, the limits of executive defiance during periods of national reconstruction.",
+        "sources": []
+      },
+      {
+        "title": "Southern Violence and Ku Klux Klan Emergence (Domestic Security Crisis)",
+        "summary": "During Johnson’s presidency, white supremacist violence surged across the South as former Confederates sought to reassert control. The Ku Klux Klan and similar groups targeted freedpeople, Republican officials, and federal agents. Johnson’s lenient policies and refusal to support strong federal intervention emboldened violent actors. His administration downplayed reports of atrocities and resisted congressional attempts to impose stronger protections. The crisis undermined Reconstruction and allowed paramilitary violence to shape Southern politics.",
+        "sources": []
+      }
+    ],
+    "overallAssessment": "Johnson’s crisis leadership is widely regarded as one of the weakest in American history. His lenient Reconstruction policies, defiance of Congress, and failure to protect freedpeople contributed to widespread violence and political instability. The impeachment crisis revealed deep constitutional tensions and left the presidency weakened. Johnson’s inability to navigate the postwar crisis delayed national reconciliation and undermined the promise of emancipation.",
+    "sources": []
+  }
+},
+{
+  "id": 18,
+  "name": "Ulysses S. Grant",
+  "crisisManagement": {
+    "events": [
+      {
+        "title": "Ku Klux Klan Insurgency (Domestic Terrorism Crisis)",
+        "summary": "Grant faced widespread racial violence in the South as white supremacist groups sought to overthrow Reconstruction governments. The Ku Klux Klan carried out assassinations, beatings, and intimidation campaigns targeting freedpeople and Republican officials. Grant worked with Congress to pass the Enforcement Acts, including the Ku Klux Klan Act of 1871, which authorized federal intervention and the suspension of habeas corpus in affected areas. He deployed federal troops and marshals to suppress the Klan, achieving significant short-term success. The crackdown demonstrated the federal government’s willingness to protect civil rights, though resistance persisted in new forms.",
+        "sources": []
+      },
+      {
+        "title": "Panic of 1873 (Economic Crisis)",
+        "summary": "The Panic of 1873 triggered a severe economic depression marked by bank failures, business collapses, and mass unemployment. The crisis stemmed from overexpansion in railroads, speculative investments, and international financial instability. Grant adhered to hard-money policies, vetoing inflationary measures such as the proposed increase in greenbacks. His stance stabilized the currency but prolonged economic hardship for many Americans. The depression weakened support for Reconstruction and contributed to political realignment.",
+        "sources": []
+      },
+      {
+        "title": "Whiskey Ring and Federal Corruption Scandals (Domestic Governance Crisis)",
+        "summary": "Grant’s administration was rocked by corruption scandals, most notably the Whiskey Ring, in which government officials and distillers conspired to evade taxes. Grant authorized aggressive investigations and supported prosecutions, even when they implicated members of his own administration. However, his personal loyalty to associates sometimes clouded his judgment, leading to accusations of interference. The scandals damaged public trust and overshadowed his achievements in civil rights enforcement. They also highlighted the challenges of governing a rapidly expanding federal bureaucracy.",
+        "sources": []
+      }
+    ],
+    "overallAssessment": "Grant’s crisis leadership combined strong action against domestic terrorism with struggles in economic and administrative governance. His decisive suppression of the Ku Klux Klan represented one of the most effective federal civil rights interventions of the 19th century. However, the Panic of 1873 and corruption scandals weakened his political standing and undermined public confidence. Grant’s presidency demonstrated both the potential and the limits of federal authority during Reconstruction.",
+    "sources": []
+  }
+},
+{
+  "id": 19,
+  "name": "Rutherford B. Hayes",
+  "crisisManagement": {
+    "events": [
+      {
+        "title": "Compromise of 1877 and End of Reconstruction (Domestic Constitutional Crisis)",
+        "summary": "Hayes assumed the presidency after the disputed election of 1876, which was resolved through the informal Compromise of 1877. In exchange for Democratic acceptance of his victory, Hayes agreed to withdraw federal troops from the remaining Reconstruction states. This decision effectively ended Reconstruction and allowed white Democratic governments to regain control. The withdrawal led to the rapid disenfranchisement of African Americans and the rise of Jim Crow laws. Hayes believed the compromise would promote national reconciliation, but it came at the cost of abandoning federal protection for civil rights.",
+        "sources": []
+      },
+      {
+        "title": "Great Railroad Strike of 1877 (Domestic Labor and Security Crisis)",
+        "summary": "The Great Railroad Strike of 1877 erupted after wage cuts by major railroads and quickly spread across multiple states. Strikers halted rail traffic, and violent clashes broke out between workers, militias, and federal troops. Hayes deployed federal forces to restore order, arguing that the disruptions threatened national commerce and security. The intervention ended the strike but resulted in significant casualties and property damage. The crisis highlighted growing tensions between labor and capital in the industrializing economy.",
+        "sources": []
+      },
+      {
+        "title": "Western Indian Conflicts (Domestic Frontier Security Crisis)",
+        "summary": "Hayes inherited ongoing conflicts between Native nations and federal authorities in the West. His administration pursued a policy of forcing Native groups onto reservations and suppressing resistance. Military campaigns continued against groups such as the Nez Perce, whose attempted flight to Canada became a national story. Hayes supported reforms to reduce corruption in the Indian Bureau but maintained the broader policy of forced assimilation and territorial control. The crisis reflected the violent and coercive nature of U.S. expansion during the era.",
+        "sources": []
+      }
+    ],
+    "overallAssessment": "Hayes’s crisis leadership was shaped by the contested end of Reconstruction, rising labor unrest, and ongoing frontier conflicts. His acceptance of the Compromise of 1877 restored political stability but abandoned federal protection for African American rights. His deployment of federal troops during the Great Railroad Strike demonstrated a willingness to use force to maintain order in the industrial economy. His handling of Western conflicts continued long-standing policies of coercion toward Native nations. Hayes’s presidency marked a transition from Reconstruction to the Gilded Age, with crises reflecting the nation’s shifting priorities.",
+    "sources": []
+  }
+},
+  {
+  "id": 20,
+  "name": "James A. Garfield",
+  "crisisManagement": {
+    "events": [
+      {
+        "title": "Assassination and Government Paralysis (Domestic Governance Crisis)",
+        "summary": "Garfield’s presidency was abruptly transformed into a national crisis when he was shot by Charles Guiteau in July 1881, only four months after taking office. The attack left Garfield incapacitated for nearly eighty days, during which the government operated in a state of uncertainty. Cabinet members, Congress, and Vice President Chester Arthur struggled to determine how much authority Garfield retained and what decisions could be made in his name. The lack of constitutional clarity on presidential disability created a governance vacuum that highlighted the fragility of executive continuity. Garfield’s prolonged suffering and eventual death deeply affected the nation and intensified calls for civil service reform, as Guiteau had acted out of frustration with the patronage system.",
+        "sources": []
+      }
+    ],
+    "overallAssessment": "Garfield’s presidency was defined by the crisis surrounding his assassination and the constitutional ambiguity it exposed. His incapacitation created a leadership void that underscored the need for clearer rules on presidential disability, which would not be fully resolved until the 25th Amendment nearly a century later. Although Garfield had begun confronting corruption and patronage, his crisis legacy rests on the national trauma of his shooting and the governmental paralysis that followed.",
+    "sources": []
+  }
+},
+{
+  "id": 21,
+  "name": "Chester A. Arthur",
+  "crisisManagement": {
+    "events": [
+      {
+        "title": "Civil Service Reform After Garfield’s Assassination (Domestic Governance Crisis)",
+        "summary": "Arthur assumed the presidency amid public outrage over the patronage system that had indirectly contributed to Garfield’s assassination. Despite his own background as a product of machine politics, Arthur embraced reform and supported the Pendleton Civil Service Act. The act created a merit-based system for federal employment and established the Civil Service Commission. Arthur’s support for reform alienated many of his former political allies but helped restore public trust in the federal government. The crisis forced Arthur to redefine his political identity and demonstrated his ability to rise above factional loyalties.",
+        "sources": []
+      },
+      {
+        "title": "Chinese Exclusion Act Crisis (Domestic and Foreign Policy Crisis)",
+        "summary": "Growing anti-Chinese sentiment in the West pressured Arthur to address demands for immigration restrictions. Congress passed a bill severely limiting Chinese immigration, but Arthur vetoed it on the grounds that it violated existing treaties with China. After negotiations, he signed a revised version that suspended immigration for ten years. The law marked the first major federal restriction on immigration and strained relations with China. Arthur’s handling of the crisis reflected competing pressures between domestic politics and international diplomacy.",
+        "sources": []
+      }
+    ],
+    "overallAssessment": "Arthur’s crisis leadership was shaped by the need to restore public confidence after Garfield’s assassination and to navigate rising anti-immigrant sentiment. His unexpected embrace of civil service reform demonstrated political courage and helped stabilize federal governance. His handling of the Chinese Exclusion crisis balanced domestic demands with treaty obligations, though the resulting law set a precedent for discriminatory immigration policy. Arthur’s presidency showed a capacity for principled action during a period of political transition.",
+    "sources": []
+  }
+},
+{
+  "id": 22,
+  "name": "Grover Cleveland",
+  "crisisManagement": {
+    "events": [
+      {
+        "title": "Interstate Commerce and Railroad Regulation Crisis (Domestic Economic Governance Crisis)",
+        "summary": "Cleveland confronted growing public anger over railroad monopolies, rate discrimination, and corporate abuses. The lack of federal oversight created widespread economic instability and resentment among farmers and small businesses. Cleveland supported the creation of the Interstate Commerce Commission, the first federal regulatory agency, to oversee railroad practices. The move marked a major shift toward federal involvement in economic regulation. The crisis highlighted the challenges of balancing free-market principles with the need to curb corporate power.",
+        "sources": []
+      },
+      {
+        "title": "Pullman Strike of 1894 (Domestic Labor and Security Crisis)",
+        "summary": "During Cleveland’s second term, the Pullman Strike paralyzed rail traffic across much of the country. Workers protested wage cuts and harsh conditions, and the American Railway Union joined in solidarity. Cleveland ordered federal troops to break the strike, arguing that the disruption of mail delivery justified intervention. Violent clashes ensued, resulting in deaths and widespread property damage. The crisis underscored the growing tensions between labor and capital in the industrial era and raised questions about the federal government’s role in labor disputes.",
+        "sources": []
+      },
+      {
+        "title": "Panic of 1893 (Economic Collapse)",
+        "summary": "The Panic of 1893 triggered one of the worst economic depressions in U.S. history, marked by bank failures, business collapses, and mass unemployment. Cleveland believed the crisis stemmed from the Sherman Silver Purchase Act, which he argued undermined confidence in the currency. He called a special session of Congress to repeal the act, prioritizing monetary stability over inflationary relief measures. His gold-standard policies stabilized financial markets but deepened political divisions, especially within his own party. The crisis reshaped American politics and contributed to the rise of the Populist movement.",
+        "sources": []
+      }
+    ],
+    "overallAssessment": "Cleveland’s crisis leadership reflected his commitment to limited government, fiscal conservatism, and legal order. His responses to economic turmoil and labor unrest emphasized stability and federal authority, sometimes at the expense of public sympathy. The Pullman Strike and the Panic of 1893 revealed the limits of his approach in an era of rapid industrialization. Cleveland’s crises helped define the federal government’s evolving role in economic regulation and labor relations.",
+    "sources": []
+  }
+},
+{
+  "id": 23,
+  "name": "Benjamin Harrison",
+  "crisisManagement": {
+    "events": [
+      {
+        "title": "McKinley Tariff Backlash (Domestic Economic Crisis)",
+        "summary": "Harrison supported the McKinley Tariff of 1890, which raised protective tariffs to unprecedented levels. The law sparked widespread consumer anger as prices rose and foreign markets retaliated. Farmers and small businesses were particularly hard hit, leading to political backlash in the midterm elections. The crisis exposed the limits of high-tariff policies in an increasingly global economy. Harrison’s support for the tariff contributed to his defeat in the 1892 election.",
+        "sources": []
+      },
+      {
+        "title": "Lakota Ghost Dance and Wounded Knee (Domestic Frontier Security Crisis)",
+        "summary": "Tensions between the Lakota Sioux and federal authorities escalated in 1890 as the Ghost Dance movement spread across reservations. The movement, rooted in spiritual renewal and resistance to U.S. policies, was misinterpreted by federal officials as a potential uprising. Harrison authorized increased military presence, contributing to a climate of fear and misunderstanding. The crisis culminated in the Wounded Knee Massacre, where U.S. troops killed hundreds of Lakota men, women, and children. The event marked the violent end of the Indian Wars and remains a profound moral stain on federal policy.",
+        "sources": []
+      }
+    ],
+    "overallAssessment": "Harrison’s crisis leadership was shaped by economic upheaval and frontier conflict. His support for the McKinley Tariff contributed to economic instability and political backlash. His administration’s handling of the Ghost Dance crisis and the events leading to Wounded Knee reflected deep failures in federal Indian policy. Harrison’s crises highlighted the tensions of a nation grappling with industrialization, expansion, and cultural conflict.",
+    "sources": []
+  }
+},
+{
+  "id": 24,
+  "name": "Grover Cleveland (Second Term)",
+  "crisisManagement": {
+    "events": [
+      {
+        "title": "Pullman Strike of 1894 (Domestic Labor and Security Crisis)",
+        "summary": "During Cleveland’s second term, the Pullman Strike became a national emergency as rail traffic halted across multiple states. Workers protested wage cuts and harsh conditions, and the American Railway Union joined in solidarity. Cleveland ordered federal troops to intervene, citing the need to ensure mail delivery and maintain interstate commerce. The intervention led to violent clashes, deaths, and widespread destruction. The crisis underscored the growing tensions between labor and capital and raised questions about the federal government’s role in labor disputes.",
+        "sources": []
+      },
+      {
+        "title": "Panic of 1893 (Economic Collapse)",
+        "summary": "The Panic of 1893 triggered a severe economic depression marked by bank failures, business collapses, and mass unemployment. Cleveland believed the crisis stemmed from the Sherman Silver Purchase Act, which he argued undermined confidence in the currency. He called a special session of Congress to repeal the act, prioritizing monetary stability over inflationary relief measures. His gold-standard policies stabilized financial markets but deepened political divisions. The crisis reshaped American politics and contributed to the rise of the Populist movement.",
+        "sources": []
+      }
+    ],
+    "overallAssessment": "Cleveland’s second term was dominated by economic collapse and labor unrest. His responses emphasized legal order and monetary stability, often at the expense of public sympathy. The Pullman Strike and the Panic of 1893 revealed the limits of his conservative approach in an era of rapid industrialization. Cleveland’s crisis leadership helped define the federal government’s evolving role in economic regulation and labor relations.",
+    "sources": []
+  }
+},
+{
+  "id": 25,
+  "name": "William McKinley",
+  "crisisManagement": {
+    "events": [
+      {
+        "title": "Spanish–American War (Foreign and Military Crisis)",
+        "summary": "McKinley faced mounting pressure to intervene in Cuba’s war for independence from Spain. The explosion of the USS Maine in Havana Harbor intensified public outrage and fueled calls for war. McKinley initially sought a diplomatic solution but ultimately asked Congress for authorization to intervene. The war resulted in swift U.S. victories and the acquisition of overseas territories, including Puerto Rico, Guam, and the Philippines. The conflict marked the emergence of the United States as a global power and sparked debates over imperialism.",
+        "sources": []
+      },
+      {
+        "title": "Philippine–American War (Foreign Insurgency Crisis)",
+        "summary": "After the Spanish–American War, Filipino revolutionaries resisted U.S. annexation, leading to a brutal and protracted conflict. McKinley framed the war as a mission to civilize and stabilize the islands, but the fighting involved guerrilla warfare, harsh counterinsurgency tactics, and significant civilian suffering. The conflict raised moral and political questions about American imperialism and the nation’s role abroad. McKinley’s administration struggled to balance military objectives with diplomatic and humanitarian concerns. The war reshaped U.S. foreign policy and expanded its global footprint.",
+        "sources": []
+      },
+      {
+        "title": "Boxer Rebellion Response (Foreign Multinational Crisis)",
+        "summary": "McKinley faced an international crisis when the Boxer Rebellion in China threatened foreign diplomats and citizens. The United States joined a multinational coalition to relieve the besieged legations in Beijing. McKinley justified intervention as necessary to protect American lives and commercial interests. The crisis marked a significant moment in U.S. involvement in Asian affairs and reinforced the Open Door Policy. McKinley’s handling of the crisis demonstrated the nation’s growing willingness to participate in global military operations.",
+        "sources": []
+      }
+    ],
+    "overallAssessment": "McKinley’s crisis leadership marked a turning point in American foreign policy. His handling of the Spanish–American War and the Philippine–American War expanded U.S. influence and sparked debates over imperialism. His response to the Boxer Rebellion demonstrated a growing willingness to engage in multinational military operations. McKinley’s presidency reshaped the nation’s global role and set the stage for the 20th century.",
+    "sources": []
+  }
+},
+  {
+  "id": 26,
+  "name": "Theodore Roosevelt",
+  "crisisManagement": {
+    "events": [
+      {
+        "title": "1902 Coal Strike (Domestic Labor and Energy Crisis)",
+        "summary": "The 1902 anthracite coal strike threatened to shut down the nation’s primary heating fuel supply as winter approached. Mine workers demanded higher wages, shorter hours, and union recognition, while mine owners refused to negotiate. Roosevelt intervened by calling both sides to the White House, marking the first time a president acted as a neutral mediator in a major labor dispute. When owners resisted, Roosevelt threatened to use federal troops to operate the mines, pressuring them into arbitration. The resulting settlement improved wages and hours but did not grant union recognition. The crisis established a new federal role in labor relations and demonstrated Roosevelt’s willingness to use presidential authority to protect the public interest.",
+        "sources": []
+      },
+      {
+        "title": "Northern Securities Antitrust Case (Domestic Corporate Power Crisis)",
+        "summary": "Roosevelt confronted the Northern Securities Company, a massive railroad trust formed by J.P. Morgan and other financiers. The trust controlled key transportation routes and threatened to dominate interstate commerce. Roosevelt directed the Justice Department to file suit under the Sherman Antitrust Act, challenging the long-standing assumption that large corporations were untouchable. The Supreme Court ruled in favor of the government, ordering the trust dissolved. The case marked a turning point in federal regulation of corporate power and signaled Roosevelt’s commitment to curbing monopolies.",
+        "sources": []
+      },
+      {
+        "title": "Panama Revolution and Canal Negotiations (Foreign Territorial Crisis)",
+        "summary": "Roosevelt sought to build a canal across Panama but faced stalled negotiations with Colombia, which controlled the territory. When Panamanian separatists launched a revolt, Roosevelt quickly recognized the new government and negotiated a treaty granting the United States control of the canal zone. Critics accused him of encouraging or enabling the revolution, though Roosevelt denied direct involvement. The crisis reshaped U.S. influence in Latin America and raised questions about the limits of executive power in foreign affairs. The canal project became one of the most significant engineering and geopolitical achievements of the era.",
+        "sources": []
+      }
+    ],
+    "overallAssessment": "Roosevelt’s crisis leadership blended assertive executive action with a commitment to the public welfare. His handling of the coal strike and antitrust cases expanded the federal role in regulating labor and corporate power. His actions in Panama demonstrated bold, controversial diplomacy that reshaped U.S. influence abroad. Roosevelt’s crises defined the modern activist presidency and set precedents for federal intervention in economic and international affairs.",
+    "sources": []
+  }
+},
+{
+  "id": 27,
+  "name": "William Howard Taft",
+  "crisisManagement": {
+    "events": [
+      {
+        "title": "Ballinger–Pinchot Controversy (Domestic Governance and Conservation Crisis)",
+        "summary": "Taft faced a major internal crisis when his Secretary of the Interior, Richard Ballinger, was accused by conservationists of improperly opening protected lands to private development. Gifford Pinchot, the head of the U.S. Forest Service and a close ally of Theodore Roosevelt, publicly criticized Ballinger and accused the administration of abandoning conservation principles. Taft fired Pinchot for insubordination, triggering a political firestorm. The controversy fractured the Republican Party, alienated progressives, and damaged Taft’s credibility. The crisis highlighted tensions between conservation, development, and administrative integrity.",
+        "sources": []
+      },
+      {
+        "title": "Dollar Diplomacy Backlash (Foreign Policy Crisis)",
+        "summary": "Taft promoted a foreign policy strategy known as Dollar Diplomacy, encouraging American investment abroad to advance U.S. interests. In practice, the policy led to interventions in countries such as Nicaragua, where the U.S. supported a regime favorable to American financial interests. These actions generated resentment and instability, undermining local sovereignty and fueling anti-American sentiment. Critics argued that the policy prioritized corporate profits over democratic values. The crisis revealed the limits of using economic leverage as a tool of foreign policy.",
+        "sources": []
+      }
+    ],
+    "overallAssessment": "Taft’s crisis leadership was marked by administrative conflict and foreign policy missteps. The Ballinger–Pinchot controversy fractured his political coalition and undermined public trust in his commitment to conservation. Dollar Diplomacy produced instability and backlash abroad, revealing the risks of tying foreign policy too closely to private investment. Taft’s crises exposed the challenges of governing in the shadow of a transformative predecessor and navigating competing pressures within a rapidly changing political landscape.",
+    "sources": []
+  }
+},
+{
+  "id": 28,
+  "name": "Woodrow Wilson",
+  "crisisManagement": {
+    "events": [
+      {
+        "title": "World War I (Foreign and Military Crisis)",
+        "summary": "Wilson initially sought to keep the United States neutral during World War I, but repeated German submarine attacks on American ships and the Zimmermann Telegram shifted public opinion. In 1917, Wilson asked Congress for a declaration of war, framing the conflict as a fight to make the world “safe for democracy.” The war required massive mobilization, including conscription, industrial coordination, and propaganda efforts. Wilson expanded federal authority through measures such as the Espionage and Sedition Acts, which restricted civil liberties. The war reshaped global politics and positioned the United States as a major international power.",
+        "sources": []
+      },
+      {
+        "title": "1918 Influenza Pandemic (Public Health Crisis)",
+        "summary": "The 1918 influenza pandemic struck during the final year of World War I, killing hundreds of thousands of Americans. Wilson’s administration prioritized the war effort over public health, limiting transparency and allowing troop movements that accelerated the spread of the virus. Federal guidance was minimal, leaving states and cities to respond with inconsistent measures. Wilson himself contracted the flu during the Paris Peace Conference, affecting his health and possibly his decision-making. The crisis exposed the limitations of federal public health capacity and the dangers of suppressing information during a pandemic.",
+        "sources": []
+      },
+      {
+        "title": "Red Scare and Palmer Raids (Domestic Civil Liberties Crisis)",
+        "summary": "After the war, fears of radicalism surged amid labor unrest, bombings, and the Russian Revolution. Attorney General A. Mitchell Palmer launched a series of raids targeting suspected radicals, resulting in mass arrests and deportations. Civil liberties were widely violated, with detainees held without due process. Wilson, incapacitated by a stroke for much of the period, did little to restrain the crackdown. The crisis revealed the fragility of civil liberties during periods of national fear and political upheaval.",
+        "sources": []
+      }
+    ],
+    "overallAssessment": "Wilson’s crisis leadership was defined by war, pandemic, and domestic repression. His entry into World War I reshaped global politics but came with significant expansions of federal power. His administration’s inadequate response to the influenza pandemic left lasting scars. The Red Scare and Palmer Raids exposed deep tensions between national security and civil liberties. Wilson’s crises demonstrated both the potential and the peril of strong federal authority during national emergencies.",
+    "sources": []
+  }
+},
+{
+  "id": 29,
+  "name": "Warren G. Harding",
+  "crisisManagement": {
+    "events": [
+      {
+        "title": "Teapot Dome Scandal (Domestic Corruption Crisis)",
+        "summary": "Harding’s administration was engulfed in scandal when it was revealed that Interior Secretary Albert Fall had secretly leased federal oil reserves at Teapot Dome and other locations to private companies in exchange for bribes. The scandal exposed deep corruption within the administration and led to Fall becoming the first former cabinet member imprisoned for crimes committed in office. Harding claimed ignorance of the scheme but faced growing public distrust. The crisis damaged the reputation of the federal government and overshadowed Harding’s policy achievements. It remains one of the most notorious corruption scandals in American history.",
+        "sources": []
+      },
+      {
+        "title": "Veterans’ Bureau Scandal (Domestic Governance Crisis)",
+        "summary": "The Veterans’ Bureau, responsible for caring for World War I veterans, became embroiled in corruption under Harding appointee Charles Forbes. Forbes embezzled funds, accepted kickbacks, and mismanaged hospital construction. Harding confronted Forbes privately, but the scandal soon became public, leading to congressional investigations and Forbes’s imprisonment. The crisis highlighted weaknesses in federal oversight and the dangers of appointing unqualified or corrupt associates to key positions. It further eroded public confidence in Harding’s leadership.",
+        "sources": []
+      }
+    ],
+    "overallAssessment": "Harding’s crisis leadership was undermined by widespread corruption within his administration. Although he personally avoided direct involvement in the scandals, his reliance on untrustworthy associates created an environment ripe for abuse. The Teapot Dome and Veterans’ Bureau scandals damaged public trust in government and overshadowed Harding’s efforts to stabilize the postwar economy. His crises serve as a cautionary tale about the importance of ethical governance and administrative oversight.",
+    "sources": []
+  }
+},
+{
+  "id": 30,
+  "name": "Calvin Coolidge",
+  "crisisManagement": {
+    "events": [
+      {
+        "title": "Boston Police Strike Aftermath (Domestic Security Crisis)",
+        "summary": "Coolidge rose to national prominence as governor of Massachusetts by taking a hard line against the 1919 Boston Police Strike, declaring that no one had the right to strike against public safety. As president, he continued to emphasize law and order, though the immediate crisis had passed. His stance shaped federal attitudes toward public-sector strikes and reinforced his reputation for firmness. The episode influenced his presidency by establishing his approach to labor unrest and public safety. It also contributed to the broader national debate over workers’ rights and government authority.",
+        "sources": []
+      },
+      {
+        "title": "Mississippi River Flood of 1927 (Domestic Natural Disaster Crisis)",
+        "summary": "The Mississippi River Flood of 1927 was one of the most devastating natural disasters in U.S. history, displacing hundreds of thousands of people across multiple states. Coolidge was criticized for his limited federal response, as he declined to visit the affected areas and left relief efforts largely to the Red Cross and local authorities. The crisis exposed racial and economic inequalities in disaster response, with African American communities suffering disproportionately. Coolidge’s restrained approach reflected his belief in limited federal intervention but left many Americans feeling abandoned. The disaster spurred later reforms in federal flood control policy.",
+        "sources": []
+      }
+    ],
+    "overallAssessment": "Coolidge’s crisis leadership reflected his commitment to limited government and law and order. His handling of the Boston Police Strike established his national reputation but also signaled a reluctance to support labor rights. His minimal response to the Mississippi Flood revealed the limitations of his hands-off philosophy during large-scale disasters. Coolidge’s crises highlighted the tension between conservative governance and the growing expectations of federal responsibility.",
+    "sources": []
+  }
+},
+{
+  "id": 31,
+  "name": "Herbert Hoover",
+  "crisisManagement": {
+    "events": [
+      {
+        "title": "Stock Market Crash of 1929 (Economic Collapse)",
+        "summary": "Hoover faced the sudden collapse of the stock market in October 1929, which triggered a cascading economic crisis. He initially sought to stabilize the economy through voluntary cooperation between businesses and government, urging companies to maintain wages and employment. As the crisis deepened, Hoover expanded federal public works spending and created new institutions such as the Reconstruction Finance Corporation. However, his reluctance to provide direct relief to individuals and his commitment to balanced budgets limited the effectiveness of his response. The crisis marked the beginning of the Great Depression and overwhelmed Hoover’s policy framework.",
+        "sources": []
+      },
+      {
+        "title": "Bonus Army March (Domestic Civil Unrest Crisis)",
+        "summary": "In 1932, thousands of World War I veterans marched on Washington to demand early payment of promised bonuses. The protesters established camps near the Capitol, creating a humanitarian and political crisis. Hoover ordered the camps cleared after clashes with police, and General Douglas MacArthur exceeded his instructions by using cavalry, tanks, and tear gas to disperse the veterans. The violent eviction shocked the nation and severely damaged Hoover’s reputation. The crisis symbolized the administration’s inability to address widespread suffering during the Depression.",
+        "sources": []
+      },
+      {
+        "title": "Global Economic Collapse and Tariff Crisis (Foreign and Economic Crisis)",
+        "summary": "The worldwide economic downturn intensified as countries raised tariffs and devalued currencies. Hoover signed the Smoot–Hawley Tariff, which raised U.S. duties to record levels and triggered retaliatory measures abroad. International trade collapsed, worsening the Depression. Hoover attempted to stabilize global finances through measures such as the Hoover Moratorium on war debts, but these efforts had limited impact. The crisis exposed the interconnectedness of global economies and the limitations of unilateral policy responses.",
+        "sources": []
+      }
+    ],
+    "overallAssessment": "Hoover’s crisis leadership was overwhelmed by the scale of the Great Depression. His reliance on voluntary cooperation and limited federal intervention proved inadequate as economic conditions deteriorated. The Bonus Army crisis damaged his public standing and highlighted the human toll of the Depression. Hoover’s struggles revealed the need for a more expansive federal role in economic and social policy, setting the stage for the New Deal.",
+    "sources": []
+  }
+},
+  {
+  "id": 32,
+  "name": "Franklin D. Roosevelt",
+  "crisisManagement": {
+    "events": [
+      {
+        "title": "Great Depression Emergency (Economic Collapse)",
+        "summary": "When Roosevelt took office in 1933, the United States was in the depths of the Great Depression, with banks failing, unemployment exceeding 20 percent, and widespread economic despair. Roosevelt declared a national bank holiday to halt the financial collapse and pushed Congress to pass emergency legislation stabilizing the banking system. His administration launched the New Deal, a sweeping set of programs aimed at relief, recovery, and reform, including public works projects, financial regulation, and social welfare initiatives. Roosevelt used radio 'fireside chats' to reassure the public and build support for his policies. The crisis required unprecedented federal intervention in the economy and reshaped the relationship between citizens and government. While the Depression did not fully end until wartime mobilization, Roosevelt’s actions restored confidence and prevented further collapse.",
+        "sources": []
+      },
+      {
+        "title": "Court-Packing Plan (Domestic Constitutional Crisis)",
+        "summary": "Frustrated by Supreme Court rulings striking down key New Deal programs, Roosevelt proposed expanding the number of justices in 1937. He argued that the Court needed additional members to handle its workload, but critics saw the plan as an attempt to undermine judicial independence. The proposal triggered a major constitutional and political crisis, dividing Democrats and energizing Roosevelt’s opponents. Although the plan ultimately failed, the Court soon shifted its stance and upheld New Deal legislation. The crisis damaged Roosevelt’s political capital but also marked a turning point in constitutional interpretation of federal power.",
+        "sources": []
+      },
+      {
+        "title": "World War II (Foreign and Military Global Crisis)",
+        "summary": "Roosevelt confronted the rise of fascism in Europe and militarism in Asia, initially supporting Allied nations through aid programs while maintaining official neutrality. After the Japanese attack on Pearl Harbor in 1941, he led the nation into World War II, overseeing massive mobilization of troops, industry, and resources. Roosevelt coordinated strategy with Allied leaders, balancing competing demands across multiple theaters of war. His administration managed rationing, production quotas, and scientific innovation, including the Manhattan Project. The war transformed the U.S. into a global superpower and reshaped international politics. Roosevelt’s leadership during the conflict remains one of the most consequential in world history.",
+        "sources": []
+      },
+      {
+        "title": "Japanese American Internment (Domestic Civil Liberties Crisis)",
+        "summary": "Following the attack on Pearl Harbor, Roosevelt authorized the forced relocation and internment of more than 110,000 Japanese Americans, most of whom were U.S. citizens. The decision was driven by wartime fear, racial prejudice, and political pressure from West Coast officials. Families were uprooted from their homes and placed in remote camps under harsh conditions. The policy faced legal challenges but was upheld by the Supreme Court at the time. Internment is now widely regarded as a grave violation of civil liberties and constitutional rights. Roosevelt’s decision remains one of the most controversial aspects of his crisis leadership.",
+        "sources": []
+      }
+    ],
+    "overallAssessment": "Roosevelt’s crisis leadership spanned the two greatest emergencies of the 20th century: the Great Depression and World War II. His New Deal policies redefined the federal government’s role in economic and social life, while his wartime leadership helped defeat global fascism and establish the United States as a world power. At the same time, his court-packing attempt and the internment of Japanese Americans revealed the risks of expanded executive authority during crises. Roosevelt’s presidency demonstrated both the transformative potential and the moral hazards of strong federal leadership in times of national emergency.",
+    "sources": []
+  }
+},
+{
+  "id": 33,
+  "name": "Harry S. Truman",
+  "crisisManagement": {
+    "events": [
+      {
+        "title": "Atomic Bomb Decision (Foreign and Military Crisis)",
+        "summary": "Truman assumed the presidency during the final months of World War II and faced the unprecedented decision of whether to use atomic weapons against Japan. After evaluating military estimates of casualties from a potential invasion and considering Japan’s refusal to surrender, Truman authorized the bombings of Hiroshima and Nagasaki. The attacks killed hundreds of thousands and forced Japan’s surrender, ending the war. The decision remains one of the most debated in history, raising profound ethical, strategic, and humanitarian questions. It also marked the beginning of the nuclear age and reshaped global power dynamics.",
+        "sources": []
+      },
+      {
+        "title": "Cold War Onset and Containment (Foreign Policy Crisis)",
+        "summary": "As tensions with the Soviet Union escalated, Truman articulated the policy of containment to prevent the spread of communism. He announced the Truman Doctrine, pledging support to nations resisting communist influence, beginning with Greece and Turkey. The Marshall Plan provided massive economic aid to rebuild Europe and counter Soviet expansion. These policies marked the beginning of the Cold War and committed the United States to a long-term global leadership role. Truman’s decisions established the framework for U.S. foreign policy for decades.",
+        "sources": []
+      },
+      {
+        "title": "Berlin Blockade and Airlift (Foreign and Humanitarian Crisis)",
+        "summary": "In 1948, the Soviet Union blockaded West Berlin in an attempt to force the Western Allies out of the city. Truman rejected military confrontation and instead ordered a massive airlift to supply the city with food, fuel, and other necessities. The Berlin Airlift became one of the largest humanitarian operations in history, sustaining the city for nearly a year. The success of the airlift forced the Soviets to lift the blockade and strengthened Western resolve. The crisis solidified the division of Europe and accelerated the formation of NATO.",
+        "sources": []
+      },
+      {
+        "title": "Korean War (Foreign and Military Crisis)",
+        "summary": "The Korean War began in 1950 when North Korea invaded South Korea. Truman committed U.S. forces under the banner of the United Nations to repel the invasion, framing the conflict as a test of the containment policy. Early successes were followed by Chinese intervention, leading to a prolonged and bloody stalemate. Truman faced domestic criticism for firing General Douglas MacArthur, who publicly challenged presidential authority by advocating for expanded war. The conflict ended in an armistice, leaving Korea divided. The crisis demonstrated the complexities of limited war in the nuclear age.",
+        "sources": []
+      },
+      {
+        "title": "Postwar Labor Strikes (Domestic Economic Crisis)",
+        "summary": "After World War II, the United States experienced a wave of major labor strikes as workers demanded higher wages to match rising prices. Strikes in steel, coal, railroads, and other industries threatened economic stability. Truman responded with a mix of negotiation, public pressure, and, in some cases, threats to draft striking workers into the military. His handling of the crisis was controversial but ultimately helped stabilize the postwar economy. The strikes highlighted the challenges of transitioning from wartime to peacetime production.",
+        "sources": []
+      }
+    ],
+    "overallAssessment": "Truman’s crisis leadership spanned the end of World War II, the dawn of the nuclear age, and the emergence of the Cold War. His decisions on the atomic bomb, containment, and the Korean War shaped global politics for generations. Domestically, he navigated major labor unrest and the challenges of postwar transition. Truman’s presidency demonstrated decisive leadership under extraordinary pressure and established the strategic framework of the modern American-led international order.",
+    "sources": []
+  }
+},
+  {
+  "id": 34,
+  "name": "Dwight D. Eisenhower",
+  "crisisManagement": {
+    "events": [
+      {
+        "title": "McCarthyism and Army–McCarthy Hearings (Domestic Political Crisis)",
+        "summary": "Eisenhower inherited a nation gripped by anti-communist hysteria fueled by Senator Joseph McCarthy. Although Eisenhower privately despised McCarthy’s tactics, he initially avoided direct confrontation to preserve political capital. The crisis escalated when McCarthy accused the U.S. Army of harboring communists, prompting televised hearings that exposed his recklessness. Eisenhower quietly supported the Army’s resistance and allowed his administration to provide damaging information to undermine McCarthy’s credibility. Public opinion turned sharply against McCarthy, and the Senate ultimately censured him. Eisenhower’s indirect but strategic handling helped end one of the most destabilizing domestic political crises of the era.",
+        "sources": []
+      },
+      {
+        "title": "Brown v. Board of Education and Little Rock Crisis (Domestic Civil Rights Crisis)",
+        "summary": "After the Supreme Court ruled school segregation unconstitutional in Brown v. Board of Education, Southern states resisted implementation. The crisis peaked in 1957 when Arkansas Governor Orval Faubus used the National Guard to block nine Black students from entering Little Rock Central High School. Eisenhower, who preferred gradual change, nonetheless recognized that federal authority was being openly defied. He federalized the Arkansas National Guard and sent the 101st Airborne Division to enforce desegregation. The intervention marked the first major federal enforcement of civil rights since Reconstruction and demonstrated Eisenhower’s commitment to upholding the rule of law.",
+        "sources": []
+      },
+      {
+        "title": "Suez Crisis (Foreign and Military Crisis)",
+        "summary": "In 1956, Britain, France, and Israel launched a coordinated attack on Egypt after President Gamal Abdel Nasser nationalized the Suez Canal. Eisenhower opposed the invasion, fearing it would destabilize the Middle East and strengthen Soviet influence. He used diplomatic and financial pressure to force the invading nations to withdraw, marking a dramatic assertion of U.S. leadership over its allies. The crisis reshaped global power dynamics and signaled the decline of European colonial influence. Eisenhower’s handling reinforced the U.S. role as a stabilizing force during the Cold War.",
+        "sources": []
+      },
+      {
+        "title": "U-2 Incident (Foreign Intelligence Crisis)",
+        "summary": "In 1960, a U.S. U-2 spy plane piloted by Francis Gary Powers was shot down over the Soviet Union. Eisenhower initially denied the mission, but the Soviets revealed that Powers had survived and confessed. The incident embarrassed the administration and derailed a planned summit with Soviet Premier Nikita Khrushchev. Eisenhower ultimately accepted responsibility, acknowledging the necessity of intelligence gathering during the Cold War. The crisis highlighted the risks of covert operations and the fragility of diplomatic progress.",
+        "sources": []
+      }
+    ],
+    "overallAssessment": "Eisenhower’s crisis leadership balanced restraint with decisive action. He confronted McCarthyism strategically, enforced civil rights when federal authority was challenged, and managed international crises with a focus on stability and containment. His handling of the Suez Crisis and the U-2 incident demonstrated a pragmatic approach to Cold War tensions. Eisenhower’s crises defined a presidency focused on maintaining order at home and preventing escalation abroad.",
+    "sources": []
+  }
+},
+{
+  "id": 35,
+  "name": "John F. Kennedy",
+  "crisisManagement": {
+    "events": [
+      {
+        "title": "Bay of Pigs Invasion (Foreign and Military Crisis)",
+        "summary": "Shortly after taking office, Kennedy approved a CIA-backed invasion of Cuba by anti-Castro exiles. The operation was poorly planned, underestimated Castro’s forces, and lacked adequate air support. The invasion collapsed within days, resulting in the capture or death of most participants. Kennedy publicly accepted responsibility, though he privately blamed the CIA and military advisers for misleading him. The failure damaged U.S. credibility and emboldened Castro’s alliance with the Soviet Union. The crisis forced Kennedy to reevaluate his decision-making processes and intelligence oversight.",
+        "sources": []
+      },
+      {
+        "title": "Cuban Missile Crisis (Foreign Nuclear Crisis)",
+        "summary": "In 1962, U.S. reconnaissance revealed Soviet nuclear missiles being installed in Cuba, triggering the most dangerous confrontation of the Cold War. Kennedy convened the Executive Committee (ExComm) to consider military and diplomatic options. He ultimately chose a naval quarantine of Cuba and demanded the removal of the missiles. After tense negotiations, the Soviets agreed to withdraw the missiles in exchange for U.S. assurances not to invade Cuba and the secret removal of U.S. missiles from Turkey. The crisis brought the world to the brink of nuclear war but ended with a peaceful resolution. Kennedy’s handling is widely regarded as a model of crisis management under extreme pressure.",
+        "sources": []
+      },
+      {
+        "title": "Civil Rights Confrontations (Domestic Civil Rights Crisis)",
+        "summary": "Kennedy faced escalating civil rights protests, including Freedom Rides, sit-ins, and violent resistance in the South. The crisis intensified in 1963 when Alabama Governor George Wallace attempted to block the integration of the University of Alabama. Kennedy federalized the Alabama National Guard to enforce desegregation and delivered a landmark civil rights address calling racial inequality a moral crisis. His administration also intervened in Birmingham, where police violence against protesters shocked the nation. These crises pushed Kennedy to propose comprehensive civil rights legislation shortly before his assassination.",
+        "sources": []
+      }
+    ],
+    "overallAssessment": "Kennedy’s crisis leadership was defined by Cold War brinkmanship and domestic civil rights struggles. His failure at the Bay of Pigs taught him caution, while his handling of the Cuban Missile Crisis demonstrated exceptional judgment under nuclear threat. His interventions in civil rights crises signaled growing federal commitment to racial equality. Kennedy’s presidency, though short, reshaped U.S. crisis management in both foreign and domestic arenas.",
+    "sources": []
+  }
+},
+{
+  "id": 36,
+  "name": "Lyndon B. Johnson",
+  "crisisManagement": {
+    "events": [
+      {
+        "title": "Civil Rights and Urban Unrest (Domestic Civil Rights Crisis)",
+        "summary": "Johnson inherited the civil rights struggle and pushed through landmark legislation, including the Civil Rights Act of 1964 and the Voting Rights Act of 1965. Despite these achievements, racial tensions erupted into widespread urban unrest in cities such as Watts, Newark, and Detroit. Johnson deployed federal troops to restore order in several cases, while also commissioning the Kerner Report to investigate the causes of the violence. The report concluded that systemic racism and inequality were driving the unrest, but Johnson resisted many of its recommendations. The crisis revealed the limits of legislative reform in addressing deep social grievances.",
+        "sources": []
+      },
+      {
+        "title": "Vietnam War Escalation (Foreign and Military Crisis)",
+        "summary": "Johnson dramatically escalated U.S. involvement in Vietnam following the Gulf of Tonkin incident, which he used to secure broad congressional authorization for military action. The war expanded rapidly, with hundreds of thousands of U.S. troops deployed and mounting casualties. Johnson faced growing domestic opposition as the war dragged on without clear progress. The Tet Offensive in 1968 shattered public confidence in the administration’s optimistic assessments. The crisis consumed Johnson’s presidency and ultimately led him to decline seeking reelection.",
+        "sources": []
+      },
+      {
+        "title": "Gulf of Tonkin Incident (Foreign Policy Crisis)",
+        "summary": "The Gulf of Tonkin incident involved disputed reports of North Vietnamese attacks on U.S. naval vessels. Johnson used the incident to obtain the Gulf of Tonkin Resolution, granting him broad authority to conduct military operations in Southeast Asia. Later revelations cast doubt on the accuracy of the initial reports and raised questions about the administration’s transparency. The crisis marked a turning point in U.S. foreign policy and contributed to long-term distrust of government statements about war. It also laid the foundation for the massive escalation that followed.",
+        "sources": []
+      }
+    ],
+    "overallAssessment": "Johnson’s crisis leadership combined historic domestic achievements with catastrophic foreign policy decisions. His civil rights legislation transformed American society, but urban unrest exposed persistent inequalities. His escalation of the Vietnam War created one of the most divisive crises in U.S. history and overshadowed his domestic accomplishments. Johnson’s presidency demonstrated both the potential and the peril of expansive executive power.",
+    "sources": []
+  }
+},
+{
+  "id": 37,
+  "name": "Richard Nixon",
+  "crisisManagement": {
+    "events": [
+      {
+        "title": "Vietnam War and Cambodia Expansion (Foreign and Military Crisis)",
+        "summary": "Nixon inherited the Vietnam War and pursued a strategy of 'Vietnamization,' aiming to reduce U.S. troop levels while increasing support for South Vietnamese forces. At the same time, he authorized secret bombing campaigns in Cambodia and Laos to disrupt North Vietnamese supply lines. When the expansion became public, it triggered massive protests and congressional backlash. The crisis deepened national divisions and raised questions about presidential war powers. Nixon’s approach prolonged the conflict while undermining trust in government.",
+        "sources": []
+      },
+      {
+        "title": "Kent State Shootings (Domestic Civil Unrest Crisis)",
+        "summary": "In 1970, protests against the Cambodia invasion erupted on college campuses nationwide. At Kent State University, National Guard troops opened fire on unarmed students, killing four and wounding nine. The incident shocked the nation and intensified opposition to the war. Nixon’s rhetoric about 'bums' protesting the war contributed to a polarized atmosphere. The crisis highlighted the volatility of domestic dissent during wartime and the dangers of militarized responses to protest.",
+        "sources": []
+      },
+      {
+        "title": "Watergate Scandal (Domestic Constitutional Crisis)",
+        "summary": "The Watergate scandal began with a break-in at the Democratic National Committee headquarters and expanded into a sweeping investigation of political espionage, abuse of power, and obstruction of justice. Nixon attempted to cover up the administration’s involvement, leading to a constitutional showdown with Congress and the courts. The release of the White House tapes revealed Nixon’s role in the cover-up. Facing certain impeachment and removal, Nixon resigned in 1974. The crisis fundamentally reshaped public trust in government and led to major reforms in campaign finance and executive oversight.",
+        "sources": []
+      }
+    ],
+    "overallAssessment": "Nixon’s crisis leadership was dominated by the Vietnam War and the Watergate scandal. His foreign policy decisions deepened domestic divisions, while his abuses of power triggered the most serious constitutional crisis since the Civil War. Nixon’s resignation marked a turning point in American political culture and reinforced the principle that no president is above the law.",
+    "sources": []
+  }
+},
+{
+  "id": 38,
+  "name": "Gerald Ford",
+  "crisisManagement": {
+    "events": [
+      {
+        "title": "Nixon Pardon (Domestic Constitutional Crisis)",
+        "summary": "Ford assumed the presidency after Nixon’s resignation and immediately faced the question of whether to prosecute his predecessor. Ford issued a full pardon for Nixon, arguing that the nation needed to move past the Watergate scandal. The decision sparked intense public backlash and accusations of a secret deal. Ford’s approval ratings plummeted, and the controversy overshadowed his early presidency. The crisis raised enduring questions about accountability, justice, and the limits of presidential pardon power.",
+        "sources": []
+      },
+      {
+        "title": "Fall of Saigon (Foreign and Military Crisis)",
+        "summary": "In 1975, North Vietnamese forces captured Saigon, marking the end of the Vietnam War. Ford oversaw the evacuation of American personnel and thousands of South Vietnamese allies in a chaotic and desperate operation. The fall of Saigon symbolized the failure of U.S. policy in Vietnam and dealt a blow to American prestige. Ford requested additional military aid for South Vietnam, but Congress refused. The crisis forced the nation to confront the limits of its power and the consequences of prolonged conflict.",
+        "sources": []
+      },
+      {
+        "title": "Mayaguez Incident (Foreign Military Crisis)",
+        "summary": "Shortly after the fall of Saigon, Cambodian forces seized the U.S. merchant ship SS Mayaguez. Ford ordered a military rescue operation, believing the crew was being held hostage. The mission succeeded in recovering the crew, but resulted in significant U.S. casualties, including troops killed after the fighting had ended. The crisis was portrayed as a demonstration of American resolve after Vietnam, but later analysis revealed intelligence failures and unnecessary risks. The incident highlighted the challenges of rapid decision-making in hostage situations.",
+        "sources": []
+      }
+    ],
+    "overallAssessment": "Ford’s crisis leadership was shaped by the aftermath of Watergate and the end of the Vietnam War. His pardon of Nixon was intended to promote healing but damaged his credibility. The fall of Saigon and the Mayaguez incident tested his ability to manage foreign crises during a period of diminished U.S. confidence. Ford’s presidency reflected the difficulties of governing during a national crisis of legitimacy and identity.",
+    "sources": []
+  }
+},
+{
+  "id": 39,
+  "name": "Jimmy Carter",
+  "crisisManagement": {
+    "events": [
+      {
+        "title": "Energy Crisis (Domestic Economic Crisis)",
+        "summary": "Carter faced a severe energy crisis marked by fuel shortages, rising prices, and long lines at gas stations. He framed the crisis as the 'moral equivalent of war' and pushed for conservation, alternative energy development, and regulatory reforms. His policies faced resistance from Congress and skepticism from the public. The crisis contributed to inflation and economic instability. Carter’s efforts laid groundwork for future energy policy but failed to produce immediate relief.",
+        "sources": []
+      },
+      {
+        "title": "Iran Hostage Crisis (Foreign and Diplomatic Crisis)",
+        "summary": "In 1979, Iranian militants seized the U.S. embassy in Tehran and took 52 Americans hostage. Carter imposed economic sanctions, pursued diplomatic negotiations, and authorized a failed rescue mission that resulted in the deaths of eight U.S. servicemen. The crisis dominated his presidency and contributed to perceptions of weakness. The hostages were released only after Carter left office. The crisis reshaped U.S.–Iran relations and highlighted the challenges of responding to revolutionary movements.",
+        "sources": []
+      },
+      {
+        "title": "Soviet Invasion of Afghanistan (Foreign Policy Crisis)",
+        "summary": "The Soviet Union’s invasion of Afghanistan in 1979 marked a major escalation in the Cold War. Carter condemned the invasion, imposed sanctions, and led a boycott of the 1980 Moscow Olympics. He also authorized increased support for Afghan resistance fighters. The crisis forced a reevaluation of U.S. foreign policy and contributed to the end of détente. Carter’s response demonstrated a shift toward a more confrontational stance against Soviet expansion.",
+        "sources": []
+      }
+    ],
+    "overallAssessment": "Carter’s crisis leadership was defined by economic turmoil, geopolitical upheaval, and a major diplomatic standoff. His handling of the energy crisis and inflation faced domestic resistance, while the Iran hostage crisis overshadowed his presidency. His response to the Soviet invasion of Afghanistan marked a significant shift in Cold War policy. Carter’s crises revealed the difficulties of governing during a period of global instability and domestic discontent.",
+    "sources": []
+  }
+},
+{
+  "id": 40,
+  "name": "Ronald Reagan",
+  "crisisManagement": {
+    "events": [
+      {
+        "title": "Reagan Assassination Attempt (Domestic Security Crisis)",
+        "summary": "In 1981, Reagan survived an assassination attempt by John Hinckley Jr., suffering a gunshot wound to the chest. The attack created immediate uncertainty about presidential continuity, as Reagan underwent emergency surgery. His calm demeanor and rapid recovery reassured the public and strengthened his political standing. The crisis highlighted vulnerabilities in presidential security and led to improvements in Secret Service procedures. It also demonstrated Reagan’s resilience and ability to project confidence during emergencies.",
+        "sources": []
+      },
+      {
+        "title": "1981–1982 Recession (Economic Crisis)",
+        "summary": "Reagan faced a severe recession early in his presidency, marked by high unemployment, inflation, and interest rates. His administration pursued a combination of tax cuts, deregulation, and tight monetary policy under Federal Reserve Chairman Paul Volcker. The recession caused widespread economic hardship but eventually gave way to a period of sustained growth. The crisis tested Reagan’s economic philosophy and political resolve. It also reshaped debates over the role of government in managing the economy.",
+        "sources": []
+      },
+      {
+        "title": "Iran–Contra Affair (Domestic Constitutional Crisis)",
+        "summary": "The Iran–Contra scandal erupted when it was revealed that senior administration officials had secretly sold arms to Iran and diverted the proceeds to support Contra rebels in Nicaragua, despite congressional prohibitions. Reagan initially denied knowledge of the operation, but investigations uncovered a complex network of covert activities. The crisis raised serious questions about executive overreach, accountability, and adherence to the law. Although Reagan avoided impeachment, the scandal damaged his credibility and led to multiple convictions of administration officials. The crisis remains one of the most significant constitutional controversies of the late 20th century.",
+        "sources": []
+      }
+    ],
+    "overallAssessment": "Reagan’s crisis leadership combined strong public communication with controversial policy decisions. His recovery from the assassination attempt bolstered his image, while his handling of the recession laid the foundation for economic recovery. The Iran–Contra scandal exposed serious flaws in oversight and executive accountability. Reagan’s crises reflected the tensions between bold leadership and the risks of circumventing legal constraints.",
+    "sources": []
+  }
+},
+{
+  "id": 41,
+  "name": "George H. W. Bush",
+  "crisisManagement": {
+    "events": [
+      {
+        "title": "Invasion of Panama (Foreign Military Crisis)",
+        "summary": "In 1989, Bush ordered U.S. forces to invade Panama to remove dictator Manuel Noriega, who was involved in drug trafficking and had threatened U.S. personnel. The operation, known as Operation Just Cause, quickly toppled Noriega’s regime and led to Noriega’s capture. Critics questioned the legality and necessity of the invasion, arguing it violated international norms and caused civilian casualties. Supporters contended that it restored democratic governance and protected American lives and interests. The crisis demonstrated Bush’s willingness to use military force decisively in the post–Cold War environment and highlighted the complexities of intervention in Latin America.",
+        "sources": []
+      },
+      {
+        "title": "Gulf War (Foreign and Military Crisis)",
+        "summary": "After Iraq invaded Kuwait in 1990, Bush assembled a broad international coalition and secured United Nations authorization to use force if Iraq did not withdraw. He launched Operation Desert Storm in early 1991, combining a massive air campaign with a swift ground offensive that liberated Kuwait in a matter of weeks. Bush chose not to advance on Baghdad, limiting the war’s objectives to expelling Iraqi forces from Kuwait. The conflict showcased U.S. military dominance and effective coalition diplomacy. The crisis reshaped perceptions of American power and set precedents for multilateral intervention under international law.",
+        "sources": []
+      },
+      {
+        "title": "Savings and Loan Crisis (Domestic Economic and Regulatory Crisis)",
+        "summary": "Bush inherited the Savings and Loan crisis, a major financial collapse rooted in deregulation, risky investments, and inadequate oversight during the 1980s. Hundreds of savings and loan institutions failed, requiring a massive federal bailout to protect depositors and stabilize the financial system. Bush signed legislation creating the Resolution Trust Corporation to manage and liquidate failed institutions. The bailout was costly and politically unpopular but helped prevent a broader financial meltdown. The crisis underscored the dangers of weak regulation and the long-term fiscal impact of financial rescues.",
+        "sources": []
+      }
+    ],
+    "overallAssessment": "George H. W. Bush’s crisis leadership was defined by decisive military action abroad and complex economic challenges at home. His handling of the Panama invasion and the Gulf War demonstrated effective use of coalition-building and limited objectives, reinforcing U.S. leadership in the post–Cold War world. Domestically, his response to the Savings and Loan crisis stabilized a fragile financial sector at significant fiscal cost. Bush’s crises highlighted both the reach of American power and the constraints imposed by economic and political realities.",
+    "sources": []
+  }
+},
+  {
+  "id": 42,
+  "name": "Bill Clinton",
+  "crisisManagement": {
+    "events": [
+      {
+        "title": "Waco Siege (Domestic Law Enforcement Crisis)",
+        "summary": "In 1993, federal agents attempted to execute a search warrant on the Branch Davidian compound in Waco, Texas, leading to a deadly shootout. A 51-day standoff followed, during which the FBI and Justice Department debated tactics for resolving the crisis. The final assault resulted in a fire that killed more than 70 people, including children. Although the initial raid began under the previous administration, Clinton faced intense scrutiny over the FBI’s actions and the decision-making process. The crisis fueled anti-government sentiment and contributed to the rise of militia movements. Clinton defended the federal response but acknowledged mistakes in judgment and communication.",
+        "sources": []
+      },
+      {
+        "title": "Oklahoma City Bombing (Domestic Terrorism Crisis)",
+        "summary": "In 1995, Timothy McVeigh and Terry Nichols carried out the bombing of the Alfred P. Murrah Federal Building in Oklahoma City, killing 168 people. The attack was the deadliest act of domestic terrorism in U.S. history at the time. Clinton responded by visiting the site, offering national condolences, and pushing for stronger anti-terrorism legislation. His empathetic public leadership helped unify the country in the aftermath. The crisis highlighted the growing threat of domestic extremism and shaped future counterterrorism policy.",
+        "sources": []
+      },
+      {
+        "title": "Bosnia and Kosovo Interventions (Foreign Military and Humanitarian Crises)",
+        "summary": "Clinton confronted ethnic cleansing and civil war in the Balkans during the 1990s. In Bosnia, he supported NATO airstrikes that pressured Serbian forces into accepting the Dayton Accords, ending the conflict. Later, in Kosovo, Clinton authorized a NATO bombing campaign to stop Serbian attacks on ethnic Albanians. The interventions were controversial but ultimately halted mass atrocities. Clinton framed the actions as necessary to prevent genocide and maintain European stability. The crises marked a shift toward humanitarian intervention as a component of U.S. foreign policy.",
+        "sources": []
+      },
+      {
+        "title": "Impeachment Crisis (Domestic Constitutional Crisis)",
+        "summary": "Clinton faced impeachment after an investigation into his relationship with Monica Lewinsky and allegations of perjury and obstruction of justice. The scandal dominated national attention and polarized the political landscape. The House of Representatives impeached Clinton on two articles, but the Senate acquitted him. Clinton maintained high public approval despite the controversy, and the government continued functioning during the proceedings. The crisis raised questions about presidential accountability, political motivations, and the boundaries of private conduct.",
+        "sources": []
+      }
+    ],
+    "overallAssessment": "Clinton’s crisis leadership spanned domestic terrorism, humanitarian interventions, and a major constitutional confrontation. His responses to the Oklahoma City bombing and the Balkan conflicts demonstrated empathy and strategic use of international institutions. The Waco aftermath and his impeachment exposed vulnerabilities in federal decision-making and personal conduct. Clinton’s crises reflected the complexities of governing in a post–Cold War world marked by new security threats and shifting political norms.",
+    "sources": []
+  }
+},
+{
+  "id": 43,
+  "name": "George W. Bush",
+  "crisisManagement": {
+    "events": [
+      {
+        "title": "September 11 Attacks (Domestic and Foreign Terrorism Crisis)",
+        "summary": "On September 11, 2001, al-Qaeda terrorists hijacked four airplanes, killing nearly 3,000 people in coordinated attacks on the World Trade Center, the Pentagon, and a failed attempt that crashed in Pennsylvania. Bush addressed the nation the same day and soon declared a global War on Terror. His administration created the Department of Homeland Security, expanded surveillance authorities through the USA PATRIOT Act, and reorganized intelligence operations. The attacks reshaped U.S. foreign and domestic policy, leading to long-term military engagements and significant changes in civil liberties. Bush’s leadership during the immediate aftermath was widely praised for its clarity and resolve.",
+        "sources": []
+      },
+      {
+        "title": "War in Afghanistan (Foreign and Military Crisis)",
+        "summary": "In response to 9/11, Bush ordered military action against the Taliban regime in Afghanistan for harboring al-Qaeda. The initial campaign quickly toppled the Taliban, but the conflict evolved into a prolonged counterinsurgency. Bush faced challenges in stabilizing the country, building democratic institutions, and preventing Taliban resurgence. The war became the longest in U.S. history, with shifting objectives and growing costs. The crisis highlighted the difficulties of nation-building and counterterrorism in complex environments.",
+        "sources": []
+      },
+      {
+        "title": "Iraq War (Foreign and Military Crisis)",
+        "summary": "Bush launched the Iraq War in 2003 based on claims that Saddam Hussein possessed weapons of mass destruction and posed a threat to global security. The initial invasion succeeded quickly, but the failure to find WMDs and the subsequent insurgency undermined the administration’s credibility. Sectarian violence escalated, requiring a troop surge in 2007 to stabilize the country. The war deeply divided public opinion and strained U.S. alliances. The crisis reshaped global perceptions of American power and raised questions about intelligence, strategy, and executive authority.",
+        "sources": []
+      },
+      {
+        "title": "Hurricane Katrina (Domestic Natural Disaster and Governance Crisis)",
+        "summary": "In 2005, Hurricane Katrina devastated the Gulf Coast, causing massive flooding in New Orleans and killing more than 1,800 people. The federal response was widely criticized as slow, disorganized, and poorly coordinated. Bush faced backlash for praising FEMA leadership despite clear failures and for appearing detached from the suffering on the ground. The crisis exposed weaknesses in disaster preparedness, emergency management, and intergovernmental coordination. Katrina became a defining moment of Bush’s second term and damaged public confidence in his administration.",
+        "sources": []
+      },
+      {
+        "title": "2008 Financial Crisis (Economic Collapse)",
+        "summary": "The collapse of major financial institutions in 2008 triggered the worst economic crisis since the Great Depression. Bush’s administration responded with the Troubled Asset Relief Program (TARP), a massive bailout aimed at stabilizing banks and preventing systemic collapse. The decision was controversial but widely credited with averting a deeper financial meltdown. The crisis revealed vulnerabilities in financial regulation and contributed to long-term economic and political shifts. Bush left office amid recession and widespread public frustration.",
+        "sources": []
+      }
+    ],
+    "overallAssessment": "George W. Bush’s crisis leadership was defined by terrorism, war, natural disaster, and economic collapse. His response to 9/11 reshaped U.S. foreign and domestic policy, while the wars in Afghanistan and Iraq produced long-term consequences. Hurricane Katrina exposed failures in federal crisis management, and the 2008 financial crisis tested the limits of government intervention. Bush’s crises left a complex legacy of decisive action, strategic missteps, and institutional transformation.",
+    "sources": []
+  }
+},
+{
+  "id": 44,
+  "name": "Barack Obama",
+  "crisisManagement": {
+    "events": [
+      {
+        "title": "Great Recession Aftermath (Economic Crisis)",
+        "summary": "Obama took office during the worst economic downturn since the Great Depression. His administration passed the American Recovery and Reinvestment Act, a large stimulus package aimed at stabilizing the economy, creating jobs, and supporting state governments. He also oversaw the rescue of the auto industry and implemented financial reforms through the Dodd–Frank Act. The recovery was slow but steady, with unemployment gradually declining. The crisis reshaped debates over government intervention and economic inequality.",
+        "sources": []
+      },
+      {
+        "title": "Affordable Care Act Passage and Backlash (Domestic Policy Crisis)",
+        "summary": "The Affordable Care Act (ACA) represented the most significant overhaul of the U.S. healthcare system in decades. Its passage faced intense political opposition, legal challenges, and public controversy. The rollout of the HealthCare.gov website in 2013 was plagued by technical failures, undermining confidence in the law. Despite these challenges, the ACA expanded coverage to millions of Americans and survived multiple repeal attempts. The crisis highlighted the difficulties of large-scale policy implementation in a polarized environment.",
+        "sources": []
+      },
+      {
+        "title": "Deepwater Horizon Oil Spill (Environmental and Industrial Crisis)",
+        "summary": "In 2010, an explosion on the Deepwater Horizon drilling rig caused the largest marine oil spill in U.S. history. Obama mobilized federal agencies, pressured BP to establish a multibillion-dollar compensation fund, and oversaw a massive cleanup effort. The crisis exposed regulatory failures in offshore drilling oversight and led to reforms in safety standards. Obama faced criticism for the speed and effectiveness of the response, but the containment efforts eventually succeeded. The spill had long-term environmental and economic impacts on the Gulf Coast.",
+        "sources": []
+      },
+      {
+        "title": "ISIS Expansion and Counterterrorism Campaign (Foreign and Military Crisis)",
+        "summary": "The rise of ISIS in Iraq and Syria created a major international security crisis. Obama authorized airstrikes, supported local forces, and built a multinational coalition to contain and degrade the group. The campaign avoided large-scale deployment of U.S. ground troops but required sustained military engagement. ISIS carried out terrorist attacks worldwide, increasing pressure on the administration. The crisis highlighted the challenges of counterterrorism in unstable regions and the limits of U.S. influence.",
+        "sources": []
+      },
+      {
+        "title": "Russian Election Interference (Domestic and Foreign Hybrid Crisis)",
+        "summary": "In 2016, U.S. intelligence agencies concluded that Russia interfered in the presidential election through hacking and disinformation campaigns. Obama imposed sanctions, expelled diplomats, and warned Russian leadership against further interference. Critics argued that the administration’s response was too cautious and came too late. The crisis exposed vulnerabilities in democratic institutions and the growing threat of cyber warfare. It also contributed to political polarization and mistrust in the electoral process.",
+        "sources": []
+      }
+    ],
+    "overallAssessment": "Obama’s crisis leadership spanned economic recovery, environmental disaster, global terrorism, and emerging cyber threats. His handling of the Great Recession and the ACA reshaped domestic policy, while the Deepwater Horizon spill tested environmental governance. The fight against ISIS and the response to Russian election interference highlighted the complexities of modern security challenges. Obama’s crises reflected a presidency navigating rapid technological, geopolitical, and social change.",
+    "sources": []
+  }
+},
+{
+  "id": 45,
+  "name": "Donald J. Trump",
+  "crisisManagement": {
+    "events": [
+      {
+        "title": "COVID-19 Pandemic (Public Health and Economic Crisis)",
+        "summary": "The COVID-19 pandemic emerged in early 2020 as a global health emergency. Trump restricted travel from China, declared a national emergency, and supported rapid vaccine development through Operation Warp Speed. His administration faced criticism for inconsistent messaging, conflicts with public health officials, and shortages of medical supplies. The pandemic caused widespread illness, economic disruption, and social upheaval. Trump’s handling of the crisis became a central issue in national politics and public debate.",
+        "sources": []
+      },
+      {
+        "title": "George Floyd Protests and Civil Unrest (Domestic Civil Rights Crisis)",
+        "summary": "The killing of George Floyd in 2020 sparked nationwide protests against police brutality and systemic racism. Demonstrations occurred in hundreds of cities, some accompanied by clashes with police and property damage. Trump emphasized law and order, deployed federal forces to certain cities, and criticized local leaders. His response polarized public opinion and intensified debates over policing and racial justice. The crisis highlighted deep social divisions and the challenges of federal involvement in local unrest.",
+        "sources": []
+      },
+      {
+        "title": "Impeachment (Ukraine) (Domestic Constitutional Crisis)",
+        "summary": "Trump was impeached in 2019 over allegations that he pressured Ukraine to investigate a political rival while withholding military aid. The House charged him with abuse of power and obstruction of Congress. The Senate acquitted him along party lines. The crisis deepened partisan divisions and raised questions about executive accountability and foreign policy conduct. It marked the third presidential impeachment in U.S. history.",
+        "sources": []
+      },
+      {
+        "title": "2020 Election Dispute and January 6 Attack (Domestic Constitutional and Security Crisis)",
+        "summary": "After losing the 2020 election, Trump challenged the results through lawsuits, public statements, and pressure on state officials. On January 6, 2021, a mob of his supporters stormed the U.S. Capitol in an attempt to disrupt the certification of electoral votes. The attack resulted in deaths, injuries, and extensive damage, and forced Congress to temporarily halt proceedings. Trump was impeached a second time for incitement of insurrection, becoming the first president impeached twice. The crisis raised profound questions about democratic stability, political violence, and presidential responsibility.",
+        "sources": []
+      }
+    ],
+    "overallAssessment": "Trump’s crisis leadership was defined by a global pandemic, widespread civil unrest, and unprecedented constitutional confrontations. His handling of COVID-19 and the George Floyd protests revealed deep divisions in public trust and governance. His two impeachments and the January 6 attack represented some of the most serious constitutional crises in modern history. Trump’s crises reflected a presidency marked by intense polarization, rapid information warfare, and institutional strain.",
+    "sources": []
+  }
+},
+  {
+  "id": 46,
+  "name": "Joe Biden",
+  "crisisManagement": {
+    "events": [
+      {
+        "title": "COVID‑19 Pandemic Continuation (Public Health and Economic Crisis)",
+        "summary": "Biden entered office in January 2021 amid the ongoing COVID‑19 pandemic, inheriting high case counts, strained hospitals, and a fragmented national response. His administration launched a nationwide vaccination campaign, invoking federal authorities to accelerate production and distribution. Biden implemented federal mask mandates in certain settings, expanded testing, and coordinated with states to reopen schools. The administration also passed the American Rescue Plan, providing economic relief to households, businesses, and local governments. Despite these efforts, new variants such as Delta and Omicron caused additional waves of infection, testing the administration’s ability to adapt. The crisis highlighted the challenges of public health communication, political polarization, and federal–state coordination.",
+        "sources": []
+      },
+      {
+        "title": "January 6 Aftermath and Domestic Extremism (Domestic Security and Constitutional Crisis)",
+        "summary": "Biden assumed office two weeks after the January 6 attack on the U.S. Capitol, inheriting a nation shaken by political violence and threats to democratic institutions. His administration prioritized investigations and prosecutions of those involved, supporting the Justice Department’s largest criminal inquiry in U.S. history. Biden also directed federal agencies to develop a national strategy to counter domestic extremism, marking the first such initiative. The crisis required balancing civil liberties with security concerns while addressing the underlying political tensions. Biden’s approach emphasized institutional accountability and the restoration of democratic norms. The aftermath of January 6 remained a defining domestic challenge throughout his term.",
+        "sources": []
+      },
+      {
+        "title": "U.S. Withdrawal from Afghanistan (Foreign and Military Crisis)",
+        "summary": "In 2021, Biden executed the final withdrawal of U.S. forces from Afghanistan, ending America’s longest war. The rapid collapse of the Afghan government and the Taliban’s takeover created a chaotic evacuation from Kabul, with desperate crowds seeking to flee the country. A suicide bombing at the airport killed U.S. service members and Afghan civilians, intensifying criticism of the administration’s planning and intelligence assessments. Supporters argued that Biden fulfilled a long‑delayed decision to end an unsustainable conflict. The crisis raised questions about U.S. credibility, humanitarian obligations, and the future of counterterrorism strategy.",
+        "sources": []
+      },
+      {
+        "title": "Inflation Surge and Supply Chain Disruptions (Economic Crisis)",
+        "summary": "Beginning in 2021, the U.S. experienced the highest inflation rates in decades, driven by supply chain disruptions, pandemic aftershocks, and global energy volatility. Biden’s administration worked to address bottlenecks at ports, expand trucking capacity, and stabilize supply chains. The Federal Reserve raised interest rates aggressively, while the administration pursued targeted measures such as releasing oil from the Strategic Petroleum Reserve. Critics argued that federal spending contributed to inflation, while supporters emphasized global factors beyond domestic control. The crisis shaped public perceptions of economic management and became a central political issue.",
+        "sources": []
+      },
+      {
+        "title": "Russian Invasion of Ukraine (Foreign and Military Crisis)",
+        "summary": "In February 2022, Russia launched a full‑scale invasion of Ukraine, triggering the largest European conflict since World War II. Biden coordinated a broad international response, imposing sweeping sanctions on Russia, supplying Ukraine with military and humanitarian aid, and strengthening NATO unity. The administration managed escalating risks, including nuclear threats and global energy disruptions. Biden’s leadership helped facilitate Finland and Sweden’s bids to join NATO, reshaping the alliance. The crisis tested U.S. resolve, alliance management, and the balance between supporting Ukraine and avoiding direct conflict with Russia.",
+        "sources": []
+      }
+    ],
+    "overallAssessment": "Biden’s crisis leadership has been defined by overlapping public health, economic, domestic security, and geopolitical emergencies. His continuation of the COVID‑19 response emphasized federal coordination and vaccination, while the aftermath of January 6 required renewed focus on democratic stability and domestic extremism. The withdrawal from Afghanistan ended a decades‑long conflict but generated intense scrutiny and humanitarian concerns. Inflation and supply chain disruptions challenged economic policy and public confidence. The Russian invasion of Ukraine demanded sustained international leadership and reaffirmed U.S. commitments to NATO. Biden’s crises reflect a presidency navigating global instability, domestic polarization, and rapid structural change.",
+    "sources": []
+  }
+}
 ]
+
+
+
+
+
