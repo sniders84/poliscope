@@ -3157,202 +3157,255 @@ document.getElementById('rate-me-btn').onclick = function() {
   const tableBody = document.querySelector('#rankings-leaderboard tbody');
   if (!officeSel || !categorySel || !tableBody) return;
 
-  // Weights tuned to current schema (no amendments)
-const WEIGHTS = {
-  sponsoredBills: 1.2,
-  cosponsoredBills: 0.6,
-  becameLawBills: 6.0,
-  becameLawCosponsoredBills: 3.0,
-  committees: 4.0,           // per committee
-  committeeLeadership: 2.0,  // bonus for Chair/Ranking/Vice
-  missedVotes: -0.5,         // penalty per missed vote
-  misconductCount: -10.0     // penalty per misconduct infraction
-};
-
- // Map schema keys to human-friendly labels
-const CATEGORY_LABELS = {
-  powerScore: "Overall Power Score",
-  sponsoredBills: "Sponsored Bills",
-  cosponsoredBills: "Cosponsored Bills",
-  becameLawBills: "Bills Enacted",
-  becameLawCosponsoredBills: "Bills Enacted (Cosponsored)",
-  committees: "Committee Memberships",
-  misconductCount: "Misconduct Count",
-  misconductTags: "Misconduct Tags",
-  yeaVotes: "Yea Votes",
-  nayVotes: "Nay Votes",
-  missedVotes: "Missed Votes"
-};
-
-// Scoring function using current schema
-function scoreLegislator(person) {
-  const breakdown = {
-    sponsoredBills: person.sponsoredBills || 0,
-    cosponsoredBills: person.cosponsoredBills || 0,
-    becameLawBills: person.becameLawBills || 0,
-    becameLawCosponsoredBills: person.becameLawCosponsoredBills || 0,
-    committees: (person.committees || []).length,
-    committeeLeadership: (person.committees || []).filter(c =>
-      /chairman|chair|ranking member|vice chair/i.test(c.role)
-    ).length,
-    missedVotes: person.missedVotes || 0,
-    misconductCount: person.misconductCount || 0
-  };
-
-  let composite = 0;
-  Object.keys(breakdown).forEach(key => {
-    const raw = breakdown[key];
-    const weight = WEIGHTS[key] || 0;
-    composite += raw * weight;
-  });
-
-  return {
-    composite: Math.round(composite * 10) / 10,
-    breakdown
-  };
-}
-
-function formatScore(value) {
-  const cls = value >= 0 ? 'score-positive' : 'score-negative';
-  return `<span class="${cls}">${Number.isFinite(value) ? value.toFixed(1) : '0.0'}</span>`;
-}
-
-// Scorecard modal with photo, name, state/district/party, and breakdown
-function showScorecard(person, breakdown, composite) {
-  document.getElementById('scorecardName').textContent = person.name;
-
-  const photoUrl = person.photo;
-  const district = person.district ? ` / District ${person.district}` : '';
-  const headerHtml = `
-    <img src="${photoUrl}" alt="${person.name}" class="profile-photo">
-    <p>${person.state}${district} • ${person.party}</p>
-  `;
-
-  const breakdownEl = document.getElementById('scorecardBreakdown');
-  breakdownEl.innerHTML = '';
-  breakdownEl.insertAdjacentHTML('afterbegin', headerHtml);
-
   // -----------------------------
-  // COMMITTEE GROUPING (Option C)
+  // LEGISLATOR WEIGHTS (UNCHANGED)
   // -----------------------------
-  const committees = person.committees || [];
-
-  const membershipRows = committees
-    .filter(c => c.role === "Member")
-    .map(c => ({
-      name: c.committeeName,
-      role: "Member",
-      raw: 1,
-      weight: 1,
-      contribution: 1
-    }));
-
-  const leadershipRows = committees
-    .filter(c => c.role !== "Member")
-    .map(c => ({
-      name: c.committeeName,
-      role: c.role,
-      raw: 1,
-      weight:
-        c.role === "Chair" ? 4 :
-        c.role === "Ranking Member" ? 3 :
-        c.role === "Vice Chair" ? 2 : 1,
-      contribution:
-        c.role === "Chair" ? 4 :
-        c.role === "Ranking Member" ? 3 :
-        c.role === "Vice Chair" ? 2 : 1
-    }));
-
-  // -----------------------------
-  // LABELS
-  // -----------------------------
-  const labelMap = {
-    sponsoredBills: 'Bills Sponsored',
-    cosponsoredBills: 'Bills Cosponsored',
-    becameLawBills: 'Bills Enacted',
-    becameLawCosponsoredBills: 'Bills Enacted (Cosponsored)',
-    missedVotes: 'Missed Votes (Count)',
-    misconductCount: 'Misconduct Infractions'
+  const WEIGHTS = {
+    sponsoredBills: 1.2,
+    cosponsoredBills: 0.6,
+    becameLawBills: 6.0,
+    becameLawCosponsoredBills: 3.0,
+    committees: 4.0,
+    committeeLeadership: 2.0,
+    missedVotes: -0.5,
+    misconductCount: -10.0
   };
 
   // -----------------------------
-  // NORMAL CATEGORY ROWS
+  // LEGISLATOR LABELS (UNCHANGED)
   // -----------------------------
-  const normalRowsHtml = Object.keys(breakdown).map(key => {
-    if (key === "committees" || key === "committeeLeadership") return "";
+  const CATEGORY_LABELS = {
+    powerScore: "Overall Power Score",
+    sponsoredBills: "Sponsored Bills",
+    cosponsoredBills: "Cosponsored Bills",
+    becameLawBills: "Bills Enacted",
+    becameLawCosponsoredBills: "Bills Enacted (Cosponsored)",
+    committees: "Committee Memberships",
+    misconductCount: "Misconduct Count",
+    misconductTags: "Misconduct Tags",
+    yeaVotes: "Yea Votes",
+    nayVotes: "Nay Votes",
+    missedVotes: "Missed Votes"
+  };
 
-    const raw = breakdown[key];
-    const weight = WEIGHTS[key] || 0;
-    const contrib = raw * weight;
-    const label = labelMap[key] || key;
+  // -----------------------------
+  // LEGISLATOR SCORING (UNCHANGED)
+  // -----------------------------
+  function scoreLegislator(person) {
+    const breakdown = {
+      sponsoredBills: person.sponsoredBills || 0,
+      cosponsoredBills: person.cosponsoredBills || 0,
+      becameLawBills: person.becameLawBills || 0,
+      becameLawCosponsoredBills: person.becameLawCosponsoredBills || 0,
+      committees: (person.committees || []).length,
+      committeeLeadership: (person.committees || []).filter(c =>
+        /chairman|chair|ranking member|vice chair/i.test(c.role)
+      ).length,
+      missedVotes: person.missedVotes || 0,
+      misconductCount: person.misconductCount || 0
+    };
 
-    return `
-      <tr>
-        <td>${label}</td>
-        <td>${raw}</td>
-        <td>${weight.toFixed(1)}</td>
-        <td>${formatScore(contrib)}</td>
-      </tr>
+    let composite = 0;
+    Object.keys(breakdown).forEach(key => {
+      const raw = breakdown[key];
+      const weight = WEIGHTS[key] || 0;
+      composite += raw * weight;
+    });
+
+    return {
+      composite: Math.round(composite * 10) / 10,
+      breakdown
+    };
+  }
+
+  function formatScore(value) {
+    const cls = value >= 0 ? 'score-positive' : 'score-negative';
+    return `<span class="${cls}">${Number.isFinite(value) ? value.toFixed(1) : '0.0'}</span>`;
+  }
+
+  // -----------------------------
+  // PRESIDENT SCORECARD RENDERING
+  // -----------------------------
+  function showPresidentScorecard(person) {
+    document.getElementById('scorecardName').textContent = person.name;
+
+    const photoUrl = person.photo || '';
+    const headerHtml = `
+      <img src="${photoUrl}" alt="${person.name}" class="profile-photo">
+      <p>${person.party} • ${person.termStart}–${person.termEnd}</p>
     `;
-  }).join('');
+
+    const breakdownEl = document.getElementById('scorecardBreakdown');
+    breakdownEl.innerHTML = headerHtml;
+
+    const s = person.scores || {};
+
+    const metricRows = `
+      <tr><td>Crisis Management</td><td colspan="3">${formatScore(s.crisisManagement)}</td></tr>
+      <tr><td>Domestic Policy</td><td colspan="3">${formatScore(s.domesticPolicy)}</td></tr>
+      <tr><td>Economic Policy</td><td colspan="3">${formatScore(s.economicPolicy)}</td></tr>
+      <tr><td>Foreign Policy</td><td colspan="3">${formatScore(s.foreignPolicy)}</td></tr>
+      <tr><td>Judicial Policy</td><td colspan="3">${formatScore(s.judicialPolicy)}</td></tr>
+      <tr><td>Legislation</td><td colspan="3">${formatScore(s.legislation)}</td></tr>
+      <tr><td>Misconduct</td><td colspan="3">${formatScore(s.misconduct)}</td></tr>
+    `;
+
+    breakdownEl.innerHTML += `
+      <table class="scorecard-table">
+        <tbody>
+          <tr>
+            <td><strong>Power Score</strong></td>
+            <td colspan="3">${formatScore(s.powerScore)}</td>
+          </tr>
+          <tr><td colspan="4"><strong>Metric Breakdown</strong></td></tr>
+          ${metricRows}
+        </tbody>
+      </table>
+    `;
+
+    const modal = document.getElementById('scorecardModal');
+    modal.classList.add('is-open', 'modal-dark');
+    modal.setAttribute('aria-hidden', 'false');
+  }
 
   // -----------------------------
-  // COMMITTEE MEMBERSHIP SECTION
+  // LEGISLATOR SCORECARD (UNCHANGED)
   // -----------------------------
-  const membershipSection = `
-    <tr>
-      <td colspan="4"><strong>Committee Memberships</strong></td>
-    </tr>
-    ${membershipRows.map(r => `
-      <tr class="sub-row">
-        <td>${r.name} (${r.role})</td>
-        <td>${r.raw}</td>
-        <td>${r.weight}</td>
-        <td>${formatScore(r.contribution)}</td>
-      </tr>
-    `).join('')}
-  `;
+  function showLegislatorScorecard(person, breakdown, composite) {
+    document.getElementById('scorecardName').textContent = person.name;
 
-  // -----------------------------
-  // COMMITTEE LEADERSHIP SECTION
-  // -----------------------------
-  const leadershipSection = `
-    <tr>
-      <td colspan="4"><strong>Committee Leadership Roles</strong></td>
-    </tr>
-    ${leadershipRows.map(r => `
-      <tr class="sub-row">
-        <td>${r.name} (${r.role})</td>
-        <td>${r.raw}</td>
-        <td>${r.weight}</td>
-        <td>${formatScore(r.contribution)}</td>
-      </tr>
-    `).join('')}
-  `;
+    const photoUrl = person.photo;
+    const district = person.district ? ` / District ${person.district}` : '';
+    const headerHtml = `
+      <img src="${photoUrl}" alt="${person.name}" class="profile-photo">
+      <p>${person.state}${district} • ${person.party}</p>
+    `;
 
-  // -----------------------------
-  // FINAL TABLE RENDER
-  // -----------------------------
-  breakdownEl.innerHTML += `
-    <table class="scorecard-table">
-      <tbody>
+    const breakdownEl = document.getElementById('scorecardBreakdown');
+    breakdownEl.innerHTML = '';
+    breakdownEl.insertAdjacentHTML('afterbegin', headerHtml);
+
+    const committees = person.committees || [];
+
+    const membershipRows = committees
+      .filter(c => c.role === "Member")
+      .map(c => ({
+        name: c.committeeName,
+        role: "Member",
+        raw: 1,
+        weight: 1,
+        contribution: 1
+      }));
+
+    const leadershipRows = committees
+      .filter(c => c.role !== "Member")
+      .map(c => ({
+        name: c.committeeName,
+        role: c.role,
+        raw: 1,
+        weight:
+          c.role === "Chair" ? 4 :
+          c.role === "Ranking Member" ? 3 :
+          c.role === "Vice Chair" ? 2 : 1,
+        contribution:
+          c.role === "Chair" ? 4 :
+          c.role === "Ranking Member" ? 3 :
+          c.role === "Vice Chair" ? 2 : 1
+      }));
+
+    const labelMap = {
+      sponsoredBills: 'Bills Sponsored',
+      cosponsoredBills: 'Bills Cosponsored',
+      becameLawBills: 'Bills Enacted',
+      becameLawCosponsoredBills: 'Bills Enacted (Cosponsored)',
+      missedVotes: 'Missed Votes (Count)',
+      misconductCount: 'Misconduct Infractions'
+    };
+
+    const normalRowsHtml = Object.keys(breakdown).map(key => {
+      if (key === "committees" || key === "committeeLeadership") return "";
+
+      const raw = breakdown[key];
+      const weight = WEIGHTS[key] || 0;
+      const contrib = raw * weight;
+      const label = labelMap[key] || key;
+
+      return `
         <tr>
-          <td><strong>Power Score</strong></td>
-          <td colspan="3">${formatScore(composite)}</td>
+          <td>${label}</td>
+          <td>${raw}</td>
+          <td>${weight.toFixed(1)}</td>
+          <td>${formatScore(contrib)}</td>
         </tr>
-        <tr>
-          <td><strong>Category</strong></td>
-          <td><strong>Raw</strong></td>
-          <td><strong>Weight</strong></td>
-          <td><strong>Contribution</strong></td>
-        </tr>
+      `;
+    }).join('');
 
-        ${normalRowsHtml}
-        ${membershipSection}
-        ${leadershipSection}
-      </tbody>
-    </table>
-  `;
+    const membershipSection = `
+      <tr>
+        <td colspan="4"><strong>Committee Memberships</strong></td>
+      </tr>
+      ${membershipRows.map(r => `
+        <tr class="sub-row">
+          <td>${r.name} (${r.role})</td>
+          <td>${r.raw}</td>
+          <td>${r.weight}</td>
+          <td>${formatScore(r.contribution)}</td>
+        </tr>
+      `).join('')}
+    `;
+
+    const leadershipSection = `
+      <tr>
+        <td colspan="4"><strong>Committee Leadership Roles</strong></td>
+      </tr>
+      ${leadershipRows.map(r => `
+        <tr class="sub-row">
+          <td>${r.name} (${r.role})</td>
+          <td>${r.raw}</td>
+          <td>${r.weight}</td>
+          <td>${formatScore(r.contribution)}</td>
+        </tr>
+      `).join('')}
+    `;
+
+    breakdownEl.innerHTML += `
+      <table class="scorecard-table">
+        <tbody>
+          <tr>
+            <td><strong>Power Score</strong></td>
+            <td colspan="3">${formatScore(composite)}</td>
+          </tr>
+          <tr>
+            <td><strong>Category</strong></td>
+            <td><strong>Raw</strong></td>
+            <td><strong>Weight</strong></td>
+            <td><strong>Contribution</strong></td>
+          </tr>
+
+          ${normalRowsHtml}
+          ${membershipSection}
+          ${leadershipSection}
+        </tbody>
+      </table>
+    `;
+
+    const modal = document.getElementById('scorecardModal');
+    modal.classList.add('is-open', 'modal-dark');
+    modal.setAttribute('aria-hidden', 'false');
+  }
+
+  // -----------------------------
+  // PUBLIC API FOR SCORECARD
+  // -----------------------------
+  window.showScorecard = function(person) {
+    if (person.office === "President") {
+      showPresidentScorecard(person);
+    } else {
+      const { composite, breakdown } = scoreLegislator(person);
+      showLegislatorScorecard(person, breakdown, composite);
+    }
+  };
+})();
 
   // -----------------------------
   // MISCONDUCT DETAILS
@@ -3428,27 +3481,52 @@ async function render() {
   const selectedOffice = officeSel.value.toLowerCase();
   const selectedCategory = categorySel.value;
 
-  // Load both rankings and info files
+  // Load all ranking/info files
   const senatorsRes = await fetch('/senators-rankings.json');
   const senatorsInfoRes = await fetch('/senators.json');
   const repsRes = await fetch('/representatives-rankings.json');
   const repsInfoRes = await fetch('/housereps.json');
+  const presidentsRes = await fetch('/presidents-rankings.json');
 
   const senatorsRankings = await senatorsRes.json();
   const senatorsInfo = await senatorsInfoRes.json();
   const repsRankings = await repsRes.json();
   const repsInfo = await repsInfoRes.json();
+  const presidentsRankings = await presidentsRes.json();
 
   let data = [];
-  let officeType = 'senator';
+  let officeType = '';
 
+  // -----------------------------
+  // SENATORS
+  // -----------------------------
   if (selectedOffice === 'senator') {
     data = mergeData(senatorsRankings, senatorsInfo);
     officeType = 'senator';
-  } else if (selectedOffice === 'u.s. representative') {
+  }
+
+  // -----------------------------
+  // REPRESENTATIVES
+  // -----------------------------
+  else if (selectedOffice === 'u.s. representative') {
     data = mergeData(repsRankings, repsInfo);
     officeType = 'rep';
-  } else {
+  }
+
+  // -----------------------------
+  // PRESIDENTS
+  // -----------------------------
+  else if (selectedOffice === 'president') {
+    // presidents-rankings.json already contains full data
+    data = presidentsRankings.map(p => ({
+      ...p,
+      office: "President",
+      ordinal: p.id // used for "President (16th)"
+    }));
+    officeType = 'president';
+  }
+
+  else {
     tableBody.innerHTML = '<tr><td colspan="5">Select an office to view rankings</td></tr>';
     return;
   }
@@ -3458,18 +3536,35 @@ async function render() {
     return;
   }
 
+  // -----------------------------
+  // SCORING
+  // -----------------------------
   const rows = data.map(person => {
-    const { composite, breakdown } = scoreLegislator(person);
-    return {
-      person,
-      score: composite,
-      breakdown
-    };
+    if (officeType === 'president') {
+      return {
+        person,
+        score: person.scores?.powerScore || 0,
+        breakdown: null
+      };
+    } else {
+      const { composite, breakdown } = scoreLegislator(person);
+      return {
+        person,
+        score: composite,
+        breakdown
+      };
+    }
   });
 
-  // Sort by selected category
+  // -----------------------------
+  // SORTING
+  // -----------------------------
   rows.sort((a, b) => {
     const key = selectedCategory;
+
+    if (officeType === 'president') {
+      return (b.person.scores?.powerScore || 0) - (a.person.scores?.powerScore || 0);
+    }
 
     if (key === "powerScore") {
       return b.score - a.score;
@@ -3483,15 +3578,30 @@ async function render() {
     return (b.person[key] || 0) - (a.person[key] || 0);
   });
 
+  // -----------------------------
+  // RENDER TABLE
+  // -----------------------------
   tableBody.innerHTML = '';
   rows.forEach((row, idx) => {
     const tr = document.createElement('tr');
 
-    const displayVal = selectedCategory === "powerScore"
-      ? row.score.toFixed(1)
-      : Array.isArray(row.person[selectedCategory])
-        ? row.person[selectedCategory].length
-        : row.person[selectedCategory] || 0;
+    let displayVal = 0;
+
+    if (officeType === 'president') {
+      displayVal = (row.person.scores?.powerScore || 0).toFixed(1);
+    } else {
+      displayVal = selectedCategory === "powerScore"
+        ? row.score.toFixed(1)
+        : Array.isArray(row.person[selectedCategory])
+          ? row.person[selectedCategory].length
+          : row.person[selectedCategory] || 0;
+    }
+
+    // PRESIDENT LABEL: "President (16th)"
+    const officeLabel =
+      officeType === 'president'
+        ? `President (${ordinalSuffix(row.person.ordinal)})`
+        : row.person.office || (officeType === 'rep' ? 'U.S. Representative' : 'U.S. Senator');
 
     tr.innerHTML = `
       <td>${idx + 1}</td>
@@ -3499,25 +3609,42 @@ async function render() {
         <a href="#" class="scorecard-link" data-name="${row.person.name.replace(/"/g, '&quot;')}">
           ${row.person.name}
         </a>
-        <br><small>${row.person.state} • ${row.person.party}${officeType === 'rep' ? ` • District ${row.person.district || 'At-Large'}` : ''}</small>
+        <br><small>${officeType === 'president'
+          ? `${row.person.party} • ${row.person.termStart}–${row.person.termEnd}`
+          : `${row.person.state} • ${row.person.party}${officeType === 'rep' ? ` • District ${row.person.district || 'At-Large'}` : ''}`
+        }</small>
       </td>
-      <td>${row.person.office || (officeType === 'rep' ? 'U.S. Representative' : 'U.S. Senator')}</td>
+      <td>${officeLabel}</td>
       <td>${displayVal}</td>
     `;
     tableBody.appendChild(tr);
   });
 
-  // Add scorecard click handlers
+  // -----------------------------
+  // SCORECARD CLICK HANDLERS
+  // -----------------------------
   tableBody.querySelectorAll('.scorecard-link').forEach(link => {
     link.addEventListener('click', e => {
       e.preventDefault();
       const name = link.dataset.name;
       const row = rows.find(r => r.person.name === name);
-      if (row) {
-        showScorecard(row.person, row.breakdown, row.score);
+
+      if (!row) return;
+
+      if (officeType === 'president') {
+        showScorecard(row.person); // president mode
+      } else {
+        showScorecard(row.person, row.breakdown, row.score); // legislator mode
       }
     });
   });
+}
+
+// Ordinal helper: 1 → 1st, 2 → 2nd, 3 → 3rd, 4 → 4th...
+function ordinalSuffix(n) {
+  const s = ["th", "st", "nd", "rd"];
+  const v = n % 100;
+  return n + (s[(v - 20) % 10] || s[v] || s[0]);
 }
 
 // Modal close handlers (unchanged)
