@@ -6,7 +6,7 @@ const path = require('path');
 
 const ROOT = path.join(__dirname, '..');
 const ROSTER_PATH = path.join(ROOT, 'data', 'presidents.json');
-const RANKINGS_PATH = path.join(ROOT, 'data', 'presidents-rankings.json');
+const RANKINGS_PATH = path.join(ROOT, 'public', 'presidents-rankings.json');
 
 function loadPresidents() {
   const raw = fs.readFileSync(ROSTER_PATH, 'utf8');
