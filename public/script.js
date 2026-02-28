@@ -3660,4 +3660,6 @@ function showCommunity() {
   showTab('community');
 }
 
+} // ← THIS IS THE MISSING BRACE THAT FIXES THE FILE
+
 // CLOSE initRankingsRender()
