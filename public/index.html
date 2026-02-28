@@ -398,12 +398,11 @@
     <div id="ratings-cards" class="card-section"></div>
   </div>
 
- <!-- Rankings section -->
-<div id="rankings-section" class="rr-section" aria-hidden="true">
+<!-- Rankings section -->
+<div id="rankings-section" class="rr-section" aria-hidden="true" role="tabpanel" aria-labelledby="btn-rankings">
   <div class="filters-row">
-
     <!-- Office Filter -->
-    <select id="rankingsOfficeFilter" aria-label="Rankings office filter">
+    <select id="rankingsOfficeFilter" aria-label="Select office for rankings">
       <option value="senator" selected>Senators</option>
       <option value="u.s. representative">U.S. Representatives</option>
       <option value="governor">Governors</option>
@@ -413,43 +412,45 @@
     </select>
 
     <!-- Category Filter (Legislative + Presidential) -->
-    <select id="rankingsCategoryFilter" aria-label="Rankings category filter">
-
-      <!-- Shared -->
+    <select id="rankingsCategoryFilter" aria-label="Select ranking category">
       <option value="powerScore" selected>Overall Power Score</option>
 
-      <!-- Legislative categories -->
-      <option value="sponsoredBills" data-office="legislative">Sponsored Bills</option>
-      <option value="cosponsoredBills" data-office="legislative">Cosponsored Bills</option>
-      <option value="becameLawBills" data-office="legislative">Bills Enacted</option>
-      <option value="becameLawCosponsoredBills" data-office="legislative">Bills Enacted (Cosponsored)</option>
-      <option value="committees" data-office="legislative">Committee Memberships</option>
-      <option value="yeaVotes" data-office="legislative">Yea Votes</option>
-      <option value="nayVotes" data-office="legislative">Nay Votes</option>
-      <option value="missedVotes" data-office="legislative">Missed Votes</option>
-      <option value="misconductCount" data-office="shared">Misconduct Count</option>
-      <option value="misconductTags" data-office="shared">Misconduct Tags</option>
+      <optgroup label="Legislative">
+        <option value="sponsoredBills">Sponsored Bills</option>
+        <option value="cosponsoredBills">Cosponsored Bills</option>
+        <option value="becameLawBills">Bills Enacted</option>
+        <option value="becameLawCosponsoredBills">Bills Enacted (Cosponsored)</option>
+        <option value="committees">Committee Memberships</option>
+        <option value="yeaVotes">Yea Votes</option>
+        <option value="nayVotes">Nay Votes</option>
+        <option value="missedVotes">Missed Votes</option>
+      </optgroup>
 
-      <!-- Presidential metric categories -->
-      <option value="crisisManagement" data-office="president">Crisis Management</option>
-      <option value="domesticPolicy" data-office="president">Domestic Policy</option>
-      <option value="economicPolicy" data-office="president">Economic Policy</option>
-      <option value="foreignPolicy" data-office="president">Foreign Policy</option>
-      <option value="judicialPolicy" data-office="president">Judicial Policy</option>
-      <option value="legislation" data-office="president">Legislation Impact</option>
-      <option value="misconduct" data-office="president">Misconduct Impact</option>
+      <optgroup label="Shared / Misconduct">
+        <option value="misconductCount">Misconduct Count</option>
+        <option value="misconductTags">Misconduct Tags</option>
+      </optgroup>
 
+      <optgroup label="Presidential">
+        <option value="crisisManagement">Crisis Management</option>
+        <option value="domesticPolicy">Domestic Policy</option>
+        <option value="economicPolicy">Economic Policy</option>
+        <option value="foreignPolicy">Foreign Policy</option>
+        <option value="judicialPolicy">Judicial Policy</option>
+        <option value="legislation">Legislation Impact</option>
+        <option value="misconduct">Misconduct Impact</option>
+      </optgroup>
     </select>
   </div>
 
   <div class="leaderboard-wrap">
-    <table id="rankings-leaderboard" class="leaderboard-table" aria-label="Rankings leaderboard">
+    <table id="rankings-leaderboard" class="leaderboard-table" aria-label="Rankings leaderboard" aria-live="polite">
       <thead>
         <tr>
-          <th>Rank</th>
-          <th>Official</th>
-          <th>Office</th>
-          <th>Value</th>
+          <th scope="col">Rank</th>
+          <th scope="col">Official</th>
+          <th scope="col">Office</th>
+          <th scope="col">Value</th>
         </tr>
       </thead>
       <tbody></tbody>
@@ -462,8 +463,8 @@
 </div>
 
 <!-- Scorecard modal -->
-<div id="scorecardModal" class="scorecard-modal" aria-hidden="true">
-  <div class="scorecard-modal-content" role="dialog" aria-modal="true" aria-labelledby="scorecardName">
+<div id="scorecardModal" class="scorecard-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="scorecardName">
+  <div class="scorecard-modal-content" tabindex="-1">
     <button id="scorecardClose" class="scorecard-modal-close" aria-label="Close scorecard">&times;</button>
     <h2 id="scorecardName"></h2>
     <table id="scorecardBreakdown" class="scorecard-table"></table>
@@ -471,17 +472,15 @@
 </div>
 
 <!-- Scoring Logic modal -->
-<div id="scoringLogicModal" class="scorecard-modal wide" aria-hidden="true">
-  <div class="scorecard-modal-content" role="dialog" aria-modal="true" aria-labelledby="scoringLogicTitle">
+<div id="scoringLogicModal" class="scorecard-modal wide" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="scoringLogicTitle">
+  <div class="scorecard-modal-content" tabindex="-1">
     <button id="scoringLogicClose" class="scorecard-modal-close" aria-label="Close scoring logic">&times;</button>
     <h2 id="scoringLogicTitle">Rankings Scoring and Weight Logic</h2>
     <div class="scoring-logic-body">
-
       <p>
         Officials are ranked using weighted contributions from legislative and executive activity.
         Each category has a raw value, a weight, and a contribution (raw × weight). The sum forms the Power Score.
       </p>
-
       <h3>Legislative Offices (Senators & Representatives)</h3>
       <table class="scorecard-table">
         <thead><tr><th>Category</th><th>Weight</th><th>Rationale</th></tr></thead>
@@ -496,7 +495,6 @@
           <tr><td>Misconduct Infractions</td><td>-10.0</td><td>Severe penalty for misconduct.</td></tr>
         </tbody>
       </table>
-
       <h3>Executive Offices (President, Vice President, Governors)</h3>
       <table class="scorecard-table">
         <thead><tr><th>Category</th><th>Weight</th><th>Rationale</th></tr></thead>
@@ -510,7 +508,6 @@
           <tr><td>Misconduct Impact</td><td>-10.0</td><td>Severe penalty for misconduct.</td></tr>
         </tbody>
       </table>
-
     </div>
   </div>
 </div>
