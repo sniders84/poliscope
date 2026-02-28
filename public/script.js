@@ -3676,28 +3676,28 @@ document.getElementById('rate-me-btn').onclick = function() {
 
   render().catch(console.error);
 
-        // -----------------------------
-  // GLOBAL MENU HELPERS – FINAL CLEAN VERSION
-  // -----------------------------
-  function renderOfficials(state, query) {
-    console.log("Render officials for:", state, query);
-    // This is your placeholder. When ready, add real card rendering here.
-  }
+ // -----------------------------
+// GLOBAL MENU HELPERS – BALANCED & FINAL
+// -----------------------------
+function renderOfficials(state, query) {
+  console.log("Render officials called for:", state, query);
+  // Add your real card-building code here later if needed
+}
 
-  function showRatings() {
-    showTab('ratings');
-    console.log("Ratings tab opened"); // temporary – remove later if you want
-    // If you have rankings refresh logic (e.g. renderRankingsLeaderboard), call it here:
-    // window.renderRankingsLeaderboard?.();
-  }
+function showRatings() {
+  showTab('ratings');
+  console.log("Ratings tab triggered");  // debug line – proves it runs
+  // Optional: refresh rankings if you have a function for it
+  // window.renderRankingsLeaderboard?.();
+}
 
-  function showCitizenship() {
-    showTab('citizenship');
-  }
+function showCitizenship() {
+  showTab('citizenship');
+}
 
-  function showCommunity() {
-    showTab('community');
-  }
+function showCommunity() {
+  showTab('community');
+}
 
-})();  // ← This is the ONLY closing line for the outer IIFE/wrapper.
-       // Do NOT add anything after this line – no extra })(); no comments no blank lines.
+})();  // ← This is the SINGLE, correct closing for your outer IIFE/wrapper.
+       // NOTHING after this line – no extra ) or }; no more code.
