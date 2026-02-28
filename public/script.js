@@ -3676,18 +3676,19 @@ document.getElementById('rate-me-btn').onclick = function() {
 
   render().catch(console.error);
 
-      // -----------------------------
-  // GLOBAL MENU HELPERS (clean final version)
+        // -----------------------------
+  // GLOBAL MENU HELPERS – FINAL CLEAN VERSION
   // -----------------------------
   function renderOfficials(state, query) {
-    console.log("Render officials for state:", state, "query:", query);
-    // Real rendering can go here later – for now this prevents undefined errors
+    console.log("Render officials for:", state, query);
+    // This is your placeholder. When ready, add real card rendering here.
   }
 
   function showRatings() {
     showTab('ratings');
-    console.log("Ratings tab activated"); // temporary debug
-    // If you have a leaderboard render function, call it: window.renderRankingsLeaderboard?.();
+    console.log("Ratings tab opened"); // temporary – remove later if you want
+    // If you have rankings refresh logic (e.g. renderRankingsLeaderboard), call it here:
+    // window.renderRankingsLeaderboard?.();
   }
 
   function showCitizenship() {
@@ -3698,4 +3699,5 @@ document.getElementById('rate-me-btn').onclick = function() {
     showTab('community');
   }
 
-})();   // SINGLE closing line for the outer IIFE – NOTHING after this!
+})();  // ← This is the ONLY closing line for the outer IIFE/wrapper.
+       // Do NOT add anything after this line – no extra })(); no comments no blank lines.
