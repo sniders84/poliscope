@@ -3426,7 +3426,6 @@ document.getElementById('rate-me-btn').onclick = function() {
       };
     });
   }
-}
 
 // -----------------------------
 // MAIN RENDER FUNCTION
@@ -3455,6 +3454,7 @@ async function render() {
   const repsInfo = await repsInfoRes.json().catch(() => []);
   const presidentsRankings = await presidentsRes.json().catch(() => []);
   const presidentsInfo = await presidentsInfoRes.json().catch(() => []);
+}
 
   let data = [];
   let officeType = '';
