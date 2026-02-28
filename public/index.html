@@ -411,37 +411,36 @@
       <option value="vice president">Vice President</option>
     </select>
 
-    <!-- Category Filter (Legislative + Presidential) -->
-    <select id="rankingsCategoryFilter" aria-label="Select ranking category">
-      <option value="powerScore" selected>Overall Power Score</option>
+   <!-- Category Filter (Legislative + Presidential) -->
+<select id="rankingsCategoryFilter" aria-label="Select ranking category">
+  <option value="powerScore" selected data-office="shared">Overall Power Score</option>
 
-      <optgroup label="Legislative">
-        <option value="sponsoredBills">Sponsored Bills</option>
-        <option value="cosponsoredBills">Cosponsored Bills</option>
-        <option value="becameLawBills">Bills Enacted</option>
-        <option value="becameLawCosponsoredBills">Bills Enacted (Cosponsored)</option>
-        <option value="committees">Committee Memberships</option>
-        <option value="yeaVotes">Yea Votes</option>
-        <option value="nayVotes">Nay Votes</option>
-        <option value="missedVotes">Missed Votes</option>
-      </optgroup>
+  <optgroup label="Legislative">
+    <option value="sponsoredBills" data-office="legislative">Sponsored Bills</option>
+    <option value="cosponsoredBills" data-office="legislative">Cosponsored Bills</option>
+    <option value="becameLawBills" data-office="legislative">Bills Enacted</option>
+    <option value="becameLawCosponsoredBills" data-office="legislative">Bills Enacted (Cosponsored)</option>
+    <option value="committees" data-office="legislative">Committee Memberships</option>
+    <option value="yeaVotes" data-office="legislative">Yea Votes</option>
+    <option value="nayVotes" data-office="legislative">Nay Votes</option>
+    <option value="missedVotes" data-office="legislative">Missed Votes</option>
+  </optgroup>
 
-      <optgroup label="Shared / Misconduct">
-        <option value="misconductCount">Misconduct Count</option>
-        <option value="misconductTags">Misconduct Tags</option>
-      </optgroup>
+  <optgroup label="Shared / Misconduct">
+    <option value="misconductCount" data-office="shared">Misconduct Count</option>
+    <option value="misconductTags" data-office="shared">Misconduct Tags</option>
+  </optgroup>
 
-      <optgroup label="Presidential">
-        <option value="crisisManagement">Crisis Management</option>
-        <option value="domesticPolicy">Domestic Policy</option>
-        <option value="economicPolicy">Economic Policy</option>
-        <option value="foreignPolicy">Foreign Policy</option>
-        <option value="judicialPolicy">Judicial Policy</option>
-        <option value="legislation">Legislation Impact</option>
-        <option value="misconduct">Misconduct Impact</option>
-      </optgroup>
-    </select>
-  </div>
+  <optgroup label="Presidential">
+    <option value="crisisManagement" data-office="president">Crisis Management</option>
+    <option value="domesticPolicy" data-office="president">Domestic Policy</option>
+    <option value="economicPolicy" data-office="president">Economic Policy</option>
+    <option value="foreignPolicy" data-office="president">Foreign Policy</option>
+    <option value="judicialPolicy" data-office="president">Judicial Policy</option>
+    <option value="legislation" data-office="president">Legislation Impact</option>
+    <option value="misconduct" data-office="president">Misconduct Impact</option>
+  </optgroup>
+</select>
 
   <div class="leaderboard-wrap">
     <table id="rankings-leaderboard" class="leaderboard-table" aria-label="Rankings leaderboard" aria-live="polite">
