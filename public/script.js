@@ -3455,60 +3455,53 @@ async function render() {
   const presidentsInfo = await presidentsInfoRes.json().catch(() => []);
 }
 
-} // ← THIS is the correct closing brace for initRankingsRender()
-
 let data = [];
 
-  let officeType = '';
+let officeType = '';
 
-  if (selectedOffice === 'senator') {
-    data = mergeData(senatorsRankings, senatorsInfo);
-    officeType = 'senator';
+if (selectedOffice === 'senator') {
+  data = mergeData(senatorsRankings, senatorsInfo);
+  officeType = 'senator';
 
-  } else if (selectedOffice === 'u.s. representative') {
-    data = mergeData(repsRankings, repsInfo);
-    officeType = 'rep';
+} else if (selectedOffice === 'u.s. representative') {
+  data = mergeData(repsRankings, repsInfo);
+  officeType = 'rep';
 
-  } else if (selectedOffice === 'president') {
-    // 🔥 FIXED PRESIDENT BRANCH — flatten scores + merge with presidents.json
-    data = presidentsRankings.map(p => {
-      const s = p.scores || {};
-      const match = presidentsInfo.find(i => i.name === p.name || i.slug === p.slug) || {};
+} else if (selectedOffice === 'president') {
+  data = presidentsRankings.map(p => {
+    const s = p.scores || {};
+    const match = presidentsInfo.find(i => i.name === p.name || i.slug === p.slug) || {};
 
-      return {
-        ...match,
-        ...p,
-        office: "President",
-        ordinal: p.id,
+    return {
+      ...match,
+      ...p,
+      office: "President",
+      ordinal: p.id,
+      powerScore: s.powerScore ?? 0,
+      crisisManagement: s.crisisManagement ?? 0,
+      domesticPolicy: s.domesticPolicy ?? 0,
+      economicPolicy: s.economicPolicy ?? 0,
+      foreignPolicy: s.foreignPolicy ?? 0,
+      judicialPolicy: s.judicialPolicy ?? 0,
+      legislation: s.legislation ?? 0,
+      misconduct: s.misconduct ?? 0,
+      photo: p.photo || match.photo || null
+    };
+  });
 
-        // Flattened score fields for Rankings tab
-        powerScore: s.powerScore ?? 0,
-        crisisManagement: s.crisisManagement ?? 0,
-        domesticPolicy: s.domesticPolicy ?? 0,
-        economicPolicy: s.economicPolicy ?? 0,
-        foreignPolicy: s.foreignPolicy ?? 0,
-        judicialPolicy: s.judicialPolicy ?? 0,
-        legislation: s.legislation ?? 0,
-        misconduct: s.misconduct ?? 0,
+  officeType = 'president';
 
-        // Preserve photo priority: rankings > info
-        photo: p.photo || match.photo || null
-      };
-    });
+} else {
+  tableBody.innerHTML = '<tr><td colspan="5">Select an office to view rankings</td></tr>';
+  return;
+}
 
-    officeType = 'president';
+if (!Array.isArray(data) || data.length === 0) {
+  tableBody.innerHTML = '<tr><td colspan="5">No data loaded yet</td></tr>';
+  return;
+}
 
-  } else {
-    tableBody.innerHTML = '<tr><td colspan="5">Select an office to view rankings</td></tr>';
-    return;
-  }
-
-  if (!Array.isArray(data) || data.length === 0) {
-    tableBody.innerHTML = '<tr><td colspan="5">No data loaded yet</td></tr>';
-    return;
-  }
-
-  const rows = data.map(person => {
+const rows = data.map(person => {
   if (officeType === 'president') {
     return {
       person,
@@ -3600,9 +3593,7 @@ tableBody.querySelectorAll('.scorecard-link').forEach(link => {
   });
 });
 
-// -----------------------------
 // MODAL CLOSE HANDLERS
-// -----------------------------
 document.getElementById('scorecardClose')?.addEventListener('click', () => {
   const modal = document.getElementById('scorecardModal');
   modal.classList.remove('is-open', 'modal-dark');
@@ -3616,9 +3607,7 @@ document.getElementById('scorecardModal')?.addEventListener('click', e => {
   }
 });
 
-// -----------------------------
 // SCORING LOGIC MODAL
-// -----------------------------
 document.getElementById('scoringLogicBtn')?.addEventListener('click', () => {
   const modal = document.getElementById('scoringLogicModal');
   modal.classList.add('is-open');
@@ -3637,9 +3626,7 @@ document.getElementById('scoringLogicModal')?.addEventListener('click', e => {
   }
 });
 
-// -----------------------------
 // GLOBAL HOOKS
-// -----------------------------
 window.renderRankingsLeaderboard = () => render().catch(console.error);
 officeSel.addEventListener('change', () => render().catch(console.error));
 categorySel.addEventListener('change', () => render().catch(console.error));
@@ -3647,9 +3634,7 @@ categorySel.addEventListener('change', () => render().catch(console.error));
 // Initial render
 render().catch(console.error);
 
-// -----------------------------
 // GLOBAL MENU HELPERS
-// -----------------------------
 function renderOfficials(state, query) {
   console.log("Render officials for:", state, query);
 }
@@ -3662,7 +3647,3 @@ function showCitizenship() {
 function showCommunity() {
   showTab('community');
 }
-
-} // ← THIS IS THE MISSING BRACE THAT FIXES THE FILE
-
-// CLOSE initRankingsRender()
