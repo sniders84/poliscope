@@ -5,6 +5,7 @@
     "termStart": "1789-04-30",
     "termEnd": "1797-03-04",
     "party": "Independent",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/George_Washington_by_Gilbert_Stuart%2C_1797.jpg/800px-George_Washington_by_Gilbert_Stuart%2C_1797.jpg",
     "scores": {
       "crisisManagement": 5,
       "domesticPolicy": 5,
@@ -43,6 +44,7 @@
     "termStart": "1797-03-04",
     "termEnd": "1801-03-04",
     "party": "Federalist",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/John_Adams%2C_by_John_Trumbull.jpg/800px-John_Adams%2C_by_John_Trumbull.jpg",
     "scores": {
       "crisisManagement": 5,
       "domesticPolicy": 5,
@@ -81,6 +83,7 @@
     "termStart": "1801-03-04",
     "termEnd": "1809-03-04",
     "party": "Democratic-Republican",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Thomas_Jefferson_by_Rembrandt_Peale%2C_1800.jpg/800px-Thomas_Jefferson_by_Rembrandt_Peale%2C_1800.jpg",
     "scores": {
       "crisisManagement": 5,
       "domesticPolicy": 5,
@@ -119,6 +122,7 @@
     "termStart": "1809-03-04",
     "termEnd": "1817-03-04",
     "party": "Democratic-Republican",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/James_Madison.jpg/800px-James_Madison.jpg",
     "scores": {
       "crisisManagement": 5,
       "domesticPolicy": 5,
@@ -157,6 +161,7 @@
     "termStart": "1817-03-04",
     "termEnd": "1825-03-04",
     "party": "Democratic-Republican",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/James_Monroe_White_House_portrait_1819.jpg/800px-James_Monroe_White_House_portrait_1819.jpg",
     "scores": {
       "crisisManagement": 5,
       "domesticPolicy": 5,
@@ -195,6 +200,7 @@
     "termStart": "1825-03-04",
     "termEnd": "1829-03-04",
     "party": "Democratic-Republican",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/John_Quincy_Adams_1843.jpg/800px-John_Quincy_Adams_1843.jpg",
     "scores": {
       "crisisManagement": 5,
       "domesticPolicy": 5,
@@ -233,6 +239,7 @@
     "termStart": "1829-03-04",
     "termEnd": "1837-03-04",
     "party": "Democratic",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Andrew_jackson_head.jpg/800px-Andrew_jackson_head.jpg",
     "scores": {
       "crisisManagement": 5,
       "domesticPolicy": 5,
@@ -271,6 +278,7 @@
     "termStart": "1837-03-04",
     "termEnd": "1841-03-04",
     "party": "Democratic",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Martin_Van_Buren_by_Mathew_Brady_c1855-58.jpg/800px-Martin_Van_Buren_by_Mathew_Brady_c1855-58.jpg",
     "scores": {
       "crisisManagement": 5,
       "domesticPolicy": 5,
@@ -309,6 +317,7 @@
     "termStart": "1841-03-04",
     "termEnd": "1841-04-04",
     "party": "Whig",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/William_Henry_Harrison_by_James_Reid_Lambdin%2C_1835.jpg/800px-William_Henry_Harrison_by_James_Reid_Lambdin%2C_1835.jpg",
     "scores": {
       "crisisManagement": 5,
       "domesticPolicy": 5,
@@ -347,6 +356,7 @@
     "termStart": "1841-04-04",
     "termEnd": "1845-03-04",
     "party": "Whig",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/John_Tyler_%28cropped%29.jpg/800px-John_Tyler_%28cropped%29.jpg",
     "scores": {
       "crisisManagement": 5,
       "domesticPolicy": 5,
@@ -385,6 +395,7 @@
     "termStart": "1845-03-04",
     "termEnd": "1849-03-04",
     "party": "Democratic",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/James_K_Polk_restored.jpg/800px-James_K_Polk_restored.jpg",
     "scores": {
       "crisisManagement": 5,
       "domesticPolicy": 5,
@@ -423,6 +434,7 @@
     "termStart": "1849-03-04",
     "termEnd": "1850-07-09",
     "party": "Whig",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Zachary_Taylor_restored_and_cropped.jpg/800px-Zachary_Taylor_restored_and_cropped.jpg",
     "scores": {
       "crisisManagement": 5,
       "domesticPolicy": 5,
@@ -461,6 +473,7 @@
     "termStart": "1850-07-09",
     "termEnd": "1853-03-04",
     "party": "Whig",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Millard_Fillmore_by_Brady_Studio_1855-65.jpg/800px-Millard_Fillmore_by_Brady_Studio_1855-65.jpg",
     "scores": {
       "crisisManagement": 5,
       "domesticPolicy": 5,
@@ -499,6 +512,7 @@
     "termStart": "1853-03-04",
     "termEnd": "1857-03-04",
     "party": "Democratic",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Mathew_Brady_-_Franklin_Pierce_-_alternate_crop.jpg/800px-Mathew_Brady_-_Franklin_Pierce_-_alternate_crop.jpg",
     "scores": {
       "crisisManagement": 5,
       "domesticPolicy": 5,
@@ -537,6 +551,7 @@
     "termStart": "1857-03-04",
     "termEnd": "1861-03-04",
     "party": "Democratic",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/James_Buchanan.jpg/800px-James_Buchanan.jpg",
     "scores": {
       "crisisManagement": 5,
       "domesticPolicy": 5,
@@ -575,6 +590,7 @@
     "termStart": "1861-03-04",
     "termEnd": "1865-04-15",
     "party": "Republican",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Abraham_Lincoln_O-77_matte_collodion_print.jpg/800px-Abraham_Lincoln_O-77_matte_collodion_print.jpg",
     "scores": {
       "crisisManagement": 5,
       "domesticPolicy": 5,
@@ -613,6 +629,7 @@
     "termStart": "1865-04-15",
     "termEnd": "1869-03-04",
     "party": "Democratic",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Andrew_Johnson_photo_portrait_head_and_shoulders%2C_c1870-80-Edit1.jpg/800px-Andrew_Johnson_photo_portrait_head_and_shoulders%2C_c1870-80-Edit1.jpg",
     "scores": {
       "crisisManagement": 5,
       "domesticPolicy": 5,
@@ -651,6 +668,7 @@
     "termStart": "1869-03-04",
     "termEnd": "1877-03-04",
     "party": "Republican",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/Ulysses_S._Grant_1870-1880.jpg/800px-Ulysses_S._Grant_1870-1880.jpg",
     "scores": {
       "crisisManagement": 5,
       "domesticPolicy": 5,
@@ -689,6 +707,7 @@
     "termStart": "1877-03-04",
     "termEnd": "1881-03-04",
     "party": "Republican",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/President_Rutherford_Hayes_1870_-_1880_Restored.jpg/800px-President_Rutherford_Hayes_1870_-_1880_Restored.jpg",
     "scores": {
       "crisisManagement": 5,
       "domesticPolicy": 5,
@@ -727,6 +746,7 @@
     "termStart": "1881-03-04",
     "termEnd": "1881-09-19",
     "party": "Republican",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/James_Abram_Garfield%2C_photo_portrait_seated.jpg/800px-James_Abram_Garfield%2C_photo_portrait_seated.jpg",
     "scores": {
       "crisisManagement": 5,
       "domesticPolicy": 5,
@@ -765,6 +785,7 @@
     "termStart": "1881-09-19",
     "termEnd": "1885-03-04",
     "party": "Republican",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Chester_Alan_Arthur_by_Napoleon_Sarony_%28cropped%29.jpg/800px-Chester_Alan_Arthur_by_Napoleon_Sarony_%28cropped%29.jpg",
     "scores": {
       "crisisManagement": 5,
       "domesticPolicy": 5,
@@ -803,6 +824,7 @@
     "termStart": "1885-03-04",
     "termEnd": "1889-03-04",
     "party": "Democratic",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Grover_Cleveland_-_NARA_-_518139_%28cropped%29.jpg/800px-Grover_Cleveland_-_NARA_-_518139_%28cropped%29.jpg",
     "scores": {
       "crisisManagement": 5,
       "domesticPolicy": 5,
@@ -841,6 +863,7 @@
     "termStart": "1889-03-04",
     "termEnd": "1893-03-04",
     "party": "Republican",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Benjamin_Harrison%2C_head_and_shoulders_bw_photo%2C_1896.jpg/800px-Benjamin_Harrison%2C_head_and_shoulders_bw_photo%2C_1896.jpg",
     "scores": {
       "crisisManagement": 5,
       "domesticPolicy": 5,
@@ -879,6 +902,7 @@
     "termStart": "1893-03-04",
     "termEnd": "1897-03-04",
     "party": "Democratic",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Grover_Cleveland_-_NARA_-_518139_%28cropped%29.jpg/800px-Grover_Cleveland_-_NARA_-_518139_%28cropped%29.jpg",
     "scores": {
       "crisisManagement": 5,
       "domesticPolicy": 5,
@@ -917,6 +941,7 @@
     "termStart": "1897-03-04",
     "termEnd": "1901-09-14",
     "party": "Republican",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Mckinley.jpg/800px-Mckinley.jpg",
     "scores": {
       "crisisManagement": 5,
       "domesticPolicy": 5,
@@ -955,6 +980,7 @@
     "termStart": "1901-09-14",
     "termEnd": "1909-03-04",
     "party": "Republican",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/President_Theodore_Roosevelt%2C_1904.jpg/800px-President_Theodore_Roosevelt%2C_1904.jpg",
     "scores": {
       "crisisManagement": 5,
       "domesticPolicy": 5,
@@ -993,6 +1019,7 @@
     "termStart": "1909-03-04",
     "termEnd": "1913-03-04",
     "party": "Republican",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/William_Howard_Taft%2C_head-and-shoulders_portrait%2C_facing_front.jpg/800px-William_Howard_Taft%2C_head-and-shoulders_portrait%2C_facing_front.jpg",
     "scores": {
       "crisisManagement": 5,
       "domesticPolicy": 5,
@@ -1031,6 +1058,7 @@
     "termStart": "1913-03-04",
     "termEnd": "1921-03-04",
     "party": "Democratic",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/President_Woodrow_Wilson_portrait_December_2_1912.jpg/800px-President_Woodrow_Wilson_portrait_December_2_1912.jpg",
     "scores": {
       "crisisManagement": 5,
       "domesticPolicy": 5,
@@ -1069,6 +1097,7 @@
     "termStart": "1921-03-04",
     "termEnd": "1923-08-02",
     "party": "Republican",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Warren_G_Harding-Harris_%26_Ewing.jpg/800px-Warren_G_Harding-Harris_%26_Ewing.jpg",
     "scores": {
       "crisisManagement": 5,
       "domesticPolicy": 5,
@@ -1107,6 +1136,7 @@
     "termStart": "1923-08-02",
     "termEnd": "1929-03-04",
     "party": "Republican",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Calvin_Coolidge_cph.3g10777_%28cropped%29.jpg/800px-Calvin_Coolidge_cph.3g10777_%28cropped%29.jpg",
     "scores": {
       "crisisManagement": 5,
       "domesticPolicy": 5,
@@ -1145,6 +1175,7 @@
     "termStart": "1929-03-04",
     "termEnd": "1933-03-04",
     "party": "Republican",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/President_Hoover_portrait.jpg/800px-President_Hoover_portrait.jpg",
     "scores": {
       "crisisManagement": 5,
       "domesticPolicy": 5,
@@ -1183,6 +1214,7 @@
     "termStart": "1933-03-04",
     "termEnd": "1945-04-12",
     "party": "Democratic",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/FDR_1944_Color_Portrait.jpg/800px-FDR_1944_Color_Portrait.jpg",
     "scores": {
       "crisisManagement": 5,
       "domesticPolicy": 5,
@@ -1221,6 +1253,7 @@
     "termStart": "1945-04-12",
     "termEnd": "1953-01-20",
     "party": "Democratic",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Harry_S._Truman%2C_bw_half-length_photo_portrait%2C_facing_front%2C_1945-crop.jpg/800px-Harry_S._Truman%2C_bw_half-length_photo_portrait%2C_facing_front%2C_1945-crop.jpg",
     "scores": {
       "crisisManagement": 5,
       "domesticPolicy": 5,
@@ -1259,6 +1292,7 @@
     "termStart": "1953-01-20",
     "termEnd": "1961-01-20",
     "party": "Republican",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Dwight_D._Eisenhower%2C_official_photo_portrait%2C_1959.jpg/800px-Dwight_D._Eisenhower%2C_official_photo_portrait%2C_1959.jpg",
     "scores": {
       "crisisManagement": 5,
       "domesticPolicy": 5,
@@ -1297,6 +1331,7 @@
     "termStart": "1961-01-20",
     "termEnd": "1963-11-22",
     "party": "Democratic",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/John_F._Kennedy%2C_White_House_color_photo_portrait.jpg/800px-John_F._Kennedy%2C_White_House_color_photo_portrait.jpg",
     "scores": {
       "crisisManagement": 5,
       "domesticPolicy": 5,
@@ -1335,6 +1370,7 @@
     "termStart": "1963-11-22",
     "termEnd": "1969-01-20",
     "party": "Democratic",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/37_Lyndon_Johnson_3x4.jpg/800px-37_Lyndon_Johnson_3x4.jpg",
     "scores": {
       "crisisManagement": 5,
       "domesticPolicy": 5,
@@ -1373,6 +1409,7 @@
     "termStart": "1969-01-20",
     "termEnd": "1974-08-09",
     "party": "Republican",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Richard_Nixon_presidential_portrait.jpg/800px-Richard_Nixon_presidential_portrait.jpg",
     "scores": {
       "crisisManagement": 5,
       "domesticPolicy": 5,
@@ -1411,6 +1448,7 @@
     "termStart": "1974-08-09",
     "termEnd": "1977-01-20",
     "party": "Republican",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Gerald_Ford_presidential_portrait_%28cropped%29.jpg/800px-Gerald_Ford_presidential_portrait_%28cropped%29.jpg",
     "scores": {
       "crisisManagement": 5,
       "domesticPolicy": 5,
@@ -1449,6 +1487,7 @@
     "termStart": "1977-01-20",
     "termEnd": "1981-01-20",
     "party": "Democratic",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/JimmyCarterPortrait2.jpg/800px-JimmyCarterPortrait2.jpg",
     "scores": {
       "crisisManagement": 5,
       "domesticPolicy": 5,
@@ -1487,6 +1526,7 @@
     "termStart": "1981-01-20",
     "termEnd": "1989-01-20",
     "party": "Republican",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Official_Portrait_of_President_Reagan_1981.jpg/800px-Official_Portrait_of_President_Reagan_1981.jpg",
     "scores": {
       "crisisManagement": 5,
       "domesticPolicy": 5,
@@ -1525,6 +1565,7 @@
     "termStart": "1989-01-20",
     "termEnd": "1993-01-20",
     "party": "Republican",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/George_H._W._Bush%2C_President_of_the_United_States%2C_1989_official_portrait_%28cropped%29.jpg/800px-George_H._W._Bush%2C_President_of_the_United_States%2C_1989_official_portrait_%28cropped%29.jpg",
     "scores": {
       "crisisManagement": 5,
       "domesticPolicy": 5,
@@ -1563,6 +1604,7 @@
     "termStart": "1993-01-20",
     "termEnd": "2001-01-20",
     "party": "Democratic",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Bill_Clinton.jpg/800px-Bill_Clinton.jpg",
     "scores": {
       "crisisManagement": 5,
       "domesticPolicy": 5,
@@ -1601,6 +1643,7 @@
     "termStart": "2001-01-20",
     "termEnd": "2009-01-20",
     "party": "Republican",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/George-W-Bush.jpeg/800px-George-W-Bush.jpeg",
     "scores": {
       "crisisManagement": 5,
       "domesticPolicy": 5,
@@ -1639,6 +1682,7 @@
     "termStart": "2009-01-20",
     "termEnd": "2017-01-20",
     "party": "Democratic",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/President_Barack_Obama.jpg/800px-President_Barack_Obama.jpg",
     "scores": {
       "crisisManagement": 5,
       "domesticPolicy": 5,
@@ -1677,6 +1721,7 @@
     "termStart": "2017-01-20",
     "termEnd": "2021-01-20",
     "party": "Republican",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Donald_Trump_official_portrait.jpg/800px-Donald_Trump_official_portrait.jpg",
     "scores": {
       "crisisManagement": 5,
       "domesticPolicy": 5,
@@ -1715,6 +1760,7 @@
     "termStart": "2021-01-20",
     "termEnd": "2025-01-20",
     "party": "Democratic",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Joe_Biden_presidential_portrait.jpg/800px-Joe_Biden_presidential_portrait.jpg",
     "scores": {
       "crisisManagement": 5,
       "domesticPolicy": 5,
