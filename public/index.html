@@ -398,150 +398,119 @@
     <div id="ratings-cards" class="card-section"></div>
   </div>
 
-// -----------------------------
-// MAIN RENDER FUNCTION
-// -----------------------------
-// INSERTED HERE — this fixes the "ordinalSuffix is not defined" crash
-function ordinalSuffix(n) {
-  const s = ["th", "st", "nd", "rd"];
-  const v = n % 100;
-  return n + (s[(v - 20) % 10] || s[v] || s[0]);
-}
+<!-- Rankings section -->
+<div id="rankings-section" class="rr-section" aria-hidden="true" role="tabpanel" aria-labelledby="btn-rankings">
+  <div class="filters-row">
+    <!-- Office Filter -->
+    <select id="rankingsOfficeFilter" aria-label="Select office for rankings">
+      <option value="senator" selected>Senators</option>
+      <option value="u.s. representative">U.S. Representatives</option>
+      <option value="governor">Governors</option>
+      <option value="lieutenant governor">Lt. Governors</option>
+      <option value="president">President</option>
+      <option value="vice president">Vice President</option>
+    </select>
 
-async function render() {
-  const selectedOffice = officeSel.value.toLowerCase();
-  const selectedCategory = categorySel.value;
+    <!-- Category Filter (Legislative + Presidential) -->
+    <select id="rankingsCategoryFilter" aria-label="Select ranking category">
+      <option value="powerScore" selected>Overall Power Score</option>
 
-  // Load existing senator/rep rankings (your original files)
-  const senatorsRes = await fetch('/senators-rankings.json');
-  const senatorsInfoRes = await fetch('/senators.json');
-  const repsRes = await fetch('/representatives-rankings.json');
-  const repsInfoRes = await fetch('/housereps.json');
+      <optgroup label="Legislative">
+        <option value="sponsoredBills">Sponsored Bills</option>
+        <option value="cosponsoredBills">Cosponsored Bills</option>
+        <option value="becameLawBills">Bills Enacted</option>
+        <option value="becameLawCosponsoredBills">Bills Enacted (Cosponsored)</option>
+        <option value="committees">Committee Memberships</option>
+        <option value="yeaVotes">Yea Votes</option>
+        <option value="nayVotes">Nay Votes</option>
+        <option value="missedVotes">Missed Votes</option>
+      </optgroup>
 
-  // Load presidents rankings (your generated file from workflow)
-  const presidentsRes = await fetch('/presidents-rankings.json');
+      <optgroup label="Shared / Misconduct">
+        <option value="misconductCount">Misconduct Count</option>
+        <option value="misconductTags">Misconduct Tags</option>
+      </optgroup>
 
-  const senatorsRankings = await senatorsRes.json().catch(() => []);
-  const senatorsInfo = await senatorsInfoRes.json().catch(() => []);
-  const repsRankings = await repsRes.json().catch(() => []);
-  const repsInfo = await repsInfoRes.json().catch(() => []);
-  const presidentsRankingsRaw = await presidentsRes.json().catch(() => []);
-  const presidentsRankings = Array.isArray(presidentsRankingsRaw) ? presidentsRankingsRaw : Object.values(presidentsRankingsRaw);
+      <optgroup label="Presidential">
+        <option value="crisisManagement">Crisis Management</option>
+        <option value="domesticPolicy">Domestic Policy</option>
+        <option value="economicPolicy">Economic Policy</option>
+        <option value="foreignPolicy">Foreign Policy</option>
+        <option value="judicialPolicy">Judicial Policy</option>
+        <option value="legislation">Legislation Impact</option>
+        <option value="misconduct">Misconduct Impact</option>
+      </optgroup>
+    </select>
+  </div>
 
-  let data = [];
-  let officeType = '';
+  <div class="leaderboard-wrap">
+    <table id="rankings-leaderboard" class="leaderboard-table" aria-label="Rankings leaderboard" aria-live="polite">
+      <thead>
+        <tr>
+          <th scope="col">Rank</th>
+          <th scope="col">Official</th>
+          <th scope="col">Office</th>
+          <th scope="col">Value</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+</div>
 
-  if (selectedOffice === 'senator') {
-    data = mergeData(senatorsRankings, senatorsInfo);
-    officeType = 'senator';
-  } else if (selectedOffice === 'u.s. representative') {
-    data = mergeData(repsRankings, repsInfo);
-    officeType = 'rep';
-  } else if (selectedOffice === 'president') {
-    data = presidentsRankings.map(p => ({
-      ...p,
-      office: "President",
-      ordinal: p.id,
-      photo: p.photo || 'https://via.placeholder.com/80?text=No+Photo'  // fallback
-    }));
-    officeType = 'president';
-  } else {
-    tableBody.innerHTML = '<tr><td colspan="5">Select an office to view rankings</td></tr>';
-    return;
-  }
+<div class="rankings-info">
+  <button id="scoringLogicBtn" class="info-button">Rankings Scoring and Weight Logic</button>
+</div>
 
-  if (!Array.isArray(data) || data.length === 0) {
-    tableBody.innerHTML = '<tr><td colspan="5">No data loaded yet</td></tr>';
-    return;
-  }
+<!-- Scorecard modal -->
+<div id="scorecardModal" class="scorecard-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="scorecardName">
+  <div class="scorecard-modal-content" tabindex="-1">
+    <button id="scorecardClose" class="scorecard-modal-close" aria-label="Close scorecard">&times;</button>
+    <h2 id="scorecardName"></h2>
+    <table id="scorecardBreakdown" class="scorecard-table"></table>
+  </div>
+</div>
 
-  const rows = data.map(person => {
-    if (officeType === 'president') {
-      return {
-        person,
-        score: person.scores?.powerScore || 0,
-        breakdown: null
-      };
-    } else {
-      const { composite, breakdown } = scoreLegislator(person);
-      return {
-        person,
-        score: composite,
-        breakdown
-      };
-    }
-  });
-
-  // SORTING
-  rows.sort((a, b) => {
-    if (officeType === 'president') {
-      return (b.person.scores?.powerScore || 0) - (a.person.scores?.powerScore || 0);
-    }
-    const key = selectedCategory;
-    if (key === "powerScore") return b.score - a.score;
-    if (key === "committees") return (b.person.committees?.length || 0) - (a.person.committees?.length || 0);
-    if (key === "misconductTags") return (b.person.misconductTags?.length || 0) - (a.person.misconductTags?.length || 0);
-    return (b.person[key] || 0) - (a.person[key] || 0);
-  });
-
-  // RENDER TABLE
-  tableBody.innerHTML = '';
-  rows.forEach((row, idx) => {
-    const tr = document.createElement('tr');
-
-    let displayVal = 0;
-    if (officeType === 'president') {
-      displayVal = (row.person.scores?.powerScore || 0).toFixed(1);
-    } else {
-      displayVal = selectedCategory === "powerScore"
-        ? row.score.toFixed(1)
-        : Array.isArray(row.person[selectedCategory])
-          ? row.person[selectedCategory].length
-          : row.person[selectedCategory] || 0;
-    }
-
-    const officeLabel =
-      officeType === 'president'
-        ? `President (${ordinalSuffix(row.person.ordinal)})`
-        : row.person.office || (officeType === 'rep' ? 'U.S. Representative' : 'U.S. Senator');
-
-    const photoUrl = row.person.photo || 'https://via.placeholder.com/50?text=?';
-
-    tr.innerHTML = `
-      <td>${idx + 1}</td>
-      <td>
-        <div style="display: flex; align-items: center; gap: 10px;">
-          <img src="${photoUrl}" alt="${row.person.name}" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover;" loading="lazy" onerror="this.src='https://via.placeholder.com/40?text=?';">
-          <div>
-            <a href="#" class="scorecard-link" data-id="${row.person.id}">
-              ${row.person.name}
-            </a>
-            <br><small>${officeType === 'president' ? `${row.person.party} • ${row.person.termStart}–${row.person.termEnd}` : `${row.person.state} • ${row.person.party}${officeType === 'rep' ? ` • District ${row.person.district || 'At-Large'}` : ''}`}</small>
-          </div>
-        </div>
-      </td>
-      <td>${officeLabel}</td>
-      <td>${displayVal}</td>
-    `;
-    tableBody.appendChild(tr);
-  });
-
-  // SCORECARD CLICK HANDLERS
-  tableBody.querySelectorAll('.scorecard-link').forEach(link => {
-    link.addEventListener('click', e => {
-      e.preventDefault();
-      const id = Number(link.dataset.id);
-      const row = rows.find(r => r.person.id === id);
-      if (!row) return;
-
-      if (officeType === 'president') {
-        showScorecard(row.person);
-      } else {
-        showScorecard(row.person, row.breakdown, row.score);
-      }
-    });
-  });
-}
+<!-- Scoring Logic modal -->
+<div id="scoringLogicModal" class="scorecard-modal wide" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="scoringLogicTitle">
+  <div class="scorecard-modal-content" tabindex="-1">
+    <button id="scoringLogicClose" class="scorecard-modal-close" aria-label="Close scoring logic">&times;</button>
+    <h2 id="scoringLogicTitle">Rankings Scoring and Weight Logic</h2>
+    <div class="scoring-logic-body">
+      <p>
+        Officials are ranked using weighted contributions from legislative and executive activity.
+        Each category has a raw value, a weight, and a contribution (raw × weight). The sum forms the Power Score.
+      </p>
+      <h3>Legislative Offices (Senators & Representatives)</h3>
+      <table class="scorecard-table">
+        <thead><tr><th>Category</th><th>Weight</th><th>Rationale</th></tr></thead>
+        <tbody>
+          <tr><td>Bills Sponsored</td><td>1.2</td><td>Shows initiative and legislative drive.</td></tr>
+          <tr><td>Bills Cosponsored</td><td>0.6</td><td>Collaboration matters, but less than leading bills.</td></tr>
+          <tr><td>Bills Enacted (Sponsored)</td><td>6.0</td><td>Turning proposals into law.</td></tr>
+          <tr><td>Bills Enacted (Cosponsored)</td><td>3.0</td><td>Influence through cosponsored bills.</td></tr>
+          <tr><td>Committee Memberships</td><td>4.0</td><td>Committees drive legislation.</td></tr>
+          <tr><td>Committee Leadership Roles</td><td>2.0</td><td>Leadership positions add influence.</td></tr>
+          <tr><td>Missed Votes</td><td>-0.5</td><td>Penalizes absenteeism.</td></tr>
+          <tr><td>Misconduct Infractions</td><td>-10.0</td><td>Severe penalty for misconduct.</td></tr>
+        </tbody>
+      </table>
+      <h3>Executive Offices (President, Vice President, Governors)</h3>
+      <table class="scorecard-table">
+        <thead><tr><th>Category</th><th>Weight</th><th>Rationale</th></tr></thead>
+        <tbody>
+          <tr><td>Crisis Management</td><td>4.0</td><td>Handling emergencies is a defining test.</td></tr>
+          <tr><td>Domestic Policy</td><td>3.0</td><td>Internal governance and national priorities.</td></tr>
+          <tr><td>Economic Policy</td><td>3.5</td><td>Economic leadership affects national stability.</td></tr>
+          <tr><td>Foreign Policy</td><td>3.5</td><td>Global leadership and diplomacy.</td></tr>
+          <tr><td>Judicial Policy</td><td>2.5</td><td>Shaping the judiciary has long-term impact.</td></tr>
+          <tr><td>Legislation Impact</td><td>4.0</td><td>Working with Congress to pass laws.</td></tr>
+          <tr><td>Misconduct Impact</td><td>-10.0</td><td>Severe penalty for misconduct.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
 
 </section>
 <section id="learning-resources" class="tab-content" style="display: none;">
