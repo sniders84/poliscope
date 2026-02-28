@@ -48,7 +48,7 @@ function updateFavoriteButton(btn, isFavorited) {
 }
 
 // === GLOBAL STATE ===
-let selectedState = 'North Carolina';
+// REMOVED duplicate selectedState declaration
 let governors = [];
 let ltGovernors = [];
 let senators = [];
@@ -76,18 +76,18 @@ Promise.all([
   houseReps = reps;
 
   window.allOfficials = [
-  ...federal,
-  ...cabinet,
-  ...sens,
-  ...reps,
-  ...govs,
-  ...ltGovs,
-  ...scotus
-];
+    ...federal,
+    ...cabinet,
+    ...sens,
+    ...reps,
+    ...govs,
+    ...ltGovs,
+    ...scotus
+  ];
 
   if (searchBar) {
     searchBar.addEventListener('input', e => {
-      renderOfficials(selectedState, e.target.value);
+      renderOfficials(window.selectedState, e.target.value);
     });
   }
 })
@@ -2523,11 +2523,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Official RSS feeds per network
 const rssFeeds = {
-  msnbc: 'https://feeds.nbcnews.com/nbcnews/public/news',   // NBC/MSNBC general news
-  abc:   'https://abcnews.go.com/abcnews/topstories',       // ABC Top Stories
-  cbs:   'https://www.cbsnews.com/latest/rss/main',         // CBS Latest
-  fox:   'https://feeds.foxnews.com/foxnews/latest',        // FOX News Latest
-  cnn:   'http://rss.cnn.com/rss/cnn_topstories.rss'        // CNN Top Stories
+  msnbc: 'https://feeds.nbcnews.com/nbcnews/public/news',
+  abc:   'https://abcnews.go.com/abcnews/topstories',
+  cbs:   'https://www.cbsnews.com/latest/rss/main',
+  fox:   'https://feeds.foxnews.com/foxnews/latest',
+  cnn:   'http://rss.cnn.com/rss/cnn_topstories.rss'
 };
 
 // Fetch top 5 stories via rss2json
@@ -2550,7 +2550,7 @@ async function renderNetworkStories(network) {
 
   const stories = await fetchRss(feedUrl);
   const container = document.getElementById('network-stories');
-  container.innerHTML = ''; // clear previous stories
+  container.innerHTML = '';
 
   stories.forEach(item => {
     const card = document.createElement('div');
@@ -2560,13 +2560,11 @@ async function renderNetworkStories(network) {
     container.appendChild(card);
   });
 
-  // Append "See More" next to last story
   if (stories.length > 0) {
     const seeMore = document.createElement('div');
     seeMore.className = 'see-more';
     seeMore.innerText = 'See More';
     seeMore.onclick = () => {
-      // Proper site URL for MSNBC, others open homepage
       const urlMap = {
         msnbc: 'https://www.msnbc.com',
         abc: 'https://abcnews.go.com',
@@ -2587,21 +2585,20 @@ document.querySelectorAll('#network-cards .info-card').forEach(card => {
     renderNetworkStories(network);
   });
 });
-// === GLOBAL POLITICS & WORLD NEWS: Google News RSS feed ===
+
+// === GLOBAL POLITICS & WORLD NEWS ===
 const worldNewsFeedUrl = 'https://news.google.com/rss/search?q=world+politics&hl=en-US&gl=US&ceid=US:en';
 const maxCards = 25;
 
-// Helper to extract favicon from story source
 function getFaviconUrl(link) {
   try {
     const url = new URL(link);
     return `${url.origin}/favicon.ico`;
   } catch {
-    return ''; // fallback empty
+    return '';
   }
 }
 
-// Fetch RSS via rss2json
 async function fetchGoogleNewsRss(feedUrl) {
   try {
     const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feedUrl)}`;
@@ -2614,140 +2611,38 @@ async function fetchGoogleNewsRss(feedUrl) {
   }
 }
 
-  // === Load officials data with smooth fade-in ===
-  Promise.all([
-    fetch('/governors.json').then(res => res.json()),
-    fetch('/ltgovernors.json').then(res => res.json()),
-    fetch('/senators.json').then(res => res.json()),
-    fetch('/housereps.json').then(res => res.json())
-  ])
-    .then(([govs, ltGovs, sens, reps]) => {
-      governors = govs;
-      ltGovernors = ltGovs;
-      senators = sens;
-      houseReps = reps;
+// === Load officials data with smooth fade-in ===
+Promise.all([
+  fetch('/governors.json').then(res => res.json()),
+  fetch('/ltgovernors.json').then(res => res.json()),
+  fetch('/senators.json').then(res => res.json()),
+  fetch('/housereps.json').then(res => res.json())
+])
+  .then(([govs, ltGovs, sens, reps]) => {
+    governors = govs;
+    ltGovernors = ltGovs;
+    senators = sens;
+    houseReps = reps;
 
-      // Fade out loading overlay
-      if (loadingOverlay) {
-        loadingOverlay.style.transition = 'opacity 0.5s ease';
-        loadingOverlay.style.opacity = '0';
-        setTimeout(() => loadingOverlay.remove(), 500);
-      }
-
-      // Load social trends
-      const socialFeed = document.getElementById('social-feed');
-      if (socialFeed && typeof loadSocialTrends === 'function') {
-        console.log("🎬 loadSocialTrends is running...");
-        loadSocialTrends();
-      }
-    })
-    .catch(err => {
-      console.error('Error loading official data:', err);
-      if (loadingOverlay) loadingOverlay.textContent = 'Failed to load data.';
-    });
-});
-document.getElementById("quiz-submit").onclick = () => {
-  const selected = document.querySelector('input[name="opt"]:checked');
-  if (!selected) {
-    alert("Pick an answer!");
-    return;
-  }
-  const q = quizQuestions[currentQuestion];
-  const selectedIndex = parseInt(selected.value, 10);
-  const correctText = q.options[q.answer];
-  const feedbackEl = document.getElementById("quiz-feedback");
-
-  if (selectedIndex === q.answer) {
-    score++;
-    feedbackEl.className = "correct";
-    feedbackEl.innerHTML = `✅ Correct — ${correctText}<br><small>${q.explanation}</small>`;
-  } else {
-    feedbackEl.className = "incorrect";
-    feedbackEl.innerHTML = `❌ Incorrect. Correct answer: ${correctText}<br><small>${q.explanation}</small>`;
-  }
-
-  document.getElementById("quiz-submit").style.display = "none";
-  document.getElementById("quiz-next").style.display = "inline-block";
-};
-
-document.getElementById("quiz-next").onclick = () => {
-  currentQuestion++;
-  if (currentQuestion < quizQuestions.length) {
-    renderQuestion();
-  } else {
-    document.getElementById("quiz-question").innerHTML = "";
-    document.getElementById("quiz-options").innerHTML = "";
-    document.getElementById("quiz-progress").textContent = "";
-    document.getElementById("quiz-progress-fill").style.width = "100%";
-    document.getElementById("quiz-feedback").textContent = "";
-    document.getElementById("quiz-score").textContent =
-      `Final Score: ${score}/${quizQuestions.length} — ${score >= 12 ? "Pass ✅" : "Try Again ❌"}`;
-    document.getElementById("quiz-next").style.display = "none";
-  }
-};
-
-
-// === Citizenship & Immigration tab renderer ===
-function showCitizenship() {
-  showTab('citizenship');
-
-  citizenshipSections.forEach(section => {
-    const container = document.getElementById(section.targetId);
-    if (!container) {
-      console.warn(`Container not found: ${section.targetId}`);
-      return;
-    }
-    container.innerHTML = ''; // Clear any old content
-
-    // Add section header
-    const header = document.createElement('h3');
-    header.textContent = section.label;
-    header.style.marginTop = '40px';
-    header.style.marginBottom = '20px';
-    header.style.color = '#fff';
-    container.appendChild(header);
-
-    // Create grid for cards
-    const grid = document.createElement('div');
-    grid.style.display = 'grid';
-    grid.style.gridTemplateColumns = 'repeat(auto-fill, minmax(300px, 1fr))';
-    grid.style.gap = '20px';
-    grid.style.padding = '0 10px';
-
-    if (section.items.length === 0) {
-      const msg = document.createElement('p');
-      msg.textContent = `No items available for ${section.label}.`;
-      msg.style.color = '#ccc';
-      grid.appendChild(msg);
-    } else {
-      section.items.forEach(item => {
-        const card = document.createElement('div');
-        card.style.background = '#2b2b2b';
-        card.style.padding = '20px';
-        card.style.borderRadius = '10px';
-        card.style.border = '1px solid #444';
-        card.style.boxShadow = '0 2px 8px rgba(0,0,0,0.3)';
-
-        let linksHtml = '<div style="margin-top: 15px; line-height: 1.8;">';
-        if (item.urlEn) linksHtml += `<a href="${item.urlEn}" target="_blank" rel="noopener noreferrer" style="color: #1e90ff; text-decoration: none;">English Version →</a><br>`;
-        if (item.urlEs) linksHtml += `<a href="${item.urlEs}" target="_blank" rel="noopener noreferrer" style="color: #1e90ff; text-decoration: none;">Versión en Español →</a><br>`;
-        item.langLinks?.forEach(lang => {
-          linksHtml += `<a href="${lang.url}" target="_blank" rel="noopener noreferrer" style="color: #aaa; text-decoration: none; font-size: 0.95em;">${lang.label}</a><br>`;
-        });
-        linksHtml += '</div>';
-
-        card.innerHTML = `
-          <h4 style="margin: 0 0 12px 0; color: #fff;">${item.title}</h4>
-          <p style="margin: 0 0 15px 0; color: #ccc; font-size: 0.95em;">${item.desc}</p>
-          ${linksHtml}
-        `;
-        grid.appendChild(card);
-      });
+    if (loadingOverlay) {
+      loadingOverlay.style.transition = 'opacity 0.5s ease';
+      loadingOverlay.style.opacity = '0';
+      setTimeout(() => loadingOverlay.remove(), 500);
     }
 
-    container.appendChild(grid);
+    const socialFeed = document.getElementById('social-feed');
+    if (socialFeed && typeof loadSocialTrends === 'function') {
+      loadSocialTrends();
+    }
+  })
+  .catch(err => {
+    console.error('Error loading official data:', err);
+    if (loadingOverlay) loadingOverlay.textContent = 'Failed to load data.';
   });
-}
+
+// ❌ REMOVED duplicate quiz-submit and quiz-next handlers
+// ❌ REMOVED duplicate showCitizenship() function
+
 // ==============================
 // Ratings/Rankings — tab renderer
 // ==============================
@@ -2815,7 +2710,7 @@ function showRatings() {
       if (partyKey === 'gop')        partyKey = 'republican';
       card.dataset.party    = partyKey;
 
-      // ✅ Full name normalization for robust searching
+      // Full name normalization for robust searching
       const fullNameRaw = String(official.name || '').trim();
       card.dataset.fullname = normalizeText(fullNameRaw);
 
@@ -2851,7 +2746,7 @@ function showRatings() {
     });
 
     // After render, apply filters once to reflect any defaults
-    applyRatingsFilters();
+    applyFilters();   // <-- FIXED (Option A)
   });
 }
 
@@ -2888,7 +2783,6 @@ function showRatings() {
       const stateKey  = card.dataset.state || '';
       const partyKey  = card.dataset.party || '';
 
-      // ✅ Every token must be present in the full name
       const matchesText   = !tokens.length || tokens.every(t => fullName.includes(t));
       const matchesOffice = isAll(office) || officeKey.includes(office);
       const matchesState  = isAll(state)  || stateKey.includes(state);
@@ -3525,7 +3419,11 @@ async function render() {
 
   const senatorsRankings = await senatorsRes.json();
   const senatorsInfo = await senatorsInfoRes.json();
-  const repsRankings = await repsRankings.json();
+
+  // ❌ WRONG: const repsRankings = await repsRankings.json();
+  // ✅ FIXED:
+  const repsRankings = await repsRes.json();
+
   const repsInfo = await repsInfoRes.json();
 
   // presidents-rankings.json is an OBJECT keyed by ID
