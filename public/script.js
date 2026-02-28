@@ -3156,6 +3156,7 @@ document.getElementById('rate-me-btn').onclick = function() {
   const categorySel = document.getElementById('rankingsCategoryFilter');
   const tableBody = document.querySelector('#rankings-leaderboard tbody');
   if (!officeSel || !categorySel || !tableBody) return;
+
   // Dynamically filter category options based on selected office
   function updateCategoryVisibility() {
     const office = officeSel.value.toLowerCase();
@@ -3189,9 +3190,8 @@ document.getElementById('rate-me-btn').onclick = function() {
   }
   officeSel.addEventListener('change', updateCategoryVisibility);
   updateCategoryVisibility();
-  // -----------------------------
+
   // LEGISLATOR WEIGHTS (UNCHANGED)
-  // -----------------------------
   const WEIGHTS = {
     sponsoredBills: 1.2,
     cosponsoredBills: 0.6,
@@ -3202,9 +3202,8 @@ document.getElementById('rate-me-btn').onclick = function() {
     missedVotes: -0.5,
     misconductCount: -10.0
   };
-  // -----------------------------
+
   // LEGISLATOR LABELS (UNCHANGED)
-  // -----------------------------
   const CATEGORY_LABELS = {
     powerScore: "Overall Power Score",
     sponsoredBills: "Sponsored Bills",
@@ -3218,9 +3217,8 @@ document.getElementById('rate-me-btn').onclick = function() {
     nayVotes: "Nay Votes",
     missedVotes: "Missed Votes"
   };
-  // -----------------------------
+
   // LEGISLATOR SCORING (UNCHANGED)
-  // -----------------------------
   function scoreLegislator(person) {
     const breakdown = {
       sponsoredBills: person.sponsoredBills || 0,
@@ -3245,13 +3243,13 @@ document.getElementById('rate-me-btn').onclick = function() {
       breakdown
     };
   }
+
   function formatScore(value) {
     const cls = value >= 0 ? 'score-positive' : 'score-negative';
     return `<span class="${cls}">${Number.isFinite(value) ? value.toFixed(1) : '0.0'}</span>`;
   }
-  // -----------------------------
+
   // PRESIDENT SCORECARD RENDERING
-  // -----------------------------
   function showPresidentScorecard(person) {
     document.getElementById('scorecardName').textContent = person.name;
     const photoUrl = person.photo || 'https://via.placeholder.com/150?text=No+Photo';
@@ -3287,9 +3285,8 @@ document.getElementById('rate-me-btn').onclick = function() {
     modal.classList.add('is-open', 'modal-dark');
     modal.setAttribute('aria-hidden', 'false');
   }
-  // -----------------------------
+
   // LEGISLATOR SCORECARD (UNCHANGED)
-  // -----------------------------
   function showLegislatorScorecard(person, breakdown, composite) {
     document.getElementById('scorecardName').textContent = person.name;
     const photoUrl = person.photo || 'https://via.placeholder.com/150?text=No+Photo';
@@ -3398,9 +3395,8 @@ document.getElementById('rate-me-btn').onclick = function() {
     modal.classList.add('is-open', 'modal-dark');
     modal.setAttribute('aria-hidden', 'false');
   }
-  // -----------------------------
+
   // PUBLIC API FOR SCORECARD
-  // -----------------------------
   window.showScorecard = function(person) {
     if (person.office === "President") {
       showPresidentScorecard(person);
@@ -3409,9 +3405,8 @@ document.getElementById('rate-me-btn').onclick = function() {
       showLegislatorScorecard(person, breakdown, composite);
     }
   };
-  // -----------------------------
-  // MERGE RANKINGS + INFO + MISCONDUCT
-  // -----------------------------
+
+  // MERGE RANKINGS + INFO + MISCONDUCT (UNCHANGED)
   function mergeData(rankings, info, misconduct = []) {
     return rankings.map(r => {
       let match = info.find(i => i.slug === r.slug);
@@ -3431,210 +3426,192 @@ document.getElementById('rate-me-btn').onclick = function() {
       };
     });
   }
-})();  // End of IIFE
-// -----------------------------
-// MAIN RENDER FUNCTION
-// -----------------------------
-// INSERTED HERE — this fixes the "ordinalSuffix is not defined" crash
-function ordinalSuffix(n) {
-  const s = ["th", "st", "nd", "rd"];
-  const v = n % 100;
-  return n + (s[(v - 20) % 10] || s[v] || s[0]);
-}
 
-async function render() {
-  const selectedOffice = officeSel.value.toLowerCase();
-  const selectedCategory = categorySel.value;
+  // MAIN RENDER FUNCTION
+  async function render() {
+    const selectedOffice = officeSel.value.toLowerCase();
+    const selectedCategory = categorySel.value;
 
-  const senatorsRes = await fetch('/senators-rankings.json');
-  const senatorsInfoRes = await fetch('/senators.json');
-  const repsRes = await fetch('/representatives-rankings.json');
-  const repsInfoRes = await fetch('/housereps.json');
-  const presidentsRes = await fetch('/presidents-rankings.json');
+    const senatorsRes = await fetch('/senators-rankings.json');
+    const senatorsInfoRes = await fetch('/senators.json');
+    const repsRes = await fetch('/representatives-rankings.json');
+    const repsInfoRes = await fetch('/housereps.json');
+    const presidentsRes = await fetch('/presidents-rankings.json');
 
-  const senatorsRankings = await senatorsRes.json().catch(() => []);
-  const senatorsInfo = await senatorsInfoRes.json().catch(() => []);
-  const repsRankings = await repsRes.json().catch(() => []);
-  const repsInfo = await repsInfoRes.json().catch(() => []);
-  const presidentsRankings = await presidentsRes.json().catch(() => []);
+    const senatorsRankings = await senatorsRes.json().catch(() => []);
+    const senatorsInfo = await senatorsInfoRes.json().catch(() => []);
+    const repsRankings = await repsRes.json().catch(() => []);
+    const repsInfo = await repsInfoRes.json().catch(() => []);
+    const presidentsRankings = await presidentsRes.json().catch(() => []);
 
-  let data = [];
-  let officeType = '';
+    let data = [];
+    let officeType = '';
 
-  if (selectedOffice === 'senator') {
-    data = mergeData(senatorsRankings, senatorsInfo);
-    officeType = 'senator';
-  } else if (selectedOffice === 'u.s. representative') {
-    data = mergeData(repsRankings, repsInfo);
-    officeType = 'rep';
-  } else if (selectedOffice === 'president') {
-    data = presidentsRankings.map(p => ({
-      ...p,
-      office: "President",
-      ordinal: p.id,
-      photo: p.photo || 'https://via.placeholder.com/80?text=No+Photo'
-    }));
-    officeType = 'president';
-  } else {
-    tableBody.innerHTML = '<tr><td colspan="5">Select an office to view rankings</td></tr>';
-    return;
-  }
-
-  if (!Array.isArray(data) || data.length === 0) {
-    tableBody.innerHTML = '<tr><td colspan="5">No data loaded yet</td></tr>';
-    return;
-  }
-
-  const rows = data.map(person => {
-    if (officeType === 'president') {
-      return {
-        person,
-        score: person.scores?.powerScore || 0,
-        breakdown: null
-      };
+    if (selectedOffice === 'senator') {
+      data = mergeData(senatorsRankings, senatorsInfo);
+      officeType = 'senator';
+    } else if (selectedOffice === 'u.s. representative') {
+      data = mergeData(repsRankings, repsInfo);
+      officeType = 'rep';
+    } else if (selectedOffice === 'president') {
+      data = presidentsRankings.map(p => ({
+        ...p,
+        office: "President",
+        ordinal: p.id,
+        photo: p.photo || 'https://via.placeholder.com/80?text=No+Photo'
+      }));
+      officeType = 'president';
     } else {
-      const { composite, breakdown } = scoreLegislator(person);
-      return {
-        person,
-        score: composite,
-        breakdown
-      };
+      tableBody.innerHTML = '<tr><td colspan="5">Select an office to view rankings</td></tr>';
+      return;
     }
-  });
 
-  // -----------------------------
-  // SORTING
-  // -----------------------------
-  rows.sort((a, b) => {
-    const key = selectedCategory;
-    if (officeType === 'president') {
-      return (b.person.scores?.powerScore || 0) - (a.person.scores?.powerScore || 0);
+    if (!Array.isArray(data) || data.length === 0) {
+      tableBody.innerHTML = '<tr><td colspan="5">No data loaded yet</td></tr>';
+      return;
     }
-    if (key === "powerScore") return b.score - a.score;
-    if (key === "committees") return (b.person.committees?.length || 0) - (a.person.committees?.length || 0);
-    if (key === "misconductTags") return (b.person.misconductTags?.length || 0) - (a.person.misconductTags?.length || 0);
-    return (b.person[key] || 0) - (a.person[key] || 0);
-  });
 
-  // -----------------------------
-  // RENDER TABLE
-  // -----------------------------
-  tableBody.innerHTML = '';
-  rows.forEach((row, idx) => {
-    const tr = document.createElement('tr');
-    let displayVal = 0;
-    if (officeType === 'president') {
-      displayVal = (row.person.scores?.powerScore || 0).toFixed(1);
-    } else {
-      displayVal = selectedCategory === "powerScore"
-        ? row.score.toFixed(1)
-        : Array.isArray(row.person[selectedCategory])
-          ? row.person[selectedCategory].length
-          : row.person[selectedCategory] || 0;
-    }
-    const officeLabel =
-      officeType === 'president'
-        ? `President (${ordinalSuffix(row.person.ordinal)})`
-        : row.person.office || (officeType === 'rep' ? 'U.S. Representative' : 'U.S. Senator');
-
-    const photoUrl = row.person.photo || 'https://via.placeholder.com/50?text=?';
-
-    tr.innerHTML = `
-      <td>${idx + 1}</td>
-      <td>
-        <div style="display: flex; align-items: center; gap: 10px;">
-          <img src="${photoUrl}" alt="${row.person.name}" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover;" loading="lazy" onerror="this.src='https://via.placeholder.com/40?text=?';">
-          <div>
-            <a href="#" class="scorecard-link" data-name="${row.person.name.replace(/"/g, '&quot;')}">
-              ${row.person.name}
-            </a>
-            <br><small>${officeType === 'president'
-              ? `${row.person.party} • ${row.person.termStart}–${row.person.termEnd}`
-              : `${row.person.state} • ${row.person.party}${officeType === 'rep' ? ` • District ${row.person.district || 'At-Large'}` : ''}`
-            }</small>
-          </div>
-        </div>
-      </td>
-      <td>${officeLabel}</td>
-      <td>${displayVal}</td>
-    `;
-    tableBody.appendChild(tr);
-  });
-
-  // -----------------------------
-  // SCORECARD CLICK HANDLERS
-  // -----------------------------
-  tableBody.querySelectorAll('.scorecard-link').forEach(link => {
-    link.addEventListener('click', e => {
-      e.preventDefault();
-      const name = link.dataset.name;
-      const row = rows.find(r => r.person.name === name);
-      if (!row) return;
+    const rows = data.map(person => {
       if (officeType === 'president') {
-        showScorecard(row.person);
+        return {
+          person,
+          score: person.scores?.powerScore || 0,
+          breakdown: null
+        };
       } else {
-        showScorecard(row.person, row.breakdown, row.score);
+        const { composite, breakdown } = scoreLegislator(person);
+        return {
+          person,
+          score: composite,
+          breakdown
+        };
       }
     });
-  });
-}
-// -----------------------------
-// MODAL CLOSE HANDLERS
-// -----------------------------
-document.getElementById('scorecardClose')?.addEventListener('click', () => {
-  const modal = document.getElementById('scorecardModal');
-  modal.classList.remove('is-open', 'modal-dark');
-  modal.setAttribute('aria-hidden', 'true');
-});
-document.getElementById('scorecardModal')?.addEventListener('click', e => {
-  if (e.target.id === 'scorecardModal') {
+
+    // SORTING
+    rows.sort((a, b) => {
+      const key = selectedCategory;
+      if (officeType === 'president') {
+        return (b.person.scores?.powerScore || 0) - (a.person.scores?.powerScore || 0);
+      }
+      if (key === "powerScore") return b.score - a.score;
+      if (key === "committees") return (b.person.committees?.length || 0) - (a.person.committees?.length || 0);
+      if (key === "misconductTags") return (b.person.misconductTags?.length || 0) - (a.person.misconductTags?.length || 0);
+      return (b.person[key] || 0) - (a.person[key] || 0);
+    });
+
+    // RENDER TABLE
+    tableBody.innerHTML = '';
+    rows.forEach((row, idx) => {
+      const tr = document.createElement('tr');
+      let displayVal = 0;
+      if (officeType === 'president') {
+        displayVal = (row.person.scores?.powerScore || 0).toFixed(1);
+      } else {
+        displayVal = selectedCategory === "powerScore"
+          ? row.score.toFixed(1)
+          : Array.isArray(row.person[selectedCategory])
+            ? row.person[selectedCategory].length
+            : row.person[selectedCategory] || 0;
+      }
+      const officeLabel =
+        officeType === 'president'
+          ? `President (${ordinalSuffix(row.person.ordinal)})`
+          : row.person.office || (officeType === 'rep' ? 'U.S. Representative' : 'U.S. Senator');
+
+      const photoUrl = row.person.photo || 'https://via.placeholder.com/50?text=?';
+
+      tr.innerHTML = `
+        <td>${idx + 1}</td>
+        <td>
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <img src="${photoUrl}" alt="${row.person.name}" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover;" loading="lazy" onerror="this.src='https://via.placeholder.com/40?text=?';">
+            <div>
+              <a href="#" class="scorecard-link" data-name="${row.person.name.replace(/"/g, '&quot;')}">
+                ${row.person.name}
+              </a>
+              <br><small>${officeType === 'president'
+                ? `${row.person.party} • ${row.person.termStart}–${row.person.termEnd}`
+                : `${row.person.state} • ${row.person.party}${officeType === 'rep' ? ` • District ${row.person.district || 'At-Large'}` : ''}`
+              }</small>
+            </div>
+          </div>
+        </td>
+        <td>${officeLabel}</td>
+        <td>${displayVal}</td>
+      `;
+      tableBody.appendChild(tr);
+    });
+
+    // SCORECARD CLICK HANDLERS
+    tableBody.querySelectorAll('.scorecard-link').forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        const name = link.dataset.name;
+        const row = rows.find(r => r.person.name === name);
+        if (!row) return;
+        if (officeType === 'president') {
+          showScorecard(row.person);
+        } else {
+          showScorecard(row.person, row.breakdown, row.score);
+        }
+      });
+    });
+  }
+
+  // MODAL CLOSE HANDLERS
+  document.getElementById('scorecardClose')?.addEventListener('click', () => {
     const modal = document.getElementById('scorecardModal');
     modal.classList.remove('is-open', 'modal-dark');
     modal.setAttribute('aria-hidden', 'true');
-  }
-});
-// -----------------------------
-// SCORING LOGIC MODAL
-// -----------------------------
-document.getElementById('scoringLogicBtn')?.addEventListener('click', () => {
-  const modal = document.getElementById('scoringLogicModal');
-  modal.classList.add('is-open');
-  modal.setAttribute('aria-hidden', 'false');
-});
-document.getElementById('scoringLogicClose')?.addEventListener('click', () => {
-  const modal = document.getElementById('scoringLogicModal');
-  modal.classList.remove('is-open');
-  modal.setAttribute('aria-hidden', 'true');
-});
-document.getElementById('scoringLogicModal')?.addEventListener('click', e => {
-  if (e.target.id === 'scoringLogicModal') {
+  });
+  document.getElementById('scorecardModal')?.addEventListener('click', e => {
+    if (e.target.id === 'scorecardModal') {
+      const modal = document.getElementById('scorecardModal');
+      modal.classList.remove('is-open', 'modal-dark');
+      modal.setAttribute('aria-hidden', 'true');
+    }
+  });
+
+  // SCORING LOGIC MODAL
+  document.getElementById('scoringLogicBtn')?.addEventListener('click', () => {
+    const modal = document.getElementById('scoringLogicModal');
+    modal.classList.add('is-open');
+    modal.setAttribute('aria-hidden', 'false');
+  });
+  document.getElementById('scoringLogicClose')?.addEventListener('click', () => {
     const modal = document.getElementById('scoringLogicModal');
     modal.classList.remove('is-open');
     modal.setAttribute('aria-hidden', 'true');
+  });
+  document.getElementById('scoringLogicModal')?.addEventListener('click', e => {
+    if (e.target.id === 'scoringLogicModal') {
+      const modal = document.getElementById('scoringLogicModal');
+      modal.classList.remove('is-open');
+      modal.setAttribute('aria-hidden', 'true');
+    }
+  });
+
+  // GLOBAL HOOKS
+  window.renderRankingsLeaderboard = () => render().catch(console.error);
+  officeSel.addEventListener('change', () => render().catch(console.error));
+  categorySel.addEventListener('change', () => render().catch(console.error));
+
+  // Initial render
+  render().catch(console.error);
+
+  // GLOBAL MENU HELPERS
+  function renderOfficials(state, query) {
+    console.log("Render officials for:", state, query);
   }
-});
-// -----------------------------
-// GLOBAL HOOKS
-// -----------------------------
-window.renderRankingsLeaderboard = () => render().catch(console.error);
-officeSel.addEventListener('change', () => render().catch(console.error));
-categorySel.addEventListener('change', () => render().catch(console.error));
-// Initial render
-render().catch(console.error);
-// -----------------------------
-// GLOBAL MENU HELPERS
-// -----------------------------
-function renderOfficials(state, query) {
-  console.log("Render officials for:", state, query);
-}
-function showRatings() {
-  showTab('ratings');
-}
-function showCitizenship() {
-  showTab('citizenship');
-}
-function showCommunity() {
-  showTab('community');
-}
-// CLOSE initRankingsRender()
-})(); 
+  function showRatings() {
+    showTab('ratings');
+  }
+  function showCitizenship() {
+    showTab('citizenship');
+  }
+  function showCommunity() {
+    showTab('community');
+  }
+
+})(); // End of IIFE
