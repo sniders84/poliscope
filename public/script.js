@@ -3621,4 +3621,3 @@ function showCommunity() {
 }
 
 // CLOSE initRankingsRender()
-})();
