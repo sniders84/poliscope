@@ -3645,4 +3645,4 @@ async function render() {
   function showCommunity() {
     showTab('community');
   }
-} // ← THIS closes render() and fixes the block
+} // ← THIS closes render() and fixes the entire block
