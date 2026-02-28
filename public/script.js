@@ -3396,15 +3396,15 @@ document.getElementById('rate-me-btn').onclick = function() {
     modal.setAttribute('aria-hidden', 'false');
   }
 
-  // PUBLIC API FOR SCORECARD
-  window.showScorecard = function(person) {
-    if (person.office === "President") {
-      showPresidentScorecard(person);
-    } else {
-      const { composite, breakdown } = scoreLegislator(person);
-      showLegislatorScorecard(person, breakdown, composite);
-    }
-  };
+ // PUBLIC API FOR SCORECARD
+window.showScorecard = function(person) {
+  if (person.office === "President") {
+    showPresidentScorecard(person);
+  } else {
+    const { composite, breakdown } = scoreLegislator(person);
+    showLegislatorScorecard(person, breakdown, composite);
+  }
+};
 
 // MERGE RANKINGS + INFO + MISCONDUCT (UNCHANGED)
 function mergeData(rankings, info, misconduct = []) {
@@ -3426,8 +3426,6 @@ function mergeData(rankings, info, misconduct = []) {
     };
   });
 }
-
-}   // ← THIS closes initRankingsRender() — this is the missing brace
 
 // -----------------------------
 // MAIN RENDER FUNCTION
@@ -3457,7 +3455,10 @@ async function render() {
   const presidentsInfo = await presidentsInfoRes.json().catch(() => []);
 }
 
-  let data = [];
+} // ← THIS is the correct closing brace for initRankingsRender()
+
+let data = [];
+
   let officeType = '';
 
   if (selectedOffice === 'senator') {
