@@ -1,212 +1,278 @@
-// scripts/presidents-scores.js
-// Compute metric scores from narrative metrics, then powerScore, eraNormalizedScore, and rank
+// presidents-scores.js
+// Builds presidents-rankings.json from presidents-bootstrap.json using era-normalized event counts
+// and generates simple hybrid neutral-analytical summaries per category.
 
 const fs = require('fs');
 const path = require('path');
 const eras = require('./presidential-eras');
 
-const ROOT = path.join(__dirname, '..');
-const RANKINGS_PATH = path.join(ROOT, 'public', 'presidents-rankings.json');
+// ---- CONFIG ----
 
-// Weights for composite powerScore
-const METRIC_WEIGHTS = {
-  crisisManagement: 1.4,
-  domesticPolicy: 1.2,
-  economicPolicy: 1.3,
-  foreignPolicy: 1.2,
-  judicialPolicy: 1.0,
-  legislation: 1.1,
-  misconduct: 1.3 // positive weight; score already penalizes misconduct
+const INPUT_FILE = path.join(__dirname, 'presidents-bootstrap.json');
+const OUTPUT_FILE = path.join(__dirname, 'presidents-rankings.json');
+
+// Categories expected in presidents-bootstrap.json
+const CATEGORIES = [
+  'crisisManagement',
+  'domesticPolicy',
+  'economicPolicy',
+  'foreignPolicy',
+  'judicialPolicy',
+  'legislation',
+  'misconduct'
+];
+
+// Weights for overall powerScore (must sum to 1.0 ideally)
+const CATEGORY_WEIGHTS = {
+  crisisManagement: 0.18,
+  domesticPolicy: 0.17,
+  economicPolicy: 0.17,
+  foreignPolicy: 0.17,
+  judicialPolicy: 0.12,
+  legislation: 0.12,
+  misconduct: 0.07
 };
 
-function loadRankings() {
-  const raw = fs.readFileSync(RANKINGS_PATH, 'utf8');
+// ---- UTILITIES ----
+
+function loadJson(filePath) {
+  const raw = fs.readFileSync(filePath, 'utf8');
   return JSON.parse(raw);
 }
 
-// Generic event counter: counts objects in arrays and walks nested structures
-function countEvents(root) {
+function saveJson(filePath, data) {
+  fs.writeFileSync(filePath, JSON.stringify(data, null, 2), 'utf8');
+}
+
+function getEraForPresidentId(id) {
+  const pid = Number(id);
+  for (const [eraName, ids] of Object.entries(eras)) {
+    if (ids.includes(pid)) return eraName;
+  }
+  return 'unknown';
+}
+
+// Recursively count "event objects" in a category tree.
+// Assumes events are objects inside arrays or nested objects.
+function countEvents(node) {
+  if (!node || typeof node !== 'object') return 0;
+
+  // If this looks like a leaf event (has title/description/date/etc.), count as 1
+  if (
+    !Array.isArray(node) &&
+    (node.title || node.name || node.description || node.summary || node.date)
+  ) {
+    return 1;
+  }
+
   let count = 0;
 
-  function walk(node) {
-    if (!node) return;
-
-    if (Array.isArray(node)) {
-      node.forEach(el => {
-        if (el && typeof el === 'object') {
-          count += 1;      // each array element = one event
-          walk(el);        // also walk nested content
-        }
-      });
-    } else if (node && typeof node === 'object') {
-      Object.values(node).forEach(v => walk(v));
+  if (Array.isArray(node)) {
+    for (const item of node) {
+      count += countEvents(item);
+    }
+  } else {
+    for (const value of Object.values(node)) {
+      count += countEvents(value);
     }
   }
 
-  walk(root);
   return count;
 }
 
-// First pass: compute raw event counts and track max per category
-function computeRawCounts(presidents) {
-  const maxCounts = {
-    crisisManagement: 0,
-    domesticPolicy: 0,
-    economicPolicy: 0,
-    foreignPolicy: 0,
-    judicialPolicy: 0,
-    legislation: 0,
-    misconduct: 0
+// Build a map: era -> { category -> { min, max } } based on raw event counts
+function buildEraCategoryStats(presidents) {
+  const stats = {};
+
+  for (const [id, pres] of Object.entries(presidents)) {
+    const era = pres.era || getEraForPresidentId(id);
+    if (!stats[era]) stats[era] = {};
+
+    for (const category of CATEGORIES) {
+      const rawCount = pres._rawEventCounts[category] || 0;
+      if (!stats[era][category]) {
+        stats[era][category] = { min: rawCount, max: rawCount };
+      } else {
+        stats[era][category].min = Math.min(stats[era][category].min, rawCount);
+        stats[era][category].max = Math.max(stats[era][category].max, rawCount);
+      }
+    }
+  }
+
+  return stats;
+}
+
+// Normalize a raw count to 0–10 within an era for a given category
+function normalizeCountToScore(rawCount, eraStats, category) {
+  const stats = eraStats[category];
+  if (!stats) return 5.0; // fallback neutral
+
+  const { min, max } = stats;
+  if (min === max) return 5.0; // everyone same -> neutral
+
+  const normalized = (rawCount - min) / (max - min);
+  return +(normalized * 10).toFixed(2);
+}
+
+// Generate a simple hybrid neutral-analytical summary for a category
+function generateCategorySummary(president, category, score, eraStats, presidentsInEra) {
+  const name = president.name || `President #${president.id}`;
+  const era = president.era || 'their era';
+  const rawCount = president._rawEventCounts[category] || 0;
+  const stats = eraStats[era] && eraStats[era][category];
+
+  let relativePhrase = 'a typical level of activity compared with others in the same era';
+  if (stats && stats.max !== stats.min) {
+    const normalized = (rawCount - stats.min) / (stats.max - stats.min);
+    if (normalized >= 0.75) {
+      relativePhrase = 'a comparatively high level of activity within their era';
+    } else if (normalized <= 0.25) {
+      relativePhrase = 'a comparatively limited level of activity within their era';
+    }
+  }
+
+  const categoryLabelMap = {
+    crisisManagement: 'crisis management',
+    domesticPolicy: 'domestic policy',
+    economicPolicy: 'economic policy',
+    foreignPolicy: 'foreign policy',
+    judicialPolicy: 'judicial and constitutional policy',
+    legislation: 'legislative leadership',
+    misconduct: 'ethical and legal misconduct'
   };
 
-  presidents.forEach(p => {
-    const m = p.metrics || {};
+  const label = categoryLabelMap[category] || category;
 
-    const crisisManagement = countEvents(m.crisisManagement);
-    const domesticPolicy = countEvents(m.domesticPolicy);
-    const economicPolicy = countEvents(m.economicPolicy);
-    const foreignPolicy = countEvents(m.foreignPolicy);
-    const judicialPolicy = countEvents(m.judicialPolicy);
-    const legislation = countEvents(m.legislation);
-    const misconduct = countEvents(m.misconduct);
+  const eraPresidents = presidentsInEra[era] || [];
+  const eraCount = eraPresidents.length || 1;
 
-    p._rawCounts = {
-      crisisManagement,
-      domesticPolicy,
-      economicPolicy,
-      foreignPolicy,
-      judicialPolicy,
-      legislation,
-      misconduct
-    };
-
-    Object.keys(maxCounts).forEach(key => {
-      if (p._rawCounts[key] > maxCounts[key]) {
-        maxCounts[key] = p._rawCounts[key];
-      }
-    });
-  });
-
-  return maxCounts;
+  return [
+    `${name}'s ${label} score reflects the number and significance of recorded events in this area during their time in office.`,
+    `In this category, they show ${relativePhrase}, based on how their event count compares with approximately ${eraCount} presidents in the ${era} era.`,
+    `The ${label} score of ${score.toFixed(1)} out of 10 is derived from an era-normalized comparison of event density rather than a simple raw total.`,
+    `This approach is designed to account for differences in historical context, institutional capacity, and the volume of available records across eras.`,
+    `Overall, the score situates ${name} as ${relativePhrase.replace('a ', '')} when evaluated against peers facing broadly similar structural and historical conditions.`
+  ].join(' ');
 }
 
-function normalizeCount(count, max) {
-  if (!max || max <= 0) return 0;
-  const score = (count / max) * 10;
-  return score > 10 ? 10 : score;
+// Compute weighted powerScore and eraNormalizedScore
+function computeOverallScores(categoryScores) {
+  let weightedSum = 0;
+  let weightTotal = 0;
+
+  for (const [category, score] of Object.entries(categoryScores)) {
+    const w = CATEGORY_WEIGHTS[category] || 0;
+    weightedSum += score * w;
+    weightTotal += w;
+  }
+
+  if (weightTotal === 0) return { powerScore: 0, eraNormalizedScore: 0 };
+
+  const base = weightedSum / weightTotal; // 0–10
+  const powerScore = +(base * 10).toFixed(2); // 0–100
+  const eraNormalizedScore = +base.toFixed(2); // keep 0–10 as well
+
+  return { powerScore, eraNormalizedScore };
 }
 
-// Second pass: convert raw counts into 0–10 scores
-function applyNarrativeScores(presidents, maxCounts) {
-  presidents.forEach(p => {
-    const rc = p._rawCounts || {};
+// ---- MAIN PIPELINE ----
 
-    const crisisManagement = normalizeCount(rc.crisisManagement || 0, maxCounts.crisisManagement);
-    const domesticPolicy = normalizeCount(rc.domesticPolicy || 0, maxCounts.domesticPolicy);
-    const economicPolicy = normalizeCount(rc.economicPolicy || 0, maxCounts.economicPolicy);
-    const foreignPolicy = normalizeCount(rc.foreignPolicy || 0, maxCounts.foreignPolicy);
-    const judicialPolicy = normalizeCount(rc.judicialPolicy || 0, maxCounts.judicialPolicy);
-    const legislation = normalizeCount(rc.legislation || 0, maxCounts.legislation);
+function buildRankings() {
+  const bootstrap = loadJson(INPUT_FILE);
 
-    // Misconduct: more events → lower score; no misconduct → 10
-    let misconduct;
-    if (maxCounts.misconduct <= 0) {
-      misconduct = 10;
-    } else {
-      const rawMis = normalizeCount(rc.misconduct || 0, maxCounts.misconduct);
-      misconduct = 10 - rawMis;
-      if (misconduct < 0) misconduct = 0;
+  // Expect bootstrap as object keyed by president id
+  // If it's an array, convert to object keyed by id
+  let presidents = {};
+  if (Array.isArray(bootstrap)) {
+    for (const p of bootstrap) {
+      if (!p.id) continue;
+      presidents[String(p.id)] = p;
+    }
+  } else {
+    presidents = bootstrap;
+  }
+
+  // Attach era and raw event counts
+  for (const [id, pres] of Object.entries(presidents)) {
+    pres.id = pres.id || Number(id);
+    pres.era = pres.era || getEraForPresidentId(id);
+
+    pres._rawEventCounts = {};
+    for (const category of CATEGORIES) {
+      const node = pres[category] || {};
+      pres._rawEventCounts[category] = countEvents(node);
+    }
+  }
+
+  // Build era/category stats
+  const eraStats = buildEraCategoryStats(presidents);
+
+  // Build helper: presidents per era
+  const presidentsInEra = {};
+  for (const [id, pres] of Object.entries(presidents)) {
+    const era = pres.era || 'unknown';
+    if (!presidentsInEra[era]) presidentsInEra[era] = [];
+    presidentsInEra[era].push(pres);
+  }
+
+  // Compute category scores, summaries, and overall scores
+  for (const [id, pres] of Object.entries(presidents)) {
+    const era = pres.era || getEraForPresidentId(id);
+    const categoryScores = {};
+    const summaries = {};
+
+    for (const category of CATEGORIES) {
+      const rawCount = pres._rawEventCounts[category] || 0;
+      const score = normalizeCountToScore(rawCount, eraStats[era] || {}, category);
+      categoryScores[category] = score;
+
+      summaries[category] = generateCategorySummary(
+        pres,
+        category,
+        score,
+        eraStats,
+        presidentsInEra
+      );
     }
 
-    if (!p.scores) p.scores = {};
+    const { powerScore, eraNormalizedScore } = computeOverallScores(categoryScores);
 
-    p.scores.crisisManagement = crisisManagement;
-    p.scores.domesticPolicy = domesticPolicy;
-    p.scores.economicPolicy = economicPolicy;
-    p.scores.foreignPolicy = foreignPolicy;
-    p.scores.judicialPolicy = judicialPolicy;
-    p.scores.legislation = legislation;
-    p.scores.misconduct = misconduct;
-  });
-
-  // Clean up temp raw counts
-  presidents.forEach(p => {
-    delete p._rawCounts;
-  });
-}
-
-function computePowerScore(scores) {
-  let num = 0;
-  let den = 0;
-
-  for (const [metric, weight] of Object.entries(METRIC_WEIGHTS)) {
-    const value = scores[metric] || 0;
-    num += value * weight;
-    den += Math.abs(weight);
+    pres.scores = categoryScores;
+    pres.summaries = summaries;
+    pres.powerScore = powerScore;
+    pres.eraNormalizedScore = eraNormalizedScore;
   }
 
-  return den === 0 ? 0 : num / den;
-}
+  // Rank presidents by powerScore (desc), tie-breaker: eraNormalizedScore, then id
+  const sorted = Object.values(presidents).sort((a, b) => {
+    if (b.powerScore !== a.powerScore) return b.powerScore - a.powerScore;
+    if (b.eraNormalizedScore !== a.eraNormalizedScore) {
+      return b.eraNormalizedScore - a.eraNormalizedScore;
+    }
+    return a.id - b.id;
+  });
 
-function buildEraMap() {
-  const map = new Map();
-  for (const [eraName, ids] of Object.entries(eras)) {
-    ids.forEach(id => map.set(id, eraName));
+  sorted.forEach((pres, index) => {
+    pres.rank = index + 1;
+  });
+
+  // Rebuild object keyed by id for output
+  const output = {};
+  for (const pres of sorted) {
+    const id = String(pres.id);
+    // Remove internal helper
+    delete pres._rawEventCounts;
+    output[id] = pres;
   }
-  return map;
+
+  saveJson(OUTPUT_FILE, output);
 }
 
-function computeEraNormalizedScores(presidents, eraMap) {
-  const byEra = {};
-  presidents.forEach(p => {
-    const era = eraMap.get(p.id) || 'unknown';
-    if (!byEra[era]) byEra[era] = [];
-    byEra[era].push(p);
-  });
-
-  for (const list of Object.values(byEra)) {
-    const scores = list.map(p => p.scores.powerScore);
-    const mean = scores.reduce((a, b) => a + b, 0) / (scores.length || 1);
-    const variance =
-      scores.reduce((a, b) => a + Math.pow(b - mean, 2), 0) / (scores.length || 1);
-    const std = Math.sqrt(variance) || 1;
-
-    list.forEach(p => {
-      p.scores.eraNormalizedScore = (p.scores.powerScore - mean) / std;
-    });
-  }
+// Run if executed directly
+if (require.main === module) {
+  buildRankings();
 }
 
-function main() {
-  const rankings = loadRankings();
-  const eraMap = buildEraMap();
-
-  // 1) Compute raw narrative event counts and max per category
-  const maxCounts = computeRawCounts(rankings);
-
-  // 2) Convert narrative counts into 0–10 scores
-  applyNarrativeScores(rankings, maxCounts);
-
-  // 3) Compute powerScore for each president
-  rankings.forEach(p => {
-    p.scores.powerScore = computePowerScore(p.scores);
-  });
-
-  // 4) Compute era-normalized scores
-  computeEraNormalizedScores(rankings, eraMap);
-
-  // 5) Rank by powerScore (desc)
-  const sorted = [...rankings].sort((a, b) => b.scores.powerScore - a.scores.powerScore);
-  sorted.forEach((p, idx) => {
-    p.scores.rank = idx + 1;
-  });
-
-  // 6) Write back in original id order but with updated scores
-  const byId = new Map(sorted.map(p => [p.id, p]));
-  const final = rankings.map(p => byId.get(p.id));
-
-  fs.writeFileSync(RANKINGS_PATH, JSON.stringify(final, null, 2), 'utf8');
-  console.log('presidents-scores: computed narrative-based scores, powerScore, eraNormalizedScore, and rank');
-}
-
-main();
+module.exports = {
+  buildRankings
+};
