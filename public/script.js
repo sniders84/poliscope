@@ -3427,7 +3427,7 @@ document.getElementById('rate-me-btn').onclick = function() {
     });
   }
 
- // -----------------------------
+// -----------------------------
 // MAIN RENDER FUNCTION
 // -----------------------------
 // INSERTED HERE — this fixes the "ordinalSuffix is not defined" crash
@@ -3441,8 +3441,6 @@ async function render() {
   const selectedOffice = officeSel.value.toLowerCase();
   const selectedCategory = categorySel.value;
 
-  console.log('Render called for office:', selectedOffice, 'category:', selectedCategory);
-
   const senatorsRes = await fetch('/senators-rankings.json');
   const senatorsInfoRes = await fetch('/senators.json');
   const repsRes = await fetch('/representatives-rankings.json');
@@ -3455,8 +3453,6 @@ async function render() {
   const repsInfo = await repsInfoRes.json().catch(() => []);
   const presidentsRankings = await presidentsRes.json().catch(() => []);
 
-  console.log('Loaded presidents data:', presidentsRankings.length, 'entries');
-
   let data = [];
   let officeType = '';
 
@@ -3467,16 +3463,12 @@ async function render() {
     data = mergeData(repsRankings, repsInfo);
     officeType = 'rep';
   } else if (selectedOffice === 'president') {
-    // Use array or convert object to array
-    const rawPres = Array.isArray(presidentsRankings) ? presidentsRankings : Object.values(presidentsRankings);
-    data = rawPres.map(p => ({
+    data = presidentsRankings.map(p => ({
       ...p,
       office: "President",
-      ordinal: p.id || 1,
-      photo: p.photo || 'https://via.placeholder.com/80?text=President'
+      ordinal: p.id
     }));
     officeType = 'president';
-    console.log('President data prepared:', data.length, 'entries');
   } else {
     tableBody.innerHTML = '<tr><td colspan="5">Select an office to view rankings</td></tr>';
     return;
@@ -3489,11 +3481,9 @@ async function render() {
 
   const rows = data.map(person => {
     if (officeType === 'president') {
-      const score = person.scores?.powerScore ?? 0;
-      console.log('President row:', person.name, 'score:', score);
       return {
         person,
-        score,
+        score: person.scores?.powerScore || 0,
         breakdown: null
       };
     } else {
@@ -3510,7 +3500,7 @@ async function render() {
   rows.sort((a, b) => {
     const key = selectedCategory;
     if (officeType === 'president') {
-      return (b.score || 0) - (a.score || 0);
+      return (b.person.scores?.powerScore || 0) - (a.person.scores?.powerScore || 0);
     }
     if (key === "powerScore") return b.score - a.score;
     if (key === "committees") return (b.person.committees?.length || 0) - (a.person.committees?.length || 0);
@@ -3524,7 +3514,7 @@ async function render() {
     const tr = document.createElement('tr');
     let displayVal = 0;
     if (officeType === 'president') {
-      displayVal = (row.score || 0).toFixed(1);
+      displayVal = (row.person.scores?.powerScore || 0).toFixed(1);
     } else {
       displayVal = selectedCategory === "powerScore"
         ? row.score.toFixed(1)
