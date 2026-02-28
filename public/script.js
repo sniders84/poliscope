@@ -3646,3 +3646,4 @@ async function render() {
     showTab('community');
   }
 } // ← THIS closes render() and fixes the entire block
+} // FINAL CLOSING BRACE — closes the Rankings wrapper
