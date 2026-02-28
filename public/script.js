@@ -3417,96 +3417,6 @@ async function render() {
   const repsRes = await fetch('/representatives-rankings.json');
   const repsInfoRes = await fetch('/housereps.json');
 
-  // Presidents — merged dataset
-  const presidentsRes = await fetch('/presidents-rankings.json');
-
-  const senatorsRankings = await senatorsRes.json();
-  const senatorsInfo = await senatorsInfoRes.json();
-
-  // FIXED — correct fetch usage
-  const repsRankings = await repsRes.json();
-  const repsInfo = await repsInfoRes.json();
-
-  // presidents-rankings.json is an OBJECT keyed by ID
-  const presidentsRankingsObj = await presidentsRes.json();
-  const presidentsRankings = Object.values(presidentsRankingsObj);
-
-  let data = [];
-  let officeType = '';
-
-  if (selectedOffice === 'senator') {
-    data = mergeData(senatorsRankings, senatorsInfo);
-    officeType = 'senator';
-
-  } else if (selectedOffice === 'u.s. representative') {
-    data = mergeData(repsRankings, repsInfo);
-    officeType = 'rep';
-
-  } else if (selectedOffice === 'president') {
-    data = presidentsRankings.map(p => ({
-      ...p,
-      office: "President",
-      ordinal: p.id
-    }));
-    officeType = 'president';
-
-  } else {
-    tableBody.innerHTML = '<tr><td colspan="5">Select an office to view rankings</td></tr>';
-    return;
-  }
-
-  if (!Array.isArray(data) || data.length === 0) {
-    tableBody.innerHTML = '<tr><td colspan="5">No data loaded yet</td></tr>';
-    return;
-  }
-
-  const rows = data.map(person => {
-    if (officeType === 'president') {
-      return {
-        person,
-        score: person.powerScore || person.scores?.powerScore || 0,
-        breakdown: null
-      };
-    } else {
-      const { composite, breakdown } = scoreLegislator(person);
-      return {
-        person,
-        score: composite,
-        breakdown
-      };
-    }
-  });
-
-  // -----------------------------
-  // SORTING
-  // -----------------------------
-  rows.sort((a, b) => {
-    if (officeType === 'president') {
-      return (b.person.powerScore || 0) - (a.person.powerScore || 0);
-    }
-
-    const key = selectedCategory;
-
-    if (key === "powerScore") return b.score - a.score;
-    if (key === "committees") return (b.person.committees?.length || 0) - (a.person.committees?.length || 0);
-    if (key === "misconductTags") return (b.person.misconductTags?.length || 0) - (a.person.misconductTags?.length || 0);
-
-    return (b.person[key] || 0) - (a.person[key] || 0);
-  });
-
-// -----------------------------
-// MAIN RENDER FUNCTION
-// -----------------------------
-async function render() {
-  const selectedOffice = officeSel.value.toLowerCase();
-  const selectedCategory = categorySel.value;
-
-  // Legislator fetches
-  const senatorsRes = await fetch('/senators-rankings.json');
-  const senatorsInfoRes = await fetch('/senators.json');
-  const repsRes = await fetch('/representatives-rankings.json');
-  const repsInfoRes = await fetch('/housereps.json');
-
   // Presidents
   const presidentsRes = await fetch('/presidents-rankings.json');
 
@@ -3644,4 +3554,3 @@ async function render() {
     });
   });
 }
-
