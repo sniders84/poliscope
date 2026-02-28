@@ -3406,31 +3406,32 @@ document.getElementById('rate-me-btn').onclick = function() {
     }
   };
 
-  // MERGE RANKINGS + INFO + MISCONDUCT (UNCHANGED)
-  function mergeData(rankings, info, misconduct = []) {
-    return rankings.map(r => {
-      let match = info.find(i => i.slug === r.slug);
-      if (!match && r.bioguideId) {
-        match = info.find(i => i.bioguideId === r.bioguideId);
-      }
-      let misconductEntry = misconduct.find(m => m.person === r.bioguideId);
-      return {
-        ...r,
-        ...match,
-        ...(misconductEntry ? {
-          misconductCount: misconductEntry.misconductCount || 1,
-          misconductTags: misconductEntry.tags || [],
-          misconductTexts: misconductEntry.texts || [],
-          misconductConsequences: misconductEntry.consequences || []
-        } : {})
-      };
-    });
-  }
+// MERGE RANKINGS + INFO + MISCONDUCT (UNCHANGED)
+function mergeData(rankings, info, misconduct = []) {
+  return rankings.map(r => {
+    let match = info.find(i => i.slug === r.slug);
+    if (!match && r.bioguideId) {
+      match = info.find(i => i.bioguideId === r.bioguideId);
+    }
+    let misconductEntry = misconduct.find(m => m.person === r.bioguideId);
+    return {
+      ...r,
+      ...match,
+      ...(misconductEntry ? {
+        misconductCount: misconductEntry.misconductCount || 1,
+        misconductTags: misconductEntry.tags || [],
+        misconductTexts: misconductEntry.texts || [],
+        misconductConsequences: misconductEntry.consequences || []
+      } : {})
+    };
+  });
+}
+
+}   // ← THIS closes initRankingsRender() — this is the missing brace
 
 // -----------------------------
 // MAIN RENDER FUNCTION
 // -----------------------------
-// INSERTED HERE — this fixes the "ordinalSuffix is not defined" crash
 function ordinalSuffix(n) {
   const s = ["th", "st", "nd", "rd"];
   const v = n % 100;
