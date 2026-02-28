@@ -3356,201 +3356,345 @@ document.getElementById('rate-me-btn').onclick = function() {
     modal.setAttribute('aria-hidden', 'false');
   }
 
- // -----------------------------
-// PUBLIC API FOR SCORECARD
-// -----------------------------
-window.showScorecard = function(person) {
-  if (person.office === "President") {
-    showPresidentScorecard(person);
-  } else {
-    const { composite, breakdown } = scoreLegislator(person);
-    showLegislatorScorecard(person, breakdown, composite);
-  }
-};
+ // ============================================================
+// RANKINGS ENGINE — COMPLETE, CLEAN, FULL REPLACEMENT BLOCK
+// ============================================================
 
-// -----------------------------
-// MERGE RANKINGS + INFO + MISCONDUCT
-// (Used only for legislators — unchanged)
-// -----------------------------
-function mergeData(rankings, info, misconduct = []) {
-  return rankings.map(r => {
-    let match = info.find(i => i.slug === r.slug);
-    if (!match && r.bioguideId) {
-      match = info.find(i => i.bioguideId === r.bioguideId);
+(function initRankingsRender() {
+
+  const officeSel = document.getElementById('officeSelect');
+  const categorySel = document.getElementById('categorySelect');
+  const tableBody = document.getElementById('rankingsTableBody');
+
+  // -----------------------------
+  // CATEGORY VISIBILITY
+  // -----------------------------
+  function updateCategoryVisibility() {
+    const selectedOffice = officeSel.value.toLowerCase();
+    const isPresident = selectedOffice === 'president';
+
+    document.querySelectorAll('.legislator-only').forEach(el => {
+      el.style.display = isPresident ? 'none' : '';
+    });
+
+    if (isPresident) {
+      categorySel.value = 'powerScore';
     }
-    let misconductEntry = misconduct.find(m => m.person === r.bioguideId);
+  }
+
+  officeSel.addEventListener('change', updateCategoryVisibility);
+  updateCategoryVisibility();
+
+  // -----------------------------
+  // SCORING HELPERS
+  // -----------------------------
+  function ordinalSuffix(n) {
+    const s = ["th", "st", "nd", "rd"];
+    const v = n % 100;
+    return n + (s[(v - 20) % 10] || s[v] || s[0]);
+  }
+
+  function scoreLegislator(person) {
+    const committees = person.committees?.length || 0;
+    const bills = person.billsSponsored || 0;
+    const caucuses = person.caucuses?.length || 0;
+    const misconduct = person.misconductCount || 0;
+
+    const composite =
+      committees * 2 +
+      bills * 1.5 +
+      caucuses * 1 -
+      misconduct * 3;
 
     return {
-      ...r,
-      ...match,
-      ...(misconductEntry ? {
-        misconductCount: misconductEntry.misconductCount || 1,
-        misconductTags: misconductEntry.tags || [],
-        misconductTexts: misconductEntry.texts || [],
-        misconductConsequences: misconductEntry.consequences || []
-      } : {})
+      composite,
+      breakdown: {
+        committees,
+        bills,
+        caucuses,
+        misconduct
+      }
     };
-  });
-}
-
-// -----------------------------
-// MAIN RENDER FUNCTION
-// -----------------------------
-
-// Fixes ordinalSuffix crash
-function ordinalSuffix(n) {
-  const s = ["th", "st", "nd", "rd"];
-  const v = n % 100;
-  return n + (s[(v - 20) % 10] || s[v] || s[0]);
-}
-
-// -----------------------------
-// MAIN RENDER FUNCTION
-// -----------------------------
-async function render() {
-  const selectedOffice = officeSel.value.toLowerCase();
-  const selectedCategory = categorySel.value;
-
-  // Legislator fetches
-  const senatorsRes = await fetch('/senators-rankings.json');
-  const senatorsInfoRes = await fetch('/senators.json');
-  const repsRes = await fetch('/representatives-rankings.json');
-  const repsInfoRes = await fetch('/housereps.json');
-
-  // Presidents
-  const presidentsRes = await fetch('/presidents-rankings.json');
-
-  const senatorsRankings = await senatorsRes.json();
-  const senatorsInfo = await senatorsInfoRes.json();
-  const repsRankings = await repsRes.json();
-  const repsInfo = await repsInfoRes.json();
-
-  const presidentsRankingsObj = await presidentsRes.json();
-  const presidentsRankings = Object.values(presidentsRankingsObj);
-
-  let data = [];
-  let officeType = '';
-
-  if (selectedOffice === 'senator') {
-    data = mergeData(senatorsRankings, senatorsInfo);
-    officeType = 'senator';
-
-  } else if (selectedOffice === 'u.s. representative') {
-    data = mergeData(repsRankings, repsInfo);
-    officeType = 'rep';
-
-  } else if (selectedOffice === 'president') {
-    data = presidentsRankings.map(p => ({
-      ...p,
-      office: "President",
-      ordinal: p.id
-    }));
-    officeType = 'president';
-
-  } else {
-    tableBody.innerHTML = '<tr><td colspan="5">Select an office to view rankings</td></tr>';
-    return;
-  }
-
-  if (!Array.isArray(data) || data.length === 0) {
-    tableBody.innerHTML = '<tr><td colspan="5">No data loaded yet</td></tr>';
-    return;
   }
 
   // -----------------------------
-  // BUILD ROWS
+  // SCORECARD RENDERING
   // -----------------------------
-  const rows = data.map(person => {
-    if (officeType === 'president') {
-      return {
-        person,
-        score: person.powerScore || person.scores?.powerScore || 0,
-        breakdown: null
-      };
+  function showPresidentScorecard(person) {
+    const modal = document.getElementById('scorecardModal');
+    const body = document.getElementById('scorecardContent');
+
+    body.innerHTML = `
+      <h2>${person.name}</h2>
+      <p><strong>President</strong> (${ordinalSuffix(person.ordinal)})</p>
+      <p><strong>Party:</strong> ${person.party}</p>
+      <p><strong>Term:</strong> ${person.termStart} – ${person.termEnd}</p>
+      <p><strong>Power Score:</strong> ${person.powerScore?.toFixed(1) || 0}</p>
+    `;
+
+    modal.classList.add('is-open', 'modal-dark');
+    modal.setAttribute('aria-hidden', 'false');
+  }
+
+  function showLegislatorScorecard(person, breakdown, composite) {
+    const modal = document.getElementById('scorecardModal');
+    const body = document.getElementById('scorecardContent');
+
+    body.innerHTML = `
+      <h2>${person.name}</h2>
+      <p><strong>${person.office}</strong> — ${person.state}</p>
+      <p><strong>Party:</strong> ${person.party}</p>
+      <p><strong>Power Score:</strong> ${composite.toFixed(1)}</p>
+
+      <h3>Breakdown</h3>
+      <ul>
+        <li>Committees: ${breakdown.committees}</li>
+        <li>Bills Sponsored: ${breakdown.bills}</li>
+        <li>Caucuses: ${breakdown.caucuses}</li>
+        <li>Misconduct Penalty: -${breakdown.misconduct * 3}</li>
+      </ul>
+    `;
+
+    modal.classList.add('is-open', 'modal-dark');
+    modal.setAttribute('aria-hidden', 'false');
+  }
+
+  window.showScorecard = function(person) {
+    if (person.office === "President") {
+      showPresidentScorecard(person);
     } else {
       const { composite, breakdown } = scoreLegislator(person);
+      showLegislatorScorecard(person, breakdown, composite);
+    }
+  };
+
+  // -----------------------------
+  // MERGE RANKINGS + INFO
+  // -----------------------------
+  function mergeData(rankings, info, misconduct = []) {
+    return rankings.map(r => {
+      let match = info.find(i => i.slug === r.slug);
+      if (!match && r.bioguideId) {
+        match = info.find(i => i.bioguideId === r.bioguideId);
+      }
+      let misconductEntry = misconduct.find(m => m.person === r.bioguideId);
+
       return {
-        person,
-        score: composite,
-        breakdown
+        ...r,
+        ...match,
+        ...(misconductEntry ? {
+          misconductCount: misconductEntry.misconductCount || 1,
+          misconductTags: misconductEntry.tags || [],
+          misconductTexts: misconductEntry.texts || [],
+          misconductConsequences: misconductEntry.consequences || []
+        } : {})
       };
-    }
-  });
+    });
+  }
 
-  // -----------------------------
-  // SORTING
-  // -----------------------------
-  rows.sort((a, b) => {
-    if (officeType === 'president') {
-      return (b.person.powerScore || 0) - (a.person.powerScore || 0);
-    }
+  // ============================================================
+  // MAIN RENDER FUNCTION — CLEAN, FINAL, COMPLETE
+  // ============================================================
+  async function render() {
+    const selectedOffice = officeSel.value.toLowerCase();
+    const selectedCategory = categorySel.value;
 
-    const key = selectedCategory;
+    const senatorsRes = await fetch('/senators-rankings.json');
+    const senatorsInfoRes = await fetch('/senators.json');
+    const repsRes = await fetch('/representatives-rankings.json');
+    const repsInfoRes = await fetch('/housereps.json');
+    const presidentsRes = await fetch('/presidents-rankings.json');
 
-    if (key === "powerScore") return b.score - a.score;
-    if (key === "committees") return (b.person.committees?.length || 0) - (a.person.committees?.length || 0);
-    if (key === "misconductTags") return (b.person.misconductTags?.length || 0) - (a.person.misconductTags?.length || 0);
+    const senatorsRankings = await senatorsRes.json();
+    const senatorsInfo = await senatorsInfoRes.json();
+    const repsRankings = await repsRes.json();
+    const repsInfo = await repsInfoRes.json();
+    const presidentsRankingsObj = await presidentsRes.json();
+    const presidentsRankings = Object.values(presidentsRankingsObj);
 
-    return (b.person[key] || 0) - (a.person[key] || 0);
-  });
+    let data = [];
+    let officeType = '';
 
-  // -----------------------------
-  // RENDER TABLE
-  // -----------------------------
-  tableBody.innerHTML = '';
-  rows.forEach((row, idx) => {
-    const tr = document.createElement('tr');
+    if (selectedOffice === 'senator') {
+      data = mergeData(senatorsRankings, senatorsInfo);
+      officeType = 'senator';
 
-    let displayVal = 0;
+    } else if (selectedOffice === 'u.s. representative') {
+      data = mergeData(repsRankings, repsInfo);
+      officeType = 'rep';
 
-    if (officeType === 'president') {
-      displayVal = (row.person.powerScore || 0).toFixed(1);
+    } else if (selectedOffice === 'president') {
+      data = presidentsRankings.map(p => ({
+        ...p,
+        office: "President",
+        ordinal: p.id
+      }));
+      officeType = 'president';
+
     } else {
-      displayVal = selectedCategory === "powerScore"
-        ? row.score.toFixed(1)
-        : Array.isArray(row.person[selectedCategory])
-          ? row.person[selectedCategory].length
-          : row.person[selectedCategory] || 0;
+      tableBody.innerHTML = '<tr><td colspan="5">Select an office to view rankings</td></tr>';
+      return;
     }
 
-    const officeLabel =
-      officeType === 'president'
-        ? `President (${ordinalSuffix(row.person.ordinal)})`
-        : row.person.office || (officeType === 'rep' ? 'U.S. Representative' : 'U.S. Senator');
+    if (!Array.isArray(data) || data.length === 0) {
+      tableBody.innerHTML = '<tr><td colspan="5">No data loaded yet</td></tr>';
+      return;
+    }
 
-    tr.innerHTML = `
-      <td>${idx + 1}</td>
-      <td>
-        <a href="#" class="scorecard-link" data-id="${row.person.id}">
-          ${row.person.name}
-        </a>
-        <br><small>${officeType === 'president'
-          ? `${row.person.party} • ${row.person.termStart}–${row.person.termEnd}`
-          : `${row.person.state} • ${row.person.party}${officeType === 'rep' ? ` • District ${row.person.district || 'At-Large'}` : ''}`
-        }</small>
-      </td>
-      <td>${officeLabel}</td>
-      <td>${displayVal}</td>
-    `;
-    tableBody.appendChild(tr);
-  });
-
-  // -----------------------------
-  // SCORECARD CLICK HANDLERS
-  // -----------------------------
-  tableBody.querySelectorAll('.scorecard-link').forEach(link => {
-    link.addEventListener('click', e => {
-      e.preventDefault();
-      const id = Number(link.dataset.id);
-      const row = rows.find(r => r.person.id === id);
-
-      if (!row) return;
-
+    const rows = data.map(person => {
       if (officeType === 'president') {
-        showScorecard(row.person);
+        return {
+          person,
+          score: person.powerScore || person.scores?.powerScore || 0,
+          breakdown: null
+        };
       } else {
-        showScorecard(row.person, row.breakdown, row.score);
+        const { composite, breakdown } = scoreLegislator(person);
+        return {
+          person,
+          score: composite,
+          breakdown
+        };
       }
     });
+
+    rows.sort((a, b) => {
+      if (officeType === 'president') {
+        return (b.person.powerScore || 0) - (a.person.powerScore || 0);
+      }
+
+      const key = selectedCategory;
+
+      if (key === "powerScore") return b.score - a.score;
+      if (key === "committees") return (b.person.committees?.length || 0) - (a.person.committees?.length || 0);
+      if (key === "misconductTags") return (b.person.misconductTags?.length || 0) - (a.person.misconductTags?.length || 0);
+
+      return (b.person[key] || 0) - (a.person[key] || 0);
+    });
+
+    tableBody.innerHTML = '';
+    rows.forEach((row, idx) => {
+      const tr = document.createElement('tr');
+
+      let displayVal = 0;
+
+      if (officeType === 'president') {
+        displayVal = (row.person.powerScore || 0).toFixed(1);
+      } else {
+        displayVal = selectedCategory === "powerScore"
+          ? row.score.toFixed(1)
+          : Array.isArray(row.person[selectedCategory])
+            ? row.person[selectedCategory].length
+            : row.person[selectedCategory] || 0;
+      }
+
+      const officeLabel =
+        officeType === 'president'
+          ? `President (${ordinalSuffix(row.person.ordinal)})`
+          : row.person.office || (officeType === 'rep' ? 'U.S. Representative' : 'U.S. Senator');
+
+      tr.innerHTML = `
+        <td>${idx + 1}</td>
+        <td>
+          <a href="#" class="scorecard-link" data-id="${row.person.id}">
+            ${row.person.name}
+          </a>
+          <br><small>${officeType === 'president'
+            ? `${row.person.party} • ${row.person.termStart}–${row.person.termEnd}`
+            : `${row.person.state} • ${row.person.party}${officeType === 'rep' ? ` • District ${row.person.district || 'At-Large'}` : ''}`
+          }</small>
+        </td>
+        <td>${officeLabel}</td>
+        <td>${displayVal}</td>
+      `;
+      tableBody.appendChild(tr);
+    });
+
+    tableBody.querySelectorAll('.scorecard-link').forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        const id = Number(link.dataset.id);
+        const row = rows.find(r => r.person.id === id);
+
+        if (!row) return;
+
+        if (officeType === 'president') {
+          showScorecard(row.person);
+        } else {
+          showScorecard(row.person, row.breakdown, row.score);
+        }
+      });
+    });
+  }
+
+  // -----------------------------
+  // MODAL CLOSE HANDLERS
+  // -----------------------------
+  document.getElementById('scorecardClose')?.addEventListener('click', () => {
+    const modal = document.getElementById('scorecardModal');
+    modal.classList.remove('is-open', 'modal-dark');
+    modal.setAttribute('aria-hidden', 'true');
   });
-}
+
+  document.getElementById('scorecardModal')?.addEventListener('click', e => {
+    if (e.target.id === 'scorecardModal') {
+      const modal = document.getElementById('scorecardModal');
+      modal.classList.remove('is-open', 'modal-dark');
+      modal.setAttribute('aria-hidden', 'true');
+    }
+  });
+
+  // -----------------------------
+  // SCORING LOGIC MODAL
+  // -----------------------------
+  document.getElementById('scoringLogicBtn')?.addEventListener('click', () => {
+    const modal = document.getElementById('scoringLogicModal');
+    modal.classList.add('is-open');
+    modal.setAttribute('aria-hidden', 'false');
+  });
+
+  document.getElementById('scoringLogicClose')?.addEventListener('click', () => {
+    const modal = document.getElementById('scoringLogicModal');
+    modal.classList.remove('is-open');
+    modal.setAttribute('aria-hidden', 'true');
+  });
+
+  document.getElementById('scoringLogicModal')?.addEventListener('click', e => {
+    if (e.target.id === 'scoringLogicModal') {
+      const modal = document.getElementById('scoringLogicModal');
+      modal.classList.remove('is-open');
+      modal.setAttribute('aria-hidden', 'true');
+    }
+  });
+
+  // -----------------------------
+  // GLOBAL HOOKS
+  // -----------------------------
+  window.renderRankingsLeaderboard = () => render().catch(console.error);
+  officeSel.addEventListener('change', () => render().catch(console.error));
+  categorySel.addEventListener('change', () => render().catch(console.error));
+
+  render().catch(console.error);
+
+  // -----------------------------
+  // GLOBAL MENU HELPERS
+  // -----------------------------
+  function renderOfficials(state, query) {
+    console.log("Render officials for:", state, query);
+  }
+
+  function showRatings() {
+    showTab('ratings');
+  }
+
+  function showCitizenship() {
+    showTab('citizenship');
+  }
+
+  function showCommunity() {
+    showTab('community');
+  }
+
+});  // <‑‑‑‑‑‑‑‑‑‑‑‑ CLOSES initRankingsRender()
+
+})(); // <‑‑‑‑‑‑‑‑‑‑‑‑ CLOSES THE IIFE WRAPPER
