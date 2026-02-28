@@ -1408,6 +1408,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Hamburger toggle + active tab + click-outside close
   const hamburger = document.getElementById('hamburger');
   const menu = document.getElementById('hamburger-menu');
+
   if (hamburger && menu) {
     hamburger.addEventListener('click', () => {
       menu.classList.toggle('open');
@@ -1428,6 +1429,9 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
+});
+</script>
+
 
   // State dropdown wiring
   const stateSelect = document.getElementById('state-dropdown');
