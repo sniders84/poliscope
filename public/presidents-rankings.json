@@ -372,16 +372,16 @@
       }
     },
     "scores": {
-      "crisisManagement": 0,
-      "domesticPolicy": 0,
-      "economicPolicy": 0,
-      "foreignPolicy": 0,
-      "judicialPolicy": 0,
-      "legislation": 0,
-      "misconduct": 0,
-      "powerScore": 0,
-      "eraNormalizedScore": 0,
-      "rank": 1
+      "crisisManagement": 4.375,
+      "domesticPolicy": 5.7142857142857135,
+      "economicPolicy": 7.142857142857143,
+      "foreignPolicy": 6.25,
+      "judicialPolicy": 6.666666666666666,
+      "legislation": 10,
+      "misconduct": 6.666666666666667,
+      "powerScore": 6.6001400560224095,
+      "eraNormalizedScore": 1.7323353623652271,
+      "rank": 3
     }
   },
   {
@@ -726,16 +726,16 @@
       }
     },
     "scores": {
-      "crisisManagement": 0,
-      "domesticPolicy": 0,
-      "economicPolicy": 0,
-      "foreignPolicy": 0,
-      "judicialPolicy": 0,
-      "legislation": 0,
-      "misconduct": 0,
-      "powerScore": 0,
-      "eraNormalizedScore": 0,
-      "rank": 2
+      "crisisManagement": 5,
+      "domesticPolicy": 5.7142857142857135,
+      "economicPolicy": 5.7142857142857135,
+      "foreignPolicy": 3.75,
+      "judicialPolicy": 6.666666666666666,
+      "legislation": 7.5,
+      "misconduct": 6.666666666666667,
+      "powerScore": 5.80812324929972,
+      "eraNormalizedScore": -0.08113307046990224,
+      "rank": 15
     }
   },
   {
@@ -1123,16 +1123,16 @@
       }
     },
     "scores": {
-      "crisisManagement": 0,
-      "domesticPolicy": 0,
-      "economicPolicy": 0,
-      "foreignPolicy": 0,
-      "judicialPolicy": 0,
-      "legislation": 0,
-      "misconduct": 0,
-      "powerScore": 0,
-      "eraNormalizedScore": 0,
-      "rank": 3
+      "crisisManagement": 6.875,
+      "domesticPolicy": 5.7142857142857135,
+      "economicPolicy": 7.142857142857143,
+      "foreignPolicy": 3.75,
+      "judicialPolicy": 6.666666666666666,
+      "legislation": 7.5,
+      "misconduct": 3.333333333333334,
+      "powerScore": 5.82563025210084,
+      "eraNormalizedScore": -0.04104756134445747,
+      "rank": 12
     }
   },
   {
@@ -1478,16 +1478,16 @@
       }
     },
     "scores": {
-      "crisisManagement": 0,
-      "domesticPolicy": 0,
-      "economicPolicy": 0,
-      "foreignPolicy": 0,
-      "judicialPolicy": 0,
-      "legislation": 0,
-      "misconduct": 0,
-      "powerScore": 0,
-      "eraNormalizedScore": 0,
-      "rank": 4
+      "crisisManagement": 5.625,
+      "domesticPolicy": 5.7142857142857135,
+      "economicPolicy": 5.7142857142857135,
+      "foreignPolicy": 3.75,
+      "judicialPolicy": 6.666666666666666,
+      "legislation": 6.25,
+      "misconduct": 6.666666666666667,
+      "powerScore": 5.749299719887955,
+      "eraNormalizedScore": -0.21582038113139665,
+      "rank": 17
     }
   },
   {
@@ -1788,16 +1788,16 @@
       }
     },
     "scores": {
-      "crisisManagement": 0,
-      "domesticPolicy": 0,
-      "economicPolicy": 0,
-      "foreignPolicy": 0,
-      "judicialPolicy": 0,
-      "legislation": 0,
-      "misconduct": 0,
-      "powerScore": 0,
-      "eraNormalizedScore": 0,
-      "rank": 5
+      "crisisManagement": 2.5,
+      "domesticPolicy": 5.7142857142857135,
+      "economicPolicy": 5.7142857142857135,
+      "foreignPolicy": 3.75,
+      "judicialPolicy": 6.666666666666666,
+      "legislation": 6.25,
+      "misconduct": 6.666666666666667,
+      "powerScore": 5.234593837535014,
+      "eraNormalizedScore": -1.3943343494194769,
+      "rank": 27
     }
   },
   {
@@ -2088,16 +2088,16 @@
       }
     },
     "scores": {
-      "crisisManagement": 0,
-      "domesticPolicy": 0,
-      "economicPolicy": 0,
-      "foreignPolicy": 0,
-      "judicialPolicy": 0,
-      "legislation": 0,
-      "misconduct": 0,
-      "powerScore": 0,
-      "eraNormalizedScore": 0,
-      "rank": 6
+      "crisisManagement": 4.375,
+      "domesticPolicy": 5.7142857142857135,
+      "economicPolicy": 5.7142857142857135,
+      "foreignPolicy": 2.5,
+      "judicialPolicy": 6.666666666666666,
+      "legislation": 6.25,
+      "misconduct": 6.666666666666667,
+      "powerScore": 5.366946778711485,
+      "eraNormalizedScore": 1.0661755535808037,
+      "rank": 24
     }
   },
   {
@@ -2426,16 +2426,16 @@
       }
     },
     "scores": {
-      "crisisManagement": 0,
-      "domesticPolicy": 0,
-      "economicPolicy": 0,
-      "foreignPolicy": 0,
-      "judicialPolicy": 0,
-      "legislation": 0,
+      "crisisManagement": 5,
+      "domesticPolicy": 5.7142857142857135,
+      "economicPolicy": 7.142857142857143,
+      "foreignPolicy": 3.75,
+      "judicialPolicy": 6.666666666666666,
+      "legislation": 6.25,
       "misconduct": 0,
-      "powerScore": 0,
-      "eraNormalizedScore": 0,
-      "rank": 7
+      "powerScore": 4.845238095238095,
+      "eraNormalizedScore": 0.4308365778827557,
+      "rank": 38
     }
   },
   {
@@ -2723,16 +2723,16 @@
       }
     },
     "scores": {
-      "crisisManagement": 0,
-      "domesticPolicy": 0,
-      "economicPolicy": 0,
-      "foreignPolicy": 0,
-      "judicialPolicy": 0,
-      "legislation": 0,
-      "misconduct": 0,
-      "powerScore": 0,
-      "eraNormalizedScore": 0,
-      "rank": 8
+      "crisisManagement": 3.125,
+      "domesticPolicy": 5.7142857142857135,
+      "economicPolicy": 5.7142857142857135,
+      "foreignPolicy": 2.5,
+      "judicialPolicy": 6.666666666666666,
+      "legislation": 6.25,
+      "misconduct": 3.333333333333334,
+      "powerScore": 4.65126050420168,
+      "eraNormalizedScore": 0.19460987148227357,
+      "rank": 40
     }
   },
   {
@@ -2887,15 +2887,15 @@
     },
     "scores": {
       "crisisManagement": 0,
-      "domesticPolicy": 0,
-      "economicPolicy": 0,
-      "foreignPolicy": 0,
-      "judicialPolicy": 0,
+      "domesticPolicy": 2.8571428571428568,
+      "economicPolicy": 2.8571428571428568,
+      "foreignPolicy": 1.25,
+      "judicialPolicy": 3.333333333333333,
       "legislation": 0,
-      "misconduct": 0,
-      "powerScore": 0,
-      "eraNormalizedScore": 0,
-      "rank": 9
+      "misconduct": 6.666666666666667,
+      "powerScore": 2.4285714285714284,
+      "eraNormalizedScore": -2.512190006189674,
+      "rank": 46
     }
   },
   {
@@ -3199,16 +3199,16 @@
       }
     },
     "scores": {
-      "crisisManagement": 0,
-      "domesticPolicy": 0,
-      "economicPolicy": 0,
-      "foreignPolicy": 0,
-      "judicialPolicy": 0,
-      "legislation": 0,
-      "misconduct": 0,
-      "powerScore": 0,
-      "eraNormalizedScore": 0,
-      "rank": 10
+      "crisisManagement": 5,
+      "domesticPolicy": 5.7142857142857135,
+      "economicPolicy": 5.7142857142857135,
+      "foreignPolicy": 2.5,
+      "judicialPolicy": 6.666666666666666,
+      "legislation": 6.25,
+      "misconduct": 3.333333333333334,
+      "powerScore": 4.9600840336134455,
+      "eraNormalizedScore": 0.5706964329357492,
+      "rank": 33
     }
   },
   {
@@ -3519,16 +3519,16 @@
       }
     },
     "scores": {
-      "crisisManagement": 0,
-      "domesticPolicy": 0,
-      "economicPolicy": 0,
-      "foreignPolicy": 0,
-      "judicialPolicy": 0,
-      "legislation": 0,
-      "misconduct": 0,
-      "powerScore": 0,
-      "eraNormalizedScore": 0,
-      "rank": 11
+      "crisisManagement": 3.75,
+      "domesticPolicy": 5.7142857142857135,
+      "economicPolicy": 5.7142857142857135,
+      "foreignPolicy": 3.75,
+      "judicialPolicy": 6.666666666666666,
+      "legislation": 7.5,
+      "misconduct": 3.333333333333334,
+      "powerScore": 5.092436974789916,
+      "eraNormalizedScore": 0.7318763878443807,
+      "rank": 29
     }
   },
   {
@@ -3733,16 +3733,16 @@
       }
     },
     "scores": {
-      "crisisManagement": 0,
-      "domesticPolicy": 0,
-      "economicPolicy": 0,
-      "foreignPolicy": 0,
-      "judicialPolicy": 0,
-      "legislation": 0,
-      "misconduct": 0,
-      "powerScore": 0,
-      "eraNormalizedScore": 0,
-      "rank": 12
+      "crisisManagement": 1.25,
+      "domesticPolicy": 5.7142857142857135,
+      "economicPolicy": 2.8571428571428568,
+      "foreignPolicy": 1.25,
+      "judicialPolicy": 6.666666666666666,
+      "legislation": 1.25,
+      "misconduct": 6.666666666666667,
+      "powerScore": 3.591736694677871,
+      "eraNormalizedScore": -1.0956825717810081,
+      "rank": 44
     }
   },
   {
@@ -4009,16 +4009,16 @@
       }
     },
     "scores": {
-      "crisisManagement": 0,
-      "domesticPolicy": 0,
-      "economicPolicy": 0,
-      "foreignPolicy": 0,
-      "judicialPolicy": 0,
-      "legislation": 0,
-      "misconduct": 0,
-      "powerScore": 0,
-      "eraNormalizedScore": 0,
-      "rank": 13
+      "crisisManagement": 2.5,
+      "domesticPolicy": 5.7142857142857135,
+      "economicPolicy": 5.7142857142857135,
+      "foreignPolicy": 1.25,
+      "judicialPolicy": 6.666666666666666,
+      "legislation": 6.25,
+      "misconduct": 6.666666666666667,
+      "powerScore": 4.881652661064426,
+      "eraNormalizedScore": 0.4751823855824861,
+      "rank": 37
     }
   },
   {
@@ -4297,16 +4297,16 @@
       }
     },
     "scores": {
-      "crisisManagement": 0,
-      "domesticPolicy": 0,
-      "economicPolicy": 0,
-      "foreignPolicy": 0,
-      "judicialPolicy": 0,
-      "legislation": 0,
-      "misconduct": 0,
-      "powerScore": 0,
-      "eraNormalizedScore": 0,
-      "rank": 14
+      "crisisManagement": 1.875,
+      "domesticPolicy": 5.7142857142857135,
+      "economicPolicy": 5.7142857142857135,
+      "foreignPolicy": 2.5,
+      "judicialPolicy": 6.666666666666666,
+      "legislation": 6.25,
+      "misconduct": 3.333333333333334,
+      "powerScore": 4.445378151260504,
+      "eraNormalizedScore": -0.05611450282004207,
+      "rank": 43
     }
   },
   {
@@ -4594,16 +4594,16 @@
       }
     },
     "scores": {
-      "crisisManagement": 0,
-      "domesticPolicy": 0,
-      "economicPolicy": 0,
-      "foreignPolicy": 0,
-      "judicialPolicy": 0,
-      "legislation": 0,
-      "misconduct": 0,
-      "powerScore": 0,
-      "eraNormalizedScore": 0,
-      "rank": 15
+      "crisisManagement": 3.125,
+      "domesticPolicy": 5.7142857142857135,
+      "economicPolicy": 5.7142857142857135,
+      "foreignPolicy": 2.5,
+      "judicialPolicy": 6.666666666666666,
+      "legislation": 6.25,
+      "misconduct": 3.333333333333334,
+      "powerScore": 4.65126050420168,
+      "eraNormalizedScore": 0.19460987148227357,
+      "rank": 41
     }
   },
   {
@@ -4965,16 +4965,16 @@
       }
     },
     "scores": {
-      "crisisManagement": 0,
-      "domesticPolicy": 0,
-      "economicPolicy": 0,
-      "foreignPolicy": 0,
-      "judicialPolicy": 0,
-      "legislation": 0,
-      "misconduct": 0,
-      "powerScore": 0,
-      "eraNormalizedScore": 0,
-      "rank": 16
+      "crisisManagement": 7.5,
+      "domesticPolicy": 7.142857142857143,
+      "economicPolicy": 7.142857142857143,
+      "foreignPolicy": 3.75,
+      "judicialPolicy": 6.666666666666666,
+      "legislation": 8.75,
+      "misconduct": 3.333333333333334,
+      "powerScore": 6.292016806722689,
+      "eraNormalizedScore": 1.7076345421951193,
+      "rank": 7
     }
   },
   {
@@ -5268,16 +5268,16 @@
       }
     },
     "scores": {
-      "crisisManagement": 0,
-      "domesticPolicy": 0,
-      "economicPolicy": 0,
-      "foreignPolicy": 0,
-      "judicialPolicy": 0,
-      "legislation": 0,
-      "misconduct": 0,
-      "powerScore": 0,
-      "eraNormalizedScore": 0,
-      "rank": 17
+      "crisisManagement": 3.75,
+      "domesticPolicy": 5.7142857142857135,
+      "economicPolicy": 5.7142857142857135,
+      "foreignPolicy": 2.5,
+      "judicialPolicy": 6.666666666666666,
+      "legislation": 6.25,
+      "misconduct": 3.333333333333334,
+      "powerScore": 4.754201680672269,
+      "eraNormalizedScore": -0.8325622094800607,
+      "rank": 39
     }
   },
   {
@@ -5582,16 +5582,16 @@
       }
     },
     "scores": {
-      "crisisManagement": 0,
-      "domesticPolicy": 0,
-      "economicPolicy": 0,
-      "foreignPolicy": 0,
-      "judicialPolicy": 0,
-      "legislation": 0,
-      "misconduct": 0,
-      "powerScore": 0,
-      "eraNormalizedScore": 0,
-      "rank": 18
+      "crisisManagement": 3.125,
+      "domesticPolicy": 5.7142857142857135,
+      "economicPolicy": 7.142857142857143,
+      "foreignPolicy": 2.5,
+      "judicialPolicy": 6.666666666666666,
+      "legislation": 7.5,
+      "misconduct": 3.333333333333334,
+      "powerScore": 5.031512605042018,
+      "eraNormalizedScore": -0.3744939427845351,
+      "rank": 32
     }
   },
   {
@@ -5862,16 +5862,16 @@
       }
     },
     "scores": {
-      "crisisManagement": 0,
-      "domesticPolicy": 0,
-      "economicPolicy": 0,
-      "foreignPolicy": 0,
-      "judicialPolicy": 0,
-      "legislation": 0,
-      "misconduct": 0,
-      "powerScore": 0,
-      "eraNormalizedScore": 0,
-      "rank": 19
+      "crisisManagement": 1.875,
+      "domesticPolicy": 5.7142857142857135,
+      "economicPolicy": 5.7142857142857135,
+      "foreignPolicy": 2.5,
+      "judicialPolicy": 6.666666666666666,
+      "legislation": 6.25,
+      "misconduct": 6.666666666666667,
+      "powerScore": 4.955182072829132,
+      "eraNormalizedScore": -0.5005783899305264,
+      "rank": 34
     }
   },
   {
@@ -6073,16 +6073,16 @@
       }
     },
     "scores": {
-      "crisisManagement": 0,
-      "domesticPolicy": 0,
-      "economicPolicy": 0,
-      "foreignPolicy": 0,
-      "judicialPolicy": 0,
-      "legislation": 0,
-      "misconduct": 0,
-      "powerScore": 0,
-      "eraNormalizedScore": 0,
-      "rank": 20
+      "crisisManagement": 1.875,
+      "domesticPolicy": 4.285714285714286,
+      "economicPolicy": 4.285714285714286,
+      "foreignPolicy": 1.25,
+      "judicialPolicy": 5,
+      "legislation": 1.25,
+      "misconduct": 6.666666666666667,
+      "powerScore": 3.5154061624649864,
+      "eraNormalizedScore": -2.0839572751933986,
+      "rank": 45
     }
   },
   {
@@ -6353,16 +6353,16 @@
       }
     },
     "scores": {
-      "crisisManagement": 0,
-      "domesticPolicy": 0,
-      "economicPolicy": 0,
-      "foreignPolicy": 0,
-      "judicialPolicy": 0,
-      "legislation": 0,
-      "misconduct": 0,
-      "powerScore": 0,
-      "eraNormalizedScore": 0,
-      "rank": 21
+      "crisisManagement": 1.875,
+      "domesticPolicy": 5.7142857142857135,
+      "economicPolicy": 5.7142857142857135,
+      "foreignPolicy": 2.5,
+      "judicialPolicy": 6.666666666666666,
+      "legislation": 6.25,
+      "misconduct": 6.666666666666667,
+      "powerScore": 4.955182072829132,
+      "eraNormalizedScore": 0.051056174419239146,
+      "rank": 35
     }
   },
   {
@@ -6632,16 +6632,16 @@
       }
     },
     "scores": {
-      "crisisManagement": 0,
-      "domesticPolicy": 0,
-      "economicPolicy": 0,
-      "foreignPolicy": 0,
-      "judicialPolicy": 0,
-      "legislation": 0,
-      "misconduct": 0,
-      "powerScore": 0,
-      "eraNormalizedScore": 0,
-      "rank": 22
+      "crisisManagement": 1.875,
+      "domesticPolicy": 5.7142857142857135,
+      "economicPolicy": 5.7142857142857135,
+      "foreignPolicy": 2.5,
+      "judicialPolicy": 6.666666666666666,
+      "legislation": 6.25,
+      "misconduct": 6.666666666666667,
+      "powerScore": 4.955182072829132,
+      "eraNormalizedScore": 0.051056174419239146,
+      "rank": 36
     }
   },
   {
@@ -6933,16 +6933,16 @@
       }
     },
     "scores": {
-      "crisisManagement": 0,
-      "domesticPolicy": 0,
-      "economicPolicy": 0,
-      "foreignPolicy": 0,
-      "judicialPolicy": 0,
-      "legislation": 0,
-      "misconduct": 0,
-      "powerScore": 0,
-      "eraNormalizedScore": 0,
-      "rank": 23
+      "crisisManagement": 2.5,
+      "domesticPolicy": 5.7142857142857135,
+      "economicPolicy": 7.142857142857143,
+      "foreignPolicy": 2.5,
+      "judicialPolicy": 6.666666666666666,
+      "legislation": 7.5,
+      "misconduct": 6.666666666666667,
+      "powerScore": 5.438375350140056,
+      "eraNormalizedScore": 0.767573334065504,
+      "rank": 22
     }
   },
   {
@@ -7217,16 +7217,16 @@
       }
     },
     "scores": {
-      "crisisManagement": 0,
-      "domesticPolicy": 0,
-      "economicPolicy": 0,
-      "foreignPolicy": 0,
-      "judicialPolicy": 0,
-      "legislation": 0,
-      "misconduct": 0,
-      "powerScore": 0,
-      "eraNormalizedScore": 0,
-      "rank": 24
+      "crisisManagement": 2.5,
+      "domesticPolicy": 5.7142857142857135,
+      "economicPolicy": 5.7142857142857135,
+      "foreignPolicy": 2.5,
+      "judicialPolicy": 6.666666666666666,
+      "legislation": 6.25,
+      "misconduct": 6.666666666666667,
+      "powerScore": 5.05812324929972,
+      "eraNormalizedScore": 0.20370548234387761,
+      "rank": 30
     }
   },
   {
@@ -7529,16 +7529,16 @@
       }
     },
     "scores": {
-      "crisisManagement": 0,
-      "domesticPolicy": 0,
-      "economicPolicy": 0,
-      "foreignPolicy": 0,
-      "judicialPolicy": 0,
-      "legislation": 0,
-      "misconduct": 0,
-      "powerScore": 0,
-      "eraNormalizedScore": 0,
-      "rank": 25
+      "crisisManagement": 3.75,
+      "domesticPolicy": 5.7142857142857135,
+      "economicPolicy": 5.7142857142857135,
+      "foreignPolicy": 3.75,
+      "judicialPolicy": 6.666666666666666,
+      "legislation": 7.5,
+      "misconduct": 6.666666666666667,
+      "powerScore": 5.602240896358544,
+      "eraNormalizedScore": 1.010566109945542,
+      "rank": 19
     }
   },
   {
@@ -7878,16 +7878,16 @@
       }
     },
     "scores": {
-      "crisisManagement": 0,
-      "domesticPolicy": 0,
-      "economicPolicy": 0,
-      "foreignPolicy": 0,
-      "judicialPolicy": 0,
-      "legislation": 0,
-      "misconduct": 0,
-      "powerScore": 0,
-      "eraNormalizedScore": 0,
-      "rank": 26
+      "crisisManagement": 4.375,
+      "domesticPolicy": 7.142857142857143,
+      "economicPolicy": 7.142857142857143,
+      "foreignPolicy": 5,
+      "judicialPolicy": 6.666666666666666,
+      "legislation": 7.5,
+      "misconduct": 3.333333333333334,
+      "powerScore": 5.79201680672269,
+      "eraNormalizedScore": 0.5584793331565054,
+      "rank": 16
     }
   },
   {
@@ -8177,16 +8177,16 @@
       }
     },
     "scores": {
-      "crisisManagement": 0,
-      "domesticPolicy": 0,
-      "economicPolicy": 0,
-      "foreignPolicy": 0,
-      "judicialPolicy": 0,
-      "legislation": 0,
-      "misconduct": 0,
-      "powerScore": 0,
-      "eraNormalizedScore": 0,
-      "rank": 27
+      "crisisManagement": 3.125,
+      "domesticPolicy": 5.7142857142857135,
+      "economicPolicy": 5.7142857142857135,
+      "foreignPolicy": 3.75,
+      "judicialPolicy": 6.666666666666666,
+      "legislation": 6.25,
+      "misconduct": 6.666666666666667,
+      "powerScore": 5.337535014005603,
+      "eraNormalizedScore": -0.23637392828773018,
+      "rank": 25
     }
   },
   {
@@ -8558,16 +8558,16 @@
       }
     },
     "scores": {
-      "crisisManagement": 0,
-      "domesticPolicy": 0,
-      "economicPolicy": 0,
-      "foreignPolicy": 0,
-      "judicialPolicy": 0,
-      "legislation": 0,
-      "misconduct": 0,
-      "powerScore": 0,
-      "eraNormalizedScore": 0,
-      "rank": 28
+      "crisisManagement": 7.5,
+      "domesticPolicy": 7.142857142857143,
+      "economicPolicy": 7.142857142857143,
+      "foreignPolicy": 5,
+      "judicialPolicy": 6.666666666666666,
+      "legislation": 8.75,
+      "misconduct": 3.333333333333334,
+      "powerScore": 6.468487394957982,
+      "eraNormalizedScore": 1.7415737099748871,
+      "rank": 6
     }
   },
   {
@@ -8856,16 +8856,16 @@
       }
     },
     "scores": {
-      "crisisManagement": 0,
-      "domesticPolicy": 0,
-      "economicPolicy": 0,
-      "foreignPolicy": 0,
-      "judicialPolicy": 0,
-      "legislation": 0,
-      "misconduct": 0,
-      "powerScore": 0,
-      "eraNormalizedScore": 0,
-      "rank": 29
+      "crisisManagement": 3.125,
+      "domesticPolicy": 5.7142857142857135,
+      "economicPolicy": 5.7142857142857135,
+      "foreignPolicy": 2.5,
+      "judicialPolicy": 6.666666666666666,
+      "legislation": 6.25,
+      "misconduct": 3.333333333333334,
+      "powerScore": 4.65126050420168,
+      "eraNormalizedScore": -1.4366146004223248,
+      "rank": 42
     }
   },
   {
@@ -9141,16 +9141,16 @@
       }
     },
     "scores": {
-      "crisisManagement": 0,
-      "domesticPolicy": 0,
-      "economicPolicy": 0,
-      "foreignPolicy": 0,
-      "judicialPolicy": 0,
-      "legislation": 0,
-      "misconduct": 0,
-      "powerScore": 0,
-      "eraNormalizedScore": 0,
-      "rank": 30
+      "crisisManagement": 2.5,
+      "domesticPolicy": 5.7142857142857135,
+      "economicPolicy": 5.7142857142857135,
+      "foreignPolicy": 2.5,
+      "judicialPolicy": 6.666666666666666,
+      "legislation": 6.25,
+      "misconduct": 6.666666666666667,
+      "powerScore": 5.05812324929972,
+      "eraNormalizedScore": -0.7250433447996728,
+      "rank": 31
     }
   },
   {
@@ -9449,16 +9449,16 @@
       }
     },
     "scores": {
-      "crisisManagement": 0,
-      "domesticPolicy": 0,
-      "economicPolicy": 0,
-      "foreignPolicy": 0,
-      "judicialPolicy": 0,
-      "legislation": 0,
-      "misconduct": 0,
-      "powerScore": 0,
-      "eraNormalizedScore": 0,
-      "rank": 31
+      "crisisManagement": 4.375,
+      "domesticPolicy": 5.7142857142857135,
+      "economicPolicy": 5.7142857142857135,
+      "foreignPolicy": 2.5,
+      "judicialPolicy": 6.666666666666666,
+      "legislation": 7.5,
+      "misconduct": 6.666666666666667,
+      "powerScore": 5.528711484593837,
+      "eraNormalizedScore": 0.09797883037833376,
+      "rank": 21
     }
   },
   {
@@ -9844,16 +9844,16 @@
       }
     },
     "scores": {
-      "crisisManagement": 0,
-      "domesticPolicy": 0,
-      "economicPolicy": 0,
-      "foreignPolicy": 0,
-      "judicialPolicy": 0,
-      "legislation": 0,
-      "misconduct": 0,
-      "powerScore": 0,
-      "eraNormalizedScore": 0,
-      "rank": 32
+      "crisisManagement": 8.125,
+      "domesticPolicy": 7.142857142857143,
+      "economicPolicy": 7.142857142857143,
+      "foreignPolicy": 5,
+      "judicialPolicy": 6.666666666666666,
+      "legislation": 10,
+      "misconduct": 3.333333333333334,
+      "powerScore": 6.733193277310924,
+      "eraNormalizedScore": 1,
+      "rank": 2
     }
   },
   {
@@ -10180,16 +10180,16 @@
       }
     },
     "scores": {
-      "crisisManagement": 0,
-      "domesticPolicy": 0,
-      "economicPolicy": 0,
-      "foreignPolicy": 0,
-      "judicialPolicy": 0,
-      "legislation": 0,
-      "misconduct": 0,
-      "powerScore": 0,
-      "eraNormalizedScore": 0,
-      "rank": 33
+      "crisisManagement": 5.625,
+      "domesticPolicy": 5.7142857142857135,
+      "economicPolicy": 5.7142857142857135,
+      "foreignPolicy": 5,
+      "judicialPolicy": 6.666666666666666,
+      "legislation": 6.25,
+      "misconduct": 3.333333333333334,
+      "powerScore": 5.415966386554622,
+      "eraNormalizedScore": -1,
+      "rank": 23
     }
   },
   {
@@ -10510,16 +10510,16 @@
       }
     },
     "scores": {
-      "crisisManagement": 0,
-      "domesticPolicy": 0,
-      "economicPolicy": 0,
-      "foreignPolicy": 0,
-      "judicialPolicy": 0,
-      "legislation": 0,
-      "misconduct": 0,
-      "powerScore": 0,
-      "eraNormalizedScore": 0,
-      "rank": 34
+      "crisisManagement": 5,
+      "domesticPolicy": 5.7142857142857135,
+      "economicPolicy": 5.7142857142857135,
+      "foreignPolicy": 5,
+      "judicialPolicy": 6.666666666666666,
+      "legislation": 6.25,
+      "misconduct": 3.333333333333334,
+      "powerScore": 5.313025210084033,
+      "eraNormalizedScore": -1.2387313580348809,
+      "rank": 26
     }
   },
   {
@@ -10835,16 +10835,16 @@
       }
     },
     "scores": {
-      "crisisManagement": 0,
-      "domesticPolicy": 0,
-      "economicPolicy": 0,
-      "foreignPolicy": 0,
-      "judicialPolicy": 0,
-      "legislation": 0,
-      "misconduct": 0,
-      "powerScore": 0,
-      "eraNormalizedScore": 0,
-      "rank": 35
+      "crisisManagement": 4.375,
+      "domesticPolicy": 5.7142857142857135,
+      "economicPolicy": 5.7142857142857135,
+      "foreignPolicy": 5,
+      "judicialPolicy": 6.666666666666666,
+      "legislation": 6.25,
+      "misconduct": 3.333333333333334,
+      "powerScore": 5.2100840336134455,
+      "eraNormalizedScore": -1.482538567582833,
+      "rank": 28
     }
   },
   {
@@ -11206,16 +11206,16 @@
       }
     },
     "scores": {
-      "crisisManagement": 0,
-      "domesticPolicy": 0,
-      "economicPolicy": 0,
-      "foreignPolicy": 0,
-      "judicialPolicy": 0,
-      "legislation": 0,
-      "misconduct": 0,
-      "powerScore": 0,
-      "eraNormalizedScore": 0,
-      "rank": 36
+      "crisisManagement": 6.25,
+      "domesticPolicy": 7.142857142857143,
+      "economicPolicy": 7.142857142857143,
+      "foreignPolicy": 5,
+      "judicialPolicy": 6.666666666666666,
+      "legislation": 8.75,
+      "misconduct": 3.333333333333334,
+      "powerScore": 6.262605042016807,
+      "eraNormalizedScore": 1.0102657586115433,
+      "rank": 8
     }
   },
   {
@@ -11559,16 +11559,16 @@
       }
     },
     "scores": {
-      "crisisManagement": 0,
-      "domesticPolicy": 0,
-      "economicPolicy": 0,
-      "foreignPolicy": 0,
-      "judicialPolicy": 0,
-      "legislation": 0,
-      "misconduct": 0,
-      "powerScore": 0,
-      "eraNormalizedScore": 0,
-      "rank": 37
+      "crisisManagement": 6.875,
+      "domesticPolicy": 7.142857142857143,
+      "economicPolicy": 5.7142857142857135,
+      "foreignPolicy": 3.75,
+      "judicialPolicy": 6.666666666666666,
+      "legislation": 7.5,
+      "misconduct": 3.333333333333334,
+      "powerScore": 5.8088235294117645,
+      "eraNormalizedScore": -0.06447622633453576,
+      "rank": 14
     }
   },
   {
@@ -11872,16 +11872,16 @@
       }
     },
     "scores": {
-      "crisisManagement": 0,
-      "domesticPolicy": 0,
-      "economicPolicy": 0,
-      "foreignPolicy": 0,
-      "judicialPolicy": 0,
-      "legislation": 0,
-      "misconduct": 0,
-      "powerScore": 0,
-      "eraNormalizedScore": 0,
-      "rank": 38
+      "crisisManagement": 5,
+      "domesticPolicy": 5.7142857142857135,
+      "economicPolicy": 5.7142857142857135,
+      "foreignPolicy": 3.75,
+      "judicialPolicy": 6.666666666666666,
+      "legislation": 6.25,
+      "misconduct": 6.666666666666667,
+      "powerScore": 5.646358543417367,
+      "eraNormalizedScore": -0.449260393784365,
+      "rank": 18
     }
   },
   {
@@ -12208,16 +12208,16 @@
       }
     },
     "scores": {
-      "crisisManagement": 0,
-      "domesticPolicy": 0,
-      "economicPolicy": 0,
-      "foreignPolicy": 0,
-      "judicialPolicy": 0,
-      "legislation": 0,
-      "misconduct": 0,
-      "powerScore": 0,
-      "eraNormalizedScore": 0,
-      "rank": 39
+      "crisisManagement": 5.625,
+      "domesticPolicy": 5.7142857142857135,
+      "economicPolicy": 5.7142857142857135,
+      "foreignPolicy": 6.25,
+      "judicialPolicy": 6.666666666666666,
+      "legislation": 6.25,
+      "misconduct": 6.666666666666667,
+      "powerScore": 6.102240896358544,
+      "eraNormalizedScore": 0.6304572484994273,
+      "rank": 10
     }
   },
   {
@@ -12560,16 +12560,16 @@
       }
     },
     "scores": {
-      "crisisManagement": 0,
-      "domesticPolicy": 0,
-      "economicPolicy": 0,
-      "foreignPolicy": 0,
-      "judicialPolicy": 0,
-      "legislation": 0,
-      "misconduct": 0,
-      "powerScore": 0,
-      "eraNormalizedScore": 0,
-      "rank": 40
+      "crisisManagement": 5.625,
+      "domesticPolicy": 7.142857142857143,
+      "economicPolicy": 7.142857142857143,
+      "foreignPolicy": 6.25,
+      "judicialPolicy": 6.666666666666666,
+      "legislation": 6.25,
+      "misconduct": 6.666666666666667,
+      "powerScore": 6.522408963585434,
+      "eraNormalizedScore": 1.6255887160420912,
+      "rank": 4
     }
   },
   {
@@ -12883,16 +12883,16 @@
       }
     },
     "scores": {
-      "crisisManagement": 0,
-      "domesticPolicy": 0,
-      "economicPolicy": 0,
-      "foreignPolicy": 0,
-      "judicialPolicy": 0,
-      "legislation": 0,
-      "misconduct": 0,
-      "powerScore": 0,
-      "eraNormalizedScore": 0,
-      "rank": 41
+      "crisisManagement": 5,
+      "domesticPolicy": 5.7142857142857135,
+      "economicPolicy": 5.7142857142857135,
+      "foreignPolicy": 5,
+      "judicialPolicy": 6.666666666666666,
+      "legislation": 6.25,
+      "misconduct": 6.666666666666667,
+      "powerScore": 5.822829131652661,
+      "eraNormalizedScore": -0.031305177416447026,
+      "rank": 13
     }
   },
   {
@@ -13247,16 +13247,16 @@
       }
     },
     "scores": {
-      "crisisManagement": 0,
-      "domesticPolicy": 0,
-      "economicPolicy": 0,
-      "foreignPolicy": 0,
-      "judicialPolicy": 0,
-      "legislation": 0,
-      "misconduct": 0,
-      "powerScore": 0,
-      "eraNormalizedScore": 0,
-      "rank": 42
+      "crisisManagement": 6.25,
+      "domesticPolicy": 7.142857142857143,
+      "economicPolicy": 7.142857142857143,
+      "foreignPolicy": 5,
+      "judicialPolicy": 6.666666666666666,
+      "legislation": 7.5,
+      "misconduct": 3.333333333333334,
+      "powerScore": 6.100840336134453,
+      "eraNormalizedScore": -0.4703324169313926,
+      "rank": 11
     }
   },
   {
@@ -13617,16 +13617,16 @@
       }
     },
     "scores": {
-      "crisisManagement": 0,
-      "domesticPolicy": 0,
-      "economicPolicy": 0,
-      "foreignPolicy": 0,
-      "judicialPolicy": 0,
-      "legislation": 0,
-      "misconduct": 0,
-      "powerScore": 0,
-      "eraNormalizedScore": 0,
-      "rank": 43
+      "crisisManagement": 8.125,
+      "domesticPolicy": 7.142857142857143,
+      "economicPolicy": 5.7142857142857135,
+      "foreignPolicy": 5,
+      "judicialPolicy": 6.666666666666666,
+      "legislation": 7.5,
+      "misconduct": 3.333333333333334,
+      "powerScore": 6.1911764705882355,
+      "eraNormalizedScore": -0.3948122753031253,
+      "rank": 9
     }
   },
   {
@@ -14000,16 +14000,16 @@
       }
     },
     "scores": {
-      "crisisManagement": 0,
-      "domesticPolicy": 0,
-      "economicPolicy": 0,
-      "foreignPolicy": 0,
-      "judicialPolicy": 0,
-      "legislation": 0,
-      "misconduct": 0,
-      "powerScore": 0,
-      "eraNormalizedScore": 0,
-      "rank": 44
+      "crisisManagement": 7.5,
+      "domesticPolicy": 7.142857142857143,
+      "economicPolicy": 7.142857142857143,
+      "foreignPolicy": 6.25,
+      "judicialPolicy": 6.666666666666666,
+      "legislation": 7.5,
+      "misconduct": 3.333333333333334,
+      "powerScore": 6.483193277310924,
+      "eraNormalizedScore": -0.15068902678384427,
+      "rank": 5
     }
   },
   {
@@ -14371,16 +14371,16 @@
       }
     },
     "scores": {
-      "crisisManagement": 0,
-      "domesticPolicy": 0,
-      "economicPolicy": 0,
-      "foreignPolicy": 0,
-      "judicialPolicy": 0,
-      "legislation": 0,
+      "crisisManagement": 8.125,
+      "domesticPolicy": 7.142857142857143,
+      "economicPolicy": 7.142857142857143,
+      "foreignPolicy": 3.75,
+      "judicialPolicy": 6.666666666666666,
+      "legislation": 6.25,
       "misconduct": 0,
-      "powerScore": 0,
-      "eraNormalizedScore": 0,
-      "rank": 45
+      "powerScore": 5.561624649859944,
+      "eraNormalizedScore": -0.9211115568830628,
+      "rank": 20
     }
   },
   {
@@ -14861,16 +14861,16 @@
       }
     },
     "scores": {
-      "crisisManagement": 0,
-      "domesticPolicy": 0,
-      "economicPolicy": 0,
-      "foreignPolicy": 0,
-      "judicialPolicy": 0,
-      "legislation": 0,
-      "misconduct": 0,
-      "powerScore": 0,
-      "eraNormalizedScore": 0,
-      "rank": 46
+      "crisisManagement": 10,
+      "domesticPolicy": 10,
+      "economicPolicy": 10,
+      "foreignPolicy": 10,
+      "judicialPolicy": 10,
+      "legislation": 10,
+      "misconduct": 3.333333333333334,
+      "powerScore": 8.980392156862745,
+      "eraNormalizedScore": 1.9369452759014234,
+      "rank": 1
     }
   }
 ]
