@@ -3404,26 +3404,27 @@ function ordinalSuffix(n) {
   return n + (s[(v - 20) % 10] || s[v] || s[0]);
 }
 
+// -----------------------------
+// MAIN RENDER FUNCTION
+// -----------------------------
 async function render() {
   const selectedOffice = officeSel.value.toLowerCase();
   const selectedCategory = categorySel.value;
 
-  // Legislator fetches (unchanged)
+  // Legislator fetches
   const senatorsRes = await fetch('/senators-rankings.json');
   const senatorsInfoRes = await fetch('/senators.json');
   const repsRes = await fetch('/representatives-rankings.json');
   const repsInfoRes = await fetch('/housereps.json');
 
-  // PRESIDENTS — NEW MERGED DATASET
+  // Presidents — merged dataset
   const presidentsRes = await fetch('/presidents-rankings.json');
 
   const senatorsRankings = await senatorsRes.json();
   const senatorsInfo = await senatorsInfoRes.json();
 
-  // ❌ WRONG: const repsRankings = await repsRankings.json();
-  // ✅ FIXED:
+  // FIXED — correct fetch usage
   const repsRankings = await repsRes.json();
-
   const repsInfo = await repsInfoRes.json();
 
   // presidents-rankings.json is an OBJECT keyed by ID
@@ -3436,9 +3437,11 @@ async function render() {
   if (selectedOffice === 'senator') {
     data = mergeData(senatorsRankings, senatorsInfo);
     officeType = 'senator';
+
   } else if (selectedOffice === 'u.s. representative') {
     data = mergeData(repsRankings, repsInfo);
     officeType = 'rep';
+
   } else if (selectedOffice === 'president') {
     data = presidentsRankings.map(p => ({
       ...p,
@@ -3446,6 +3449,7 @@ async function render() {
       ordinal: p.id
     }));
     officeType = 'president';
+
   } else {
     tableBody.innerHTML = '<tr><td colspan="5">Select an office to view rankings</td></tr>';
     return;
@@ -3472,6 +3476,84 @@ async function render() {
       };
     }
   });
+
+  // -----------------------------
+  // SORTING
+  // -----------------------------
+  rows.sort((a, b) => {
+    if (officeType === 'president') {
+      return (b.person.powerScore || 0) - (a.person.powerScore || 0);
+    }
+
+    const key = selectedCategory;
+
+    if (key === "powerScore") return b.score - a.score;
+    if (key === "committees") return (b.person.committees?.length || 0) - (a.person.committees?.length || 0);
+    if (key === "misconductTags") return (b.person.misconductTags?.length || 0) - (a.person.misconductTags?.length || 0);
+
+    return (b.person[key] || 0) - (a.person[key] || 0);
+  });
+
+  // -----------------------------
+  // RENDER TABLE
+  // -----------------------------
+  tableBody.innerHTML = '';
+  rows.forEach((row, idx) => {
+    const tr = document.createElement('tr');
+
+    let displayVal = 0;
+
+    if (officeType === 'president') {
+      displayVal = (row.person.powerScore || 0).toFixed(1);
+    } else {
+      displayVal = selectedCategory === "powerScore"
+        ? row.score.toFixed(1)
+        : Array.isArray(row.person[selectedCategory])
+          ? row.person[selectedCategory].length
+          : row.person[selectedCategory] || 0;
+    }
+
+    const officeLabel =
+      officeType === 'president'
+        ? `President (${ordinalSuffix(row.person.ordinal)})`
+        : row.person.office || (officeType === 'rep' ? 'U.S. Representative' : 'U.S. Senator');
+
+    tr.innerHTML = `
+      <td>${idx + 1}</td>
+      <td>
+        <a href="#" class="scorecard-link" data-id="${row.person.id}">
+          ${row.person.name}
+        </a>
+        <br><small>${officeType === 'president'
+          ? `${row.person.party} • ${row.person.termStart}–${row.person.termEnd}`
+          : `${row.person.state} • ${row.person.party}${officeType === 'rep' ? ` • District ${row.person.district || 'At-Large'}` : ''}`
+        }</small>
+      </td>
+      <td>${officeLabel}</td>
+      <td>${displayVal}</td>
+    `;
+    tableBody.appendChild(tr);
+  });
+
+  // -----------------------------
+  // SCORECARD CLICK HANDLERS
+  // -----------------------------
+  tableBody.querySelectorAll('.scorecard-link').forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      const id = Number(link.dataset.id);
+      const row = rows.find(r => r.person.id === id);
+
+      if (!row) return;
+
+      if (officeType === 'president') {
+        showScorecard(row.person);
+      } else {
+        showScorecard(row.person, row.breakdown, row.score);
+      }
+    });
+  });
+}
 
   // -----------------------------
   // SORTING
