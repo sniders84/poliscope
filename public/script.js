@@ -3426,6 +3426,7 @@ document.getElementById('rate-me-btn').onclick = function() {
       };
     });
   }
+}
 
 // -----------------------------
 // MAIN RENDER FUNCTION
