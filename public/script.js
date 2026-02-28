@@ -3494,66 +3494,78 @@ async function render() {
     return (b.person[key] || 0) - (a.person[key] || 0);
   });
 
-  // -----------------------------
-  // RENDER TABLE
-  // -----------------------------
-  tableBody.innerHTML = '';
-  rows.forEach((row, idx) => {
-    const tr = document.createElement('tr');
+// -----------------------------
+// MAIN RENDER FUNCTION
+// -----------------------------
+async function render() {
+  const selectedOffice = officeSel.value.toLowerCase();
+  const selectedCategory = categorySel.value;
 
-    let displayVal = 0;
+  // Legislator fetches
+  const senatorsRes = await fetch('/senators-rankings.json');
+  const senatorsInfoRes = await fetch('/senators.json');
+  const repsRes = await fetch('/representatives-rankings.json');
+  const repsInfoRes = await fetch('/housereps.json');
 
+  // Presidents
+  const presidentsRes = await fetch('/presidents-rankings.json');
+
+  const senatorsRankings = await senatorsRes.json();
+  const senatorsInfo = await senatorsInfoRes.json();
+  const repsRankings = await repsRes.json();
+  const repsInfo = await repsInfoRes.json();
+
+  const presidentsRankingsObj = await presidentsRes.json();
+  const presidentsRankings = Object.values(presidentsRankingsObj);
+
+  let data = [];
+  let officeType = '';
+
+  if (selectedOffice === 'senator') {
+    data = mergeData(senatorsRankings, senatorsInfo);
+    officeType = 'senator';
+
+  } else if (selectedOffice === 'u.s. representative') {
+    data = mergeData(repsRankings, repsInfo);
+    officeType = 'rep';
+
+  } else if (selectedOffice === 'president') {
+    data = presidentsRankings.map(p => ({
+      ...p,
+      office: "President",
+      ordinal: p.id
+    }));
+    officeType = 'president';
+
+  } else {
+    tableBody.innerHTML = '<tr><td colspan="5">Select an office to view rankings</td></tr>';
+    return;
+  }
+
+  if (!Array.isArray(data) || data.length === 0) {
+    tableBody.innerHTML = '<tr><td colspan="5">No data loaded yet</td></tr>';
+    return;
+  }
+
+  // -----------------------------
+  // BUILD ROWS
+  // -----------------------------
+  const rows = data.map(person => {
     if (officeType === 'president') {
-      displayVal = (row.person.powerScore || 0).toFixed(1);
+      return {
+        person,
+        score: person.powerScore || person.scores?.powerScore || 0,
+        breakdown: null
+      };
     } else {
-      displayVal = selectedCategory === "powerScore"
-        ? row.score.toFixed(1)
-        : Array.isArray(row.person[selectedCategory])
-          ? row.person[selectedCategory].length
-          : row.person[selectedCategory] || 0;
+      const { composite, breakdown } = scoreLegislator(person);
+      return {
+        person,
+        score: composite,
+        breakdown
+      };
     }
-
-    const officeLabel =
-      officeType === 'president'
-        ? `President (${ordinalSuffix(row.person.ordinal)})`
-        : row.person.office || (officeType === 'rep' ? 'U.S. Representative' : 'U.S. Senator');
-
-    tr.innerHTML = `
-      <td>${idx + 1}</td>
-      <td>
-        <a href="#" class="scorecard-link" data-id="${row.person.id}">
-          ${row.person.name}
-        </a>
-        <br><small>${officeType === 'president'
-          ? `${row.person.party} • ${row.person.termStart}–${row.person.termEnd}`
-          : `${row.person.state} • ${row.person.party}${officeType === 'rep' ? ` • District ${row.person.district || 'At-Large'}` : ''}`
-        }</small>
-      </td>
-      <td>${officeLabel}</td>
-      <td>${displayVal}</td>
-    `;
-    tableBody.appendChild(tr);
   });
-
-  // -----------------------------
-  // SCORECARD CLICK HANDLERS
-  // -----------------------------
-  tableBody.querySelectorAll('.scorecard-link').forEach(link => {
-    link.addEventListener('click', e => {
-      e.preventDefault();
-      const id = Number(link.dataset.id);
-      const row = rows.find(r => r.person.id === id);
-
-      if (!row) return;
-
-      if (officeType === 'president') {
-        showScorecard(row.person);
-      } else {
-        showScorecard(row.person, row.breakdown, row.score);
-      }
-    });
-  });
-}
 
   // -----------------------------
   // SORTING
@@ -3633,73 +3645,3 @@ async function render() {
   });
 }
 
-// -----------------------------
-// MODAL CLOSE HANDLERS
-// -----------------------------
-document.getElementById('scorecardClose')?.addEventListener('click', () => {
-  const modal = document.getElementById('scorecardModal');
-  modal.classList.remove('is-open', 'modal-dark');
-  modal.setAttribute('aria-hidden', 'true');
-});
-
-document.getElementById('scorecardModal')?.addEventListener('click', e => {
-  if (e.target.id === 'scorecardModal') {
-    const modal = document.getElementById('scorecardModal');
-    modal.classList.remove('is-open', 'modal-dark');
-    modal.setAttribute('aria-hidden', 'true');
-  }
-});
-
-// -----------------------------
-// SCORING LOGIC MODAL
-// -----------------------------
-document.getElementById('scoringLogicBtn')?.addEventListener('click', () => {
-  const modal = document.getElementById('scoringLogicModal');
-  modal.classList.add('is-open');
-  modal.setAttribute('aria-hidden', 'false');
-});
-
-document.getElementById('scoringLogicClose')?.addEventListener('click', () => {
-  const modal = document.getElementById('scoringLogicModal');
-  modal.classList.remove('is-open');
-  modal.setAttribute('aria-hidden', 'true');
-});
-
-document.getElementById('scoringLogicModal')?.addEventListener('click', e => {
-  if (e.target.id === 'scoringLogicModal') {
-    const modal = document.getElementById('scoringLogicModal');
-    modal.classList.remove('is-open');
-    modal.setAttribute('aria-hidden', 'true');
-  }
-});
-
-// -----------------------------
-// GLOBAL HOOKS
-// -----------------------------
-window.renderRankingsLeaderboard = () => render().catch(console.error);
-officeSel.addEventListener('change', () => render().catch(console.error));
-categorySel.addEventListener('change', () => render().catch(console.error));
-
-// Initial render
-render().catch(console.error);
-
-// -----------------------------
-// GLOBAL MENU HELPERS
-// -----------------------------
-function renderOfficials(state, query) {
-  console.log("Render officials for:", state, query);
-}
-
-function showRatings() {
-  showTab('ratings');
-}
-
-function showCitizenship() {
-  showTab('citizenship');
-}
-
-function showCommunity() {
-  showTab('community');
-}
-
-// CLOSE initRankingsRender()
