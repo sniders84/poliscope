@@ -3676,23 +3676,18 @@ document.getElementById('rate-me-btn').onclick = function() {
 
   render().catch(console.error);
 
-     // -----------------------------
-  // GLOBAL MENU HELPERS
+      // -----------------------------
+  // GLOBAL MENU HELPERS (clean final version)
   // -----------------------------
   function renderOfficials(state, query) {
-    console.log("Render officials for:", state, query);
-    // ↑ This is your current stub.
-    // When ready, replace console.log with real rendering code, e.g.:
-    // const container = document.getElementById('officials-container');
-    // if (container) { /* build cards here */ }
+    console.log("Render officials for state:", state, "query:", query);
+    // Real rendering can go here later – for now this prevents undefined errors
   }
 
   function showRatings() {
     showTab('ratings');
-    // Add any refresh logic here, e.g.:
-    // if (typeof window.renderRankingsLeaderboard === 'function') {
-    //   window.renderRankingsLeaderboard();
-    // }
+    console.log("Ratings tab activated"); // temporary debug
+    // If you have a leaderboard render function, call it: window.renderRankingsLeaderboard?.();
   }
 
   function showCitizenship() {
@@ -3703,5 +3698,4 @@ document.getElementById('rate-me-btn').onclick = function() {
     showTab('community');
   }
 
-})();  // ← This single line closes the OUTER IIFE.
-       // Do NOT add anything after this — no extra })(); or extra code.
+})();   // SINGLE closing line for the outer IIFE – NOTHING after this!
