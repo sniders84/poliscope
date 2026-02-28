@@ -3506,97 +3506,96 @@ async function render() {
   }
 
   const rows = data.map(person => {
-    if (officeType === 'president') {
-      return {
-        person,
-        score: person.powerScore || 0,
-        breakdown: null
-      };
-    } else {
-      const { composite, breakdown } = scoreLegislator(person);
-      return {
-        person,
-        score: composite,
-        breakdown
-      };
-    }
-  });
+  if (officeType === 'president') {
+    return {
+      person,
+      score: person.powerScore || 0,
+      breakdown: null
+    };
+  } else {
+    const { composite, breakdown } = scoreLegislator(person);
+    return {
+      person,
+      score: composite,
+      breakdown
+    };
+  }
+});
 
-  // SORTING
-  rows.sort((a, b) => {
-    const key = selectedCategory;
+// SORTING
+rows.sort((a, b) => {
+  const key = selectedCategory;
 
-    if (officeType === 'president') {
-      return (b.person[key] || 0) - (a.person[key] || 0);
-    }
-
-    if (key === "powerScore") return b.score - a.score;
-    if (key === "committees") return (b.person.committees?.length || 0) - (a.person.committees?.length || 0);
-    if (key === "misconductTags") return (b.person.misconductTags?.length || 0) - (a.person.misconductTags?.length || 0);
-
+  if (officeType === 'president') {
     return (b.person[key] || 0) - (a.person[key] || 0);
-  });
+  }
 
-  // RENDER TABLE
-  tableBody.innerHTML = '';
-  rows.forEach((row, idx) => {
-    const tr = document.createElement('tr');
+  if (key === "powerScore") return b.score - a.score;
+  if (key === "committees") return (b.person.committees?.length || 0) - (a.person.committees?.length || 0);
+  if (key === "misconductTags") return (b.person.misconductTags?.length || 0) - (a.person.misconductTags?.length || 0);
 
-    let displayVal = 0;
-    if (officeType === 'president') {
-      displayVal = (row.person[selectedCategory] ?? row.person.powerScore ?? 0).toFixed(1);
-    } else {
-      displayVal = selectedCategory === "powerScore"
-        ? row.score.toFixed(1)
-        : Array.isArray(row.person[selectedCategory])
-          ? row.person[selectedCategory].length
-          : row.person[selectedCategory] || 0;
-    }
+  return (b.person[key] || 0) - (a.person[key] || 0);
+});
 
-    const officeLabel =
-      officeType === 'president'
-        ? `President (${ordinalSuffix(row.person.ordinal)})`
-        : row.person.office || (officeType === 'rep' ? 'U.S. Representative' : 'U.S. Senator');
+// RENDER TABLE
+tableBody.innerHTML = '';
+rows.forEach((row, idx) => {
+  const tr = document.createElement('tr');
 
-    const photoUrl = row.person.photo || 'https://via.placeholder.com/50?text=?';
+  let displayVal = 0;
+  if (officeType === 'president') {
+    displayVal = (row.person[selectedCategory] ?? row.person.powerScore ?? 0).toFixed(1);
+  } else {
+    displayVal = selectedCategory === "powerScore"
+      ? row.score.toFixed(1)
+      : Array.isArray(row.person[selectedCategory])
+        ? row.person[selectedCategory].length
+        : row.person[selectedCategory] || 0;
+  }
 
-    tr.innerHTML = `
-      <td>${idx + 1}</td>
-      <td>
-        <div style="display: flex; align-items: center; gap: 10px;">
-          <img src="${photoUrl}" alt="${row.person.name}" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover;" loading="lazy" onerror="this.src='https://via.placeholder.com/40?text=?';">
-          <div>
-            <a href="#" class="scorecard-link" data-name="${row.person.name.replace(/"/g, '&quot;')}">
-              ${row.person.name}
-            </a>
-            <br><small>${officeType === 'president'
-              ? `${row.person.party} • ${row.person.termStart}–${row.person.termEnd}`
-              : `${row.person.state} • ${row.person.party}${officeType === 'rep' ? ` • District ${row.person.district || 'At-Large'}` : ''}`
-            }</small>
-          </div>
+  const officeLabel =
+    officeType === 'president'
+      ? `President (${ordinalSuffix(row.person.ordinal)})`
+      : row.person.office || (officeType === 'rep' ? 'U.S. Representative' : 'U.S. Senator');
+
+  const photoUrl = row.person.photo || 'https://via.placeholder.com/50?text=?';
+
+  tr.innerHTML = `
+    <td>${idx + 1}</td>
+    <td>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <img src="${photoUrl}" alt="${row.person.name}" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover;" loading="lazy" onerror="this.src='https://via.placeholder.com/40?text=?';">
+        <div>
+          <a href="#" class="scorecard-link" data-name="${row.person.name.replace(/"/g, '&quot;')}">
+            ${row.person.name}
+          </a>
+          <br><small>${officeType === 'president'
+            ? `${row.person.party} • ${row.person.termStart}–${row.person.termEnd}`
+            : `${row.person.state} • ${row.person.party}${officeType === 'rep' ? ` • District ${row.person.district || 'At-Large'}` : ''}`
+          }</small>
         </div>
-      </td>
-      <td>${officeLabel}</td>
-      <td>${displayVal}</td>
-    `;
-    tableBody.appendChild(tr);
-  });
+      </div>
+    </td>
+    <td>${officeLabel}</td>
+    <td>${displayVal}</td>
+  `;
+  tableBody.appendChild(tr);
+});
 
-  // SCORECARD CLICK HANDLERS
-  tableBody.querySelectorAll('.scorecard-link').forEach(link => {
-    link.addEventListener('click', e => {
-      e.preventDefault();
-      const name = link.dataset.name;
-      const row = rows.find(r => r.person.name === name);
-      if (!row) return;
-      if (officeType === 'president') {
-        showScorecard(row.person);
-      } else {
-        showScorecard(row.person, row.breakdown, row.score);
-      }
-    });
+// SCORECARD CLICK HANDLERS
+tableBody.querySelectorAll('.scorecard-link').forEach(link => {
+  link.addEventListener('click', e => {
+    e.preventDefault();
+    const name = link.dataset.name;
+    const row = rows.find(r => r.person.name === name);
+    if (!row) return;
+    if (officeType === 'president') {
+      showScorecard(row.person);
+    } else {
+      showScorecard(row.person, row.breakdown, row.score);
+    }
   });
-}
+});
 
 // -----------------------------
 // MODAL CLOSE HANDLERS
