@@ -3266,7 +3266,7 @@ document.getElementById('rate-me-btn').onclick = function() {
   }
 
   // -----------------------------
-  // PRESIDENT SCORECARD RENDERING
+  // PRESIDENT SCORECARD RENDERING (UPDATED)
   // -----------------------------
   function showPresidentScorecard(person) {
     document.getElementById('scorecardName').textContent = person.name;
@@ -3281,15 +3281,16 @@ document.getElementById('rate-me-btn').onclick = function() {
     breakdownEl.innerHTML = headerHtml;
 
     const s = person.scores || {};
+    const summaries = person.summaries || {};
 
     const metricRows = `
-      <tr><td>Crisis Management</td><td colspan="3">${formatScore(s.crisisManagement)}</td></tr>
-      <tr><td>Domestic Policy</td><td colspan="3">${formatScore(s.domesticPolicy)}</td></tr>
-      <tr><td>Economic Policy</td><td colspan="3">${formatScore(s.economicPolicy)}</td></tr>
-      <tr><td>Foreign Policy</td><td colspan="3">${formatScore(s.foreignPolicy)}</td></tr>
-      <tr><td>Judicial Policy</td><td colspan="3">${formatScore(s.judicialPolicy)}</td></tr>
-      <tr><td>Legislation</td><td colspan="3">${formatScore(s.legislation)}</td></tr>
-      <tr><td>Misconduct</td><td colspan="3">${formatScore(s.misconduct)}</td></tr>
+      <tr><td>Crisis Management</td><td>${formatScore(s.crisisManagement)}</td></tr>
+      <tr><td>Domestic Policy</td><td>${formatScore(s.domesticPolicy)}</td></tr>
+      <tr><td>Economic Policy</td><td>${formatScore(s.economicPolicy)}</td></tr>
+      <tr><td>Foreign Policy</td><td>${formatScore(s.foreignPolicy)}</td></tr>
+      <tr><td>Judicial Policy</td><td>${formatScore(s.judicialPolicy)}</td></tr>
+      <tr><td>Legislation</td><td>${formatScore(s.legislation)}</td></tr>
+      <tr><td>Misconduct</td><td>${formatScore(s.misconduct)}</td></tr>
     `;
 
     breakdownEl.innerHTML += `
@@ -3297,13 +3298,38 @@ document.getElementById('rate-me-btn').onclick = function() {
         <tbody>
           <tr>
             <td><strong>Power Score</strong></td>
-            <td colspan="3">${formatScore(s.powerScore)}</td>
+            <td>${formatScore(person.powerScore)}</td>
           </tr>
-          <tr><td colspan="4"><strong>Metric Breakdown</strong></td></tr>
+          <tr><td colspan="2"><strong>Metric Breakdown</strong></td></tr>
           ${metricRows}
         </tbody>
       </table>
     `;
+
+    // SUMMARY TOGGLE
+    breakdownEl.innerHTML += `
+      <button id="summaryToggle" class="summary-toggle">Show Summary</button>
+      <div id="summaryContent" class="summary-content" style="display:none;">
+        <h3>Summaries</h3>
+        <p><strong>Crisis Management:</strong> ${summaries.crisisManagement || ''}</p>
+        <p><strong>Domestic Policy:</strong> ${summaries.domesticPolicy || ''}</p>
+        <p><strong>Economic Policy:</strong> ${summaries.economicPolicy || ''}</p>
+        <p><strong>Foreign Policy:</strong> ${summaries.foreignPolicy || ''}</p>
+        <p><strong>Judicial Policy:</strong> ${summaries.judicialPolicy || ''}</p>
+        <p><strong>Legislation:</strong> ${summaries.legislation || ''}</p>
+        <p><strong>Misconduct:</strong> ${summaries.misconduct || ''}</p>
+      </div>
+    `;
+
+    // Toggle handler
+    const toggleBtn = document.getElementById('summaryToggle');
+    const summaryDiv = document.getElementById('summaryContent');
+
+    toggleBtn.addEventListener('click', () => {
+      const isOpen = summaryDiv.style.display === 'block';
+      summaryDiv.style.display = isOpen ? 'none' : 'block';
+      toggleBtn.textContent = isOpen ? 'Show Summary' : 'Hide Summary';
+    });
 
     const modal = document.getElementById('scorecardModal');
     modal.classList.add('is-open', 'modal-dark');
@@ -3450,6 +3476,7 @@ window.showScorecard = function(person) {
 
 // -----------------------------
 // MERGE RANKINGS + INFO + MISCONDUCT
+// (Used only for legislators — unchanged)
 // -----------------------------
 function mergeData(rankings, info, misconduct = []) {
   return rankings.map(r => {
@@ -3476,7 +3503,7 @@ function mergeData(rankings, info, misconduct = []) {
 // MAIN RENDER FUNCTION
 // -----------------------------
 
-// INSERTED HERE — this fixes the "ordinalSuffix is not defined" crash
+// Fixes ordinalSuffix crash
 function ordinalSuffix(n) {
   const s = ["th", "st", "nd", "rd"];
   const v = n % 100;
@@ -3487,17 +3514,23 @@ async function render() {
   const selectedOffice = officeSel.value.toLowerCase();
   const selectedCategory = categorySel.value;
 
+  // Legislator fetches (unchanged)
   const senatorsRes = await fetch('/senators-rankings.json');
   const senatorsInfoRes = await fetch('/senators.json');
   const repsRes = await fetch('/representatives-rankings.json');
   const repsInfoRes = await fetch('/housereps.json');
+
+  // PRESIDENTS — NEW MERGED DATASET
   const presidentsRes = await fetch('/presidents-rankings.json');
 
   const senatorsRankings = await senatorsRes.json();
   const senatorsInfo = await senatorsInfoRes.json();
-  const repsRankings = await repsRes.json();
+  const repsRankings = await repsRankings.json();
   const repsInfo = await repsInfoRes.json();
-  const presidentsRankings = await presidentsRes.json();
+
+  // presidents-rankings.json is an OBJECT keyed by ID
+  const presidentsRankingsObj = await presidentsRes.json();
+  const presidentsRankings = Object.values(presidentsRankingsObj);
 
   let data = [];
   let officeType = '';
@@ -3529,7 +3562,7 @@ async function render() {
     if (officeType === 'president') {
       return {
         person,
-        score: person.scores?.powerScore || 0,
+        score: person.powerScore || person.scores?.powerScore || 0,
         breakdown: null
       };
     } else {
@@ -3546,11 +3579,11 @@ async function render() {
   // SORTING
   // -----------------------------
   rows.sort((a, b) => {
-    const key = selectedCategory;
-
     if (officeType === 'president') {
-      return (b.person.scores?.powerScore || 0) - (a.person.scores?.powerScore || 0);
+      return (b.person.powerScore || 0) - (a.person.powerScore || 0);
     }
+
+    const key = selectedCategory;
 
     if (key === "powerScore") return b.score - a.score;
     if (key === "committees") return (b.person.committees?.length || 0) - (a.person.committees?.length || 0);
@@ -3569,7 +3602,7 @@ async function render() {
     let displayVal = 0;
 
     if (officeType === 'president') {
-      displayVal = (row.person.scores?.powerScore || 0).toFixed(1);
+      displayVal = (row.person.powerScore || 0).toFixed(1);
     } else {
       displayVal = selectedCategory === "powerScore"
         ? row.score.toFixed(1)
@@ -3586,7 +3619,7 @@ async function render() {
     tr.innerHTML = `
       <td>${idx + 1}</td>
       <td>
-        <a href="#" class="scorecard-link" data-name="${row.person.name.replace(/"/g, '&quot;')}">
+        <a href="#" class="scorecard-link" data-id="${row.person.id}">
           ${row.person.name}
         </a>
         <br><small>${officeType === 'president'
@@ -3606,8 +3639,8 @@ async function render() {
   tableBody.querySelectorAll('.scorecard-link').forEach(link => {
     link.addEventListener('click', e => {
       e.preventDefault();
-      const name = link.dataset.name;
-      const row = rows.find(r => r.person.name === name);
+      const id = Number(link.dataset.id);
+      const row = rows.find(r => r.person.id === id);
 
       if (!row) return;
 
