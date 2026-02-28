@@ -3661,4 +3661,3 @@ function showCommunity() {
 }
 
 // CLOSE initRankingsRender()
-})();
