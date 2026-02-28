@@ -4,10 +4,8 @@ on:
   workflow_dispatch:
   push:
     paths:
-      - "public/presidents.json"
-      - "data/presidents-*.json"
+      - "public/presidents-*.json"
       - "scripts/bootstrap-presidents.js"
-      - "scripts/merge-presidents.js"
       - "scripts/presidents-scores.js"
       - "scripts/presidential-eras.js"
 
@@ -32,9 +30,6 @@ jobs:
 
       - name: Bootstrap presidents-rankings.json
         run: node scripts/bootstrap-presidents.js
-
-      - name: Merge metric files into presidents-rankings.json
-        run: node scripts/merge-presidents.js
 
       - name: Score presidents and update rankings
         run: node scripts/presidents-scores.js
