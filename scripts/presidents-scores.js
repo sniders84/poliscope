@@ -54,7 +54,6 @@ function getEraForPresidentId(id) {
 }
 
 // Recursively count "event objects" in a metrics subtree.
-// Assumes events are objects inside arrays or nested objects that have at least a title/summary.
 function countEvents(node) {
   if (!node || typeof node !== 'object') return 0;
 
@@ -81,7 +80,7 @@ function countEvents(node) {
   return count;
 }
 
-// Build a map: era -> { category -> { min, max } } based on raw event counts
+// Build a map: era -> { category -> { min, max } }
 function buildEraCategoryStats(presidents) {
   const stats = {};
 
@@ -103,19 +102,19 @@ function buildEraCategoryStats(presidents) {
   return stats;
 }
 
-// Normalize a raw count to 0–10 within an era for a given category
+// Normalize a raw count to 0–10 within an era
 function normalizeCountToScore(rawCount, eraStatsForEra, category) {
   const stats = eraStatsForEra && eraStatsForEra[category];
-  if (!stats) return 5.0; // fallback neutral
+  if (!stats) return 5.0;
 
   const { min, max } = stats;
-  if (min === max) return 5.0; // everyone same -> neutral
+  if (min === max) return 5.0;
 
   const normalized = (rawCount - min) / (max - min);
   return +(normalized * 10).toFixed(2);
 }
 
-// Generate a simple hybrid neutral-analytical summary for a category
+// Generate hybrid summary
 function generateCategorySummary(president, category, score, eraStats, presidentsInEra) {
   const name = president.name || `President #${president.id}`;
   const era = president.era || 'their era';
@@ -172,7 +171,7 @@ function computeOverallScores(categoryScores) {
 
   const base = weightedSum / weightTotal; // 0–10
   const powerScore = +(base * 10).toFixed(2); // 0–100
-  const eraNormalizedScore = +base.toFixed(2); // keep 0–10 as well
+  const eraNormalizedScore = +base.toFixed(2); // 0–10
 
   return { powerScore, eraNormalizedScore };
 }
@@ -180,8 +179,11 @@ function computeOverallScores(categoryScores) {
 // ---- MAIN PIPELINE ----
 
 function buildRankings() {
-  // presidents-rankings.json is an ARRAY of presidents
-  const presidents = loadJson(INPUT_FILE);
+  // Load file (may be array OR object)
+  const data = loadJson(INPUT_FILE);
+
+  // Normalize to array
+  const presidents = Array.isArray(data) ? data : Object.values(data);
 
   // Attach era and raw event counts
   for (const pres of presidents) {
@@ -208,7 +210,7 @@ function buildRankings() {
 
   // Compute category scores, summaries, and overall scores
   for (const pres of presidents) {
-    const era = pres.era || getEraForPresidentId(pres.id);
+    const era = pres.era;
     const categoryScores = {};
     const summaries = {};
 
@@ -234,9 +236,11 @@ function buildRankings() {
       powerScore,
       eraNormalizedScore
     };
+
+    pres.summaries = summaries;
   }
 
-  // Rank presidents by powerScore (desc), tie-breaker: eraNormalizedScore, then id
+  // Rank presidents
   presidents.sort((a, b) => {
     if (b.scores.powerScore !== a.scores.powerScore) {
       return b.scores.powerScore - a.scores.powerScore;
@@ -252,6 +256,7 @@ function buildRankings() {
     delete pres._rawEventCounts;
   });
 
+  // Save back as ARRAY
   saveJson(OUTPUT_FILE, presidents);
 }
 
