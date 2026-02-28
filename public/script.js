@@ -3676,15 +3676,19 @@ document.getElementById('rate-me-btn').onclick = function() {
 
   render().catch(console.error);
 
-  // -----------------------------
+    // -----------------------------
   // GLOBAL MENU HELPERS
   // -----------------------------
   function renderOfficials(state, query) {
     console.log("Render officials for:", state, query);
+    // TODO: call your real renderOfficials function here if needed
+    // Example: if (typeof realRenderOfficials === 'function') realRenderOfficials(state, query);
   }
 
   function showRatings() {
     showTab('ratings');
+    // If you have a rankings refresh function, call it here:
+    // window.renderRankingsLeaderboard?.();
   }
 
   function showCitizenship() {
@@ -3695,6 +3699,5 @@ document.getElementById('rate-me-btn').onclick = function() {
     showTab('community');
   }
 
-});  // <‑‑‑‑‑‑‑‑‑‑‑‑ CLOSES initRankingsRender()
-
-})(); // <‑‑‑‑‑‑‑‑‑‑‑‑ CLOSES THE IIFE WRAPPER
+})();  // ← ONLY ONE of these — closes the **outer** IIFE
+// Do NOT add another })(); after this
