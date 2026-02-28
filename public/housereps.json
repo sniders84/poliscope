@@ -407,7 +407,7 @@
     "district": "At-Large",
     "party": "Republican",
     "office": "U.S. Representative",
-    "slug": "nick-begich",
+    "slug": "nicholas-begich",
     "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Nick_Begich_III_119th_Congress.jpg/960px-Nick_Begich_III_119th_Congress.jpg",
     "ballotpediaLink": "https://ballotpedia.org/Nicholas_Begich",
     "govtrackLink": "https://www.govtrack.us/congress/members/nicholas_begich/456970",
@@ -3006,12 +3006,12 @@
     "streak": 0
   },
   {
-    "name": "Luz Maria Rivas",
+    "name": "Luz Rivas",
     "state": "California",
     "district": "29",
     "party": "Democratic",
     "office": "U.S. Representative",
-    "slug": "luz-maria-rivas",
+    "slug": "luz-rivas",
     "photo": "https://www.congress.gov/img/member/67745d860b34857ecc90916d_200.jpg",
     "ballotpediaLink": "https://ballotpedia.org/Luz_Maria_Rivas",
     "govtrackLink": "https://www.govtrack.us/congress/members/luz_rivas/456978",
@@ -5132,7 +5132,7 @@
     "streak": 0
   },
   {
-    "name": "Rosa L. DeLauro",
+    "name": "Rosa DeLauro",
     "state": "Connecticut",
     "district": "3",
     "party": "Democratic",
@@ -11425,7 +11425,7 @@
     "district": "2",
     "party": "Democratic",
     "office": "U.S. Representative",
-    "slug": "john-olszewski-jr",
+    "slug": "johnny-olszewski",
     "photo": "https://www.congress.gov/img/member/67744f4e0b34857ecc90915b_200.jpg",
     "ballotpediaLink": "https://ballotpedia.org/John_Olszewski_Jr.",
     "govtrackLink": "https://www.govtrack.us/congress/members/johnny_olszewski/456991",
@@ -14128,12 +14128,12 @@
     "streak": 0
   },
   {
-    "name": "Bob Onder",
+    "name": "Robert Onder",
     "state": "Missouri",
     "district": "3",
     "party": "Republican",
     "office": "U.S. Representative",
-    "slug": "bob-onder",
+    "slug": "robert-onder",
     "photo": "https://www.congress.gov/img/member/67744f970b34857ecc909161_200.jpg",
     "ballotpediaLink": "https://ballotpedia.org/Bob_Onder",
     "govtrackLink": "https://www.govtrack.us/congress/members/robert_onder/456998",
@@ -17697,12 +17697,12 @@
     "streak": 0
   },
   {
-    "name": "Timothy M. Kennedy",
+    "name": "Timothy Kennedy",
     "state": "New York",
     "district": "26",
     "party": "Democratic",
     "office": "U.S. Representative",
-    "slug": "timothy-m.-kennedy",
+    "slug": "timothy-kennedy",
     "photo": "https://www.congress.gov/img/member/668e9306658443009a697c8c_200.jpg",
     "ballotpediaLink": "https://ballotpedia.org/Tim_Kennedy_(New_York)",
     "govtrackLink": "https://www.govtrack.us/congress/members/timothy_kennedy/457014",
@@ -18646,7 +18646,7 @@
     "district": "14",
     "party": "Republican",
     "office": "U.S. Representative",
-    "slug": "timothy-k.-moore",
+    "slug": "tim-moore",
     "photo": "https://www.congress.gov/img/member/67744a540b34857ecc909137_200.jpg",
     "ballotpediaLink": "https://ballotpedia.org/Timothy_K._Moore",
     "govtrackLink": "https://www.govtrack.us/congress/members/tim_moore/457005",
@@ -20908,7 +20908,7 @@
     "district": "8",
     "party": "Republican",
     "office": "U.S. Representative",
-    "slug": "rob-bresnahan-jr",
+    "slug": "robert-bresnahan",
     "photo": "https://www.congress.gov/img/member/6774236f0b34857ecc90905f_200.jpg",
     "ballotpediaLink": "https://ballotpedia.org/Rob_Bresnahan_Jr.",
     "govtrackLink": "https://www.govtrack.us/congress/members/robert_bresnahan/457018",
@@ -27446,5 +27446,68 @@
     "misconduct": [],
     "score": 0,
     "streak": 0
-  }
+  },
+  {
+  "name": "Pablo José Hernández Rivera",
+  "state": "Puerto Rico",
+  "district": "At-Large",
+  "party": "Popular Democratic Party (Democratic Caucus)",
+  "office": "Resident Commissioner of Puerto Rico",
+  "slug": "pablo-jose-hernandez-rivera",
+  "photo": "https://www.congress.gov/img/member/67742d980b34857ecc9090e3_200.jpg",
+  "ballotpediaLink": "https://ballotpedia.org/Pablo_Jose_Hernandez_Rivera",
+  "govtrackLink": "https://www.govtrack.us/congress/members/pablo_jose_hernandez_rivera/457019",
+  "termStart": "2025-01-03",
+  "termEnd": "2029-01-03",
+  "contact": {
+    "email": "",
+    "phone": "202-225-2615",
+    "website": "https://hernandez.house.gov"
+  },
+  "social": {
+    "twitter": "",
+    "facebook": "",
+    "instagram": ""
+  },
+  "bio": "Pablo José Hernández Rivera is the Resident Commissioner of Puerto Rico, serving since 2025. Born in San Juan, he is an attorney and author who previously worked in private practice and clerked for the U.S. District Court of Puerto Rico. A member of the Popular Democratic Party who caucuses with Democrats in Congress, he is the grandson of former Puerto Rico Governor Rafael Hernández Colón. Hernández Rivera focuses on federal funding equity, economic development, and strengthening Puerto Rico’s representation in Washington.",
+  "education": "Harvard University (BA, 2013); Stanford University (JD, 2017)",
+  "endorsements": "BOLD PAC, Popular Democratic Party leadership",
+  "platform": "Federal funding parity, economic development, disaster recovery reform, and expanded representation for Puerto Rico.",
+  "platformFollowThrough": {
+    "Federal Funding Parity": "Advocated for increased PAN funding and equitable federal program access for Puerto Rico.",
+    "Economic Development": "Supported legislation aimed at strengthening local industries and improving federal investment in the island.",
+    "Disaster Recovery Reform": "Called for streamlined FEMA processes and improved federal oversight of reconstruction funds.",
+    "Expanded Representation": "Promoted civic education and visibility for Puerto Rico’s rights and needs in Congress."
+  },
+  "proposals": "Secure equitable federal benefits, modernize disaster response, expand economic opportunity, and strengthen Puerto Rico’s voice in Washington.",
+  "engagement": {
+    "executiveOrders2025": 0,
+    "socialMediaSurge": true,
+    "earnedMediaCoverage": true,
+    "sources": [
+      "https://en.wikipedia.org/wiki/Pablo_Hern%C3%A1ndez_Rivera",
+      "https://www.govtrack.us/congress/members/pablo_hernandez/456999",
+      "https://www.congress.gov/member/pablo-hernandez/H001123",
+      "https://ballotpedia.org/Pablo_Jose_Hernandez_Rivera"
+    ]
+  },
+  "billsPassed": [
+    {
+      "title": "H.R. 7518 — Institute of Tropical Forestry and Pacific Islands Forestry Support Act",
+      "link": "https://www.congress.gov/bill/119th-congress/house-bill/7518"
+    }
+  ],
+  "salary": "$174,000/year",
+  "predecessor": "Jenniffer González-Colón",
+  "electionYear": "2024",
+  "sponsoredBills": 0,
+  "cosponsoredBills": 0,
+  "becameLawBills": 0,
+  "becameLawCosponsoredBills": 0,
+  "committees": [],
+  "votes": [],
+  "misconduct": [],
+  "score": 0,
+  "streak": 0
+}
 ]
