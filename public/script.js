@@ -3396,7 +3396,7 @@ document.getElementById('rate-me-btn').onclick = function() {
     modal.setAttribute('aria-hidden', 'false');
   }
 
- // PUBLIC API FOR SCORECARD
+// PUBLIC API FOR SCORECARD
 window.showScorecard = function(person) {
   if (person.office === "President") {
     showPresidentScorecard(person);
