@@ -16,7 +16,7 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # needed for proper rebase
+          fetch-depth: 0
 
       - name: Use Node.js
         uses: actions/setup-node@v4
@@ -35,7 +35,7 @@ jobs:
       - name: Score presidents and update rankings
         run: node scripts/presidents-scores.js
 
-      - name: Commit updated presidents-rankings.json
+      - name: Commit and push updated presidents-rankings.json
         if: github.ref == 'refs/heads/main'
         run: |
           git config user.name "github-actions[bot]"
@@ -50,6 +50,15 @@ jobs:
 
           git commit -m "Update presidents-rankings.json via workflow [skip ci]"
 
-          # Safer rebase + push instead of stash/pop
-          git pull --rebase origin main || { echo "Rebase failed"; exit 1; }
-          git push --force-with-lease origin HEAD:main || { echo "Push failed - possible conflict"; exit 1; }
+          # Simple push with lease safety
+          git push --force-with-lease origin HEAD:main || {
+            echo "Push failed - possible conflict. Fetching latest..."
+            git fetch origin main
+            git reset --hard origin/main
+            echo "Reset to latest main - re-running scripts if needed."
+            node scripts/bootstrap-presidents.js
+            node scripts/presidents-scores.js
+            git add public/presidents-rankings.json
+            git commit -m "Retry update presidents-rankings.json [skip ci]" || echo "No retry changes"
+            git push origin HEAD:main
+          }
