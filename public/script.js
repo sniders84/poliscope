@@ -3446,12 +3446,14 @@ async function render() {
   const repsRes = await fetch('/representatives-rankings.json');
   const repsInfoRes = await fetch('/housereps.json');
   const presidentsRes = await fetch('/presidents-rankings.json');
+  const presidentsInfoRes = await fetch('/presidents.json');
 
   const senatorsRankings = await senatorsRes.json().catch(() => []);
   const senatorsInfo = await senatorsInfoRes.json().catch(() => []);
   const repsRankings = await repsRes.json().catch(() => []);
   const repsInfo = await repsInfoRes.json().catch(() => []);
   const presidentsRankings = await presidentsRes.json().catch(() => []);
+  const presidentsInfo = await presidentsInfoRes.json().catch(() => []);
 
   let data = [];
   let officeType = '';
@@ -3459,16 +3461,40 @@ async function render() {
   if (selectedOffice === 'senator') {
     data = mergeData(senatorsRankings, senatorsInfo);
     officeType = 'senator';
+
   } else if (selectedOffice === 'u.s. representative') {
     data = mergeData(repsRankings, repsInfo);
     officeType = 'rep';
+
   } else if (selectedOffice === 'president') {
-    data = presidentsRankings.map(p => ({
-      ...p,
-      office: "President",
-      ordinal: p.id
-    }));
+    // 🔥 FIXED PRESIDENT BRANCH — flatten scores + merge with presidents.json
+    data = presidentsRankings.map(p => {
+      const s = p.scores || {};
+      const match = presidentsInfo.find(i => i.name === p.name || i.slug === p.slug) || {};
+
+      return {
+        ...match,
+        ...p,
+        office: "President",
+        ordinal: p.id,
+
+        // Flattened score fields for Rankings tab
+        powerScore: s.powerScore ?? 0,
+        crisisManagement: s.crisisManagement ?? 0,
+        domesticPolicy: s.domesticPolicy ?? 0,
+        economicPolicy: s.economicPolicy ?? 0,
+        foreignPolicy: s.foreignPolicy ?? 0,
+        judicialPolicy: s.judicialPolicy ?? 0,
+        legislation: s.legislation ?? 0,
+        misconduct: s.misconduct ?? 0,
+
+        // Preserve photo priority: rankings > info
+        photo: p.photo || match.photo || null
+      };
+    });
+
     officeType = 'president';
+
   } else {
     tableBody.innerHTML = '<tr><td colspan="5">Select an office to view rankings</td></tr>';
     return;
@@ -3483,7 +3509,7 @@ async function render() {
     if (officeType === 'president') {
       return {
         person,
-        score: person.scores?.powerScore || 0,
+        score: person.powerScore || 0,
         breakdown: null
       };
     } else {
@@ -3499,12 +3525,15 @@ async function render() {
   // SORTING
   rows.sort((a, b) => {
     const key = selectedCategory;
+
     if (officeType === 'president') {
-      return (b.person.scores?.powerScore || 0) - (a.person.scores?.powerScore || 0);
+      return (b.person[key] || 0) - (a.person[key] || 0);
     }
+
     if (key === "powerScore") return b.score - a.score;
     if (key === "committees") return (b.person.committees?.length || 0) - (a.person.committees?.length || 0);
     if (key === "misconductTags") return (b.person.misconductTags?.length || 0) - (a.person.misconductTags?.length || 0);
+
     return (b.person[key] || 0) - (a.person[key] || 0);
   });
 
@@ -3512,9 +3541,10 @@ async function render() {
   tableBody.innerHTML = '';
   rows.forEach((row, idx) => {
     const tr = document.createElement('tr');
+
     let displayVal = 0;
     if (officeType === 'president') {
-      displayVal = (row.person.scores?.powerScore || 0).toFixed(1);
+      displayVal = (row.person[selectedCategory] ?? row.person.powerScore ?? 0).toFixed(1);
     } else {
       displayVal = selectedCategory === "powerScore"
         ? row.score.toFixed(1)
@@ -3522,6 +3552,7 @@ async function render() {
           ? row.person[selectedCategory].length
           : row.person[selectedCategory] || 0;
     }
+
     const officeLabel =
       officeType === 'president'
         ? `President (${ordinalSuffix(row.person.ordinal)})`
@@ -3566,6 +3597,7 @@ async function render() {
     });
   });
 }
+
 // -----------------------------
 // MODAL CLOSE HANDLERS
 // -----------------------------
@@ -3581,6 +3613,7 @@ document.getElementById('scorecardModal')?.addEventListener('click', e => {
     modal.setAttribute('aria-hidden', 'true');
   }
 });
+
 // -----------------------------
 // SCORING LOGIC MODAL
 // -----------------------------
@@ -3601,14 +3634,17 @@ document.getElementById('scoringLogicModal')?.addEventListener('click', e => {
     modal.setAttribute('aria-hidden', 'true');
   }
 });
+
 // -----------------------------
 // GLOBAL HOOKS
 // -----------------------------
 window.renderRankingsLeaderboard = () => render().catch(console.error);
 officeSel.addEventListener('change', () => render().catch(console.error));
 categorySel.addEventListener('change', () => render().catch(console.error));
+
 // Initial render
 render().catch(console.error);
+
 // -----------------------------
 // GLOBAL MENU HELPERS
 // -----------------------------
@@ -3624,5 +3660,6 @@ function showCitizenship() {
 function showCommunity() {
   showTab('community');
 }
+
 // CLOSE initRankingsRender()
-})(); 
+})();
