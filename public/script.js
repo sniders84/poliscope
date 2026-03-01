@@ -3249,38 +3249,45 @@ document.getElementById('rate-me-btn').onclick = function() {
     return `<span class="${cls}">${Number.isFinite(value) ? value.toFixed(1) : '0.0'}</span>`;
   }
 
-  // PRESIDENT SCORECARD RENDERING
+  // PRESIDENT SCORECARD RENDERING — UPDATED FOR HYBRID SCHEMA
   function showPresidentScorecard(person) {
     document.getElementById('scorecardName').textContent = person.name;
     const photoUrl = person.photo || 'https://via.placeholder.com/150?text=No+Photo';
+
     const headerHtml = `
       <img src="${photoUrl}" alt="${person.name}" class="profile-photo" loading="lazy">
       <p>${person.party} • ${person.termStart}–${person.termEnd}</p>
     `;
+
     const breakdownEl = document.getElementById('scorecardBreakdown');
     breakdownEl.innerHTML = headerHtml;
-    const s = person.scores || {};
+
+    // NEW: use hybrid categoryScores
+    const cs = person.categoryScores || {};
+
     const metricRows = `
-      <tr><td>Crisis Management</td><td colspan="3">${formatScore(s.crisisManagement)}</td></tr>
-      <tr><td>Domestic Policy</td><td colspan="3">${formatScore(s.domesticPolicy)}</td></tr>
-      <tr><td>Economic Policy</td><td colspan="3">${formatScore(s.economicPolicy)}</td></tr>
-      <tr><td>Foreign Policy</td><td colspan="3">${formatScore(s.foreignPolicy)}</td></tr>
-      <tr><td>Judicial Policy</td><td colspan="3">${formatScore(s.judicialPolicy)}</td></tr>
-      <tr><td>Legislation</td><td colspan="3">${formatScore(s.legislation)}</td></tr>
-      <tr><td>Misconduct</td><td colspan="3">${formatScore(s.misconduct)}</td></tr>
+      <tr><td>Crisis Management</td><td colspan="3">${formatScore(cs.crisisManagement)}</td></tr>
+      <tr><td>Domestic Policy</td><td colspan="3">${formatScore(cs.domesticPolicy)}</td></tr>
+      <tr><td>Economic Policy</td><td colspan="3">${formatScore(cs.economicPolicy)}</td></tr>
+      <tr><td>Foreign Policy</td><td colspan="3">${formatScore(cs.foreignPolicy)}</td></tr>
+      <tr><td>Judicial Policy</td><td colspan="3">${formatScore(cs.judicialPolicy)}</td></tr>
+      <tr><td>Legislation</td><td colspan="3">${formatScore(cs.legislation)}</td></tr>
+      <tr><td>Misconduct</td><td colspan="3">${formatScore(cs.misconduct)}</td></tr>
     `;
+
     breakdownEl.innerHTML += `
       <table class="scorecard-table">
         <tbody>
           <tr>
             <td><strong>Power Score</strong></td>
-            <td colspan="3">${formatScore(s.powerScore)}</td>
+            <td colspan="3">${formatScore(person.powerScore)}</td>
           </tr>
           <tr><td colspan="4"><strong>Metric Breakdown</strong></td></tr>
           ${metricRows}
         </tbody>
       </table>
     `;
+
     const modal = document.getElementById('scorecardModal');
     modal.classList.add('is-open', 'modal-dark');
     modal.setAttribute('aria-hidden', 'false');
@@ -3383,7 +3390,7 @@ document.getElementById('rate-me-btn').onclick = function() {
             <td><strong>Category</strong></td>
             <td><strong>Raw</strong></td>
             <td><strong>Weight</strong></td>
-            <td><strong>Contribution</strong></td>
+            <td><strong>Contribution</td>
           </tr>
           ${normalRowsHtml}
           ${membershipSection}
@@ -3395,42 +3402,42 @@ document.getElementById('rate-me-btn').onclick = function() {
     modal.classList.add('is-open', 'modal-dark');
     modal.setAttribute('aria-hidden', 'false');
   }
+})();
 
-  // PUBLIC API FOR SCORECARD
-  window.showScorecard = function(person) {
-    if (person.office === "President") {
-      showPresidentScorecard(person);
-    } else {
-      const { composite, breakdown } = scoreLegislator(person);
-      showLegislatorScorecard(person, breakdown, composite);
-    }
-  };
-
-  // MERGE RANKINGS + INFO + MISCONDUCT (UNCHANGED)
-  function mergeData(rankings, info, misconduct = []) {
-    return rankings.map(r => {
-      let match = info.find(i => i.slug === r.slug);
-      if (!match && r.bioguideId) {
-        match = info.find(i => i.bioguideId === r.bioguideId);
-      }
-      let misconductEntry = misconduct.find(m => m.person === r.bioguideId);
-      return {
-        ...r,
-        ...match,
-        ...(misconductEntry ? {
-          misconductCount: misconductEntry.misconductCount || 1,
-          misconductTags: misconductEntry.tags || [],
-          misconductTexts: misconductEntry.texts || [],
-          misconductConsequences: misconductEntry.consequences || []
-        } : {})
-      };
-    });
+ // PUBLIC API FOR SCORECARD
+window.showScorecard = function(person) {
+  if (person.office === "President") {
+    showPresidentScorecard(person);
+  } else {
+    const { composite, breakdown } = scoreLegislator(person);
+    showLegislatorScorecard(person, breakdown, composite);
   }
+};
+
+// MERGE RANKINGS + INFO + MISCONDUCT (UNCHANGED)
+function mergeData(rankings, info, misconduct = []) {
+  return rankings.map(r => {
+    let match = info.find(i => i.slug === r.slug);
+    if (!match && r.bioguideId) {
+      match = info.find(i => i.bioguideId === r.bioguideId);
+    }
+    let misconductEntry = misconduct.find(m => m.person === r.bioguideId);
+    return {
+      ...r,
+      ...match,
+      ...(misconductEntry ? {
+        misconductCount: misconductEntry.misconductCount || 1,
+        misconductTags: misconductEntry.tags || [],
+        misconductTexts: misconductEntry.texts || [],
+        misconductConsequences: misconductEntry.consequences || []
+      } : {})
+    };
+  });
+}
 
 // -----------------------------
 // MAIN RENDER FUNCTION
 // -----------------------------
-// INSERTED HERE — this fixes the "ordinalSuffix is not defined" crash
 function ordinalSuffix(n) {
   const s = ["th", "st", "nd", "rd"];
   const v = n % 100;
@@ -3483,7 +3490,7 @@ async function render() {
     if (officeType === 'president') {
       return {
         person,
-        score: person.scores?.powerScore || 0,
+        score: person.powerScore || 0,   // UPDATED
         breakdown: null
       };
     } else {
@@ -3499,12 +3506,15 @@ async function render() {
   // SORTING
   rows.sort((a, b) => {
     const key = selectedCategory;
+
     if (officeType === 'president') {
-      return (b.person.scores?.powerScore || 0) - (a.person.scores?.powerScore || 0);
+      return (b.person.powerScore || 0) - (a.person.powerScore || 0);  // UPDATED
     }
+
     if (key === "powerScore") return b.score - a.score;
     if (key === "committees") return (b.person.committees?.length || 0) - (a.person.committees?.length || 0);
     if (key === "misconductTags") return (b.person.misconductTags?.length || 0) - (a.person.misconductTags?.length || 0);
+
     return (b.person[key] || 0) - (a.person[key] || 0);
   });
 
@@ -3513,8 +3523,9 @@ async function render() {
   rows.forEach((row, idx) => {
     const tr = document.createElement('tr');
     let displayVal = 0;
+
     if (officeType === 'president') {
-      displayVal = (row.person.scores?.powerScore || 0).toFixed(1);
+      displayVal = (row.person.powerScore || 0).toFixed(1);  // UPDATED
     } else {
       displayVal = selectedCategory === "powerScore"
         ? row.score.toFixed(1)
@@ -3522,6 +3533,7 @@ async function render() {
           ? row.person[selectedCategory].length
           : row.person[selectedCategory] || 0;
     }
+
     const officeLabel =
       officeType === 'president'
         ? `President (${ordinalSuffix(row.person.ordinal)})`
@@ -3558,14 +3570,16 @@ async function render() {
       const name = link.dataset.name;
       const row = rows.find(r => r.person.name === name);
       if (!row) return;
+
       if (officeType === 'president') {
-        showScorecard(row.person);
+        showScorecard(row.person);  // UPDATED
       } else {
         showScorecard(row.person, row.breakdown, row.score);
       }
     });
   });
 }
+
 // -----------------------------
 // MODAL CLOSE HANDLERS
 // -----------------------------
@@ -3581,6 +3595,7 @@ document.getElementById('scorecardModal')?.addEventListener('click', e => {
     modal.setAttribute('aria-hidden', 'true');
   }
 });
+
 // -----------------------------
 // SCORING LOGIC MODAL
 // -----------------------------
@@ -3601,14 +3616,15 @@ document.getElementById('scoringLogicModal')?.addEventListener('click', e => {
     modal.setAttribute('aria-hidden', 'true');
   }
 });
+
 // -----------------------------
 // GLOBAL HOOKS
 // -----------------------------
 window.renderRankingsLeaderboard = () => render().catch(console.error);
 officeSel.addEventListener('change', () => render().catch(console.error));
 categorySel.addEventListener('change', () => render().catch(console.error));
-// Initial render
 render().catch(console.error);
+
 // -----------------------------
 // GLOBAL MENU HELPERS
 // -----------------------------
@@ -3625,4 +3641,4 @@ function showCommunity() {
   showTab('community');
 }
 // CLOSE initRankingsRender()
-})(); 
+})();
