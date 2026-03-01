@@ -66,15 +66,16 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "Automated Senate update (119th Congress) [skip ci]"
-          file_pattern: |
-            public/senators*.json
-            public/senators-*.json
-            public/legislation*.json
-            public/committee*.json
-            public/*scores.json
+
+          # 🔒 Commit only Senate files
+          file_pattern: public/senators-*
+          add_options: '-- public/senators-* public/senators.json'
+
           commit_user_name: github-actions[bot]
           commit_user_email: 41898282+github-actions[bot]@users.noreply.github.com
           push_options: '--force-with-lease'
-          skip_dirty_check: false
+
+          # 🔒 Prevent scanning or committing unrelated files
+          skip_dirty_check: true
           skip_fetch: false
           branch: main
