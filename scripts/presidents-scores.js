@@ -1,7 +1,5 @@
-// presidents-scores.js
-// Hybrid scoring model with identity preservation and hybrid-tone summaries.
-// Computes category scores using eventCount, impactScore, significanceScore,
-// applies your existing category weights, and outputs stable powerScores.
+// scripts/presidents-scores.js
+// Hybrid scoring engine for Presidents using the unified schema.
 
 const fs = require("fs");
 const path = require("path");
@@ -19,19 +17,13 @@ let presidents = JSON.parse(fs.readFileSync(rankingsPath, "utf-8"));
 const presInfo = JSON.parse(fs.readFileSync(infoPath, "utf-8"));
 
 // ------------------------------------------------------------
-// BUILD MASTER IDENTITY MAP (presidentId → bioguide fallback)
+// BUILD IDENTITY MAP (keyed by presidentNumber / id)
 // ------------------------------------------------------------
-
-function extractId(p) {
-  const presId = p.presidentId || null;
-  const bioId = p.bioguideId || p.bioguide || null;
-  return presId || (bioId ? bioId.toUpperCase() : null);
-}
 
 const identityMap = new Map();
 
 for (const p of presInfo) {
-  const key = extractId(p);
+  const key = p.presidentNumber;
   if (!key) continue;
 
   identityMap.set(key, {
@@ -41,15 +33,13 @@ for (const p of presInfo) {
     termEnd: p.termEnd,
     era: p.era,
     photo: p.photo || null,
-    presidentId: p.presidentId || null,
-    bioguideId: p.bioguideId || p.bioguide || null,
     slug: p.slug || null,
     office: "President"
   });
 }
 
 // ------------------------------------------------------------
-// CATEGORY WEIGHTS (unchanged)
+// CATEGORY WEIGHTS
 // ------------------------------------------------------------
 
 const CATEGORY_WEIGHTS = {
@@ -111,10 +101,7 @@ function makeSummary(categoryName, score) {
 // ------------------------------------------------------------
 
 presidents = presidents.map(p => {
-  const key =
-    p.presidentId ||
-    (p.bioguideId ? p.bioguideId.toUpperCase() : null);
-
+  const key = p.id;
   const identity = identityMap.get(key) || {};
 
   const categories = {
