@@ -1861,49 +1861,69 @@
       ]
     }
   },
-  {
-    "id": 43,
-    "name": "George W. Bush",
-    "economicPolicy": {
-      "economicConditionsSummary": "Bush’s presidency was shaped by the aftermath of the dot‑com crash, the September 11 attacks, wars in Afghanistan and Iraq, and the 2008 financial crisis. Early 2000s tax cuts stimulated growth but increased deficits. The housing bubble expanded rapidly due to low interest rates, lax lending standards, and financial innovation. The collapse of the housing market triggered the worst economic crisis since the Great Depression, leading to massive federal intervention to stabilize the financial system.",
+ {
+  "id": 43,
+  "name": "George W. Bush",
+  "economicPolicy": {
+    "overview": "Bush's economic policy emphasized tax cuts to stimulate growth, investment, and job creation amid challenges including the 2001 recession (inherited from the dot-com bust), the September 11 attacks, wars in Afghanistan and Iraq, and rising spending. Major tax reductions in 2001 and 2003 lowered income, capital gains, and dividend rates, contributing to a recovery and extended job growth through much of the decade. The economy experienced solid expansion from 2003–2007 with low unemployment and rising homeownership, but loose lending practices fueled a housing bubble. This burst into the 2007–2008 subprime mortgage crisis, leading to the Great Recession, massive financial bailouts, and significant job losses by the end of his term. Deficits grew substantially due to tax cuts, war spending, and later crisis response measures.",
+    "eventCount": 5,
+    "impactScore": 7.5,
+    "significanceScore": 9.2,
+    "majorEvents": [
+      {
+        "title": "2001–2003 Tax Cuts and Economic Recovery",
+        "summary": "Major tax reductions via the EGTRRA (2001) and JGTRRA (2003) lowered rates across brackets, reduced capital gains/dividends taxes, and boosted incentives for investment, helping pull the economy out of recession and supporting prolonged job creation.",
+        "sources": [
+          "https://en.wikipedia.org/wiki/Economic_policy_of_the_George_W._Bush_administration",
+          "https://millercenter.org/president/gwbush/domestic-affairs"
+        ]
+      },
+      {
+        "title": "2003–2007 Economic Expansion and Job Growth",
+        "summary": "Following tax relief, the U.S. saw over 50 months of uninterrupted job gains, strong GDP growth in periods, and rising homeownership, though fueled partly by a housing boom and low interest rates.",
+        "sources": [
+          "https://georgewbush-whitehouse.archives.gov/infocus/bushrecord/factsheets/taxrelief.html",
+          "https://millercenter.org/president/gwbush/domestic-affairs"
+        ]
+      },
+      {
+        "title": "2007–2008 Subprime Mortgage Crisis and Great Recession",
+        "summary": "A housing bubble burst triggered widespread foreclosures, banking failures (e.g., Lehman Brothers), credit freeze, and the deepest recession since the Great Depression, with massive job losses and stock market collapse.",
+        "sources": [
+          "https://en.wikipedia.org/wiki/Economic_policy_of_the_George_W._Bush_administration",
+          "https://www.georgewbushlibrary.gov/research/topic-guides/us-economics-finance"
+        ]
+      }
+    ],
+    "minorEvents": [],
+    "subcategories": {
       "majorEconomicEvents": [
         {
-          "title": "Dot‑Com Recession and 9/11 Economic Shock",
-          "summary": "The early 2000s saw recession, declining investment, and disruptions from the September 11 attacks, followed by a gradual recovery.",
-          "sources": [
-            "https://www.britannica.com/event/September-11-attacks",
-            "https://millercenter.org/president/bush/domestic-affairs"
-          ]
+          "title": "2001 Recession and Recovery",
+          "summary": "Inherited mild recession deepened by 9/11; tax cuts and monetary policy aided rebound into sustained growth."
         },
         {
-          "title": "Great Recession and Financial Crisis of 2008",
-          "summary": "A collapse in housing prices, mortgage‑backed securities, and major financial institutions triggered a global crisis, requiring unprecedented federal intervention.",
-          "sources": [
-            "https://www.britannica.com/event/Great-Recession",
-            "https://www.federalreservehistory.org/essays/great-recession"
-          ]
+          "title": "Housing Bubble and 2008 Financial Crisis",
+          "summary": "Rapid home price rises and subprime lending led to crisis, requiring emergency interventions like TARP bailout."
         }
       ],
       "economicInitiatives": [
         {
-          "title": "2001 and 2003 Tax Cuts",
-          "summary": "Bush enacted major tax reductions aimed at stimulating growth, lowering income tax rates, and reducing taxes on dividends and capital gains.",
-          "sources": [
-            "https://www.britannica.com/topic/George-W-Bush",
-            "https://millercenter.org/president/bush/domestic-affairs"
-          ]
+          "title": "Economic Growth and Tax Relief Reconciliation Act (2001)",
+          "summary": "Signed $1.35 trillion tax cut package reducing income rates, doubling child tax credit, phasing out estate tax, and providing rebates to stimulate spending post-recession and 9/11."
         },
         {
-          "title": "Troubled Asset Relief Program (TARP)",
-          "summary": "Bush signed TARP to stabilize the financial system by purchasing distressed assets and injecting capital into banks during the 2008 crisis.",
-          "sources": [
-            "https://www.britannica.com/topic/Troubled-Asset-Relief-Program",
-            "https://millercenter.org/president/bush/domestic-affairs"
-          ]
+          "title": "Jobs and Growth Tax Relief Reconciliation Act (2003)",
+          "summary": "Accelerated and expanded tax cuts with $350 billion package, lowering rates on dividends/capital gains to encourage investment and job creation amid ongoing recovery efforts."
+        },
+        {
+          "title": "Economic Stimulus Act (2008)",
+          "summary": "Bipartisan $168 billion package with taxpayer rebates and business incentives to counter emerging slowdown; later followed by TARP in response to full crisis."
         }
       ]
     }
-  },
+  }
+},
   {
     "id": 44,
     "name": "Barack Obama",
