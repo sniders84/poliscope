@@ -1,6 +1,4 @@
 // scripts/merge-presidents.js
-// Merge metric JSON files into presidents-rankings.json using the unified hybrid schema.
-
 const fs = require("fs");
 const path = require("path");
 
@@ -21,7 +19,8 @@ const FILES = {
 function loadJson(pathname) {
   try {
     return JSON.parse(fs.readFileSync(pathname, "utf8"));
-  } catch {
+  } catch (err) {
+    console.error(`Failed to load ${pathname}:`, err.message);
     return [];
   }
 }
@@ -36,13 +35,13 @@ function indexById(arr) {
 
 function extractHybridFields(raw) {
   if (!raw) return {};
-
   return {
     overview: raw.overview || "",
-    eventCount: raw.eventCount || 0,
-    impactScore: raw.impactScore || 0,
-    significanceScore: raw.significanceScore || 0,
-    majorEvents: raw.majorEvents || [],
+    // Ignore placeholders — we don't need them anymore
+    // eventCount: raw.eventCount || 0,
+    // impactScore: raw.impactScore || 0,
+    // significanceScore: raw.significanceScore || 0,
+    majorEvents: raw.majorEvents || raw.events || [],
     minorEvents: raw.minorEvents || [],
     subcategories: raw.subcategories || {}
   };
@@ -50,7 +49,6 @@ function extractHybridFields(raw) {
 
 function main() {
   console.log("merge-presidents: starting merge");
-
   const rankings = loadJson(RANKINGS_PATH);
   if (!Array.isArray(rankings)) {
     console.error("presidents-rankings.json is not an array.");
@@ -70,10 +68,11 @@ function main() {
 
     for (const category of Object.keys(FILES)) {
       if (metricsData[category].has(id)) {
-        const rawCategory = metricsData[category].get(id)[category];
-        const hybrid = extractHybridFields(rawCategory);
-
-        // Merge into existing hybrid structure from bootstrap
+        // FIXED: No extra [category] lookup
+        const rawCategory = metricsData[category].get(id);
+        const hybrid = extractHybridFields(rawCategory[category] || rawCategory);
+        
+        // Merge (preserve any bootstrap fields, overwrite with real data)
         p[category] = {
           ...p[category],
           ...hybrid
