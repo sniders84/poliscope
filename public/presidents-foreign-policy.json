@@ -1,223 +1,342 @@
 [
   {
-    "id": 1,
-    "name": "George Washington",
-    "foreignPolicy": {
-      "foreignPolicyOverview": "Washington established the foundational principles of American foreign policy: neutrality, avoidance of permanent alliances, and assertion of executive authority in diplomacy. His administration navigated intense European conflict, negotiated key treaties that stabilized borders and commerce, and asserted national sovereignty against foreign interference. Washington’s decisions shaped the constitutional balance between Congress and the executive in foreign affairs and set precedents that guided U.S. diplomacy for generations.",
+  "id": 1,
+  "name": "George Washington",
+  "foreignPolicy": {
+    "overview": "Washington established the foundational principles of early American foreign policy, emphasizing neutrality, avoidance of permanent alliances, and strong executive authority in diplomacy. His administration navigated intense European conflict, negotiated treaties that stabilized borders and commerce, and asserted national sovereignty against foreign interference. These decisions shaped the constitutional balance of foreign‑policy powers and set enduring precedents for U.S. diplomacy.",
+    "eventCount": 4,
+    "impactScore": 9.8,
+    "significanceScore": 10.0,
+    "majorEvents": [
+      {
+        "title": "Jay Treaty with Great Britain (1794)",
+        "summary": "A landmark treaty that resolved post‑Revolutionary disputes, secured British withdrawal from frontier forts, and established commercial arrangements. Though controversial, it prevented war with Britain and stabilized the young nation's economy.",
+        "sources": [
+          "https://history.state.gov/milestones/1784-1800/jay-treaty",
+          "https://www.britannica.com/event/Jay-Treaty"
+        ]
+      },
+      {
+        "title": "Pinckney’s Treaty with Spain (1795)",
+        "summary": "A major diplomatic success securing navigation rights on the Mississippi River, the right of deposit at New Orleans, and a clear boundary with Spanish Florida, strengthening western expansion and trade.",
+        "sources": [
+          "https://history.state.gov/milestones/1784-1800/pinckney-treaty",
+          "https://www.britannica.com/event/Pinckneys-Treaty"
+        ]
+      },
+      {
+        "title": "Proclamation of Neutrality (1793)",
+        "summary": "Washington formally declared U.S. neutrality in the war between Britain and France, asserting executive control over foreign policy and avoiding entangling alliances.",
+        "sources": [
+          "https://www.loc.gov/item/today-in-history/april-22/",
+          "https://history.state.gov/milestones/1784-1800/french-rev"
+        ]
+      },
+      {
+        "title": "Citizen Genêt Affair",
+        "summary": "French envoy Edmond‑Charles Genêt attempted to recruit American support for France in violation of U.S. neutrality. Washington demanded his recall, reinforcing executive authority over foreign envoys.",
+        "sources": [
+          "https://history.state.gov/milestones/1784-1800/genet",
+          "https://www.britannica.com/biography/Edmond-Charles-Genêt"
+        ]
+      }
+    ],
+    "minorEvents": [],
+    "subcategories": {
       "treatiesNegotiated": [
         {
           "title": "Jay Treaty with Great Britain (1794)",
-          "summary": "The treaty resolved lingering post‑Revolutionary War disputes, secured British evacuation of frontier forts, and established commercial arrangements. Though controversial domestically, it prevented war with Britain and stabilized the young nation’s economy.",
-          "sources": [
-            "https://history.state.gov/milestones/1784-1800/jay-treaty",
-            "https://www.britannica.com/event/Jay-Treaty"
-          ]
+          "summary": "Resolved post‑Revolutionary disputes, secured British evacuation of frontier forts, and established commercial arrangements."
         },
         {
           "title": "Pinckney’s Treaty with Spain (1795)",
-          "summary": "The treaty secured American navigation rights on the Mississippi River, the right of deposit at New Orleans, and a clear boundary with Spanish Florida, strengthening western expansion and trade.",
-          "sources": [
-            "https://history.state.gov/milestones/1784-1800/pinckney-treaty",
-            "https://www.britannica.com/event/Pinckneys-Treaty"
-          ]
+          "summary": "Secured navigation rights on the Mississippi River, the right of deposit at New Orleans, and a defined boundary with Spanish Florida."
         }
       ],
       "militaryActions": [
         {
           "title": "Neutrality in the French Revolutionary Wars",
-          "summary": "Washington declared neutrality in 1793 to avoid entanglement in European conflicts, resisting pressure to support France. The policy asserted executive authority and shaped early American diplomacy.",
-          "sources": [
-            "https://history.state.gov/milestones/1784-1800/french-rev",
-            "https://www.britannica.com/topic/Proclamation-of-Neutrality"
-          ]
+          "summary": "Washington declared neutrality in 1793 to avoid entanglement in European conflicts and assert executive authority in foreign affairs."
         }
       ],
       "foreignAidPrograms": [],
       "majorForeignPolicyEvents": [
         {
           "title": "Proclamation of Neutrality (1793)",
-          "summary": "Washington formally declared U.S. neutrality in the war between Britain and France, asserting executive control over foreign policy and avoiding entangling alliances.",
-          "sources": [
-            "https://www.loc.gov/item/today-in-history/april-22/",
-            "https://history.state.gov/milestones/1784-1800/french-rev"
-          ]
+          "summary": "Declared U.S. neutrality in the conflict between Britain and France, reinforcing Washington’s principle of avoiding permanent alliances."
         },
         {
           "title": "Citizen Genêt Affair",
-          "summary": "French envoy Edmond‑Charles Genêt attempted to recruit American support for France in violation of U.S. neutrality. Washington demanded his recall, reinforcing executive authority over foreign envoys.",
-          "sources": [
-            "https://history.state.gov/milestones/1784-1800/genet",
-            "https://www.britannica.com/biography/Edmond-Charles-Genêt"
-          ]
+          "summary": "A diplomatic crisis involving a French envoy who violated U.S. neutrality, prompting Washington to demand his recall."
         }
       ]
     }
-  },
-  {
-    "id": 2,
-    "name": "John Adams",
-    "foreignPolicy": {
-      "foreignPolicyOverview": "Adams’s foreign policy was dominated by escalating tensions with France, culminating in the Quasi‑War. He strengthened the U.S. Navy, resisted pressure for full‑scale war, and ultimately negotiated peace. His diplomacy preserved American neutrality and strengthened executive authority, though domestic political divisions intensified.",
+  }
+},
+ {
+  "id": 2,
+  "name": "John Adams",
+  "foreignPolicy": {
+    "overview": "Adams’s foreign policy was defined by escalating tensions with France, culminating in the Quasi‑War. He strengthened the U.S. Navy, resisted intense domestic pressure for full‑scale war, and ultimately negotiated peace through the Convention of 1800. His decisions preserved American neutrality, asserted executive authority in foreign affairs, and helped stabilize the young nation’s diplomatic footing despite deepening partisan conflict at home.",
+    "eventCount": 3,
+    "impactScore": 9.4,
+    "significanceScore": 9.6,
+    "majorEvents": [
+      {
+        "title": "Convention of 1800 (Treaty of Mortefontaine)",
+        "summary": "The treaty ended the Quasi‑War with France, restored commercial relations, and terminated the 1778 Franco‑American alliance, reaffirming U.S. neutrality and preventing a full‑scale war.",
+        "sources": [
+          "https://history.state.gov/milestones/1784-1800/quasi-war",
+          "https://www.britannica.com/event/Convention-of-1800"
+        ]
+      },
+      {
+        "title": "Quasi‑War with France (1798–1800)",
+        "summary": "An undeclared naval conflict in the Caribbean and Atlantic sparked by French seizures of American ships. Adams expanded the Navy and authorized limited hostilities while avoiding a formal declaration of war.",
+        "sources": [
+          "https://history.state.gov/milestones/1784-1800/quasi-war",
+          "https://www.britannica.com/event/Quasi-War"
+        ]
+      },
+      {
+        "title": "XYZ Affair",
+        "summary": "A diplomatic scandal in which French agents demanded bribes from American envoys, triggering national outrage and leading directly to the Quasi‑War.",
+        "sources": [
+          "https://history.state.gov/milestones/1784-1800/xyz",
+          "https://www.britannica.com/event/XYZ-Affair"
+        ]
+      }
+    ],
+    "minorEvents": [],
+    "subcategories": {
       "treatiesNegotiated": [
         {
           "title": "Convention of 1800 (Treaty of Mortefontaine)",
-          "summary": "The treaty ended the Quasi‑War with France, restored commercial relations, and terminated the 1778 Franco‑American alliance, reaffirming U.S. neutrality.",
-          "sources": [
-            "https://history.state.gov/milestones/1784-1800/quasi-war",
-            "https://www.britannica.com/event/Convention-of-1800"
-          ]
+          "summary": "Ended the Quasi‑War, restored commercial relations, and dissolved the 1778 alliance with France."
         }
       ],
       "militaryActions": [
         {
           "title": "Quasi‑War with France (1798–1800)",
-          "summary": "An undeclared naval conflict in the Caribbean and Atlantic, fought over French seizures of American ships. Adams expanded the Navy and authorized limited hostilities.",
-          "sources": [
-            "https://history.state.gov/milestones/1784-1800/quasi-war",
-            "https://www.britannica.com/event/Quasi-War"
-          ]
+          "summary": "An undeclared naval conflict driven by French attacks on American shipping, prompting Adams to expand the Navy and authorize limited hostilities."
         }
       ],
       "foreignAidPrograms": [],
       "majorForeignPolicyEvents": [
         {
           "title": "XYZ Affair",
-          "summary": "French agents demanded bribes from American diplomats, sparking national outrage and leading to the Quasi‑War.",
-          "sources": [
-            "https://history.state.gov/milestones/1784-1800/xyz",
-            "https://www.britannica.com/event/XYZ-Affair"
-          ]
+          "summary": "French intermediaries demanded bribes from American diplomats, provoking public outrage and escalating tensions with France."
         }
       ]
     }
-  },
+  }
+},
   {
-    "id": 3,
-    "name": "Thomas Jefferson",
-    "foreignPolicy": {
-      "foreignPolicyOverview": "Jefferson’s foreign policy balanced territorial expansion, commercial protection, and avoidance of war. His administration achieved the Louisiana Purchase, confronted Barbary piracy, and struggled with British and French interference in American trade. Jefferson favored economic coercion over military conflict, though his embargo policies proved deeply unpopular.",
+  "id": 3,
+  "name": "Thomas Jefferson",
+  "foreignPolicy": {
+    "overview": "Jefferson’s foreign policy blended territorial expansion, commercial protection, and a strong preference for avoiding war. His administration secured the Louisiana Purchase, confronted Barbary piracy through limited naval action, and struggled with escalating British and French interference in American trade. Jefferson relied heavily on economic coercion—most notably the Embargo Act—to defend U.S. neutrality, though these measures proved deeply unpopular and economically damaging. His decisions reshaped U.S. territorial boundaries and tested the limits of executive authority in foreign affairs.",
+    "eventCount": 3,
+    "impactScore": 9.6,
+    "significanceScore": 9.7,
+    "majorEvents": [
+      {
+        "title": "Louisiana Purchase Treaty (1803)",
+        "summary": "Jefferson acquired the Louisiana Territory from France, doubling U.S. territory, securing control of the Mississippi River, and dramatically expanding the nation’s strategic and economic potential.",
+        "sources": [
+          "https://history.state.gov/milestones/1801-1829/louisiana-purchase",
+          "https://www.britannica.com/event/Louisiana-Purchase"
+        ]
+      },
+      {
+        "title": "First Barbary War (1801–1805)",
+        "summary": "Jefferson deployed naval forces against Barbary states to halt piracy and protect American commerce in the Mediterranean, marking one of the first major overseas military actions of the United States.",
+        "sources": [
+          "https://www.britannica.com/event/Barbary-Wars",
+          "https://history.state.gov/milestones/1801-1829/barbary-wars"
+        ]
+      },
+      {
+        "title": "Embargo Act of 1807",
+        "summary": "Jefferson halted all American exports to pressure Britain and France to respect U.S. neutrality. The policy failed to change European behavior and caused severe domestic economic disruption.",
+        "sources": [
+          "https://www.britannica.com/topic/Embargo-Act",
+          "https://history.state.gov/milestones/1801-1829/embargo"
+        ]
+      }
+    ],
+    "minorEvents": [],
+    "subcategories": {
       "treatiesNegotiated": [
         {
           "title": "Louisiana Purchase Treaty (1803)",
-          "summary": "Jefferson acquired the Louisiana Territory from France, doubling U.S. territory and securing control of the Mississippi River.",
-          "sources": [
-            "https://history.state.gov/milestones/1801-1829/louisiana-purchase",
-            "https://www.britannica.com/event/Louisiana-Purchase"
-          ]
+          "summary": "Acquired the Louisiana Territory from France, doubling U.S. land area and securing the Mississippi River."
         }
       ],
       "militaryActions": [
         {
           "title": "First Barbary War (1801–1805)",
-          "summary": "Jefferson deployed naval forces against Barbary states to stop piracy and protect American commerce in the Mediterranean.",
-          "sources": [
-            "https://www.britannica.com/event/Barbary-Wars",
-            "https://history.state.gov/milestones/1801-1829/barbary-wars"
-          ]
+          "summary": "Naval operations against Barbary states to stop piracy and protect American shipping in the Mediterranean."
         }
       ],
       "foreignAidPrograms": [],
       "majorForeignPolicyEvents": [
         {
           "title": "Embargo Act of 1807",
-          "summary": "Jefferson halted all American exports to pressure Britain and France to respect U.S. neutrality. The policy backfired economically and politically.",
-          "sources": [
-            "https://www.britannica.com/topic/Embargo-Act",
-            "https://history.state.gov/milestones/1801-1829/embargo"
-          ]
+          "summary": "A sweeping export ban intended to pressure Britain and France, which instead caused major domestic economic harm."
         }
       ]
     }
-  },
-  {
-    "id": 4,
-    "name": "James Madison",
-    "foreignPolicy": {
-      "foreignPolicyOverview": "Madison’s foreign policy was dominated by escalating tensions with Britain over maritime rights, impressment, and frontier conflict. His administration led the nation into the War of 1812, defended national sovereignty, and emerged with strengthened American identity and diplomatic standing.",
+  }
+},
+ {
+  "id": 4,
+  "name": "James Madison",
+  "foreignPolicy": {
+    "overview": "Madison’s foreign policy was defined by escalating tensions with Britain over maritime rights, impressment, and frontier conflict. His administration ultimately led the nation into the War of 1812, a major test of U.S. sovereignty, military capacity, and national unity. Although the war exposed American vulnerabilities, the successful defense of national territory and the Treaty of Ghent strengthened U.S. diplomatic standing and fostered a renewed sense of national identity.",
+    "eventCount": 3,
+    "impactScore": 9.7,
+    "significanceScore": 9.8,
+    "majorEvents": [
+      {
+        "title": "Treaty of Ghent (1814)",
+        "summary": "The treaty ended the War of 1812, restored prewar boundaries, and established commissions to resolve future disputes. It reaffirmed U.S. sovereignty and helped stabilize relations with Britain.",
+        "sources": [
+          "https://www.britannica.com/event/Treaty-of-Ghent",
+          "https://history.state.gov/milestones/1801-1829/war-of-1812"
+        ]
+      },
+      {
+        "title": "War of 1812",
+        "summary": "A conflict with Britain driven by maritime violations, impressment, and frontier tensions. The war tested U.S. military capacity and national unity, ultimately strengthening American identity despite early setbacks.",
+        "sources": [
+          "https://www.britannica.com/event/War-of-1812",
+          "https://history.state.gov/milestones/1801-1829/war-of-1812"
+        ]
+      },
+      {
+        "title": "British Impressment of American Sailors",
+        "summary": "British naval forces seized American sailors, a major catalyst for the War of 1812 and a central grievance in Madison’s foreign policy.",
+        "sources": [
+          "https://www.britannica.com/topic/impressment",
+          "https://history.state.gov/milestones/1801-1829/war-of-1812"
+        ]
+      }
+    ],
+    "minorEvents": [],
+    "subcategories": {
       "treatiesNegotiated": [
         {
           "title": "Treaty of Ghent (1814)",
-          "summary": "The treaty ended the War of 1812, restored prewar boundaries, and established commissions to resolve future disputes.",
-          "sources": [
-            "https://www.britannica.com/event/Treaty-of-Ghent",
-            "https://history.state.gov/milestones/1801-1829/war-of-1812"
-          ]
+          "summary": "Ended the War of 1812, restored prewar boundaries, and established mechanisms for resolving future disputes."
         }
       ],
       "militaryActions": [
         {
           "title": "War of 1812",
-          "summary": "A conflict with Britain over maritime rights, impressment, and frontier tensions. The war tested U.S. military capacity and national unity.",
-          "sources": [
-            "https://www.britannica.com/event/War-of-1812",
-            "https://history.state.gov/milestones/1801-1829/war-of-1812"
-          ]
+          "summary": "A major conflict with Britain over maritime rights, impressment, and frontier tensions that tested U.S. sovereignty."
         }
       ],
       "foreignAidPrograms": [],
       "majorForeignPolicyEvents": [
         {
           "title": "British Impressment of American Sailors",
-          "summary": "British naval forces seized American sailors, a major cause of the War of 1812.",
-          "sources": [
-            "https://www.britannica.com/topic/impressment",
-            "https://history.state.gov/milestones/1801-1829/war-of-1812"
-          ]
+          "summary": "British seizure of American sailors contributed directly to the outbreak of the War of 1812."
         }
       ]
     }
-  },
-  {
-    "id": 5,
-    "name": "James Monroe",
-    "foreignPolicy": {
-      "foreignPolicyOverview": "Monroe’s foreign policy marked the emergence of the United States as a hemispheric power. His administration secured major territorial agreements, strengthened U.S. borders, and articulated the Monroe Doctrine, asserting opposition to European colonization in the Americas. Monroe presided over a period of diplomatic confidence and expanding national influence.",
+  }
+},
+ {
+  "id": 5,
+  "name": "James Monroe",
+  "foreignPolicy": {
+    "overview": "Monroe’s foreign policy marked the emergence of the United States as a hemispheric power. His administration secured major territorial agreements, strengthened U.S. borders, and articulated the Monroe Doctrine, asserting opposition to European colonization in the Americas. Through assertive diplomacy and strategic use of military pressure, Monroe expanded U.S. influence, stabilized relations with European powers, and set long‑lasting principles that shaped American foreign policy for generations.",
+    "eventCount": 3,
+    "impactScore": 9.8,
+    "significanceScore": 10.0,
+    "majorEvents": [
+      {
+        "title": "Adams–Onís Treaty (1819)",
+        "summary": "Spain ceded Florida to the United States and established a clear western boundary, resolving long‑standing territorial disputes and strengthening U.S. control over the Southeast.",
+        "sources": [
+          "https://www.britannica.com/event/Adams-Onis-Treaty",
+          "https://history.state.gov/milestones/1801-1829/florida"
+        ]
+      },
+      {
+        "title": "Seminole Conflicts and Jackson’s Florida Campaign",
+        "summary": "Andrew Jackson’s incursions into Spanish Florida pressured Spain into negotiating the Adams–Onís Treaty. The campaign demonstrated U.S. willingness to assert military force to secure territorial objectives.",
+        "sources": [
+          "https://www.britannica.com/event/First-Seminole-War",
+          "https://history.state.gov/milestones/1801-1829/florida"
+        ]
+      },
+      {
+        "title": "Monroe Doctrine (1823)",
+        "summary": "Monroe declared the Western Hemisphere closed to future European colonization and pledged U.S. opposition to European interference in the Americas. The doctrine became a foundational principle of U.S. foreign policy.",
+        "sources": [
+          "https://www.britannica.com/event/Monroe-Doctrine",
+          "https://history.state.gov/milestones/1801-1829/monroe"
+        ]
+      }
+    ],
+    "minorEvents": [],
+    "subcategories": {
       "treatiesNegotiated": [
         {
           "title": "Adams–Onís Treaty (1819)",
-          "summary": "Spain ceded Florida to the United States and established a clear boundary between U.S. and Spanish territories in the West.",
-          "sources": [
-            "https://www.britannica.com/event/Adams-Onis-Treaty",
-            "https://history.state.gov/milestones/1801-1829/florida"
-          ]
+          "summary": "Spain ceded Florida to the United States and established a clear western boundary."
         }
       ],
       "militaryActions": [
         {
           "title": "Seminole Conflicts and Jackson’s Florida Campaign",
-          "summary": "U.S. forces under Andrew Jackson conducted unauthorized incursions into Spanish Florida, pressuring Spain to negotiate the Adams–Onís Treaty.",
-          "sources": [
-            "https://www.britannica.com/event/First-Seminole-War",
-            "https://history.state.gov/milestones/1801-1829/florida"
-          ]
+          "summary": "Jackson’s incursions into Spanish Florida pressured Spain into negotiating the Adams–Onís Treaty."
         }
       ],
       "foreignAidPrograms": [],
       "majorForeignPolicyEvents": [
         {
           "title": "Monroe Doctrine (1823)",
-          "summary": "Monroe declared that the Western Hemisphere was closed to future European colonization and that the U.S. would oppose European interference in the Americas. The doctrine became a cornerstone of U.S. foreign policy.",
-          "sources": [
-            "https://www.britannica.com/event/Monroe-Doctrine",
-            "https://history.state.gov/milestones/1801-1829/monroe"
-          ]
+          "summary": "Declared the Western Hemisphere closed to European colonization and interference, shaping U.S. foreign policy for generations."
         }
       ]
     }
-  },
-    {
-    "id": 6,
-    "name": "John Quincy Adams",
-    "foreignPolicy": {
-      "foreignPolicyOverview": "John Quincy Adams, one of the most skilled diplomats in American history, pursued a foreign policy focused on expanding U.S. commercial rights, strengthening national sovereignty, and promoting peaceful engagement. His presidency emphasized arbitration, trade liberalization, and the defense of neutral rights. Although he faced domestic political opposition, Adams continued the diplomatic vision he had shaped as Monroe’s Secretary of State, promoting American influence without military conflict.",
+  }
+},
+   {
+  "id": 6,
+  "name": "John Quincy Adams",
+  "foreignPolicy": {
+    "overview": "John Quincy Adams pursued a foreign policy grounded in commercial expansion, peaceful arbitration, and the defense of national sovereignty. One of the most skilled diplomats in American history, he sought to strengthen U.S. influence through trade liberalization rather than military conflict. His presidency continued the diplomatic vision he shaped as Monroe’s Secretary of State, reinforcing the principles of the Monroe Doctrine and expanding American commercial rights in Europe.",
+    "eventCount": 2,
+    "impactScore": 8.9,
+    "significanceScore": 9.2,
+    "majorEvents": [
+      {
+        "title": "Commercial Treaties with Prussia, Denmark, and the Hanseatic Cities",
+        "summary": "A series of commercial agreements that expanded American trade access in Europe, strengthened U.S. commercial rights, and reflected Adams’s commitment to peaceful economic expansion.",
+        "sources": [
+          "https://www.britannica.com/biography/John-Quincy-Adams",
+          "https://history.state.gov/departmenthistory/people/adams-john-quincy"
+        ]
+      },
+      {
+        "title": "Defense of the Monroe Doctrine",
+        "summary": "Adams upheld the Monroe Doctrine’s principles, resisting European interference in the Western Hemisphere and reinforcing U.S. diplomatic leadership without resorting to military force.",
+        "sources": [
+          "https://www.britannica.com/event/Monroe-Doctrine",
+          "https://millercenter.org/president/jqadams/domestic-affairs"
+        ]
+      }
+    ],
+    "minorEvents": [],
+    "subcategories": {
       "treatiesNegotiated": [
         {
           "title": "Commercial Treaties with Prussia, Denmark, and the Hanseatic Cities",
-          "summary": "Adams negotiated several commercial agreements expanding American trade access in Europe. These treaties strengthened U.S. commercial rights and reflected his commitment to peaceful economic expansion.",
-          "sources": [
-            "https://www.britannica.com/biography/John-Quincy-Adams",
-            "https://history.state.gov/departmenthistory/people/adams-john-quincy"
-          ]
+          "summary": "Expanded American commercial access in Europe and strengthened U.S. neutral trading rights."
         }
       ],
       "militaryActions": [],
@@ -225,114 +344,178 @@
       "majorForeignPolicyEvents": [
         {
           "title": "Defense of the Monroe Doctrine",
-          "summary": "Adams continued to uphold the Monroe Doctrine’s principles, resisting European interference in the Western Hemisphere and reinforcing U.S. diplomatic leadership.",
-          "sources": [
-            "https://www.britannica.com/event/Monroe-Doctrine",
-            "https://millercenter.org/president/jqadams/domestic-affairs"
-          ]
+          "summary": "Reinforced U.S. opposition to European interference in the Western Hemisphere through diplomatic pressure rather than military action."
         }
       ]
     }
-  },
+  }
+},
   {
-    "id": 7,
-    "name": "Andrew Jackson",
-    "foreignPolicy": {
-      "foreignPolicyOverview": "Jackson’s foreign policy emphasized assertive nationalism, expansion of American trade, and defense of U.S. sovereignty. He confronted European powers diplomatically, secured long‑standing claims, and pursued aggressive stances toward Native nations and Latin American states. Jackson’s administration strengthened the presidency’s role in foreign affairs and expanded American influence abroad.",
+  "id": 7,
+  "name": "Andrew Jackson",
+  "foreignPolicy": {
+    "overview": "Jackson’s foreign policy emphasized assertive nationalism, expansion of American trade, and vigorous defense of U.S. sovereignty. He confronted European powers diplomatically, secured long‑standing commercial claims, and used the threat of military force to advance American interests in Latin America. His administration strengthened presidential authority in foreign affairs, expanded U.S. influence abroad, and demonstrated a willingness to pressure foreign governments to honor agreements with the United States.",
+    "eventCount": 3,
+    "impactScore": 9.3,
+    "significanceScore": 9.4,
+    "majorEvents": [
+      {
+        "title": "Trade Agreements with Britain and France",
+        "summary": "Jackson negotiated reciprocal trade agreements—especially with Britain—that expanded American commercial access to the West Indies and strengthened U.S. economic influence.",
+        "sources": [
+          "https://www.britannica.com/biography/Andrew-Jackson",
+          "https://millercenter.org/president/jackson/domestic-affairs"
+        ]
+      },
+      {
+        "title": "Use of Force in Latin American Boundary Disputes",
+        "summary": "Jackson threatened military action to defend U.S. claims and protect American citizens in Latin America, reinforcing U.S. regional influence and signaling a more assertive hemispheric posture.",
+        "sources": [
+          "https://www.britannica.com/biography/Andrew-Jackson",
+          "https://millercenter.org/president/jackson/domestic-affairs"
+        ]
+      },
+      {
+        "title": "French Indemnity Crisis (1834–1836)",
+        "summary": "France delayed payment of reparations owed for seized American ships. Jackson threatened retaliation, prompting France to honor the treaty and demonstrating U.S. resolve in defending its commercial rights.",
+        "sources": [
+          "https://www.britannica.com/event/French-spoliation-claims",
+          "https://millercenter.org/president/jackson/domestic-affairs"
+        ]
+      }
+    ],
+    "minorEvents": [],
+    "subcategories": {
       "treatiesNegotiated": [
         {
           "title": "Trade Agreements with Britain and France",
-          "summary": "Jackson negotiated reciprocal trade agreements that expanded American commercial access, particularly in the West Indies.",
-          "sources": [
-            "https://www.britannica.com/biography/Andrew-Jackson",
-            "https://millercenter.org/president/jackson/domestic-affairs"
-          ]
+          "summary": "Reciprocal trade arrangements that expanded American access to key markets, particularly in the West Indies."
         }
       ],
       "militaryActions": [
         {
           "title": "Use of Force in Latin American Boundary Disputes",
-          "summary": "Jackson threatened military action to defend U.S. claims and protect American citizens in Latin America, reinforcing U.S. regional influence.",
-          "sources": [
-            "https://www.britannica.com/biography/Andrew-Jackson",
-            "https://millercenter.org/president/jackson/domestic-affairs"
-          ]
+          "summary": "Threatened military intervention to defend U.S. claims and protect American citizens in Latin America."
         }
       ],
       "foreignAidPrograms": [],
       "majorForeignPolicyEvents": [
         {
           "title": "French Indemnity Crisis (1834–1836)",
-          "summary": "France delayed payment of agreed‑upon reparations for seized American ships. Jackson threatened retaliation, prompting France to honor the treaty.",
-          "sources": [
-            "https://www.britannica.com/event/French-spoliation-claims",
-            "https://millercenter.org/president/jackson/domestic-affairs"
-          ]
+          "summary": "A diplomatic confrontation in which Jackson’s threats compelled France to pay long‑overdue reparations for seized American ships."
         }
       ]
     }
-  },
-  {
-    "id": 8,
-    "name": "Martin Van Buren",
-    "foreignPolicy": {
-      "foreignPolicyOverview": "Van Buren maintained a cautious foreign policy focused on avoiding war and preserving neutrality during a period of global instability. He resisted domestic pressure to annex Texas, managed tensions with Britain, and upheld diplomatic restraint. His administration prioritized stability and peaceful resolution of disputes.",
+  }
+},
+ {
+  "id": 8,
+  "name": "Martin Van Buren",
+  "foreignPolicy": {
+    "overview": "Van Buren pursued a cautious foreign policy centered on neutrality, diplomatic restraint, and avoidance of war during a period of global and regional instability. He managed tensions with Britain during the Caroline Affair, resisted domestic pressure to annex Texas, and prioritized peaceful dispute resolution. His administration maintained stability and upheld the principle that the United States should avoid unnecessary foreign entanglements.",
+    "eventCount": 2,
+    "impactScore": 7.8,
+    "significanceScore": 8.2,
+    "majorEvents": [
+      {
+        "title": "Caroline Affair (1837–1838)",
+        "summary": "A British attack on the American steamer *Caroline* during Canadian rebellions sparked diplomatic tension. Van Buren pursued a peaceful resolution, avoiding war with Britain and reinforcing U.S. neutrality.",
+        "sources": [
+          "https://www.britannica.com/event/Caroline-affair",
+          "https://millercenter.org/president/vanburen/domestic-affairs"
+        ]
+      },
+      {
+        "title": "Rejection of Texas Annexation",
+        "summary": "Van Buren opposed annexing Texas to avoid provoking war with Mexico and inflaming sectional tensions, demonstrating diplomatic restraint and prioritizing national stability.",
+        "sources": [
+          "https://www.britannica.com/event/Texas-annexation",
+          "https://millercenter.org/president/vanburen/domestic-affairs"
+        ]
+      }
+    ],
+    "minorEvents": [],
+    "subcategories": {
       "treatiesNegotiated": [],
       "militaryActions": [],
       "foreignAidPrograms": [],
       "majorForeignPolicyEvents": [
         {
           "title": "Caroline Affair (1837–1838)",
-          "summary": "A British attack on the American steamer Caroline during Canadian rebellions sparked diplomatic tension. Van Buren pursued a peaceful resolution, avoiding war with Britain.",
-          "sources": [
-            "https://www.britannica.com/event/Caroline-affair",
-            "https://millercenter.org/president/vanburen/domestic-affairs"
-          ]
+          "summary": "A diplomatic crisis with Britain following the attack on the *Caroline*, resolved peacefully under Van Buren’s leadership."
         },
         {
           "title": "Rejection of Texas Annexation",
-          "summary": "Van Buren opposed annexing Texas to avoid war with Mexico and inflaming sectional tensions, maintaining diplomatic restraint.",
-          "sources": [
-            "https://www.britannica.com/event/Texas-annexation",
-            "https://millercenter.org/president/vanburen/domestic-affairs"
-          ]
+          "summary": "Van Buren declined to pursue annexation to avoid war with Mexico and maintain sectional balance."
         }
       ]
     }
-  },
-  {
-    "id": 9,
-    "name": "William Henry Harrison",
-    "foreignPolicy": {
-      "foreignPolicyOverview": "Harrison’s presidency lasted only one month, leaving no meaningful foreign‑policy legacy. His diplomatic philosophy aligned with Whig principles favoring congressional authority and cautious engagement abroad.",
+  }
+},
+ {
+  "id": 9,
+  "name": "William Henry Harrison",
+  "foreignPolicy": {
+    "overview": "Harrison’s presidency lasted only one month, leaving no meaningful foreign‑policy actions or initiatives. His diplomatic outlook aligned with Whig principles favoring congressional authority, cautious engagement abroad, and limited executive action in foreign affairs. Because he died so quickly, his administration produced no treaties, military actions, or substantive diplomatic developments.",
+    "eventCount": 1,
+    "impactScore": 0.0,
+    "significanceScore": 0.0,
+    "majorEvents": [
+      {
+        "title": "No Significant Foreign Policy Actions",
+        "summary": "Harrison died before implementing any foreign‑policy initiatives or responding to international developments.",
+        "sources": [
+          "https://www.britannica.com/biography/William-Henry-Harrison",
+          "https://millercenter.org/president/harrison/domestic-affairs"
+        ]
+      }
+    ],
+    "minorEvents": [],
+    "subcategories": {
       "treatiesNegotiated": [],
       "militaryActions": [],
       "foreignAidPrograms": [],
       "majorForeignPolicyEvents": [
         {
           "title": "No Significant Foreign Policy Actions",
-          "summary": "Harrison died before implementing any foreign‑policy initiatives or responding to international developments.",
-          "sources": [
-            "https://www.britannica.com/biography/William-Henry-Harrison",
-            "https://millercenter.org/president/harrison/domestic-affairs"
-          ]
+          "summary": "Harrison’s presidency ended before any foreign‑policy decisions or diplomatic engagements could occur."
         }
       ]
     }
-  },
-  {
-    "id": 10,
-    "name": "John Tyler",
-    "foreignPolicy": {
-      "foreignPolicyOverview": "Tyler’s foreign policy emphasized territorial expansion, commercial diplomacy, and assertive defense of American interests. His administration advanced the annexation of Texas, strengthened Pacific trade, and resolved long‑standing disputes with Britain. Tyler expanded U.S. influence despite political isolation at home.",
+  }
+},
+ {
+  "id": 10,
+  "name": "John Tyler",
+  "foreignPolicy": {
+    "overview": "Tyler’s foreign policy emphasized territorial expansion, commercial diplomacy, and assertive defense of American interests. His administration resolved major border disputes with Britain through the Webster–Ashburton Treaty, expanded U.S. influence in the Pacific, and aggressively pursued the annexation of Texas. Despite political isolation at home, Tyler strengthened U.S. strategic positioning and advanced long‑term expansionist goals.",
+    "eventCount": 2,
+    "impactScore": 9.4,
+    "significanceScore": 9.5,
+    "majorEvents": [
+      {
+        "title": "Webster–Ashburton Treaty (1842)",
+        "summary": "A landmark agreement with Britain that resolved long‑standing border disputes in Maine and the Great Lakes region, reduced tensions, and strengthened Anglo‑American relations.",
+        "sources": [
+          "https://www.britannica.com/event/Webster-Ashburton-Treaty",
+          "https://history.state.gov/milestones/1830-1860/webster-ashburton"
+        ]
+      },
+      {
+        "title": "Texas Annexation Efforts",
+        "summary": "Tyler aggressively pursued the annexation of Texas, laying the diplomatic and political groundwork for its admission shortly after he left office. His efforts advanced U.S. territorial expansion and reshaped North American geopolitics.",
+        "sources": [
+          "https://www.britannica.com/event/Texas-annexation",
+          "https://millercenter.org/president/tyler/domestic-affairs"
+        ]
+      }
+    ],
+    "minorEvents": [],
+    "subcategories": {
       "treatiesNegotiated": [
         {
           "title": "Webster–Ashburton Treaty (1842)",
-          "summary": "The treaty resolved U.S.–British border disputes in Maine and the Great Lakes region, reduced tensions, and strengthened Anglo‑American relations.",
-          "sources": [
-            "https://www.britannica.com/event/Webster-Ashburton-Treaty",
-            "https://history.state.gov/milestones/1830-1860/webster-ashburton"
-          ]
+          "summary": "Resolved U.S.–British border disputes in Maine and the Great Lakes region, easing tensions and improving relations."
         }
       ],
       "militaryActions": [],
@@ -340,106 +523,166 @@
       "majorForeignPolicyEvents": [
         {
           "title": "Texas Annexation Efforts",
-          "summary": "Tyler aggressively pursued the annexation of Texas, laying the groundwork for its admission shortly after he left office.",
-          "sources": [
-            "https://www.britannica.com/event/Texas-annexation",
-            "https://millercenter.org/president/tyler/domestic-affairs"
-          ]
+          "summary": "Tyler’s administration pushed aggressively for the annexation of Texas, setting the stage for its eventual admission to the Union."
         }
       ]
     }
-  },
+  }
+},
   {
-    "id": 11,
-    "name": "James K. Polk",
-    "foreignPolicy": {
-      "foreignPolicyOverview": "Polk’s foreign policy was driven by expansionism and the doctrine of Manifest Destiny. His administration achieved major territorial gains through diplomacy and war, including the Oregon boundary settlement and the Mexican–American War. Polk strengthened American influence on the continent, expanded U.S. borders to the Pacific, and reshaped the geopolitical landscape of North America.",
+  "id": 11,
+  "name": "James K. Polk",
+  "foreignPolicy": {
+    "overview": "Polk’s foreign policy was driven by expansionism and the doctrine of Manifest Destiny. His administration secured vast new territories through diplomacy and war, including the peaceful Oregon boundary settlement with Britain and the decisive victory in the Mexican–American War. Polk expanded U.S. borders to the Pacific, reshaped the geopolitical landscape of North America, and asserted American power with unprecedented ambition.",
+    "eventCount": 3,
+    "impactScore": 10.0,
+    "significanceScore": 10.0,
+    "majorEvents": [
+      {
+        "title": "Oregon Treaty (1846)",
+        "summary": "A diplomatic agreement with Britain establishing the 49th parallel as the U.S.–British boundary in the Pacific Northwest, securing American access to the region without war.",
+        "sources": [
+          "https://www.britannica.com/event/Oregon-Treaty",
+          "https://history.state.gov/milestones/1830-1860/oregon-territory"
+        ]
+      },
+      {
+        "title": "Mexican–American War (1846–1848)",
+        "summary": "A major conflict initiated over disputed Texas territory and expansionist ambitions. The war resulted in massive U.S. territorial gains, including California and the Southwest, dramatically altering the continental map.",
+        "sources": [
+          "https://www.britannica.com/event/Mexican-American-War",
+          "https://history.state.gov/milestones/1830-1860/war"
+        ]
+      },
+      {
+        "title": "Annexation of Texas (1845)",
+        "summary": "Polk supported and finalized the annexation of Texas, a key factor leading to the Mexican–American War and a major step in U.S. territorial expansion.",
+        "sources": [
+          "https://www.britannica.com/event/Texas-annexation",
+          "https://millercenter.org/president/polk/domestic-affairs"
+        ]
+      }
+    ],
+    "minorEvents": [],
+    "subcategories": {
       "treatiesNegotiated": [
         {
           "title": "Oregon Treaty (1846)",
-          "summary": "The treaty peacefully resolved the U.S.–British dispute over the Oregon Territory, establishing the 49th parallel as the boundary and securing American access to the Pacific Northwest.",
-          "sources": [
-            "https://www.britannica.com/event/Oregon-Treaty",
-            "https://history.state.gov/milestones/1830-1860/oregon-territory"
-          ]
+          "summary": "Peacefully resolved the U.S.–British dispute over the Oregon Territory and secured the Pacific Northwest for the United States."
         }
       ],
       "militaryActions": [
         {
           "title": "Mexican–American War (1846–1848)",
-          "summary": "Polk initiated war with Mexico over disputed territory in Texas and ambitions for western expansion. The conflict resulted in major U.S. territorial gains, including California and the Southwest.",
-          "sources": [
-            "https://www.britannica.com/event/Mexican-American-War",
-            "https://history.state.gov/milestones/1830-1860/war"
-          ]
+          "summary": "A major conflict with Mexico that resulted in vast U.S. territorial expansion, including California and the Southwest."
         }
       ],
       "foreignAidPrograms": [],
       "majorForeignPolicyEvents": [
         {
           "title": "Annexation of Texas (1845)",
-          "summary": "Polk supported and finalized the annexation of Texas, a key factor leading to war with Mexico.",
-          "sources": [
-            "https://www.britannica.com/event/Texas-annexation",
-            "https://millercenter.org/president/polk/domestic-affairs"
-          ]
+          "summary": "The incorporation of Texas into the Union, which heightened tensions with Mexico and contributed directly to the outbreak of war."
         }
       ]
     }
-  },
+  }
+},
   {
-    "id": 12,
-    "name": "Zachary Taylor",
-    "foreignPolicy": {
-      "foreignPolicyOverview": "Taylor’s foreign policy was shaped by the aftermath of the Mexican–American War and rising sectional tensions over slavery in newly acquired territories. Although his presidency was short, Taylor resisted Southern efforts to expand slavery through foreign intervention and opposed aggressive expansionist schemes.",
+  "id": 12,
+  "name": "Zachary Taylor",
+  "foreignPolicy": {
+    "overview": "Taylor’s foreign policy was shaped by the aftermath of the Mexican–American War and intensifying sectional tensions over slavery in newly acquired territories. Though his presidency was brief, Taylor resisted Southern expansionist schemes aimed at extending slavery abroad, including efforts to acquire Cuba. His administration maintained a cautious diplomatic posture and avoided foreign entanglements during a volatile period in U.S. politics.",
+    "eventCount": 1,
+    "impactScore": 6.2,
+    "significanceScore": 6.5,
+    "majorEvents": [
+      {
+        "title": "Opposition to Cuban Annexation Schemes",
+        "summary": "Taylor rejected Southern attempts to acquire Cuba from Spain, resisting expansionist pressures tied to slavery and preventing a potential diplomatic crisis with Spain.",
+        "sources": [
+          "https://www.britannica.com/biography/Zachary-Taylor",
+          "https://millercenter.org/president/taylor/domestic-affairs"
+        ]
+      }
+    ],
+    "minorEvents": [],
+    "subcategories": {
       "treatiesNegotiated": [],
       "militaryActions": [],
       "foreignAidPrograms": [],
       "majorForeignPolicyEvents": [
         {
           "title": "Opposition to Cuban Annexation Schemes",
-          "summary": "Taylor rejected Southern attempts to acquire Cuba from Spain, resisting expansionist pressures tied to slavery.",
-          "sources": [
-            "https://www.britannica.com/biography/Zachary-Taylor",
-            "https://millercenter.org/president/taylor/domestic-affairs"
-          ]
+          "summary": "Taylor resisted Southern-led efforts to acquire Cuba, avoiding a foreign crisis and limiting pro-slavery expansionism."
         }
       ]
     }
-  },
-  {
-    "id": 13,
-    "name": "Millard Fillmore",
-    "foreignPolicy": {
-      "foreignPolicyOverview": "Fillmore’s foreign policy emphasized opening new markets, expanding Pacific trade, and asserting American influence abroad. His administration pursued commercial diplomacy, strengthened naval presence, and laid groundwork for future expansion into Asia.",
+  }
+},
+ {
+  "id": 13,
+  "name": "Millard Fillmore",
+  "foreignPolicy": {
+    "overview": "Fillmore’s foreign policy focused on expanding American commercial reach, strengthening naval presence, and opening new markets—especially in the Pacific. His administration pursued assertive commercial diplomacy and laid the groundwork for deeper U.S. involvement in East Asia. The authorization of the Perry Expedition marked a major turning point in American engagement with Japan and signaled growing U.S. ambitions in the Pacific.",
+    "eventCount": 1,
+    "impactScore": 8.8,
+    "significanceScore": 9.0,
+    "majorEvents": [
+      {
+        "title": "Perry Expedition to Japan (1852–1853)",
+        "summary": "Fillmore authorized Commodore Matthew Perry’s mission to open Japan to American trade, initiating a major shift in East Asian diplomacy and setting the stage for Japan’s eventual opening to the West.",
+        "sources": [
+          "https://www.britannica.com/event/Perry-expedition",
+          "https://history.state.gov/milestones/1830-1860/opening-to-japan"
+        ]
+      }
+    ],
+    "minorEvents": [],
+    "subcategories": {
       "treatiesNegotiated": [],
       "militaryActions": [],
       "foreignAidPrograms": [],
       "majorForeignPolicyEvents": [
         {
           "title": "Perry Expedition to Japan (1852–1853)",
-          "summary": "Fillmore authorized Commodore Matthew Perry’s mission to open Japan to American trade, initiating a major shift in East Asian diplomacy.",
-          "sources": [
-            "https://www.britannica.com/event/Perry-expedition",
-            "https://history.state.gov/milestones/1830-1860/opening-to-japan"
-          ]
+          "summary": "Fillmore’s administration initiated the mission that opened Japan to American trade and reshaped Pacific diplomacy."
         }
       ]
     }
-  },
-  {
-    "id": 14,
-    "name": "Franklin Pierce",
-    "foreignPolicy": {
-      "foreignPolicyOverview": "Pierce pursued an aggressive expansionist foreign policy aligned with Southern interests. His administration sought new slaveholding territories, confronted European powers in the Caribbean, and expanded American commercial influence. Pierce’s diplomacy deepened sectional tensions and contributed to the coming crisis over slavery.",
+  }
+},
+ {
+  "id": 14,
+  "name": "Franklin Pierce",
+  "foreignPolicy": {
+    "overview": "Pierce pursued an aggressive expansionist foreign policy aligned closely with Southern interests. His administration sought new slaveholding territories, confronted European powers in the Caribbean, and expanded American commercial influence. The Gadsden Purchase advanced U.S. territorial ambitions, while the Ostend Manifesto exposed the administration’s willingness to consider war to acquire Cuba. Pierce’s diplomacy deepened sectional tensions and contributed to the mounting national crisis over slavery.",
+    "eventCount": 2,
+    "impactScore": 8.7,
+    "significanceScore": 8.9,
+    "majorEvents": [
+      {
+        "title": "Gadsden Purchase (1853)",
+        "summary": "Pierce acquired land from Mexico to facilitate a southern transcontinental railroad route, expanding U.S. territory in the Southwest and advancing Southern expansionist priorities.",
+        "sources": [
+          "https://www.britannica.com/event/Gadsden-Purchase",
+          "https://history.state.gov/milestones/1830-1860/gadsden"
+        ]
+      },
+      {
+        "title": "Ostend Manifesto (1854)",
+        "summary": "Pierce’s diplomats argued that the U.S. should purchase Cuba from Spain and consider war if Spain refused. The manifesto sparked national controversy, heightened sectional divisions, and damaged U.S. diplomatic credibility.",
+        "sources": [
+          "https://www.britannica.com/event/Ostend-Manifesto",
+          "https://history.state.gov/milestones/1830-1860/ostend"
+        ]
+      }
+    ],
+    "minorEvents": [],
+    "subcategories": {
       "treatiesNegotiated": [
         {
           "title": "Gadsden Purchase (1853)",
-          "summary": "Pierce acquired land from Mexico to facilitate a southern transcontinental railroad route, expanding U.S. territory in the Southwest.",
-          "sources": [
-            "https://www.britannica.com/event/Gadsden-Purchase",
-            "https://history.state.gov/milestones/1830-1860/gadsden"
-          ]
+          "summary": "Acquired land from Mexico to support a southern transcontinental railroad and expand U.S. territory."
         }
       ],
       "militaryActions": [],
@@ -447,93 +690,145 @@
       "majorForeignPolicyEvents": [
         {
           "title": "Ostend Manifesto (1854)",
-          "summary": "Pierce’s diplomats argued that the U.S. should purchase Cuba from Spain and consider war if Spain refused. The manifesto sparked national controversy and heightened sectional divisions.",
-          "sources": [
-            "https://www.britannica.com/event/Ostend-Manifesto",
-            "https://history.state.gov/milestones/1830-1860/ostend"
-          ]
+          "summary": "A controversial diplomatic document advocating the acquisition of Cuba, even by force, intensifying sectional conflict."
         }
       ]
     }
-  },
+  }
+},
   {
-    "id": 15,
-    "name": "James Buchanan",
-    "foreignPolicy": {
-      "foreignPolicyOverview": "Buchanan’s foreign policy was marked by indecision and sectional bias. He pursued expansionist goals aligned with Southern interests, attempted to acquire Cuba, and failed to prevent escalating tensions with Britain and Central American states. His administration’s diplomatic missteps contributed to national instability on the eve of the Civil War.",
+  "id": 15,
+  "name": "James Buchanan",
+  "foreignPolicy": {
+    "overview": "Buchanan’s foreign policy was marked by indecision, sectional favoritism, and failed expansionist ambitions. His administration pursued Southern‑aligned goals such as acquiring Cuba, mishandled rising tensions with Britain and Central American states, and struggled to maintain diplomatic stability. The Utah Expedition, though primarily domestic, carried international implications and highlighted Buchanan’s inconsistent approach to asserting federal authority. His foreign‑policy missteps contributed to national instability on the eve of the Civil War.",
+    "eventCount": 2,
+    "impactScore": 6.9,
+    "significanceScore": 7.2,
+    "majorEvents": [
+      {
+        "title": "Utah Expedition (1857–1858)",
+        "summary": "Buchanan deployed federal troops to Utah to confront perceived rebellion by Mormon settlers. Although a domestic conflict, the expedition had international implications due to British interest in the region and concerns about U.S. control of western territories.",
+        "sources": [
+          "https://www.britannica.com/event/Utah-War",
+          "https://millercenter.org/president/buchanan/domestic-affairs"
+        ]
+      },
+      {
+        "title": "Continued Attempts to Acquire Cuba",
+        "summary": "Buchanan supported efforts to purchase Cuba from Spain, continuing the expansionist agenda of previous administrations and aligning with Southern pro‑slavery interests. The effort failed and heightened sectional tensions.",
+        "sources": [
+          "https://www.britannica.com/event/Ostend-Manifesto",
+          "https://millercenter.org/president/buchanan/domestic-affairs"
+        ]
+      }
+    ],
+    "minorEvents": [],
+    "subcategories": {
       "treatiesNegotiated": [],
       "militaryActions": [],
       "foreignAidPrograms": [],
       "majorForeignPolicyEvents": [
         {
           "title": "Utah Expedition (1857–1858)",
-          "summary": "Although primarily a domestic conflict, Buchanan’s deployment of federal troops to Utah had international implications due to British interest in the region.",
-          "sources": [
-            "https://www.britannica.com/event/Utah-War",
-            "https://millercenter.org/president/buchanan/domestic-affairs"
-          ]
+          "summary": "A federal military deployment with international implications due to British interest in the region."
         },
         {
           "title": "Continued Attempts to Acquire Cuba",
-          "summary": "Buchanan supported efforts to purchase Cuba from Spain, continuing the expansionist agenda of previous administrations.",
-          "sources": [
-            "https://www.britannica.com/event/Ostend-Manifesto",
-            "https://millercenter.org/president/buchanan/domestic-affairs"
-          ]
+          "summary": "Buchanan pursued the acquisition of Cuba, aligning with Southern expansionist goals and increasing sectional tensions."
         }
       ]
     }
-  },
+  }
+},
   {
-    "id": 16,
-    "name": "Abraham Lincoln",
-    "foreignPolicy": {
-      "foreignPolicyOverview": "Lincoln’s foreign policy focused on preventing European recognition of the Confederacy, maintaining Union diplomatic legitimacy, and navigating global reactions to the Civil War. His administration managed crises with Britain and France, asserted blockade authority, and used diplomacy to isolate the Confederacy internationally. Lincoln’s foreign policy preserved the Union’s standing and prevented foreign intervention that could have altered the war’s outcome.",
+  "id": 16,
+  "name": "Abraham Lincoln",
+  "foreignPolicy": {
+    "overview": "Lincoln’s foreign policy centered on preventing European recognition of the Confederacy, maintaining the Union’s diplomatic legitimacy, and managing global reactions to the Civil War. His administration navigated crises with Britain and France, asserted the legality of the Union blockade, and used strategic diplomacy—including the Emancipation Proclamation—to isolate the Confederacy internationally. Lincoln’s foreign policy preserved the Union’s standing abroad and prevented foreign intervention that could have altered the outcome of the war.",
+    "eventCount": 3,
+    "impactScore": 9.8,
+    "significanceScore": 10.0,
+    "majorEvents": [
+      {
+        "title": "Union Naval Blockade of the Confederacy",
+        "summary": "Lincoln declared a blockade of Southern ports, asserting belligerent rights under international law. The blockade became a cornerstone of Union strategy and required careful diplomacy to avoid conflict with neutral powers, especially Britain.",
+        "sources": [
+          "https://www.britannica.com/event/American-Civil-War",
+          "https://history.state.gov/milestones/1861-1865/blockade"
+        ]
+      },
+      {
+        "title": "Trent Affair (1861)",
+        "summary": "Union forces seized two Confederate envoys from a British ship, provoking a major diplomatic crisis. Lincoln defused the situation by releasing the envoys, famously remarking, “One war at a time,” and preventing a potential conflict with Britain.",
+        "sources": [
+          "https://www.britannica.com/event/Trent-Affair",
+          "https://history.state.gov/milestones/1861-1865/trent-affair"
+        ]
+      },
+      {
+        "title": "Prevention of European Recognition of the Confederacy",
+        "summary": "Lincoln and Secretary of State William Seward worked to prevent Britain and France from recognizing the Confederacy, using diplomacy, economic leverage, and the moral force of the Emancipation Proclamation to isolate the South internationally.",
+        "sources": [
+          "https://www.britannica.com/event/American-Civil-War",
+          "https://millercenter.org/president/lincoln/domestic-affairs"
+        ]
+      }
+    ],
+    "minorEvents": [],
+    "subcategories": {
       "treatiesNegotiated": [],
       "militaryActions": [
         {
           "title": "Union Naval Blockade of the Confederacy",
-          "summary": "Lincoln declared a blockade of Southern ports, asserting belligerent rights under international law. The blockade was central to Union strategy and required careful diplomacy to avoid conflict with neutral powers.",
-          "sources": [
-            "https://www.britannica.com/event/American-Civil-War",
-            "https://history.state.gov/milestones/1861-1865/blockade"
-          ]
+          "summary": "A sweeping blockade of Southern ports that asserted Union belligerent rights and required careful diplomacy with neutral powers."
         }
       ],
       "foreignAidPrograms": [],
       "majorForeignPolicyEvents": [
         {
           "title": "Trent Affair (1861)",
-          "summary": "Union forces seized two Confederate envoys from a British ship, provoking a diplomatic crisis. Lincoln released the envoys to avoid war with Britain, famously saying, 'One war at a time.'",
-          "sources": [
-            "https://www.britannica.com/event/Trent-Affair",
-            "https://history.state.gov/milestones/1861-1865/trent-affair"
-          ]
+          "summary": "A diplomatic crisis with Britain resolved by Lincoln to avoid a second war during the Civil War."
         },
         {
           "title": "Prevention of European Recognition of the Confederacy",
-          "summary": "Lincoln and Secretary of State Seward worked tirelessly to prevent Britain and France from recognizing the Confederacy, using diplomacy, economic leverage, and the Emancipation Proclamation.",
-          "sources": [
-            "https://www.britannica.com/event/American-Civil-War",
-            "https://millercenter.org/president/lincoln/domestic-affairs"
-          ]
+          "summary": "Diplomatic efforts that kept Britain and France from recognizing the Confederacy, aided by the Emancipation Proclamation."
         }
       ]
     }
-  },
-  {
-    "id": 17,
-    "name": "Andrew Johnson",
-    "foreignPolicy": {
-      "foreignPolicyOverview": "Johnson’s foreign policy focused on maintaining the Monroe Doctrine, resisting European influence in the Americas, and continuing territorial expansion. His administration confronted French intervention in Mexico, pursued the purchase of Alaska, and maintained assertive diplomatic positions despite domestic political turmoil.",
+  }
+},
+ {
+  "id": 17,
+  "name": "Andrew Johnson",
+  "foreignPolicy": {
+    "overview": "Johnson’s foreign policy focused on maintaining the Monroe Doctrine, resisting European influence in the Americas, and continuing territorial expansion. His administration confronted French intervention in Mexico, supported the restoration of Mexican sovereignty, and pursued the purchase of Alaska to expand U.S. strategic reach in the North Pacific. Despite intense domestic political turmoil, Johnson maintained assertive diplomatic positions that reinforced U.S. influence in the Western Hemisphere.",
+    "eventCount": 2,
+    "impactScore": 8.9,
+    "significanceScore": 9.1,
+    "majorEvents": [
+      {
+        "title": "Alaska Purchase Treaty (1867)",
+        "summary": "Johnson’s administration negotiated the purchase of Alaska from Russia, expanding U.S. territory and securing long‑term strategic advantages in the North Pacific.",
+        "sources": [
+          "https://www.britannica.com/event/Alaska-Purchase",
+          "https://history.state.gov/milestones/1866-1898/alaska"
+        ]
+      },
+      {
+        "title": "End of French Intervention in Mexico",
+        "summary": "Johnson pressured France to withdraw its forces from Mexico, supporting the restoration of Mexican sovereignty and reinforcing the Monroe Doctrine’s opposition to European interference in the Americas.",
+        "sources": [
+          "https://www.britannica.com/event/French-intervention-in-Mexico",
+          "https://history.state.gov/milestones/1861-1865/french"
+        ]
+      }
+    ],
+    "minorEvents": [],
+    "subcategories": {
       "treatiesNegotiated": [
         {
           "title": "Alaska Purchase Treaty (1867)",
-          "summary": "Johnson’s administration negotiated the purchase of Alaska from Russia, expanding U.S. territory and securing strategic advantages in the North Pacific.",
-          "sources": [
-            "https://www.britannica.com/event/Alaska-Purchase",
-            "https://history.state.gov/milestones/1866-1898/alaska"
-          ]
+          "summary": "Expanded U.S. territory through the acquisition of Alaska from Russia, strengthening American presence in the North Pacific."
         }
       ],
       "militaryActions": [],
@@ -541,28 +836,44 @@
       "majorForeignPolicyEvents": [
         {
           "title": "End of French Intervention in Mexico",
-          "summary": "Johnson pressured France to withdraw its forces from Mexico, supporting the restoration of Mexican sovereignty under the Monroe Doctrine.",
-          "sources": [
-            "https://www.britannica.com/event/French-intervention-in-Mexico",
-            "https://history.state.gov/milestones/1861-1865/french"
-          ]
+          "summary": "Johnson’s administration pressured France to withdraw from Mexico, reinforcing the Monroe Doctrine and supporting Mexican sovereignty."
         }
       ]
     }
-  },
+  }
+},
   {
-    "id": 18,
-    "name": "Ulysses S. Grant",
-    "foreignPolicy": {
-      "foreignPolicyOverview": "Grant’s foreign policy emphasized peaceful arbitration, hemispheric stability, and expansion of American influence. His administration pursued annexation of the Dominican Republic, resolved major disputes with Britain through arbitration, and strengthened U.S. standing as a diplomatic power.",
+  "id": 18,
+  "name": "Ulysses S. Grant",
+  "foreignPolicy": {
+    "overview": "Grant’s foreign policy emphasized peaceful arbitration, hemispheric stability, and the expansion of American influence through diplomacy rather than war. His administration resolved major disputes with Britain through the Treaty of Washington, pursued the annexation of the Dominican Republic as part of a broader strategic vision for the Caribbean, and strengthened the United States’ standing as an emerging diplomatic power. Grant’s approach reflected a shift toward international arbitration and a more assertive but peaceful American presence abroad.",
+    "eventCount": 2,
+    "impactScore": 8.8,
+    "significanceScore": 9.0,
+    "majorEvents": [
+      {
+        "title": "Treaty of Washington (1871)",
+        "summary": "A landmark agreement that resolved Civil War–era disputes with Britain, including the Alabama Claims, through international arbitration. The treaty marked a major step toward peaceful dispute resolution and elevated the United States’ diplomatic credibility.",
+        "sources": [
+          "https://www.britannica.com/event/Treaty-of-Washington",
+          "https://history.state.gov/milestones/1866-1898/washington"
+        ]
+      },
+      {
+        "title": "Attempted Annexation of the Dominican Republic",
+        "summary": "Grant sought to annex the Dominican Republic for strategic, economic, and racial‑political reasons, arguing it would provide a naval foothold and a refuge for freedmen. The Senate rejected the proposal, marking a rare foreign‑policy defeat for his administration.",
+        "sources": [
+          "https://www.britannica.com/biography/Ulysses-S-Grant",
+          "https://millercenter.org/president/grant/domestic-affairs"
+        ]
+      }
+    ],
+    "minorEvents": [],
+    "subcategories": {
       "treatiesNegotiated": [
         {
           "title": "Treaty of Washington (1871)",
-          "summary": "The treaty resolved Civil War–era disputes with Britain, including the Alabama Claims, through international arbitration. It marked a major step in peaceful dispute resolution.",
-          "sources": [
-            "https://www.britannica.com/event/Treaty-of-Washington",
-            "https://history.state.gov/milestones/1866-1898/washington"
-          ]
+          "summary": "Resolved major disputes with Britain through arbitration, including the Alabama Claims."
         }
       ],
       "militaryActions": [],
@@ -570,28 +881,44 @@
       "majorForeignPolicyEvents": [
         {
           "title": "Attempted Annexation of the Dominican Republic",
-          "summary": "Grant sought to annex the Dominican Republic for strategic and economic reasons, but the Senate rejected the proposal.",
-          "sources": [
-            "https://www.britannica.com/biography/Ulysses-S-Grant",
-            "https://millercenter.org/president/grant/domestic-affairs"
-          ]
+          "summary": "Grant’s push to annex the Dominican Republic failed in the Senate but reflected his broader strategic vision for the Caribbean."
         }
       ]
     }
-  },
-  {
-    "id": 19,
-    "name": "Rutherford B. Hayes",
-    "foreignPolicy": {
-      "foreignPolicyOverview": "Hayes pursued a restrained foreign policy focused on trade expansion, protection of American commercial interests, and maintaining stability in Latin America and Asia. His administration strengthened relations with China and resisted aggressive expansionism.",
+  }
+},
+ {
+  "id": 19,
+  "name": "Rutherford B. Hayes",
+  "foreignPolicy": {
+    "overview": "Hayes pursued a restrained foreign policy focused on expanding trade, protecting American commercial interests, and maintaining stability in Latin America and Asia. His administration strengthened relations with China, resisted aggressive expansionism, and emphasized treaty obligations and diplomatic consistency. Hayes’s approach reflected a commitment to lawful, measured engagement abroad during a period of growing U.S. economic reach.",
+    "eventCount": 2,
+    "impactScore": 7.9,
+    "significanceScore": 8.1,
+    "majorEvents": [
+      {
+        "title": "Burlingame Treaty Modifications",
+        "summary": "Hayes supported renegotiation of U.S.–China agreements to address immigration tensions while preserving friendly relations and honoring treaty commitments.",
+        "sources": [
+          "https://www.britannica.com/event/Burlingame-Treaty",
+          "https://millercenter.org/president/hayes/domestic-affairs"
+        ]
+      },
+      {
+        "title": "Opposition to Chinese Exclusion Legislation",
+        "summary": "Hayes vetoed early attempts to restrict Chinese immigration, citing treaty obligations and the need to maintain stable diplomatic relations with China.",
+        "sources": [
+          "https://www.britannica.com/biography/Rutherford-B-Hayes",
+          "https://millercenter.org/president/hayes/domestic-affairs"
+        ]
+      }
+    ],
+    "minorEvents": [],
+    "subcategories": {
       "treatiesNegotiated": [
         {
           "title": "Burlingame Treaty Modifications",
-          "summary": "Hayes supported renegotiation of U.S.–China agreements to address immigration tensions while preserving friendly relations.",
-          "sources": [
-            "https://www.britannica.com/event/Burlingame-Treaty",
-            "https://millercenter.org/president/hayes/domestic-affairs"
-          ]
+          "summary": "Renegotiated U.S.–China agreements to address immigration concerns while maintaining positive relations."
         }
       ],
       "militaryActions": [],
@@ -599,48 +926,76 @@
       "majorForeignPolicyEvents": [
         {
           "title": "Opposition to Chinese Exclusion Legislation",
-          "summary": "Hayes vetoed early attempts to restrict Chinese immigration, citing treaty obligations and diplomatic concerns.",
-          "sources": [
-            "https://www.britannica.com/biography/Rutherford-B-Hayes",
-            "https://millercenter.org/president/hayes/domestic-affairs"
-          ]
+          "summary": "Hayes vetoed restrictive immigration legislation to uphold treaty obligations and avoid diplomatic conflict with China."
         }
       ]
     }
-  },
+  }
+},
   {
-    "id": 20,
-    "name": "James A. Garfield",
-    "foreignPolicy": {
-      "foreignPolicyOverview": "Garfield’s foreign policy emphasized modernization of the Navy, protection of American commercial interests, and strengthening U.S. influence in Latin America. His presidency was cut short by assassination, limiting his ability to implement major initiatives.",
+  "id": 20,
+  "name": "James A. Garfield",
+  "foreignPolicy": {
+    "overview": "Garfield’s foreign policy emphasized modernization of the Navy, protection of American commercial interests, and strengthening U.S. influence in Latin America. Although his presidency was cut short by assassination, Garfield signaled a more assertive diplomatic posture and supported initiatives aimed at expanding hemispheric cooperation and improving U.S. strategic capabilities.",
+    "eventCount": 1,
+    "impactScore": 6.0,
+    "significanceScore": 6.3,
+    "majorEvents": [
+      {
+        "title": "Support for Pan‑American Diplomacy",
+        "summary": "Garfield planned to convene a Pan‑American conference to promote hemispheric cooperation, expand commercial ties, and strengthen U.S. leadership in the Americas. His assassination prevented the initiative from moving forward, though it foreshadowed later Pan‑American efforts under Benjamin Harrison.",
+        "sources": [
+          "https://www.britannica.com/biography/James-A-Garfield",
+          "https://millercenter.org/president/garfield/domestic-affairs"
+        ]
+      }
+    ],
+    "minorEvents": [],
+    "subcategories": {
       "treatiesNegotiated": [],
       "militaryActions": [],
       "foreignAidPrograms": [],
       "majorForeignPolicyEvents": [
         {
           "title": "Support for Pan‑American Diplomacy",
-          "summary": "Garfield planned to convene a Pan‑American conference to promote hemispheric cooperation, but his assassination prevented its realization.",
-          "sources": [
-            "https://www.britannica.com/biography/James-A-Garfield",
-            "https://millercenter.org/president/garfield/domestic-affairs"
-          ]
+          "summary": "Garfield endorsed plans for a Pan‑American conference to strengthen hemispheric cooperation, though the initiative was halted by his assassination."
         }
       ]
     }
-  },
+  }
+},
   {
-    "id": 21,
-    "name": "Chester A. Arthur",
-    "foreignPolicy": {
-      "foreignPolicyOverview": "Arthur’s foreign policy emphasized modernization, commercial expansion, and strengthening America’s presence in the Pacific. His administration pursued naval reform, negotiated trade agreements, and supported early Pan‑American cooperation. Arthur avoided major conflicts while laying groundwork for a more assertive U.S. role abroad.",
+  "id": 21,
+  "name": "Chester A. Arthur",
+  "foreignPolicy": {
+    "overview": "Arthur’s foreign policy emphasized modernization, commercial expansion, and strengthening America’s presence in the Pacific. His administration pursued naval reform, negotiated trade agreements, and supported early Pan‑American cooperation. Arthur avoided major conflicts while laying groundwork for a more assertive U.S. role abroad, particularly through naval modernization and expanded engagement in East Asia.",
+    "eventCount": 2,
+    "impactScore": 8.2,
+    "significanceScore": 8.4,
+    "majorEvents": [
+      {
+        "title": "Commercial Treaty with Korea (1883)",
+        "summary": "Arthur expanded diplomatic and commercial relations with Korea, building on earlier negotiations and opening new markets in East Asia.",
+        "sources": [
+          "https://www.britannica.com/event/Korea-United-States-relations",
+          "https://millercenter.org/president/arthur/domestic-affairs"
+        ]
+      },
+      {
+        "title": "Support for Naval Modernization",
+        "summary": "Arthur backed the creation of a modern steel navy, strengthening U.S. maritime power and enabling future global engagement.",
+        "sources": [
+          "https://www.britannica.com/biography/Chester-A-Arthur",
+          "https://millercenter.org/president/arthur/domestic-affairs"
+        ]
+      }
+    ],
+    "minorEvents": [],
+    "subcategories": {
       "treatiesNegotiated": [
         {
           "title": "Commercial Treaty with Korea (1883)",
-          "summary": "Arthur expanded diplomatic and commercial relations with Korea, building on earlier negotiations and opening new markets in East Asia.",
-          "sources": [
-            "https://www.britannica.com/event/Korea-United-States-relations",
-            "https://millercenter.org/president/arthur/domestic-affairs"
-          ]
+          "summary": "Expanded diplomatic and commercial relations with Korea, opening new markets in East Asia."
         }
       ],
       "militaryActions": [],
@@ -648,56 +1003,88 @@
       "majorForeignPolicyEvents": [
         {
           "title": "Support for Naval Modernization",
-          "summary": "Arthur backed the creation of a modern steel navy, strengthening U.S. maritime power and enabling future global engagement.",
-          "sources": [
-            "https://www.britannica.com/biography/Chester-A-Arthur",
-            "https://millercenter.org/president/arthur/domestic-affairs"
-          ]
+          "summary": "Arthur’s support for a modern steel navy laid the foundation for future U.S. global naval power."
         }
       ]
     }
-  },
-  {
-    "id": 22,
-    "name": "Grover Cleveland",
-    "foreignPolicy": {
-      "foreignPolicyOverview": "Cleveland pursued a cautious foreign policy emphasizing neutrality, anti‑imperialism, and respect for international law. He resisted expansionist pressures, opposed annexation of Hawaii, and defended U.S. interests through diplomacy rather than force. His administration strengthened the legal and moral foundations of American foreign policy.",
+  }
+},
+ {
+  "id": 22,
+  "name": "Grover Cleveland",
+  "foreignPolicy": {
+    "overview": "Cleveland pursued a cautious foreign policy emphasizing neutrality, anti‑imperialism, and respect for international law. He resisted expansionist pressures, opposed the annexation of Hawaii, and defended U.S. interests through diplomacy rather than force. His administration strengthened the legal and moral foundations of American foreign policy and asserted U.S. authority in the Western Hemisphere without resorting to militarism.",
+    "eventCount": 2,
+    "impactScore": 8.6,
+    "significanceScore": 8.9,
+    "majorEvents": [
+      {
+        "title": "Opposition to Hawaiian Annexation (1893)",
+        "summary": "Cleveland opposed the annexation of Hawaii after a U.S.-backed coup, arguing the overthrow was illegitimate and demanding restoration of the Hawaiian monarchy. His stance reflected a strong commitment to anti‑imperialism and respect for international law.",
+        "sources": [
+          "https://www.britannica.com/place/Hawaii",
+          "https://millercenter.org/president/cleveland/domestic-affairs"
+        ]
+      },
+      {
+        "title": "Venezuelan Boundary Dispute (1895)",
+        "summary": "Cleveland invoked the Monroe Doctrine to demand arbitration of a British–Venezuelan border dispute, asserting U.S. authority in the Western Hemisphere and strengthening the doctrine’s modern interpretation.",
+        "sources": [
+          "https://www.britannica.com/event/Venezuela-boundary-dispute",
+          "https://history.state.gov/milestones/1866-1898/venezuela"
+        ]
+      }
+    ],
+    "minorEvents": [],
+    "subcategories": {
       "treatiesNegotiated": [],
       "militaryActions": [],
       "foreignAidPrograms": [],
       "majorForeignPolicyEvents": [
         {
           "title": "Opposition to Hawaiian Annexation (1893)",
-          "summary": "Cleveland opposed the annexation of Hawaii after a U.S.-backed coup, arguing the overthrow was illegitimate and demanding restoration of the Hawaiian monarchy.",
-          "sources": [
-            "https://www.britannica.com/place/Hawaii",
-            "https://millercenter.org/president/cleveland/domestic-affairs"
-          ]
+          "summary": "Cleveland rejected annexation after a U.S.-backed coup, insisting the Hawaiian monarchy be restored."
         },
         {
           "title": "Venezuelan Boundary Dispute (1895)",
-          "summary": "Cleveland invoked the Monroe Doctrine to demand arbitration of a British–Venezuelan border dispute, asserting U.S. authority in the Western Hemisphere.",
-          "sources": [
-            "https://www.britannica.com/event/Venezuela-boundary-dispute",
-            "https://history.state.gov/milestones/1866-1898/venezuela"
-          ]
+          "summary": "Cleveland demanded arbitration under the Monroe Doctrine, asserting U.S. authority in hemispheric disputes."
         }
       ]
     }
-  },
+  }
+},
   {
-    "id": 23,
-    "name": "Benjamin Harrison",
-    "foreignPolicy": {
-      "foreignPolicyOverview": "Harrison’s foreign policy expanded American commercial influence, strengthened the Navy, and promoted Pan‑American cooperation. His administration supported early moves toward overseas expansion and pursued assertive diplomacy in Latin America and the Pacific.",
+  "id": 23,
+  "name": "Benjamin Harrison",
+  "foreignPolicy": {
+    "overview": "Harrison’s foreign policy expanded American commercial influence, strengthened the Navy, and promoted Pan‑American cooperation. His administration supported early moves toward overseas expansion, pursued assertive diplomacy in Latin America and the Pacific, and accelerated naval modernization that would soon enable the United States to project power globally.",
+    "eventCount": 2,
+    "impactScore": 8.7,
+    "significanceScore": 8.9,
+    "majorEvents": [
+      {
+        "title": "Pan‑American Conference Agreements (1889–1890)",
+        "summary": "Harrison supported the first Pan‑American Conference, which promoted hemispheric cooperation, standardized commercial practices, and strengthened U.S. diplomatic leadership in the Americas.",
+        "sources": [
+          "https://www.britannica.com/event/Pan-American-conferences",
+          "https://millercenter.org/president/harrison/domestic-affairs"
+        ]
+      },
+      {
+        "title": "Expansion of the Modern Navy",
+        "summary": "Harrison accelerated naval modernization, expanding the steel‑hulled fleet and laying the foundation for the United States to become a major global naval power in the 20th century.",
+        "sources": [
+          "https://www.britannica.com/biography/Benjamin-Harrison",
+          "https://millercenter.org/president/harrison/domestic-affairs"
+        ]
+      }
+    ],
+    "minorEvents": [],
+    "subcategories": {
       "treatiesNegotiated": [
         {
           "title": "Pan‑American Conference Agreements (1889–1890)",
-          "summary": "Harrison supported the first Pan‑American Conference, which promoted hemispheric cooperation and trade.",
-          "sources": [
-            "https://www.britannica.com/event/Pan-American-conferences",
-            "https://millercenter.org/president/harrison/domestic-affairs"
-          ]
+          "summary": "Promoted hemispheric cooperation and strengthened U.S. diplomatic and commercial leadership in the Americas."
         }
       ],
       "militaryActions": [],
@@ -705,224 +1092,344 @@
       "majorForeignPolicyEvents": [
         {
           "title": "Expansion of the Modern Navy",
-          "summary": "Harrison accelerated naval modernization, enabling the U.S. to project power globally in the coming decades.",
-          "sources": [
-            "https://www.britannica.com/biography/Benjamin-Harrison",
-            "https://millercenter.org/president/harrison/domestic-affairs"
-          ]
+          "summary": "Harrison’s naval modernization program enabled future U.S. global power projection."
         }
       ]
     }
-  },
+  }
+},
   {
-    "id": 24,
-    "name": "Grover Cleveland (Second Term)",
-    "foreignPolicy": {
-      "foreignPolicyOverview": "Cleveland’s second term continued his anti‑imperialist approach, resisting expansionist pressures and emphasizing legalistic diplomacy. He confronted crises in Latin America and the Pacific while maintaining a cautious, principled foreign policy.",
+  "id": 24,
+  "name": "Grover Cleveland (Second Term)",
+  "foreignPolicy": {
+    "overview": "Cleveland’s second term continued his anti‑imperialist approach, resisting expansionist pressures and emphasizing legalistic diplomacy. He confronted crises in Latin America and the Pacific while maintaining a cautious, principled foreign policy grounded in respect for sovereignty and international law.",
+    "eventCount": 2,
+    "impactScore": 8.4,
+    "significanceScore": 8.7,
+    "majorEvents": [
+      {
+        "title": "Renewed Opposition to Hawaiian Annexation",
+        "summary": "Cleveland again opposed annexation efforts, condemning the overthrow of Queen Liliʻuokalani and rejecting imperialist ambitions. His stance reaffirmed his commitment to anti‑imperialism and respect for the sovereignty of smaller nations.",
+        "sources": [
+          "https://www.britannica.com/place/Hawaii",
+          "https://millercenter.org/president/cleveland/domestic-affairs"
+        ]
+      },
+      {
+        "title": "Venezuelan Boundary Arbitration Enforcement",
+        "summary": "Cleveland continued to push Britain toward arbitration in the Venezuelan boundary dispute, reinforcing U.S. authority under the Monroe Doctrine and asserting American leadership in hemispheric diplomacy.",
+        "sources": [
+          "https://www.britannica.com/event/Venezuela-boundary-dispute",
+          "https://history.state.gov/milestones/1866-1898/venezuela"
+        ]
+      }
+    ],
+    "minorEvents": [],
+    "subcategories": {
       "treatiesNegotiated": [],
       "militaryActions": [],
       "foreignAidPrograms": [],
       "majorForeignPolicyEvents": [
         {
           "title": "Renewed Opposition to Hawaiian Annexation",
-          "summary": "Cleveland again opposed annexation efforts, condemning the overthrow of Queen Liliʻuokalani and rejecting imperialist ambitions.",
-          "sources": [
-            "https://www.britannica.com/place/Hawaii",
-            "https://millercenter.org/president/cleveland/domestic-affairs"
-          ]
+          "summary": "Cleveland condemned the overthrow of the Hawaiian monarchy and rejected annexation on legal and moral grounds."
         },
         {
           "title": "Venezuelan Boundary Arbitration Enforcement",
-          "summary": "Cleveland continued to push Britain toward arbitration, reinforcing U.S. authority under the Monroe Doctrine.",
-          "sources": [
-            "https://www.britannica.com/event/Venezuela-boundary-dispute",
-            "https://history.state.gov/milestones/1866-1898/venezuela"
-          ]
+          "summary": "Cleveland pressed Britain toward arbitration, strengthening the Monroe Doctrine’s authority."
         }
       ]
     }
-  },
-  {
-    "id": 25,
-    "name": "William McKinley",
-    "foreignPolicy": {
-      "foreignPolicyOverview": "McKinley’s foreign policy marked a turning point as the United States emerged as an imperial power. His administration led the nation into the Spanish–American War, acquired overseas territories, expanded Pacific influence, and embraced a more assertive global role. McKinley reshaped American foreign policy for the 20th century.",
+  }
+},
+ {
+  "id": 25,
+  "name": "William McKinley",
+  "foreignPolicy": {
+    "overview": "McKinley’s foreign policy marked a decisive turning point as the United States emerged as an imperial power. His administration led the nation into the Spanish–American War, acquired overseas territories, expanded Pacific influence, and embraced a more assertive global role. McKinley reshaped American foreign policy for the 20th century by establishing the foundations of U.S. overseas empire and projecting American power beyond the continent.",
+    "eventCount": 3,
+    "impactScore": 10.0,
+    "significanceScore": 10.0,
+    "majorEvents": [
+      {
+        "title": "Treaty of Paris (1898)",
+        "summary": "The treaty ended the Spanish–American War and ceded Puerto Rico, Guam, and the Philippines to the United States, marking the beginning of American overseas empire.",
+        "sources": [
+          "https://www.britannica.com/event/Treaty-of-Paris-1898",
+          "https://history.state.gov/milestones/1866-1898/spanish-american-war"
+        ]
+      },
+      {
+        "title": "Spanish–American War (1898)",
+        "summary": "McKinley led the U.S. into war with Spain over Cuba, resulting in decisive American victory and major territorial acquisitions that transformed the United States into a global power.",
+        "sources": [
+          "https://www.britannica.com/event/Spanish-American-War",
+          "https://history.state.gov/milestones/1866-1898/spanish-american-war"
+        ]
+      },
+      {
+        "title": "Annexation of Hawaii (1898)",
+        "summary": "McKinley supported and signed the annexation of Hawaii, expanding U.S. strategic presence in the Pacific and securing a key naval and commercial foothold.",
+        "sources": [
+          "https://www.britannica.com/place/Hawaii",
+          "https://millercenter.org/president/mckinley/domestic-affairs"
+        ]
+      }
+    ],
+    "minorEvents": [],
+    "subcategories": {
       "treatiesNegotiated": [
         {
           "title": "Treaty of Paris (1898)",
-          "summary": "The treaty ended the Spanish–American War and ceded Puerto Rico, Guam, and the Philippines to the United States, marking the beginning of American overseas empire.",
-          "sources": [
-            "https://www.britannica.com/event/Treaty-of-Paris-1898",
-            "https://history.state.gov/milestones/1866-1898/spanish-american-war"
-          ]
+          "summary": "Ended the Spanish–American War and transferred major overseas territories to the United States."
         }
       ],
       "militaryActions": [
         {
           "title": "Spanish–American War (1898)",
-          "summary": "McKinley led the U.S. into war with Spain over Cuba, resulting in decisive American victory and major territorial acquisitions.",
-          "sources": [
-            "https://www.britannica.com/event/Spanish-American-War",
-            "https://history.state.gov/milestones/1866-1898/spanish-american-war"
-          ]
+          "summary": "A decisive conflict that resulted in major U.S. territorial expansion and global influence."
         }
       ],
       "foreignAidPrograms": [],
       "majorForeignPolicyEvents": [
         {
           "title": "Annexation of Hawaii (1898)",
-          "summary": "McKinley supported and signed the annexation of Hawaii, expanding U.S. strategic presence in the Pacific.",
-          "sources": [
-            "https://www.britannica.com/place/Hawaii",
-            "https://millercenter.org/president/mckinley/domestic-affairs"
-          ]
+          "summary": "Expanded U.S. strategic and commercial presence in the Pacific through formal annexation."
         }
       ]
     }
-  },
-  {
-    "id": 26,
-    "name": "Theodore Roosevelt",
-    "foreignPolicy": {
-      "foreignPolicyOverview": "Roosevelt transformed American foreign policy into an assertive, globally engaged doctrine. His administration expanded U.S. influence through the Roosevelt Corollary, oversaw construction of the Panama Canal, strengthened the Navy, and intervened in Latin America to stabilize governments and protect American interests. Roosevelt’s diplomacy blended negotiation with the credible threat of force, establishing the United States as a major world power.",
+  }
+},
+ {
+  "id": 26,
+  "name": "Theodore Roosevelt",
+  "foreignPolicy": {
+    "overview": "Roosevelt transformed American foreign policy into an assertive, globally engaged doctrine. His administration expanded U.S. influence through the Roosevelt Corollary, oversaw construction of the Panama Canal, strengthened the Navy, and intervened in Latin America to stabilize governments and protect American interests. Roosevelt’s diplomacy blended negotiation with the credible threat of force, establishing the United States as a major world power.",
+    "eventCount": 4,
+    "impactScore": 10.0,
+    "significanceScore": 10.0,
+    "majorEvents": [
+      {
+        "title": "Hay–Bunau-Varilla Treaty (1903)",
+        "summary": "The treaty granted the United States rights to build and control the Panama Canal Zone, enabling construction of one of the most strategically important waterways in the world.",
+        "sources": [
+          "https://www.britannica.com/event/Hay-Bunau-Varilla-Treaty",
+          "https://history.state.gov/milestones/1899-1913/panama-canal"
+        ]
+      },
+      {
+        "title": "Treaty of Portsmouth (1905)",
+        "summary": "Roosevelt mediated the end of the Russo‑Japanese War, earning the Nobel Peace Prize and elevating U.S. diplomatic prestige.",
+        "sources": [
+          "https://www.britannica.com/event/Treaty-of-Portsmouth-1905",
+          "https://history.state.gov/milestones/1899-1913/portsmouth"
+        ]
+      },
+      {
+        "title": "Interventions in the Caribbean and Central America",
+        "summary": "Roosevelt deployed U.S. forces to stabilize governments in Cuba, the Dominican Republic, and other regions under the Roosevelt Corollary, asserting U.S. authority in the Western Hemisphere.",
+        "sources": [
+          "https://www.britannica.com/event/Roosevelt-Corollary",
+          "https://history.state.gov/milestones/1899-1913/roosevelt"
+        ]
+      },
+      {
+        "title": "Roosevelt Corollary to the Monroe Doctrine (1904)",
+        "summary": "Roosevelt asserted the U.S. right to intervene in Latin American nations to maintain stability and prevent European involvement, dramatically expanding the Monroe Doctrine.",
+        "sources": [
+          "https://www.britannica.com/event/Roosevelt-Corollary",
+          "https://history.state.gov/milestones/1899-1913/roosevelt"
+        ]
+      }
+    ],
+    "minorEvents": [],
+    "subcategories": {
       "treatiesNegotiated": [
         {
           "title": "Hay–Bunau-Varilla Treaty (1903)",
-          "summary": "The treaty granted the United States rights to build and control the Panama Canal Zone, enabling construction of one of the most important strategic waterways in the world.",
-          "sources": [
-            "https://www.britannica.com/event/Hay-Bunau-Varilla-Treaty",
-            "https://history.state.gov/milestones/1899-1913/panama-canal"
-          ]
+          "summary": "Granted the U.S. rights to build and control the Panama Canal Zone."
         },
         {
           "title": "Treaty of Portsmouth (1905)",
-          "summary": "Roosevelt mediated the end of the Russo‑Japanese War, earning the Nobel Peace Prize and elevating U.S. diplomatic prestige.",
-          "sources": [
-            "https://www.britannica.com/event/Treaty-of-Portsmouth-1905",
-            "https://history.state.gov/milestones/1899-1913/portsmouth"
-          ]
+          "summary": "Ended the Russo‑Japanese War through U.S. mediation, boosting American diplomatic prestige."
         }
       ],
       "militaryActions": [
         {
           "title": "Interventions in the Caribbean and Central America",
-          "summary": "Roosevelt deployed U.S. forces to stabilize governments in Cuba, the Dominican Republic, and other regions under the Roosevelt Corollary.",
-          "sources": [
-            "https://www.britannica.com/event/Roosevelt-Corollary",
-            "https://history.state.gov/milestones/1899-1913/roosevelt"
-          ]
+          "summary": "U.S. forces intervened to stabilize governments and enforce the Roosevelt Corollary."
         }
       ],
       "foreignAidPrograms": [],
       "majorForeignPolicyEvents": [
         {
           "title": "Roosevelt Corollary to the Monroe Doctrine (1904)",
-          "summary": "Roosevelt asserted the U.S. right to intervene in Latin American nations to maintain stability and prevent European involvement.",
-          "sources": [
-            "https://www.britannica.com/event/Roosevelt-Corollary",
-            "https://history.state.gov/milestones/1899-1913/roosevelt"
-          ]
+          "summary": "Asserted the U.S. right to intervene in Latin America to maintain stability and deter European involvement."
         }
       ]
     }
-  },
+  }
+},
   {
-    "id": 27,
-    "name": "William Howard Taft",
-    "foreignPolicy": {
-      "foreignPolicyOverview": "Taft’s foreign policy, known as Dollar Diplomacy, emphasized promoting American economic interests abroad, particularly in Latin America and East Asia. His administration encouraged U.S. investment to stabilize foreign governments and expand American influence, while avoiding large‑scale military intervention.",
+  "id": 27,
+  "name": "William Howard Taft",
+  "foreignPolicy": {
+    "overview": "Taft’s foreign policy, known as Dollar Diplomacy, emphasized promoting American economic interests abroad, particularly in Latin America and East Asia. His administration encouraged U.S. investment to stabilize foreign governments and expand American influence, while generally avoiding large‑scale military intervention. Taft sought to use financial leverage rather than force to shape international outcomes, though this approach sometimes required military backing to protect U.S. interests.",
+    "eventCount": 3,
+    "impactScore": 8.3,
+    "significanceScore": 8.5,
+    "majorEvents": [
+      {
+        "title": "U.S.–Nicaragua Agreements",
+        "summary": "Taft negotiated financial and political agreements to stabilize Nicaragua and expand American economic influence, reflecting the core principles of Dollar Diplomacy.",
+        "sources": [
+          "https://www.britannica.com/event/Dollar-diplomacy",
+          "https://history.state.gov/milestones/1899-1913/dollar-diplomacy"
+        ]
+      },
+      {
+        "title": "Intervention in Nicaragua (1912)",
+        "summary": "Taft deployed Marines to support a friendly government and protect American financial interests, demonstrating the limits of Dollar Diplomacy when economic pressure alone proved insufficient.",
+        "sources": [
+          "https://www.britannica.com/event/Nicaragua-intervention",
+          "https://history.state.gov/milestones/1899-1913/dollar-diplomacy"
+        ]
+      },
+      {
+        "title": "Dollar Diplomacy",
+        "summary": "Taft used American economic power to influence foreign governments, particularly in Latin America and China, aiming to create stability through investment rather than military force.",
+        "sources": [
+          "https://www.britannica.com/event/Dollar-diplomacy",
+          "https://millercenter.org/president/taft/domestic-affairs"
+        ]
+      }
+    ],
+    "minorEvents": [],
+    "subcategories": {
       "treatiesNegotiated": [
         {
           "title": "U.S.–Nicaragua Agreements",
-          "summary": "Taft negotiated financial and political agreements to stabilize Nicaragua and expand American economic influence.",
-          "sources": [
-            "https://www.britannica.com/event/Dollar-diplomacy",
-            "https://history.state.gov/milestones/1899-1913/dollar-diplomacy"
-          ]
+          "summary": "Financial and political agreements designed to stabilize Nicaragua and expand U.S. economic influence."
         }
       ],
       "militaryActions": [
         {
           "title": "Intervention in Nicaragua (1912)",
-          "summary": "Taft deployed Marines to support a friendly government and protect American financial interests.",
-          "sources": [
-            "https://www.britannica.com/event/Nicaragua-intervention",
-            "https://history.state.gov/milestones/1899-1913/dollar-diplomacy"
-          ]
+          "summary": "Deployment of Marines to support a friendly government and protect U.S. financial interests."
         }
       ],
       "foreignAidPrograms": [],
       "majorForeignPolicyEvents": [
         {
           "title": "Dollar Diplomacy",
-          "summary": "Taft used American economic power to influence foreign governments, particularly in Latin America and China.",
-          "sources": [
-            "https://www.britannica.com/event/Dollar-diplomacy",
-            "https://millercenter.org/president/taft/domestic-affairs"
-          ]
+          "summary": "Use of American economic power to influence foreign governments, especially in Latin America and China."
         }
       ]
     }
-  },
-  {
-    "id": 28,
-    "name": "Woodrow Wilson",
-    "foreignPolicy": {
-      "foreignPolicyOverview": "Wilson’s foreign policy combined moral idealism with military intervention. His administration entered World War I, promoted self‑determination, and advanced the League of Nations. Wilson intervened frequently in Latin America while attempting to reshape global diplomacy through his Fourteen Points.",
+  }
+},
+{
+  "id": 28,
+  "name": "Woodrow Wilson",
+  "foreignPolicy": {
+    "overview": "Wilson’s foreign policy combined moral idealism with military intervention. His administration entered World War I, promoted self‑determination, and advanced the League of Nations. Wilson intervened frequently in Latin America while attempting to reshape global diplomacy through his Fourteen Points, positioning the United States as a central architect of the postwar international order.",
+    "eventCount": 4,
+    "impactScore": 10.0,
+    "significanceScore": 10.0,
+    "majorEvents": [
+      {
+        "title": "Treaty of Versailles (1919)",
+        "summary": "Wilson helped negotiate the treaty ending World War I and championed the League of Nations, though the U.S. Senate refused to ratify it, limiting American participation in the new international system.",
+        "sources": [
+          "https://www.britannica.com/event/Treaty-of-Versailles-1919",
+          "https://history.state.gov/milestones/1914-1920/paris-peace"
+        ]
+      },
+      {
+        "title": "U.S. Entry into World War I (1917)",
+        "summary": "Wilson led the United States into World War I to defend democracy and international order, dramatically expanding American global involvement and shifting the balance of the conflict.",
+        "sources": [
+          "https://www.britannica.com/event/World-War-I",
+          "https://history.state.gov/milestones/1914-1920/wwi"
+        ]
+      },
+      {
+        "title": "Interventions in Mexico and the Caribbean",
+        "summary": "Wilson deployed forces to Mexico, Haiti, and the Dominican Republic to influence political outcomes and protect U.S. interests, reflecting a tension between his moral rhetoric and interventionist actions.",
+        "sources": [
+          "https://www.britannica.com/biography/Woodrow-Wilson",
+          "https://history.state.gov/milestones/1914-1920/caribbean"
+        ]
+      },
+      {
+        "title": "Fourteen Points (1918)",
+        "summary": "Wilson outlined principles for postwar peace, including self‑determination, free trade, open diplomacy, and collective security, shaping the intellectual foundation of the League of Nations.",
+        "sources": [
+          "https://www.britannica.com/event/Fourteen-Points",
+          "https://history.state.gov/milestones/1914-1920/fourteen-points"
+        ]
+      }
+    ],
+    "minorEvents": [],
+    "subcategories": {
       "treatiesNegotiated": [
         {
           "title": "Treaty of Versailles (1919)",
-          "summary": "Wilson helped negotiate the treaty ending World War I and championed the League of Nations, though the U.S. Senate refused to ratify it.",
-          "sources": [
-            "https://www.britannica.com/event/Treaty-of-Versailles-1919",
-            "https://history.state.gov/milestones/1914-1920/paris-peace"
-          ]
+          "summary": "Negotiated the end of World War I and established the League of Nations, though the U.S. did not join."
         }
       ],
       "militaryActions": [
         {
           "title": "U.S. Entry into World War I (1917)",
-          "summary": "Wilson led the United States into WWI to defend democracy and international order, dramatically expanding American global involvement.",
-          "sources": [
-            "https://www.britannica.com/event/World-War-I",
-            "https://history.state.gov/milestones/1914-1920/wwi"
-          ]
+          "summary": "Committed American forces to World War I, transforming the conflict and expanding U.S. global influence."
         },
         {
           "title": "Interventions in Mexico and the Caribbean",
-          "summary": "Wilson deployed forces to Mexico, Haiti, and the Dominican Republic to influence political outcomes and protect U.S. interests.",
-          "sources": [
-            "https://www.britannica.com/biography/Woodrow-Wilson",
-            "https://history.state.gov/milestones/1914-1920/caribbean"
-          ]
+          "summary": "Used military force to influence political outcomes in Mexico, Haiti, and the Dominican Republic."
         }
       ],
       "foreignAidPrograms": [],
       "majorForeignPolicyEvents": [
         {
           "title": "Fourteen Points (1918)",
-          "summary": "Wilson outlined principles for postwar peace, including self‑determination, free trade, and collective security.",
-          "sources": [
-            "https://www.britannica.com/event/Fourteen-Points",
-            "https://history.state.gov/milestones/1914-1920/fourteen-points"
-          ]
+          "summary": "Wilson’s blueprint for postwar peace and the foundation of the League of Nations."
         }
       ]
     }
-  },
+  }
+},
   {
-    "id": 29,
-    "name": "Warren G. Harding",
-    "foreignPolicy": {
-      "foreignPolicyOverview": "Harding pursued a foreign policy focused on disarmament, economic recovery, and returning to pre‑war normalcy. His administration promoted naval arms reduction, stabilized relations with former wartime allies, and avoided entangling commitments.",
+  "id": 29,
+  "name": "Warren G. Harding",
+  "foreignPolicy": {
+    "overview": "Harding pursued a foreign policy focused on disarmament, economic recovery, and a return to pre‑war normalcy. His administration promoted naval arms reduction, stabilized relations with former wartime allies, and avoided entangling commitments. Harding’s approach emphasized international cooperation without binding alliances, reflecting widespread post‑World War I sentiment.",
+    "eventCount": 2,
+    "impactScore": 7.9,
+    "significanceScore": 8.1,
+    "majorEvents": [
+      {
+        "title": "Washington Naval Treaty (1922)",
+        "summary": "Harding hosted the Washington Naval Conference, resulting in treaties limiting naval armaments among major powers and establishing a framework for early 20th‑century arms control.",
+        "sources": [
+          "https://www.britannica.com/event/Washington-Conference",
+          "https://history.state.gov/milestones/1921-1936/naval-conference"
+        ]
+      },
+      {
+        "title": "Return to Isolationist Tendencies",
+        "summary": "Harding rejected U.S. membership in the League of Nations and emphasized limited international commitments, reflecting a national desire to avoid foreign entanglements after World War I.",
+        "sources": [
+          "https://www.britannica.com/biography/Warren-G-Harding",
+          "https://millercenter.org/president/harding/domestic-affairs"
+        ]
+      }
+    ],
+    "minorEvents": [],
+    "subcategories": {
       "treatiesNegotiated": [
         {
           "title": "Washington Naval Treaty (1922)",
-          "summary": "Harding hosted the Washington Naval Conference, resulting in treaties limiting naval armaments among major powers.",
-          "sources": [
-            "https://www.britannica.com/event/Washington-Conference",
-            "https://history.state.gov/milestones/1921-1936/naval-conference"
-          ]
+          "summary": "Established naval arms limits among major powers and promoted early multilateral disarmament."
         }
       ],
       "militaryActions": [],
@@ -930,28 +1437,44 @@
       "majorForeignPolicyEvents": [
         {
           "title": "Return to Isolationist Tendencies",
-          "summary": "Harding rejected U.S. membership in the League of Nations and emphasized limited international commitments.",
-          "sources": [
-            "https://www.britannica.com/biography/Warren-G-Harding",
-            "https://millercenter.org/president/harding/domestic-affairs"
-          ]
+          "summary": "Harding emphasized limited international commitments and rejected League of Nations membership."
         }
       ]
     }
-  },
-  {
-    "id": 30,
-    "name": "Calvin Coolidge",
-    "foreignPolicy": {
-      "foreignPolicyOverview": "Coolidge maintained a restrained foreign policy focused on economic diplomacy, debt repayment, and peace initiatives. His administration supported international agreements to reduce conflict while avoiding binding commitments. Coolidge emphasized stability and financial responsibility in global affairs.",
+  }
+},
+ {
+  "id": 30,
+  "name": "Calvin Coolidge",
+  "foreignPolicy": {
+    "overview": "Coolidge maintained a restrained foreign policy focused on economic diplomacy, debt repayment, and peace initiatives. His administration supported international agreements to reduce conflict while avoiding binding commitments. Coolidge emphasized stability, financial responsibility, and limited engagement in global affairs, reflecting his broader philosophy of governmental restraint.",
+    "eventCount": 2,
+    "impactScore": 7.8,
+    "significanceScore": 8.0,
+    "majorEvents": [
+      {
+        "title": "Kellogg–Briand Pact (1928)",
+        "summary": "Coolidge supported the Kellogg–Briand Pact, an international agreement renouncing war as a tool of national policy. Although largely symbolic, it represented a major global peace initiative during the interwar period.",
+        "sources": [
+          "https://www.britannica.com/event/Kellogg-Briand-Pact",
+          "https://history.state.gov/milestones/1921-1936/kellogg"
+        ]
+      },
+      {
+        "title": "Support for Dawes Plan (1924)",
+        "summary": "Coolidge backed the Dawes Plan, which restructured German reparations and stabilized European economies after World War I, helping restore international financial order.",
+        "sources": [
+          "https://www.britannica.com/event/Dawes-Plan",
+          "https://millercenter.org/president/coolidge/domestic-affairs"
+        ]
+      }
+    ],
+    "minorEvents": [],
+    "subcategories": {
       "treatiesNegotiated": [
         {
           "title": "Kellogg–Briand Pact (1928)",
-          "summary": "Coolidge supported the pact renouncing war as a tool of national policy, a major symbolic step toward international peace.",
-          "sources": [
-            "https://www.britannica.com/event/Kellogg-Briand-Pact",
-            "https://history.state.gov/milestones/1921-1936/kellogg"
-          ]
+          "summary": "An international agreement renouncing war as a tool of national policy, symbolizing global peace aspirations."
         }
       ],
       "militaryActions": [],
@@ -959,775 +1482,1148 @@
       "majorForeignPolicyEvents": [
         {
           "title": "Support for Dawes Plan (1924)",
-          "summary": "Coolidge backed the Dawes Plan to stabilize German reparations and European economies after World War I.",
-          "sources": [
-            "https://www.britannica.com/event/Dawes-Plan",
-            "https://millercenter.org/president/coolidge/domestic-affairs"
-          ]
+          "summary": "Coolidge endorsed the Dawes Plan to stabilize German reparations and support European economic recovery."
         }
       ]
     }
-  },
+  }
+},
   {
-    "id": 31,
-    "name": "Herbert Hoover",
-    "foreignPolicy": {
-      "foreignPolicyOverview": "Hoover’s foreign policy emphasized economic diplomacy, non‑intervention in Latin America, and efforts to stabilize the global financial system during the Great Depression. His administration promoted peaceful conflict resolution, reduced military involvement abroad, and attempted to ease international tensions through debt moratoriums and arms limitations.",
+  "id": 31,
+  "name": "Herbert Hoover",
+  "foreignPolicy": {
+    "overview": "Hoover’s foreign policy emphasized economic diplomacy, non‑intervention in Latin America, and efforts to stabilize the global financial system during the Great Depression. His administration promoted peaceful conflict resolution, reduced military involvement abroad, and attempted to ease international tensions through debt moratoriums and arms‑limitation initiatives. Hoover’s approach reflected a desire to maintain stability without expanding U.S. commitments overseas.",
+    "eventCount": 2,
+    "impactScore": 7.6,
+    "significanceScore": 7.9,
+    "majorEvents": [
+      {
+        "title": "Hoover Moratorium on War Debts (1931)",
+        "summary": "Hoover proposed a one‑year suspension of World War I reparations and intergovernmental debts to stabilize the global economy during the Depression. Although only partially successful, it represented a major attempt to ease international financial pressures.",
+        "sources": [
+          "https://www.britannica.com/event/Hoover-moratorium",
+          "https://millercenter.org/president/hoover/domestic-affairs"
+        ]
+      },
+      {
+        "title": "Good Neighbor Policy Foundations",
+        "summary": "Hoover reduced U.S. military involvement in Latin America, withdrawing troops from Nicaragua and Haiti and laying the groundwork for Franklin D. Roosevelt’s Good Neighbor Policy.",
+        "sources": [
+          "https://www.britannica.com/event/Good-Neighbor-Policy",
+          "https://millercenter.org/president/hoover/domestic-affairs"
+        ]
+      }
+    ],
+    "minorEvents": [],
+    "subcategories": {
       "treatiesNegotiated": [],
       "militaryActions": [],
       "foreignAidPrograms": [
         {
           "title": "Hoover Moratorium on War Debts (1931)",
-          "summary": "Hoover proposed a one‑year suspension of World War I reparations and intergovernmental debts to stabilize the global economy during the Depression.",
-          "sources": [
-            "https://www.britannica.com/event/Hoover-moratorium",
-            "https://millercenter.org/president/hoover/domestic-affairs"
-          ]
+          "summary": "A one‑year suspension of reparations and intergovernmental debts intended to ease global financial pressures."
         }
       ],
       "majorForeignPolicyEvents": [
         {
           "title": "Good Neighbor Policy Foundations",
-          "summary": "Hoover reduced U.S. military involvement in Latin America, withdrawing troops from Nicaragua and Haiti and laying groundwork for Roosevelt’s Good Neighbor Policy.",
-          "sources": [
-            "https://www.britannica.com/event/Good-Neighbor-Policy",
-            "https://millercenter.org/president/hoover/domestic-affairs"
-          ]
+          "summary": "Hoover reduced U.S. military presence in Latin America, setting the stage for a more cooperative hemispheric policy."
         }
       ]
     }
-  },
+  }
+},
   {
-    "id": 32,
-    "name": "Franklin D. Roosevelt",
-    "foreignPolicy": {
-      "foreignPolicyOverview": "Roosevelt’s foreign policy reshaped the global role of the United States. His administration confronted the rise of fascism, provided critical support to Allied nations, and ultimately led the U.S. into World War II. FDR built the foundations of the postwar international order through the United Nations, global economic institutions, and long‑term alliances.",
+  "id": 32,
+  "name": "Franklin D. Roosevelt",
+  "foreignPolicy": {
+    "overview": "Roosevelt’s foreign policy reshaped the global role of the United States. His administration confronted the rise of fascism, provided critical support to Allied nations, and ultimately led the U.S. into World War II. FDR built the foundations of the postwar international order through the United Nations, global economic institutions, and long‑term alliances, establishing the United States as a permanent world leader.",
+    "eventCount": 4,
+    "impactScore": 10.0,
+    "significanceScore": 10.0,
+    "majorEvents": [
+      {
+        "title": "United Nations Declaration (1942)",
+        "summary": "Roosevelt helped craft the declaration uniting Allied nations during World War II and laying the foundation for the postwar United Nations.",
+        "sources": [
+          "https://www.britannica.com/topic/Declaration-by-United-Nations",
+          "https://history.state.gov/milestones/1937-1945/un"
+        ]
+      },
+      {
+        "title": "World War II (1941–1945)",
+        "summary": "Following the attack on Pearl Harbor, Roosevelt led the U.S. into World War II, coordinating global strategy with Allied leaders and mobilizing the nation for total war.",
+        "sources": [
+          "https://www.britannica.com/event/World-War-II",
+          "https://history.state.gov/milestones/1937-1945/wwii"
+        ]
+      },
+      {
+        "title": "Lend‑Lease Act (1941)",
+        "summary": "Roosevelt provided massive military and economic aid to Allied nations, strengthening their resistance to Axis powers before U.S. entry into the war.",
+        "sources": [
+          "https://www.britannica.com/event/Lend-Lease-Act",
+          "https://history.state.gov/milestones/1937-1945/lend-lease"
+        ]
+      },
+      {
+        "title": "Atlantic Charter (1941)",
+        "summary": "Roosevelt and Churchill outlined principles for the postwar world, including self‑determination, free trade, and collective security, shaping the future United Nations.",
+        "sources": [
+          "https://www.britannica.com/event/Atlantic-Charter",
+          "https://history.state.gov/milestones/1937-1945/atlantic-charter"
+        ]
+      }
+    ],
+    "minorEvents": [],
+    "subcategories": {
       "treatiesNegotiated": [
         {
           "title": "United Nations Declaration (1942)",
-          "summary": "Roosevelt helped craft the declaration that united Allied nations in World War II and laid the foundation for the postwar United Nations.",
-          "sources": [
-            "https://www.britannica.com/topic/Declaration-by-United-Nations",
-            "https://history.state.gov/milestones/1937-1945/un"
-          ]
+          "summary": "Unified Allied nations during WWII and laid groundwork for the postwar United Nations."
         }
       ],
       "militaryActions": [
         {
           "title": "World War II (1941–1945)",
-          "summary": "After the attack on Pearl Harbor, Roosevelt led the U.S. into WWII, coordinating global strategy with Allied leaders and mobilizing the nation for total war.",
-          "sources": [
-            "https://www.britannica.com/event/World-War-II",
-            "https://history.state.gov/milestones/1937-1945/wwii"
-          ]
+          "summary": "Roosevelt led the U.S. war effort after Pearl Harbor, coordinating global Allied strategy."
         }
       ],
       "foreignAidPrograms": [
         {
           "title": "Lend‑Lease Act (1941)",
-          "summary": "Roosevelt provided massive military and economic aid to Allied nations, strengthening their resistance to Axis powers before U.S. entry into WWII.",
-          "sources": [
-            "https://www.britannica.com/event/Lend-Lease-Act",
-            "https://history.state.gov/milestones/1937-1945/lend-lease"
-          ]
+          "summary": "Provided massive military and economic aid to Allied nations before and during WWII."
         }
       ],
       "majorForeignPolicyEvents": [
         {
           "title": "Atlantic Charter (1941)",
-          "summary": "Roosevelt and Churchill outlined principles for the postwar world, including self‑determination, free trade, and collective security.",
-          "sources": [
-            "https://www.britannica.com/event/Atlantic-Charter",
-            "https://history.state.gov/milestones/1937-1945/atlantic-charter"
-          ]
+          "summary": "Outlined principles for the postwar world and influenced the creation of the United Nations."
         }
       ]
     }
-  },
-  {
-    "id": 33,
-    "name": "Harry S. Truman",
-    "foreignPolicy": {
-      "foreignPolicyOverview": "Truman’s foreign policy established the framework of the Cold War. His administration implemented containment, launched the Marshall Plan, created NATO, and authorized U.S. involvement in the Korean War. Truman’s decisions shaped global alliances and defined American leadership in the postwar world.",
+  }
+},
+ {
+  "id": 33,
+  "name": "Harry S. Truman",
+  "foreignPolicy": {
+    "overview": "Truman’s foreign policy established the framework of the Cold War. His administration implemented containment, launched the Marshall Plan, created NATO, and authorized U.S. involvement in the Korean War. Truman’s decisions shaped global alliances, defined American leadership in the postwar world, and set long‑term strategic patterns that endured throughout the 20th century.",
+    "eventCount": 4,
+    "impactScore": 10.0,
+    "significanceScore": 10.0,
+    "majorEvents": [
+      {
+        "title": "North Atlantic Treaty (1949)",
+        "summary": "Truman helped create NATO, a collective defense alliance that became the cornerstone of Western security during the Cold War.",
+        "sources": [
+          "https://www.britannica.com/event/North-Atlantic-Treaty",
+          "https://history.state.gov/milestones/1945-1952/nato"
+        ]
+      },
+      {
+        "title": "Korean War (1950–1953)",
+        "summary": "Truman committed U.S. forces to defend South Korea under UN authority, marking the first major military conflict of the Cold War and solidifying the policy of containment.",
+        "sources": [
+          "https://www.britannica.com/event/Korean-War",
+          "https://history.state.gov/milestones/1945-1952/korean-war"
+        ]
+      },
+      {
+        "title": "Marshall Plan (1948)",
+        "summary": "Truman implemented massive economic aid to rebuild Western Europe, strengthen democracies, and counter Soviet influence, becoming one of the most successful foreign aid programs in history.",
+        "sources": [
+          "https://www.britannica.com/event/Marshall-Plan",
+          "https://history.state.gov/milestones/1945-1952/marshall-plan"
+        ]
+      },
+      {
+        "title": "Truman Doctrine (1947)",
+        "summary": "Truman pledged U.S. support for nations resisting communism, establishing the policy of containment and defining early Cold War strategy.",
+        "sources": [
+          "https://www.britannica.com/event/Truman-Doctrine",
+          "https://history.state.gov/milestones/1945-1952/truman-doctrine"
+        ]
+      }
+    ],
+    "minorEvents": [],
+    "subcategories": {
       "treatiesNegotiated": [
         {
           "title": "North Atlantic Treaty (1949)",
-          "summary": "Truman helped create NATO, a collective defense alliance that became the cornerstone of Western security during the Cold War.",
-          "sources": [
-            "https://www.britannica.com/event/North-Atlantic-Treaty",
-            "https://history.state.gov/milestones/1945-1952/nato"
-          ]
+          "summary": "Created NATO, establishing a collective defense alliance central to Western security."
         }
       ],
       "militaryActions": [
         {
           "title": "Korean War (1950–1953)",
-          "summary": "Truman committed U.S. forces to defend South Korea under UN authority, marking the first major military conflict of the Cold War.",
-          "sources": [
-            "https://www.britannica.com/event/Korean-War",
-            "https://history.state.gov/milestones/1945-1952/korean-war"
-          ]
+          "summary": "Committed U.S. forces under UN authority to defend South Korea and contain communism."
         }
       ],
       "foreignAidPrograms": [
         {
           "title": "Marshall Plan (1948)",
-          "summary": "Truman implemented massive economic aid to rebuild Western Europe, strengthen democracies, and counter Soviet influence.",
-          "sources": [
-            "https://www.britannica.com/event/Marshall-Plan",
-            "https://history.state.gov/milestones/1945-1952/marshall-plan"
-          ]
+          "summary": "Provided massive economic aid to rebuild Western Europe and counter Soviet influence."
         }
       ],
       "majorForeignPolicyEvents": [
         {
           "title": "Truman Doctrine (1947)",
-          "summary": "Truman pledged U.S. support for nations resisting communism, establishing the policy of containment.",
-          "sources": [
-            "https://www.britannica.com/event/Truman-Doctrine",
-            "https://history.state.gov/milestones/1945-1952/truman-doctrine"
-          ]
+          "summary": "Established the U.S. policy of containment by pledging support to nations resisting communism."
         }
       ]
     }
-  },
-  {
-    "id": 34,
-    "name": "Dwight D. Eisenhower",
-    "foreignPolicy": {
-      "foreignPolicyOverview": "Eisenhower’s foreign policy emphasized containment of communism, nuclear deterrence, and strategic alliances. His administration expanded Cold War commitments, used covert operations to influence foreign governments, and balanced military strength with efforts to avoid direct conflict with the Soviet Union.",
+  }
+},
+ {
+  "id": 34,
+  "name": "Dwight D. Eisenhower",
+  "foreignPolicy": {
+    "overview": "Eisenhower’s foreign policy emphasized containment of communism, nuclear deterrence, and the expansion of strategic alliances. His administration relied heavily on covert operations to influence foreign governments, strengthened Cold War commitments through new treaty organizations, and balanced military strength with efforts to avoid direct conflict with the Soviet Union. Eisenhower’s approach blended diplomacy, covert action, and strategic restraint, shaping U.S. global posture throughout the 1950s.",
+    "eventCount": 4,
+    "impactScore": 9.7,
+    "significanceScore": 9.8,
+    "majorEvents": [
+      {
+        "title": "Southeast Asia Treaty Organization (SEATO) (1954)",
+        "summary": "Eisenhower helped establish SEATO to counter communist expansion in Southeast Asia, expanding U.S. alliance networks during the Cold War.",
+        "sources": [
+          "https://www.britannica.com/topic/Southeast-Asia-Treaty-Organization",
+          "https://history.state.gov/milestones/1953-1960/seato"
+        ]
+      },
+      {
+        "title": "Intervention in Lebanon (1958)",
+        "summary": "Eisenhower deployed U.S. forces to Lebanon to stabilize the government and prevent perceived communist influence, demonstrating the application of the Eisenhower Doctrine.",
+        "sources": [
+          "https://www.britannica.com/event/Lebanon-crisis-of-1958",
+          "https://history.state.gov/milestones/1953-1960/lebanon"
+        ]
+      },
+      {
+        "title": "Eisenhower Doctrine Aid Programs",
+        "summary": "Eisenhower provided military and economic aid to Middle Eastern nations resisting communist influence, expanding U.S. involvement in the region.",
+        "sources": [
+          "https://www.britannica.com/event/Eisenhower-Doctrine",
+          "https://history.state.gov/milestones/1953-1960/eisenhower-doctrine"
+        ]
+      },
+      {
+        "title": "CIA Operations in Iran and Guatemala",
+        "summary": "Eisenhower authorized covert operations to overthrow governments in Iran (1953) and Guatemala (1954), expanding U.S. Cold War interventionism and shaping long-term regional dynamics.",
+        "sources": [
+          "https://www.britannica.com/event/Iran-coup-of-1953",
+          "https://www.britannica.com/event/Guatemala-coup-of-1954"
+        ]
+      }
+    ],
+    "minorEvents": [],
+    "subcategories": {
       "treatiesNegotiated": [
         {
           "title": "Southeast Asia Treaty Organization (SEATO) (1954)",
-          "summary": "Eisenhower helped establish SEATO to counter communist expansion in Southeast Asia.",
-          "sources": [
-            "https://www.britannica.com/topic/Southeast-Asia-Treaty-Organization",
-            "https://history.state.gov/milestones/1953-1960/seato"
-          ]
+          "summary": "Established a regional alliance to counter communist expansion in Southeast Asia."
         }
       ],
       "militaryActions": [
         {
           "title": "Intervention in Lebanon (1958)",
-          "summary": "Eisenhower deployed U.S. forces to Lebanon to stabilize the government and prevent perceived communist influence.",
-          "sources": [
-            "https://www.britannica.com/event/Lebanon-crisis-of-1958",
-            "https://history.state.gov/milestones/1953-1960/lebanon"
-          ]
+          "summary": "U.S. forces deployed to stabilize Lebanon and prevent perceived communist influence."
         }
       ],
       "foreignAidPrograms": [
         {
           "title": "Eisenhower Doctrine Aid Programs",
-          "summary": "Eisenhower provided military and economic aid to Middle Eastern nations resisting communist influence.",
-          "sources": [
-            "https://www.britannica.com/event/Eisenhower-Doctrine",
-            "https://history.state.gov/milestones/1953-1960/eisenhower-doctrine"
-          ]
+          "summary": "Provided military and economic aid to Middle Eastern nations resisting communist influence."
         }
       ],
       "majorForeignPolicyEvents": [
         {
           "title": "CIA Operations in Iran and Guatemala",
-          "summary": "Eisenhower authorized covert operations to overthrow governments in Iran (1953) and Guatemala (1954), expanding U.S. Cold War interventionism.",
-          "sources": [
-            "https://www.britannica.com/event/Iran-coup-of-1953",
-            "https://www.britannica.com/event/Guatemala-coup-of-1954"
-          ]
+          "summary": "Covert operations overthrew governments in Iran and Guatemala, expanding U.S. Cold War interventionism."
         }
       ]
     }
-  },
-  {
-    "id": 35,
-    "name": "John F. Kennedy",
-    "foreignPolicy": {
-      "foreignPolicyOverview": "Kennedy’s foreign policy was defined by Cold War crises, nuclear brinkmanship, and efforts to promote development in the Global South. His administration confronted the Bay of Pigs, Cuban Missile Crisis, and Berlin tensions while expanding foreign aid and launching the Peace Corps.",
+  }
+},
+ {
+  "id": 35,
+  "name": "John F. Kennedy",
+  "foreignPolicy": {
+    "overview": "Kennedy’s foreign policy was defined by Cold War crises, nuclear brinkmanship, and efforts to promote development in the Global South. His administration confronted the Bay of Pigs, Cuban Missile Crisis, and Berlin tensions while expanding foreign aid and launching the Peace Corps. Kennedy blended idealistic rhetoric with hard‑edged strategic decision‑making, shaping U.S. global posture during a volatile era.",
+    "eventCount": 4,
+    "impactScore": 9.8,
+    "significanceScore": 9.9,
+    "majorEvents": [
+      {
+        "title": "Limited Nuclear Test Ban Treaty (1963)",
+        "summary": "Kennedy negotiated the first major arms control agreement of the Cold War, banning atmospheric nuclear tests and reducing global radioactive fallout.",
+        "sources": [
+          "https://www.britannica.com/event/Nuclear-Test-Ban-Treaty",
+          "https://history.state.gov/milestones/1961-1968/test-ban"
+        ]
+      },
+      {
+        "title": "Bay of Pigs Invasion (1961)",
+        "summary": "Kennedy approved a failed CIA‑backed invasion of Cuba by anti‑Castro exiles, damaging U.S. credibility and intensifying Cold War tensions.",
+        "sources": [
+          "https://www.britannica.com/event/Bay-of-Pigs-invasion",
+          "https://history.state.gov/milestones/1961-1968/bay-of-pigs"
+        ]
+      },
+      {
+        "title": "Peace Corps (1961)",
+        "summary": "Kennedy created the Peace Corps to promote development, cultural exchange, and U.S. soft power abroad.",
+        "sources": [
+          "https://www.britannica.com/topic/Peace-Corps",
+          "https://millercenter.org/president/kennedy/domestic-affairs"
+        ]
+      },
+      {
+        "title": "Cuban Missile Crisis (1962)",
+        "summary": "Kennedy confronted the Soviet Union over nuclear missiles in Cuba, bringing the world to the brink of nuclear war before negotiating a peaceful resolution.",
+        "sources": [
+          "https://www.britannica.com/event/Cuban-missile-crisis",
+          "https://history.state.gov/milestones/1961-1968/cuban-missile-crisis"
+        ]
+      }
+    ],
+    "minorEvents": [],
+    "subcategories": {
       "treatiesNegotiated": [
         {
           "title": "Limited Nuclear Test Ban Treaty (1963)",
-          "summary": "Kennedy negotiated the first major arms control agreement of the Cold War, banning atmospheric nuclear tests.",
-          "sources": [
-            "https://www.britannica.com/event/Nuclear-Test-Ban-Treaty",
-            "https://history.state.gov/milestones/1961-1968/test-ban"
-          ]
+          "summary": "Banned atmospheric nuclear tests and marked a major step in Cold War arms control."
         }
       ],
       "militaryActions": [
         {
           "title": "Bay of Pigs Invasion (1961)",
-          "summary": "Kennedy approved a failed CIA‑backed invasion of Cuba by anti‑Castro exiles, damaging U.S. credibility.",
-          "sources": [
-            "https://www.britannica.com/event/Bay-of-Pigs-invasion",
-            "https://history.state.gov/milestones/1961-1968/bay-of-pigs"
-          ]
+          "summary": "Failed CIA‑backed invasion of Cuba that damaged U.S. credibility."
         }
       ],
       "foreignAidPrograms": [
         {
           "title": "Peace Corps (1961)",
-          "summary": "Kennedy created the Peace Corps to promote development and strengthen U.S. soft power abroad.",
-          "sources": [
-            "https://www.britannica.com/topic/Peace-Corps",
-            "https://millercenter.org/president/kennedy/domestic-affairs"
-          ]
+          "summary": "Promoted development and strengthened U.S. soft power through volunteer service abroad."
         }
       ],
       "majorForeignPolicyEvents": [
         {
           "title": "Cuban Missile Crisis (1962)",
-          "summary": "Kennedy confronted the Soviet Union over nuclear missiles in Cuba, bringing the world to the brink of nuclear war before negotiating a peaceful resolution.",
-          "sources": [
-            "https://www.britannica.com/event/Cuban-missile-crisis",
-            "https://history.state.gov/milestones/1961-1968/cuban-missile-crisis"
-          ]
+          "summary": "Kennedy defused a nuclear confrontation with the Soviet Union through firm diplomacy and negotiation."
         }
       ]
     }
-  },
-  {
-    "id": 36,
-    "name": "Lyndon B. Johnson",
-    "foreignPolicy": {
-      "foreignPolicyOverview": "Johnson’s foreign policy was dominated by the Vietnam War, which escalated dramatically under his administration. While he expanded U.S. involvement in Southeast Asia, he also pursued diplomatic initiatives, strengthened alliances, and advanced global development programs. Johnson’s foreign policy legacy is defined by the tension between Great Society ambitions at home and the burdens of Cold War conflict abroad.",
+  }
+},
+ {
+  "id": 36,
+  "name": "Lyndon B. Johnson",
+  "foreignPolicy": {
+    "overview": "Johnson’s foreign policy was dominated by the Vietnam War, which escalated dramatically under his administration. While he expanded U.S. involvement in Southeast Asia, he also pursued diplomatic initiatives, strengthened alliances, and advanced global development programs. Johnson’s foreign policy legacy is defined by the tension between his Great Society ambitions at home and the burdens of Cold War conflict abroad.",
+    "eventCount": 4,
+    "impactScore": 9.4,
+    "significanceScore": 9.5,
+    "majorEvents": [
+      {
+        "title": "Outer Space Treaty (1967)",
+        "summary": "Johnson supported the treaty banning nuclear weapons in space and establishing peaceful use of outer space, marking a major Cold War arms‑control achievement.",
+        "sources": [
+          "https://www.britannica.com/event/Outer-Space-Treaty",
+          "https://history.state.gov/milestones/1961-1968/space"
+        ]
+      },
+      {
+        "title": "Vietnam War Escalation (1964–1968)",
+        "summary": "Johnson dramatically increased U.S. troop levels in Vietnam following the Gulf of Tonkin incident, committing the nation to a prolonged and increasingly controversial conflict.",
+        "sources": [
+          "https://www.britannica.com/event/Vietnam-War",
+          "https://history.state.gov/milestones/1961-1968/vietnam"
+        ]
+      },
+      {
+        "title": "Alliance for Progress Expansion",
+        "summary": "Johnson continued Kennedy’s Latin American development initiative, providing economic aid to counter communist influence and promote regional modernization.",
+        "sources": [
+          "https://www.britannica.com/event/Alliance-for-Progress",
+          "https://millercenter.org/president/lbjohnson/domestic-affairs"
+        ]
+      },
+      {
+        "title": "Gulf of Tonkin Resolution (1964)",
+        "summary": "Congress authorized Johnson to use military force in Southeast Asia, effectively granting broad war powers without a formal declaration of war.",
+        "sources": [
+          "https://www.britannica.com/event/Gulf-of-Tonkin-Resolution",
+          "https://history.state.gov/milestones/1961-1968/gulf-of-tonkin"
+        ]
+      }
+    ],
+    "minorEvents": [],
+    "subcategories": {
       "treatiesNegotiated": [
         {
           "title": "Outer Space Treaty (1967)",
-          "summary": "Johnson supported the treaty banning nuclear weapons in space and establishing peaceful use of outer space, a major Cold War arms‑control achievement.",
-          "sources": [
-            "https://www.britannica.com/event/Outer-Space-Treaty",
-            "https://history.state.gov/milestones/1961-1968/space"
-          ]
+          "summary": "Banned nuclear weapons in space and established peaceful use of outer space."
         }
       ],
       "militaryActions": [
         {
           "title": "Vietnam War Escalation (1964–1968)",
-          "summary": "Johnson dramatically increased U.S. troop levels in Vietnam following the Gulf of Tonkin incident, committing the nation to a prolonged conflict.",
-          "sources": [
-            "https://www.britannica.com/event/Vietnam-War",
-            "https://history.state.gov/milestones/1961-1968/vietnam"
-          ]
+          "summary": "Massive increase in U.S. troop levels following the Gulf of Tonkin incident."
         }
       ],
       "foreignAidPrograms": [
         {
           "title": "Alliance for Progress Expansion",
-          "summary": "Johnson continued Kennedy’s Latin American development initiative, providing economic aid to counter communist influence.",
-          "sources": [
-            "https://www.britannica.com/event/Alliance-for-Progress",
-            "https://millercenter.org/president/lbjohnson/domestic-affairs"
-          ]
+          "summary": "Expanded economic aid to Latin America to counter communist influence."
         }
       ],
       "majorForeignPolicyEvents": [
         {
           "title": "Gulf of Tonkin Resolution (1964)",
-          "summary": "Congress authorized Johnson to use military force in Southeast Asia, effectively granting broad war powers without a formal declaration.",
-          "sources": [
-            "https://www.britannica.com/event/Gulf-of-Tonkin-Resolution",
-            "https://history.state.gov/milestones/1961-1968/gulf-of-tonkin"
-          ]
+          "summary": "Granted Johnson broad authority to use military force in Southeast Asia."
         }
       ]
     }
-  },
-  {
-    "id": 37,
-    "name": "Richard Nixon",
-    "foreignPolicy": {
-      "foreignPolicyOverview": "Nixon’s foreign policy reshaped global geopolitics through détente with the Soviet Union, opening relations with China, and ending direct U.S. involvement in Vietnam. His administration emphasized realpolitik, strategic arms control, and a shift toward shared defense responsibilities with allies.",
+  }
+},
+ {
+  "id": 37,
+  "name": "Richard Nixon",
+  "foreignPolicy": {
+    "overview": "Nixon’s foreign policy reshaped global geopolitics through détente with the Soviet Union, opening relations with China, and ending direct U.S. involvement in Vietnam. His administration emphasized realpolitik, strategic arms control, and a shift toward shared defense responsibilities with allies, redefining America’s Cold War strategy.",
+    "eventCount": 3,
+    "impactScore": 9.8,
+    "significanceScore": 10.0,
+    "majorEvents": [
+      {
+        "title": "Strategic Arms Limitation Treaty (SALT I) (1972)",
+        "summary": "Nixon negotiated the first major nuclear arms‑control agreement with the Soviet Union, limiting strategic missile systems and establishing a framework for future arms‑control efforts.",
+        "sources": [
+          "https://www.britannica.com/event/Strategic-Arms-Limitation-Talks",
+          "https://history.state.gov/milestones/1969-1976/salt"
+        ]
+      },
+      {
+        "title": "Cambodia and Laos Bombing Campaigns",
+        "summary": "Nixon expanded the Vietnam War into Cambodia and Laos to disrupt North Vietnamese supply lines, escalating the conflict regionally while pursuing Vietnamization.",
+        "sources": [
+          "https://www.britannica.com/event/Vietnam-War",
+          "https://history.state.gov/milestones/1969-1976/cambodia"
+        ]
+      },
+      {
+        "title": "Opening to China (1972)",
+        "summary": "Nixon’s visit to China normalized relations and shifted Cold War dynamics by leveraging Sino‑Soviet tensions to counterbalance Soviet influence.",
+        "sources": [
+          "https://www.britannica.com/event/Nixon-in-China",
+          "https://history.state.gov/milestones/1969-1976/china"
+        ]
+      }
+    ],
+    "minorEvents": [],
+    "subcategories": {
       "treatiesNegotiated": [
         {
           "title": "Strategic Arms Limitation Treaty (SALT I) (1972)",
-          "summary": "Nixon negotiated the first major nuclear arms‑control agreement with the Soviet Union, limiting strategic missile systems.",
-          "sources": [
-            "https://www.britannica.com/event/Strategic-Arms-Limitation-Talks",
-            "https://history.state.gov/milestones/1969-1976/salt"
-          ]
+          "summary": "First major nuclear arms‑control agreement with the Soviet Union, limiting strategic missile systems."
         }
       ],
       "militaryActions": [
         {
           "title": "Cambodia and Laos Bombing Campaigns",
-          "summary": "Nixon expanded the Vietnam War into neighboring countries to disrupt North Vietnamese supply lines.",
-          "sources": [
-            "https://www.britannica.com/event/Vietnam-War",
-            "https://history.state.gov/milestones/1969-1976/cambodia"
-          ]
+          "summary": "Expanded the Vietnam War into neighboring countries to disrupt North Vietnamese supply lines."
         }
       ],
       "foreignAidPrograms": [],
       "majorForeignPolicyEvents": [
         {
           "title": "Opening to China (1972)",
-          "summary": "Nixon’s visit to China normalized relations and shifted Cold War dynamics, counterbalancing Soviet influence.",
-          "sources": [
-            "https://www.britannica.com/event/Nixon-in-China",
-            "https://history.state.gov/milestones/1969-1976/china"
-          ]
+          "summary": "Normalized relations with China and reshaped Cold War strategic dynamics."
         }
       ]
     }
-  },
+  }
+},
   {
-    "id": 38,
-    "name": "Gerald Ford",
-    "foreignPolicy": {
-      "foreignPolicyOverview": "Ford’s foreign policy focused on maintaining détente, managing the aftermath of the Vietnam War, and stabilizing relations with allies. His administration continued arms‑control negotiations, responded to global crises, and worked to restore confidence in U.S. leadership after Watergate.",
+  "id": 38,
+  "name": "Gerald Ford",
+  "foreignPolicy": {
+    "overview": "Ford’s foreign policy focused on maintaining détente, managing the aftermath of the Vietnam War, and stabilizing relations with allies. His administration continued arms‑control negotiations, responded to global crises, and worked to restore confidence in U.S. leadership after Watergate. Ford sought continuity in Cold War strategy while navigating a turbulent geopolitical environment.",
+    "eventCount": 3,
+    "impactScore": 8.6,
+    "significanceScore": 8.8,
+    "majorEvents": [
+      {
+        "title": "Helsinki Accords (1975)",
+        "summary": "Ford signed the Helsinki Accords, promoting human rights and cooperation between Western and Eastern bloc nations. The agreement strengthened détente and created long‑term mechanisms for monitoring human rights abuses in the Soviet sphere.",
+        "sources": [
+          "https://www.britannica.com/event/Helsinki-Accords",
+          "https://history.state.gov/milestones/1969-1976/helsinki"
+        ]
+      },
+      {
+        "title": "Mayagüez Incident (1975)",
+        "summary": "Ford authorized a rescue mission after Cambodian forces seized the SS Mayagüez, resulting in the recovery of the ship and crew. The operation demonstrated U.S. resolve despite the chaotic end of the Vietnam War.",
+        "sources": [
+          "https://www.britannica.com/event/Mayaguez-incident",
+          "https://history.state.gov/milestones/1969-1976/mayaguez"
+        ]
+      },
+      {
+        "title": "Final Withdrawal from Vietnam (1975)",
+        "summary": "Ford oversaw the evacuation of U.S. personnel and allies during the fall of Saigon, marking the end of American involvement in Vietnam and symbolizing the collapse of South Vietnam.",
+        "sources": [
+          "https://www.britannica.com/event/Vietnam-War",
+          "https://history.state.gov/milestones/1969-1976/vietnam-end"
+        ]
+      }
+    ],
+    "minorEvents": [],
+    "subcategories": {
       "treatiesNegotiated": [
         {
           "title": "Helsinki Accords (1975)",
-          "summary": "Ford signed the Helsinki Accords, promoting human rights and cooperation between Western and Eastern bloc nations.",
-          "sources": [
-            "https://www.britannica.com/event/Helsinki-Accords",
-            "https://history.state.gov/milestones/1969-1976/helsinki"
-          ]
+          "summary": "Promoted human rights and cooperation between Western and Eastern bloc nations, reinforcing détente."
         }
       ],
       "militaryActions": [
         {
           "title": "Mayagüez Incident (1975)",
-          "summary": "Ford authorized a rescue mission after Cambodian forces seized the SS Mayagüez, resulting in the recovery of the ship and crew.",
-          "sources": [
-            "https://www.britannica.com/event/Mayaguez-incident",
-            "https://history.state.gov/milestones/1969-1976/mayaguez"
-          ]
+          "summary": "Rescue mission authorized after Cambodian forces seized the SS Mayagüez."
         }
       ],
       "foreignAidPrograms": [],
       "majorForeignPolicyEvents": [
         {
           "title": "Final Withdrawal from Vietnam (1975)",
-          "summary": "Ford oversaw the evacuation of U.S. personnel and allies during the fall of Saigon, marking the end of American involvement in Vietnam.",
-          "sources": [
-            "https://www.britannica.com/event/Vietnam-War",
-            "https://history.state.gov/milestones/1969-1976/vietnam-end"
-          ]
+          "summary": "Oversaw the evacuation of U.S. personnel and allies during the fall of Saigon."
         }
       ]
     }
-  },
+  }
+},
   {
-    "id": 39,
-    "name": "Jimmy Carter",
-    "foreignPolicy": {
-      "foreignPolicyOverview": "Carter’s foreign policy emphasized human rights, diplomacy, and peaceful conflict resolution. His administration achieved major breakthroughs in the Middle East, normalized relations with China, and pursued arms‑control agreements. However, the Iranian Revolution and hostage crisis overshadowed many of his accomplishments.",
+  "id": 39,
+  "name": "Jimmy Carter",
+  "foreignPolicy": {
+    "overview": "Carter’s foreign policy emphasized human rights, diplomacy, and peaceful conflict resolution. His administration achieved major breakthroughs in the Middle East, normalized relations with China, and pursued arms‑control agreements. However, the Iranian Revolution and hostage crisis overshadowed many of his accomplishments.",
+    "eventCount": 4,
+    "impactScore": 9.2,
+    "significanceScore": 9.3,
+    "majorEvents": [
+      {
+        "title": "Camp David Accords (1978)",
+        "summary": "Carter brokered peace between Egypt and Israel, leading to the first Arab‑Israeli peace treaty and reshaping Middle Eastern diplomacy.",
+        "sources": [
+          "https://www.britannica.com/event/Camp-David-Accords",
+          "https://history.state.gov/milestones/1977-1980/camp-david"
+        ]
+      },
+      {
+        "title": "Panama Canal Treaties Implementation",
+        "summary": "Carter implemented treaties transferring control of the Panama Canal to Panama, improving hemispheric relations and reducing anti‑U.S. sentiment in Latin America.",
+        "sources": [
+          "https://www.britannica.com/event/Panama-Canal-Treaties",
+          "https://history.state.gov/milestones/1977-1980/panama"
+        ]
+      },
+      {
+        "title": "Failed Iran Hostage Rescue Mission (1980)",
+        "summary": "Carter authorized Operation Eagle Claw to rescue American hostages in Tehran, but the mission failed due to mechanical and weather issues, worsening the crisis.",
+        "sources": [
+          "https://www.britannica.com/event/Iran-hostage-crisis",
+          "https://history.state.gov/milestones/1977-1980/iran"
+        ]
+      },
+      {
+        "title": "Iran Hostage Crisis (1979–1981)",
+        "summary": "Iranian militants seized the U.S. embassy in Tehran, holding 52 Americans hostage for 444 days, severely damaging Carter’s presidency and reshaping U.S.–Iran relations.",
+        "sources": [
+          "https://www.britannica.com/event/Iran-hostage-crisis",
+          "https://history.state.gov/milestones/1977-1980/iran"
+        ]
+      }
+    ],
+    "minorEvents": [],
+    "subcategories": {
       "treatiesNegotiated": [
         {
           "title": "Camp David Accords (1978)",
-          "summary": "Carter brokered peace between Egypt and Israel, leading to the first Arab‑Israeli peace treaty.",
-          "sources": [
-            "https://www.britannica.com/event/Camp-David-Accords",
-            "https://history.state.gov/milestones/1977-1980/camp-david"
-          ]
+          "summary": "Brokered peace between Egypt and Israel, leading to the first Arab‑Israeli peace treaty."
         },
         {
           "title": "Panama Canal Treaties Implementation",
-          "summary": "Carter implemented treaties transferring control of the Panama Canal to Panama, improving hemispheric relations.",
-          "sources": [
-            "https://www.britannica.com/event/Panama-Canal-Treaties",
-            "https://history.state.gov/milestones/1977-1980/panama"
-          ]
+          "summary": "Transferred control of the Panama Canal to Panama, improving hemispheric relations."
         }
       ],
       "militaryActions": [
         {
           "title": "Failed Iran Hostage Rescue Mission (1980)",
-          "summary": "Carter authorized Operation Eagle Claw to rescue American hostages in Tehran, but the mission failed due to mechanical and weather issues.",
-          "sources": [
-            "https://www.britannica.com/event/Iran-hostage-crisis",
-            "https://history.state.gov/milestones/1977-1980/iran"
-          ]
+          "summary": "Operation Eagle Claw attempted to rescue American hostages in Tehran but failed."
         }
       ],
       "foreignAidPrograms": [
         {
           "title": "Global Human Rights Assistance",
-          "summary": "Carter expanded foreign aid programs tied to human rights performance, reshaping U.S. development policy.",
-          "sources": [
-            "https://www.britannica.com/biography/Jimmy-Carter",
-            "https://millercenter.org/president/carter/domestic-affairs"
-          ]
+          "summary": "Expanded foreign aid programs tied to human rights performance, reshaping U.S. development policy."
         }
       ],
       "majorForeignPolicyEvents": [
         {
           "title": "Iran Hostage Crisis (1979–1981)",
-          "summary": "Iranian militants seized the U.S. embassy in Tehran, holding 52 Americans hostage for 444 days, severely damaging Carter’s presidency.",
-          "sources": [
-            "https://www.britannica.com/event/Iran-hostage-crisis",
-            "https://history.state.gov/milestones/1977-1980/iran"
-          ]
+          "summary": "Militants seized the U.S. embassy in Tehran, holding 52 Americans hostage for 444 days."
         }
       ]
     }
-  },
-  {
-    "id": 40,
-    "name": "Ronald Reagan",
-    "foreignPolicy": {
-      "foreignPolicyOverview": "Reagan’s foreign policy sought to confront and roll back Soviet influence through military buildup, ideological pressure, and support for anti‑communist movements. His administration escalated Cold War tensions before negotiating major arms‑control agreements that helped end the conflict. Reagan’s foreign policy reshaped global power dynamics and accelerated the decline of the Soviet Union.",
+  }
+},
+ {
+  "id": 40,
+  "name": "Ronald Reagan",
+  "foreignPolicy": {
+    "overview": "Reagan’s foreign policy sought to confront and roll back Soviet influence through military buildup, ideological pressure, and support for anti‑communist movements. His administration escalated Cold War tensions before negotiating major arms‑control agreements that helped end the conflict. Reagan’s foreign policy reshaped global power dynamics and accelerated the decline of the Soviet Union.",
+    "eventCount": 5,
+    "impactScore": 10.0,
+    "significanceScore": 10.0,
+    "majorEvents": [
+      {
+        "title": "Intermediate‑Range Nuclear Forces (INF) Treaty (1987)",
+        "summary": "Reagan and Gorbachev signed the INF Treaty, eliminating an entire class of nuclear missiles and marking a major step toward ending the Cold War.",
+        "sources": [
+          "https://www.britannica.com/event/Intermediate-Range-Nuclear-Forces-Treaty",
+          "https://history.state.gov/milestones/1981-1988/inf"
+        ]
+      },
+      {
+        "title": "Invasion of Grenada (1983)",
+        "summary": "Reagan ordered U.S. forces to invade Grenada to overthrow a Marxist government and protect American citizens.",
+        "sources": [
+          "https://www.britannica.com/event/Invasion-of-Grenada",
+          "https://history.state.gov/milestones/1981-1988/grenada"
+        ]
+      },
+      {
+        "title": "Bombing of Libya (1986)",
+        "summary": "Reagan authorized airstrikes against Libya in response to terrorist attacks linked to Muammar Gaddafi.",
+        "sources": [
+          "https://www.britannica.com/event/United-States-bombing-of-Libya-1986",
+          "https://history.state.gov/milestones/1981-1988/libya"
+        ]
+      },
+      {
+        "title": "Support for Anti‑Communist Movements",
+        "summary": "Reagan provided aid to anti‑communist groups in Afghanistan, Nicaragua, and Angola as part of the Reagan Doctrine.",
+        "sources": [
+          "https://www.britannica.com/event/Reagan-Doctrine",
+          "https://history.state.gov/milestones/1981-1988/reagan-doctrine"
+        ]
+      },
+      {
+        "title": "Reagan Doctrine",
+        "summary": "Reagan expanded U.S. involvement in global conflicts by supporting anti‑communist insurgencies, intensifying Cold War competition.",
+        "sources": [
+          "https://www.britannica.com/event/Reagan-Doctrine",
+          "https://millercenter.org/president/reagan/domestic-affairs"
+        ]
+      }
+    ],
+    "minorEvents": [],
+    "subcategories": {
       "treatiesNegotiated": [
         {
           "title": "Intermediate‑Range Nuclear Forces (INF) Treaty (1987)",
-          "summary": "Reagan and Gorbachev signed the INF Treaty, eliminating an entire class of nuclear missiles and marking a major step toward ending the Cold War.",
-          "sources": [
-            "https://www.britannica.com/event/Intermediate-Range-Nuclear-Forces-Treaty",
-            "https://history.state.gov/milestones/1981-1988/inf"
-          ]
+          "summary": "Eliminated an entire class of nuclear missiles and advanced Cold War arms control."
         }
       ],
       "militaryActions": [
         {
           "title": "Invasion of Grenada (1983)",
-          "summary": "Reagan ordered U.S. forces to invade Grenada to overthrow a Marxist government and protect American citizens.",
-          "sources": [
-            "https://www.britannica.com/event/Invasion-of-Grenada",
-            "https://history.state.gov/milestones/1981-1988/grenada"
-          ]
+          "summary": "U.S. forces overthrew a Marxist government and protected American citizens."
         },
         {
           "title": "Bombing of Libya (1986)",
-          "summary": "Reagan authorized airstrikes against Libya in response to terrorist attacks linked to Muammar Gaddafi.",
-          "sources": [
-            "https://www.britannica.com/event/United-States-bombing-of-Libya-1986",
-            "https://history.state.gov/milestones/1981-1988/libya"
-          ]
+          "summary": "Airstrikes conducted in response to Libyan‑linked terrorism."
         }
       ],
       "foreignAidPrograms": [
         {
           "title": "Support for Anti‑Communist Movements",
-          "summary": "Reagan provided aid to anti‑communist groups in Afghanistan, Nicaragua, and Angola as part of the Reagan Doctrine.",
-          "sources": [
-            "https://www.britannica.com/event/Reagan-Doctrine",
-            "https://history.state.gov/milestones/1981-1988/reagan-doctrine"
-          ]
+          "summary": "Aid to anti‑communist groups in Afghanistan, Nicaragua, and Angola under the Reagan Doctrine."
         }
       ],
       "majorForeignPolicyEvents": [
         {
           "title": "Reagan Doctrine",
-          "summary": "Reagan expanded U.S. involvement in global conflicts by supporting anti‑communist insurgencies, intensifying Cold War competition.",
-          "sources": [
-            "https://www.britannica.com/event/Reagan-Doctrine",
-            "https://millercenter.org/president/reagan/domestic-affairs"
-          ]
+          "summary": "Expanded U.S. support for anti‑communist insurgencies worldwide."
         }
       ]
     }
-  },
+  }
+},
   {
-    "id": 41,
-    "name": "George H. W. Bush",
-    "foreignPolicy": {
-      "foreignPolicyOverview": "George H. W. Bush presided over one of the most consequential periods in modern international history. His foreign policy managed the peaceful end of the Cold War, oversaw German reunification, built a global coalition to expel Iraq from Kuwait, and strengthened U.S. leadership in a rapidly changing world. Bush’s diplomatic skill and multilateral approach defined a transitional era in global politics.",
+  "id": 41,
+  "name": "George H. W. Bush",
+  "foreignPolicy": {
+    "overview": "George H. W. Bush presided over one of the most consequential periods in modern international history. His foreign policy managed the peaceful end of the Cold War, oversaw German reunification, built a global coalition to expel Iraq from Kuwait, and strengthened U.S. leadership in a rapidly changing world. Bush’s diplomatic skill and multilateral approach defined a transitional era in global politics.",
+    "eventCount": 4,
+    "impactScore": 10.0,
+    "significanceScore": 10.0,
+    "majorEvents": [
+      {
+        "title": "Strategic Arms Reduction Treaty (START I) (1991)",
+        "summary": "Bush negotiated the first major treaty to significantly reduce U.S. and Soviet strategic nuclear arsenals, marking a milestone in ending the Cold War.",
+        "sources": [
+          "https://www.britannica.com/event/Strategic-Arms-Reduction-Talks",
+          "https://history.state.gov/milestones/1989-1992/start"
+        ]
+      },
+      {
+        "title": "Gulf War / Operation Desert Storm (1991)",
+        "summary": "Bush led a broad international coalition to expel Iraqi forces from Kuwait, achieving a decisive military victory with minimal U.S. casualties.",
+        "sources": [
+          "https://www.britannica.com/event/Persian-Gulf-War",
+          "https://history.state.gov/milestones/1989-1992/gulf-war"
+        ]
+      },
+      {
+        "title": "Support for Post‑Communist Eastern Europe",
+        "summary": "Bush provided economic assistance to former Soviet bloc nations transitioning to democracy and market economies.",
+        "sources": [
+          "https://www.britannica.com/biography/George-H-W-Bush",
+          "https://millercenter.org/president/bush/domestic-affairs"
+        ]
+      },
+      {
+        "title": "Fall of the Soviet Union (1991)",
+        "summary": "Bush managed U.S. diplomacy during the collapse of the USSR, ensuring stability and a peaceful transition.",
+        "sources": [
+          "https://www.britannica.com/event/Dissolution-of-the-Soviet-Union",
+          "https://history.state.gov/milestones/1989-1992/collapse-soviet-union"
+        ]
+      }
+    ],
+    "minorEvents": [],
+    "subcategories": {
       "treatiesNegotiated": [
         {
           "title": "Strategic Arms Reduction Treaty (START I) (1991)",
-          "summary": "Bush negotiated the first major treaty to significantly reduce U.S. and Soviet strategic nuclear arsenals, marking a milestone in ending the Cold War.",
-          "sources": [
-            "https://www.britannica.com/event/Strategic-Arms-Reduction-Talks",
-            "https://history.state.gov/milestones/1989-1992/start"
-          ]
+          "summary": "Reduced U.S. and Soviet strategic nuclear arsenals, marking a major Cold War milestone."
         }
       ],
       "militaryActions": [
         {
           "title": "Gulf War / Operation Desert Storm (1991)",
-          "summary": "Bush led a broad international coalition to expel Iraqi forces from Kuwait, achieving a decisive military victory with minimal U.S. casualties.",
-          "sources": [
-            "https://www.britannica.com/event/Persian-Gulf-War",
-            "https://history.state.gov/milestones/1989-1992/gulf-war"
-          ]
+          "summary": "Led a global coalition to expel Iraqi forces from Kuwait."
         }
       ],
       "foreignAidPrograms": [
         {
           "title": "Support for Post‑Communist Eastern Europe",
-          "summary": "Bush provided economic assistance to former Soviet bloc nations transitioning to democracy and market economies.",
-          "sources": [
-            "https://www.britannica.com/biography/George-H-W-Bush",
-            "https://millercenter.org/president/bush/domestic-affairs"
-          ]
+          "summary": "Provided economic assistance to nations transitioning from communism to democracy and market economies."
         }
       ],
       "majorForeignPolicyEvents": [
         {
           "title": "Fall of the Soviet Union (1991)",
-          "summary": "Bush managed U.S. diplomacy during the collapse of the USSR, ensuring stability and peaceful transition.",
-          "sources": [
-            "https://www.britannica.com/event/Dissolution-of-the-Soviet-Union",
-            "https://history.state.gov/milestones/1989-1992/collapse-soviet-union"
-          ]
+          "summary": "Managed U.S. diplomacy during the peaceful collapse of the USSR."
         }
       ]
     }
-  },
-  {
-    "id": 42,
-    "name": "Bill Clinton",
-    "foreignPolicy": {
-      "foreignPolicyOverview": "Clinton’s foreign policy emphasized economic globalization, humanitarian intervention, and post‑Cold War peacekeeping. His administration expanded NATO, intervened in the Balkans to stop ethnic cleansing, and promoted free‑trade agreements. Clinton sought to define America’s role in a unipolar world while responding to emerging threats such as terrorism.",
+  }
+},
+ {
+  "id": 42,
+  "name": "Bill Clinton",
+  "foreignPolicy": {
+    "overview": "Clinton’s foreign policy emphasized economic globalization, humanitarian intervention, and post‑Cold War peacekeeping. His administration expanded NATO, intervened in the Balkans to stop ethnic cleansing, and promoted free‑trade agreements. Clinton sought to define America’s role in a unipolar world while responding to emerging threats such as terrorism.",
+    "eventCount": 4,
+    "impactScore": 9.3,
+    "significanceScore": 9.4,
+    "majorEvents": [
+      {
+        "title": "North American Free Trade Agreement (NAFTA) (1994)",
+        "summary": "Clinton implemented NAFTA, creating a major free‑trade zone between the U.S., Canada, and Mexico and accelerating economic integration in North America.",
+        "sources": [
+          "https://www.britannica.com/event/North-American-Free-Trade-Agreement",
+          "https://history.state.gov/milestones/1993-2000/nafta"
+        ]
+      },
+      {
+        "title": "NATO Intervention in Kosovo (1999)",
+        "summary": "Clinton authorized U.S. participation in NATO airstrikes to stop ethnic cleansing in Kosovo, marking a major humanitarian intervention and reinforcing NATO’s post‑Cold War role.",
+        "sources": [
+          "https://www.britannica.com/event/Kosovo-conflict",
+          "https://history.state.gov/milestones/1993-2000/kosovo"
+        ]
+      },
+      {
+        "title": "Support for Post‑Soviet Russia and Eastern Europe",
+        "summary": "Clinton expanded aid to support democratic and economic reforms in former Soviet states, aiming to stabilize the region during its transition.",
+        "sources": [
+          "https://www.britannica.com/biography/Bill-Clinton",
+          "https://millercenter.org/president/clinton/domestic-affairs"
+        ]
+      },
+      {
+        "title": "NATO Expansion (1999)",
+        "summary": "Clinton oversaw the first major expansion of NATO, admitting Poland, Hungary, and the Czech Republic, reshaping European security after the Cold War.",
+        "sources": [
+          "https://www.britannica.com/topic/NATO",
+          "https://history.state.gov/milestones/1993-2000/nato-enlargement"
+        ]
+      }
+    ],
+    "minorEvents": [],
+    "subcategories": {
       "treatiesNegotiated": [
         {
           "title": "North American Free Trade Agreement (NAFTA) (1994)",
-          "summary": "Clinton implemented NAFTA, creating a major free‑trade zone between the U.S., Canada, and Mexico.",
-          "sources": [
-            "https://www.britannica.com/event/North-American-Free-Trade-Agreement",
-            "https://history.state.gov/milestones/1993-2000/nafta"
-          ]
+          "summary": "Created a major free‑trade zone between the U.S., Canada, and Mexico."
         }
       ],
       "militaryActions": [
         {
           "title": "NATO Intervention in Kosovo (1999)",
-          "summary": "Clinton authorized U.S. participation in NATO airstrikes to stop ethnic cleansing in Kosovo, marking a major humanitarian intervention.",
-          "sources": [
-            "https://www.britannica.com/event/Kosovo-conflict",
-            "https://history.state.gov/milestones/1993-2000/kosovo"
-          ]
+          "summary": "NATO airstrikes aimed at stopping ethnic cleansing in Kosovo."
         }
       ],
       "foreignAidPrograms": [
         {
           "title": "Support for Post‑Soviet Russia and Eastern Europe",
-          "summary": "Clinton expanded aid to support democratic and economic reforms in former Soviet states.",
-          "sources": [
-            "https://www.britannica.com/biography/Bill-Clinton",
-            "https://millercenter.org/president/clinton/domestic-affairs"
-          ]
+          "summary": "Aid to support democratic and economic reforms in former Soviet states."
         }
       ],
       "majorForeignPolicyEvents": [
         {
           "title": "NATO Expansion (1999)",
-          "summary": "Clinton oversaw the first major expansion of NATO, admitting Poland, Hungary, and the Czech Republic.",
-          "sources": [
-            "https://www.britannica.com/topic/NATO",
-            "https://history.state.gov/milestones/1993-2000/nato-enlargement"
-          ]
+          "summary": "Admitted Poland, Hungary, and the Czech Republic into NATO."
         }
       ]
     }
-  },
+  }
+},
   {
-    "id": 43,
-    "name": "George W. Bush",
-    "foreignPolicy": {
-      "foreignPolicyOverview": "George W. Bush’s foreign policy was defined by the September 11 attacks and the ensuing War on Terror. His administration launched wars in Afghanistan and Iraq, reshaped global counterterrorism strategy, and adopted a doctrine of preemptive action. Bush also expanded foreign aid programs and strengthened alliances while facing global controversy over U.S. military interventions.",
+  "id": 43,
+  "name": "George W. Bush",
+  "foreignPolicy": {
+    "overview": "George W. Bush’s foreign policy was defined by the September 11 attacks and the ensuing War on Terror. His administration launched wars in Afghanistan and Iraq, reshaped global counterterrorism strategy, and adopted a doctrine of preemptive action. Bush also expanded foreign aid programs and strengthened alliances while facing global controversy over U.S. military interventions.",
+    "eventCount": 4,
+    "impactScore": 10.0,
+    "significanceScore": 10.0,
+    "majorEvents": [
+      {
+        "title": "War in Afghanistan (2001–)",
+        "summary": "Bush launched Operation Enduring Freedom to dismantle al‑Qaeda and remove the Taliban from power following the 9/11 attacks.",
+        "sources": [
+          "https://www.britannica.com/event/War-in-Afghanistan",
+          "https://history.state.gov/milestones/2001-2009/afghanistan"
+        ]
+      },
+      {
+        "title": "Iraq War (2003)",
+        "summary": "Bush ordered the invasion of Iraq to remove Saddam Hussein, citing weapons of mass destruction and terrorism concerns.",
+        "sources": [
+          "https://www.britannica.com/event/Iraq-War",
+          "https://history.state.gov/milestones/2001-2009/iraq"
+        ]
+      },
+      {
+        "title": "President’s Emergency Plan for AIDS Relief (PEPFAR) (2003)",
+        "summary": "Bush launched one of the largest global health initiatives in history, providing billions in aid to combat HIV/AIDS.",
+        "sources": [
+          "https://www.britannica.com/topic/PEPFAR",
+          "https://millercenter.org/president/bush/domestic-affairs"
+        ]
+      },
+      {
+        "title": "Bush Doctrine",
+        "summary": "Bush articulated a doctrine of preemptive action against emerging threats, reshaping U.S. national security strategy.",
+        "sources": [
+          "https://www.britannica.com/topic/Bush-Doctrine",
+          "https://history.state.gov/milestones/2001-2009/bush-doctrine"
+        ]
+      }
+    ],
+    "minorEvents": [],
+    "subcategories": {
       "treatiesNegotiated": [],
       "militaryActions": [
         {
           "title": "War in Afghanistan (2001–)",
-          "summary": "Bush launched Operation Enduring Freedom to dismantle al‑Qaeda and remove the Taliban from power following the 9/11 attacks.",
-          "sources": [
-            "https://www.britannica.com/event/War-in-Afghanistan",
-            "https://history.state.gov/milestones/2001-2009/afghanistan"
-          ]
+          "summary": "Operation Enduring Freedom targeted al‑Qaeda and removed the Taliban from power."
         },
         {
           "title": "Iraq War (2003)",
-          "summary": "Bush ordered the invasion of Iraq to remove Saddam Hussein, citing weapons of mass destruction and terrorism concerns.",
-          "sources": [
-            "https://www.britannica.com/event/Iraq-War",
-            "https://history.state.gov/milestones/2001-2009/iraq"
-          ]
+          "summary": "U.S. forces invaded Iraq to remove Saddam Hussein and address WMD concerns."
         }
       ],
       "foreignAidPrograms": [
         {
           "title": "President’s Emergency Plan for AIDS Relief (PEPFAR) (2003)",
-          "summary": "Bush launched one of the largest global health initiatives in history, providing billions in aid to combat HIV/AIDS.",
-          "sources": [
-            "https://www.britannica.com/topic/PEPFAR",
-            "https://millercenter.org/president/bush/domestic-affairs"
-          ]
+          "summary": "Massive global health initiative providing aid to combat HIV/AIDS."
         }
       ],
       "majorForeignPolicyEvents": [
         {
           "title": "Bush Doctrine",
-          "summary": "Bush articulated a doctrine of preemptive action against emerging threats, reshaping U.S. national security strategy.",
-          "sources": [
-            "https://www.britannica.com/topic/Bush-Doctrine",
-            "https://history.state.gov/milestones/2001-2009/bush-doctrine"
-          ]
+          "summary": "Outlined a policy of preemptive action against emerging threats."
         }
       ]
     }
-  },
-  {
-    "id": 44,
-    "name": "Barack Obama",
-    "foreignPolicy": {
-      "foreignPolicyOverview": "Obama’s foreign policy emphasized multilateral diplomacy, targeted counterterrorism, and strategic retrenchment. His administration ended major combat operations in Iraq, negotiated the Iran nuclear deal, expanded drone warfare, and pivoted U.S. strategy toward Asia. Obama sought to balance American leadership with reduced military commitments.",
+  }
+},
+ {
+  "id": 44,
+  "name": "Barack Obama",
+  "foreignPolicy": {
+    "overview": "Obama’s foreign policy emphasized multilateral diplomacy, targeted counterterrorism, and strategic retrenchment. His administration ended major combat operations in Iraq, negotiated the Iran nuclear deal, expanded drone warfare, and pivoted U.S. strategy toward Asia. Obama sought to balance American leadership with reduced military commitments.",
+    "eventCount": 4,
+    "impactScore": 9.5,
+    "significanceScore": 9.6,
+    "majorEvents": [
+      {
+        "title": "Joint Comprehensive Plan of Action (Iran Nuclear Deal) (2015)",
+        "summary": "Obama negotiated a multilateral agreement limiting Iran’s nuclear program in exchange for sanctions relief.",
+        "sources": [
+          "https://www.britannica.com/event/Joint-Comprehensive-Plan-of-Action",
+          "https://history.state.gov/milestones/2009-2017/iran-deal"
+        ]
+      },
+      {
+        "title": "Operation Neptune Spear (2011)",
+        "summary": "Obama authorized the raid that killed Osama bin Laden in Pakistan.",
+        "sources": [
+          "https://www.britannica.com/biography/Osama-bin-Laden",
+          "https://history.state.gov/milestones/2009-2017/bin-laden"
+        ]
+      },
+      {
+        "title": "Intervention in Libya (2011)",
+        "summary": "Obama supported NATO airstrikes against Muammar Gaddafi’s forces during the Libyan civil war.",
+        "sources": [
+          "https://www.britannica.com/event/Libya-Revolution-2011",
+          "https://history.state.gov/milestones/2009-2017/libya"
+        ]
+      },
+      {
+        "title": "Paris Climate Agreement (2015)",
+        "summary": "Obama helped negotiate the global climate accord committing nations to reduce greenhouse gas emissions.",
+        "sources": [
+          "https://www.britannica.com/event/Paris-Agreement",
+          "https://history.state.gov/milestones/2009-2017/paris"
+        ]
+      }
+    ],
+    "minorEvents": [],
+    "subcategories": {
       "treatiesNegotiated": [
         {
           "title": "Joint Comprehensive Plan of Action (Iran Nuclear Deal) (2015)",
-          "summary": "Obama negotiated a multilateral agreement limiting Iran’s nuclear program in exchange for sanctions relief.",
-          "sources": [
-            "https://www.britannica.com/event/Joint-Comprehensive-Plan-of-Action",
-            "https://history.state.gov/milestones/2009-2017/iran-deal"
-          ]
+          "summary": "Limited Iran’s nuclear program in exchange for sanctions relief."
         }
       ],
       "militaryActions": [
         {
           "title": "Operation Neptune Spear (2011)",
-          "summary": "Obama authorized the raid that killed Osama bin Laden in Pakistan.",
-          "sources": [
-            "https://www.britannica.com/biography/Osama-bin-Laden",
-            "https://history.state.gov/milestones/2009-2017/bin-laden"
-          ]
+          "summary": "Raid authorized to kill Osama bin Laden in Pakistan."
         },
         {
           "title": "Intervention in Libya (2011)",
-          "summary": "Obama supported NATO airstrikes against Muammar Gaddafi’s forces during the Libyan civil war.",
-          "sources": [
-            "https://www.britannica.com/event/Libya-Revolution-2011",
-            "https://history.state.gov/milestones/2009-2017/libya"
-          ]
+          "summary": "NATO airstrikes supported against Gaddafi’s forces during the Libyan civil war."
         }
       ],
       "foreignAidPrograms": [
         {
           "title": "Global Health and Development Initiatives",
-          "summary": "Obama expanded U.S. aid for global health, food security, and climate resilience.",
-          "sources": [
-            "https://www.britannica.com/biography/Barack-Obama",
-            "https://millercenter.org/president/obama/domestic-affairs"
-          ]
+          "summary": "Expanded U.S. aid for global health, food security, and climate resilience."
         }
       ],
       "majorForeignPolicyEvents": [
         {
           "title": "Paris Climate Agreement (2015)",
-          "summary": "Obama helped negotiate the global climate accord committing nations to reduce greenhouse gas emissions.",
-          "sources": [
-            "https://www.britannica.com/event/Paris-Agreement",
-            "https://history.state.gov/milestones/2009-2017/paris"
-          ]
+          "summary": "Global accord committing nations to reduce greenhouse gas emissions."
         }
       ]
     }
-  },
-  {
-    "id": 45,
-    "name": "Donald J. Trump",
-    "foreignPolicy": {
-      "foreignPolicyOverview": "Trump’s foreign policy emphasized unilateralism, economic pressure, and renegotiation of international agreements. His administration withdrew from several multilateral accords, pursued aggressive trade policies against China, brokered Middle East normalization agreements, and reoriented U.S. alliances. Trump’s approach marked a sharp departure from traditional bipartisan foreign‑policy norms.",
+  }
+},
+{
+  "id": 45,
+  "name": "Donald J. Trump",
+  "foreignPolicy": {
+    "overview": "Trump’s foreign policy emphasized unilateralism, economic pressure, and renegotiation of international agreements. His administration withdrew from several multilateral accords, pursued aggressive trade policies against China, brokered Middle East normalization agreements, and reoriented U.S. alliances. Trump’s approach marked a sharp departure from traditional bipartisan foreign‑policy norms.",
+    "eventCount": 3,
+    "impactScore": 9.4,
+    "significanceScore": 9.5,
+    "majorEvents": [
+      {
+        "title": "Abraham Accords (2020)",
+        "summary": "Trump brokered normalization agreements between Israel and several Arab states, reshaping Middle Eastern diplomacy.",
+        "sources": [
+          "https://www.britannica.com/event/Abraham-Accords",
+          "https://history.state.gov/milestones/2017-2021/abraham"
+        ]
+      },
+      {
+        "title": "Strike on Qasem Soleimani (2020)",
+        "summary": "Trump ordered a drone strike killing Iranian General Qasem Soleimani, escalating U.S.–Iran tensions.",
+        "sources": [
+          "https://www.britannica.com/biography/Qasem-Soleimani",
+          "https://history.state.gov/milestones/2017-2021/iran"
+        ]
+      },
+      {
+        "title": "U.S.–China Trade War",
+        "summary": "Trump imposed tariffs on Chinese goods, prompting retaliatory measures and reshaping global trade dynamics.",
+        "sources": [
+          "https://www.britannica.com/event/China-United-States-trade-war",
+          "https://history.state.gov/milestones/2017-2021/china"
+        ]
+      }
+    ],
+    "minorEvents": [],
+    "subcategories": {
       "treatiesNegotiated": [
         {
           "title": "Abraham Accords (2020)",
-          "summary": "Trump brokered normalization agreements between Israel and several Arab states, reshaping Middle Eastern diplomacy.",
-          "sources": [
-            "https://www.britannica.com/event/Abraham-Accords",
-            "https://history.state.gov/milestones/2017-2021/abraham"
-          ]
+          "summary": "Normalization agreements between Israel and several Arab states."
         }
       ],
       "militaryActions": [
         {
           "title": "Strike on Qasem Soleimani (2020)",
-          "summary": "Trump ordered a drone strike killing Iranian General Qasem Soleimani, escalating U.S.–Iran tensions.",
-          "sources": [
-            "https://www.britannica.com/biography/Qasem-Soleimani",
-            "https://history.state.gov/milestones/2017-2021/iran"
-          ]
+          "summary": "Drone strike that killed Iranian General Qasem Soleimani."
         }
       ],
       "foreignAidPrograms": [],
       "majorForeignPolicyEvents": [
         {
           "title": "U.S.–China Trade War",
-          "summary": "Trump imposed tariffs on Chinese goods, prompting retaliatory measures and reshaping global trade dynamics.",
-          "sources": [
-            "https://www.britannica.com/event/China-United-States-trade-war",
-            "https://history.state.gov/milestones/2017-2021/china"
-          ]
+          "summary": "Tariffs and retaliatory measures that reshaped global trade dynamics."
         }
       ]
     }
-  },
-  {
-    "id": 46,
-    "name": "Joe Biden",
-    "foreignPolicy": {
-      "foreignPolicyOverview": "Biden’s foreign policy has focused on rebuilding alliances, supporting Ukraine against Russian aggression, countering China’s rise, and restoring U.S. participation in multilateral institutions. His administration ended the U.S. war in Afghanistan, strengthened NATO unity, brokered new Indo‑Pacific partnerships, and navigated global crises including the Israel–Hamas conflict. Biden’s approach emphasizes coalition‑building, strategic competition, and democratic resilience.",
+  }
+},
+ {
+  "id": 46,
+  "name": "Joe Biden",
+  "foreignPolicy": {
+    "overview": "Biden’s foreign policy has focused on rebuilding alliances, supporting Ukraine against Russian aggression, countering China’s rise, and restoring U.S. participation in multilateral institutions. His administration ended the U.S. war in Afghanistan, strengthened NATO unity, brokered new Indo‑Pacific partnerships, and navigated global crises including the Israel–Hamas conflict. Biden’s approach emphasizes coalition‑building, strategic competition, and democratic resilience.",
+    "eventCount": 6,
+    "impactScore": 9.7,
+    "significanceScore": 9.8,
+    "majorEvents": [
+      {
+        "title": "AUKUS Security Partnership (2021)",
+        "summary": "Biden established AUKUS, a trilateral security pact with Australia and the United Kingdom, enhancing Indo‑Pacific defense cooperation and enabling Australia to acquire nuclear‑powered submarines.",
+        "sources": [
+          "https://www.britannica.com/topic/AUKUS",
+          "https://history.state.gov/milestones/2021-present/aukus"
+        ]
+      },
+      {
+        "title": "Withdrawal from Afghanistan (2021)",
+        "summary": "Biden completed the U.S. military withdrawal from Afghanistan, ending America’s longest war. The rapid Taliban takeover and chaotic evacuation drew global scrutiny.",
+        "sources": [
+          "https://www.britannica.com/event/War-in-Afghanistan",
+          "https://history.state.gov/milestones/2021-present/afghanistan-withdrawal"
+        ]
+      },
+      {
+        "title": "Support for Ukraine (2022– )",
+        "summary": "Following Russia’s invasion of Ukraine, Biden authorized extensive military aid, intelligence sharing, and logistical support to bolster Ukraine’s defense.",
+        "sources": [
+          "https://www.britannica.com/event/Russian-invasion-of-Ukraine-2022",
+          "https://history.state.gov/milestones/2021-present/ukraine"
+        ]
+      },
+      {
+        "title": "Ukraine Security Assistance",
+        "summary": "Biden approved tens of billions in military, economic, and humanitarian aid to Ukraine, coordinating with NATO and EU partners.",
+        "sources": [
+          "https://www.britannica.com/event/Russian-invasion-of-Ukraine-2022",
+          "https://millercenter.org/president/biden/domestic-affairs"
+        ]
+      },
+      {
+        "title": "Global COVID‑19 Vaccine Distribution",
+        "summary": "The administration provided hundreds of millions of vaccine doses to developing nations through COVAX and bilateral programs.",
+        "sources": [
+          "https://www.britannica.com/topic/COVID-19-pandemic",
+          "https://millercenter.org/president/biden/domestic-affairs"
+        ]
+      },
+      {
+        "title": "Russian Invasion of Ukraine (2022)",
+        "summary": "Biden led a global coalition imposing sanctions on Russia, strengthening NATO, and supporting Ukraine’s defense, marking the largest European conflict since WWII.",
+        "sources": [
+          "https://www.britannica.com/event/Russian-invasion-of-Ukraine-2022",
+          "https://history.state.gov/milestones/2021-present/ukraine"
+        ]
+      },
+      {
+        "title": "Israel–Hamas War (2023– )",
+        "summary": "Biden supported Israel’s right to self‑defense while urging humanitarian protections for civilians in Gaza, navigating a complex regional crisis.",
+        "sources": [
+          "https://www.britannica.com/event/Israel-Hamas-War",
+          "https://millercenter.org/president/biden/domestic-affairs"
+        ]
+      },
+      {
+        "title": "Rejoining the Paris Climate Agreement (2021)",
+        "summary": "Biden restored U.S. participation in the global climate accord, reversing the previous administration’s withdrawal.",
+        "sources": [
+          "https://www.britannica.com/event/Paris-Agreement",
+          "https://history.state.gov/milestones/2021-present/paris"
+        ]
+      }
+    ],
+    "minorEvents": [],
+    "subcategories": {
       "treatiesNegotiated": [
         {
           "title": "AUKUS Security Partnership (2021)",
-          "summary": "Biden established AUKUS, a trilateral security pact with Australia and the United Kingdom, enhancing Indo‑Pacific defense cooperation and enabling Australia to acquire nuclear‑powered submarines.",
-          "sources": [
-            "https://www.britannica.com/topic/AUKUS",
-            "https://history.state.gov/milestones/2021-present/aukus"
-          ]
+          "summary": "Trilateral security pact enhancing Indo‑Pacific defense cooperation."
         }
       ],
       "militaryActions": [
         {
           "title": "Withdrawal from Afghanistan (2021)",
-          "summary": "Biden completed the U.S. military withdrawal from Afghanistan, ending America’s longest war. The rapid Taliban takeover and chaotic evacuation drew global scrutiny.",
-          "sources": [
-            "https://www.britannica.com/event/War-in-Afghanistan",
-            "https://history.state.gov/milestones/2021-present/afghanistan-withdrawal"
-          ]
+          "summary": "Completed U.S. military withdrawal, ending America’s longest war."
         },
         {
           "title": "Support for Ukraine (2022– )",
-          "summary": "Following Russia’s invasion of Ukraine, Biden authorized extensive military aid, intelligence sharing, and logistical support to bolster Ukraine’s defense.",
-          "sources": [
-            "https://www.britannica.com/event/Russian-invasion-of-Ukraine-2022",
-            "https://history.state.gov/milestones/2021-present/ukraine"
-          ]
+          "summary": "Authorized extensive military and logistical aid following Russia’s invasion."
         }
       ],
       "foreignAidPrograms": [
         {
           "title": "Ukraine Security Assistance",
-          "summary": "Biden approved tens of billions in military, economic, and humanitarian aid to Ukraine, coordinating with NATO and EU partners.",
-          "sources": [
-            "https://www.britannica.com/event/Russian-invasion-of-Ukraine-2022",
-            "https://millercenter.org/president/biden/domestic-affairs"
-          ]
+          "summary": "Massive military, economic, and humanitarian aid to Ukraine."
         },
         {
           "title": "Global COVID‑19 Vaccine Distribution",
-          "summary": "The administration provided hundreds of millions of vaccine doses to developing nations through COVAX and bilateral programs.",
-          "sources": [
-            "https://www.britannica.com/topic/COVID-19-pandemic",
-            "https://millercenter.org/president/biden/domestic-affairs"
-          ]
+          "summary": "Hundreds of millions of vaccine doses provided to developing nations."
         }
       ],
       "majorForeignPolicyEvents": [
         {
           "title": "Russian Invasion of Ukraine (2022)",
-          "summary": "Biden led a global coalition imposing sanctions on Russia, strengthening NATO, and supporting Ukraine’s defense, marking the largest European conflict since WWII.",
-          "sources": [
-            "https://www.britannica.com/event/Russian-invasion-of-Ukraine-2022",
-            "https://history.state.gov/milestones/2021-present/ukraine"
-          ]
+          "summary": "Led global coalition imposing sanctions and strengthening NATO."
         },
         {
           "title": "Israel–Hamas War (2023– )",
-          "summary": "Biden supported Israel’s right to self‑defense while urging humanitarian protections for civilians in Gaza, navigating a complex regional crisis.",
-          "sources": [
-            "https://www.britannica.com/event/Israel-Hamas-War",
-            "https://millercenter.org/president/biden/domestic-affairs"
-          ]
+          "summary": "Supported Israel while urging humanitarian protections in Gaza."
         },
         {
           "title": "Rejoining the Paris Climate Agreement (2021)",
-          "summary": "Biden restored U.S. participation in the global climate accord, reversing the previous administration’s withdrawal.",
-          "sources": [
-            "https://www.britannica.com/event/Paris-Agreement",
-            "https://history.state.gov/milestones/2021-present/paris"
-          ]
+          "summary": "Restored U.S. participation in the global climate accord."
         }
       ]
     }
   }
+}
 ]
