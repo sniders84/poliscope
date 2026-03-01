@@ -3402,7 +3402,6 @@ document.getElementById('rate-me-btn').onclick = function() {
     modal.classList.add('is-open', 'modal-dark');
     modal.setAttribute('aria-hidden', 'false');
   }
-})();
 
  // PUBLIC API FOR SCORECARD
 window.showScorecard = function(person) {
