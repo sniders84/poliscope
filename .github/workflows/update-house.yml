@@ -134,10 +134,6 @@ jobs:
       - name: Merge legislation parts
         run: node scripts/merge-legislation-parts.js
 
-      # ❌ REMOVED — streak snapshot
-      # - name: Snapshot previous House rankings
-      #   run: cp public/representatives-rankings.json public/representatives-rankings-prev.json || true
-
       - name: Attach votes
         env:
           CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
@@ -152,24 +148,15 @@ jobs:
       - name: Compute scores
         run: node scripts/representatives-scores.js
 
-      # ❌ REMOVED — streak updater
-      # - name: Update streaks
-      #   run: node scripts/update-streaks.js
-
       - name: Commit updated House files
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "Automated House update (119th Congress) [skip ci]"
-          file_pattern: |
-            public/representatives-rankings.json
-            public/representatives-votes.json
-            public/representatives-legislation.json
-            public/representatives-committees.json
-            public/representatives-scores.json
-            public/housereps.json
+          file_pattern: public/representatives-*   # triggers commit only when House files change
+          add_options: '-- public/representatives-* public/housereps.json'
           commit_user_name: github-actions[bot]
           commit_user_email: 41898282+github-actions[bot]@users.noreply.github.com
           push_options: '--force-with-lease'
-          skip_dirty_check: false
+          skip_dirty_check: true
           skip_fetch: false
           branch: main
