@@ -1,5 +1,6 @@
 // scripts/merge-presidents.js
-// Merge metric JSON files into presidents-rankings.json
+// Merge metric JSON files into presidents-rankings.json using the new hybrid schema.
+
 const fs = require('fs');
 const path = require('path');
 
@@ -27,38 +28,39 @@ function loadJson(pathname) {
   }
 }
 
-function indexById(data) {
+function indexById(arr) {
   const map = new Map();
-  if (Array.isArray(data)) {
-    data.forEach(item => {
-      if (item && item.id) map.set(item.id, item);
-    });
-  } else if (typeof data === 'object' && data !== null) {
-    Object.values(data).forEach(item => {
+  if (Array.isArray(arr)) {
+    arr.forEach(item => {
       if (item && item.id) map.set(item.id, item);
     });
   }
   return map;
 }
 
+function extractHybridFields(categoryObj) {
+  if (!categoryObj) return null;
+
+  return {
+    overview: categoryObj.overview || categoryObj[`${categoryObj.key}Overview`] || "",
+    eventCount: categoryObj.eventCount || 0,
+    impactScore: categoryObj.impactScore || 0,
+    significanceScore: categoryObj.significanceScore || 0,
+    majorEvents: categoryObj.majorEvents || [],
+    minorEvents: categoryObj.minorEvents || [],
+    subcategories: categoryObj.subcategories || {}
+  };
+}
+
 function main() {
   console.log('merge-presidents: starting merge');
 
-  const rankingsData = loadJson(RANKINGS_PATH);
-  if (Object.keys(rankingsData).length === 0) {
-    console.error('No data found in presidents-rankings.json');
+  const rankings = loadJson(RANKINGS_PATH);
+  if (!Array.isArray(rankings)) {
+    console.error('presidents-rankings.json is not an array.');
     return;
   }
 
-  // Normalize to array for easier processing
-  const rankings = Array.isArray(rankingsData)
-    ? rankingsData
-    : Object.values(rankingsData);
-
-  // Index rankings by ID
-  const rankingsById = indexById(rankings);
-
-  // Load and index all metric files
   const metricsData = {};
   for (const [key, filePath] of Object.entries(FILES)) {
     const raw = loadJson(filePath);
@@ -66,43 +68,35 @@ function main() {
     console.log(`Loaded ${key}: ${metricsData[key].size} entries`);
   }
 
-  // Merge metrics into each president entry
   rankings.forEach(p => {
     const id = p.id;
     if (!id) return;
 
-    // Ensure metrics object exists
-    if (!p.metrics || typeof p.metrics !== 'object') {
-      p.metrics = {};
-    }
+    // Remove old schema fields
+    delete p.metrics;
+    delete p.events;
+    delete p.scores;
 
-    // Assign each category if present
-    if (metricsData.crisisManagement.has(id)) {
-      p.metrics.crisisManagement = metricsData.crisisManagement.get(id).crisisManagement;
-    }
-    if (metricsData.domesticPolicy.has(id)) {
-      p.metrics.domesticPolicy = metricsData.domesticPolicy.get(id).domesticPolicy;
-    }
-    if (metricsData.economicPolicy.has(id)) {
-      p.metrics.economicPolicy = metricsData.economicPolicy.get(id).economicPolicy;
-    }
-    if (metricsData.foreignPolicy.has(id)) {
-      p.metrics.foreignPolicy = metricsData.foreignPolicy.get(id).foreignPolicy;
-    }
-    if (metricsData.judicialPolicy.has(id)) {
-      p.metrics.judicialPolicy = metricsData.judicialPolicy.get(id).judicialPolicy;
-    }
-    if (metricsData.legislation.has(id)) {
-      p.metrics.legislation = metricsData.legislation.get(id).legislation;
-    }
-    if (metricsData.misconduct.has(id)) {
-      p.metrics.misconduct = metricsData.misconduct.get(id).misconduct;
+    // Create new hybrid category containers
+    p.crisisManagement = {};
+    p.domesticPolicy = {};
+    p.economicPolicy = {};
+    p.foreignPolicy = {};
+    p.judicialPolicy = {};
+    p.legislation = {};
+    p.misconduct = {};
+
+    // Assign hybrid fields for each category
+    for (const category of Object.keys(FILES)) {
+      if (metricsData[category].has(id)) {
+        const rawCategory = metricsData[category].get(id)[category];
+        p[category] = extractHybridFields(rawCategory);
+      }
     }
   });
 
-  // Save back as array (scores script expects array)
   fs.writeFileSync(RANKINGS_PATH, JSON.stringify(rankings, null, 2), 'utf8');
-  console.log(`merge-presidents: merged metrics into ${rankings.length} presidents and saved to ${RANKINGS_PATH}`);
+  console.log(`merge-presidents: merged hybrid metrics into ${rankings.length} presidents and saved to ${RANKINGS_PATH}`);
 }
 
 if (require.main === module) {
