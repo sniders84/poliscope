@@ -1,79 +1,77 @@
 // scripts/bootstrap-presidents.js
-// Build base presidents-rankings.json from presidents.json with the new simplified schema
-const fs = require('fs');
-const path = require('path');
-const ROOT = path.join(__dirname, '..');
+// Build presidents-rankings.json using the unified hybrid schema.
 
-// Read roster from /public
-const ROSTER_PATH = path.join(ROOT, 'public', 'presidents.json');
-// Output to /public
-const RANKINGS_PATH = path.join(ROOT, 'public', 'presidents-rankings.json');
+const fs = require("fs");
+const path = require("path");
 
-function loadPresidents() {
-  const raw = fs.readFileSync(ROSTER_PATH, 'utf8');
-  return JSON.parse(raw);
-}
+const ROOT = path.join(__dirname, "..");
+const ROSTER_PATH = path.join(ROOT, "public", "presidents.json");
+const RANKINGS_PATH = path.join(ROOT, "public", "presidents-rankings.json");
 
-function buildEmptyScores() {
+// Hybrid category initializer
+function emptyCategory() {
   return {
-    crisisManagement: 0,
-    domesticPolicy: 0,
-    economicPolicy: 0,
-    foreignPolicy: 0,
-    judicialPolicy: 0,
-    legislation: 0,
-    misconduct: 0,
-    powerScore: 0,
-    eraNormalizedScore: 0,
-    rank: null
-  };
-}
-
-function buildEmptySummaries() {
-  return {
-    crisisManagement: "",
-    domesticPolicy: "",
-    economicPolicy: "",
-    foreignPolicy: "",
-    judicialPolicy: "",
-    legislation: "",
-    misconduct: ""
-  };
-}
-
-function buildEmptyEvents() {
-  return {
-    crisisManagement: [],
-    domesticPolicy: [],
-    economicPolicy: [],
-    foreignPolicy: [],
-    judicialPolicy: [],
-    legislation: [],
-    misconduct: []
+    overview: "",
+    eventCount: 0,
+    impactScore: 0,
+    significanceScore: 0,
+    majorEvents: [],
+    minorEvents: [],
+    subcategories: {}
   };
 }
 
 function main() {
-  const presidents = loadPresidents();
-  // NEW: output is an object keyed by ID
-  const rankings = {};
-  presidents.forEach(p => {
-    const id = p.presidentNumber;
-    rankings[id] = {
-      id,
-      name: p.name,
-      termStart: p.termStart,
-      termEnd: p.termEnd,
-      party: p.party,
-      photo: p.photo || 'https://via.placeholder.com/150?text=No+Photo', // <-- ADDED: copy photo
-      // NEW: simplified schema
-      scores: buildEmptyScores(),
-      summaries: buildEmptySummaries(),
-      events: buildEmptyEvents()
-    };
-  });
-  fs.writeFileSync(RANKINGS_PATH, JSON.stringify(rankings, null, 2), 'utf8');
-  console.log(`bootstrap-presidents: wrote ${presidents.length} records to presidents-rankings.json`);
+  const raw = fs.readFileSync(ROSTER_PATH, "utf8");
+  const presidents = JSON.parse(raw);
+
+  // Output MUST be an ARRAY
+  const rankings = presidents.map(p => ({
+    id: p.presidentNumber,
+    name: p.name,
+    party: p.party,
+    termStart: p.termStart,
+    termEnd: p.termEnd,
+    photo: p.photo || null,
+    slug: p.slug || null,
+    office: "President",
+
+    // Hybrid categories (empty baseline)
+    crisisManagement: emptyCategory(),
+    domesticPolicy: emptyCategory(),
+    economicPolicy: emptyCategory(),
+    foreignPolicy: emptyCategory(),
+    judicialPolicy: emptyCategory(),
+    legislation: emptyCategory(),
+    misconduct: emptyCategory(),
+
+    // Scoring containers
+    categoryScores: {
+      crisisManagement: 0,
+      domesticPolicy: 0,
+      economicPolicy: 0,
+      foreignPolicy: 0,
+      judicialPolicy: 0,
+      legislation: 0,
+      misconduct: 0
+    },
+
+    eraNormalizedScore: 0,
+    powerScore: 0,
+
+    summaries: {
+      crisisManagement: "",
+      domesticPolicy: "",
+      economicPolicy: "",
+      foreignPolicy: "",
+      judicialPolicy: "",
+      legislation: "",
+      misconduct: ""
+    }
+  }));
+
+  fs.writeFileSync(RANKINGS_PATH, JSON.stringify(rankings, null, 2));
+  console.log(`bootstrap-presidents: wrote ${rankings.length} records`);
 }
 
 main();
