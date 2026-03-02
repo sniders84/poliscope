@@ -4,12 +4,14 @@ const path = require("path");
 
 const rankingsPath = path.join(__dirname, "../public/presidents-rankings.json");
 const infoPath = path.join(__dirname, "../public/presidents.json");
+const erasPath = path.join(__dirname, "../scripts/presidential-eras.js");
 
-console.log("🚀 Running RESPECTFUL + OUTCOME-FOCUSED scoring engine...");
+console.log("🚀 Running ERA-BASED scoring engine...");
 
 // Load files
 let presidents = JSON.parse(fs.readFileSync(rankingsPath, "utf-8"));
 const presInfo = JSON.parse(fs.readFileSync(infoPath, "utf-8"));
+const eras = require(erasPath);  // your era map
 
 // Identity map
 const identityMap = new Map();
@@ -29,11 +31,10 @@ const CATEGORY_WEIGHTS = {
   misconduct: 0.07
 };
 
-// RESPECTFUL SEVERITY: Never negative overall, strong penalties for poor handling, rewards only for exceptional
+// STRICT OUTCOME + HANDLING SEVERITY (from previous version)
 function getEventSeverity(title = "", summary = "") {
   const text = (title + " " + (summary || "")).toLowerCase();
 
-  // ICONIC SUCCESS (handled exceptionally, massive positive legacy)
   if (text.includes("emancipation proclamation") || text.includes("civil rights act") || 
       text.includes("voting rights act") || text.includes("new deal") || 
       text.includes("social security") || text.includes("medicare") || 
@@ -41,47 +42,42 @@ function getEventSeverity(title = "", summary = "") {
       text.includes("marshall plan") || text.includes("monroe doctrine") || 
       text.includes("gi bill") || text.includes("land-grant") || 
       text.includes("successfully resolved") || text.includes("led to victory") || 
-      text.includes("saved the union") || text.includes("ended slavery") || 
-      text.includes("defeated") || text.includes("major victory")) {
-    return 6.0;  // top-tier legacy
+      text.includes("saved the union") || text.includes("ended slavery")) {
+    return 6.0;
   }
 
-  // GOOD HANDLING (positive outcome from effective response)
-  if (text.includes("resolved") || text.includes("successfully") || text.includes("effective") || 
-      text.includes("strong response") || text.includes("led to prosperity") || 
-      text.includes("stabilized") || text.includes("protected") || text.includes("prevented")) {
-    return 3.0;
+  if (text.includes("treaty") || text.includes("reform") || text.includes("signed the") || 
+      text.includes("clean air") || text.includes("civil rights") || text.includes("homestead") || 
+      text.includes("fair labor") || text.includes("wagner act") || 
+      text.includes("good handling") || text.includes("effective") || text.includes("strong response")) {
+    return 3.5;
   }
 
-  // NEUTRAL / ROUTINE (no free points)
   if (text.includes("act of") || text.includes("legislation") || text.includes("law") || 
       text.includes("bill") || text.includes("tariff") || text.includes("budget")) {
     return 0.0;
   }
 
-  // BAD HANDLING / MAJOR FAILURE (strong penalty)
   if (text.includes("watergate") || text.includes("iran-contra") || text.includes("impeachment") || 
       text.includes("scandal") || text.includes("obstruction") || text.includes("perjury") || 
       text.includes("cover-up") || text.includes("high inflation") || text.includes("supply chain") || 
       text.includes("failed war") || text.includes("vietnam") || text.includes("great depression") || 
-      text.includes("recession caused") || text.includes("covid mismanagement") || 
-      text.includes("pandemic") || text.includes("lockdown") || text.includes("mandate") || 
-      text.includes("stagflation") || text.includes("internment") || text.includes("court-packing") || 
-      text.includes("failed response") || text.includes("poor handling") || text.includes("mismanagement") || 
-      text.includes("worsened") || text.includes("caused crisis") || text.includes("economic collapse")) {
-    return -5.0;  // strong penalty
+      text.includes("recession caused") || text.includes("covid") || text.includes("pandemic") || 
+      text.includes("lockdown") || text.includes("mandate") || text.includes("stagflation") || 
+      text.includes("internment") || text.includes("court-packing") || text.includes("failed response") || 
+      text.includes("poor handling") || text.includes("mismanagement") || text.includes("worsened") || 
+      text.includes("caused crisis")) {
+    return -5.0;
   }
 
-  // MEDIUM NEGATIVE (controversial or mixed)
   if (text.includes("pardon") || text.includes("drone") || text.includes("intelligence") || 
       text.includes("controversy") || text.includes("embargo") || text.includes("intervention")) {
     return -2.5;
   }
 
-  return 0.0;  // default neutral — no free points
+  return 0.0;
 }
 
-// Score one category
 function scoreCategory(cat, isMisconduct = false) {
   if (!cat) return { score: 0, details: [] };
   const events = cat.events || cat.majorEvents || [];
@@ -99,10 +95,9 @@ function scoreCategory(cat, isMisconduct = false) {
     });
   });
 
-  let raw = Math.min(10, Math.max(-10, total));
+  const raw = Math.min(10, Math.max(-10, total));
   let finalScore = isMisconduct ? -Math.abs(raw) : raw;
 
-  // Minimum misconduct penalty if any events exist
   if (isMisconduct && events.length > 0 && finalScore > -4.0) {
     finalScore = -4.0;
   }
@@ -136,7 +131,6 @@ presidents = presidents.map(p => {
     weightedTotal += result.score * CATEGORY_WEIGHTS[catName];
   }
 
-  // Floor overall score at 0 — no negative Power Score
   const eraNormalizedScore = Number(Math.max(0, weightedTotal).toFixed(2));
   const powerScore = Number((eraNormalizedScore * 10).toFixed(1));
 
@@ -151,10 +145,26 @@ presidents = presidents.map(p => {
   };
 });
 
+// NEW: Add era-based rankings
+const eraRankings = {};
+Object.keys(eras).forEach(eraName => {
+  const ids = eras[eraName];
+  const eraPresidents = presidents.filter(p => ids.includes(p.id));
+  eraPresidents.sort((a, b) => b.powerScore - a.powerScore); // highest first
+  eraRankings[eraName] = eraPresidents.map(p => ({
+    id: p.id,
+    name: p.name,
+    powerScore: p.powerScore,
+    rank: eraPresidents.indexOf(p) + 1
+  }));
+});
+
+presidents.forEach(p => {
+  p.eraRankings = eraRankings;  // attach to every president for easy access
+});
+
 // Save
 fs.writeFileSync(rankingsPath, JSON.stringify(presidents, null, 2));
-console.log(`✅ Done! Updated ${presidents.length} presidents with respectful, handling-focused scoring.`);
-console.log("   → No negative Power Score (minimum 0)");
-console.log("   → Heavy penalties for poor handling and negative impact");
-console.log("   → Rewards only for exceptional handling and positive legacy");
-console.log("   → categoryDetails ready for expandable scorecards");
+console.log(`✅ Done! Updated ${presidents.length} presidents with era-based rankings.`);
+console.log("   → Era rankings added (no overall comparison across eras)");
+console.log("   → Power Score still calculated, but rankings are now era-specific");
