@@ -5,7 +5,7 @@ const path = require("path");
 const rankingsPath = path.join(__dirname, "../public/presidents-rankings.json");
 const infoPath = path.join(__dirname, "../public/presidents.json");
 
-console.log("🚀 Running OBJECTIVE + TRANSPARENT scoring engine...");
+console.log("🚀 Running STRICTER, OUTCOME-FOCUSED scoring engine...");
 
 // Load files
 let presidents = JSON.parse(fs.readFileSync(rankingsPath, "utf-8"));
@@ -29,24 +29,25 @@ const CATEGORY_WEIGHTS = {
   misconduct: 0.07
 };
 
-// STRICTER SEVERITY: Reward iconic successes, heavily penalize bad handling and negative outcomes
+// STRICTER SEVERITY: Big rewards for iconic wins, heavy penalties for failures/bad handling
 function getEventSeverity(title = "", summary = "") {
   const text = (title + " " + (summary || "")).toLowerCase();
 
-  // ICONIC POSITIVE (massive legacy boost)
+  // ICONIC POSITIVE (huge legacy boost)
   if (text.includes("emancipation proclamation") || text.includes("civil rights act") || 
       text.includes("voting rights act") || text.includes("new deal") || 
       text.includes("social security") || text.includes("medicare") || 
       text.includes("federal reserve") || text.includes("interstate highway") || 
       text.includes("marshall plan") || text.includes("monroe doctrine") || 
-      text.includes("gi bill") || text.includes("land-grant")) {
-    return 5.0;
+      text.includes("gi bill") || text.includes("land-grant") || text.includes("union preserved")) {
+    return 6.0;  // max reward
   }
 
-  // STRONG POSITIVE (good handling of major events)
+  // STRONG POSITIVE (good handling/successful reforms)
   if (text.includes("treaty") || text.includes("reform") || text.includes("signed the") || 
       text.includes("clean air") || text.includes("civil rights") || text.includes("homestead") || 
-      text.includes("fair labor") || text.includes("wagner act") || text.includes("good handling")) {
+      text.includes("fair labor") || text.includes("wagner act") || text.includes("good handling") || 
+      text.includes("successful") || text.includes("resolved")) {
     return 3.5;
   }
 
@@ -56,21 +57,22 @@ function getEventSeverity(title = "", summary = "") {
     return 1.5;
   }
 
-  // STRONG NEGATIVE (bad handling, major failures, scandals)
+  // STRONG NEGATIVE (major failures, scandals, bad outcomes)
   if (text.includes("watergate") || text.includes("iran-contra") || text.includes("impeachment") || 
       text.includes("scandal") || text.includes("obstruction") || text.includes("perjury") || 
       text.includes("cover-up") || text.includes("high inflation") || text.includes("supply chain") || 
       text.includes("failed war") || text.includes("vietnam") || text.includes("great depression") || 
       text.includes("recession caused") || text.includes("covid") || text.includes("pandemic") || 
       text.includes("lockdown") || text.includes("mandate") || text.includes("stagflation") || 
-      text.includes("internment") || text.includes("court-packing") || text.includes("failed response")) {
-    return -4.5;  // heavy penalty
+      text.includes("internment") || text.includes("court-packing") || text.includes("failed response") || 
+      text.includes("poor handling") || text.includes("mismanagement")) {
+    return -6.0;  // heavy penalty
   }
 
   // MEDIUM NEGATIVE (controversial or mixed)
   if (text.includes("pardon") || text.includes("drone") || text.includes("intelligence") || 
       text.includes("controversy") || text.includes("embargo") || text.includes("intervention")) {
-    return -2.5;
+    return -3.0;
   }
 
   return 1.0; // default neutral
@@ -94,8 +96,15 @@ function scoreCategory(cat, isMisconduct = false) {
     });
   });
 
+  // Cap raw score, but allow deeper negatives for bad handling
   const raw = Math.min(10, Math.max(-10, total));
-  const finalScore = isMisconduct ? -Math.abs(raw) : raw;
+  let finalScore = isMisconduct ? -Math.abs(raw) : raw;
+
+  // Extra misconduct penalty if any events exist
+  if (isMisconduct && events.length > 0 && finalScore > -3.0) {
+    finalScore = -3.0;  // minimum penalty for any misconduct
+  }
+
   return { score: Number(finalScore.toFixed(2)), details };
 }
 
@@ -141,6 +150,7 @@ presidents = presidents.map(p => {
 
 // Save
 fs.writeFileSync(rankingsPath, JSON.stringify(presidents, null, 2));
-console.log(`✅ Done! Updated ${presidents.length} presidents with stricter scoring.`);
-console.log("   → Stronger penalties for failures, scandals, and poor outcomes");
-console.log("   → categoryDetails still available for future expandable scorecards");
+console.log(`✅ Done! Updated ${presidents.length} presidents with stricter, outcome-focused scoring.`);
+console.log("   → Heavy penalties for bad handling, failures, and scandals");
+console.log("   → Strong rewards only for iconic legacy wins");
+console.log("   → categoryDetails ready for future expandable scorecards");
