@@ -5,7 +5,7 @@ const path = require("path");
 const rankingsPath = path.join(__dirname, "../public/presidents-rankings.json");
 const infoPath = path.join(__dirname, "../public/presidents.json");
 
-console.log("🚀 Running STRICTER, OUTCOME-FOCUSED scoring engine...");
+console.log("🚀 Running STRICT OUTCOME + HANDLING scoring engine...");
 
 // Load files
 let presidents = JSON.parse(fs.readFileSync(rankingsPath, "utf-8"));
@@ -29,43 +29,47 @@ const CATEGORY_WEIGHTS = {
   misconduct: 0.07
 };
 
-// STRICTER SEVERITY: Big rewards for iconic wins, heavy penalties for failures/bad handling
+// STRICT OUTCOME + HANDLING SEVERITY
 function getEventSeverity(title = "", summary = "") {
   const text = (title + " " + (summary || "")).toLowerCase();
 
-  // ICONIC POSITIVE (huge legacy boost)
+  // ICONIC SUCCESS (handled exceptionally well, massive positive legacy)
   if (text.includes("emancipation proclamation") || text.includes("civil rights act") || 
       text.includes("voting rights act") || text.includes("new deal") || 
       text.includes("social security") || text.includes("medicare") || 
       text.includes("federal reserve") || text.includes("interstate highway") || 
       text.includes("marshall plan") || text.includes("monroe doctrine") || 
-      text.includes("gi bill") || text.includes("land-grant") || text.includes("union preserved")) {
-    return 6.0;  // max reward
+      text.includes("gi bill") || text.includes("land-grant") || 
+      text.includes("successfully resolved") || text.includes("led to victory") || 
+      text.includes("saved the union") || text.includes("ended slavery") || 
+      text.includes("defeated") || text.includes("major victory")) {
+    return 6.0;  // top-tier legacy
   }
 
-  // STRONG POSITIVE (good handling/successful reforms)
-  if (text.includes("treaty") || text.includes("reform") || text.includes("signed the") || 
-      text.includes("clean air") || text.includes("civil rights") || text.includes("homestead") || 
-      text.includes("fair labor") || text.includes("wagner act") || text.includes("good handling") || 
-      text.includes("successful") || text.includes("resolved")) {
-    return 3.5;
+  // GOOD HANDLING (positive outcome from effective response)
+  if (text.includes("resolved") || text.includes("successfully") || text.includes("effective") || 
+      text.includes("strong response") || text.includes("led to prosperity") || 
+      text.includes("stabilized") || text.includes("protected") || text.includes("prevented")) {
+    return 3.0;
   }
 
-  // MEDIUM POSITIVE (routine success)
+  // NEUTRAL / ROUTINE (no strong positive or negative impact)
   if (text.includes("act of") || text.includes("legislation") || text.includes("law") || 
-      text.includes("bill") || text.includes("tariff") || text.includes("budget")) {
-    return 1.5;
+      text.includes("bill") || text.includes("tariff") || text.includes("budget") || 
+      text.includes("routine") || text.includes("standard")) {
+    return 0.0;  // no boost for routine stuff
   }
 
-  // STRONG NEGATIVE (major failures, scandals, bad outcomes)
+  // BAD HANDLING / MAJOR FAILURE (strong penalty)
   if (text.includes("watergate") || text.includes("iran-contra") || text.includes("impeachment") || 
       text.includes("scandal") || text.includes("obstruction") || text.includes("perjury") || 
       text.includes("cover-up") || text.includes("high inflation") || text.includes("supply chain") || 
       text.includes("failed war") || text.includes("vietnam") || text.includes("great depression") || 
-      text.includes("recession caused") || text.includes("covid") || text.includes("pandemic") || 
-      text.includes("lockdown") || text.includes("mandate") || text.includes("stagflation") || 
-      text.includes("internment") || text.includes("court-packing") || text.includes("failed response") || 
-      text.includes("poor handling") || text.includes("mismanagement")) {
+      text.includes("recession caused") || text.includes("covid mismanagement") || 
+      text.includes("pandemic") || text.includes("lockdown") || text.includes("mandate") || 
+      text.includes("stagflation") || text.includes("internment") || text.includes("court-packing") || 
+      text.includes("failed response") || text.includes("poor handling") || text.includes("mismanagement") || 
+      text.includes("worsened") || text.includes("caused crisis") || text.includes("economic collapse")) {
     return -6.0;  // heavy penalty
   }
 
@@ -75,7 +79,7 @@ function getEventSeverity(title = "", summary = "") {
     return -3.0;
   }
 
-  return 1.0; // default neutral
+  return 0.0;  // default neutral — no free points for existing
 }
 
 // Score one category
@@ -96,13 +100,12 @@ function scoreCategory(cat, isMisconduct = false) {
     });
   });
 
-  // Cap raw score, but allow deeper negatives for bad handling
   const raw = Math.min(10, Math.max(-10, total));
   let finalScore = isMisconduct ? -Math.abs(raw) : raw;
 
-  // Extra misconduct penalty if any events exist
-  if (isMisconduct && events.length > 0 && finalScore > -3.0) {
-    finalScore = -3.0;  // minimum penalty for any misconduct
+  // Minimum misconduct penalty if any events exist
+  if (isMisconduct && events.length > 0 && finalScore > -4.0) {
+    finalScore = -4.0;  // stronger minimum
   }
 
   return { score: Number(finalScore.toFixed(2)), details };
@@ -150,7 +153,7 @@ presidents = presidents.map(p => {
 
 // Save
 fs.writeFileSync(rankingsPath, JSON.stringify(presidents, null, 2));
-console.log(`✅ Done! Updated ${presidents.length} presidents with stricter, outcome-focused scoring.`);
-console.log("   → Heavy penalties for bad handling, failures, and scandals");
-console.log("   → Strong rewards only for iconic legacy wins");
-console.log("   → categoryDetails ready for future expandable scorecards");
+console.log(`✅ Done! Updated ${presidents.length} presidents with strict handling + impact scoring.`);
+console.log("   → Now focuses on 'how well they handled events' + real U.S. impact");
+console.log("   → No free points for routine legislation");
+console.log("   → categoryDetails ready for expandable scorecards");
