@@ -11,7 +11,7 @@ console.log("🚀 Running ERA-BASED scoring engine...");
 // Load files
 let presidents = JSON.parse(fs.readFileSync(rankingsPath, "utf-8"));
 const presInfo = JSON.parse(fs.readFileSync(infoPath, "utf-8"));
-const eras = require(erasPath);  // your era map
+const eras = require(erasPath);
 
 // Identity map
 const identityMap = new Map();
@@ -20,7 +20,7 @@ for (const p of presInfo) {
   if (key) identityMap.set(key, { name: p.name, party: p.party, termStart: p.termStart, termEnd: p.termEnd, era: p.era, photo: p.photo, slug: p.slug, office: "President" });
 }
 
-// Weights (unchanged)
+// Weights
 const CATEGORY_WEIGHTS = {
   crisisManagement: 0.18,
   domesticPolicy: 0.17,
@@ -31,7 +31,7 @@ const CATEGORY_WEIGHTS = {
   misconduct: 0.07
 };
 
-// STRICT OUTCOME + HANDLING SEVERITY (from previous version)
+// STRICT OUTCOME + HANDLING SEVERITY
 function getEventSeverity(title = "", summary = "") {
   const text = (title + " " + (summary || "")).toLowerCase();
 
@@ -50,7 +50,7 @@ function getEventSeverity(title = "", summary = "") {
       text.includes("clean air") || text.includes("civil rights") || text.includes("homestead") || 
       text.includes("fair labor") || text.includes("wagner act") || 
       text.includes("good handling") || text.includes("effective") || text.includes("strong response")) {
-    return 3.5;
+    return 3.0;
   }
 
   if (text.includes("act of") || text.includes("legislation") || text.includes("law") || 
@@ -131,8 +131,15 @@ presidents = presidents.map(p => {
     weightedTotal += result.score * CATEGORY_WEIGHTS[catName];
   }
 
-  const eraNormalizedScore = Number(Math.max(0, weightedTotal).toFixed(2));
-  const powerScore = Number((eraNormalizedScore * 10).toFixed(1));
+  let eraNormalizedScore = Number(Math.max(0, weightedTotal).toFixed(2));
+  let powerScore = Number((eraNormalizedScore * 10).toFixed(1));
+
+  // Hard-set Harrison to 0 (id 9)
+  if (p.id === 9) {
+    powerScore = 0.0;
+    eraNormalizedScore = 0.0;
+    console.log("Hard-set William Henry Harrison (id 9) to 0 Power Score");
+  }
 
   return {
     ...p,
@@ -145,26 +152,34 @@ presidents = presidents.map(p => {
   };
 });
 
-// NEW: Add era-based rankings
+// Era-based rankings
 const eraRankings = {};
 Object.keys(eras).forEach(eraName => {
   const ids = eras[eraName];
   const eraPresidents = presidents.filter(p => ids.includes(p.id));
   eraPresidents.sort((a, b) => b.powerScore - a.powerScore); // highest first
-  eraRankings[eraName] = eraPresidents.map(p => ({
+
+  eraRankings[eraName] = eraPresidents.map((p, index) => ({
     id: p.id,
     name: p.name,
     powerScore: p.powerScore,
-    rank: eraPresidents.indexOf(p) + 1
+    rank: index + 1
   }));
+
+  // Log top 3 per era for quick check
+  console.log(`Era: ${eraName}`);
+  eraRankings[eraName].slice(0, 3).forEach(r => {
+    console.log(`  ${r.rank}. ${r.name} - ${r.powerScore}`);
+  });
+  console.log(`  ... ${eraRankings[eraName].length} presidents in era`);
 });
 
 presidents.forEach(p => {
-  p.eraRankings = eraRankings;  // attach to every president for easy access
+  p.eraRankings = eraRankings;
 });
 
 // Save
 fs.writeFileSync(rankingsPath, JSON.stringify(presidents, null, 2));
 console.log(`✅ Done! Updated ${presidents.length} presidents with era-based rankings.`);
-console.log("   → Era rankings added (no overall comparison across eras)");
-console.log("   → Power Score still calculated, but rankings are now era-specific");
+console.log("   → Harrison hard-set to 0 Power Score");
+console.log("   → Era rankings computed and attached");
