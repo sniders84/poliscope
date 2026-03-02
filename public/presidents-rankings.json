@@ -714,7 +714,7 @@
         }
       ]
     },
-    "lastUpdated": "2026-03-02T01:19:05.093Z"
+    "lastUpdated": "2026-03-02T01:25:42.467Z"
   },
   {
     "id": 2,
@@ -1205,12 +1205,12 @@
       "domesticPolicy": 0,
       "economicPolicy": 0,
       "foreignPolicy": 0,
-      "judicialPolicy": -3,
+      "judicialPolicy": -2.5,
       "legislation": 0,
-      "misconduct": -6
+      "misconduct": -5
     },
-    "eraNormalizedScore": -0.24,
-    "powerScore": -2.4,
+    "eraNormalizedScore": 0,
+    "powerScore": 0,
     "summaries": {
       "crisisManagement": "",
       "domesticPolicy": "",
@@ -1326,8 +1326,8 @@
         {
           "event": "Midnight Judges Controversy",
           "summary": "Adams appointed numerous Federalist judges in the final days of his presidency, triggering political conflict and contributing to Marbury v. Madison.",
-          "severity": -3,
-          "contribution": -3
+          "severity": -2.5,
+          "contribution": -2.5
         },
         {
           "event": "Appointment of Chief Justice John Marshall",
@@ -1366,12 +1366,12 @@
         {
           "event": "XYZ Affair",
           "summary": "A diplomatic scandal in which French agents demanded bribes from American envoys, triggering national outrage and leading directly to the Quasi‑War.",
-          "severity": -6,
-          "contribution": 6
+          "severity": -5,
+          "contribution": 5
         }
       ]
     },
-    "lastUpdated": "2026-03-02T01:19:05.094Z"
+    "lastUpdated": "2026-03-02T01:25:42.468Z"
   },
   {
     "id": 3,
@@ -1916,7 +1916,7 @@
       "subcategories": {}
     },
     "categoryScores": {
-      "crisisManagement": -9,
+      "crisisManagement": -7.5,
       "domesticPolicy": 0,
       "economicPolicy": 0,
       "foreignPolicy": 0,
@@ -1924,8 +1924,8 @@
       "legislation": 0,
       "misconduct": -10
     },
-    "eraNormalizedScore": -2.32,
-    "powerScore": -23.2,
+    "eraNormalizedScore": 0,
+    "powerScore": 0,
     "summaries": {
       "crisisManagement": "",
       "domesticPolicy": "",
@@ -1946,14 +1946,14 @@
         {
           "event": "Embargo Act Resistance and Smuggling Violence (1807–1809)",
           "summary": "Jefferson’s Embargo Act triggered widespread economic hardship, smuggling, and violent confrontations between federal officers and merchants. Protests and riots spread across port cities, and Jefferson deployed federal forces to enforce the embargo, prompting accusations of authoritarianism.",
-          "severity": -3,
-          "contribution": -3
+          "severity": -2.5,
+          "contribution": -2.5
         },
         {
           "event": "British Impressment and Maritime Violations (1803–1809)",
           "summary": "British naval forces seized American sailors and interfered with U.S. shipping during the Napoleonic Wars. The crisis escalated with the Chesapeake–Leopard Affair, in which a British warship attacked an American frigate. Jefferson responded with economic measures rather than military retaliation, culminating in the Embargo Act.",
-          "severity": -3,
-          "contribution": -3
+          "severity": -2.5,
+          "contribution": -2.5
         },
         {
           "event": "First Barbary War (1801–1805)",
@@ -1970,8 +1970,8 @@
         {
           "event": "Embargo‑Induced Recession (1807–1809)",
           "summary": "The Embargo Act caused a severe economic downturn, particularly in New England’s shipping and manufacturing sectors. Exports collapsed, unemployment rose, and smuggling became widespread. The recession highlighted the risks of using trade restrictions as a diplomatic weapon.",
-          "severity": -3,
-          "contribution": -3
+          "severity": -2.5,
+          "contribution": -2.5
         },
         {
           "event": "Trade Disruptions from Napoleonic Wars",
@@ -2095,18 +2095,18 @@
         {
           "event": "Judicial Impeachment Crisis (1804–1805)",
           "summary": "Jefferson supported the impeachment of Federalist judges, including Supreme Court Justice Samuel Chase, whom he viewed as partisan and obstructive. The effort raised constitutional questions about judicial independence and the proper use of impeachment. Chase’s acquittal established a precedent limiting impeachment to criminal misconduct rather than political disagreement.",
-          "severity": -6,
-          "contribution": 6
+          "severity": -5,
+          "contribution": 5
         },
         {
           "event": "Impeachment of Justice Samuel Chase",
           "summary": "Jefferson supported the impeachment of a Supreme Court justice for partisan behavior. Chase was acquitted, reinforcing judicial independence.",
-          "severity": -6,
-          "contribution": 6
+          "severity": -5,
+          "contribution": 5
         }
       ]
     },
-    "lastUpdated": "2026-03-02T01:19:05.094Z"
+    "lastUpdated": "2026-03-02T01:25:42.468Z"
   },
   {
     "id": 4,
@@ -2781,7 +2781,7 @@
       ],
       "misconduct": []
     },
-    "lastUpdated": "2026-03-02T01:19:05.094Z"
+    "lastUpdated": "2026-03-02T01:25:42.469Z"
   },
   {
     "id": 5,
@@ -3209,7 +3209,7 @@
       "subcategories": {}
     },
     "categoryScores": {
-      "crisisManagement": 0,
+      "crisisManagement": 0.5,
       "domesticPolicy": 6,
       "economicPolicy": 0,
       "foreignPolicy": 6,
@@ -3217,8 +3217,8 @@
       "legislation": 0,
       "misconduct": 0
     },
-    "eraNormalizedScore": 2.04,
-    "powerScore": 20.4,
+    "eraNormalizedScore": 2.13,
+    "powerScore": 21.3,
     "summaries": {
       "crisisManagement": "",
       "domesticPolicy": "",
@@ -3239,8 +3239,8 @@
         {
           "event": "Panic of 1819",
           "summary": "The first major peacetime financial crisis in U.S. history struck during Monroe’s presidency. Bank failures, collapsing commodity prices, and widespread unemployment triggered a severe recession. The crisis exposed weaknesses in the nation’s financial system and fueled political unrest, particularly in the West and South. Monroe supported limited federal intervention, leaving states and private institutions to manage the fallout.",
-          "severity": -3,
-          "contribution": -3
+          "severity": -2.5,
+          "contribution": -2.5
         },
         {
           "event": "Panic of 1819",
@@ -3368,7 +3368,7 @@
       "legislation": [],
       "misconduct": []
     },
-    "lastUpdated": "2026-03-02T01:19:05.095Z"
+    "lastUpdated": "2026-03-02T01:25:42.469Z"
   },
   {
     "id": 6,
@@ -3916,7 +3916,7 @@
       ],
       "misconduct": []
     },
-    "lastUpdated": "2026-03-02T01:19:05.095Z"
+    "lastUpdated": "2026-03-02T01:25:42.469Z"
   },
   {
     "id": 7,
@@ -4556,7 +4556,7 @@
         }
       ]
     },
-    "lastUpdated": "2026-03-02T01:19:05.095Z"
+    "lastUpdated": "2026-03-02T01:25:42.469Z"
   },
   {
     "id": 8,
@@ -4937,16 +4937,16 @@
       "subcategories": {}
     },
     "categoryScores": {
-      "crisisManagement": -6,
-      "domesticPolicy": 0,
+      "crisisManagement": -5,
+      "domesticPolicy": 0.5,
       "economicPolicy": 0,
       "foreignPolicy": 0,
-      "judicialPolicy": -3,
+      "judicialPolicy": -2.5,
       "legislation": 0,
       "misconduct": 0
     },
-    "eraNormalizedScore": -1.44,
-    "powerScore": -14.4,
+    "eraNormalizedScore": 0,
+    "powerScore": 0,
     "summaries": {
       "crisisManagement": "",
       "domesticPolicy": "",
@@ -4985,8 +4985,8 @@
         {
           "event": "Panic of 1837",
           "summary": "A major financial crisis triggered bank failures, unemployment, and economic collapse. The depression lasted for years and defined Van Buren’s presidency.",
-          "severity": -6,
-          "contribution": -6
+          "severity": -5,
+          "contribution": -5
         },
         {
           "event": "Limited Federal Response to the Depression",
@@ -5023,8 +5023,8 @@
         {
           "event": "Panic of 1837",
           "summary": "A severe financial collapse triggered bank failures, unemployment, and economic contraction. Van Buren refused federal intervention, worsening public suffering.",
-          "severity": -3,
-          "contribution": -3
+          "severity": -2.5,
+          "contribution": -2.5
         },
         {
           "event": "Rise of Anti‑Slavery Activism",
@@ -5069,8 +5069,8 @@
         {
           "event": "Judicial Appointments Supporting Jacksonian Principles",
           "summary": "Van Buren appointed judges who favored limited federal intervention and strong executive authority.",
-          "severity": -3,
-          "contribution": -3
+          "severity": -2.5,
+          "contribution": -2.5
         },
         {
           "event": "Executive Influence in the Amistad Case",
@@ -5089,7 +5089,7 @@
       ],
       "misconduct": []
     },
-    "lastUpdated": "2026-03-02T01:19:05.096Z"
+    "lastUpdated": "2026-03-02T01:25:42.470Z"
   },
   {
     "id": 9,
@@ -5371,7 +5371,7 @@
       "legislation": [],
       "misconduct": []
     },
-    "lastUpdated": "2026-03-02T01:19:05.096Z"
+    "lastUpdated": "2026-03-02T01:25:42.470Z"
   },
   {
     "id": 10,
@@ -5987,7 +5987,7 @@
       ],
       "misconduct": []
     },
-    "lastUpdated": "2026-03-02T01:19:05.096Z"
+    "lastUpdated": "2026-03-02T01:25:42.470Z"
   },
   {
     "id": 11,
@@ -6429,12 +6429,12 @@
       "domesticPolicy": 0,
       "economicPolicy": 0,
       "foreignPolicy": 0,
-      "judicialPolicy": -3,
+      "judicialPolicy": -2.5,
       "legislation": 6,
       "misconduct": 0
     },
-    "eraNormalizedScore": 0.36,
-    "powerScore": 3.6,
+    "eraNormalizedScore": 0.42,
+    "powerScore": 4.2,
     "summaries": {
       "crisisManagement": "",
       "domesticPolicy": "",
@@ -6588,8 +6588,8 @@
         {
           "event": "Judicial Appointments Supporting Democratic Principles",
           "summary": "Polk appointed judges who favored limited federal intervention and strict constitutional interpretation, reinforcing Democratic ideology.",
-          "severity": -3,
-          "contribution": -3
+          "severity": -2.5,
+          "contribution": -2.5
         }
       ],
       "legislation": [
@@ -6608,7 +6608,7 @@
       ],
       "misconduct": []
     },
-    "lastUpdated": "2026-03-02T01:19:05.096Z"
+    "lastUpdated": "2026-03-02T01:25:42.470Z"
   },
   {
     "id": 12,
@@ -7001,7 +7001,7 @@
       "legislation": [],
       "misconduct": []
     },
-    "lastUpdated": "2026-03-02T01:19:05.096Z"
+    "lastUpdated": "2026-03-02T01:25:42.471Z"
   },
   {
     "id": 13,
@@ -7501,7 +7501,7 @@
       ],
       "misconduct": []
     },
-    "lastUpdated": "2026-03-02T01:19:05.097Z"
+    "lastUpdated": "2026-03-02T01:25:42.471Z"
   },
   {
     "id": 14,
@@ -7872,7 +7872,7 @@
       "subcategories": {}
     },
     "categoryScores": {
-      "crisisManagement": -3,
+      "crisisManagement": -2.5,
       "domesticPolicy": 6,
       "economicPolicy": 0,
       "foreignPolicy": 0,
@@ -7880,8 +7880,8 @@
       "legislation": 0,
       "misconduct": 0
     },
-    "eraNormalizedScore": 0.48,
-    "powerScore": 4.8,
+    "eraNormalizedScore": 0.57,
+    "powerScore": 5.7,
     "summaries": {
       "crisisManagement": "",
       "domesticPolicy": "",
@@ -7908,8 +7908,8 @@
         {
           "event": "Ostend Manifesto (1854)",
           "summary": "Pierce’s diplomats argued that the U.S. should purchase Cuba from Spain and consider war if Spain refused. The manifesto sparked national controversy, heightened sectional divisions, and damaged U.S. diplomatic credibility.",
-          "severity": -3,
-          "contribution": -3
+          "severity": -2.5,
+          "contribution": -2.5
         },
         {
           "event": "Gadsden Purchase Funding Act (1854)",
@@ -8018,7 +8018,7 @@
       ],
       "misconduct": []
     },
-    "lastUpdated": "2026-03-02T01:19:05.097Z"
+    "lastUpdated": "2026-03-02T01:25:42.471Z"
   },
   {
     "id": 15,
@@ -8566,7 +8566,7 @@
       "legislation": [],
       "misconduct": []
     },
-    "lastUpdated": "2026-03-02T01:19:05.097Z"
+    "lastUpdated": "2026-03-02T01:25:42.471Z"
   },
   {
     "id": 16,
@@ -9084,14 +9084,14 @@
     "categoryScores": {
       "crisisManagement": 10,
       "domesticPolicy": 10,
-      "economicPolicy": -6,
+      "economicPolicy": -5,
       "foreignPolicy": 0,
       "judicialPolicy": 0,
       "legislation": 0,
-      "misconduct": -6
+      "misconduct": -5
     },
-    "eraNormalizedScore": 2.06,
-    "powerScore": 20.6,
+    "eraNormalizedScore": 2.3,
+    "powerScore": 23,
     "summaries": {
       "crisisManagement": "",
       "domesticPolicy": "",
@@ -9284,8 +9284,8 @@
         {
           "event": "Southern Economic Collapse",
           "summary": "The Confederate economy deteriorated under Union blockades, infrastructure destruction, and runaway inflation. Agricultural output plummeted, transportation networks collapsed, and the slave‑based economic system disintegrated as Union forces advanced.",
-          "severity": -6,
-          "contribution": -6
+          "severity": -5,
+          "contribution": -5
         }
       ],
       "foreignPolicy": [
@@ -9302,12 +9302,12 @@
         {
           "event": "Appointment of Salmon P. Chase as Chief Justice",
           "summary": "Lincoln appointed Chase, who later presided over Reconstruction-era cases and Andrew Johnson’s impeachment trial.",
-          "severity": -6,
-          "contribution": 6
+          "severity": -5,
+          "contribution": 5
         }
       ]
     },
-    "lastUpdated": "2026-03-02T01:19:05.098Z"
+    "lastUpdated": "2026-03-02T01:25:42.472Z"
   },
   {
     "id": 17,
@@ -9710,16 +9710,16 @@
       "subcategories": {}
     },
     "categoryScores": {
-      "crisisManagement": -6,
+      "crisisManagement": -5,
       "domesticPolicy": 6,
       "economicPolicy": 0,
       "foreignPolicy": 0,
-      "judicialPolicy": -3,
+      "judicialPolicy": -2.5,
       "legislation": 10,
       "misconduct": -10
     },
-    "eraNormalizedScore": 0.08,
-    "powerScore": 0.8,
+    "eraNormalizedScore": 0.32,
+    "powerScore": 3.2,
     "summaries": {
       "crisisManagement": "",
       "domesticPolicy": "",
@@ -9758,8 +9758,8 @@
         {
           "event": "Post‑Civil War Southern Economic Collapse",
           "summary": "The South faced massive destruction of railroads, farms, and cities. The end of slavery upended the labor system, leaving many regions impoverished, indebted, and lacking capital for rebuilding.",
-          "severity": -6,
-          "contribution": -6
+          "severity": -5,
+          "contribution": -5
         },
         {
           "event": "Northern Industrial Adjustment",
@@ -9825,8 +9825,8 @@
         {
           "event": "States’ Rights Judicial Appointments",
           "summary": "Johnson appointed judges who opposed Radical Reconstruction and favored limited federal intervention.",
-          "severity": -3,
-          "contribution": -3
+          "severity": -2.5,
+          "contribution": -2.5
         }
       ],
       "legislation": [
@@ -9847,20 +9847,20 @@
         {
           "event": "Presidential Impeachment Crisis (1867–1868)",
           "summary": "Johnson’s defiance of Congress over Reconstruction led to his impeachment. The crisis tested the limits of executive power and the balance between branches.",
-          "severity": -6,
-          "contribution": 6
+          "severity": -5,
+          "contribution": 5
         },
         {
           "event": "Impeachment Crisis (1868)",
           "summary": "Johnson became the first U.S. president impeached after violating the Tenure of Office Act. He was acquitted by one vote in the Senate.",
-          "severity": -6,
-          "contribution": 6
+          "severity": -5,
+          "contribution": 5
         },
         {
           "event": "Lenient Reconstruction Policies",
           "summary": "Johnson granted broad pardons to former Confederates and allowed Southern states to enact restrictive Black Codes, undermining civil rights progress.",
-          "severity": -3,
-          "contribution": 3
+          "severity": -2.5,
+          "contribution": 2.5
         },
         {
           "event": "Violation of the Tenure of Office Act (Impeachment)",
@@ -9871,12 +9871,12 @@
         {
           "event": "Obstruction of Reconstruction",
           "summary": "Johnson attempted to block civil rights protections and obstructed Reconstruction policies, actions widely regarded as enabling white supremacist violence and undermining federal authority.",
-          "severity": -6,
-          "contribution": 6
+          "severity": -5,
+          "contribution": 5
         }
       ]
     },
-    "lastUpdated": "2026-03-02T01:19:05.098Z"
+    "lastUpdated": "2026-03-02T01:25:42.472Z"
   },
   {
     "id": 18,
@@ -10435,24 +10435,24 @@
         {
           "event": "Widespread Political Corruption",
           "summary": "Scandals such as the Whiskey Ring and Crédit Mobilier damaged public trust in the federal government.",
-          "severity": -6,
-          "contribution": 6
+          "severity": -5,
+          "contribution": 5
         },
         {
           "event": "Whiskey Ring Scandal",
           "summary": "Grant’s administration was rocked by the Whiskey Ring, a major tax fraud scheme involving federal officials. Grant himself was not implicated, but his personal secretary was indicted, and Grant’s intervention to protect him drew criticism.",
-          "severity": -6,
-          "contribution": 6
+          "severity": -5,
+          "contribution": 5
         },
         {
           "event": "Credit Mobilier Scandal (Indirect Association)",
           "summary": "Although the scandal began before his presidency, several Grant‑era officials were implicated in the Credit Mobilier railroad fraud. Grant was not personally involved, but the scandal damaged his administration’s reputation.",
-          "severity": -6,
-          "contribution": 6
+          "severity": -5,
+          "contribution": 5
         }
       ]
     },
-    "lastUpdated": "2026-03-02T01:19:05.098Z"
+    "lastUpdated": "2026-03-02T01:25:42.472Z"
   },
   {
     "id": 19,
@@ -10810,12 +10810,12 @@
       "domesticPolicy": 3,
       "economicPolicy": 0,
       "foreignPolicy": 0,
-      "judicialPolicy": -3,
+      "judicialPolicy": -2.5,
       "legislation": 3,
       "misconduct": 0
     },
-    "eraNormalizedScore": 1.05,
-    "powerScore": 10.5,
+    "eraNormalizedScore": 1.11,
+    "powerScore": 11.1,
     "summaries": {
       "crisisManagement": "",
       "domesticPolicy": "",
@@ -10927,8 +10927,8 @@
         {
           "event": "Moderate Judicial Appointments",
           "summary": "Hayes appointed judges who favored limited federal intervention and judicial restraint.",
-          "severity": -3,
-          "contribution": -3
+          "severity": -2.5,
+          "contribution": -2.5
         }
       ],
       "legislation": [
@@ -10941,7 +10941,7 @@
       ],
       "misconduct": []
     },
-    "lastUpdated": "2026-03-02T01:19:05.098Z"
+    "lastUpdated": "2026-03-02T01:25:42.472Z"
   },
   {
     "id": 20,
@@ -11212,16 +11212,16 @@
       "subcategories": {}
     },
     "categoryScores": {
-      "crisisManagement": 3,
+      "crisisManagement": -2,
       "domesticPolicy": 0,
       "economicPolicy": 0,
       "foreignPolicy": 0,
       "judicialPolicy": 3,
       "legislation": 0,
-      "misconduct": -6
+      "misconduct": -5
     },
-    "eraNormalizedScore": 0.48,
-    "powerScore": 4.8,
+    "eraNormalizedScore": 0,
+    "powerScore": 0,
     "summaries": {
       "crisisManagement": "",
       "domesticPolicy": "",
@@ -11242,8 +11242,8 @@
         {
           "event": "Medical Crisis After Assassination (1881)",
           "summary": "Garfield survived the initial shooting but suffered months of infection and medical mismanagement. The crisis exposed the lack of standardized medical care for presidents.",
-          "severity": 0,
-          "contribution": 0
+          "severity": -5,
+          "contribution": -5
         },
         {
           "event": "Assassination of James A. Garfield (1881)",
@@ -11311,12 +11311,12 @@
         {
           "event": "Credit Mobilier Association (Pre‑Presidency, Disputed Involvement)",
           "summary": "Garfield was accused of involvement in the Credit Mobilier scandal while serving in Congress. He denied wrongdoing, and evidence of his involvement remains disputed, but the allegation followed him into the presidency.",
-          "severity": -6,
-          "contribution": 6
+          "severity": -5,
+          "contribution": 5
         }
       ]
     },
-    "lastUpdated": "2026-03-02T01:19:05.098Z"
+    "lastUpdated": "2026-03-02T01:25:42.472Z"
   },
   {
     "id": 21,
@@ -11696,10 +11696,10 @@
       "foreignPolicy": 0,
       "judicialPolicy": 6,
       "legislation": 0,
-      "misconduct": -6
+      "misconduct": -5
     },
-    "eraNormalizedScore": 0.3,
-    "powerScore": 3,
+    "eraNormalizedScore": 0.37,
+    "powerScore": 3.7,
     "summaries": {
       "crisisManagement": "",
       "domesticPolicy": "",
@@ -11834,12 +11834,12 @@
         {
           "event": "Star Route Postal Fraud (Pre‑Presidency Association)",
           "summary": "Arthur was linked to the Star Route postal fraud scandal through political allies before becoming president. While never proven personally involved, his association with key figures raised ethical concerns.",
-          "severity": -6,
-          "contribution": 6
+          "severity": -5,
+          "contribution": 5
         }
       ]
     },
-    "lastUpdated": "2026-03-02T01:19:05.099Z"
+    "lastUpdated": "2026-03-02T01:25:42.473Z"
   },
   {
     "id": 22,
@@ -12202,15 +12202,15 @@
     },
     "categoryScores": {
       "crisisManagement": 0,
-      "domesticPolicy": 3,
+      "domesticPolicy": 3.5,
       "economicPolicy": 0,
       "foreignPolicy": 0,
       "judicialPolicy": 0,
       "legislation": 0,
-      "misconduct": -6
+      "misconduct": -5
     },
-    "eraNormalizedScore": 0.09,
-    "powerScore": 0.9,
+    "eraNormalizedScore": 0.25,
+    "powerScore": 2.5,
     "summaries": {
       "crisisManagement": "",
       "domesticPolicy": "",
@@ -12262,8 +12262,8 @@
         {
           "event": "Support for Limited Federal Judicial Power",
           "summary": "Cleveland favored judicial restraint and opposed broad federal intervention in economic and social matters.",
-          "severity": -3,
-          "contribution": -3
+          "severity": -2.5,
+          "contribution": -2.5
         },
         {
           "event": "Interstate Commerce Act (1887)",
@@ -12337,12 +12337,12 @@
         {
           "event": "Maria Halpin Affair (Documented Personal Scandal)",
           "summary": "Cleveland was accused of fathering a child with Maria Halpin and committing her to an asylum. Historians agree Cleveland did have a relationship with Halpin and paid child support, though details of coercion remain disputed.",
-          "severity": -6,
-          "contribution": 6
+          "severity": -5,
+          "contribution": 5
         }
       ]
     },
-    "lastUpdated": "2026-03-02T01:19:05.099Z"
+    "lastUpdated": "2026-03-02T01:25:42.473Z"
   },
   {
     "id": 23,
@@ -12733,15 +12733,15 @@
     },
     "categoryScores": {
       "crisisManagement": 0,
-      "domesticPolicy": -3,
+      "domesticPolicy": -2.5,
       "economicPolicy": 0,
       "foreignPolicy": 0,
       "judicialPolicy": 0,
       "legislation": 0,
       "misconduct": 0
     },
-    "eraNormalizedScore": -0.51,
-    "powerScore": -5.1,
+    "eraNormalizedScore": 0,
+    "powerScore": 0,
     "summaries": {
       "crisisManagement": "",
       "domesticPolicy": "",
@@ -12794,8 +12794,8 @@
         {
           "event": "Rise of the Populist Movement",
           "summary": "Economic hardship among farmers and laborers fueled the growth of the Populist Party, which demanded monetary reform, railroad regulation, and greater federal intervention.",
-          "severity": -3,
-          "contribution": -3
+          "severity": -2.5,
+          "contribution": -2.5
         },
         {
           "event": "Economic Instability Leading to the Panic of 1893",
@@ -12885,7 +12885,7 @@
       ],
       "misconduct": []
     },
-    "lastUpdated": "2026-03-02T01:19:05.099Z"
+    "lastUpdated": "2026-03-02T01:25:42.473Z"
   },
   {
     "id": 24,
@@ -13257,15 +13257,15 @@
     },
     "categoryScores": {
       "crisisManagement": 10,
-      "domesticPolicy": -3,
+      "domesticPolicy": -2.5,
       "economicPolicy": 0,
       "foreignPolicy": 0,
-      "judicialPolicy": -3,
+      "judicialPolicy": -2.5,
       "legislation": 0,
       "misconduct": 0
     },
-    "eraNormalizedScore": 0.93,
-    "powerScore": 9.3,
+    "eraNormalizedScore": 1.07,
+    "powerScore": 10.7,
     "summaries": {
       "crisisManagement": "",
       "domesticPolicy": "",
@@ -13360,8 +13360,8 @@
         {
           "event": "Pullman Strike Intervention",
           "summary": "Cleveland sent federal troops to break the Pullman Strike despite objections from Illinois officials. Critics accused him of siding with corporate interests and escalating violence.",
-          "severity": -3,
-          "contribution": -3
+          "severity": -2.5,
+          "contribution": -2.5
         }
       ],
       "economicPolicy": [
@@ -13395,14 +13395,14 @@
         {
           "event": "Conservative Judicial Appointments",
           "summary": "Cleveland appointed judges who favored limited federal intervention and supported business interests.",
-          "severity": -3,
-          "contribution": -3
+          "severity": -2.5,
+          "contribution": -2.5
         }
       ],
       "legislation": [],
       "misconduct": []
     },
-    "lastUpdated": "2026-03-02T01:19:05.099Z"
+    "lastUpdated": "2026-03-02T01:25:42.473Z"
   },
   {
     "id": 25,
@@ -13978,7 +13978,7 @@
       ],
       "misconduct": []
     },
-    "lastUpdated": "2026-03-02T01:19:05.099Z"
+    "lastUpdated": "2026-03-02T01:25:42.474Z"
   },
   {
     "id": 26,
@@ -14457,16 +14457,16 @@
       "subcategories": {}
     },
     "categoryScores": {
-      "crisisManagement": 3,
-      "domesticPolicy": 3,
+      "crisisManagement": 3.5,
+      "domesticPolicy": 4,
       "economicPolicy": 0,
       "foreignPolicy": 0,
       "judicialPolicy": 0,
       "legislation": 0,
       "misconduct": 0
     },
-    "eraNormalizedScore": 1.05,
-    "powerScore": 10.5,
+    "eraNormalizedScore": 1.31,
+    "powerScore": 13.1,
     "summaries": {
       "crisisManagement": "",
       "domesticPolicy": "",
@@ -14499,8 +14499,8 @@
         {
           "event": "Panic of 1907",
           "summary": "A major financial panic triggered bank runs and market collapse. Roosevelt coordinated emergency interventions with private financiers to stabilize the economy.",
-          "severity": -3,
-          "contribution": -3
+          "severity": -2.5,
+          "contribution": -2.5
         },
         {
           "event": "Anarchist Violence Wave (1901–1908)",
@@ -14561,14 +14561,14 @@
         {
           "event": "Labor Unrest and Industrial Tensions",
           "summary": "Rapid industrialization led to labor disputes, unsafe working conditions, and wage conflicts. Roosevelt’s intervention in the 1902 coal strike marked the first time a president acted as a neutral arbiter between labor and management.",
-          "severity": -3,
-          "contribution": -3
+          "severity": -2.5,
+          "contribution": -2.5
         },
         {
           "event": "Interventions in the Caribbean and Central America",
           "summary": "Roosevelt deployed U.S. forces to stabilize governments in Cuba, the Dominican Republic, and other regions under the Roosevelt Corollary, asserting U.S. authority in the Western Hemisphere.",
-          "severity": -3,
-          "contribution": -3
+          "severity": -2.5,
+          "contribution": -2.5
         },
         {
           "event": "Roosevelt Corollary to the Monroe Doctrine (1904)",
@@ -14658,7 +14658,7 @@
       ],
       "misconduct": []
     },
-    "lastUpdated": "2026-03-02T01:19:05.100Z"
+    "lastUpdated": "2026-03-02T01:25:42.474Z"
   },
   {
     "id": 27,
@@ -15065,15 +15065,15 @@
     },
     "categoryScores": {
       "crisisManagement": 3,
-      "domesticPolicy": -6,
+      "domesticPolicy": -5,
       "economicPolicy": 0,
-      "foreignPolicy": -3,
+      "foreignPolicy": -2.5,
       "judicialPolicy": 0,
       "legislation": 0,
       "misconduct": 0
     },
-    "eraNormalizedScore": -0.99,
-    "powerScore": -9.9,
+    "eraNormalizedScore": 0,
+    "powerScore": 0,
     "summaries": {
       "crisisManagement": "",
       "domesticPolicy": "",
@@ -15120,8 +15120,8 @@
         {
           "event": "Ballinger‑Pinchot Controversy",
           "summary": "A dispute over conservation policy damaged Taft’s reputation among progressives and strained relations with Roosevelt.",
-          "severity": -3,
-          "contribution": -3
+          "severity": -2.5,
+          "contribution": -2.5
         },
         {
           "event": "Mann‑Elkins Act (1910)",
@@ -15144,8 +15144,8 @@
         {
           "event": "Ballinger–Pinchot Controversy",
           "summary": "Taft’s Interior Secretary, Richard Ballinger, was accused of improperly favoring private interests in public land decisions. Taft’s firing of conservationist Gifford Pinchot damaged his reputation, though no illegality was proven.",
-          "severity": -3,
-          "contribution": -3
+          "severity": -2.5,
+          "contribution": -2.5
         }
       ],
       "economicPolicy": [
@@ -15178,8 +15178,8 @@
         {
           "event": "Intervention in Nicaragua (1912)",
           "summary": "Taft deployed Marines to support a friendly government and protect American financial interests, demonstrating the limits of Dollar Diplomacy when economic pressure alone proved insufficient.",
-          "severity": -3,
-          "contribution": -3
+          "severity": -2.5,
+          "contribution": -2.5
         },
         {
           "event": "Dollar Diplomacy",
@@ -15229,7 +15229,7 @@
       "legislation": [],
       "misconduct": []
     },
-    "lastUpdated": "2026-03-02T01:19:05.100Z"
+    "lastUpdated": "2026-03-02T01:25:42.474Z"
   },
   {
     "id": 28,
@@ -15752,16 +15752,16 @@
       "subcategories": {}
     },
     "categoryScores": {
-      "crisisManagement": -9,
-      "domesticPolicy": 9,
+      "crisisManagement": -7.5,
+      "domesticPolicy": 9.5,
       "economicPolicy": 0,
       "foreignPolicy": 0,
       "judicialPolicy": 0,
       "legislation": 0,
       "misconduct": 0
     },
-    "eraNormalizedScore": -0.09,
-    "powerScore": -0.9,
+    "eraNormalizedScore": 0.27,
+    "powerScore": 2.7,
     "summaries": {
       "crisisManagement": "",
       "domesticPolicy": "",
@@ -15794,8 +15794,8 @@
         {
           "event": "1918 Influenza Pandemic",
           "summary": "The deadliest pandemic in U.S. history killed hundreds of thousands. Wilson’s administration struggled to coordinate a national response.",
-          "severity": -6,
-          "contribution": -6
+          "severity": -5,
+          "contribution": -5
         },
         {
           "event": "Wilson’s Stroke and Leadership Crisis (1919–1920)",
@@ -15806,8 +15806,8 @@
         {
           "event": "Mexican Intervention Crisis (1914–1917)",
           "summary": "Wilson intervened repeatedly in Mexico during its revolution, creating diplomatic instability and border conflict.",
-          "severity": -3,
-          "contribution": -3
+          "severity": -2.5,
+          "contribution": -2.5
         },
         {
           "event": "World War I (1917–1918)",
@@ -15910,8 +15910,8 @@
         {
           "event": "Interventions in Mexico and the Caribbean",
           "summary": "Wilson deployed forces to Mexico, Haiti, and the Dominican Republic to influence political outcomes and protect U.S. interests, reflecting a tension between his moral rhetoric and interventionist actions.",
-          "severity": -3,
-          "contribution": -3
+          "severity": -2.5,
+          "contribution": -2.5
         },
         {
           "event": "Support for Federal Regulatory Expansion",
@@ -15977,7 +15977,7 @@
       ],
       "misconduct": []
     },
-    "lastUpdated": "2026-03-02T01:19:05.100Z"
+    "lastUpdated": "2026-03-02T01:25:42.474Z"
   },
   {
     "id": 29,
@@ -16366,15 +16366,15 @@
     },
     "categoryScores": {
       "crisisManagement": 0,
-      "domesticPolicy": -3,
+      "domesticPolicy": -2.5,
       "economicPolicy": 0,
       "foreignPolicy": 0,
       "judicialPolicy": 0,
       "legislation": 0,
       "misconduct": -10
     },
-    "eraNormalizedScore": -1.21,
-    "powerScore": -12.1,
+    "eraNormalizedScore": 0,
+    "powerScore": 0,
     "summaries": {
       "crisisManagement": "",
       "domesticPolicy": "",
@@ -16439,8 +16439,8 @@
         {
           "event": "Support for Limited Federal Regulation",
           "summary": "Harding’s administration backed judicial decisions restricting federal intervention in economic matters.",
-          "severity": -3,
-          "contribution": -3
+          "severity": -2.5,
+          "contribution": -2.5
         },
         {
           "event": "Sheppard–Towner Maternity and Infancy Act (1921)",
@@ -16502,24 +16502,24 @@
         {
           "event": "Teapot Dome Scandal (1921–1923)",
           "summary": "A massive corruption scandal involving federal oil reserves erupted within Harding’s administration. The crisis undermined public trust and led to major investigations.",
-          "severity": -6,
-          "contribution": 6
+          "severity": -5,
+          "contribution": 5
         },
         {
           "event": "Teapot Dome Scandal",
           "summary": "A major corruption scandal involving the secret leasing of federal oil reserves undermined Harding’s administration and became one of the most infamous scandals in U.S. history.",
-          "severity": -6,
-          "contribution": 6
+          "severity": -5,
+          "contribution": 5
         },
         {
           "event": "Teapot Dome Scandal (Administration Corruption)",
           "summary": "Harding’s Interior Secretary, Albert Fall, accepted bribes in exchange for oil leases in the Teapot Dome scandal. Harding was not proven personally involved, but his poor oversight enabled the corruption.",
-          "severity": -6,
-          "contribution": 6
+          "severity": -5,
+          "contribution": 5
         }
       ]
     },
-    "lastUpdated": "2026-03-02T01:19:05.101Z"
+    "lastUpdated": "2026-03-02T01:25:42.475Z"
   },
   {
     "id": 30,
@@ -16900,16 +16900,16 @@
       "subcategories": {}
     },
     "categoryScores": {
-      "crisisManagement": -3,
-      "domesticPolicy": -3,
+      "crisisManagement": -2,
+      "domesticPolicy": -2.5,
       "economicPolicy": 0,
       "foreignPolicy": 0,
       "judicialPolicy": 6,
       "legislation": 0,
       "misconduct": 0
     },
-    "eraNormalizedScore": -0.33,
-    "powerScore": -3.3,
+    "eraNormalizedScore": 0,
+    "powerScore": 0,
     "summaries": {
       "crisisManagement": "",
       "domesticPolicy": "",
@@ -16924,8 +16924,8 @@
         {
           "event": "Agricultural Collapse Crisis (1924–1928)",
           "summary": "Farm prices collapsed during Coolidge’s presidency, creating a rural economic crisis that foreshadowed the Great Depression.",
-          "severity": -6,
-          "contribution": -6
+          "severity": -5,
+          "contribution": -5
         },
         {
           "event": "Early Aviation Disaster Crisis (1925–1927)",
@@ -16974,8 +16974,8 @@
         {
           "event": "Limited Federal Regulation",
           "summary": "Coolidge opposed extensive federal intervention in business, maintaining a hands‑off approach that encouraged private enterprise but allowed speculative excesses to grow.",
-          "severity": -3,
-          "contribution": -3
+          "severity": -2.5,
+          "contribution": -2.5
         },
         {
           "event": "Economic Boom of the Roaring Twenties",
@@ -17052,7 +17052,7 @@
       "legislation": [],
       "misconduct": []
     },
-    "lastUpdated": "2026-03-02T01:19:05.101Z"
+    "lastUpdated": "2026-03-02T01:25:42.475Z"
   },
   {
     "id": 31,
@@ -17470,12 +17470,12 @@
       "domesticPolicy": 3,
       "economicPolicy": 0,
       "foreignPolicy": 0,
-      "judicialPolicy": 3,
+      "judicialPolicy": 3.5,
       "legislation": 0,
       "misconduct": 0
     },
-    "eraNormalizedScore": -0.93,
-    "powerScore": -9.3,
+    "eraNormalizedScore": 0,
+    "powerScore": 0,
     "summaries": {
       "crisisManagement": "",
       "domesticPolicy": "",
@@ -17496,8 +17496,8 @@
         {
           "event": "Mississippi River Flooding Aftermath (1929–1930)",
           "summary": "Hoover inherited the lingering humanitarian crisis from the 1927 flood. Relief efforts remained strained as the Depression worsened conditions in affected regions.",
-          "severity": -6,
-          "contribution": -6
+          "severity": -5,
+          "contribution": -5
         },
         {
           "event": "Mass Homelessness and Hoovervilles (1930–1932)",
@@ -17514,14 +17514,14 @@
         {
           "event": "Stock Market Crash Aftermath (1929–1932)",
           "summary": "Hoover inherited the crash but presided over its catastrophic deepening. Bank failures, deflation, and unemployment spiraled into the Great Depression.",
-          "severity": -6,
-          "contribution": -6
+          "severity": -5,
+          "contribution": -5
         },
         {
           "event": "Great Depression (1929–1933)",
           "summary": "The worst economic crisis in U.S. history devastated industry, agriculture, and banking. Hoover’s limited interventions failed to halt the collapse.",
-          "severity": -6,
-          "contribution": -6
+          "severity": -5,
+          "contribution": -5
         },
         {
           "event": "Smoot–Hawley Tariff Crisis (1930)",
@@ -17532,8 +17532,8 @@
         {
           "event": "Stock Market Crash of 1929",
           "summary": "The sudden collapse of stock prices triggered widespread financial panic, bank failures, and the beginning of the Great Depression.",
-          "severity": -6,
-          "contribution": -6
+          "severity": -5,
+          "contribution": -5
         },
         {
           "event": "Bonus Army March (1932)",
@@ -17550,8 +17550,8 @@
         {
           "event": "Onset of the Great Depression",
           "summary": "Industrial output plummeted, unemployment rose sharply, and deflation worsened economic conditions. Hoover’s limited‑intervention approach proved insufficient to halt the downturn.",
-          "severity": -6,
-          "contribution": -6
+          "severity": -5,
+          "contribution": -5
         },
         {
           "event": "Hoover Moratorium on War Debts (1931)",
@@ -17616,8 +17616,8 @@
         {
           "event": "Judicial Resistance to Federal Economic Intervention",
           "summary": "Federal courts increasingly struck down regulatory measures, reflecting conservative jurisprudence that limited federal power.",
-          "severity": -3,
-          "contribution": -3
+          "severity": -2.5,
+          "contribution": -2.5
         },
         {
           "event": "Appointment of Chief Justice Charles Evans Hughes",
@@ -17635,7 +17635,7 @@
       "legislation": [],
       "misconduct": []
     },
-    "lastUpdated": "2026-03-02T01:19:05.101Z"
+    "lastUpdated": "2026-03-02T01:25:42.475Z"
   },
   {
     "id": 32,
@@ -18180,7 +18180,7 @@
       "subcategories": {}
     },
     "categoryScores": {
-      "crisisManagement": 0,
+      "crisisManagement": 4,
       "domesticPolicy": 10,
       "economicPolicy": 0,
       "foreignPolicy": 0,
@@ -18188,8 +18188,8 @@
       "legislation": 6,
       "misconduct": 0
     },
-    "eraNormalizedScore": 3.62,
-    "powerScore": 36.2,
+    "eraNormalizedScore": 4.34,
+    "powerScore": 43.4,
     "summaries": {
       "crisisManagement": "",
       "domesticPolicy": "",
@@ -18252,8 +18252,8 @@
         {
           "event": "Wartime Inflation Pressures (1942–1945)",
           "summary": "Massive wartime production strained supply chains and required federal price controls.",
-          "severity": -6,
-          "contribution": -6
+          "severity": -5,
+          "contribution": -5
         },
         {
           "event": "Giuseppe Zangara Assassination Attempt (1933)",
@@ -18264,14 +18264,14 @@
         {
           "event": "Japanese Internment Crisis (1942–1945)",
           "summary": "FDR ordered the internment of over 100,000 Japanese Americans, creating a major civil liberties crisis.",
-          "severity": -6,
-          "contribution": -6
+          "severity": -5,
+          "contribution": -5
         },
         {
           "event": "Great Depression Crisis Conditions",
           "summary": "Roosevelt inherited massive unemployment, widespread bank failures, and economic collapse, prompting urgent federal action.",
-          "severity": -6,
-          "contribution": -6
+          "severity": -5,
+          "contribution": -5
         },
         {
           "event": "Great Depression Crisis Conditions",
@@ -18324,16 +18324,16 @@
         {
           "event": "Japanese American Internment",
           "summary": "FDR signed Executive Order 9066, authorizing the forced relocation and incarceration of over 120,000 Japanese Americans. Historians widely regard this as a major civil liberties violation rooted in wartime hysteria and racial prejudice.",
-          "severity": -6,
-          "contribution": -6
+          "severity": -5,
+          "contribution": -5
         }
       ],
       "domesticPolicy": [
         {
           "event": "Labor Strikes Wave (1934–1937)",
           "summary": "Massive strikes, including the Minneapolis Teamsters Strike and the Flint Sit‑Down Strike, led to violent clashes and federal intervention.",
-          "severity": -3,
-          "contribution": -3
+          "severity": -2.5,
+          "contribution": -2.5
         },
         {
           "event": "German U‑Boat Attacks on U.S. Shipping (1941)",
@@ -18416,7 +18416,7 @@
       ],
       "misconduct": []
     },
-    "lastUpdated": "2026-03-02T01:19:05.101Z"
+    "lastUpdated": "2026-03-02T01:25:42.475Z"
   },
   {
     "id": 33,
@@ -18866,16 +18866,16 @@
       "subcategories": {}
     },
     "categoryScores": {
-      "crisisManagement": -3,
-      "domesticPolicy": -3,
+      "crisisManagement": -2.5,
+      "domesticPolicy": -2.5,
       "economicPolicy": 0,
       "foreignPolicy": 10,
       "judicialPolicy": 0,
       "legislation": 0,
       "misconduct": 0
     },
-    "eraNormalizedScore": 0.65,
-    "powerScore": 6.5,
+    "eraNormalizedScore": 0.83,
+    "powerScore": 8.3,
     "summaries": {
       "crisisManagement": "",
       "domesticPolicy": "",
@@ -18980,8 +18980,8 @@
         {
           "event": "National Security Act (1947)",
           "summary": "Created Department of Defense, CIA, National Security Council, and Joint Chiefs structure—reorganized U.S. military/intelligence for Cold War era; enduring framework.",
-          "severity": -3,
-          "contribution": -3
+          "severity": -2.5,
+          "contribution": -2.5
         },
         {
           "event": "Employment Act of 1946",
@@ -19006,8 +19006,8 @@
         {
           "event": "Use of Atomic Bombs (Ethical Controversy)",
           "summary": "Truman authorized the atomic bombings of Hiroshima and Nagasaki. While not misconduct in a legal sense, historians debate the ethical justification and necessity of the bombings.",
-          "severity": -3,
-          "contribution": -3
+          "severity": -2.5,
+          "contribution": -2.5
         }
       ],
       "economicPolicy": [],
@@ -19054,7 +19054,7 @@
       "legislation": [],
       "misconduct": []
     },
-    "lastUpdated": "2026-03-02T01:19:05.102Z"
+    "lastUpdated": "2026-03-02T01:25:42.476Z"
   },
   {
     "id": 34,
@@ -19493,16 +19493,16 @@
       "subcategories": {}
     },
     "categoryScores": {
-      "crisisManagement": -9,
-      "domesticPolicy": 6,
+      "crisisManagement": -7.5,
+      "domesticPolicy": 6.5,
       "economicPolicy": 0,
-      "foreignPolicy": -3,
+      "foreignPolicy": -2.5,
       "judicialPolicy": 6,
       "legislation": 0,
       "misconduct": 0
     },
-    "eraNormalizedScore": -0.39,
-    "powerScore": -3.9,
+    "eraNormalizedScore": 0.05,
+    "powerScore": 0.5,
     "summaries": {
       "crisisManagement": "",
       "domesticPolicy": "",
@@ -19541,8 +19541,8 @@
         {
           "event": "Recession of 1953–1954",
           "summary": "A post‑Korean War recession caused unemployment and industrial slowdown.",
-          "severity": -6,
-          "contribution": -6
+          "severity": -5,
+          "contribution": -5
         },
         {
           "event": "Recession of 1957–1958",
@@ -19577,8 +19577,8 @@
         {
           "event": "CIA Operations in Iran and Guatemala",
           "summary": "Eisenhower authorized covert operations to overthrow governments in Iran (1953) and Guatemala (1954), expanding U.S. Cold War interventionism and shaping long-term regional dynamics.",
-          "severity": -3,
-          "contribution": -3
+          "severity": -2.5,
+          "contribution": -2.5
         },
         {
           "event": "Little Rock Integration Crisis (1957)",
@@ -19603,8 +19603,8 @@
         {
           "event": "Intervention in Lebanon (1958)",
           "summary": "Eisenhower deployed U.S. forces to Lebanon to stabilize the government and prevent perceived communist influence, demonstrating the application of the Eisenhower Doctrine.",
-          "severity": -3,
-          "contribution": -3
+          "severity": -2.5,
+          "contribution": -2.5
         },
         {
           "event": "Eisenhower Doctrine Aid Programs",
@@ -19642,8 +19642,8 @@
         {
           "event": "Taiwan Strait Crises (1954–1955, 1958)",
           "summary": "China shelled islands controlled by Taiwan, triggering U.S. military intervention and nuclear threats.",
-          "severity": -3,
-          "contribution": -3
+          "severity": -2.5,
+          "contribution": -2.5
         }
       ],
       "judicialPolicy": [
@@ -19675,7 +19675,7 @@
       "legislation": [],
       "misconduct": []
     },
-    "lastUpdated": "2026-03-02T01:19:05.102Z"
+    "lastUpdated": "2026-03-02T01:25:42.476Z"
   },
   {
     "id": 35,
@@ -20265,7 +20265,7 @@
       "legislation": [],
       "misconduct": []
     },
-    "lastUpdated": "2026-03-02T01:19:05.102Z"
+    "lastUpdated": "2026-03-02T01:25:42.476Z"
   },
   {
     "id": 36,
@@ -20774,8 +20774,8 @@
         {
           "event": "Vietnam War Legitimacy Crisis (1965–1968)",
           "summary": "Johnson’s escalation of the Vietnam War without a formal declaration created a political legitimacy crisis, fueling public distrust and congressional backlash.",
-          "severity": -6,
-          "contribution": -6
+          "severity": -5,
+          "contribution": -5
         },
         {
           "event": "Nationwide Urban Riots (1967)",
@@ -20804,8 +20804,8 @@
         {
           "event": "Vietnam War Escalation (1964–1968)",
           "summary": "Johnson dramatically expanded U.S. involvement, leading to massive casualties, political backlash, and global instability.",
-          "severity": -6,
-          "contribution": -6
+          "severity": -5,
+          "contribution": -5
         },
         {
           "event": "USS Pueblo Crew Captivity (1968)",
@@ -20816,8 +20816,8 @@
         {
           "event": "Vietnam‑Driven Inflation Crisis (1966–1968)",
           "summary": "War spending and Great Society programs contributed to rising inflation and economic instability.",
-          "severity": -6,
-          "contribution": -6
+          "severity": -5,
+          "contribution": -5
         },
         {
           "event": "Domestic Bombings by Radical Groups (1967–1968)",
@@ -20834,8 +20834,8 @@
         {
           "event": "Vietnam War Spending Surge",
           "summary": "Massive defense spending stimulated economic growth but contributed to rising inflation and federal deficits as the war escalated.",
-          "severity": -6,
-          "contribution": -6
+          "severity": -5,
+          "contribution": -5
         },
         {
           "event": "War on Poverty and Social Spending Expansion",
@@ -20852,8 +20852,8 @@
         {
           "event": "Vietnam War Escalation (1964–1968)",
           "summary": "Johnson dramatically increased U.S. troop levels in Vietnam following the Gulf of Tonkin incident, committing the nation to a prolonged and increasingly controversial conflict.",
-          "severity": -6,
-          "contribution": -6
+          "severity": -5,
+          "contribution": -5
         },
         {
           "event": "Gulf of Tonkin Resolution (1964)",
@@ -20870,8 +20870,8 @@
         {
           "event": "Gulf of Tonkin Misrepresentation",
           "summary": "Johnson used disputed reports of attacks on U.S. ships to secure the Gulf of Tonkin Resolution, dramatically escalating the Vietnam War. Historians widely document that the administration overstated or misrepresented key details.",
-          "severity": -6,
-          "contribution": -6
+          "severity": -5,
+          "contribution": -5
         }
       ],
       "domesticPolicy": [
@@ -20952,7 +20952,7 @@
         }
       ]
     },
-    "lastUpdated": "2026-03-02T01:19:05.102Z"
+    "lastUpdated": "2026-03-02T01:25:42.477Z"
   },
   {
     "id": 37,
@@ -21427,8 +21427,8 @@
       "legislation": 0,
       "misconduct": -10
     },
-    "eraNormalizedScore": -1.99,
-    "powerScore": -19.9,
+    "eraNormalizedScore": 0,
+    "powerScore": 0,
     "summaries": {
       "crisisManagement": "",
       "domesticPolicy": "",
@@ -21449,14 +21449,14 @@
         {
           "event": "Anti‑War Protests and Campus Riots (1969–1973)",
           "summary": "Millions protested the Vietnam War, leading to clashes with police, mass arrests, and widespread unrest.",
-          "severity": -6,
-          "contribution": -6
+          "severity": -5,
+          "contribution": -5
         },
         {
           "event": "Energy Crisis (1973)",
           "summary": "The OPEC oil embargo caused fuel shortages, rationing, and economic disruption across the country.",
-          "severity": -3,
-          "contribution": -3
+          "severity": -2.5,
+          "contribution": -2.5
         },
         {
           "event": "Yom Kippur War Crisis (1973)",
@@ -21467,8 +21467,8 @@
         {
           "event": "Vietnam War Final Phase (1969–1973)",
           "summary": "Nixon escalated bombing campaigns and expanded the war into Cambodia and Laos before negotiating withdrawal.",
-          "severity": -6,
-          "contribution": -6
+          "severity": -5,
+          "contribution": -5
         },
         {
           "event": "Soviet–U.S. Nuclear Tensions (1969–1974)",
@@ -21485,8 +21485,8 @@
         {
           "event": "Stagflation Crisis (1971–1974)",
           "summary": "High inflation combined with stagnant growth created a new and severe economic crisis.",
-          "severity": -6,
-          "contribution": -6
+          "severity": -5,
+          "contribution": -5
         },
         {
           "event": "Assassination Attempt by Arthur Bremer (1972)",
@@ -21503,20 +21503,20 @@
         {
           "event": "Anti-War and Social Protests",
           "summary": "Nationwide protests against the Vietnam War and social inequality shaped domestic politics and public opinion.",
-          "severity": -6,
-          "contribution": -6
+          "severity": -5,
+          "contribution": -5
         },
         {
           "event": "1973 Oil Crisis",
           "summary": "An OPEC oil embargo caused energy shortages, soaring fuel prices, and recession, intensifying inflationary pressures and contributing to stagflation.",
-          "severity": -6,
-          "contribution": -6
+          "severity": -5,
+          "contribution": -5
         },
         {
           "event": "Cambodia and Laos Bombing Campaigns",
           "summary": "Nixon expanded the Vietnam War into Cambodia and Laos to disrupt North Vietnamese supply lines, escalating the conflict regionally while pursuing Vietnamization.",
-          "severity": -6,
-          "contribution": -6
+          "severity": -5,
+          "contribution": -5
         },
         {
           "event": "Opening to China (1972)",
@@ -21592,20 +21592,20 @@
         {
           "event": "Watergate Scandal and Resignation (1972–1974)",
           "summary": "The Watergate break‑in and subsequent cover‑up triggered a constitutional crisis involving executive privilege, criminal investigations, and impeachment proceedings. Nixon resigned to avoid removal from office.",
-          "severity": -6,
-          "contribution": 6
+          "severity": -5,
+          "contribution": 5
         },
         {
           "event": "Watergate Scandal",
           "summary": "A break-in at the Democratic National Committee headquarters and subsequent cover-up led to a constitutional crisis and Nixon’s resignation.",
-          "severity": -6,
-          "contribution": 6
+          "severity": -5,
+          "contribution": 5
         },
         {
           "event": "Watergate Scandal (Proven Criminal Misconduct)",
           "summary": "Nixon’s administration orchestrated a break‑in at the DNC headquarters and attempted to cover it up. Nixon resigned under threat of impeachment, and the scandal remains one of the most significant abuses of presidential power in U.S. history.",
-          "severity": -6,
-          "contribution": 6
+          "severity": -5,
+          "contribution": 5
         },
         {
           "event": "Use of Federal Agencies Against Political Enemies",
@@ -21615,7 +21615,7 @@
         }
       ]
     },
-    "lastUpdated": "2026-03-02T01:19:05.103Z"
+    "lastUpdated": "2026-03-02T01:25:42.477Z"
   },
   {
     "id": 38,
@@ -22019,15 +22019,15 @@
     },
     "categoryScores": {
       "crisisManagement": -10,
-      "domesticPolicy": -6,
+      "domesticPolicy": -5,
       "economicPolicy": 0,
       "foreignPolicy": 0,
       "judicialPolicy": 0,
       "legislation": 0,
       "misconduct": -10
     },
-    "eraNormalizedScore": -3.52,
-    "powerScore": -35.2,
+    "eraNormalizedScore": 0,
+    "powerScore": 0,
     "summaries": {
       "crisisManagement": "",
       "domesticPolicy": "",
@@ -22048,8 +22048,8 @@
         {
           "event": "Fall of Saigon (1975)",
           "summary": "The collapse of South Vietnam forced a massive evacuation of U.S. personnel and allies, marking a major foreign‑policy crisis.",
-          "severity": -6,
-          "contribution": -6
+          "severity": -5,
+          "contribution": -5
         },
         {
           "event": "Recession of 1973–1975",
@@ -22060,8 +22060,8 @@
         {
           "event": "Stagflation Crisis (1974–1976)",
           "summary": "High inflation and stagnant growth continued, undermining Ford’s economic agenda.",
-          "severity": -6,
-          "contribution": -6
+          "severity": -5,
+          "contribution": -5
         },
         {
           "event": "Lynette Squeaky Fromme and Sara Jane Moore Assassination Attempts (1975)",
@@ -22072,14 +22072,14 @@
         {
           "event": "1974–1975 Recession",
           "summary": "A deep recession caused rising unemployment and declining industrial output, challenging Ford’s economic leadership.",
-          "severity": -6,
-          "contribution": -6
+          "severity": -5,
+          "contribution": -5
         },
         {
           "event": "1974–1975 Recession",
           "summary": "A deep recession caused rising unemployment, falling industrial output, and declining consumer spending.",
-          "severity": -6,
-          "contribution": -6
+          "severity": -5,
+          "contribution": -5
         },
         {
           "event": "Stagflation Crisis",
@@ -22090,8 +22090,8 @@
         {
           "event": "Mayagüez Incident (1975)",
           "summary": "Ford authorized a rescue mission after Cambodian forces seized the SS Mayagüez, resulting in the recovery of the ship and crew. The operation demonstrated U.S. resolve despite the chaotic end of the Vietnam War.",
-          "severity": -6,
-          "contribution": -6
+          "severity": -5,
+          "contribution": -5
         }
       ],
       "domesticPolicy": [
@@ -22104,8 +22104,8 @@
         {
           "event": "Final Withdrawal from Vietnam (1975)",
           "summary": "Ford oversaw the evacuation of U.S. personnel and allies during the fall of Saigon, marking the end of American involvement in Vietnam and symbolizing the collapse of South Vietnam.",
-          "severity": -6,
-          "contribution": -6
+          "severity": -5,
+          "contribution": -5
         },
         {
           "event": "United States v. Nixon Aftermath",
@@ -22148,36 +22148,36 @@
         {
           "event": "Watergate Aftermath and Legitimacy Crisis (1974–1975)",
           "summary": "Ford assumed office without election after Nixon’s resignation. His pardon of Nixon triggered national outrage and a legitimacy crisis.",
-          "severity": -6,
-          "contribution": 6
+          "severity": -5,
+          "contribution": 5
         },
         {
           "event": "Nixon Pardon Controversy",
           "summary": "Ford pardoned Richard Nixon for crimes related to Watergate, sparking national outrage and political backlash.",
-          "severity": -6,
-          "contribution": 6
+          "severity": -5,
+          "contribution": 5
         },
         {
           "event": "Post-Watergate Judicial Oversight",
           "summary": "Federal courts continued to adjudicate cases involving executive power, corruption, and constitutional accountability.",
-          "severity": -6,
-          "contribution": 6
+          "severity": -5,
+          "contribution": 5
         },
         {
           "event": "Privacy Act (1974)",
           "summary": "Established protections for individuals' records held by federal agencies (access, amendment rights)—key post-Watergate privacy safeguard still governing federal data handling.",
-          "severity": -6,
-          "contribution": 6
+          "severity": -5,
+          "contribution": 5
         },
         {
           "event": "Pardon of Richard Nixon (Ethically Controversial)",
           "summary": "Ford pardoned Nixon shortly after taking office. While no evidence of a secret deal has been proven, the timing led to widespread suspicion of political favoritism.",
-          "severity": -3,
-          "contribution": 3
+          "severity": -2.5,
+          "contribution": 2.5
         }
       ]
     },
-    "lastUpdated": "2026-03-02T01:19:05.103Z"
+    "lastUpdated": "2026-03-02T01:25:42.478Z"
   },
   {
     "id": 39,
@@ -22624,7 +22624,7 @@
       "subcategories": {}
     },
     "categoryScores": {
-      "crisisManagement": -9,
+      "crisisManagement": -7.5,
       "domesticPolicy": 3,
       "economicPolicy": -10,
       "foreignPolicy": 0,
@@ -22632,8 +22632,8 @@
       "legislation": 0,
       "misconduct": -4
     },
-    "eraNormalizedScore": -3.09,
-    "powerScore": -30.9,
+    "eraNormalizedScore": 0,
+    "powerScore": 0,
     "summaries": {
       "crisisManagement": "",
       "domesticPolicy": "",
@@ -22654,8 +22654,8 @@
         {
           "event": "Soviet Invasion of Afghanistan (1979)",
           "summary": "The invasion triggered a major Cold War crisis. Carter responded with sanctions, a grain embargo, and the Olympic boycott.",
-          "severity": -3,
-          "contribution": -3
+          "severity": -2.5,
+          "contribution": -2.5
         },
         {
           "event": "Failed Operation Eagle Claw (1980)",
@@ -22672,8 +22672,8 @@
         {
           "event": "Stagflation Crisis (1977–1980)",
           "summary": "Carter inherited severe inflation, which worsened due to oil shocks and monetary instability.",
-          "severity": -6,
-          "contribution": -6
+          "severity": -5,
+          "contribution": -5
         },
         {
           "event": "1979 Energy Crisis",
@@ -22754,14 +22754,14 @@
         {
           "event": "Inflation and Economic Malaise",
           "summary": "High inflation, unemployment, and interest rates created widespread frustration and declining confidence in government.",
-          "severity": -6,
-          "contribution": -6
+          "severity": -5,
+          "contribution": -5
         },
         {
           "event": "High Inflation and Economic Malaise",
           "summary": "Inflation, unemployment, and interest rates all rose, creating widespread economic frustration and declining consumer confidence.",
-          "severity": -6,
-          "contribution": -6
+          "severity": -5,
+          "contribution": -5
         }
       ],
       "foreignPolicy": [
@@ -22808,7 +22808,7 @@
         }
       ]
     },
-    "lastUpdated": "2026-03-02T01:19:05.104Z"
+    "lastUpdated": "2026-03-02T01:25:42.478Z"
   },
   {
     "id": 40,
@@ -23271,7 +23271,7 @@
       "subcategories": {}
     },
     "categoryScores": {
-      "crisisManagement": -6,
+      "crisisManagement": -4,
       "domesticPolicy": 0,
       "economicPolicy": 0,
       "foreignPolicy": 0,
@@ -23279,8 +23279,8 @@
       "legislation": 0,
       "misconduct": -4
     },
-    "eraNormalizedScore": -1.36,
-    "powerScore": -13.6,
+    "eraNormalizedScore": 0,
+    "powerScore": 0,
     "summaries": {
       "crisisManagement": "",
       "domesticPolicy": "",
@@ -23325,8 +23325,8 @@
         {
           "event": "Recession of 1981–1982",
           "summary": "A severe recession caused unemployment to exceed 10%, creating widespread economic hardship.",
-          "severity": -6,
-          "contribution": -6
+          "severity": -5,
+          "contribution": -5
         },
         {
           "event": "Assassination Attempt on Reagan (1981)",
@@ -23343,8 +23343,8 @@
         {
           "event": "1981–1982 Recession",
           "summary": "A severe recession caused by tight monetary policy led to high unemployment before a strong recovery began.",
-          "severity": -6,
-          "contribution": -6
+          "severity": -5,
+          "contribution": -5
         },
         {
           "event": "War on Drugs Expansion",
@@ -23460,7 +23460,7 @@
         }
       ]
     },
-    "lastUpdated": "2026-03-02T01:19:05.104Z"
+    "lastUpdated": "2026-03-02T01:25:42.478Z"
   },
   {
     "id": 41,
@@ -23900,10 +23900,10 @@
       "foreignPolicy": 0,
       "judicialPolicy": 0,
       "legislation": 0,
-      "misconduct": -6
+      "misconduct": -5
     },
-    "eraNormalizedScore": 0.6,
-    "powerScore": 6,
+    "eraNormalizedScore": 0.67,
+    "powerScore": 6.7,
     "summaries": {
       "crisisManagement": "",
       "domesticPolicy": "",
@@ -24068,12 +24068,12 @@
         {
           "event": "Iran‑Contra Pardons",
           "summary": "Bush pardoned several officials involved in Iran‑Contra, prompting accusations of obstructing accountability. Bush himself had been vice president during the scandal.",
-          "severity": -6,
-          "contribution": 6
+          "severity": -5,
+          "contribution": 5
         }
       ]
     },
-    "lastUpdated": "2026-03-02T01:19:05.104Z"
+    "lastUpdated": "2026-03-02T01:25:42.479Z"
   },
   {
     "id": 42,
@@ -24547,16 +24547,16 @@
       "subcategories": {}
     },
     "categoryScores": {
-      "crisisManagement": 0,
-      "domesticPolicy": -3,
+      "crisisManagement": 0.5,
+      "domesticPolicy": -2.5,
       "economicPolicy": 0,
       "foreignPolicy": 0,
       "judicialPolicy": 0,
       "legislation": 0,
       "misconduct": -10
     },
-    "eraNormalizedScore": -1.21,
-    "powerScore": -12.1,
+    "eraNormalizedScore": 0,
+    "powerScore": 0,
     "summaries": {
       "crisisManagement": "",
       "domesticPolicy": "",
@@ -24607,8 +24607,8 @@
         {
           "event": "NATO Intervention in Kosovo (1999)",
           "summary": "Clinton authorized U.S. participation in NATO airstrikes to stop ethnic cleansing in Kosovo, marking a major humanitarian intervention and reinforcing NATO’s post‑Cold War role.",
-          "severity": -3,
-          "contribution": -3
+          "severity": -2.5,
+          "contribution": -2.5
         },
         {
           "event": "NATO Expansion (1999)",
@@ -24627,8 +24627,8 @@
         {
           "event": "Bosnia and Kosovo Crises (1994–1999)",
           "summary": "Ethnic cleansing and regional conflict in the Balkans required U.S. diplomatic and military intervention.",
-          "severity": -3,
-          "contribution": -3
+          "severity": -2.5,
+          "contribution": -2.5
         },
         {
           "event": "1993 World Trade Center Bombing",
@@ -24727,24 +24727,24 @@
         {
           "event": "Impeachment Crisis (1998–1999)",
           "summary": "Clinton was impeached by the House on charges of perjury and obstruction of justice. The Senate acquitted him, but the crisis consumed national politics.",
-          "severity": -6,
-          "contribution": 6
+          "severity": -5,
+          "contribution": 5
         },
         {
           "event": "Impeachment Proceedings (1998–1999)",
           "summary": "Clinton was impeached by the House on charges of perjury and obstruction of justice but acquitted by the Senate, creating intense national controversy.",
-          "severity": -6,
-          "contribution": 6
+          "severity": -5,
+          "contribution": 5
         },
         {
           "event": "Lewinsky Scandal and Impeachment",
           "summary": "Clinton engaged in an affair with White House intern Monica Lewinsky and later lied under oath about the relationship, leading to impeachment for perjury and obstruction of justice.",
-          "severity": -6,
-          "contribution": 6
+          "severity": -5,
+          "contribution": 5
         }
       ]
     },
-    "lastUpdated": "2026-03-02T01:19:05.105Z"
+    "lastUpdated": "2026-03-02T01:25:42.479Z"
   },
   {
     "id": 43,
@@ -25255,15 +25255,15 @@
     },
     "categoryScores": {
       "crisisManagement": -10,
-      "domesticPolicy": 0,
+      "domesticPolicy": 1,
       "economicPolicy": 0,
       "foreignPolicy": 0,
       "judicialPolicy": 0,
       "legislation": 0,
       "misconduct": 0
     },
-    "eraNormalizedScore": -1.8,
-    "powerScore": -18,
+    "eraNormalizedScore": 0,
+    "powerScore": 0,
     "summaries": {
       "crisisManagement": "",
       "domesticPolicy": "",
@@ -25296,8 +25296,8 @@
         {
           "event": "Iraq WMD Intelligence Crisis (2003–2004)",
           "summary": "The failure to find weapons of mass destruction undermined U.S. credibility and triggered global backlash.",
-          "severity": -3,
-          "contribution": -3
+          "severity": -2.5,
+          "contribution": -2.5
         },
         {
           "event": "War in Afghanistan (2001–2009)",
@@ -25320,8 +25320,8 @@
         {
           "event": "Global Financial Crisis (2007–2008)",
           "summary": "A collapse in housing markets and financial institutions triggered the worst economic crisis since the Great Depression.",
-          "severity": -6,
-          "contribution": -6
+          "severity": -5,
+          "contribution": -5
         },
         {
           "event": "Great Recession (2007–2009)",
@@ -25344,8 +25344,8 @@
         {
           "event": "Great Recession (2007–2009)",
           "summary": "A collapse in housing prices and financial markets triggered the worst economic crisis since the Great Depression.",
-          "severity": -6,
-          "contribution": -6
+          "severity": -5,
+          "contribution": -5
         },
         {
           "event": "2001–2003 Tax Cuts and Economic Recovery",
@@ -25356,8 +25356,8 @@
         {
           "event": "2007–2008 Subprime Mortgage Crisis and Great Recession",
           "summary": "A housing bubble burst triggered widespread foreclosures, banking failures (e.g., Lehman Brothers), credit freeze, and the deepest recession since the Great Depression, with massive job losses and stock market collapse.",
-          "severity": -6,
-          "contribution": -6
+          "severity": -5,
+          "contribution": -5
         },
         {
           "event": "War in Afghanistan (2001–)",
@@ -25386,14 +25386,14 @@
         {
           "event": "USA PATRIOT Act (2001)",
           "summary": "Expanded surveillance, intelligence sharing, and counterterrorism powers (roving wiretaps, national security letters)—transformed post-9/11 security but raised civil liberties concerns.",
-          "severity": -3,
-          "contribution": -3
+          "severity": -2.5,
+          "contribution": -2.5
         },
         {
           "event": "Iraq War Intelligence Controversy",
           "summary": "The Bush administration presented intelligence about weapons of mass destruction in Iraq that was later proven inaccurate. Historians debate whether this was deliberate misrepresentation or intelligence failure, but the controversy remains central to assessments of his presidency.",
-          "severity": -3,
-          "contribution": -3
+          "severity": -2.5,
+          "contribution": -2.5
         }
       ],
       "domesticPolicy": [
@@ -25424,8 +25424,8 @@
         {
           "event": "No Child Left Behind Act (2002)",
           "summary": "Required annual testing, school accountability, and teacher qualifications—aimed to close achievement gaps; bipartisan but criticized for unfunded mandates and overemphasis on testing.",
-          "severity": -6,
-          "contribution": -6
+          "severity": -5,
+          "contribution": -5
         },
         {
           "event": "Medicare Prescription Drug, Improvement, and Modernization Act (2003)",
@@ -25473,7 +25473,7 @@
       ],
       "misconduct": []
     },
-    "lastUpdated": "2026-03-02T01:19:05.105Z"
+    "lastUpdated": "2026-03-02T01:25:42.480Z"
   },
   {
     "id": 44,
@@ -25970,15 +25970,15 @@
     },
     "categoryScores": {
       "crisisManagement": -10,
-      "domesticPolicy": -3,
-      "economicPolicy": -6,
+      "domesticPolicy": -1.5,
+      "economicPolicy": -5,
       "foreignPolicy": 0,
       "judicialPolicy": 0,
       "legislation": 0,
       "misconduct": 0
     },
-    "eraNormalizedScore": -3.33,
-    "powerScore": -33.3,
+    "eraNormalizedScore": 0,
+    "powerScore": 0,
     "summaries": {
       "crisisManagement": "",
       "domesticPolicy": "",
@@ -26005,8 +26005,8 @@
         {
           "event": "H1N1 Pandemic (2009)",
           "summary": "A global flu pandemic required rapid vaccine development and emergency public‑health measures.",
-          "severity": -6,
-          "contribution": -6
+          "severity": -5,
+          "contribution": -5
         },
         {
           "event": "Russian Annexation of Crimea (2014)",
@@ -26023,8 +26023,8 @@
         {
           "event": "Great Recession Aftermath (2009–2011)",
           "summary": "Obama inherited the worst economic crisis since the Great Depression and implemented stimulus measures to stabilize the economy.",
-          "severity": -6,
-          "contribution": -6
+          "severity": -5,
+          "contribution": -5
         },
         {
           "event": "Unaccompanied Minor Border Surge (2014)",
@@ -26053,8 +26053,8 @@
         {
           "event": "Intervention in Libya (2011)",
           "summary": "Obama supported NATO airstrikes against Muammar Gaddafi’s forces during the Libyan civil war.",
-          "severity": -3,
-          "contribution": -3
+          "severity": -2.5,
+          "contribution": -2.5
         },
         {
           "event": "American Recovery and Reinvestment Act (2009)",
@@ -26065,8 +26065,8 @@
         {
           "event": "Drone Strike Civilian Casualties",
           "summary": "Obama expanded drone warfare, resulting in civilian casualties. While legal under U.S. policy, the program drew significant ethical criticism.",
-          "severity": -3,
-          "contribution": -3
+          "severity": -2.5,
+          "contribution": -2.5
         }
       ],
       "domesticPolicy": [
@@ -26085,14 +26085,14 @@
         {
           "event": "Benghazi Attack (2012)",
           "summary": "Militants attacked the U.S. consulate in Libya, killing four Americans and triggering political controversy.",
-          "severity": -3,
-          "contribution": -3
+          "severity": -2.5,
+          "contribution": -2.5
         },
         {
           "event": "Auto Industry Collapse (2009)",
           "summary": "General Motors and Chrysler faced bankruptcy, requiring federal intervention to prevent economic collapse.",
-          "severity": -6,
-          "contribution": -6
+          "severity": -5,
+          "contribution": -5
         },
         {
           "event": "Boston Marathon Bombing (2013)",
@@ -26147,8 +26147,8 @@
         {
           "event": "National Federation of Independent Business v. Sebelius (2012)",
           "summary": "The Supreme Court upheld the Affordable Care Act’s individual mandate as a tax, preserving Obama’s signature domestic policy.",
-          "severity": -6,
-          "contribution": -6
+          "severity": -5,
+          "contribution": -5
         }
       ],
       "foreignPolicy": [],
@@ -26175,7 +26175,7 @@
       "legislation": [],
       "misconduct": []
     },
-    "lastUpdated": "2026-03-02T01:19:05.106Z"
+    "lastUpdated": "2026-03-02T01:25:42.481Z"
   },
   {
     "id": 45,
@@ -26671,15 +26671,15 @@
     },
     "categoryScores": {
       "crisisManagement": -10,
-      "domesticPolicy": 0,
+      "domesticPolicy": 0.5,
       "economicPolicy": 0,
       "foreignPolicy": 0,
       "judicialPolicy": 0,
       "legislation": 0,
       "misconduct": -10
     },
-    "eraNormalizedScore": -2.5,
-    "powerScore": -25,
+    "eraNormalizedScore": 0,
+    "powerScore": 0,
     "summaries": {
       "crisisManagement": "",
       "domesticPolicy": "",
@@ -26706,8 +26706,8 @@
         {
           "event": "COVID‑19 Pandemic (2020–2021)",
           "summary": "A global pandemic caused mass casualties, overwhelmed hospitals, and triggered economic shutdowns. The federal response became a major political, logistical, and public‑health crisis.",
-          "severity": -6,
-          "contribution": -6
+          "severity": -5,
+          "contribution": -5
         },
         {
           "event": "Western Wildfire Crisis (2017–2020)",
@@ -26736,14 +26736,14 @@
         {
           "event": "COVID‑19 Market Crash (2020)",
           "summary": "The pandemic triggered one of the fastest stock market collapses in U.S. history, wiping out trillions in value within weeks.",
-          "severity": -6,
-          "contribution": -6
+          "severity": -5,
+          "contribution": -5
         },
         {
           "event": "COVID‑19 Recession (2020)",
           "summary": "Lockdowns and economic shutdowns caused massive unemployment, business closures, and the sharpest quarterly GDP contraction on record.",
-          "severity": -6,
-          "contribution": -6
+          "severity": -5,
+          "contribution": -5
         },
         {
           "event": "U.S.–China Trade War (2018–2020)",
@@ -26760,8 +26760,8 @@
         {
           "event": "COVID‑19 Pandemic",
           "summary": "The pandemic caused mass unemployment, school closures, and major public health challenges, prompting large-scale federal relief efforts.",
-          "severity": -6,
-          "contribution": -6
+          "severity": -5,
+          "contribution": -5
         },
         {
           "event": "Protests and Social Unrest (2020)",
@@ -26772,14 +26772,14 @@
         {
           "event": "Pre‑Pandemic Economic Expansion",
           "summary": "The economy experienced low unemployment, rising wages, and strong stock market performance from 2017 to early 2020.",
-          "severity": -6,
-          "contribution": -6
+          "severity": -5,
+          "contribution": -5
         },
         {
           "event": "COVID‑19 Pandemic Economic Collapse",
           "summary": "The pandemic triggered mass layoffs, business shutdowns, and severe disruptions to global supply chains, prompting massive federal stimulus.",
-          "severity": -6,
-          "contribution": -6
+          "severity": -5,
+          "contribution": -5
         },
         {
           "event": "U.S.–China Trade War",
@@ -26796,8 +26796,8 @@
         {
           "event": "CARES Act (2020)",
           "summary": "$2.2T COVID relief with direct payments ($1,200), PPP loans, enhanced unemployment ($600/week)—largest single relief package in history; critical pandemic response.",
-          "severity": -6,
-          "contribution": -6
+          "severity": -5,
+          "contribution": -5
         }
       ],
       "domesticPolicy": [
@@ -26810,8 +26810,8 @@
         {
           "event": "Strike on Qasem Soleimani (2020)",
           "summary": "Trump ordered a drone strike killing Iranian General Qasem Soleimani, escalating U.S.–Iran tensions.",
-          "severity": -3,
-          "contribution": -3
+          "severity": -2.5,
+          "contribution": -2.5
         },
         {
           "event": "Multiple Ongoing Legal Investigations (Documented, Not All Resolved)",
@@ -26867,24 +26867,24 @@
         {
           "event": "Impeachment Crises (2019, 2021)",
           "summary": "Trump was impeached twice—first over Ukraine and later over the January 6 attack—creating major political upheaval and deepening partisan divisions.",
-          "severity": -6,
-          "contribution": 6
+          "severity": -5,
+          "contribution": 5
         },
         {
           "event": "Impeachment for Abuse of Power and Obstruction of Congress",
           "summary": "Trump was impeached in 2019 for allegedly pressuring Ukraine to investigate a political rival and obstructing congressional investigations. He was acquitted by the Senate.",
-          "severity": -6,
-          "contribution": 6
+          "severity": -5,
+          "contribution": 5
         },
         {
           "event": "Second Impeachment for Incitement of Insurrection",
           "summary": "Trump was impeached again in 2021 for allegedly inciting the January 6 attack on the U.S. Capitol. He was acquitted by the Senate.",
-          "severity": -6,
-          "contribution": 6
+          "severity": -5,
+          "contribution": 5
         }
       ]
     },
-    "lastUpdated": "2026-03-02T01:19:05.107Z"
+    "lastUpdated": "2026-03-02T01:25:42.481Z"
   },
   {
     "id": 46,
@@ -27537,15 +27537,15 @@
     },
     "categoryScores": {
       "crisisManagement": -10,
-      "domesticPolicy": -9,
+      "domesticPolicy": -6.5,
       "economicPolicy": 6,
-      "foreignPolicy": -6,
+      "foreignPolicy": -5,
       "judicialPolicy": 0,
       "legislation": 0,
       "misconduct": 0
     },
-    "eraNormalizedScore": -3.33,
-    "powerScore": -33.3,
+    "eraNormalizedScore": 0,
+    "powerScore": 0,
     "summaries": {
       "crisisManagement": "",
       "domesticPolicy": "",
@@ -27572,8 +27572,8 @@
         {
           "event": "COVID‑19 Pandemic Continuation (2021–2022)",
           "summary": "Biden inherited a severe pandemic with high death rates and strained hospitals, overseeing mass vaccination campaigns and emergency public‑health measures.",
-          "severity": -6,
-          "contribution": -6
+          "severity": -5,
+          "contribution": -5
         },
         {
           "event": "Texas Power Grid Failure (2021)",
@@ -27584,8 +27584,8 @@
         {
           "event": "Baby Formula Shortage (2022)",
           "summary": "A major manufacturing shutdown triggered a nationwide shortage of infant formula, requiring emergency imports and federal intervention.",
-          "severity": -3,
-          "contribution": -3
+          "severity": -2.5,
+          "contribution": -2.5
         },
         {
           "event": "Russia–Ukraine War (2022–2025)",
@@ -27602,14 +27602,14 @@
         {
           "event": "Israel–Hamas Hostage Crisis (2023–2024)",
           "summary": "Following Hamas’s October 7 attack, American citizens were taken hostage. Biden coordinated negotiations and intelligence support with regional partners.",
-          "severity": -3,
-          "contribution": -3
+          "severity": -2.5,
+          "contribution": -2.5
         },
         {
           "event": "Inflation Surge and Supply Chain Crisis (2021–2023)",
           "summary": "Pandemic disruptions, global shortages, and energy shocks caused the highest inflation in decades, prompting federal interventions.",
-          "severity": -6,
-          "contribution": -6
+          "severity": -5,
+          "contribution": -5
         },
         {
           "event": "Colonial Pipeline Cyberattack (2021)",
@@ -27620,8 +27620,8 @@
         {
           "event": "COVID‑19 Pandemic Response",
           "summary": "Biden oversaw vaccine distribution, federal relief programs, and public health measures aimed at managing the pandemic’s economic and social impact.",
-          "severity": -6,
-          "contribution": -6
+          "severity": -5,
+          "contribution": -5
         },
         {
           "event": "Inflation Surge and Supply Chain Disruptions",
@@ -27632,14 +27632,14 @@
         {
           "event": "Post‑Pandemic Economic Recovery",
           "summary": "The economy experienced rapid job growth and rising consumer demand as businesses reopened and federal stimulus measures supported households and firms. Unemployment fell sharply from pandemic highs.",
-          "severity": -6,
-          "contribution": -6
+          "severity": -5,
+          "contribution": -5
         },
         {
           "event": "Global Supply Chain and Energy Shocks",
           "summary": "Pandemic disruptions, semiconductor shortages, and geopolitical tensions—including the war in Ukraine—created bottlenecks and contributed to rising prices for goods, food, and energy.",
-          "severity": -6,
-          "contribution": -6
+          "severity": -5,
+          "contribution": -5
         },
         {
           "event": "Withdrawal from Afghanistan (2021)",
@@ -27664,8 +27664,8 @@
         {
           "event": "Omicron Surge (2021–2022)",
           "summary": "A highly contagious variant caused record‑breaking case numbers, overwhelming hospitals and disrupting supply chains.",
-          "severity": -6,
-          "contribution": -6
+          "severity": -5,
+          "contribution": -5
         },
         {
           "event": "Chinese Spy Balloon Incident (2023)",
@@ -27700,8 +27700,8 @@
         {
           "event": "Support for Ukraine (2022– )",
           "summary": "Following Russia’s invasion of Ukraine, Biden authorized extensive military aid, intelligence sharing, and logistical support to bolster Ukraine’s defense.",
-          "severity": -3,
-          "contribution": -3
+          "severity": -2.5,
+          "contribution": -2.5
         },
         {
           "event": "Global COVID‑19 Vaccine Distribution",
@@ -27724,14 +27724,14 @@
         {
           "event": "Handling of Classified Documents (Ongoing Investigation)",
           "summary": "Classified documents from Biden’s vice‑presidential tenure were found in private locations. A special counsel investigation was launched. As of now, no criminal charges have been filed, but the matter remains a documented controversy.",
-          "severity": -3,
-          "contribution": -3
+          "severity": -2.5,
+          "contribution": -2.5
         },
         {
           "event": "Hunter Biden Business Dealings (Indirect Association)",
           "summary": "Biden has faced political scrutiny over his son Hunter Biden’s business activities. No evidence has shown Joe Biden personally engaged in wrongdoing, but the issue remains a politically charged controversy.",
-          "severity": -3,
-          "contribution": -3
+          "severity": -2.5,
+          "contribution": -2.5
         }
       ],
       "economicPolicy": [
@@ -27764,8 +27764,8 @@
         {
           "event": "CHIPS and Science Act (2022)",
           "summary": "$280B for domestic semiconductor production, R&D, STEM—addressed supply chain vulnerabilities and competition with China; boosted manufacturing resurgence.",
-          "severity": -6,
-          "contribution": -6
+          "severity": -5,
+          "contribution": -5
         }
       ],
       "judicialPolicy": [
@@ -27815,6 +27815,6 @@
       "legislation": [],
       "misconduct": []
     },
-    "lastUpdated": "2026-03-02T01:19:05.107Z"
+    "lastUpdated": "2026-03-02T01:25:42.482Z"
   }
 ]
