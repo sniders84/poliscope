@@ -43,7 +43,7 @@ function extractHybridFields(raw) {
   };
 }
 
-// NEW: Smart de-duplication + assignment (highest priority wins)
+// Smart de-duplication + assignment (highest priority wins)
 function assignEventsToBestCategory(p) {
   const categories = [
     'crisisManagement', 'domesticPolicy', 'economicPolicy',
@@ -73,14 +73,16 @@ function assignEventsToBestCategory(p) {
 
   // Step 3: Reset all categories (clear duplicates)
   categories.forEach(cat => {
-    if (p[cat]) p[cat].majorEvents = [];
+    if (p[cat]) {
+      p[cat].majorEvents = [];
+    }
   });
 
   // Step 4: Assign each unique event to ONE best category
   uniqueEvents.forEach(e => {
     const text = (e.title + " " + (e.summary || "")).toLowerCase();
 
-    // 1. Misconduct - highest priority
+    // Priority order: misconduct > crisis > foreign > economic > judicial > legislation > domestic
     if (text.includes("impeachment") || text.includes("watergate") ||
         text.includes("iran-contra") || text.includes("pardon") ||
         text.includes("scandal") || text.includes("abuse of power") ||
@@ -90,7 +92,7 @@ function assignEventsToBestCategory(p) {
       console.log(`Assigned "${e.title}" → misconduct`);
       return;
     }
-    // 2. Crisis Management
+
     if (text.includes("war") || text.includes("crisis") ||
         text.includes("recession") || text.includes("depression") ||
         text.includes("protest") || text.includes("rebellion") ||
@@ -101,7 +103,7 @@ function assignEventsToBestCategory(p) {
       console.log(`Assigned "${e.title}" → crisisManagement`);
       return;
     }
-    // 3. Foreign Policy
+
     if (text.includes("treaty") || text.includes("diplomacy") ||
         text.includes("foreign") || text.includes("alliance") ||
         text.includes("china") || text.includes("soviet") ||
@@ -110,7 +112,7 @@ function assignEventsToBestCategory(p) {
       console.log(`Assigned "${e.title}" → foreignPolicy`);
       return;
     }
-    // 4. Economic Policy
+
     if (text.includes("tax") || text.includes("economy") ||
         text.includes("inflation") || text.includes("budget") ||
         text.includes("tariff")) {
@@ -118,7 +120,7 @@ function assignEventsToBestCategory(p) {
       console.log(`Assigned "${e.title}" → economicPolicy`);
       return;
     }
-    // 5. Judicial Policy
+
     if (text.includes("court") || text.includes("justice") ||
         text.includes("judge") || text.includes("supreme court") ||
         text.includes("appointment") || text.includes("ruling")) {
@@ -126,7 +128,7 @@ function assignEventsToBestCategory(p) {
       console.log(`Assigned "${e.title}" → judicialPolicy`);
       return;
     }
-    // 6. Legislation
+
     if (text.includes("act of") || text.includes("signed") ||
         text.includes("legislation") || text.includes("law") ||
         text.includes("bill")) {
@@ -134,7 +136,8 @@ function assignEventsToBestCategory(p) {
       console.log(`Assigned "${e.title}" → legislation`);
       return;
     }
-    // 7. Catch-all: domesticPolicy
+
+    // Catch-all
     if (p.domesticPolicy) p.domesticPolicy.majorEvents.push(e);
     console.log(`Assigned "${e.title}" → domesticPolicy (fallback)`);
   });
@@ -170,7 +173,7 @@ function main() {
       }
     }
 
-    // NEW: Clean duplicates and assign each event to one best category
+    // Clean duplicates and assign each event to one best category
     assignEventsToBestCategory(p);
   });
   fs.writeFileSync(RANKINGS_PATH, JSON.stringify(rankings, null, 2));
