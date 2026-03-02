@@ -18,24 +18,61 @@ for (const p of presInfo) {
   if (key) identityMap.set(key, { name: p.name, party: p.party, termStart: p.termStart, termEnd: p.termEnd, era: p.era, photo: p.photo, slug: p.slug, office: "President" });
 }
 
-// Weights
+// Weights (unchanged)
 const CATEGORY_WEIGHTS = {
-  crisisManagement: 0.18, domesticPolicy: 0.17, economicPolicy: 0.17,
-  foreignPolicy: 0.17, judicialPolicy: 0.12, legislation: 0.12, misconduct: 0.07
+  crisisManagement: 0.18,
+  domesticPolicy: 0.17,
+  economicPolicy: 0.17,
+  foreignPolicy: 0.17,
+  judicialPolicy: 0.12,
+  legislation: 0.12,
+  misconduct: 0.07
 };
 
-// Severity engine (tweak these keywords anytime — fully transparent)
+// IMPROVED SEVERITY: Reward iconic legacy, heavily penalize failures & negative outcomes
 function getEventSeverity(title = "", summary = "") {
-  const text = (title + " " + summary).toLowerCase();
-  if (text.includes("war") || text.includes("depression") || text.includes("civil rights act") ||
-      text.includes("voting rights") || text.includes("impeachment") || text.includes("watergate") ||
-      text.includes("iran-contra") || text.includes("9/11") || text.includes("great recession")) return 4.0;
-  if (text.includes("social security") || text.includes("medicare") || text.includes("medicaid") ||
-      text.includes("nafta") || text.includes("tax reform") || text.includes("clean air") ||
-      text.includes("affordable care") || text.includes("interstate highway")) return 3.0;
-  if (text.includes("treaty") || text.includes("reform") || text.includes("scandal") ||
-      text.includes("pardon") || text.includes("drone") || text.includes("intelligence")) return 2.0;
-  return 1.0;
+  const text = (title + " " + (summary || "")).toLowerCase();
+
+  // ICONIC POSITIVE (massive legacy boost — very rare)
+  if (text.includes("emancipation proclamation") || text.includes("civil rights act") || 
+      text.includes("voting rights act") || text.includes("new deal") || 
+      text.includes("social security") || text.includes("medicare") || 
+      text.includes("federal reserve") || text.includes("interstate highway") || 
+      text.includes("marshall plan") || text.includes("monroe doctrine") || 
+      text.includes("gi bill") || text.includes("land-grant college")) {
+    return 5.0;  // max positive
+  }
+
+  // SOLID POSITIVE (successful reforms/laws with good outcomes)
+  if (text.includes("treaty") || text.includes("reform") || text.includes("signed the") || 
+      text.includes("clean air") || text.includes("civil rights") || text.includes("homestead") || 
+      text.includes("fair labor") || text.includes("wagner act")) {
+    return 3.0;
+  }
+
+  // MEDIUM POSITIVE (routine legislation without major legacy)
+  if (text.includes("act of") || text.includes("legislation") || text.includes("law") || 
+      text.includes("bill") || text.includes("tariff") || text.includes("budget")) {
+    return 1.5;
+  }
+
+  // STRONG NEGATIVE (major failures, scandals, bad outcomes)
+  if (text.includes("watergate") || text.includes("iran-contra") || text.includes("impeachment") || 
+      text.includes("scandal") || text.includes("obstruction") || text.includes("perjury") || 
+      text.includes("cover-up") || text.includes("high inflation") || text.includes("supply chain") || 
+      text.includes("failed war") || text.includes("vietnam") || text.includes("great depression") || 
+      text.includes("recession caused") || text.includes("covid") || text.includes("pandemic") || 
+      text.includes("lockdown") || text.includes("mandate") || text.includes("stagflation")) {
+    return -4.0;  // strong penalty
+  }
+
+  // MEDIUM NEGATIVE (controversial or mixed results)
+  if (text.includes("pardon") || text.includes("drone") || text.includes("intelligence") || 
+      text.includes("controversy") || text.includes("embargo") || text.includes("intervention")) {
+    return -2.0;
+  }
+
+  return 1.0; // default neutral
 }
 
 // Score one category
@@ -56,9 +93,8 @@ function scoreCategory(cat, isMisconduct = false) {
     });
   });
 
-  const raw = Math.min(10, total);
-  const finalScore = isMisconduct ? -raw : raw;
-
+  const raw = Math.min(10, Math.max(-10, total)); // allow negative raw for bad outcomes
+  const finalScore = isMisconduct ? -Math.abs(raw) : raw; // misconduct always negative
   return { score: Number(finalScore.toFixed(2)), details };
 }
 
@@ -95,7 +131,7 @@ presidents = presidents.map(p => {
     ...p,
     ...identity,
     categoryScores,
-    categoryDetails,           // ← NEW: this is what your frontend will display
+    categoryDetails,
     eraNormalizedScore,
     powerScore,
     lastUpdated: new Date().toISOString()
