@@ -432,7 +432,7 @@ function showPolls() {
     // Most Competitive Races – with logo
     electionsContainer.appendChild(createCardWithLogo('Most Competitive Races', 'assets/ballotpedia-competitive.jpeg', [
       { text: '2026 Senate Battlegrounds', url: 'https://ballotpedia.org/United_States_Senate_elections,_2026#Battlegrounds' },
-      { text: '2026 House Battlegrounds', url: 'https://ballotpedia.org/United_States_House_of_Representatives_elections,_2026#Battlegrounds' },
+      { text: '2026 House Battlegrounds', url: 'https://ballotpedia.org/United_States_House_of_representatives_elections,_2026#Battlegrounds' },
       { text: '2025 Governor Elections', url: 'https://ballotpedia.org/Gubernatorial_elections,_2025' }
     ]));
 
@@ -2241,7 +2241,7 @@ function renderOfficials(stateFilter = null, query = '') {
     const normalizedParty = partyMap[rawParty] || rawParty.replace(/\s+/g, '') || 'independent';
     const photoSrc = o.photo && o.photo.trim() !== '' ? o.photo : 'assets/default-photo.png';
 
-    const districtDisplay = o.office === 'U.S. Representative' && o.district
+    const districtDisplay = o.office === 'U.S. representative' && o.district
       ? `<p class="district-display"><strong>District:</strong> ${o.district}</p>`
       : '';
 
@@ -2782,9 +2782,9 @@ function showRatings() {
     fetch('ltgovernors-ratings.json').then(res => res.json()),
     fetch('senators-ratings.json').then(res => res.json()),
     fetch('housereps-ratings.json').then(res => res.json())
-  ]).then(([presidents, vps, governors, ltgovs, senators, housereps]) => {
+  ]).then(([presidents, vps, governors, ltgovs, senators, representative]) => {
     const ratings = [
-      ...presidents, ...vps, ...governors, ...ltgovs, ...senators, ...housereps
+      ...presidents, ...vps, ...governors, ...ltgovs, ...senators, ...representative
     ];
 
     // Merge saved ratings
@@ -2916,14 +2916,14 @@ function openRatingsModal(slug) {
     fetch('ltgovernors-ratings.json').then(res => res.json()),
     fetch('senators-ratings.json').then(res => res.json()),
     fetch('housereps-ratings.json').then(res => res.json())
-  ]).then(([presidents, vps, governors, ltgovs, senators, housereps]) => {
+  ]).then(([presidents, vps, governors, ltgovs, senators, representative]) => {
     let ratings = [
       ...presidents,
       ...vps,
       ...governors,
       ...ltgovs,
       ...senators,
-      ...housereps
+      ...representative
     ];
 
     const saved = JSON.parse(localStorage.getItem('ratingsData')) || {};
@@ -3536,7 +3536,7 @@ async function render() {
     const officeLabel =
       officeType === 'president'
         ? `President (${ordinalSuffix(row.person.ordinal)})`
-        : row.person.office || (officeType === 'rep' ? 'U.S. Representative' : 'U.S. Senator');
+        : row.person.office || (officeType === 'rep' ? 'U.S. representative' : 'U.S. Senator');
 
     const photoUrl = row.person.photo || 'https://via.placeholder.com/50?text=?';
 
