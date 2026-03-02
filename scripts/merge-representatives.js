@@ -1,200 +1,196 @@
-// merge-representatives.js
-// Enriches and overwrites representatives-rankings.json with all scraper data,
-// including House committees from representatives-committees.json.
-
+// scripts/merge-presidents.js
 const fs = require("fs");
 const path = require("path");
 
-function loadJSON(relativePath, defaultValue = {}) {
-  const fullPath = path.join(__dirname, relativePath);
+const ROOT = path.join(__dirname, "..");
+const PUBLIC = p => path.join(ROOT, "public", p);
+const RANKINGS_PATH = PUBLIC("presidents-rankings.json");
+
+const FILES = {
+  crisisManagement: PUBLIC("presidents-crisis-management.json"),
+  domesticPolicy: PUBLIC("presidents-domestic-policy.json"),
+  economicPolicy: PUBLIC("presidents-economic-policy.json"),
+  foreignPolicy: PUBLIC("presidents-foreign-policy.json"),
+  judicialPolicy: PUBLIC("presidents-judicial-policy.json"),
+  legislation: PUBLIC("presidents-legislation.json"),
+  misconduct: PUBLIC("presidents-misconduct.json")
+};
+
+function loadJson(pathname) {
   try {
-    return JSON.parse(fs.readFileSync(fullPath, "utf8"));
+    return JSON.parse(fs.readFileSync(pathname, "utf8"));
   } catch (err) {
-    console.error(`Failed to load ${relativePath}: ${err.message}`);
-    return defaultValue;
+    console.error(`Failed to load ${pathname}:`, err.message);
+    return [];
   }
 }
 
-function writeJSON(relativePath, data) {
-  const fullPath = path.join(__dirname, relativePath);
-  fs.writeFileSync(fullPath, JSON.stringify(data, null, 2), "utf8");
-  console.log(`Wrote/updated: ${relativePath}`);
+function indexById(arr) {
+  const map = new Map();
+  arr.forEach(item => {
+    if (item && item.id) map.set(item.id, item);
+  });
+  return map;
 }
 
-// ------------------------------------------------------------
-// LOAD BASE FILES
-// ------------------------------------------------------------
-
-let rankings = loadJSON("../public/representatives-rankings.json", []) || [];
-
-const votes        = loadJSON("../public/representatives-votes.json", []) || [];
-const legislation  = loadJSON("../public/legislation-representatives.json", []) || [];
-const committeeRaw = loadJSON("../public/representatives-committees.json", {}) || {};
-
-// ------------------------------------------------------------
-// LOOKUPS (THIS BLOCK WAS MISSING IN YOUR FAILING VERSION)
-// ------------------------------------------------------------
-
-const votesById = new Map(
-  votes.map(v => [v.bioguideId || v.bioguide, v])
-);
-
-const legById = new Map(
-  legislation.map(l => [l.bioguideId || l.bioguide, l])
-);
-
-// ------------------------------------------------------------
-// UNIFIED COMMITTEE NAME RESOLUTION
-// ------------------------------------------------------------
-
-function resolveCommitteeName(code) {
-  const parent = code.substring(0, 4);
-
-  const parentNames = {
-    // SENATE
-    SSAF: 'Agriculture, Nutrition, and Forestry',
-    SSAP: 'Appropriations',
-    SSAS: 'Armed Services',
-    SSBK: 'Banking, Housing, and Urban Affairs',
-    SSCV: 'Commerce, Science, and Transportation',
-    SSCM: 'Energy and Natural Resources',
-    SSEV: 'Environment and Public Works',
-    SSFI: 'Finance',
-    SSFR: 'Foreign Relations',
-    SSGA: 'Homeland Security and Governmental Affairs',
-    SSHR: 'Health, Education, Labor, and Pensions',
-    SSJU: 'Judiciary',
-    SSRA: 'Rules and Administration',
-    SSSC: 'Small Business and Entrepreneurship',
-    SSVA: 'Veterans\' Affairs',
-    SLIA: 'Indian Affairs',
-    SLIN: 'Intelligence',
-    SLET: 'Ethics',
-    SRES: 'Aging (Special)',
-    JCSE: 'Joint Economic Committee',
-    JSEC: 'Joint Committee on Taxation',
-    JSLC: 'Joint Committee on the Library',
-    JSPW: 'Joint Committee on Printing',
-    SPAG: 'Joint Agriculture',
-    SSEG: 'Joint Energy',
-    SSNR: 'Joint Natural Resources',
-    SSIS: 'Select Committee on Intelligence',
-
-    // HOUSE (parent committees)
-    HSIF: 'Energy and Commerce',
-    HSBA: 'Financial Services',
-    HSGO: 'Oversight and Accountability',
-    HSPW: 'Transportation and Infrastructure',
-    HSFA: 'Foreign Affairs',
-    HSED: 'Education and the Workforce',
-    HSAG: 'Agriculture',
-    HSAP: 'Appropriations',
-    HSAS: 'Armed Services',
-    HSBU: 'Budget',
-    HSJU: 'Judiciary',
-    HSHM: 'Homeland Security',
-    HSSM: 'Science, Space, and Technology',
-    HSSY: 'Small Business',
-    HSWM: 'Ways and Means',
-    HSVG: 'Veterans\' Affairs',
-    HSHR: 'House Administration',
-    HSNR: 'Natural Resources',
+function extractHybridFields(raw) {
+  if (!raw) return {};
+  return {
+    overview: raw.overview || "",
+    majorEvents: raw.majorEvents || raw.events || [],
+    minorEvents: raw.minorEvents || [],
+    subcategories: raw.subcategories || {}
   };
-
-  const parentName = parentNames[parent] || parent;
-
-  if (code.length > 4) {
-    const sub = code.substring(4);
-    return `${parentName} — Subcommittee ${sub}`;
-  }
-
-  return parentName;
 }
 
-// ------------------------------------------------------------
-// BUILD committeesById (House only: HSxx codes)
-// ------------------------------------------------------------
+// IMPROVED SEVERITY: Better balance of positive legacy vs negative outcomes
+function getEventSeverity(title = "", summary = "") {
+  const text = (title + " " + summary).toLowerCase();
 
-const committeesById = new Map();
+  // VERY HIGH POSITIVE (iconic achievements)
+  if (text.includes("emancipation") || text.includes("civil rights act") || 
+      text.includes("voting rights") || text.includes("new deal") || 
+      text.includes("social security") || text.includes("medicare") || 
+      text.includes("federal reserve") || text.includes("interstate highway")) {
+    return 4.5;
+  }
 
-for (const [committeeCode, members] of Object.entries(committeeRaw)) {
-  if (!Array.isArray(members)) continue;
+  // HIGH POSITIVE (major successful reforms)
+  if (text.includes("treaty") || text.includes("reform") || 
+      text.includes("signed the") || text.includes("land-grant") || 
+      text.includes("homestead") || text.includes("gi bill")) {
+    return 3.5;
+  }
 
-  // Only House committees (HSxx)
-  if (!committeeCode.startsWith("HS")) continue;
+  // MEDIUM POSITIVE (routine legislation)
+  if (text.includes("act of") || text.includes("legislation") || 
+      text.includes("bill") || text.includes("law")) {
+    return 2.0;
+  }
 
-  for (const m of members) {
-    const id = (m.bioguide || m.bioguideId || "").toUpperCase();
-    const nameKey = (m.name || "").toLowerCase();
-    const key = id || nameKey;
-    if (!key) continue;
+  // NEGATIVE (poor outcomes, scandals, failures)
+  if (text.includes("watergate") || text.includes("iran-contra") || 
+      text.includes("impeachment") || text.includes("scandal") || 
+      text.includes("obstruction") || text.includes("perjury") || 
+      text.includes("cover-up") || text.includes("high inflation") || 
+      text.includes("supply chain") || text.includes("failed war") || 
+      text.includes("vietnam") || text.includes("recession caused")) {
+    return -4.0;
+  }
 
-    if (!committeesById.has(key)) committeesById.set(key, []);
+  // MEDIUM NEGATIVE (controversial or mixed)
+  if (text.includes("pardon") || text.includes("drone") || 
+      text.includes("intelligence") || text.includes("controversy") || 
+      text.includes("mask") || text.includes("mandate")) {
+    return -2.0;
+  }
 
-    let role = m.title || "Member";
-    const lower = role.toLowerCase();
+  return 1.0; // default neutral
+}
 
-    if (m.rank === 1 || lower.includes("chair")) {
-      role = "Chair";
-    } else if (m.rank === 2 || lower.includes("ranking")) {
-      role = "Ranking Member";
-    } else if (lower.includes("vice")) {
-      role = "Vice Chair";
-    } else {
-      role = "Member";
+// Smart assignment with improved severity
+function assignEventsToBestCategory(p) {
+  const categories = [
+    'crisisManagement', 'domesticPolicy', 'economicPolicy',
+    'foreignPolicy', 'judicialPolicy', 'legislation', 'misconduct'
+  ];
+
+  const allEvents = [];
+  categories.forEach(cat => {
+    if (p[cat] && p[cat].majorEvents) {
+      p[cat].majorEvents.forEach(event => {
+        allEvents.push({ ...event, originalCategory: cat });
+      });
+    }
+  });
+
+  const uniqueEvents = [];
+  const seen = new Set();
+  allEvents.forEach(e => {
+    const key = `${e.title || ''}|${(e.summary || '').slice(0, 100)}`;
+    if (!seen.has(key)) {
+      seen.add(key);
+      uniqueEvents.push(e);
+    }
+  });
+
+  categories.forEach(cat => {
+    if (p[cat]) p[cat].majorEvents = [];
+  });
+
+  uniqueEvents.forEach(e => {
+    const severity = getEventSeverity(e.title || "", e.summary || "");
+    const text = (e.title + " " + (e.summary || "")).toLowerCase();
+
+    let assignedCat = 'domesticPolicy';
+
+    if (text.includes("impeachment") || text.includes("watergate") || 
+        text.includes("iran-contra") || text.includes("pardon") || 
+        text.includes("scandal") || text.includes("abuse of power")) {
+      assignedCat = 'misconduct';
+    } else if (text.includes("war") || text.includes("crisis") || 
+               text.includes("recession") || text.includes("depression") || 
+               text.includes("protest") || text.includes("rebellion") || 
+               text.includes("emergency") || text.includes("assassination") ||
+               text.includes("terrorism") || text.includes("pandemic")) {
+      assignedCat = 'crisisManagement';
+    } else if (text.includes("treaty") || text.includes("diplomacy") || 
+               text.includes("foreign") || text.includes("china") || 
+               text.includes("soviet") || text.includes("nato")) {
+      assignedCat = 'foreignPolicy';
+    } else if (text.includes("tax") || text.includes("economy") || 
+               text.includes("inflation") || text.includes("budget") || 
+               text.includes("tariff")) {
+      assignedCat = 'economicPolicy';
+    } else if (text.includes("court") || text.includes("justice") || 
+               text.includes("judge") || text.includes("supreme court")) {
+      assignedCat = 'judicialPolicy';
+    } else if (text.includes("act of") || text.includes("signed") || 
+               text.includes("legislation") || text.includes("law") || 
+               text.includes("bill")) {
+      assignedCat = 'legislation';
     }
 
-    committeesById.get(key).push({
-      committeeCode,
-      committeeName: resolveCommitteeName(committeeCode),
-      role,
-      rank: m.rank ?? null,
-      party: m.party || null
-    });
-  }
+    if (p[assignedCat]) {
+      p[assignedCat].majorEvents.push(e);
+      console.log(`Assigned "${e.title}" → ${assignedCat} (severity ${severity})`);
+    }
+  });
+
+  console.log(`Processed ${uniqueEvents.length} unique events for ${p.name || 'unknown'}`);
 }
 
-// ------------------------------------------------------------
-// ENRICH RANKINGS
-// ------------------------------------------------------------
-
-const enriched = rankings.map(entry => {
-  const id = (entry.bioguideId || entry.bioguide || "").toUpperCase();
-  const nameKey = entry.name ? entry.name.toLowerCase() : "";
-
-  const voteStats = votesById.get(id) || {};
-  const legStats  = legById.get(id)   || {};
-
-  const committees =
-    committeesById.get(id) ||
-    committeesById.get(nameKey) ||
-    [];
-
-  let photo = entry.photo;
-  if (!photo && id) {
-    photo = `https://www.congress.gov/img/member/${id.toLowerCase()}_200.jpg`;
+function main() {
+  console.log("merge-presidents: starting merge");
+  const rankings = loadJson(RANKINGS_PATH);
+  if (!Array.isArray(rankings)) {
+    console.error("presidents-rankings.json is not an array.");
+    return;
   }
+  const metricsData = {};
+  for (const [key, filePath] of Object.entries(FILES)) {
+    const raw = loadJson(filePath);
+    metricsData[key] = indexById(raw);
+    console.log(`Loaded ${key}: ${metricsData[key].size} entries`);
+  }
+  rankings.forEach(p => {
+    const id = p.id;
+    if (!id) return;
+    for (const category of Object.keys(FILES)) {
+      if (metricsData[category].has(id)) {
+        const rawCategory = metricsData[category].get(id);
+        const hybrid = extractHybridFields(rawCategory[category] || rawCategory);
+       
+        p[category] = {
+          ...p[category],
+          ...hybrid
+        };
+      }
+    }
 
-  return {
-    ...entry,
-    ...voteStats,
-    ...legStats,
-    committees,
-    photo
-  };
-});
-
-// ------------------------------------------------------------
-// WRITE OUTPUT
-// ------------------------------------------------------------
-
-writeJSON("../public/representatives-rankings.json", enriched);
-
-const withVotes = enriched.filter(r => (r.yeaVotes || 0) > 0 || (r.totalVotes || 0) > 0).length;
-const withLeg   = enriched.filter(r => (r.sponsoredBills || 0) > 0 || (r.cosponsoredBills || 0) > 0).length;
-const withCom   = enriched.filter(r => (r.committees || []).length > 0).length;
-
-console.log(`Enriched and overwrote representatives-rankings.json with ${enriched.length} members`);
-console.log(`Members with vote data: ${withVotes}`);
-console.log(`Members with legislation data: ${withLeg}`);
-console.log(`Members with committees: ${withCom}`);
+    assignEventsToBestCategory(p);
+  });
+  fs.writeFileSync(RANKINGS_PATH, JSON.stringify(rankings, null, 2));
+  console.log(`merge-presidents: merged hybrid metrics into ${rankings.length} presidents`);
+}
+main();
