@@ -29,47 +29,48 @@ const CATEGORY_WEIGHTS = {
   misconduct: 0.07
 };
 
-// IMPROVED SEVERITY: Reward iconic legacy, heavily penalize failures & negative outcomes
+// STRICTER SEVERITY: Reward iconic successes, heavily penalize bad handling and negative outcomes
 function getEventSeverity(title = "", summary = "") {
   const text = (title + " " + (summary || "")).toLowerCase();
 
-  // ICONIC POSITIVE (massive legacy boost — very rare)
+  // ICONIC POSITIVE (massive legacy boost)
   if (text.includes("emancipation proclamation") || text.includes("civil rights act") || 
       text.includes("voting rights act") || text.includes("new deal") || 
       text.includes("social security") || text.includes("medicare") || 
       text.includes("federal reserve") || text.includes("interstate highway") || 
       text.includes("marshall plan") || text.includes("monroe doctrine") || 
-      text.includes("gi bill") || text.includes("land-grant college")) {
-    return 5.0;  // max positive
+      text.includes("gi bill") || text.includes("land-grant")) {
+    return 5.0;
   }
 
-  // SOLID POSITIVE (successful reforms/laws with good outcomes)
+  // STRONG POSITIVE (good handling of major events)
   if (text.includes("treaty") || text.includes("reform") || text.includes("signed the") || 
       text.includes("clean air") || text.includes("civil rights") || text.includes("homestead") || 
-      text.includes("fair labor") || text.includes("wagner act")) {
-    return 3.0;
+      text.includes("fair labor") || text.includes("wagner act") || text.includes("good handling")) {
+    return 3.5;
   }
 
-  // MEDIUM POSITIVE (routine legislation without major legacy)
+  // MEDIUM POSITIVE (routine success)
   if (text.includes("act of") || text.includes("legislation") || text.includes("law") || 
       text.includes("bill") || text.includes("tariff") || text.includes("budget")) {
     return 1.5;
   }
 
-  // STRONG NEGATIVE (major failures, scandals, bad outcomes)
+  // STRONG NEGATIVE (bad handling, major failures, scandals)
   if (text.includes("watergate") || text.includes("iran-contra") || text.includes("impeachment") || 
       text.includes("scandal") || text.includes("obstruction") || text.includes("perjury") || 
       text.includes("cover-up") || text.includes("high inflation") || text.includes("supply chain") || 
       text.includes("failed war") || text.includes("vietnam") || text.includes("great depression") || 
       text.includes("recession caused") || text.includes("covid") || text.includes("pandemic") || 
-      text.includes("lockdown") || text.includes("mandate") || text.includes("stagflation")) {
-    return -4.0;  // strong penalty
+      text.includes("lockdown") || text.includes("mandate") || text.includes("stagflation") || 
+      text.includes("internment") || text.includes("court-packing") || text.includes("failed response")) {
+    return -4.5;  // heavy penalty
   }
 
-  // MEDIUM NEGATIVE (controversial or mixed results)
+  // MEDIUM NEGATIVE (controversial or mixed)
   if (text.includes("pardon") || text.includes("drone") || text.includes("intelligence") || 
       text.includes("controversy") || text.includes("embargo") || text.includes("intervention")) {
-    return -2.0;
+    return -2.5;
   }
 
   return 1.0; // default neutral
@@ -93,8 +94,8 @@ function scoreCategory(cat, isMisconduct = false) {
     });
   });
 
-  const raw = Math.min(10, Math.max(-10, total)); // allow negative raw for bad outcomes
-  const finalScore = isMisconduct ? -Math.abs(raw) : raw; // misconduct always negative
+  const raw = Math.min(10, Math.max(-10, total));
+  const finalScore = isMisconduct ? -Math.abs(raw) : raw;
   return { score: Number(finalScore.toFixed(2)), details };
 }
 
@@ -140,6 +141,6 @@ presidents = presidents.map(p => {
 
 // Save
 fs.writeFileSync(rankingsPath, JSON.stringify(presidents, null, 2));
-console.log(`✅ Done! Updated ${presidents.length} presidents with full transparency.`);
-console.log("   → Misconduct now deducts properly");
-console.log("   → categoryDetails added so your app can show every event + weight");
+console.log(`✅ Done! Updated ${presidents.length} presidents with stricter scoring.`);
+console.log("   → Stronger penalties for failures, scandals, and poor outcomes");
+console.log("   → categoryDetails still available for future expandable scorecards");
