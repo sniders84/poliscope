@@ -37,22 +37,21 @@ function extractHybridFields(raw) {
   if (!raw) return {};
   return {
     overview: raw.overview || "",
-    // Ignore placeholders — we don't need them anymore
     majorEvents: raw.majorEvents || raw.events || [],
     minorEvents: raw.minorEvents || [],
     subcategories: raw.subcategories || {}
   };
 }
 
-// NEW: De-duplicate and assign each event to ONE best category
+// NEW: Smart de-duplication + assignment (highest priority wins)
 function assignEventsToBestCategory(p) {
-  // Collect ALL events from every category
-  const allEvents = [];
   const categories = [
     'crisisManagement', 'domesticPolicy', 'economicPolicy',
     'foreignPolicy', 'judicialPolicy', 'legislation', 'misconduct'
   ];
 
+  // Step 1: Collect ALL events from every category
+  const allEvents = [];
   categories.forEach(cat => {
     if (p[cat] && p[cat].majorEvents) {
       p[cat].majorEvents.forEach(event => {
@@ -61,96 +60,86 @@ function assignEventsToBestCategory(p) {
     }
   });
 
-  // Deduplicate by title + summary similarity
+  // Step 2: Deduplicate by title + summary
   const uniqueEvents = [];
   const seen = new Set();
   allEvents.forEach(e => {
-    const key = `${e.title || ''}|${(e.summary || '').slice(0, 100)}`; // simple dedupe key
+    const key = `${e.title || ''}|${(e.summary || '').slice(0, 100)}`;
     if (!seen.has(key)) {
       seen.add(key);
       uniqueEvents.push(e);
     }
   });
 
-  // Reset all categories' events
+  // Step 3: Reset all categories (clear duplicates)
   categories.forEach(cat => {
-    if (p[cat]) {
-      p[cat].majorEvents = [];
-    }
+    if (p[cat]) p[cat].majorEvents = [];
   });
 
-  // Assign each unique event to ONE category (highest priority wins)
+  // Step 4: Assign each unique event to ONE best category
   uniqueEvents.forEach(e => {
     const text = (e.title + " " + (e.summary || "")).toLowerCase();
-    let assigned = false;
 
-    // 1. Highest priority: misconduct
+    // 1. Misconduct - highest priority
     if (text.includes("impeachment") || text.includes("watergate") ||
         text.includes("iran-contra") || text.includes("pardon") ||
         text.includes("scandal") || text.includes("abuse of power") ||
         text.includes("obstruction") || text.includes("perjury") ||
         text.includes("cover-up")) {
       if (p.misconduct) p.misconduct.majorEvents.push(e);
-      console.log(`Assigned "${e.title}" to misconduct`);
-      assigned = true;
+      console.log(`Assigned "${e.title}" → misconduct`);
+      return;
     }
     // 2. Crisis Management
-    else if (text.includes("war") || text.includes("crisis") ||
-             text.includes("recession") || text.includes("depression") ||
-             text.includes("protest") || text.includes("rebellion") ||
-             text.includes("emergency") || text.includes("assassination") ||
-             text.includes("terrorism") || text.includes("pandemic") ||
-             text.includes("epidemic")) {
+    if (text.includes("war") || text.includes("crisis") ||
+        text.includes("recession") || text.includes("depression") ||
+        text.includes("protest") || text.includes("rebellion") ||
+        text.includes("emergency") || text.includes("assassination") ||
+        text.includes("terrorism") || text.includes("pandemic") ||
+        text.includes("epidemic")) {
       if (p.crisisManagement) p.crisisManagement.majorEvents.push(e);
-      console.log(`Assigned "${e.title}" to crisisManagement`);
-      assigned = true;
+      console.log(`Assigned "${e.title}" → crisisManagement`);
+      return;
     }
     // 3. Foreign Policy
-    else if (text.includes("treaty") || text.includes("diplomacy") ||
-             text.includes("foreign") || text.includes("alliance") ||
-             text.includes("china") || text.includes("soviet") ||
-             text.includes("nato") || text.includes("embargo")) {
+    if (text.includes("treaty") || text.includes("diplomacy") ||
+        text.includes("foreign") || text.includes("alliance") ||
+        text.includes("china") || text.includes("soviet") ||
+        text.includes("nato") || text.includes("embargo")) {
       if (p.foreignPolicy) p.foreignPolicy.majorEvents.push(e);
-      console.log(`Assigned "${e.title}" to foreignPolicy`);
-      assigned = true;
+      console.log(`Assigned "${e.title}" → foreignPolicy`);
+      return;
     }
     // 4. Economic Policy
-    else if (text.includes("tax") || text.includes("economy") ||
-             text.includes("inflation") || text.includes("budget") ||
-             text.includes("tariff")) {
+    if (text.includes("tax") || text.includes("economy") ||
+        text.includes("inflation") || text.includes("budget") ||
+        text.includes("tariff")) {
       if (p.economicPolicy) p.economicPolicy.majorEvents.push(e);
-      console.log(`Assigned "${e.title}" to economicPolicy`);
-      assigned = true;
+      console.log(`Assigned "${e.title}" → economicPolicy`);
+      return;
     }
     // 5. Judicial Policy
-    else if (text.includes("court") || text.includes("justice") ||
-             text.includes("judge") || text.includes("supreme court") ||
-             text.includes("appointment") || text.includes("ruling")) {
+    if (text.includes("court") || text.includes("justice") ||
+        text.includes("judge") || text.includes("supreme court") ||
+        text.includes("appointment") || text.includes("ruling")) {
       if (p.judicialPolicy) p.judicialPolicy.majorEvents.push(e);
-      console.log(`Assigned "${e.title}" to judicialPolicy`);
-      assigned = true;
+      console.log(`Assigned "${e.title}" → judicialPolicy`);
+      return;
     }
-    // 6. Legislation (specific laws/acts)
-    else if (text.includes("act of") || text.includes("signed") ||
-             text.includes("legislation") || text.includes("law") ||
-             text.includes("bill")) {
+    // 6. Legislation
+    if (text.includes("act of") || text.includes("signed") ||
+        text.includes("legislation") || text.includes("law") ||
+        text.includes("bill")) {
       if (p.legislation) p.legislation.majorEvents.push(e);
-      console.log(`Assigned "${e.title}" to legislation`);
-      assigned = true;
+      console.log(`Assigned "${e.title}" → legislation`);
+      return;
     }
     // 7. Catch-all: domesticPolicy
-    else {
-      if (p.domesticPolicy) p.domesticPolicy.majorEvents.push(e);
-      console.log(`Assigned "${e.title}" to domesticPolicy (fallback)`);
-      assigned = true;
-    }
-
-    if (!assigned) {
-      console.log(`WARNING: No assignment for "${e.title}"`);
-    }
+    if (p.domesticPolicy) p.domesticPolicy.majorEvents.push(e);
+    console.log(`Assigned "${e.title}" → domesticPolicy (fallback)`);
   });
 
-  console.log(`Processed ${uniqueEvents.length} unique events for ${p.name || 'unknown president'}`);
+  console.log(`Processed ${uniqueEvents.length} unique events for ${p.name || 'unknown'}`);
 }
 
 function main() {
@@ -171,11 +160,9 @@ function main() {
     if (!id) return;
     for (const category of Object.keys(FILES)) {
       if (metricsData[category].has(id)) {
-        // FIXED: No extra [category] lookup
         const rawCategory = metricsData[category].get(id);
         const hybrid = extractHybridFields(rawCategory[category] || rawCategory);
        
-        // Merge (preserve any bootstrap fields, overwrite with real data)
         p[category] = {
           ...p[category],
           ...hybrid
@@ -183,7 +170,7 @@ function main() {
       }
     }
 
-    // NEW: After merging, clean up duplicates and assign to best category
+    // NEW: Clean duplicates and assign each event to one best category
     assignEventsToBestCategory(p);
   });
   fs.writeFileSync(RANKINGS_PATH, JSON.stringify(rankings, null, 2));
