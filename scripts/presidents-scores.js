@@ -134,7 +134,7 @@ presidents = presidents.map(p => {
   let eraNormalizedScore = Number(Math.max(0, weightedTotal).toFixed(2));
   let powerScore = Number((eraNormalizedScore * 10).toFixed(1));
 
-  // Hard-set Harrison to 0 (id 9)
+  // Hard-set Harrison (id 9) to 0
   if (p.id === 9) {
     powerScore = 0.0;
     eraNormalizedScore = 0.0;
@@ -166,12 +166,15 @@ Object.keys(eras).forEach(eraName => {
     rank: index + 1
   }));
 
-  // Log top 3 per era for quick check
-  console.log(`Era: ${eraName}`);
+  // Log top 3 + bottom 1 per era for quick check
+  console.log(`Era: ${eraName} (${eraPresidents.length} presidents)`);
   eraRankings[eraName].slice(0, 3).forEach(r => {
     console.log(`  ${r.rank}. ${r.name} - ${r.powerScore}`);
   });
-  console.log(`  ... ${eraRankings[eraName].length} presidents in era`);
+  if (eraRankings[eraName].length > 3) {
+    const last = eraRankings[eraName][eraRankings[eraName].length - 1];
+    console.log(`  ... ${last.rank}. ${last.name} - ${last.powerScore} (last)`);
+  }
 });
 
 presidents.forEach(p => {
@@ -181,5 +184,5 @@ presidents.forEach(p => {
 // Save
 fs.writeFileSync(rankingsPath, JSON.stringify(presidents, null, 2));
 console.log(`✅ Done! Updated ${presidents.length} presidents with era-based rankings.`);
-console.log("   → Harrison hard-set to 0 Power Score");
+console.log("   → Harrison hard-set to 0");
 console.log("   → Era rankings computed and attached");
