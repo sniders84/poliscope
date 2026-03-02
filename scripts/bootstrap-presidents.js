@@ -1,6 +1,5 @@
 // scripts/bootstrap-presidents.js
-// Build presidents-rankings.json using the unified hybrid schema.
-
+// Build presidents-rankings.json using the unified hybrid schema (cleaned, no placeholders)
 const fs = require("fs");
 const path = require("path");
 
@@ -8,13 +7,10 @@ const ROOT = path.join(__dirname, "..");
 const ROSTER_PATH = path.join(ROOT, "public", "presidents.json");
 const RANKINGS_PATH = path.join(ROOT, "public", "presidents-rankings.json");
 
-// Hybrid category initializer
+// Clean category initializer (no placeholders)
 function emptyCategory() {
   return {
     overview: "",
-    eventCount: 0,
-    impactScore: 0,
-    significanceScore: 0,
     majorEvents: [],
     minorEvents: [],
     subcategories: {}
@@ -35,8 +31,7 @@ function main() {
     photo: p.photo || null,
     slug: p.slug || null,
     office: "President",
-
-    // Hybrid categories (empty baseline)
+    // Hybrid categories (empty baseline, no placeholders)
     crisisManagement: emptyCategory(),
     domesticPolicy: emptyCategory(),
     economicPolicy: emptyCategory(),
@@ -44,7 +39,6 @@ function main() {
     judicialPolicy: emptyCategory(),
     legislation: emptyCategory(),
     misconduct: emptyCategory(),
-
     // Scoring containers
     categoryScores: {
       crisisManagement: 0,
@@ -55,10 +49,8 @@ function main() {
       legislation: 0,
       misconduct: 0
     },
-
     eraNormalizedScore: 0,
     powerScore: 0,
-
     summaries: {
       crisisManagement: "",
       domesticPolicy: "",
@@ -71,7 +63,6 @@ function main() {
   }));
 
   fs.writeFileSync(RANKINGS_PATH, JSON.stringify(rankings, null, 2));
-  console.log(`bootstrap-presidents: wrote ${rankings.length} records`);
+  console.log(`bootstrap-presidents: wrote ${rankings.length} clean records (no placeholders)`);
 }
-
 main();
