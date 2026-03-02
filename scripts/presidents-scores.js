@@ -5,7 +5,7 @@ const path = require("path");
 const rankingsPath = path.join(__dirname, "../public/presidents-rankings.json");
 const infoPath = path.join(__dirname, "../public/presidents.json");
 
-console.log("🚀 Running STRICT OUTCOME + HANDLING scoring engine...");
+console.log("🚀 Running RESPECTFUL + OUTCOME-FOCUSED scoring engine...");
 
 // Load files
 let presidents = JSON.parse(fs.readFileSync(rankingsPath, "utf-8"));
@@ -29,11 +29,11 @@ const CATEGORY_WEIGHTS = {
   misconduct: 0.07
 };
 
-// STRICT OUTCOME + HANDLING SEVERITY
+// RESPECTFUL SEVERITY: Never negative overall, strong penalties for poor handling, rewards only for exceptional
 function getEventSeverity(title = "", summary = "") {
   const text = (title + " " + (summary || "")).toLowerCase();
 
-  // ICONIC SUCCESS (handled exceptionally well, massive positive legacy)
+  // ICONIC SUCCESS (handled exceptionally, massive positive legacy)
   if (text.includes("emancipation proclamation") || text.includes("civil rights act") || 
       text.includes("voting rights act") || text.includes("new deal") || 
       text.includes("social security") || text.includes("medicare") || 
@@ -53,11 +53,10 @@ function getEventSeverity(title = "", summary = "") {
     return 3.0;
   }
 
-  // NEUTRAL / ROUTINE (no strong positive or negative impact)
+  // NEUTRAL / ROUTINE (no free points)
   if (text.includes("act of") || text.includes("legislation") || text.includes("law") || 
-      text.includes("bill") || text.includes("tariff") || text.includes("budget") || 
-      text.includes("routine") || text.includes("standard")) {
-    return 0.0;  // no boost for routine stuff
+      text.includes("bill") || text.includes("tariff") || text.includes("budget")) {
+    return 0.0;
   }
 
   // BAD HANDLING / MAJOR FAILURE (strong penalty)
@@ -70,16 +69,16 @@ function getEventSeverity(title = "", summary = "") {
       text.includes("stagflation") || text.includes("internment") || text.includes("court-packing") || 
       text.includes("failed response") || text.includes("poor handling") || text.includes("mismanagement") || 
       text.includes("worsened") || text.includes("caused crisis") || text.includes("economic collapse")) {
-    return -6.0;  // heavy penalty
+    return -5.0;  // strong penalty
   }
 
   // MEDIUM NEGATIVE (controversial or mixed)
   if (text.includes("pardon") || text.includes("drone") || text.includes("intelligence") || 
       text.includes("controversy") || text.includes("embargo") || text.includes("intervention")) {
-    return -3.0;
+    return -2.5;
   }
 
-  return 0.0;  // default neutral — no free points for existing
+  return 0.0;  // default neutral — no free points
 }
 
 // Score one category
@@ -100,12 +99,12 @@ function scoreCategory(cat, isMisconduct = false) {
     });
   });
 
-  const raw = Math.min(10, Math.max(-10, total));
+  let raw = Math.min(10, Math.max(-10, total));
   let finalScore = isMisconduct ? -Math.abs(raw) : raw;
 
   // Minimum misconduct penalty if any events exist
   if (isMisconduct && events.length > 0 && finalScore > -4.0) {
-    finalScore = -4.0;  // stronger minimum
+    finalScore = -4.0;
   }
 
   return { score: Number(finalScore.toFixed(2)), details };
@@ -137,7 +136,8 @@ presidents = presidents.map(p => {
     weightedTotal += result.score * CATEGORY_WEIGHTS[catName];
   }
 
-  const eraNormalizedScore = Number(weightedTotal.toFixed(2));
+  // Floor overall score at 0 — no negative Power Score
+  const eraNormalizedScore = Number(Math.max(0, weightedTotal).toFixed(2));
   const powerScore = Number((eraNormalizedScore * 10).toFixed(1));
 
   return {
@@ -153,7 +153,8 @@ presidents = presidents.map(p => {
 
 // Save
 fs.writeFileSync(rankingsPath, JSON.stringify(presidents, null, 2));
-console.log(`✅ Done! Updated ${presidents.length} presidents with strict handling + impact scoring.`);
-console.log("   → Now focuses on 'how well they handled events' + real U.S. impact");
-console.log("   → No free points for routine legislation");
+console.log(`✅ Done! Updated ${presidents.length} presidents with respectful, handling-focused scoring.`);
+console.log("   → No negative Power Score (minimum 0)");
+console.log("   → Heavy penalties for poor handling and negative impact");
+console.log("   → Rewards only for exceptional handling and positive legacy");
 console.log("   → categoryDetails ready for expandable scorecards");
