@@ -2,187 +2,140 @@
 const fs = require("fs");
 const path = require("path");
 
-const rankingsPath = path.join(__dirname, "../public/presidents-rankings.json");
-const infoPath = path.join(__dirname, "../public/presidents.json");
+const TIMELINE_PATH = path.join(__dirname, "../public/presidents-full-timeline.json");
+const RANKINGS_PATH = path.join(__dirname, "../public/presidents-rankings.json");
 const erasPath = path.join(__dirname, "../scripts/presidential-eras.js");
 
-console.log("🚀 Running ERA-BASED scoring engine...");
+console.log("🚀 Running scoring from presidents-full-timeline.json...");
 
 // Load files
-let presidents = JSON.parse(fs.readFileSync(rankingsPath, "utf-8"));
-const presInfo = JSON.parse(fs.readFileSync(infoPath, "utf-8"));
-const eras = require(erasPath);
-
-// Identity map
-const identityMap = new Map();
-for (const p of presInfo) {
-  const key = p.presidentNumber;
-  if (key) identityMap.set(key, { name: p.name, party: p.party, termStart: p.termStart, termEnd: p.termEnd, era: p.era, photo: p.photo, slug: p.slug, office: "President" });
+let timeline;
+try {
+  timeline = JSON.parse(fs.readFileSync(TIMELINE_PATH, "utf-8"));
+} catch (err) {
+  console.error("Failed to load presidents-full-timeline.json:", err.message);
+  process.exit(1);
 }
 
-// Weights
-const CATEGORY_WEIGHTS = {
-  crisisManagement: 0.18,
-  domesticPolicy: 0.17,
-  economicPolicy: 0.17,
-  foreignPolicy: 0.17,
-  judicialPolicy: 0.12,
-  legislation: 0.12,
-  misconduct: 0.07
+const eras = require(erasPath);
+
+// Weights (adjusted for new schema)
+const WEIGHTS = {
+  major: 2.0,
+  minor: 0.0,      // ceremonial events get no score
+  misconduct: -2.0 // misconduct is always negative
 };
 
-// STRICT OUTCOME + HANDLING SEVERITY
+// Updated severity function — tuned to match your actual event titles/summaries
 function getEventSeverity(title = "", summary = "") {
   const text = (title + " " + (summary || "")).toLowerCase();
 
-  if (text.includes("emancipation proclamation") || text.includes("civil rights act") || 
-      text.includes("voting rights act") || text.includes("new deal") || 
-      text.includes("social security") || text.includes("medicare") || 
-      text.includes("federal reserve") || text.includes("interstate highway") || 
-      text.includes("marshall plan") || text.includes("monroe doctrine") || 
-      text.includes("gi bill") || text.includes("land-grant") || 
-      text.includes("successfully resolved") || text.includes("led to victory") || 
-      text.includes("saved the union") || text.includes("ended slavery")) {
-    return 6.0;
+  // Strong positive — foundational / high-legacy achievements
+  if (text.includes("louisiana purchase") || text.includes("judiciary act") ||
+      text.includes("bank act") || text.includes("tariff act") ||
+      text.includes("bill of rights") || text.includes("neutrality proclamation") ||
+      text.includes("jay treaty") || text.includes("treaty of greenville") ||
+      text.includes("departmental establishment") || text.includes("residence act") ||
+      text.includes("chips") || text.includes("inflation reduction") ||
+      text.includes("infrastructure investment") || text.includes("american rescue") ||
+      text.includes("success") || text.includes("stabilized") || text.includes("secured") ||
+      text.includes("established") || text.includes("foundational") || text.includes("legacy")) {
+    return 5.0; // strong positive
   }
 
-  if (text.includes("treaty") || text.includes("reform") || text.includes("signed the") || 
-      text.includes("clean air") || text.includes("civil rights") || text.includes("homestead") || 
-      text.includes("fair labor") || text.includes("wagner act") || 
-      text.includes("good handling") || text.includes("effective") || text.includes("strong response")) {
+  // Moderate positive — effective policy, reforms, stabilization
+  if (text.includes("act") || text.includes("treaty") || text.includes("charter") ||
+      text.includes("signed") || text.includes("repeal") || text.includes("reduction") ||
+      text.includes("expansion") || text.includes("stability") || text.includes("growth") ||
+      text.includes("resolved") || text.includes("protected") || text.includes("prevented")) {
     return 3.0;
   }
 
-  if (text.includes("act of") || text.includes("legislation") || text.includes("law") || 
-      text.includes("bill") || text.includes("tariff") || text.includes("budget")) {
+  // Neutral / ceremonial / routine
+  if (text.includes("inaugural") || text.includes("farewell") || text.includes("address") ||
+      text.includes("proclamation") || text.includes("message") || text.includes("appointment") ||
+      text.includes("move") || text.includes("convenes") || text.includes("ceremonial") ||
+      text.includes("cornerstone") || text.includes("day of thanksgiving")) {
     return 0.0;
   }
 
-  if (text.includes("watergate") || text.includes("iran-contra") || text.includes("impeachment") || 
-      text.includes("scandal") || text.includes("obstruction") || text.includes("perjury") || 
-      text.includes("cover-up") || text.includes("high inflation") || text.includes("supply chain") || 
-      text.includes("failed war") || text.includes("vietnam") || text.includes("great depression") || 
-      text.includes("recession caused") || text.includes("covid") || text.includes("pandemic") || 
-      text.includes("lockdown") || text.includes("mandate") || text.includes("stagflation") || 
-      text.includes("internment") || text.includes("court-packing") || text.includes("failed response") || 
-      text.includes("poor handling") || text.includes("mismanagement") || text.includes("worsened") || 
-      text.includes("caused crisis")) {
-    return -5.0;
+  // Negative — misconduct, controversy, failure, harm
+  if (text.includes("enslavement") || text.includes("enslaved") || text.includes("runaway") ||
+      text.includes("alien and sedition") || text.includes("suppression") || text.includes("dissent") ||
+      text.includes("embargo") || text.includes("controversy") || text.includes("backlash") ||
+      text.includes("failed") || text.includes("devastated") || text.includes("hardship") ||
+      text.includes("scandal") || text.includes("investigation") || text.includes("impeachment") ||
+      text.includes("classified documents") || text.includes("hunter biden") || text.includes("moral failing")) {
+    return -5.0; // strong penalty
   }
 
-  if (text.includes("pardon") || text.includes("drone") || text.includes("intelligence") || 
-      text.includes("controversy") || text.includes("embargo") || text.includes("intervention")) {
-    return -2.5;
-  }
-
+  // Default neutral if no match
   return 0.0;
 }
 
-function scoreCategory(cat, isMisconduct = false) {
-  if (!cat) return { score: 0, details: [] };
-  const events = cat.events || cat.majorEvents || [];
-  let total = 0;
-  const details = [];
+// Score a president's events
+function scorePresident(p) {
+  let rawScore = 0;
 
-  events.forEach(e => {
+  // Major events — positive weight 2.0
+  (p.majorEvents || []).forEach(e => {
     const severity = getEventSeverity(e.title || "", e.summary || "");
-    total += severity;
-    details.push({
-      event: e.title || "Unnamed event",
-      summary: e.summary || "",
-      severity: Number(severity.toFixed(1)),
-      contribution: isMisconduct ? Number(-severity.toFixed(1)) : Number(severity.toFixed(1))
-    });
+    rawScore += severity * 2.0;
   });
 
-  const raw = Math.min(10, Math.max(-10, total));
-  let finalScore = isMisconduct ? -Math.abs(raw) : raw;
+  // Minor events — weight 0.0 (ceremonial)
+  // (p.minorEvents || []).forEach(e => rawScore += 0.0);
 
-  if (isMisconduct && events.length > 0 && finalScore > -4.0) {
-    finalScore = -4.0;
-  }
+  // Misconduct — negative weight 2.0
+  (p.misconduct || []).forEach(e => {
+    const severity = getEventSeverity(e.title || "", e.summary || "");
+    rawScore += severity * -2.0;
+  });
 
-  return { score: Number(finalScore.toFixed(2)), details };
+  return rawScore;
 }
 
 // Main engine
-presidents = presidents.map(p => {
-  const identity = identityMap.get(p.id) || {};
-  const categories = {
-    crisisManagement: p.crisisManagement,
-    domesticPolicy: p.domesticPolicy,
-    economicPolicy: p.economicPolicy,
-    foreignPolicy: p.foreignPolicy,
-    judicialPolicy: p.judicialPolicy,
-    legislation: p.legislation,
-    misconduct: p.misconduct
-  };
-
-  const categoryScores = {};
-  const categoryDetails = {};
-  let weightedTotal = 0;
-
-  for (const [catName, catData] of Object.entries(categories)) {
-    const isMisconduct = catName === "misconduct";
-    const result = scoreCategory(catData, isMisconduct);
-
-    categoryScores[catName] = result.score;
-    categoryDetails[catName] = result.details;
-    weightedTotal += result.score * CATEGORY_WEIGHTS[catName];
-  }
-
-  let eraNormalizedScore = Number(Math.max(0, weightedTotal).toFixed(2));
-  let powerScore = Number((eraNormalizedScore * 10).toFixed(1));
-
-  // Hard-set Harrison (id 9) to 0
-  if (p.id === 9) {
-    powerScore = 0.0;
-    eraNormalizedScore = 0.0;
-    console.log("Hard-set William Henry Harrison (id 9) to 0 Power Score");
-  }
+const rankings = timeline.map(p => {
+  const rawScore = scorePresident(p);
 
   return {
-    ...p,
-    ...identity,
-    categoryScores,
-    categoryDetails,
-    eraNormalizedScore,
-    powerScore,
+    id: p.id,
+    name: p.name,
+    rawScore: Number(rawScore.toFixed(2)),
+    normalizedScore: 0, // computed below
+    eventTotals: {
+      major: p.majorEvents?.length || 0,
+      minor: p.minorEvents?.length || 0,
+      misconduct: p.misconduct?.length || 0,
+      total: (p.majorEvents?.length || 0) + (p.minorEvents?.length || 0) + (p.misconduct?.length || 0)
+    },
+    note: p.id === 9 ? "Ranked last due to serving only 31 days in office." : "",
     lastUpdated: new Date().toISOString()
   };
 });
 
-// Era-based rankings
-const eraRankings = {};
+// Era normalization
+const eraAverages = {};
 Object.keys(eras).forEach(eraName => {
   const ids = eras[eraName];
-  const eraPresidents = presidents.filter(p => ids.includes(p.id));
-  eraPresidents.sort((a, b) => b.powerScore - a.powerScore); // highest first
+  const eraPres = rankings.filter(r => ids.includes(r.id));
+  if (eraPres.length === 0) return;
+  const sum = eraPres.reduce((acc, r) => acc + r.rawScore, 0);
+  eraAverages[eraName] = sum / eraPres.length || 1; // avoid divide by zero
+});
 
-  eraRankings[eraName] = eraPresidents.map((p, index) => ({
-    id: p.id,
-    name: p.name,
-    powerScore: p.powerScore,
-    rank: index + 1
-  }));
-
-  // Log top 3 + bottom 1 per era for quick check
-  console.log(`Era: ${eraName} (${eraPresidents.length} presidents)`);
-  eraRankings[eraName].slice(0, 3).forEach(r => {
-    console.log(`  ${r.rank}. ${r.name} - ${r.powerScore}`);
-  });
-  if (eraRankings[eraName].length > 3) {
-    const last = eraRankings[eraName][eraRankings[eraName].length - 1];
-    console.log(`  ... ${last.rank}. ${last.name} - ${last.powerScore} (last)`);
+rankings.forEach(r => {
+  const era = Object.keys(eras).find(e => eras[e].includes(r.id));
+  if (era && eraAverages[era]) {
+    r.normalizedScore = Number((r.rawScore / eraAverages[era]).toFixed(2));
+  } else {
+    r.normalizedScore = r.rawScore;
   }
 });
 
-presidents.forEach(p => {
-  p.eraRankings = eraRankings;
-});
-
 // Save
-fs.writeFileSync(rankingsPath, JSON.stringify(presidents, null, 2));
-console.log(`✅ Done! Updated ${presidents.length} presidents with era-based rankings.`);
-console.log("   → Harrison hard-set to 0");
-console.log("   → Era rankings computed and attached");
+fs.writeFileSync(RANKINGS_PATH, JSON.stringify(rankings, null, 2));
+console.log(`✅ Done! Scored ${rankings.length} presidents → ${RANKINGS_PATH}`);
+console.log(" → Harrison note applied");
+console.log(" → Era normalization complete");
