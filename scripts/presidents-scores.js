@@ -44,7 +44,7 @@ function getEventSeverity(title = "", summary = "") {
       text.includes("second bank") || text.includes("tariff of 1816") || text.includes("coinage act") ||
       text.includes("navy") || text.includes("naval") || text.includes("military reform") ||
       text.includes("post-revolutionary") || text.includes("debt crisis") || text.includes("panic") ||
-      text.includes("missouri compromise") || text.includes("monroe doctrine")) {
+      text.includes("missouri compromise") || text.includes("monroe doctrine") || text.includes("greeneville")) {
     return 5.0; // strong positive legacy
   }
 
@@ -55,7 +55,8 @@ function getEventSeverity(title = "", summary = "") {
       text.includes("charter") || text.includes("infrastructure") || text.includes("investment") ||
       text.includes("second bank") || text.includes("tariff") || text.includes("coinage") ||
       text.includes("department") || text.includes("navy") || text.includes("naval") ||
-      text.includes("declaration") || text.includes("authorization") || text.includes("war of 1812")) {
+      text.includes("declaration") || text.includes("authorization") || text.includes("war of 1812") ||
+      text.includes("convention") || text.includes("purchase") || text.includes("purchase authorization")) {
     return 3.0;
   }
 
@@ -67,7 +68,7 @@ function getEventSeverity(title = "", summary = "") {
       text.includes("veto") || text.includes("electors") || text.includes("state of the union") ||
       text.includes("annual state") || text.includes("special message") || text.includes("ratified") ||
       text.includes("nominates") || text.includes("confirmed") || text.includes("capital moves") ||
-      text.includes("congress convenes")) {
+      text.includes("congress convenes") || text.includes("annual address") || text.includes("special message")) {
     return 0.0;
   }
 
@@ -83,7 +84,8 @@ function getEventSeverity(title = "", summary = "") {
       text.includes("yellow fever") || text.includes("genêt") || text.includes("genet") ||
       text.includes("burning") || text.includes("defeat") || text.includes("crisis") ||
       text.includes("protest") || text.includes("rebellion") || text.includes("conflict") ||
-      text.includes("impeachment") || text.includes("insurrection")) {
+      text.includes("impeachment") || text.includes("insurrection") || text.includes("exploitation") ||
+      text.includes("paternalistic") || text.includes("colonization") || text.includes("limited emancipation")) {
     return -5.0; // strong penalty
   }
 
