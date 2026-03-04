@@ -41,7 +41,8 @@ function getEventSeverity(title = "", summary = "") {
       text.includes("established") || text.includes("foundational") || text.includes("legacy") ||
       text.includes("expansion") || text.includes("charter") || text.includes("departmental") ||
       text.includes("residence act") || text.includes("infrastructure") || text.includes("investment") ||
-      text.includes("second bank") || text.includes("tariff of 1816") || text.includes("coinage act")) {
+      text.includes("second bank") || text.includes("tariff of 1816") || text.includes("coinage act") ||
+      text.includes("navy") || text.includes("naval") || text.includes("military reform")) {
     return 5.0; // strong positive legacy
   }
 
@@ -50,8 +51,9 @@ function getEventSeverity(title = "", summary = "") {
       text.includes("repeal") || text.includes("reduction") || text.includes("growth") ||
       text.includes("resolved") || text.includes("protected") || text.includes("prevented") ||
       text.includes("charter") || text.includes("infrastructure") || text.includes("investment") ||
-      text.includes("second bank") || text.includes("tariff of 1816") || text.includes("coinage act") ||
-      text.includes("department") || text.includes("navy") || text.includes("naval")) {
+      text.includes("second bank") || text.includes("tariff") || text.includes("coinage") ||
+      text.includes("department") || text.includes("navy") || text.includes("naval") ||
+      text.includes("declaration") || text.includes("charter") || text.includes("authorization")) {
     return 3.0;
   }
 
@@ -61,7 +63,8 @@ function getEventSeverity(title = "", summary = "") {
       text.includes("move") || text.includes("convenes") || text.includes("ceremonial") ||
       text.includes("cornerstone") || text.includes("day of thanksgiving") || text.includes("message") ||
       text.includes("veto") || text.includes("electors") || text.includes("state of the union") ||
-      text.includes("annual state") || text.includes("special message")) {
+      text.includes("annual state") || text.includes("special message") || text.includes("ratified") ||
+      text.includes("nominates") || text.includes("confirmed")) {
     return 0.0;
   }
 
@@ -74,12 +77,12 @@ function getEventSeverity(title = "", summary = "") {
       text.includes("classified documents") || text.includes("hunter biden") || text.includes("moral failing") ||
       text.includes("exploitative") || text.includes("abuse") || text.includes("violation") ||
       text.includes("resistance") || text.includes("panic") || text.includes("epidemic") ||
-      text.includes("yellow fever") || text.includes("genêt") || text.includes("genet")) {
+      text.includes("yellow fever") || text.includes("genêt") || text.includes("genet") ||
+      text.includes("burning") || text.includes("defeat") || text.includes("crisis")) {
     return -5.0; // strong penalty
   }
 
-  // Default neutral if no match
-  return 0.0;
+  return 0.0; // default neutral
 }
 
 // Score a president's events
