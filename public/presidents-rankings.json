@@ -3,7 +3,7 @@
     "id": 1,
     "name": "George Washington",
     "rawScore": 44,
-    "normalizedScore": 1.28,
+    "normalizedScore": 1.25,
     "eventTotals": {
       "major": 5,
       "minor": 0,
@@ -11,13 +11,13 @@
       "total": 6
     },
     "note": "",
-    "lastUpdated": "2026-03-04T06:44:06.236Z"
+    "lastUpdated": "2026-03-04T06:45:01.725Z"
   },
   {
     "id": 2,
     "name": "John Adams",
     "rawScore": 20,
-    "normalizedScore": 0.58,
+    "normalizedScore": 0.57,
     "eventTotals": {
       "major": 3,
       "minor": 0,
@@ -25,13 +25,13 @@
       "total": 4
     },
     "note": "",
-    "lastUpdated": "2026-03-04T06:44:06.236Z"
+    "lastUpdated": "2026-03-04T06:45:01.725Z"
   },
   {
     "id": 3,
     "name": "Thomas Jefferson",
     "rawScore": 52,
-    "normalizedScore": 1.51,
+    "normalizedScore": 1.48,
     "eventTotals": {
       "major": 4,
       "minor": 0,
@@ -39,13 +39,13 @@
       "total": 6
     },
     "note": "",
-    "lastUpdated": "2026-03-04T06:44:06.236Z"
+    "lastUpdated": "2026-03-04T06:45:01.725Z"
   },
   {
     "id": 4,
     "name": "James Madison",
     "rawScore": 36,
-    "normalizedScore": 1.05,
+    "normalizedScore": 1.02,
     "eventTotals": {
       "major": 3,
       "minor": 0,
@@ -53,13 +53,13 @@
       "total": 4
     },
     "note": "",
-    "lastUpdated": "2026-03-04T06:44:06.236Z"
+    "lastUpdated": "2026-03-04T06:45:01.725Z"
   },
   {
     "id": 5,
     "name": "James Monroe",
-    "rawScore": 20,
-    "normalizedScore": 0.58,
+    "rawScore": 24,
+    "normalizedScore": 0.68,
     "eventTotals": {
       "major": 3,
       "minor": 0,
@@ -67,7 +67,7 @@
       "total": 4
     },
     "note": "",
-    "lastUpdated": "2026-03-04T06:44:06.236Z"
+    "lastUpdated": "2026-03-04T06:45:01.726Z"
   },
   {
     "id": 6,
@@ -81,7 +81,7 @@
       "total": 4
     },
     "note": "",
-    "lastUpdated": "2026-03-04T06:44:06.237Z"
+    "lastUpdated": "2026-03-04T06:45:01.726Z"
   },
   {
     "id": 7,
@@ -95,7 +95,7 @@
       "total": 5
     },
     "note": "",
-    "lastUpdated": "2026-03-04T06:44:06.237Z"
+    "lastUpdated": "2026-03-04T06:45:01.726Z"
   },
   {
     "id": 8,
@@ -109,7 +109,7 @@
       "total": 3
     },
     "note": "",
-    "lastUpdated": "2026-03-04T06:44:06.237Z"
+    "lastUpdated": "2026-03-04T06:45:01.726Z"
   },
   {
     "id": 9,
@@ -123,7 +123,7 @@
       "total": 1
     },
     "note": "Ranked last due to serving only 31 days in office.",
-    "lastUpdated": "2026-03-04T06:44:06.237Z"
+    "lastUpdated": "2026-03-04T06:45:01.726Z"
   },
   {
     "id": 10,
@@ -137,7 +137,7 @@
       "total": 5
     },
     "note": "",
-    "lastUpdated": "2026-03-04T06:44:06.237Z"
+    "lastUpdated": "2026-03-04T06:45:01.726Z"
   },
   {
     "id": 11,
@@ -151,7 +151,7 @@
       "total": 6
     },
     "note": "",
-    "lastUpdated": "2026-03-04T06:44:06.237Z"
+    "lastUpdated": "2026-03-04T06:45:01.726Z"
   },
   {
     "id": 12,
@@ -165,7 +165,7 @@
       "total": 1
     },
     "note": "",
-    "lastUpdated": "2026-03-04T06:44:06.237Z"
+    "lastUpdated": "2026-03-04T06:45:01.726Z"
   },
   {
     "id": 13,
@@ -179,7 +179,7 @@
       "total": 3
     },
     "note": "",
-    "lastUpdated": "2026-03-04T06:44:06.237Z"
+    "lastUpdated": "2026-03-04T06:45:01.726Z"
   },
   {
     "id": 14,
@@ -193,7 +193,7 @@
       "total": 4
     },
     "note": "",
-    "lastUpdated": "2026-03-04T06:44:06.237Z"
+    "lastUpdated": "2026-03-04T06:45:01.726Z"
   },
   {
     "id": 15,
@@ -207,7 +207,7 @@
       "total": 4
     },
     "note": "",
-    "lastUpdated": "2026-03-04T06:44:06.237Z"
+    "lastUpdated": "2026-03-04T06:45:01.726Z"
   },
   {
     "id": 16,
@@ -221,7 +221,7 @@
       "total": 6
     },
     "note": "",
-    "lastUpdated": "2026-03-04T06:44:06.237Z"
+    "lastUpdated": "2026-03-04T06:45:01.726Z"
   },
   {
     "id": 17,
@@ -235,7 +235,7 @@
       "total": 4
     },
     "note": "",
-    "lastUpdated": "2026-03-04T06:44:06.237Z"
+    "lastUpdated": "2026-03-04T06:45:01.726Z"
   },
   {
     "id": 18,
@@ -249,7 +249,7 @@
       "total": 5
     },
     "note": "",
-    "lastUpdated": "2026-03-04T06:44:06.237Z"
+    "lastUpdated": "2026-03-04T06:45:01.726Z"
   },
   {
     "id": 19,
@@ -263,7 +263,7 @@
       "total": 2
     },
     "note": "",
-    "lastUpdated": "2026-03-04T06:44:06.237Z"
+    "lastUpdated": "2026-03-04T06:45:01.726Z"
   },
   {
     "id": 20,
@@ -277,7 +277,7 @@
       "total": 1
     },
     "note": "",
-    "lastUpdated": "2026-03-04T06:44:06.237Z"
+    "lastUpdated": "2026-03-04T06:45:01.726Z"
   },
   {
     "id": 21,
@@ -291,7 +291,7 @@
       "total": 4
     },
     "note": "",
-    "lastUpdated": "2026-03-04T06:44:06.237Z"
+    "lastUpdated": "2026-03-04T06:45:01.726Z"
   },
   {
     "id": 22,
@@ -305,7 +305,7 @@
       "total": 3
     },
     "note": "",
-    "lastUpdated": "2026-03-04T06:44:06.237Z"
+    "lastUpdated": "2026-03-04T06:45:01.726Z"
   },
   {
     "id": 23,
@@ -319,7 +319,7 @@
       "total": 4
     },
     "note": "",
-    "lastUpdated": "2026-03-04T06:44:06.237Z"
+    "lastUpdated": "2026-03-04T06:45:01.726Z"
   },
   {
     "id": 24,
@@ -333,7 +333,7 @@
       "total": 3
     },
     "note": "",
-    "lastUpdated": "2026-03-04T06:44:06.237Z"
+    "lastUpdated": "2026-03-04T06:45:01.727Z"
   },
   {
     "id": 25,
@@ -347,7 +347,7 @@
       "total": 4
     },
     "note": "",
-    "lastUpdated": "2026-03-04T06:44:06.237Z"
+    "lastUpdated": "2026-03-04T06:45:01.727Z"
   },
   {
     "id": 26,
@@ -361,7 +361,7 @@
       "total": 6
     },
     "note": "",
-    "lastUpdated": "2026-03-04T06:44:06.237Z"
+    "lastUpdated": "2026-03-04T06:45:01.727Z"
   },
   {
     "id": 27,
@@ -375,7 +375,7 @@
       "total": 4
     },
     "note": "",
-    "lastUpdated": "2026-03-04T06:44:06.238Z"
+    "lastUpdated": "2026-03-04T06:45:01.727Z"
   },
   {
     "id": 28,
@@ -389,7 +389,7 @@
       "total": 5
     },
     "note": "",
-    "lastUpdated": "2026-03-04T06:44:06.238Z"
+    "lastUpdated": "2026-03-04T06:45:01.727Z"
   },
   {
     "id": 29,
@@ -403,7 +403,7 @@
       "total": 4
     },
     "note": "",
-    "lastUpdated": "2026-03-04T06:44:06.238Z"
+    "lastUpdated": "2026-03-04T06:45:01.727Z"
   },
   {
     "id": 30,
@@ -417,7 +417,7 @@
       "total": 4
     },
     "note": "",
-    "lastUpdated": "2026-03-04T06:44:06.238Z"
+    "lastUpdated": "2026-03-04T06:45:01.727Z"
   },
   {
     "id": 31,
@@ -431,7 +431,7 @@
       "total": 4
     },
     "note": "",
-    "lastUpdated": "2026-03-04T06:44:06.238Z"
+    "lastUpdated": "2026-03-04T06:45:01.727Z"
   },
   {
     "id": 32,
@@ -445,7 +445,7 @@
       "total": 6
     },
     "note": "",
-    "lastUpdated": "2026-03-04T06:44:06.238Z"
+    "lastUpdated": "2026-03-04T06:45:01.727Z"
   },
   {
     "id": 33,
@@ -459,7 +459,7 @@
       "total": 5
     },
     "note": "",
-    "lastUpdated": "2026-03-04T06:44:06.238Z"
+    "lastUpdated": "2026-03-04T06:45:01.727Z"
   },
   {
     "id": 34,
@@ -473,7 +473,7 @@
       "total": 5
     },
     "note": "",
-    "lastUpdated": "2026-03-04T06:44:06.238Z"
+    "lastUpdated": "2026-03-04T06:45:01.727Z"
   },
   {
     "id": 35,
@@ -487,7 +487,7 @@
       "total": 4
     },
     "note": "",
-    "lastUpdated": "2026-03-04T06:44:06.238Z"
+    "lastUpdated": "2026-03-04T06:45:01.727Z"
   },
   {
     "id": 36,
@@ -501,7 +501,7 @@
       "total": 6
     },
     "note": "",
-    "lastUpdated": "2026-03-04T06:44:06.238Z"
+    "lastUpdated": "2026-03-04T06:45:01.727Z"
   },
   {
     "id": 37,
@@ -515,7 +515,7 @@
       "total": 5
     },
     "note": "",
-    "lastUpdated": "2026-03-04T06:44:06.238Z"
+    "lastUpdated": "2026-03-04T06:45:01.727Z"
   },
   {
     "id": 38,
@@ -529,7 +529,7 @@
       "total": 3
     },
     "note": "",
-    "lastUpdated": "2026-03-04T06:44:06.238Z"
+    "lastUpdated": "2026-03-04T06:45:01.727Z"
   },
   {
     "id": 39,
@@ -543,7 +543,7 @@
       "total": 4
     },
     "note": "",
-    "lastUpdated": "2026-03-04T06:44:06.238Z"
+    "lastUpdated": "2026-03-04T06:45:01.727Z"
   },
   {
     "id": 40,
@@ -557,7 +557,7 @@
       "total": 4
     },
     "note": "",
-    "lastUpdated": "2026-03-04T06:44:06.238Z"
+    "lastUpdated": "2026-03-04T06:45:01.727Z"
   },
   {
     "id": 41,
@@ -571,7 +571,7 @@
       "total": 4
     },
     "note": "",
-    "lastUpdated": "2026-03-04T06:44:06.238Z"
+    "lastUpdated": "2026-03-04T06:45:01.727Z"
   },
   {
     "id": 42,
@@ -585,7 +585,7 @@
       "total": 5
     },
     "note": "",
-    "lastUpdated": "2026-03-04T06:44:06.238Z"
+    "lastUpdated": "2026-03-04T06:45:01.727Z"
   },
   {
     "id": 43,
@@ -599,7 +599,7 @@
       "total": 5
     },
     "note": "",
-    "lastUpdated": "2026-03-04T06:44:06.238Z"
+    "lastUpdated": "2026-03-04T06:45:01.727Z"
   },
   {
     "id": 44,
@@ -613,7 +613,7 @@
       "total": 5
     },
     "note": "",
-    "lastUpdated": "2026-03-04T06:44:06.238Z"
+    "lastUpdated": "2026-03-04T06:45:01.727Z"
   },
   {
     "id": 45,
@@ -627,7 +627,7 @@
       "total": 6
     },
     "note": "",
-    "lastUpdated": "2026-03-04T06:44:06.238Z"
+    "lastUpdated": "2026-03-04T06:45:01.727Z"
   },
   {
     "id": 46,
@@ -641,6 +641,6 @@
       "total": 5
     },
     "note": "",
-    "lastUpdated": "2026-03-04T06:44:06.238Z"
+    "lastUpdated": "2026-03-04T06:45:01.728Z"
   }
 ]
