@@ -42,7 +42,8 @@ function getEventSeverity(title = "", summary = "") {
       text.includes("expansion") || text.includes("charter") || text.includes("departmental") ||
       text.includes("residence act") || text.includes("infrastructure") || text.includes("investment") ||
       text.includes("second bank") || text.includes("tariff of 1816") || text.includes("coinage act") ||
-      text.includes("navy") || text.includes("naval") || text.includes("military reform")) {
+      text.includes("navy") || text.includes("naval") || text.includes("military reform") ||
+      text.includes("post-revolutionary") || text.includes("debt crisis") || text.includes("panic")) {
     return 5.0; // strong positive legacy
   }
 
@@ -53,7 +54,8 @@ function getEventSeverity(title = "", summary = "") {
       text.includes("charter") || text.includes("infrastructure") || text.includes("investment") ||
       text.includes("second bank") || text.includes("tariff") || text.includes("coinage") ||
       text.includes("department") || text.includes("navy") || text.includes("naval") ||
-      text.includes("declaration") || text.includes("charter") || text.includes("authorization")) {
+      text.includes("declaration") || text.includes("charter") || text.includes("authorization") ||
+      text.includes("war of 1812") || text.includes("missouri compromise") || text.includes("monroe doctrine")) {
     return 3.0;
   }
 
@@ -64,7 +66,8 @@ function getEventSeverity(title = "", summary = "") {
       text.includes("cornerstone") || text.includes("day of thanksgiving") || text.includes("message") ||
       text.includes("veto") || text.includes("electors") || text.includes("state of the union") ||
       text.includes("annual state") || text.includes("special message") || text.includes("ratified") ||
-      text.includes("nominates") || text.includes("confirmed")) {
+      text.includes("nominates") || text.includes("confirmed") || text.includes("capital moves") ||
+      text.includes("congress convenes")) {
     return 0.0;
   }
 
@@ -78,7 +81,9 @@ function getEventSeverity(title = "", summary = "") {
       text.includes("exploitative") || text.includes("abuse") || text.includes("violation") ||
       text.includes("resistance") || text.includes("panic") || text.includes("epidemic") ||
       text.includes("yellow fever") || text.includes("genêt") || text.includes("genet") ||
-      text.includes("burning") || text.includes("defeat") || text.includes("crisis")) {
+      text.includes("burning") || text.includes("defeat") || text.includes("crisis") ||
+      text.includes("protest") || text.includes("rebellion") || text.includes("conflict") ||
+      text.includes("impeachment") || text.includes("insurrection")) {
     return -5.0; // strong penalty
   }
 
