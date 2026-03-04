@@ -46,7 +46,8 @@ function getEventSeverity(title = "", summary = "") {
       text.includes("post-revolutionary") || text.includes("debt crisis") || text.includes("panic") ||
       text.includes("missouri compromise") || text.includes("monroe doctrine") || text.includes("greeneville") ||
       text.includes("purchase authorization") || text.includes("purchase") || text.includes("second bank charter") ||
-      text.includes("department of the navy") || text.includes("naval expansion") || text.includes("naval armament")) {
+      text.includes("department of the navy") || text.includes("naval expansion") || text.includes("naval armament") ||
+      text.includes("uniform rule of naturalization") || text.includes("patent act") || text.includes("copyright law")) {
     return 5.0; // strong positive legacy
   }
 
@@ -62,7 +63,7 @@ function getEventSeverity(title = "", summary = "") {
       text.includes("repeal of internal taxes") || text.includes("judiciary act repeal") ||
       text.includes("alien enemies") || text.includes("naturalization act") || text.includes("fugitive slave") ||
       text.includes("slave trade") || text.includes("militia act") || text.includes("calling forth") ||
-      text.includes("uniform rule of naturalization") || text.includes("patent act") || text.includes("copyright law")) {
+      text.includes("uniform rule") || text.includes("patent") || text.includes("copyright")) {
     return 3.0;
   }
 
@@ -76,7 +77,8 @@ function getEventSeverity(title = "", summary = "") {
       text.includes("nominates") || text.includes("confirmed") || text.includes("capital moves") ||
       text.includes("congress convenes") || text.includes("annual address") || text.includes("special message") ||
       text.includes("electors cast") || text.includes("rhode island") || text.includes("vermont admitted") ||
-      text.includes("laying the cornerstone") || text.includes("name the territory") || text.includes("commissioners name")) {
+      text.includes("laying the cornerstone") || text.includes("name the territory") || text.includes("commissioners name") ||
+      text.includes("proclamation") || text.includes("warning") || text.includes("publishing")) {
     return 0.0;
   }
 
@@ -95,7 +97,9 @@ function getEventSeverity(title = "", summary = "") {
       text.includes("impeachment") || text.includes("insurrection") || text.includes("exploitation") ||
       text.includes("paternalistic") || text.includes("colonization") || text.includes("limited emancipation") ||
       text.includes("fugitive slave") || text.includes("slave trade") || text.includes("slave") ||
-      text.includes("armed force") || text.includes("levying") || text.includes("disturbs the public peace")) {
+      text.includes("armed force") || text.includes("levying") || text.includes("disturbs the public peace") ||
+      text.includes("warning against violation") || text.includes("cessation of violence") ||
+      text.includes("obstruction of justice") || text.includes("protest of liquor laws")) {
     return -5.0; // strong penalty
   }
 
