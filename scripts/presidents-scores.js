@@ -45,7 +45,8 @@ function getEventSeverity(title = "", summary = "") {
       text.includes("navy") || text.includes("naval") || text.includes("military reform") ||
       text.includes("post-revolutionary") || text.includes("debt crisis") || text.includes("panic") ||
       text.includes("missouri compromise") || text.includes("monroe doctrine") || text.includes("greeneville") ||
-      text.includes("purchase authorization") || text.includes("purchase") || text.includes("second bank charter")) {
+      text.includes("purchase authorization") || text.includes("purchase") || text.includes("second bank charter") ||
+      text.includes("department of the navy") || text.includes("naval expansion") || text.includes("naval armament")) {
     return 5.0; // strong positive legacy
   }
 
@@ -59,7 +60,9 @@ function getEventSeverity(title = "", summary = "") {
       text.includes("declaration") || text.includes("authorization") || text.includes("war of 1812") ||
       text.includes("convention") || text.includes("purchase") || text.includes("purchase authorization") ||
       text.includes("repeal of internal taxes") || text.includes("judiciary act repeal") ||
-      text.includes("alien enemies") || text.includes("naturalization act")) {
+      text.includes("alien enemies") || text.includes("naturalization act") || text.includes("fugitive slave") ||
+      text.includes("slave trade") || text.includes("militia act") || text.includes("calling forth") ||
+      text.includes("uniform rule of naturalization") || text.includes("patent act") || text.includes("copyright law")) {
     return 3.0;
   }
 
@@ -72,7 +75,8 @@ function getEventSeverity(title = "", summary = "") {
       text.includes("annual state") || text.includes("special message") || text.includes("ratified") ||
       text.includes("nominates") || text.includes("confirmed") || text.includes("capital moves") ||
       text.includes("congress convenes") || text.includes("annual address") || text.includes("special message") ||
-      text.includes("electors cast") || text.includes("rhode island") || text.includes("vermont admitted")) {
+      text.includes("electors cast") || text.includes("rhode island") || text.includes("vermont admitted") ||
+      text.includes("laying the cornerstone") || text.includes("name the territory") || text.includes("commissioners name")) {
     return 0.0;
   }
 
@@ -90,7 +94,8 @@ function getEventSeverity(title = "", summary = "") {
       text.includes("protest") || text.includes("rebellion") || text.includes("conflict") ||
       text.includes("impeachment") || text.includes("insurrection") || text.includes("exploitation") ||
       text.includes("paternalistic") || text.includes("colonization") || text.includes("limited emancipation") ||
-      text.includes("fugitive slave") || text.includes("slave trade") || text.includes("slave")) {
+      text.includes("fugitive slave") || text.includes("slave trade") || text.includes("slave") ||
+      text.includes("armed force") || text.includes("levying") || text.includes("disturbs the public peace")) {
     return -5.0; // strong penalty
   }
 
