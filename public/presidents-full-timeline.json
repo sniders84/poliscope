@@ -1,0 +1,2024 @@
+[
+  {
+    "id": 1,
+    "name": "George Washington",
+    "overview": "Washington’s legislative legacy established the foundational architecture of the federal government. His presidency saw the creation of the federal judiciary, the national bank, the revenue system, and the executive departments. Washington worked closely with Congress to define constitutional boundaries and set precedents for federal authority. His legislative actions shaped the early Republic’s financial stability, institutional legitimacy, and administrative structure. These laws became the bedrock of American governance for generations.",
+    "majorEvents": [
+      {
+        "title": "Judiciary Act of 1789",
+        "summary": "This landmark act created the federal court system, including district courts, circuit courts, and the Supreme Court’s structure. It defined federal jurisdiction and established the office of Attorney General, forming the backbone of the American judiciary.",
+        "sources": [
+          "National Archives: Judiciary Act of 1789",
+          "Library of Congress: Washington legislative papers"
+        ]
+      },
+      {
+        "title": "Bank Act of 1791",
+        "summary": "Washington signed the bill establishing the First Bank of the United States after consulting his cabinet on constitutional concerns. The bank stabilized federal finances, standardized currency, and strengthened national credit.",
+        "sources": [
+          "Library of Congress: Washington financial legislation papers",
+          "National Archives: Bank Act records"
+        ]
+      },
+      {
+        "title": "Tariff Act of 1789",
+        "summary": "Washington signed the first major tariff law, providing essential revenue for the new federal government. It protected emerging American industries and established the foundation of federal fiscal policy.",
+        "sources": [
+          "National Archives: Tariff Act records",
+          "Library of Congress: Early federal revenue legislation"
+        ]
+      },
+      {
+        "title": "Residence Act of 1790",
+        "summary": "Washington signed the law establishing the permanent national capital along the Potomac River. It authorized the creation of Washington, D.C., and empowered the president to oversee its development.",
+        "sources": [
+          "National Archives: Residence Act records",
+          "Library of Congress: Capital establishment papers"
+        ]
+      },
+      {
+        "title": "Departmental Establishment Acts (1789–1790)",
+        "summary": "Washington signed legislation formally creating the Departments of State, War, and Treasury, defining their responsibilities and establishing the modern executive branch structure.",
+        "sources": [
+          "National Archives: Department establishment acts",
+          "Library of Congress: Washington administrative papers"
+        ]
+      }
+    ],
+    "minorEvents": [],
+    "misconduct": [
+      {
+        "title": "Enslavement and Pursuit of Runaway Enslaved People",
+        "summary": "Washington enslaved more than 100 people over his lifetime and, despite some private doubts about slavery, actively pursued those who escaped, including Ona Judge. Historians widely regard his continued participation in slavery and efforts to recover fugitives as a serious moral failing, even though it was legal at the time.",
+        "sources": [
+          "Mount Vernon, Washington and slavery historical essays.",
+          "Library of Congress, Washington papers on enslaved labor."
+        ]
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "John Adams",
+    "overview": "Adams’ legislative legacy was shaped by rising tensions with France, domestic political conflict, and the expansion of federal authority. His presidency saw the passage of controversial security laws, the strengthening of naval power, and the development of early federal administrative structures. Adams’ legislative actions reflected the Federalist emphasis on national security and centralized authority. While some measures were deeply divisive—most notably the Alien and Sedition Acts—they significantly expanded the federal government’s capacity in defense, immigration control, and executive organization during a period of quasi-war.",
+    "majorEvents": [
+      {
+        "title": "Alien and Sedition Acts (1798)",
+        "summary": "Adams signed a package of four laws (Naturalization Act, Alien Friends Act, Alien Enemies Act, Sedition Act) that restricted immigration, extended citizenship residency requirements, empowered deportation of aliens deemed dangerous, and criminalized false or malicious writings against the government. Highly controversial, they suppressed dissent but fueled backlash and contributed to Federalist electoral defeat in 1800.",
+        "sources": [
+          "National Archives: Sedition Act records",
+          "Library of Congress: Adams legislative correspondence",
+          "https://www.archives.gov/milestone-documents/alien-and-sedition-acts"
+        ]
+      },
+      {
+        "title": "Department of the Navy Establishment (1798)",
+        "summary": "Adams signed the act creating the Department of the Navy on April 30, 1798, separating naval affairs from the War Department to better manage the Quasi-War with France and build a professional maritime force.",
+        "sources": [
+          "Library of Congress: Navy Department founding papers",
+          "National Archives: Department establishment records",
+          "https://www.archives.gov/education/lessons/new-us-navy/navy-bill.html"
+        ]
+      },
+      {
+        "title": "Naval Expansion Acts (1798–1800)",
+        "summary": "Multiple laws funded new warships, authorized marine forces, and strengthened coastal defenses amid the undeclared naval conflict with France, laying groundwork for a permanent U.S. Navy.",
+        "sources": [
+          "National Archives: Naval legislation records",
+          "Library of Congress: Adams naval papers"
+        ]
+      }
+    ],
+    "minorEvents": [],
+    "misconduct": [
+      {
+        "title": "Alien and Sedition Acts and Suppression of Dissent",
+        "summary": "Adams signed and enforced the Alien and Sedition Acts, which criminalized certain forms of criticism of the federal government. Historians widely view this as an abuse of federal power that infringed on civil liberties, even though the laws were passed by Congress and upheld at the time.",
+        "sources": [
+          "National Archives, Alien and Sedition Acts records.",
+          "Library of Congress, Adams correspondence on sedition prosecutions."
+        ]
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Thomas Jefferson",
+    "overview": "Jefferson’s legislative legacy centered on reducing federal power, cutting taxes, repealing internal excises, and reshaping the nation’s economic and territorial landscape through the massive Louisiana Purchase. His administration repealed Federalist taxes, slashed military spending, and pursued agrarian-limited government ideals. However, aggressive trade restrictions like the Embargo Act of 1807 caused severe domestic economic hardship and smuggling, becoming one of his most criticized policies. Overall, his laws promoted territorial doubling, fiscal restraint, and executive assertiveness (despite strict constructionist views), but mixed results on economic coercion and judiciary reshaping.",
+    "majorEvents": [
+      {
+        "title": "Louisiana Purchase Authorization (1803)",
+        "summary": "Jefferson signed legislation enabling the $15 million acquisition of the vast Louisiana Territory from France, doubling U.S. size, securing New Orleans/Mississippi River access, and enabling westward expansion/exploration (Lewis and Clark). A bold executive action despite constitutional doubts.",
+        "sources": [
+          "National Archives: Louisiana Purchase documents",
+          "Library of Congress: Jefferson expansion papers"
+        ]
+      },
+      {
+        "title": "Embargo Act of 1807",
+        "summary": "Jefferson's sweeping halt on U.S. exports aimed to pressure Britain/France over neutral rights/impressment amid Napoleonic Wars. It devastated American trade, agriculture, and shipping (exports fell ~80%), sparked widespread smuggling, and failed diplomatically—widely seen as a major policy failure.",
+        "sources": [
+          "Library of Congress: Embargo Act correspondence",
+          "National Archives: embargo enforcement records"
+        ]
+      },
+      {
+        "title": "Repeal of Internal Taxes (1802)",
+        "summary": "Jefferson eliminated federal internal taxes (e.g., whiskey tax) and reduced government spending/debt significantly under Treasury Secretary Gallatin, aligning with limited-government philosophy and boosting popular support.",
+        "sources": [
+          "National Archives: Jefferson tax repeal records",
+          "Library of Congress: Jefferson fiscal papers"
+        ]
+      },
+      {
+        "title": "Judiciary Act Repeal (1802)",
+        "summary": "Repealed the Federalist Judiciary Act of 1801, abolishing new judgeships/'midnight appointments' and restoring circuit-riding duties, reshaping federal judiciary and curbing Federalist influence.",
+        "sources": [
+          "National Archives: Judiciary Act repeal records",
+          "Library of Congress: Jefferson judicial papers"
+        ]
+      }
+    ],
+    "minorEvents": [],
+    "misconduct": [
+      {
+        "title": "Enslavement and Exploitation at Monticello",
+        "summary": "Jefferson enslaved hundreds of people at Monticello while publicly writing about liberty and equality. Historians widely regard this contradiction, and his continued participation in slavery, as a profound moral failing.",
+        "sources": [
+          "Monticello, Jefferson and slavery historical resources.",
+          "Library of Congress, Jefferson plantation records."
+        ]
+      },
+      {
+        "title": "Relationship with Sally Hemings",
+        "summary": "DNA evidence and historical research strongly support that Jefferson fathered children with Sally Hemings, an enslaved woman he owned. This relationship, occurring in a context of extreme power imbalance and lack of legal consent for enslaved people, is widely viewed by historians as exploitative, even though Jefferson never publicly acknowledged it.",
+        "sources": [
+          "Monticello, Sally Hemings and Jefferson DNA study summary.",
+          "Nature, DNA study on Jefferson–Hemings lineage (1998)."
+        ]
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "name": "James Madison",
+    "overview": "Madison’s legislative legacy was dominated by the War of 1812 and post-war recovery efforts. Facing economic chaos from war disruptions, he pragmatically supported re-chartering the national bank, enacting the first protective tariff, and military reforms—reversing earlier Jeffersonian retrenchment. These actions stabilized currency, boosted manufacturing, and strengthened federal institutions, laying foundations for the 'American System' of national development despite wartime hardships.",
+    "majorEvents": [
+      {
+        "title": "Second Bank of the United States Charter (1816)",
+        "summary": "Madison signed the 20-year charter for the Second Bank to stabilize currency, manage war debt/credit, and regulate banking after financial turmoil— a key shift from his earlier opposition.",
+        "sources": [
+          "National Archives: Bank charter records",
+          "Library of Congress: Madison financial papers"
+        ]
+      },
+      {
+        "title": "Tariff of 1816",
+        "summary": "The first explicitly protective tariff supported domestic manufacturing post-war, shielding industries from European competition and marking federal commitment to economic nationalism.",
+        "sources": [
+          "Library of Congress: Tariff of 1816 papers",
+          "National Archives: Early tariff legislation"
+        ]
+      },
+      {
+        "title": "War of 1812 Declaration (1812)",
+        "summary": "Madison signed the congressional declaration of war against Britain over impressment, trade restrictions, and territorial issues—America's first formal war declaration, leading to key military/territorial outcomes.",
+        "sources": [
+          "National Archives: War declaration records",
+          "Library of Congress: Madison foreign policy papers"
+        ]
+      }
+    ],
+    "minorEvents": [],
+    "misconduct": [
+      {
+        "title": "Continued Enslavement While Advocating Republican Ideals",
+        "summary": "Madison owned enslaved people throughout his life and did not free them in his will, even as he helped design a constitutional system grounded in liberty and rights. Historians widely view this as a serious moral inconsistency and a form of personal and structural misconduct.",
+        "sources": [
+          "Montpelier, Madison and slavery historical essays.",
+          "Library of Congress, Madison plantation and financial records."
+        ]
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "name": "James Monroe",
+    "overview": "Monroe’s legislative legacy emphasized national expansion, sectional balance, and institutional strengthening during the 'Era of Good Feelings.' Key actions included the Missouri Compromise to manage slavery tensions, selective infrastructure support, Florida acquisition implementation, and military modernization. His presidency consolidated federal authority, promoted development, and temporarily eased divisions, though compromises deferred deeper conflicts.",
+    "majorEvents": [
+      {
+        "title": "Missouri Compromise (1820)",
+        "summary": "Monroe signed the compromise admitting Missouri as slave state, Maine as free, and banning slavery north of 36°30' in Louisiana Territory lands—temporarily balancing free/slave states and averting immediate crisis.",
+        "sources": [
+          "Library of Congress: Missouri Compromise papers",
+          "National Archives: Compromise legislation"
+        ]
+      },
+      {
+        "title": "Florida Acquisition Implementation Acts (1819–1821)",
+        "summary": "Implemented the Adams-Onís Treaty, transferring Florida from Spain to U.S. control, adding territory, and establishing governance amid expansion.",
+        "sources": [
+          "National Archives: Florida cession records",
+          "Library of Congress: Monroe foreign policy papers"
+        ]
+      },
+      {
+        "title": "Internal Improvements Funding (1817–1823)",
+        "summary": "Approved selective federal funding for roads, canals, and infrastructure to promote national connectivity and development while navigating constitutional debates.",
+        "sources": [
+          "Library of Congress: Internal improvements papers",
+          "National Archives: Infrastructure legislation"
+        ]
+      }
+    ],
+    "minorEvents": [],
+    "misconduct": [
+      {
+        "title": "Enslavement and Limited Emancipation Efforts",
+        "summary": "Monroe owned enslaved people and, while he supported colonization schemes to send freed Black people to Africa, he did not broadly free those he enslaved. Historians view his actions as part of the broader presidential complicity in slavery, with only limited and paternalistic efforts at reform.",
+        "sources": [
+          "James Monroe Museum, Monroe and slavery resources.",
+          "Library of Congress, Monroe plantation records."
+        ]
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "name": "John Quincy Adams",
+    "overview": "John Quincy Adams’ legislative legacy emphasized ambitious national development through federal investment in infrastructure, education, and science—often called the 'American System.' However, congressional opposition (from Jacksonians and states' rights advocates) blocked most proposals, limiting achievements to extensions of existing projects like the National Road and signing the controversial Tariff of 1828 ('Tariff of Abominations'). His administration advanced trade reciprocity and naval strength, but political gridlock and sectional tensions overshadowed his visionary agenda for internal improvements and economic nationalism.",
+    "majorEvents": [
+      {
+        "title": "Tariff of 1828 ('Tariff of Abominations')",
+        "summary": "Adams signed the protective tariff raising duties significantly to shield northern/western industries, but it inflamed Southern opposition (leading to nullification crisis seeds) and damaged his reelection prospects despite boosting manufacturing.",
+        "sources": [
+          "Library of Congress: Tariff of 1828 papers",
+          "National Archives: Early tariff legislation"
+        ]
+      },
+      {
+        "title": "Cumberland Road Extension Acts (1825–1828)",
+        "summary": "Signed multiple extensions and funding for the National Road (first major federal highway), enhancing interstate commerce, connectivity, and western settlement despite broader resistance to federal internal improvements.",
+        "sources": [
+          "National Archives: Cumberland Road legislation",
+          "Library of Congress: Adams internal improvements papers"
+        ]
+      },
+      {
+        "title": "Internal Improvements Support Acts",
+        "summary": "Approved targeted funding for canals, roads, river navigations, and surveys—aligning with Adams' push for federal-led modernization, though many grander proposals (e.g., national university, observatory) failed.",
+        "sources": [
+          "National Archives: Internal improvements records",
+          "Library of Congress: Adams domestic policy papers"
+        ]
+      }
+    ],
+    "minorEvents": [],
+    "misconduct": [
+      {
+        "title": "Patronage and Political Hardball",
+        "summary": "Adams’s presidency involved patronage and political deal‑making, including the so‑called “corrupt bargain” allegation surrounding his election in 1824. Historians generally view the corrupt bargain claim as politically charged and not definitively proven, though it damaged his legitimacy.",
+        "sources": [
+          "Library of Congress, 1824 election correspondence.",
+          "House of Representatives historical essays on the 1824 election."
+        ]
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "name": "Andrew Jackson",
+    "overview": "Andrew Jackson’s legislative legacy transformed executive power, federal finance, and Native American policy through populist and assertive actions. He signed the Indian Removal Act leading to forced relocations (Trail of Tears), vetoed the Second Bank recharter (winning the 'Bank War'), and restructured federal deposits via pet banks. These moves expanded presidential influence, dismantled centralized banking, and prioritized states' rights/western interests, but at great human cost and economic volatility.",
+    "majorEvents": [
+      {
+        "title": "Indian Removal Act (1830)",
+        "summary": "Authorized forced relocation of southeastern tribes (Cherokee, Choctaw, etc.) west of the Mississippi, enabling land grabs for white settlement but causing immense suffering via the Trail of Tears— one of the most tragic and controversial acts in U.S. history.",
+        "sources": [
+          "National Archives: Indian Removal Act records",
+          "Library of Congress: Jackson Indian policy papers"
+        ]
+      },
+      {
+        "title": "Bank War and Deposit Reorganization (1832–1836)",
+        "summary": "Vetoed Second Bank recharter; supported shifting federal deposits to state 'pet' banks, decentralizing finance and contributing to Panic of 1837—marked triumph of Jacksonian democracy over elite institutions.",
+        "sources": [
+          "National Archives: Bank War documents",
+          "Library of Congress: Jackson financial papers"
+        ]
+      }
+    ],
+    "minorEvents": [],
+    "misconduct": [
+      {
+        "title": "Indian Removal and the Trail of Tears",
+        "summary": "Jackson aggressively pursued Indian removal policies, signing and enforcing the Indian Removal Act and overseeing forced relocations that led to mass death and suffering among Native nations. Historians widely regard this as a grave abuse of power and a major moral atrocity, even though it was legal under contemporary U.S. law.",
+        "sources": [
+          "National Archives, Indian Removal Act and implementation records.",
+          "Library of Congress, Jackson administration Indian policy papers."
+        ]
+      },
+      {
+        "title": "Enslavement and Harsh Treatment of Enslaved People",
+        "summary": "Jackson owned enslaved people at the Hermitage and used physical punishment and strict control. Historical records document his active participation in and defense of slavery.",
+        "sources": [
+          "The Hermitage, Andrew Jackson and slavery resources.",
+          "Library of Congress, Jackson plantation records."
+        ]
+      },
+      {
+        "title": "Personal Violence and Dueling",
+        "summary": "Jackson engaged in multiple duels and violent confrontations, including the duel in which he killed Charles Dickinson. While dueling was part of the era’s honor culture, historians often highlight Jackson’s personal violence as ethically troubling.",
+        "sources": [
+          "Library of Congress, Jackson biographical materials.",
+          "The Hermitage, accounts of Jackson’s duels and personal conflicts."
+        ]
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "name": "Martin Van Buren",
+    "overview": "Van Buren’s short, crisis-dominated presidency focused on economic stabilization amid the Panic of 1837. His key achievement was the Independent Treasury Act, divorcing federal funds from unstable state banks. He continued Indian removal enforcement but avoided expansive federal intervention, reflecting Democratic limited-government principles—though his policies offered limited relief and contributed to his 1840 defeat.",
+    "majorEvents": [
+      {
+        "title": "Independent Treasury Act (1840)",
+        "summary": "Created a system of federal sub-treasuries to hold government funds independently of banks, aiming to insulate the Treasury from speculation and panics—enduring reform (revived later) despite initial repeal.",
+        "sources": [
+          "National Archives: Independent Treasury records",
+          "Library of Congress: Van Buren financial papers"
+        ]
+      }
+    ],
+    "minorEvents": [],
+    "misconduct": [
+      {
+        "title": "Support for Indian Removal Policies",
+        "summary": "As Jackson’s vice president and later president, Van Buren continued the implementation of Indian removal, including overseeing the forced removal of the Cherokee that became known as the Trail of Tears. Historians widely regard this as a serious moral and humanitarian failure.",
+        "sources": [
+          "National Archives, Van Buren administration Indian policy records.",
+          "Library of Congress, correspondence on Cherokee removal."
+        ]
+      },
+      {
+        "title": "Complicity in Slavery as a Political Actor",
+        "summary": "Van Buren, though personally more cautious on slavery, supported policies and compromises that protected the institution to maintain political coalitions, a stance many historians view as morally compromised.",
+        "sources": [
+          "Library of Congress, Van Buren political correspondence.",
+          "Scholarly works on Van Buren and slavery politics."
+        ]
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "name": "William Henry Harrison",
+    "overview": "Harrison’s presidency lasted only 31 days (March 4–April 4, 1841), ending in his death from pneumonia. No major legislation was passed or signed during his brief tenure; he called Congress into special session for Whig priorities but died before it convened. His legacy lies in establishing the precedent for vice-presidential succession rather than substantive laws.",
+    "majorEvents": [],
+    "minorEvents": [],
+    "misconduct": [
+      {
+        "title": "Military Conduct Toward Native Peoples (Pre‑Presidency)",
+        "summary": "Before becoming president, Harrison led military campaigns and negotiated treaties that dispossessed Native nations in the Old Northwest. Historians debate the degree of personal culpability versus broader U.S. policy, but many view his role as contributing to unjust land seizures and violence.",
+        "sources": [
+          "Library of Congress, Harrison territorial and military records.",
+          "Historical studies of Harrison’s campaigns at Tippecanoe and in the Northwest Territory."
+        ]
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "name": "John Tyler",
+    "overview": "Tyler’s presidency (after Harrison’s death) featured fierce conflicts with Whig Congress, multiple vetoes (earning him expulsion from the party), and key independent achievements. He signed the Preemption Act for western settlers, Tariff of 1842 for revenue, Webster-Ashburton Treaty implementation, and—crucially—the Texas annexation resolution just before leaving office. His actions asserted presidential independence and advanced territorial expansion despite political isolation.",
+    "majorEvents": [
+      {
+        "title": "Texas Annexation Resolution (1845)",
+        "summary": "Signed joint resolution annexing Texas as a state (on March 1, 1845, days before term end), fulfilling expansionist goals and setting stage for Mexican-American War—major territorial addition driven by Tyler's determination.",
+        "sources": [
+          "National Archives: Texas annexation records",
+          "Library of Congress: Tyler expansion papers"
+        ]
+      },
+      {
+        "title": "Tariff of 1842",
+        "summary": "Signed protective tariff raising duties to stabilize federal revenue post-Panic of 1837, supporting industry despite earlier vetoes of similar Whig bills.",
+        "sources": [
+          "Library of Congress: Tariff of 1842 papers",
+          "National Archives: Economic legislation"
+        ]
+      },
+      {
+        "title": "Preemption Act of 1841",
+        "summary": "Granted settlers priority to buy 160-acre plots they occupied on public lands at low prices, encouraging westward migration and settlement.",
+        "sources": [
+          "National Archives: Preemption Act records",
+          "Library of Congress: Tyler domestic policy papers"
+        ]
+      }
+    ],
+    "minorEvents": [],
+    "misconduct": [
+      {
+        "title": "Use of Veto Power to Block Economic Legislation",
+        "summary": "Tyler repeatedly vetoed Whig economic bills, leading to accusations of bad faith and political betrayal. While not illegal, contemporaries saw his actions as a breach of party commitments, and his entire cabinet (except one) resigned in protest.",
+        "sources": [
+          "Library of Congress, Tyler veto messages.",
+          "House and Senate historical essays on the Tyler presidency."
+        ]
+      },
+      {
+        "title": "Controversial Annexation of Texas",
+        "summary": "Tyler pushed for the annexation of Texas through a joint resolution rather than a treaty after the Senate rejected annexation. Critics at the time and many historians since have viewed this as a procedural end‑run that heightened sectional tensions.",
+        "sources": [
+          "National Archives, Texas annexation records.",
+          "Library of Congress, Tyler correspondence on annexation."
+        ]
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "name": "James K. Polk",
+    "overview": "Polk’s one-term presidency achieved nearly all his major goals through decisive legislative and executive action: massive territorial expansion (via Oregon settlement and Mexican Cession), tariff reduction for trade, re-establishment of the Independent Treasury for fiscal stability, and military/naval support during the Mexican-American War. His administration organized vast new territories, founded the Smithsonian, and permanently reshaped U.S. geography and economic policy—widely regarded as one of the most legislatively productive presidencies despite controversies over war and slavery expansion.",
+    "majorEvents": [
+      {
+        "title": "Mexican Cession Implementation Acts (1848)",
+        "summary": "Following the Treaty of Guadalupe Hidalgo (ending Mexican-American War), Polk signed laws organizing California, New Mexico, and other ceded territories—adding ~525,000 square miles and setting stage for Gold Rush and future statehood battles.",
+        "sources": [
+          "National Archives: Mexican Cession records",
+          "Library of Congress: Polk foreign policy papers"
+        ]
+      },
+      {
+        "title": "Walker Tariff of 1846",
+        "summary": "Signed revenue-focused tariff大幅 lowering rates (from ~40% to ~25% average), shifting toward freer trade, boosting imports/exports, and increasing federal revenue through volume—key Democratic economic victory.",
+        "sources": [
+          "Library of Congress: Walker Tariff papers",
+          "National Archives: Tariff legislation"
+        ]
+      },
+      {
+        "title": "Independent Treasury Act of 1846",
+        "summary": "Re-established the Independent Treasury (sub-treasury system) to hold federal funds in government vaults, insulating Treasury from bank failures and speculation—enduring reform that lasted until the Federal Reserve era.",
+        "sources": [
+          "National Archives: Treasury Act records",
+          "Library of Congress: Polk financial papers"
+        ]
+      },
+      {
+        "title": "Oregon Territory Organization Acts (1846–1848)",
+        "summary": "After resolving 54°40' boundary dispute with Britain (Treaty of 1846), signed laws organizing Oregon Territory, establishing governance, prohibiting slavery north of 36°30', and spurring massive settlement.",
+        "sources": [
+          "National Archives: Oregon Territory records",
+          "Library of Congress: Polk expansion papers"
+        ]
+      }
+    ],
+    "minorEvents": [],
+    "misconduct": [
+      {
+        "title": "Questionable Justification for the Mexican–American War",
+        "summary": "Polk asserted that Mexico had “shed American blood upon American soil” to justify war, a claim many contemporaries and later historians have challenged as misleading. Critics, including Abraham Lincoln at the time, argued that Polk manipulated facts to provoke and justify a war of expansion.",
+        "sources": [
+          "Library of Congress, Polk war messages and congressional debates.",
+          "Historical analyses of the origins of the Mexican–American War."
+        ]
+      },
+      {
+        "title": "Expansion of Slaveholding Territory",
+        "summary": "Polk’s territorial expansion, while legal, facilitated the spread of slavery into new lands, a policy many historians view as morally compromised and politically destabilizing.",
+        "sources": [
+          "National Archives, treaties and territorial records under Polk.",
+          "Scholarly works on slavery and westward expansion."
+        ]
+      }
+    ]
+  },
+  {
+    "id": 12,
+    "name": "Zachary Taylor",
+    "overview": "Taylor’s presidency (March 1849–July 1850) was cut short by his death, producing no major signed legislation. He strongly opposed slavery expansion in territories acquired from Mexico, urged immediate admission of California as a free state, and resisted compromise efforts—helping shape the debates that led to the Compromise of 1850 under Fillmore. His stance preserved Union unity in the short term but highlighted irreconcilable sectional divides.",
+    "majorEvents": [],
+    "minorEvents": [],
+    "misconduct": [
+      {
+        "title": "Enslavement and Plantation Ownership",
+        "summary": "Taylor owned plantations and enslaved people in Louisiana and other locations. While he opposed some expansions of slavery as president, he did not renounce or dismantle his own participation in the system.",
+        "sources": [
+          "Library of Congress, Taylor plantation and financial records.",
+          "Historical studies of Taylor’s slaveholding."
+        ]
+      }
+    ]
+  },
+  {
+    "id": 13,
+    "name": "Millard Fillmore",
+    "overview": "Fillmore succeeded Taylor and signed the Compromise of 1850—a package of five bills that admitted California free, strengthened the Fugitive Slave Act, ended slave trade in D.C., settled Texas boundaries with federal debt assumption, and organized Utah/New Mexico territories under popular sovereignty. It temporarily averted secession but inflamed abolitionist sentiment and enforcement controversies, buying time before deeper crisis.",
+    "majorEvents": [
+      {
+        "title": "Compromise of 1850",
+        "summary": "Signed the multi-bill package balancing sectional interests: California free state admission, tougher Fugitive Slave Act, D.C. slave trade ban, Texas boundary/debt resolution, and territorial organization without slavery restrictions—key (if temporary) Union preservation measure.",
+        "sources": [
+          "National Archives: Compromise of 1850 records",
+          "Library of Congress: Fillmore legislative papers"
+        ]
+      },
+      {
+        "title": "Fugitive Slave Act Enforcement (1850)",
+        "summary": "Part of Compromise; required federal marshals/commissioners to assist in returning escaped enslaved people, with penalties for non-compliance—highly controversial and fueled Northern resistance/Underground Railroad activity.",
+        "sources": [
+          "National Archives: Fugitive Slave Act records",
+          "Library of Congress: Fillmore domestic policy papers"
+        ]
+      }
+    ],
+    "minorEvents": [],
+    "misconduct": [
+      {
+        "title": "Enforcement of the Fugitive Slave Act",
+        "summary": "Fillmore vigorously enforced the Fugitive Slave Act of 1850, directing federal officials to return escaped enslaved people to bondage. Historians widely view this as a grave moral failing and an abuse of federal power in service of slavery, even though it was legal at the time.",
+        "sources": [
+          "National Archives, Fugitive Slave Act enforcement records.",
+          "Library of Congress, Fillmore administration correspondence on fugitive cases."
+        ]
+      }
+    ]
+  },
+  {
+    "id": 14,
+    "name": "Franklin Pierce",
+    "overview": "Pierce’s presidency accelerated sectional crisis through the Kansas-Nebraska Act (repealing Missouri Compromise line, introducing popular sovereignty, and sparking 'Bleeding Kansas' violence). He signed the Gadsden Purchase for southern rail route, supported transcontinental railroad surveys, and enacted reciprocity with Canada—reflecting expansionist and pro-Southern leanings that deepened North-South divide and weakened Democratic Party cohesion.",
+    "majorEvents": [
+      {
+        "title": "Kansas–Nebraska Act (1854)",
+        "summary": "Organized Kansas and Nebraska territories with popular sovereignty on slavery, effectively repealing 1820 Missouri Compromise—triggered violent conflict in Kansas, rise of Republican Party, and irreparable sectional rupture.",
+        "sources": [
+          "National Archives: Kansas–Nebraska Act records",
+          "Library of Congress: Pierce legislative papers"
+        ]
+      },
+      {
+        "title": "Gadsden Purchase Funding Act (1854)",
+        "summary": "Authorized $10 million payment to Mexico for southern Arizona/New Mexico strip, enabling potential southern transcontinental railroad—last major territorial addition before Civil War.",
+        "sources": [
+          "National Archives: Gadsden Purchase records",
+          "Library of Congress: Pierce economic papers"
+        ]
+      }
+    ],
+    "minorEvents": [],
+    "misconduct": [
+      {
+        "title": "Support for the Kansas–Nebraska Act and “Bleeding Kansas”",
+        "summary": "Pierce backed and signed the Kansas–Nebraska Act, which repealed the Missouri Compromise line and allowed popular sovereignty on slavery. His administration’s handling of Kansas, including recognition of pro‑slavery territorial governments amid fraud and violence, is widely seen as a moral and political failure.",
+        "sources": [
+          "National Archives, Kansas–Nebraska Act and territorial records.",
+          "Library of Congress, Pierce correspondence on Kansas."
+        ]
+      },
+      {
+        "title": "Personal Alcohol Abuse (Historically Documented)",
+        "summary": "Multiple contemporaneous accounts and later historical studies describe Pierce as struggling with heavy drinking, which some historians argue affected his effectiveness and judgment, though the exact impact is debated.",
+        "sources": [
+          "Biographical studies of Franklin Pierce discussing alcohol use.",
+          "Library of Congress, personal correspondence referencing Pierce’s drinking."
+        ]
+      }
+    ]
+  },
+  {
+    "id": 15,
+    "name": "James Buchanan",
+    "overview": "Buchanan’s presidency (1857–1861) failed to stem the march to Civil War amid Dred Scott decision fallout, Bleeding Kansas chaos, and secession threats. He signed tariff reductions (exacerbating Panic of 1857), admitted Minnesota/Oregon as states, and pushed (unsuccessfully) for pro-slavery Lecompton Kansas admission—actions often seen as weak, pro-Southern, and ineffective in preserving Union, contributing to his ranking as one of the worst presidents.",
+    "majorEvents": [
+      {
+        "title": "Lecompton Constitution Support Measures",
+        "summary": "Buchanan backed fraudulent pro-slavery Lecompton Constitution for Kansas admission, splitting Democrats and fueling anti-slavery backlash—ultimately rejected by Congress but highlighted presidential alignment with Southern interests.",
+        "sources": [
+          "National Archives: Kansas statehood records",
+          "Library of Congress: Buchanan domestic policy papers"
+        ]
+      },
+      {
+        "title": "Tariff of 1857",
+        "summary": "Signed low-tariff bill further reducing rates amid economic boom (but worsened revenue during ensuing Panic of 1857)—reflected Democratic free-trade policy but contributed to fiscal strain.",
+        "sources": [
+          "Library of Congress: Tariff of 1857 papers",
+          "National Archives: Economic legislation"
+        ]
+      }
+    ],
+    "minorEvents": [],
+    "misconduct": [
+      {
+        "title": "Support for the Pro‑Slavery Lecompton Constitution",
+        "summary": "Buchanan backed the fraudulent pro‑slavery Lecompton Constitution in Kansas, pressuring Congress to accept it despite clear evidence of irregularities and opposition from many settlers. Historians widely view this as a serious abuse of presidential influence in favor of the slaveholding interest.",
+        "sources": [
+          "National Archives, Buchanan correspondence on Kansas.",
+          "Library of Congress, congressional debates on the Lecompton Constitution."
+        ]
+      },
+      {
+        "title": "Failure to Act Decisively Against Secession",
+        "summary": "As Southern states seceded, Buchanan insisted secession was illegal but claimed he lacked constitutional authority to act, effectively doing little to stop the crisis. Historians often characterize this as a catastrophic failure of leadership rather than a technical crime, but it is widely regarded as grave professional misconduct.",
+        "sources": [
+          "Library of Congress, Buchanan messages to Congress in 1860–1861.",
+          "Historical analyses of Buchanan’s response to secession."
+        ]
+      }
+    ]
+  },
+  {
+    "id": 16,
+    "name": "Abraham Lincoln",
+    "overview": "Lincoln’s presidency during the Civil War produced some of the most transformative legislation in U.S. history. He signed laws enabling massive western settlement (Homestead Act), national connectivity (Pacific Railway Act), higher education expansion (Morrill Land-Grant Act), a modern banking/currency system (National Banking Acts), and key institutions like the Department of Agriculture. Wartime tariffs funded the Union effort, while his support for these acts accelerated industrialization, infrastructure, and long-term economic growth—laying foundations for modern America amid preserving the Union.",
+    "majorEvents": [
+      {
+        "title": "Homestead Act (1862)",
+        "summary": "Granted 160 acres of public land to settlers who improved it over five years, spurring millions of acres settled in the West, demographic shifts, and agricultural expansion—enduring driver of westward growth.",
+        "sources": [
+          "National Archives: Homestead Act records",
+          "Library of Congress: Lincoln legislative papers"
+        ]
+      },
+      {
+        "title": "Pacific Railway Act (1862)",
+        "summary": "Authorized federal land grants and bonds for the first transcontinental railroad (completed 1869), revolutionizing transportation, commerce, national unity, and economic integration across the continent.",
+        "sources": [
+          "National Archives: Pacific Railway Act records",
+          "Library of Congress: Lincoln infrastructure papers"
+        ]
+      },
+      {
+        "title": "Morrill Land-Grant College Act (1862)",
+        "summary": "Donated public lands to states for establishing colleges focused on agriculture, mechanics, and military tactics—created the land-grant university system that transformed American higher education and innovation.",
+        "sources": [
+          "Library of Congress: Morrill Act papers",
+          "National Archives: Education legislation"
+        ]
+      },
+      {
+        "title": "National Banking Acts (1863–1864)",
+        "summary": "Established a national banking system, uniform currency (greenbacks/national bank notes), and federal regulation—stabilized wartime finance, reduced state bank chaos, and formed the basis of modern U.S. banking.",
+        "sources": [
+          "National Archives: National Banking Act records",
+          "Library of Congress: Lincoln financial papers"
+        ]
+      }
+    ],
+    "minorEvents": [],
+    "misconduct": [
+      {
+        "title": "Suspension of Habeas Corpus",
+        "summary": "Lincoln unilaterally suspended habeas corpus during the Civil War, allowing military detention without trial. While later authorized by Congress, historians debate whether his initial action exceeded constitutional authority.",
+        "sources": [
+          "National Archives, Civil War habeas corpus records.",
+          "Library of Congress, Lincoln wartime correspondence."
+        ]
+      },
+      {
+        "title": "Press Suppression During the Civil War",
+        "summary": "Lincoln’s administration shut down newspapers deemed disloyal and arrested some editors. Historians widely document these actions as wartime civil liberties violations, though justified by Lincoln as necessary for national survival.",
+        "sources": [
+          "Library of Congress, Civil War press suppression materials.",
+          "Historical analyses of Lincoln and civil liberties."
+        ]
+      }
+    ]
+  },
+  {
+    "id": 17,
+    "name": "Andrew Johnson",
+    "overview": "Johnson clashed repeatedly with Radical Republican Congress over Reconstruction, vetoing key civil rights and Reconstruction bills (most overridden). Notable signed law: Alaska Purchase funding. Overridden vetoes included Civil Rights Act of 1866, Freedmen’s Bureau extension, and Tenure of Office Act (leading to his impeachment). His resistance delayed Southern Black rights enforcement but could not stop transformative postwar civil rights framework.",
+    "majorEvents": [
+      {
+        "title": "Alaska Purchase Funding Act (1867)",
+        "summary": "Signed appropriation enabling $7.2 million purchase of Alaska from Russia ('Seward's Folly'), adding vast territory and strategic resources—long-term geopolitical win despite contemporary ridicule.",
+        "sources": [
+          "National Archives: Alaska purchase documents",
+          "Library of Congress: Johnson foreign policy papers"
+        ]
+      },
+      {
+        "title": "Civil Rights Act of 1866 (Veto Overridden)",
+        "summary": "First major federal civil rights law; granted citizenship and equal protection to all born in U.S. (including freed slaves)—overridden veto marked congressional supremacy on Reconstruction.",
+        "sources": [
+          "National Archives: Civil Rights Act records",
+          "Library of Congress: Reconstruction legislative papers"
+        ]
+      }
+    ],
+    "minorEvents": [],
+    "misconduct": [
+      {
+        "title": "Violation of the Tenure of Office Act (Impeachment)",
+        "summary": "Johnson removed Secretary of War Edwin Stanton in defiance of the Tenure of Office Act, leading to his impeachment. Historians generally view the law as unconstitutional, but Johnson’s defiance was still considered a breach of statutory authority.",
+        "sources": [
+          "National Archives, Johnson impeachment records.",
+          "Library of Congress, Stanton dismissal correspondence."
+        ]
+      },
+      {
+        "title": "Obstruction of Reconstruction",
+        "summary": "Johnson attempted to block civil rights protections and obstructed Reconstruction policies, actions widely regarded as enabling white supremacist violence and undermining federal authority.",
+        "sources": [
+          "Library of Congress, Johnson Reconstruction papers.",
+          "Historical analyses of Johnson’s obstruction of civil rights."
+        ]
+      }
+    ]
+  },
+  {
+    "id": 18,
+    "name": "Ulysses S. Grant",
+    "overview": "Grant vigorously enforced Reconstruction through signed Enforcement Acts suppressing KKK violence and protecting Black voting rights. He backed civil rights (1875 Act), financial stability (Public Credit Act, resumption of gold standard via 1875 Specie Resumption), early civil service reform, and monetary policy shifts (Coinage Act of 1873 demonetizing silver). His administration expanded federal authority to safeguard civil rights and stabilize post-war economy, though scandals marred perception.",
+    "majorEvents": [
+      {
+        "title": "Enforcement Acts (1870–1871)",
+        "summary": "Series of three laws empowering federal prosecution of KKK and voter intimidation, suspending habeas corpus when needed—pivotal in temporarily protecting Southern Black suffrage and Reconstruction.",
+        "sources": [
+          "National Archives: Enforcement Act records",
+          "Library of Congress: Grant Reconstruction papers"
+        ]
+      },
+      {
+        "title": "Public Credit Act (1869)",
+        "summary": "Pledged repayment of Civil War bonds in gold (not depreciated greenbacks), restoring U.S. creditworthiness and investor confidence—key to postwar financial recovery.",
+        "sources": [
+          "National Archives: Public Credit Act records",
+          "Library of Congress: Grant economic papers"
+        ]
+      },
+      {
+        "title": "Civil Rights Act of 1875",
+        "summary": "Banned racial discrimination in public accommodations/transportation—last major Reconstruction civil rights law (later invalidated by Supreme Court in 1883).",
+        "sources": [
+          "National Archives: Civil Rights Act records",
+          "Library of Congress: Grant domestic policy papers"
+        ]
+      }
+    ],
+    "minorEvents": [],
+    "misconduct": [
+      {
+        "title": "Whiskey Ring Scandal",
+        "summary": "Grant’s administration was rocked by the Whiskey Ring, a major tax fraud scheme involving federal officials. Grant himself was not implicated, but his personal secretary was indicted, and Grant’s intervention to protect him drew criticism.",
+        "sources": [
+          "National Archives, Whiskey Ring investigation records.",
+          "Library of Congress, Grant administration correspondence."
+        ]
+      },
+      {
+        "title": "Credit Mobilier Scandal (Indirect Association)",
+        "summary": "Although the scandal began before his presidency, several Grant‑era officials were implicated in the Credit Mobilier railroad fraud. Grant was not personally involved, but the scandal damaged his administration’s reputation.",
+        "sources": [
+          "Library of Congress, Credit Mobilier investigation materials.",
+          "Historical studies of Grant‑era corruption."
+        ]
+      }
+    ]
+  },
+  {
+    "id": 19,
+    "name": "Rutherford B. Hayes",
+    "overview": "Hayes' single term ended Reconstruction via troop withdrawal from South (Compromise of 1877). He vetoed Bland-Allison silver coinage (overridden), pushed civil service reform, and supported limited railroad safety/regulation. His administration marked transition to Gilded Age focus on limited government, ending federal Southern intervention, and modest administrative modernization—mixed legacy of reform intent amid political constraints.",
+    "majorEvents": [
+      {
+        "title": "End of Reconstruction Appropriations (1877)",
+        "summary": "Approved funding/withdrawal measures ending federal military occupation of South, effectively concluding Reconstruction and shifting power to Southern Democrats—pivotal (and controversial) turning point.",
+        "sources": [
+          "National Archives: Reconstruction withdrawal records",
+          "Library of Congress: Hayes legislative papers"
+        ]
+      }
+    ],
+    "minorEvents": [],
+    "misconduct": [
+      {
+        "title": "Compromise of 1877 (Disputed Legitimacy)",
+        "summary": "Hayes became president through the Compromise of 1877 after a contested election. While not illegal, the backroom deal that ended Reconstruction and withdrew federal troops from the South is widely viewed as a morally compromised political bargain.",
+        "sources": [
+          "Library of Congress, 1876 election dispute records.",
+          "Historical analyses of the Compromise of 1877."
+        ]
+      }
+    ]
+  },
+  {
+    "id": 20,
+    "name": "James A. Garfield",
+    "overview": "Garfield’s presidency lasted only 200 days (assassinated July 1881); no major laws signed. He championed civil service reform to curb patronage (Stalwart vs. Half-Breed faction fight), which influenced the Pendleton Act under Arthur. His short tenure symbolized push against spoils system corruption, setting stage for post-assassination reforms—minimal direct legislative impact.",
+    "majorEvents": [],
+    "minorEvents": [],
+    "misconduct": [
+      {
+        "title": "Credit Mobilier Association (Pre‑Presidency, Disputed Involvement)",
+        "summary": "Garfield was accused of involvement in the Credit Mobilier scandal while serving in Congress. He denied wrongdoing, and evidence of his involvement remains disputed, but the allegation followed him into the presidency.",
+        "sources": [
+          "Library of Congress, Credit Mobilier investigation transcripts.",
+          "Historical analyses of Garfield’s role."
+        ]
+      }
+    ]
+  },
+  {
+    "id": 21,
+    "name": "Chester A. Arthur",
+    "overview": "Arthur, unexpectedly rising from machine politics, became a champion of reform. He signed the landmark Pendleton Civil Service Reform Act ending spoils system dominance, modernized the Navy with steel warships, reluctantly signed the Chinese Exclusion Act (first major immigration restriction), and approved modest tariff revisions. His actions professionalized government, strengthened maritime power, and set precedents for merit-based administration—surprising positive legacy from a brief term.",
+    "majorEvents": [
+      {
+        "title": "Pendleton Civil Service Reform Act (1883)",
+        "summary": "Established the U.S. Civil Service Commission and merit-based hiring for federal jobs, dramatically reducing patronage/corruption—foundational shift toward professional bureaucracy still in effect today.",
+        "sources": [
+          "National Archives: Pendleton Act records",
+          "Library of Congress: Arthur civil service papers"
+        ]
+      },
+      {
+        "title": "Navy Modernization Acts (1882–1883)",
+        "summary": "Funded construction of first steel warships ('ABCD' ships: Atlanta, Boston, Chicago, Dolphin), beginning the 'New Navy' transformation into a modern blue-water force—key step toward U.S. global naval power.",
+        "sources": [
+          "National Archives: Naval modernization records",
+          "Library of Congress: Arthur defense papers"
+        ]
+      },
+      {
+        "title": "Chinese Exclusion Act (1882)",
+        "summary": "Suspended Chinese labor immigration for 10 years (later extended), barring naturalization—first ethnically targeted federal immigration ban, shaping restrictive policy for decades.",
+        "sources": [
+          "National Archives: Chinese Exclusion Act records",
+          "Library of Congress: Arthur immigration papers"
+        ]
+      }
+    ],
+    "minorEvents": [],
+    "misconduct": [
+      {
+        "title": "Star Route Postal Fraud (Pre‑Presidency Association)",
+        "summary": "Arthur was linked to the Star Route postal fraud scandal through political allies before becoming president. While never proven personally involved, his association with key figures raised ethical concerns.",
+        "sources": [
+          "National Archives, Star Route investigation records.",
+          "Library of Congress, Arthur political correspondence."
+        ]
+      }
+    ]
+  },
+  {
+    "id": 22,
+    "name": "Grover Cleveland (First Term)",
+    "overview": "Cleveland’s first term emphasized limited government, vetoing excessive spending (record 414 vetoes), but signed landmark regulatory legislation. Key achievements: Interstate Commerce Act creating the ICC (first federal independent agency), Dawes Act (assimilationist Native policy, later criticized), Navy expansion, and civil service growth. His fiscal conservatism and anti-corruption stance defined Gilded Age Democratic governance.",
+    "majorEvents": [
+      {
+        "title": "Interstate Commerce Act (1887)",
+        "summary": "Created the Interstate Commerce Commission to regulate railroads (rates, discrimination)—pioneering federal economic regulation and precursor to broader Progressive Era oversight.",
+        "sources": [
+          "National Archives: Interstate Commerce Act records",
+          "Library of Congress: Cleveland regulatory papers"
+        ]
+      },
+      {
+        "title": "Dawes Severalty Act Support (1887)",
+        "summary": "Supported allotment of tribal lands to individuals (breaking up reservations), promoting assimilation but leading to massive land loss for Native Americans—controversial long-term impact.",
+        "sources": [
+          "National Archives: Dawes Act records",
+          "Library of Congress: Cleveland domestic policy papers"
+        ]
+      }
+    ],
+    "minorEvents": [],
+    "misconduct": [
+      {
+        "title": "Maria Halpin Affair (Documented Personal Scandal)",
+        "summary": "Cleveland was accused of fathering a child with Maria Halpin and committing her to an asylum. Historians agree Cleveland did have a relationship with Halpin and paid child support, though details of coercion remain disputed.",
+        "sources": [
+          "Biographical studies of Cleveland and the Halpin case.",
+          "Library of Congress, Cleveland personal correspondence."
+        ]
+      }
+    ]
+  },
+  {
+    "id": 23,
+    "name": "Benjamin Harrison",
+    "overview": "Harrison’s term featured aggressive Republican activism: Sherman Antitrust Act (first federal anti-monopoly law), McKinley Tariff (high protectionism), Sherman Silver Purchase (inflationary), Dependent Pension Act (expanded veterans' benefits), and admission of six western states. High spending and regulatory beginnings marked the 'Billion Dollar Congress'—significant but politically costly (contributed to 1890 Democratic landslide).",
+    "majorEvents": [
+      {
+        "title": "Sherman Antitrust Act (1890)",
+        "summary": "Prohibited trusts/monopolies in restraint of trade—first federal antitrust statute, foundational for later enforcement (e.g., Standard Oil breakup) despite initial vagueness.",
+        "sources": [
+          "National Archives: Sherman Antitrust Act records",
+          "Library of Congress: Harrison legislative papers"
+        ]
+      },
+      {
+        "title": "McKinley Tariff (1890)",
+        "summary": "Raised average duties to ~49.5% for industrial protection—boosted revenue but increased consumer prices, fueling backlash and 1890 midterm losses.",
+        "sources": [
+          "Library of Congress: McKinley Tariff papers",
+          "National Archives: Tariff legislation"
+        ]
+      },
+      {
+        "title": "Admission of Six Western States (1889–1890)",
+        "summary": "Admitted North/South Dakota, Montana, Washington, Idaho, Wyoming—largest single-term statehood wave, shifting political balance westward.",
+        "sources": [
+          "National Archives: State admission records",
+          "Library of Congress: Harrison administrative papers"
+        ]
+      }
+    ],
+    "minorEvents": [],
+    "misconduct": [
+      {
+        "title": "Allegations of Excessive Campaign Spending",
+        "summary": "Harrison’s 1888 campaign was accused of using unusually large corporate donations and aggressive spending. While not illegal at the time, historians widely document the campaign as ethically questionable.",
+        "sources": [
+          "Library of Congress, 1888 campaign finance materials.",
+          "Historical studies of Gilded Age campaign practices."
+        ]
+      }
+    ]
+  },
+  {
+    "id": 24,
+    "name": "Grover Cleveland (Second Term)",
+    "overview": "Cleveland’s non-consecutive second term grappled with Panic of 1893 depression. He forced repeal of Sherman Silver Purchase (ending bimetallism pressure), allowed Wilson-Gorman Tariff (modest cuts + income tax, later invalidated), intervened in Pullman Strike (using federal troops/injunctions), and investigated Hawaii overthrow (opposing annexation). Actions reflected gold-standard defense and limited intervention—costly politically but stabilized currency amid crisis.",
+    "majorEvents": [
+      {
+        "title": "Repeal of the Sherman Silver Purchase Act (1893)",
+        "summary": "Repealed mandatory silver buys to halt gold drain and deflation fears during Panic—restored investor confidence but alienated silverites and fractured Democrats.",
+        "sources": [
+          "National Archives: Silver Purchase repeal records",
+          "Library of Congress: Cleveland monetary papers"
+        ]
+      },
+      {
+        "title": "Wilson–Gorman Tariff Act (1894)",
+        "summary": "Modest tariff reduction with 2% income tax on high earners (struck down in Pollock v. Farmers' Loan, 1895)—first peacetime income tax attempt.",
+        "sources": [
+          "Library of Congress: Wilson–Gorman papers",
+          "National Archives: Tariff legislation"
+        ]
+      }
+    ],
+    "minorEvents": [],
+    "misconduct": [
+      {
+        "title": "Pullman Strike Intervention",
+        "summary": "Cleveland sent federal troops to break the Pullman Strike despite objections from Illinois officials. Critics accused him of siding with corporate interests and escalating violence.",
+        "sources": [
+          "National Archives, Pullman Strike federal intervention records.",
+          "Library of Congress, Cleveland correspondence on labor unrest."
+        ]
+      }
+    ]
+  },
+  {
+    "id": 25,
+    "name": "William McKinley",
+    "overview": "McKinley’s presidency aligned with prosperity and imperialism: Dingley Tariff (high protectionism), Gold Standard Act (formalizing gold backing), Spanish-American War authorization (leading to empire), Hawaii annexation, and territorial governance for new possessions. War revenue measures funded conflict. His laws boosted industry, stabilized money, and launched U.S. overseas empire—defining turn-of-century Republican ascendancy.",
+    "majorEvents": [
+      {
+        "title": "Dingley Tariff Act (1897)",
+        "summary": "Raised average duties to ~57%—highest in history—protecting industry and generating surplus revenue during economic boom.",
+        "sources": [
+          "National Archives: Dingley Tariff records",
+          "Library of Congress: McKinley economic papers"
+        ]
+      },
+      {
+        "title": "Gold Standard Act (1900)",
+        "summary": "Formally placed U.S. on gold standard, ending bimetallism debate and providing long-term monetary stability—key Republican victory over free silver.",
+        "sources": [
+          "National Archives: Gold Standard Act records",
+          "Library of Congress: McKinley monetary papers"
+        ]
+      },
+      {
+        "title": "Annexation of Hawaii (1898)",
+        "summary": "Joint resolution annexed Hawaii as territory—strategic Pacific base amid war with Spain, fulfilling expansionist goals.",
+        "sources": [
+          "National Archives: Hawaii annexation records",
+          "Library of Congress: McKinley expansion papers"
+        ]
+      }
+    ],
+    "minorEvents": [],
+    "misconduct": [
+      {
+        "title": "Business Influence and Campaign Financing",
+        "summary": "McKinley’s 1896 campaign, managed by Mark Hanna, relied heavily on corporate donations. While legal at the time, historians widely view the fundraising as ethically problematic and emblematic of Gilded Age political influence.",
+        "sources": [
+          "Library of Congress, McKinley campaign finance materials.",
+          "Historical analyses of Mark Hanna’s fundraising."
+        ]
+      }
+    ]
+  },
+  {
+    "id": 26,
+    "name": "Theodore Roosevelt",
+    "overview": "Theodore Roosevelt’s dynamic presidency aggressively expanded federal power through Progressive reforms. He championed consumer protection (Pure Food and Drug Act, Meat Inspection Act), corporate regulation (Hepburn Act strengthening ICC), conservation (vast national forests/parks, Forest Service), and infrastructure (Newlands Reclamation, Panama Canal). Using the 'bully pulpit' and executive authority, he broke monopolies and conserved resources—defining modern regulatory and environmental state foundations.",
+    "majorEvents": [
+      {
+        "title": "Pure Food and Drug Act & Meat Inspection Act (1906)",
+        "summary": "Responding to Upton Sinclair's The Jungle, signed laws banning adulterated/mislabeled food/drugs and mandating federal meat inspections—created modern consumer safety framework and precursor to FDA.",
+        "sources": [
+          "National Archives: Pure Food and Drug Act records",
+          "Library of Congress: Roosevelt domestic policy papers",
+          "National Archives: Meat Inspection Act records"
+        ]
+      },
+      {
+        "title": "Hepburn Act (1906)",
+        "summary": "Empowered ICC to set maximum railroad rates, inspect records, and enforce regulations—major expansion of federal oversight over interstate commerce and corporate power.",
+        "sources": [
+          "National Archives: Hepburn Act records",
+          "Library of Congress: Roosevelt economic papers"
+        ]
+      },
+      {
+        "title": "Newlands Reclamation Act (1902)",
+        "summary": "Funded federal irrigation projects in arid West using public land sales revenue—transformed deserts into farmland, boosted settlement, and marked early large-scale conservation/economic development.",
+        "sources": [
+          "National Archives: Reclamation Act records",
+          "Library of Congress: Roosevelt conservation papers"
+        ]
+      },
+      {
+        "title": "Forest Service Establishment & Conservation Measures (1905–1909)",
+        "summary": "Created U.S. Forest Service under Gifford Pinchot; withdrew millions of acres for national forests/reserves—preserved natural resources for future generations, foundational to U.S. conservation policy.",
+        "sources": [
+          "National Archives: Forest Service founding documents",
+          "Library of Congress: Roosevelt administrative papers"
+        ]
+      }
+    ],
+    "minorEvents": [],
+    "misconduct": [
+      {
+        "title": "Acceptance of Corporate Campaign Contributions (1904)",
+        "summary": "Roosevelt’s 1904 campaign accepted large corporate donations, later criticized as improper. Roosevelt denied wrongdoing but acknowledged the need for reform, which he later championed.",
+        "sources": [
+          "Library of Congress, Roosevelt campaign finance correspondence.",
+          "Historical studies of Progressive Era political reform."
+        ]
+      },
+      {
+        "title": "Brownsville Affair (Racially Disputed Dismissals)",
+        "summary": "Roosevelt dishonorably discharged 167 Black soldiers after a shooting incident in Brownsville, Texas, despite disputed evidence. Historians widely view the action as unjust.",
+        "sources": [
+          "National Archives, Brownsville Affair records.",
+          "Library of Congress, Roosevelt military correspondence."
+        ]
+      }
+    ]
+  },
+  {
+    "id": 27,
+    "name": "William Howard Taft",
+    "overview": "Taft continued Progressive momentum with more lawsuits against trusts than Roosevelt, but legislative focus was on institutional reforms: proposed 16th Amendment (income tax), Payne-Aldrich Tariff (modest cuts), Mann-Elkins Act (expanded ICC), Postal Savings System, and Judicial Code reorganization. His legalistic, conservative approach alienated Progressives but strengthened federal judiciary and administrative efficiency.",
+    "majorEvents": [
+      {
+        "title": "Sixteenth Amendment Authorization (1909)",
+        "summary": "Submitted resolution for 16th Amendment (ratified 1913), enabling permanent federal income tax—transformed U.S. revenue system from tariffs to direct taxation.",
+        "sources": [
+          "National Archives: Sixteenth Amendment records",
+          "Library of Congress: Taft legislative papers"
+        ]
+      },
+      {
+        "title": "Mann–Elkins Act (1910)",
+        "summary": "Expanded ICC powers over telegraph/telephone rates and created Commerce Court (later abolished)—further centralized federal regulation of communications and commerce.",
+        "sources": [
+          "National Archives: Mann–Elkins Act records",
+          "Library of Congress: Taft domestic policy papers"
+        ]
+      },
+      {
+        "title": "Judicial Code of 1911",
+        "summary": "Reorganized federal courts, abolished circuit courts, created new appellate structure—modernized U.S. judiciary for efficiency and clarity.",
+        "sources": [
+          "National Archives: Judicial Code records",
+          "Library of Congress: Taft judicial papers"
+        ]
+      }
+    ],
+    "minorEvents": [],
+    "misconduct": [
+      {
+        "title": "Ballinger–Pinchot Controversy",
+        "summary": "Taft’s Interior Secretary, Richard Ballinger, was accused of improperly favoring private interests in public land decisions. Taft’s firing of conservationist Gifford Pinchot damaged his reputation, though no illegality was proven.",
+        "sources": [
+          "National Archives, Ballinger–Pinchot investigation records.",
+          "Library of Congress, Taft administration correspondence."
+        ]
+      }
+    ]
+  },
+  {
+    "id": 28,
+    "name": "Woodrow Wilson",
+    "overview": "Wilson’s first term delivered sweeping 'New Freedom' reforms: Federal Reserve Act (central banking), Clayton Antitrust Act (labor exemptions, price discrimination ban), FTC creation, Underwood Tariff (income tax + cuts), Adamson Act (8-hour railroad day), and National Park Service. Wartime laws expanded executive power. His achievements modernized economy, protected consumers/workers, and centralized finance—peak Progressive legislation.",
+    "majorEvents": [
+      {
+        "title": "Federal Reserve Act (1913)",
+        "summary": "Created independent central bank with 12 regional banks and Federal Reserve Board—stabilized currency, managed credit, and ended recurring panics; cornerstone of U.S. monetary policy.",
+        "sources": [
+          "National Archives: Federal Reserve Act records",
+          "Library of Congress: Wilson economic papers"
+        ]
+      },
+      {
+        "title": "Federal Trade Commission Act & Clayton Antitrust Act (1914)",
+        "summary": "FTC to prevent unfair competition; Clayton strengthened antitrust, exempted unions/farmers from Sherman Act, banned interlocking directorates—enhanced consumer/labor protections.",
+        "sources": [
+          "National Archives: FTC Act records",
+          "National Archives: Clayton Act records",
+          "Library of Congress: Wilson regulatory papers"
+        ]
+      },
+      {
+        "title": "Underwood Tariff & Revenue Acts (1913–1916)",
+        "summary": "Lowered tariffs significantly, offset with progressive income tax under 16th Amendment—shifted revenue base and reduced protectionism.",
+        "sources": [
+          "National Archives: Revenue Act records",
+          "Library of Congress: Wilson fiscal papers"
+        ]
+      }
+    ],
+    "minorEvents": [],
+    "misconduct": [
+      {
+        "title": "Segregation of Federal Offices",
+        "summary": "Wilson oversaw the re‑segregation of federal workplaces, reversing earlier integration. Historians widely regard this as a major moral failing and an abuse of federal authority.",
+        "sources": [
+          "National Archives, federal segregation records.",
+          "Library of Congress, Wilson administration correspondence."
+        ]
+      },
+      {
+        "title": "Suppression of Civil Liberties During WWI",
+        "summary": "Wilson signed and enforced the Espionage and Sedition Acts, leading to arrests of political dissidents and suppression of anti‑war speech.",
+        "sources": [
+          "Library of Congress, WWI civil liberties materials.",
+          "National Archives, Espionage Act enforcement records."
+        ]
+      }
+    ]
+  },
+  {
+    "id": 29,
+    "name": "Warren G. Harding",
+    "overview": "Harding’s 'return to normalcy' focused on postwar recovery: Budget and Accounting Act (modern budgeting/GAO), Fordney-McCumber Tariff (high protectionism), Sheppard-Towner Act (first federal welfare for mothers/infants), Veterans Bureau creation, and immigration quotas (1921/1924 acts). Scandals overshadowed, but fiscal/administrative reforms were enduring.",
+    "majorEvents": [
+      {
+        "title": "Budget and Accounting Act (1921)",
+        "summary": "Created Bureau of the Budget (OMB precursor) and GAO—established executive budget process, improving federal fiscal discipline and transparency.",
+        "sources": [
+          "National Archives: Budget Act records",
+          "Library of Congress: Harding administrative papers"
+        ]
+      },
+      {
+        "title": "Sheppard–Towner Maternity and Infancy Act (1921)",
+        "summary": "First federal social welfare program; funded maternal/infant health education and care—pioneering public health initiative (expired 1929).",
+        "sources": [
+          "National Archives: Sheppard–Towner Act records",
+          "Library of Congress: Harding domestic policy papers"
+        ]
+      }
+    ],
+    "minorEvents": [],
+    "misconduct": [
+      {
+        "title": "Teapot Dome Scandal (Administration Corruption)",
+        "summary": "Harding’s Interior Secretary, Albert Fall, accepted bribes in exchange for oil leases in the Teapot Dome scandal. Harding was not proven personally involved, but his poor oversight enabled the corruption.",
+        "sources": [
+          "National Archives, Teapot Dome investigation records.",
+          "Library of Congress, Harding administration correspondence."
+        ]
+      },
+      {
+        "title": "Confirmed Extramarital Affairs",
+        "summary": "Harding engaged in multiple extramarital affairs, including with Nan Britton, whose claim of bearing Harding’s child was confirmed by DNA testing in 2015.",
+        "sources": [
+          "DNA confirmation reported in 2015 (AncestryDNA study).",
+          "Library of Congress, Harding personal correspondence."
+        ]
+      }
+    ]
+  },
+  {
+    "id": 30,
+    "name": "Calvin Coolidge",
+    "overview": "Coolidge’s hands-off approach delivered tax cuts (Revenue Acts 1924/1926), farm credit expansion, Indian Citizenship Act (full citizenship for Native Americans), Air Commerce Act (aviation regulation), and radio oversight. His fiscal restraint and pro-business policies fueled 1920s prosperity—limited but stabilizing legacy.",
+    "majorEvents": [
+      {
+        "title": "Revenue Acts of 1924 and 1926",
+        "summary": "Major tax reductions (top rate from 46% to 25%), simplifying code and boosting investment—hallmark of Coolidge prosperity era.",
+        "sources": [
+          "National Archives: Revenue Act records",
+          "Library of Congress: Coolidge fiscal papers"
+        ]
+      },
+      {
+        "title": "Indian Citizenship Act (1924)",
+        "summary": "Granted citizenship to all Native Americans born in U.S.—ended centuries of exclusion, though voting rights varied by state.",
+        "sources": [
+          "National Archives: Indian Citizenship Act records",
+          "Library of Congress: Coolidge domestic policy papers"
+        ]
+      },
+      {
+        "title": "Air Commerce Act (1926)",
+        "summary": "Established federal regulation of civil aviation (safety, licensing, airways)—foundation for modern FAA and commercial flight growth.",
+        "sources": [
+          "National Archives: Air Commerce Act records",
+          "Library of Congress: Coolidge foreign and transportation papers"
+        ]
+      }
+    ],
+    "minorEvents": [],
+    "misconduct": [
+      {
+        "title": "Limited Oversight of Corporate Influence",
+        "summary": "Coolidge’s administration was closely aligned with business interests, and critics accused him of lax oversight that enabled corporate abuses. While not illegal, historians note ethical concerns about regulatory capture.",
+        "sources": [
+          "Library of Congress, Coolidge administration economic papers.",
+          "Historical analyses of 1920s regulatory policy."
+        ]
+      }
+    ]
+  },
+  {
+    "id": 31,
+    "name": "Herbert Hoover",
+    "overview": "Hoover’s presidency was consumed by the Great Depression's onset. He signed the Smoot-Hawley Tariff (exacerbating global trade collapse), created the Reconstruction Finance Corporation (RFC) for emergency lending to banks/businesses, established the Federal Home Loan Bank System for mortgage support, funded major public works (including Hoover Dam), and implemented a one-year war debt moratorium. His approach favored voluntary cooperation and targeted federal credit over direct relief—innovative but insufficient against the crisis scale, contributing to his 1932 defeat.",
+    "majorEvents": [
+      {
+        "title": "Reconstruction Finance Corporation Act (1932)",
+        "summary": "Created the RFC to provide loans to banks, railroads, insurance companies, and later states/municipalities—major federal intervention tool (later expanded under FDR) that stabilized key institutions amid banking failures.",
+        "sources": [
+          "National Archives: RFC Act records",
+          "Library of Congress: Hoover economic papers"
+        ]
+      },
+      {
+        "title": "Smoot–Hawley Tariff Act (1930)",
+        "summary": "Raised tariffs on over 20,000 imported goods to historic highs—intended to protect U.S. industry/agriculture but triggered retaliatory tariffs worldwide, worsening Depression and global trade (~66% drop 1929–1934). Widely regarded as policy error.",
+        "sources": [
+          "National Archives: Smoot–Hawley records",
+          "Library of Congress: Hoover tariff papers"
+        ]
+      },
+      {
+        "title": "Federal Home Loan Bank Act (1932)",
+        "summary": "Established 12 regional home loan banks to provide liquidity for mortgage lenders—helped stabilize housing finance during foreclosures crisis; precursor to modern GSEs like Fannie Mae.",
+        "sources": [
+          "National Archives: Home Loan Bank Act records",
+          "Library of Congress: Hoover housing papers"
+        ]
+      }
+    ],
+    "minorEvents": [],
+    "misconduct": [
+      {
+        "title": "Handling of the Bonus Army",
+        "summary": "In 1932, Hoover authorized the use of military force to disperse the Bonus Army, a group of World War I veterans demanding early payment of promised bonuses. The violent eviction, which included burning of encampments, was widely condemned as excessive and inhumane.",
+        "sources": [
+          "National Archives, Bonus Army eviction records.",
+          "Library of Congress, Hoover administration correspondence."
+        ]
+      }
+    ]
+  },
+  {
+    "id": 32,
+    "name": "Franklin D. Roosevelt",
+    "overview": "FDR’s 12+ years produced the most expansive legislative record in U.S. history via the New Deal (1933–1939) and wartime mobilization. Key: Emergency Banking Act (bank holiday/reopening), Social Security Act, Wagner Act (union rights/NLRB), Fair Labor Standards Act (minimum wage/overtime), SEC creation, TVA/REA rural electrification, and Lend-Lease for Allies. Reorganization Act modernized executive branch. Transformed federal role in economy, welfare, labor, and global leadership—established modern welfare/regulatory state.",
+    "majorEvents": [
+      {
+        "title": "Social Security Act (1935)",
+        "summary": "Created federal old-age pensions, unemployment insurance, and aid to dependent children/disabled—cornerstone of U.S. social safety net, enduring and expanded ever since.",
+        "sources": [
+          "National Archives: Social Security Act records",
+          "Library of Congress: FDR New Deal papers"
+        ]
+      },
+      {
+        "title": "National Labor Relations Act (Wagner Act) (1935)",
+        "summary": "Guaranteed workers' right to unionize/collective bargaining; created NLRB—transformed labor relations, boosted union membership, and protected organizing rights.",
+        "sources": [
+          "National Archives: Wagner Act records",
+          "Library of Congress: FDR labor papers"
+        ]
+      },
+      {
+        "title": "Fair Labor Standards Act (1938)",
+        "summary": "Established federal minimum wage, 40-hour workweek/overtime, and banned most child labor—set enduring national labor standards.",
+        "sources": [
+          "National Archives: FLSA records",
+          "Library of Congress: FDR domestic policy papers"
+        ]
+      },
+      {
+        "title": "Securities Exchange Act (1934) & Emergency Banking Act (1933)",
+        "summary": "SEC created to regulate stocks/markets post-crash; Emergency Banking restored confidence via bank holiday/inspections—foundational financial reforms preventing future panics.",
+        "sources": [
+          "National Archives: SEC founding documents",
+          "National Archives: Banking Act records"
+        ]
+      }
+    ],
+    "minorEvents": [],
+    "misconduct": [
+      {
+        "title": "Japanese American Internment",
+        "summary": "FDR signed Executive Order 9066, authorizing the forced relocation and incarceration of over 120,000 Japanese Americans. Historians widely regard this as a major civil liberties violation rooted in wartime hysteria and racial prejudice.",
+        "sources": [
+          "National Archives, Executive Order 9066 records.",
+          "Library of Congress, internment correspondence."
+        ]
+      },
+      {
+        "title": "Court‑Packing Plan",
+        "summary": "FDR attempted to expand the Supreme Court to secure favorable rulings for New Deal legislation. While legal, the plan was widely criticized as an attempted power grab.",
+        "sources": [
+          "Library of Congress, 1937 judicial reform materials.",
+          "Historical analyses of FDR’s court‑packing effort."
+        ]
+      }
+    ]
+  },
+  {
+    "id": 33,
+    "name": "Harry S. Truman",
+    "overview": "Truman navigated postwar transition and Cold War onset with landmark laws: Employment Act (full employment commitment), National Security Act (DoD/CIA/NSC creation), Marshall Plan (European recovery aid), Truman Doctrine (containment start), GI Bill expansion, Housing Act (public housing), and Fair Deal initiatives. His actions solidified U.S. superpower role, modernized national security apparatus, and advanced domestic welfare—foundational to postwar order.",
+    "majorEvents": [
+      {
+        "title": "National Security Act (1947)",
+        "summary": "Created Department of Defense, CIA, National Security Council, and Joint Chiefs structure—reorganized U.S. military/intelligence for Cold War era; enduring framework.",
+        "sources": [
+          "National Archives: National Security Act records",
+          "Library of Congress: Truman administrative papers"
+        ]
+      },
+      {
+        "title": "Marshall Plan (Foreign Assistance Act of 1948)",
+        "summary": "Provided $13+ billion in aid to rebuild Western Europe—prevented communist expansion, boosted economic recovery, and strengthened U.S. alliances; one of most successful foreign policies.",
+        "sources": [
+          "National Archives: Marshall Plan records",
+          "Library of Congress: Truman foreign policy papers"
+        ]
+      },
+      {
+        "title": "Employment Act of 1946",
+        "summary": "Declared federal responsibility to promote maximum employment/production/purchasing power; created Council of Economic Advisers—shifted government toward Keynesian stabilization.",
+        "sources": [
+          "National Archives: Employment Act records",
+          "Library of Congress: Truman economic papers"
+        ]
+      }
+    ],
+    "minorEvents": [],
+    "misconduct": [
+      {
+        "title": "Use of Atomic Bombs (Ethical Controversy)",
+        "summary": "Truman authorized the atomic bombings of Hiroshima and Nagasaki. While not misconduct in a legal sense, historians debate the ethical justification and necessity of the bombings.",
+        "sources": [
+          "National Archives, Truman atomic bomb decision records.",
+          "Library of Congress, Truman wartime correspondence."
+        ]
+      },
+      {
+        "title": "Loyalty Program and Red Scare Policies",
+        "summary": "Truman’s federal loyalty program led to investigations and dismissals based on suspected communist ties, contributing to early Cold War civil liberties concerns.",
+        "sources": [
+          "Library of Congress, Truman loyalty program materials.",
+          "Historical analyses of early Cold War civil liberties."
+        ]
+      }
+    ]
+  },
+  {
+    "id": 34,
+    "name": "Dwight D. Eisenhower",
+    "overview": "Eisenhower’s moderate Republicanism delivered massive infrastructure (Interstate Highway System), Social Security/Medicare groundwork expansions, first post-Reconstruction Civil Rights Act (1957), NASA creation (post-Sputnik), and robust Cold War foreign aid/defense. His pragmatic, consensus-driven laws modernized transportation, strengthened safety net, advanced civil rights incrementally, and prioritized science/security—lasting impact on American mobility and global posture.",
+    "majorEvents": [
+      {
+        "title": "Federal-Aid Highway Act (1956)",
+        "summary": "Authorized 41,000+ miles of interstate highways with 90% federal funding—largest public works project ever; transformed commerce, suburbs, defense mobility, and daily life.",
+        "sources": [
+          "National Archives: Highway Act records",
+          "Library of Congress: Eisenhower infrastructure papers"
+        ]
+      },
+      {
+        "title": "National Aeronautics and Space Act (1958)",
+        "summary": "Created NASA as civilian space agency—launched U.S. space race response to Sputnik, leading to Apollo and scientific/technological leadership.",
+        "sources": [
+          "National Archives: NASA founding documents",
+          "Library of Congress: Eisenhower administrative papers"
+        ]
+      },
+      {
+        "title": "Civil Rights Act of 1957",
+        "summary": "First civil rights law since 1875; created Civil Rights Division in Justice Dept and U.S. Commission on Civil Rights—modest but symbolic breakthrough amid Southern resistance.",
+        "sources": [
+          "National Archives: Civil Rights Act records",
+          "Library of Congress: Eisenhower civil rights papers"
+        ]
+      }
+    ],
+    "minorEvents": [],
+    "misconduct": [
+      {
+        "title": "Covert CIA Operations (Iran and Guatemala)",
+        "summary": "Eisenhower approved CIA‑backed coups in Iran (1953) and Guatemala (1954). Historians widely document these actions as ethically questionable interventions that destabilized both regions.",
+        "sources": [
+          "National Archives, CIA declassified coup records.",
+          "Library of Congress, Eisenhower foreign policy papers."
+        ]
+      },
+      {
+        "title": "Initial Reluctance on Civil Rights Enforcement",
+        "summary": "Eisenhower was criticized for slow action on civil rights early in his presidency, though he later enforced desegregation in Little Rock.",
+        "sources": [
+          "Library of Congress, Eisenhower civil rights correspondence.",
+          "Historical analyses of Eisenhower’s civil rights record."
+        ]
+      }
+    ]
+  },
+  {
+    "id": 35,
+    "name": "John F. Kennedy",
+    "overview": "Kennedy’s short presidency (1961–1963) focused on Cold War strength, economic growth, and civil rights groundwork. Signed Trade Expansion Act (GATT/Kennedy Round foundation), Revenue Act (investment incentives), Manpower Development/Training Act (job retraining), and massive NASA funding for moon landing goal. Many Great Society/civil rights bills passed under LBJ after assassination. His laws emphasized global trade, human capital, and space leadership—forward-looking but limited by term length.",
+    "majorEvents": [
+      {
+        "title": "Trade Expansion Act (1962)",
+        "summary": "Granted president broad authority to cut tariffs up to 50% and negotiate reciprocal reductions—paved way for Kennedy Round (GATT) and modern trade liberalization.",
+        "sources": [
+          "National Archives: Trade Expansion Act records",
+          "Library of Congress: Kennedy economic papers"
+        ]
+      },
+      {
+        "title": "NASA Funding and Space Program Expansion",
+        "summary": "Dramatically increased NASA appropriations to achieve moon landing by decade's end—accelerated Apollo program, technological innovation, and U.S. prestige in space race.",
+        "sources": [
+          "National Archives: NASA appropriations",
+          "Library of Congress: Kennedy space policy papers"
+        ]
+      }
+    ],
+    "minorEvents": [],
+    "misconduct": [
+      {
+        "title": "Extramarital Affairs (Documented, Some Confirmed)",
+        "summary": "Kennedy engaged in multiple extramarital affairs, including with Judith Campbell Exner, who also had ties to organized crime. While many details remain disputed, historians widely document Kennedy’s pattern of infidelity.",
+        "sources": [
+          "Biographical studies of JFK’s personal life.",
+          "Library of Congress, Kennedy personal correspondence."
+        ]
+      },
+      {
+        "title": "Bay of Pigs Invasion",
+        "summary": "Kennedy approved the failed Bay of Pigs invasion of Cuba, which was widely criticized as poorly planned and misleadingly presented to the public.",
+        "sources": [
+          "National Archives, Bay of Pigs declassified records.",
+          "Library of Congress, Kennedy national security papers."
+        ]
+      }
+    ]
+  },
+  {
+    "id": 36,
+    "name": "Lyndon B. Johnson",
+    "overview": "Johnson’s presidency produced one of the most ambitious and consequential legislative records in U.S. history through the Great Society and civil rights revolutions. He signed the Civil Rights Act of 1964, Voting Rights Act of 1965, Medicare/Medicaid (1965), Elementary and Secondary Education Act, Economic Opportunity Act (War on Poverty), HUD creation, and immigration reform (1965). His mastery of Congress enabled sweeping expansions of federal roles in equality, healthcare, education, and poverty alleviation—enduring pillars of modern American social policy, though Vietnam escalation overshadowed domestic triumphs.",
+    "majorEvents": [
+      {
+        "title": "Civil Rights Act of 1964",
+        "summary": "Banned discrimination in employment, public accommodations, and federally funded programs based on race, color, religion, sex, or national origin—landmark dismantling of legal segregation; enforced via Title VII (EEOC) and Title II.",
+        "sources": [
+          "National Archives: Civil Rights Act records",
+          "Library of Congress: Johnson civil rights papers"
+        ]
+      },
+      {
+        "title": "Voting Rights Act of 1965",
+        "summary": "Outlawed discriminatory voting practices (literacy tests, poll taxes); authorized federal oversight/preclearance in covered jurisdictions—dramatically increased Black voter registration in South; one of most effective civil rights laws.",
+        "sources": [
+          "National Archives: Voting Rights Act records",
+          "Library of Congress: Johnson legislative papers"
+        ]
+      },
+      {
+        "title": "Medicare and Medicaid (Social Security Amendments of 1965)",
+        "summary": "Created Medicare (federal health insurance for 65+) and Medicaid (state-federal for low-income)—transformed healthcare access for elderly/poor; foundational to U.S. entitlement system.",
+        "sources": [
+          "National Archives: Medicare/Medicaid records",
+          "Library of Congress: Johnson domestic policy papers"
+        ]
+      },
+      {
+        "title": "Economic Opportunity Act (1964)",
+        "summary": "Launched War on Poverty with Community Action Programs, Job Corps, Head Start, VISTA—innovative anti-poverty initiatives emphasizing local empowerment and education.",
+        "sources": [
+          "National Archives: EOA records",
+          "Library of Congress: Johnson economic papers"
+        ]
+      }
+    ],
+    "minorEvents": [],
+    "misconduct": [
+      {
+        "title": "Gulf of Tonkin Misrepresentation",
+        "summary": "Johnson used disputed reports of attacks on U.S. ships to secure the Gulf of Tonkin Resolution, dramatically escalating the Vietnam War. Historians widely document that the administration overstated or misrepresented key details.",
+        "sources": [
+          "National Archives, Gulf of Tonkin declassified records.",
+          "Library of Congress, LBJ Vietnam correspondence."
+        ]
+      },
+      {
+        "title": "Aggressive Political Pressure and Surveillance",
+        "summary": "Johnson used the FBI and other agencies to monitor political opponents and activists, raising concerns about abuse of power.",
+        "sources": [
+          "FBI declassified files on Johnson‑era surveillance.",
+          "Library of Congress, Johnson White House tapes."
+        ]
+      }
+    ]
+  },
+  {
+    "id": 37,
+    "name": "Richard Nixon",
+    "overview": "Nixon’s domestic record was surprisingly progressive on environment and welfare despite conservative rhetoric. He created the EPA, signed NEPA (environmental impact statements), Clean Air Act, OSHA, major Social Security expansions (COLAs), and revenue sharing. Foreign policy included SALT I arms control. Watergate overshadowed, but his environmental and regulatory legacy endures as foundational to modern protections.",
+    "majorEvents": [
+      {
+        "title": "National Environmental Policy Act (NEPA) (1969) & EPA Creation (1970)",
+        "summary": "NEPA required environmental impact statements for federal projects; executive reorganization created EPA—consolidated pollution control into single agency; cornerstone of U.S. environmental law.",
+        "sources": [
+          "National Archives: NEPA records",
+          "National Archives: EPA founding documents",
+          "Library of Congress: Nixon domestic policy papers"
+        ]
+      },
+      {
+        "title": "Clean Air Act (1970)",
+        "summary": "Established national ambient air quality standards, emission controls, and EPA enforcement—dramatically reduced air pollution and set model for environmental regulation worldwide.",
+        "sources": [
+          "National Archives: Clean Air Act records",
+          "Library of Congress: Nixon environmental papers"
+        ]
+      },
+      {
+        "title": "Occupational Safety and Health Act (1970)",
+        "summary": "Created OSHA to set/enforce workplace safety standards—reduced occupational hazards and injuries; enduring labor protection framework.",
+        "sources": [
+          "National Archives: OSHA founding documents",
+          "Library of Congress: Nixon labor papers"
+        ]
+      }
+    ],
+    "minorEvents": [],
+    "misconduct": [
+      {
+        "title": "Watergate Scandal (Proven Criminal Misconduct)",
+        "summary": "Nixon’s administration orchestrated a break‑in at the DNC headquarters and attempted to cover it up. Nixon resigned under threat of impeachment, and the scandal remains one of the most significant abuses of presidential power in U.S. history.",
+        "sources": [
+          "National Archives, Watergate tapes and investigation records.",
+          "Library of Congress, Nixon impeachment materials."
+        ]
+      },
+      {
+        "title": "Use of Federal Agencies Against Political Enemies",
+        "summary": "Nixon directed the IRS, FBI, and CIA to target political opponents, a documented abuse of power.",
+        "sources": [
+          "Library of Congress, Nixon White House tapes.",
+          "National Archives, Watergate‑related agency records."
+        ]
+      }
+    ]
+  },
+  {
+    "id": 38,
+    "name": "Gerald Ford",
+    "overview": "Ford’s brief unelected term focused on post-Watergate healing and economic recovery. Signed Education for All Handicapped Children Act (special education rights), Tax Reduction Act (stimulus), Privacy Act (federal data protections), and energy conservation measures. Supported Helsinki Accords and intelligence reforms. Modest but stabilizing record emphasizing transparency and education equity amid recession and distrust.",
+    "majorEvents": [
+      {
+        "title": "Education for All Handicapped Children Act (1975)",
+        "summary": "Guaranteed free appropriate public education in least restrictive environment for children with disabilities—foundation of IDEA; transformed special education access nationwide.",
+        "sources": [
+          "National Archives: EAHCA records",
+          "Library of Congress: Ford education papers"
+        ]
+      },
+      {
+        "title": "Privacy Act (1974)",
+        "summary": "Established protections for individuals' records held by federal agencies (access, amendment rights)—key post-Watergate privacy safeguard still governing federal data handling.",
+        "sources": [
+          "National Archives: Privacy Act records",
+          "Library of Congress: Ford domestic policy papers"
+        ]
+      }
+    ],
+    "minorEvents": [],
+    "misconduct": [
+      {
+        "title": "Pardon of Richard Nixon (Ethically Controversial)",
+        "summary": "Ford pardoned Nixon shortly after taking office. While no evidence of a secret deal has been proven, the timing led to widespread suspicion of political favoritism.",
+        "sources": [
+          "Library of Congress, Ford pardon correspondence.",
+          "Historical analyses of the Nixon pardon."
+        ]
+      }
+    ]
+  },
+  {
+    "id": 39,
+    "name": "Jimmy Carter",
+    "overview": "Carter’s post-Vietnam/Watergate focus emphasized energy independence, deregulation, and human rights. Created Department of Energy, deregulated airlines/trucking/rail, signed massive Alaska lands conservation (ANILCA), Civil Service Reform Act, and Panama Canal treaties. His record advanced administrative efficiency, environmental protection, and market-oriented reforms—often underappreciated amid economic challenges.",
+    "majorEvents": [
+      {
+        "title": "Department of Energy Organization Act (1977)",
+        "summary": "Consolidated scattered energy programs into cabinet-level DOE—centralized national energy policy amid oil crises; still governs U.S. energy R&D/security.",
+        "sources": [
+          "National Archives: DOE founding documents",
+          "Library of Congress: Carter energy papers"
+        ]
+      },
+      {
+        "title": "Airline Deregulation Act (1978)",
+        "summary": "Removed federal control over airline routes/fares—sparked competition, lower prices, industry growth; model for subsequent deregulations (trucking, telecom).",
+        "sources": [
+          "National Archives: Airline Deregulation Act records",
+          "Library of Congress: Carter economic papers"
+        ]
+      },
+      {
+        "title": "Alaska National Interest Lands Conservation Act (1980)",
+        "summary": "Protected 104 million acres as parks/refuges/wilderness—largest conservation act in U.S. history; preserved vast ecosystems and Native lands.",
+        "sources": [
+          "National Archives: ANILCA records",
+          "Library of Congress: Carter conservation papers"
+        ]
+      }
+    ],
+    "minorEvents": [],
+    "misconduct": [
+      {
+        "title": "Bert Lance Scandal (Administration Ethics Concerns)",
+        "summary": "Carter’s budget director, Bert Lance, resigned amid allegations of financial misconduct. Carter was not implicated, but the scandal raised questions about his administration’s vetting.",
+        "sources": [
+          "National Archives, Lance investigation records.",
+          "Library of Congress, Carter administration correspondence."
+        ]
+      }
+    ]
+  },
+  {
+    "id": 40,
+    "name": "Ronald Reagan",
+    "overview": "Reagan’s presidency redefined fiscal conservatism through massive tax cuts (ERTA 1981, Tax Reform Act 1986), deregulation, defense buildup, and welfare/work requirements reforms. Signed IRCA (amnesty + enforcement), Goldwater-Nichols (military reorganization), and immigration/anti-drug measures. His supply-side policies spurred growth but increased deficits; enduring shift toward lower taxes and reduced government intervention.",
+    "majorEvents": [
+      {
+        "title": "Economic Recovery Tax Act (1981)",
+        "summary": "Cut marginal income tax rates 25% across board, accelerated depreciation, reduced capital gains—largest tax cut in history; cornerstone of Reaganomics/supply-side economics.",
+        "sources": [
+          "National Archives: ERTA records",
+          "Library of Congress: Reagan economic papers"
+        ]
+      },
+      {
+        "title": "Tax Reform Act (1986)",
+        "summary": "Bipartisan overhaul: simplified code from 14 brackets to 2, closed loopholes, lowered top rate to 28%—most comprehensive tax reform since 1954; broadened base, reduced rates.",
+        "sources": [
+          "National Archives: Tax Reform Act records",
+          "Library of Congress: Reagan fiscal papers"
+        ]
+      },
+      {
+        "title": "Immigration Reform and Control Act (1986)",
+        "summary": "Granted amnesty to ~3 million undocumented immigrants; imposed employer sanctions—first major modern immigration compromise; shaped debates for decades.",
+        "sources": [
+          "National Archives: IRCA records",
+          "Library of Congress: Reagan domestic policy papers"
+        ]
+      }
+    ],
+    "minorEvents": [],
+    "misconduct": [
+      {
+        "title": "Iran‑Contra Affair",
+        "summary": "Reagan administration officials illegally sold arms to Iran and diverted funds to Contra rebels in Nicaragua. Reagan denied knowledge of the diversion, but investigations found significant oversight failures.",
+        "sources": [
+          "National Archives, Iran‑Contra investigation records.",
+          "Library of Congress, Reagan administration correspondence."
+        ]
+      }
+    ]
+  },
+  {
+    "id": 41,
+    "name": "George H. W. Bush",
+    "overview": "George H. W. Bush’s one-term presidency emphasized pragmatic bipartisanship amid end-of-Cold-War transitions. Key achievements include the Americans with Disabilities Act (major civil rights expansion), Clean Air Act Amendments (acid rain/toxics controls), Immigration Act of 1990 (increased legal immigration), and Omnibus Budget Reconciliation Act (deficit reduction with tax increases, politically costly). He also signed Gulf War authorization. His record reflects cautious, consensus-driven governance with lasting domestic impacts despite 'no new taxes' pledge backlash.",
+    "majorEvents": [
+      {
+        "title": "Americans with Disabilities Act (1990)",
+        "summary": "Prohibited discrimination against people with disabilities in employment, public services, accommodations, and transportation; required reasonable accommodations and accessibility—landmark civil rights law expanding protections for ~50 million Americans.",
+        "sources": [
+          "National Archives: ADA records",
+          "Library of Congress: Bush civil rights papers"
+        ]
+      },
+      {
+        "title": "Clean Air Act Amendments (1990)",
+        "summary": "Major overhaul addressing acid rain (cap-and-trade SO2/NOx), toxic emissions, urban ozone, and stratospheric ozone depletion—strengthened EPA authority and set model for market-based environmental regulation.",
+        "sources": [
+          "National Archives: Clean Air Act amendments",
+          "Library of Congress: Bush environmental papers"
+        ]
+      },
+      {
+        "title": "Omnibus Budget Reconciliation Act (1990)",
+        "summary": "Bipartisan deficit-reduction package with spending caps, Medicare cuts, and revenue increases (including gas tax hike)—helped fiscal stabilization but violated 'read my lips' pledge, contributing to 1992 defeat.",
+        "sources": [
+          "National Archives: OBRA 1990 records",
+          "Library of Congress: Bush economic papers"
+        ]
+      }
+    ],
+    "minorEvents": [],
+    "misconduct": [
+      {
+        "title": "Iran‑Contra Pardons",
+        "summary": "Bush pardoned several officials involved in Iran‑Contra, prompting accusations of obstructing accountability. Bush himself had been vice president during the scandal.",
+        "sources": [
+          "National Archives, Iran‑Contra pardon records.",
+          "Library of Congress, Bush administration correspondence."
+        ]
+      }
+    ]
+  },
+  {
+    "id": 42,
+    "name": "Bill Clinton",
+    "overview": "Clinton’s two terms blended centrist 'Third Way' policies with economic boom outcomes: NAFTA (trade expansion), Violent Crime Control Act (assault weapons ban, COPS funding), Personal Responsibility and Work Opportunity Act (welfare reform), Balanced Budget Act (surpluses), DMCA (digital copyright), and NATO enlargement. His record achieved fiscal discipline, crime reduction, and global integration—though controversial on trade/welfare impacts and impeachment overshadowing.",
+    "majorEvents": [
+      {
+        "title": "North American Free Trade Agreement (1993)",
+        "summary": "Eliminated most tariffs/trade barriers among U.S., Canada, Mexico—boosted North American trade (~$1.5T+ annually today) but contributed to manufacturing shifts and labor debates.",
+        "sources": [
+          "National Archives: NAFTA records",
+          "Library of Congress: Clinton trade papers"
+        ]
+      },
+      {
+        "title": "Violent Crime Control and Law Enforcement Act (1994)",
+        "summary": "Funded 100,000 new police officers, banned assault weapons (10 years), expanded prisons, and 'three strikes' sentencing—credited with crime drop but criticized for mass incarceration.",
+        "sources": [
+          "National Archives: Crime Bill records",
+          "Library of Congress: Clinton domestic policy papers"
+        ]
+      },
+      {
+        "title": "Personal Responsibility and Work Opportunity Reconciliation Act (1996)",
+        "summary": "Replaced AFDC with TANF block grants; imposed work requirements, time limits, and child support enforcement—major welfare reform reducing rolls but debated on poverty outcomes.",
+        "sources": [
+          "National Archives: Welfare reform records",
+          "Library of Congress: Clinton welfare papers"
+        ]
+      }
+    ],
+    "minorEvents": [],
+    "misconduct": [
+      {
+        "title": "Lewinsky Scandal and Impeachment",
+        "summary": "Clinton engaged in an affair with White House intern Monica Lewinsky and later lied under oath about the relationship, leading to impeachment for perjury and obstruction of justice.",
+        "sources": [
+          "National Archives, Clinton impeachment records.",
+          "Library of Congress, Starr Report materials."
+        ]
+      },
+      {
+        "title": "Whitewater Investigation (No Charges Filed)",
+        "summary": "Clinton faced a long investigation into real estate dealings in Arkansas. No wrongdoing was proven, but the investigation uncovered other misconduct.",
+        "sources": [
+          "Library of Congress, Whitewater investigation materials.",
+          "Historical analyses of the Clinton investigations."
+        ]
+      }
+    ]
+  },
+  {
+    "id": 43,
+    "name": "George W. Bush",
+    "overview": "George W. Bush’s presidency was dominated by post-9/11 security and economic policies: USA PATRIOT Act (expanded surveillance), No Child Left Behind (education accountability), Medicare Part D (prescription drugs), major tax cuts (EGTRRA/JGTRRA), Homeland Security Department creation, and Iraq War authorization. His record reflects strong national security focus, education/healthcare expansions, and fiscal conservatism—though Iraq and deficits remain divisive.",
+    "majorEvents": [
+      {
+        "title": "USA PATRIOT Act (2001)",
+        "summary": "Expanded surveillance, intelligence sharing, and counterterrorism powers (roving wiretaps, national security letters)—transformed post-9/11 security but raised civil liberties concerns.",
+        "sources": [
+          "National Archives: PATRIOT Act records",
+          "Library of Congress: Bush national security papers"
+        ]
+      },
+      {
+        "title": "No Child Left Behind Act (2002)",
+        "summary": "Required annual testing, school accountability, and teacher qualifications—aimed to close achievement gaps; bipartisan but criticized for unfunded mandates and overemphasis on testing.",
+        "sources": [
+          "National Archives: NCLB records",
+          "Library of Congress: Bush education papers"
+        ]
+      },
+      {
+        "title": "Medicare Prescription Drug, Improvement, and Modernization Act (2003)",
+        "summary": "Added Medicare Part D prescription drug benefit via private plans—largest Medicare expansion since 1965; helped seniors but increased costs/entitlements.",
+        "sources": [
+          "National Archives: Medicare Part D records",
+          "Library of Congress: Bush healthcare papers"
+        ]
+      }
+    ],
+    "minorEvents": [],
+    "misconduct": [
+      {
+        "title": "Iraq War Intelligence Controversy",
+        "summary": "The Bush administration presented intelligence about weapons of mass destruction in Iraq that was later proven inaccurate. Historians debate whether this was deliberate misrepresentation or intelligence failure, but the controversy remains central to assessments of his presidency.",
+        "sources": [
+          "National Archives, Iraq War intelligence records.",
+          "Library of Congress, Bush administration correspondence."
+        ]
+      },
+      {
+        "title": "Use of Enhanced Interrogation Techniques",
+        "summary": "Bush authorized interrogation methods widely considered torture under international law. These actions remain highly controversial and ethically condemned.",
+        "sources": [
+          "Senate Intelligence Committee Report on CIA interrogation.",
+          "Library of Congress, Bush national security papers."
+        ]
+      }
+    ]
+  },
+  {
+    "id": 44,
+    "name": "Barack Obama",
+    "overview": "Obama’s two terms delivered transformative laws amid Great Recession and polarization: Affordable Care Act (ACA/Obamacare), Dodd-Frank (financial reform/CFPB), American Recovery and Reinvestment Act (stimulus), DADT repeal, Lilly Ledbetter Fair Pay Act, and New START. His record expanded healthcare access, regulated Wall Street, spurred recovery, and advanced equality—defining modern Democratic priorities despite fierce opposition.",
+    "majorEvents": [
+      {
+        "title": "Affordable Care Act (2010)",
+        "summary": "Expanded coverage to millions via exchanges, Medicaid expansion, mandates, subsidies, and protections (pre-existing conditions ban)—most significant healthcare reform since Medicare/Medicaid.",
+        "sources": [
+          "National Archives: ACA records",
+          "Library of Congress: Obama healthcare papers"
+        ]
+      },
+      {
+        "title": "American Recovery and Reinvestment Act (2009)",
+        "summary": "$831B stimulus with tax cuts, infrastructure, education, green energy, and unemployment aid—helped avert deeper recession and supported recovery.",
+        "sources": [
+          "National Archives: ARRA records",
+          "Library of Congress: Obama economic papers"
+        ]
+      },
+      {
+        "title": "Dodd–Frank Wall Street Reform and Consumer Protection Act (2010)",
+        "summary": "Created CFPB, Volcker Rule, stress tests, and oversight of 'too big to fail' institutions—major post-2008 financial safeguards.",
+        "sources": [
+          "National Archives: Dodd–Frank records",
+          "Library of Congress: Obama financial papers"
+        ]
+      }
+    ],
+    "minorEvents": [],
+    "misconduct": [
+      {
+        "title": "Drone Strike Civilian Casualties",
+        "summary": "Obama expanded drone warfare, resulting in civilian casualties. While legal under U.S. policy, the program drew significant ethical criticism.",
+        "sources": [
+          "Declassified drone strike reports.",
+          "Library of Congress, Obama national security papers."
+        ]
+      },
+      {
+        "title": "Operation Fast and Furious (Indirect Association)",
+        "summary": "A botched ATF gun‑tracking operation occurred during Obama’s presidency. While Obama was not directly involved, critics argued his administration failed to provide adequate oversight.",
+        "sources": [
+          "Congressional reports on Operation Fast and Furious.",
+          "Library of Congress, DOJ correspondence."
+        ]
+      }
+    ]
+  },
+  {
+    "id": 45,
+    "name": "Donald Trump",
+    "overview": "Trump’s single term focused on tax reform, deregulation, criminal justice, trade renegotiation, and COVID response. Signed Tax Cuts and Jobs Act (corporate rate to 21%), First Step Act (sentencing reform), USMCA (NAFTA update), CARES Act (pandemic relief), and VA MISSION Act. His record delivered economic/tax priorities and bipartisan justice reform—though polarizing and marked by high legislative volume in first two years.",
+    "majorEvents": [
+      {
+        "title": "Tax Cuts and Jobs Act (2017)",
+        "summary": "Reduced corporate rate from 35% to 21%, lowered individual rates, doubled standard deduction, limited SALT—largest tax overhaul since 1986; boosted growth but increased deficits.",
+        "sources": [
+          "National Archives: TCJA records",
+          "Library of Congress: Trump economic papers"
+        ]
+      },
+      {
+        "title": "First Step Act (2018)",
+        "summary": "Bipartisan reform reduced mandatory minimums, expanded rehabilitation/early release, retroactive crack cocaine relief—major step toward criminal justice reform.",
+        "sources": [
+          "National Archives: First Step Act records",
+          "Library of Congress: Trump domestic policy papers"
+        ]
+      },
+      {
+        "title": "CARES Act (2020)",
+        "summary": "$2.2T COVID relief with direct payments ($1,200), PPP loans, enhanced unemployment ($600/week)—largest single relief package in history; critical pandemic response.",
+        "sources": [
+          "National Archives: CARES Act records",
+          "Library of Congress: Trump pandemic papers"
+        ]
+      }
+    ],
+    "minorEvents": [],
+    "misconduct": [
+      {
+        "title": "Impeachment for Abuse of Power and Obstruction of Congress",
+        "summary": "Trump was impeached in 2019 for allegedly pressuring Ukraine to investigate a political rival and obstructing congressional investigations. He was acquitted by the Senate.",
+        "sources": [
+          "National Archives, Trump impeachment records (2019).",
+          "Library of Congress, House impeachment inquiry materials."
+        ]
+      },
+      {
+        "title": "Second Impeachment for Incitement of Insurrection",
+        "summary": "Trump was impeached again in 2021 for allegedly inciting the January 6 attack on the U.S. Capitol. He was acquitted by the Senate.",
+        "sources": [
+          "National Archives, Trump impeachment records (2021).",
+          "Library of Congress, January 6 congressional materials."
+        ]
+      },
+      {
+        "title": "Multiple Ongoing Legal Investigations (Documented, Not All Resolved)",
+        "summary": "Trump has faced numerous investigations into business practices, classified documents handling, and election‑related actions. Some cases remain ongoing or unresolved; others have resulted in indictments. Outcomes vary and must be evaluated individually.",
+        "sources": [
+          "Court filings and public indictments (various jurisdictions).",
+          "Library of Congress, Trump legal correspondence."
+        ]
+      }
+    ]
+  },
+  {
+    "id": 46,
+    "name": "Joe Biden",
+    "overview": "Biden’s first term featured massive bipartisan and partisan investments amid COVID recovery and inflation challenges. Signed American Rescue Plan ($1.9T relief), Infrastructure Investment and Jobs Act ($1.2T), CHIPS and Science Act (semiconductors), Inflation Reduction Act (climate/healthcare), Bipartisan Safer Communities Act (gun safety), PACT Act (veterans burn pits), and Postal Reform. His record emphasizes infrastructure, manufacturing resurgence, climate action, and social supports—among most productive modern presidencies legislatively.",
+    "majorEvents": [
+      {
+        "title": "Inflation Reduction Act (2022)",
+        "summary": "Largest climate investment in U.S. history (~$370B clean energy/manufacturing), capped insulin/drug costs, ACA subsidies extension, corporate minimum tax—key climate/healthcare/economic law.",
+        "sources": [
+          "National Archives: IRA legislative records",
+          "Library of Congress: Biden climate policy papers"
+        ]
+      },
+      {
+        "title": "Infrastructure Investment and Jobs Act (2021)",
+        "summary": "Bipartisan $1.2T package for roads/bridges, broadband, water, public transit, EV charging—largest infrastructure investment since Interstate Highway System.",
+        "sources": [
+          "National Archives: Infrastructure Act records",
+          "Library of Congress: Biden infrastructure papers"
+        ]
+      },
+      {
+        "title": "CHIPS and Science Act (2022)",
+        "summary": "$280B for domestic semiconductor production, R&D, STEM—addressed supply chain vulnerabilities and competition with China; boosted manufacturing resurgence.",
+        "sources": [
+          "National Archives: CHIPS Act records",
+          "Library of Congress: Biden technology policy papers"
+        ]
+      }
+    ],
+    "minorEvents": [],
+    "misconduct": [
+      {
+        "title": "Handling of Classified Documents (Ongoing Investigation)",
+        "summary": "Classified documents from Biden’s vice‑presidential tenure were found in private locations. A special counsel investigation was launched. As of now, no criminal charges have been filed, but the matter remains a documented controversy.",
+        "sources": [
+          "Special Counsel reports and DOJ statements.",
+          "Library of Congress, Biden administrative correspondence."
+        ]
+      },
+      {
+        "title": "Hunter Biden Business Dealings (Indirect Association)",
+        "summary": "Biden has faced political scrutiny over his son Hunter Biden’s business activities. No evidence has shown Joe Biden personally engaged in wrongdoing, but the issue remains a politically charged controversy.",
+        "sources": [
+          "Congressional inquiry materials.",
+          "Library of Congress, Biden family correspondence."
+        ]
+      }
+    ]
+  }
+]
