@@ -40,7 +40,8 @@ function getEventSeverity(title = "", summary = "") {
       text.includes("success") || text.includes("stabilized") || text.includes("secured") ||
       text.includes("established") || text.includes("foundational") || text.includes("legacy") ||
       text.includes("expansion") || text.includes("charter") || text.includes("departmental") ||
-      text.includes("residence act") || text.includes("infrastructure") || text.includes("investment")) {
+      text.includes("residence act") || text.includes("infrastructure") || text.includes("investment") ||
+      text.includes("second bank") || text.includes("tariff of 1816") || text.includes("coinage act")) {
     return 5.0; // strong positive legacy
   }
 
@@ -49,7 +50,8 @@ function getEventSeverity(title = "", summary = "") {
       text.includes("repeal") || text.includes("reduction") || text.includes("growth") ||
       text.includes("resolved") || text.includes("protected") || text.includes("prevented") ||
       text.includes("charter") || text.includes("infrastructure") || text.includes("investment") ||
-      text.includes("second bank") || text.includes("tariff of 1816") || text.includes("coinage act")) {
+      text.includes("second bank") || text.includes("tariff of 1816") || text.includes("coinage act") ||
+      text.includes("department") || text.includes("navy") || text.includes("naval")) {
     return 3.0;
   }
 
@@ -58,7 +60,8 @@ function getEventSeverity(title = "", summary = "") {
       text.includes("proclamation") || text.includes("message") || text.includes("appointment") ||
       text.includes("move") || text.includes("convenes") || text.includes("ceremonial") ||
       text.includes("cornerstone") || text.includes("day of thanksgiving") || text.includes("message") ||
-      text.includes("veto") || text.includes("electors") || text.includes("state of the union")) {
+      text.includes("veto") || text.includes("electors") || text.includes("state of the union") ||
+      text.includes("annual state") || text.includes("special message")) {
     return 0.0;
   }
 
@@ -70,7 +73,8 @@ function getEventSeverity(title = "", summary = "") {
       text.includes("scandal") || text.includes("investigation") || text.includes("impeachment") ||
       text.includes("classified documents") || text.includes("hunter biden") || text.includes("moral failing") ||
       text.includes("exploitative") || text.includes("abuse") || text.includes("violation") ||
-      text.includes("resistance") || text.includes("panic") || text.includes("epidemic")) {
+      text.includes("resistance") || text.includes("panic") || text.includes("epidemic") ||
+      text.includes("yellow fever") || text.includes("genêt") || text.includes("genet")) {
     return -5.0; // strong penalty
   }
 
