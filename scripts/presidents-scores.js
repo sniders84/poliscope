@@ -43,7 +43,8 @@ function getEventSeverity(title = "", summary = "") {
       text.includes("residence act") || text.includes("infrastructure") || text.includes("investment") ||
       text.includes("second bank") || text.includes("tariff of 1816") || text.includes("coinage act") ||
       text.includes("navy") || text.includes("naval") || text.includes("military reform") ||
-      text.includes("post-revolutionary") || text.includes("debt crisis") || text.includes("panic")) {
+      text.includes("post-revolutionary") || text.includes("debt crisis") || text.includes("panic") ||
+      text.includes("missouri compromise") || text.includes("monroe doctrine")) {
     return 5.0; // strong positive legacy
   }
 
@@ -54,8 +55,7 @@ function getEventSeverity(title = "", summary = "") {
       text.includes("charter") || text.includes("infrastructure") || text.includes("investment") ||
       text.includes("second bank") || text.includes("tariff") || text.includes("coinage") ||
       text.includes("department") || text.includes("navy") || text.includes("naval") ||
-      text.includes("declaration") || text.includes("charter") || text.includes("authorization") ||
-      text.includes("war of 1812") || text.includes("missouri compromise") || text.includes("monroe doctrine")) {
+      text.includes("declaration") || text.includes("authorization") || text.includes("war of 1812")) {
     return 3.0;
   }
 
