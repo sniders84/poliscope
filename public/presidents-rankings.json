@@ -3,7 +3,7 @@
     "id": 1,
     "name": "George Washington",
     "rawScore": 44,
-    "normalizedScore": 1.31,
+    "normalizedScore": 1.28,
     "eventTotals": {
       "major": 5,
       "minor": 0,
@@ -11,13 +11,13 @@
       "total": 6
     },
     "note": "",
-    "lastUpdated": "2026-03-04T06:41:57.755Z"
+    "lastUpdated": "2026-03-04T06:42:48.855Z"
   },
   {
     "id": 2,
     "name": "John Adams",
-    "rawScore": 16,
-    "normalizedScore": 0.48,
+    "rawScore": 20,
+    "normalizedScore": 0.58,
     "eventTotals": {
       "major": 3,
       "minor": 0,
@@ -25,13 +25,13 @@
       "total": 4
     },
     "note": "",
-    "lastUpdated": "2026-03-04T06:41:57.756Z"
+    "lastUpdated": "2026-03-04T06:42:48.855Z"
   },
   {
     "id": 3,
     "name": "Thomas Jefferson",
     "rawScore": 52,
-    "normalizedScore": 1.55,
+    "normalizedScore": 1.51,
     "eventTotals": {
       "major": 4,
       "minor": 0,
@@ -39,13 +39,13 @@
       "total": 6
     },
     "note": "",
-    "lastUpdated": "2026-03-04T06:41:57.756Z"
+    "lastUpdated": "2026-03-04T06:42:48.855Z"
   },
   {
     "id": 4,
     "name": "James Madison",
     "rawScore": 36,
-    "normalizedScore": 1.07,
+    "normalizedScore": 1.05,
     "eventTotals": {
       "major": 3,
       "minor": 0,
@@ -53,13 +53,13 @@
       "total": 4
     },
     "note": "",
-    "lastUpdated": "2026-03-04T06:41:57.756Z"
+    "lastUpdated": "2026-03-04T06:42:48.855Z"
   },
   {
     "id": 5,
     "name": "James Monroe",
     "rawScore": 20,
-    "normalizedScore": 0.6,
+    "normalizedScore": 0.58,
     "eventTotals": {
       "major": 3,
       "minor": 0,
@@ -67,7 +67,7 @@
       "total": 4
     },
     "note": "",
-    "lastUpdated": "2026-03-04T06:41:57.756Z"
+    "lastUpdated": "2026-03-04T06:42:48.856Z"
   },
   {
     "id": 6,
@@ -81,7 +81,7 @@
       "total": 4
     },
     "note": "",
-    "lastUpdated": "2026-03-04T06:41:57.756Z"
+    "lastUpdated": "2026-03-04T06:42:48.856Z"
   },
   {
     "id": 7,
@@ -95,7 +95,7 @@
       "total": 5
     },
     "note": "",
-    "lastUpdated": "2026-03-04T06:41:57.756Z"
+    "lastUpdated": "2026-03-04T06:42:48.856Z"
   },
   {
     "id": 8,
@@ -109,7 +109,7 @@
       "total": 3
     },
     "note": "",
-    "lastUpdated": "2026-03-04T06:41:57.756Z"
+    "lastUpdated": "2026-03-04T06:42:48.856Z"
   },
   {
     "id": 9,
@@ -123,7 +123,7 @@
       "total": 1
     },
     "note": "Ranked last due to serving only 31 days in office.",
-    "lastUpdated": "2026-03-04T06:41:57.756Z"
+    "lastUpdated": "2026-03-04T06:42:48.856Z"
   },
   {
     "id": 10,
@@ -137,7 +137,7 @@
       "total": 5
     },
     "note": "",
-    "lastUpdated": "2026-03-04T06:41:57.756Z"
+    "lastUpdated": "2026-03-04T06:42:48.856Z"
   },
   {
     "id": 11,
@@ -151,7 +151,7 @@
       "total": 6
     },
     "note": "",
-    "lastUpdated": "2026-03-04T06:41:57.756Z"
+    "lastUpdated": "2026-03-04T06:42:48.856Z"
   },
   {
     "id": 12,
@@ -165,7 +165,7 @@
       "total": 1
     },
     "note": "",
-    "lastUpdated": "2026-03-04T06:41:57.756Z"
+    "lastUpdated": "2026-03-04T06:42:48.856Z"
   },
   {
     "id": 13,
@@ -179,7 +179,7 @@
       "total": 3
     },
     "note": "",
-    "lastUpdated": "2026-03-04T06:41:57.756Z"
+    "lastUpdated": "2026-03-04T06:42:48.856Z"
   },
   {
     "id": 14,
@@ -193,7 +193,7 @@
       "total": 4
     },
     "note": "",
-    "lastUpdated": "2026-03-04T06:41:57.756Z"
+    "lastUpdated": "2026-03-04T06:42:48.856Z"
   },
   {
     "id": 15,
@@ -207,7 +207,7 @@
       "total": 4
     },
     "note": "",
-    "lastUpdated": "2026-03-04T06:41:57.756Z"
+    "lastUpdated": "2026-03-04T06:42:48.856Z"
   },
   {
     "id": 16,
@@ -221,7 +221,7 @@
       "total": 6
     },
     "note": "",
-    "lastUpdated": "2026-03-04T06:41:57.756Z"
+    "lastUpdated": "2026-03-04T06:42:48.856Z"
   },
   {
     "id": 17,
@@ -235,7 +235,7 @@
       "total": 4
     },
     "note": "",
-    "lastUpdated": "2026-03-04T06:41:57.756Z"
+    "lastUpdated": "2026-03-04T06:42:48.856Z"
   },
   {
     "id": 18,
@@ -249,7 +249,7 @@
       "total": 5
     },
     "note": "",
-    "lastUpdated": "2026-03-04T06:41:57.757Z"
+    "lastUpdated": "2026-03-04T06:42:48.856Z"
   },
   {
     "id": 19,
@@ -263,13 +263,13 @@
       "total": 2
     },
     "note": "",
-    "lastUpdated": "2026-03-04T06:41:57.757Z"
+    "lastUpdated": "2026-03-04T06:42:48.856Z"
   },
   {
     "id": 20,
     "name": "James A. Garfield",
     "rawScore": 10,
-    "normalizedScore": 0.57,
+    "normalizedScore": 0.48,
     "eventTotals": {
       "major": 0,
       "minor": 0,
@@ -277,13 +277,13 @@
       "total": 1
     },
     "note": "",
-    "lastUpdated": "2026-03-04T06:41:57.757Z"
+    "lastUpdated": "2026-03-04T06:42:48.856Z"
   },
   {
     "id": 21,
     "name": "Chester A. Arthur",
-    "rawScore": 32,
-    "normalizedScore": 1.81,
+    "rawScore": 36,
+    "normalizedScore": 1.71,
     "eventTotals": {
       "major": 3,
       "minor": 0,
@@ -291,13 +291,13 @@
       "total": 4
     },
     "note": "",
-    "lastUpdated": "2026-03-04T06:41:57.757Z"
+    "lastUpdated": "2026-03-04T06:42:48.856Z"
   },
   {
     "id": 22,
     "name": "Grover Cleveland (First Term)",
     "rawScore": 22,
-    "normalizedScore": 1.25,
+    "normalizedScore": 1.05,
     "eventTotals": {
       "major": 2,
       "minor": 0,
@@ -305,13 +305,13 @@
       "total": 3
     },
     "note": "",
-    "lastUpdated": "2026-03-04T06:41:57.757Z"
+    "lastUpdated": "2026-03-04T06:42:48.856Z"
   },
   {
     "id": 23,
     "name": "Benjamin Harrison",
-    "rawScore": 0,
-    "normalizedScore": 0,
+    "rawScore": 16,
+    "normalizedScore": 0.76,
     "eventTotals": {
       "major": 3,
       "minor": 0,
@@ -319,13 +319,13 @@
       "total": 4
     },
     "note": "",
-    "lastUpdated": "2026-03-04T06:41:57.757Z"
+    "lastUpdated": "2026-03-04T06:42:48.856Z"
   },
   {
     "id": 24,
     "name": "Grover Cleveland (Second Term)",
     "rawScore": 16,
-    "normalizedScore": 0.91,
+    "normalizedScore": 0.76,
     "eventTotals": {
       "major": 2,
       "minor": 0,
@@ -333,13 +333,13 @@
       "total": 3
     },
     "note": "",
-    "lastUpdated": "2026-03-04T06:41:57.757Z"
+    "lastUpdated": "2026-03-04T06:42:48.857Z"
   },
   {
     "id": 25,
     "name": "William McKinley",
     "rawScore": 26,
-    "normalizedScore": 1.47,
+    "normalizedScore": 1.24,
     "eventTotals": {
       "major": 3,
       "minor": 0,
@@ -347,13 +347,13 @@
       "total": 4
     },
     "note": "",
-    "lastUpdated": "2026-03-04T06:41:57.757Z"
+    "lastUpdated": "2026-03-04T06:42:48.857Z"
   },
   {
     "id": 26,
     "name": "Theodore Roosevelt",
     "rawScore": 26,
-    "normalizedScore": 0.91,
+    "normalizedScore": 0.85,
     "eventTotals": {
       "major": 4,
       "minor": 0,
@@ -361,13 +361,13 @@
       "total": 6
     },
     "note": "",
-    "lastUpdated": "2026-03-04T06:41:57.757Z"
+    "lastUpdated": "2026-03-04T06:42:48.857Z"
   },
   {
     "id": 27,
     "name": "William Howard Taft",
-    "rawScore": 16,
-    "normalizedScore": 0.56,
+    "rawScore": 22,
+    "normalizedScore": 0.72,
     "eventTotals": {
       "major": 3,
       "minor": 0,
@@ -375,13 +375,13 @@
       "total": 4
     },
     "note": "",
-    "lastUpdated": "2026-03-04T06:41:57.757Z"
+    "lastUpdated": "2026-03-04T06:42:48.857Z"
   },
   {
     "id": 28,
     "name": "Woodrow Wilson",
     "rawScore": 26,
-    "normalizedScore": 0.91,
+    "normalizedScore": 0.85,
     "eventTotals": {
       "major": 3,
       "minor": 0,
@@ -389,13 +389,13 @@
       "total": 5
     },
     "note": "",
-    "lastUpdated": "2026-03-04T06:41:57.757Z"
+    "lastUpdated": "2026-03-04T06:42:48.857Z"
   },
   {
     "id": 29,
     "name": "Warren G. Harding",
     "rawScore": 26,
-    "normalizedScore": 0.91,
+    "normalizedScore": 0.85,
     "eventTotals": {
       "major": 2,
       "minor": 0,
@@ -403,13 +403,13 @@
       "total": 4
     },
     "note": "",
-    "lastUpdated": "2026-03-04T06:41:57.757Z"
+    "lastUpdated": "2026-03-04T06:42:48.857Z"
   },
   {
     "id": 30,
     "name": "Calvin Coolidge",
     "rawScore": 36,
-    "normalizedScore": 1.26,
+    "normalizedScore": 1.18,
     "eventTotals": {
       "major": 3,
       "minor": 0,
@@ -417,13 +417,13 @@
       "total": 4
     },
     "note": "",
-    "lastUpdated": "2026-03-04T06:41:57.757Z"
+    "lastUpdated": "2026-03-04T06:42:48.857Z"
   },
   {
     "id": 31,
     "name": "Herbert Hoover",
-    "rawScore": 30,
-    "normalizedScore": 1.05,
+    "rawScore": 40,
+    "normalizedScore": 1.31,
     "eventTotals": {
       "major": 3,
       "minor": 0,
@@ -431,13 +431,13 @@
       "total": 4
     },
     "note": "",
-    "lastUpdated": "2026-03-04T06:41:57.757Z"
+    "lastUpdated": "2026-03-04T06:42:48.857Z"
   },
   {
     "id": 32,
     "name": "Franklin D. Roosevelt",
     "rawScore": 26,
-    "normalizedScore": 0.91,
+    "normalizedScore": 0.85,
     "eventTotals": {
       "major": 4,
       "minor": 0,
@@ -445,13 +445,13 @@
       "total": 6
     },
     "note": "",
-    "lastUpdated": "2026-03-04T06:41:57.757Z"
+    "lastUpdated": "2026-03-04T06:42:48.857Z"
   },
   {
     "id": 33,
     "name": "Harry S. Truman",
     "rawScore": 42,
-    "normalizedScore": 1.47,
+    "normalizedScore": 1.38,
     "eventTotals": {
       "major": 3,
       "minor": 0,
@@ -459,7 +459,7 @@
       "total": 5
     },
     "note": "",
-    "lastUpdated": "2026-03-04T06:41:57.757Z"
+    "lastUpdated": "2026-03-04T06:42:48.857Z"
   },
   {
     "id": 34,
@@ -473,7 +473,7 @@
       "total": 5
     },
     "note": "",
-    "lastUpdated": "2026-03-04T06:41:57.757Z"
+    "lastUpdated": "2026-03-04T06:42:48.857Z"
   },
   {
     "id": 35,
@@ -487,7 +487,7 @@
       "total": 4
     },
     "note": "",
-    "lastUpdated": "2026-03-04T06:41:57.757Z"
+    "lastUpdated": "2026-03-04T06:42:48.857Z"
   },
   {
     "id": 36,
@@ -501,7 +501,7 @@
       "total": 6
     },
     "note": "",
-    "lastUpdated": "2026-03-04T06:41:57.757Z"
+    "lastUpdated": "2026-03-04T06:42:48.857Z"
   },
   {
     "id": 37,
@@ -515,7 +515,7 @@
       "total": 5
     },
     "note": "",
-    "lastUpdated": "2026-03-04T06:41:57.757Z"
+    "lastUpdated": "2026-03-04T06:42:48.857Z"
   },
   {
     "id": 38,
@@ -529,7 +529,7 @@
       "total": 3
     },
     "note": "",
-    "lastUpdated": "2026-03-04T06:41:57.757Z"
+    "lastUpdated": "2026-03-04T06:42:48.857Z"
   },
   {
     "id": 39,
@@ -543,7 +543,7 @@
       "total": 4
     },
     "note": "",
-    "lastUpdated": "2026-03-04T06:41:57.757Z"
+    "lastUpdated": "2026-03-04T06:42:48.857Z"
   },
   {
     "id": 40,
@@ -557,7 +557,7 @@
       "total": 4
     },
     "note": "",
-    "lastUpdated": "2026-03-04T06:41:57.757Z"
+    "lastUpdated": "2026-03-04T06:42:48.857Z"
   },
   {
     "id": 41,
@@ -571,7 +571,7 @@
       "total": 4
     },
     "note": "",
-    "lastUpdated": "2026-03-04T06:41:57.757Z"
+    "lastUpdated": "2026-03-04T06:42:48.857Z"
   },
   {
     "id": 42,
@@ -585,7 +585,7 @@
       "total": 5
     },
     "note": "",
-    "lastUpdated": "2026-03-04T06:41:57.757Z"
+    "lastUpdated": "2026-03-04T06:42:48.857Z"
   },
   {
     "id": 43,
@@ -599,7 +599,7 @@
       "total": 5
     },
     "note": "",
-    "lastUpdated": "2026-03-04T06:41:57.757Z"
+    "lastUpdated": "2026-03-04T06:42:48.857Z"
   },
   {
     "id": 44,
@@ -613,7 +613,7 @@
       "total": 5
     },
     "note": "",
-    "lastUpdated": "2026-03-04T06:41:57.758Z"
+    "lastUpdated": "2026-03-04T06:42:48.857Z"
   },
   {
     "id": 45,
@@ -627,7 +627,7 @@
       "total": 6
     },
     "note": "",
-    "lastUpdated": "2026-03-04T06:41:57.758Z"
+    "lastUpdated": "2026-03-04T06:42:48.857Z"
   },
   {
     "id": 46,
@@ -641,6 +641,6 @@
       "total": 5
     },
     "note": "",
-    "lastUpdated": "2026-03-04T06:41:57.758Z"
+    "lastUpdated": "2026-03-04T06:42:48.857Z"
   }
 ]
