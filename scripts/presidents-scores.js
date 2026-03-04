@@ -19,35 +19,37 @@ try {
 
 const eras = require(erasPath);
 
-// Weights (adjusted for new schema)
+// Weights for event types
 const WEIGHTS = {
   major: 2.0,
-  minor: 0.0,      // ceremonial events get no score
-  misconduct: -2.0 // misconduct is always negative
+  minor: 0.0,      // ceremonial → no score
+  misconduct: -2.0 // misconduct → negative
 };
 
-// Updated severity function — tuned to match your actual event titles/summaries
+// Updated severity function — tuned to match your real event titles/summaries
 function getEventSeverity(title = "", summary = "") {
   const text = (title + " " + (summary || "")).toLowerCase();
 
-  // Strong positive — foundational / high-legacy achievements
+  // Strong positive — foundational laws, major expansions, stabilization, successes
   if (text.includes("louisiana purchase") || text.includes("judiciary act") ||
       text.includes("bank act") || text.includes("tariff act") ||
       text.includes("bill of rights") || text.includes("neutrality proclamation") ||
       text.includes("jay treaty") || text.includes("treaty of greenville") ||
-      text.includes("departmental establishment") || text.includes("residence act") ||
       text.includes("chips") || text.includes("inflation reduction") ||
       text.includes("infrastructure investment") || text.includes("american rescue") ||
       text.includes("success") || text.includes("stabilized") || text.includes("secured") ||
-      text.includes("established") || text.includes("foundational") || text.includes("legacy")) {
-    return 5.0; // strong positive
+      text.includes("established") || text.includes("foundational") || text.includes("legacy") ||
+      text.includes("expansion") || text.includes("charter") || text.includes("departmental") ||
+      text.includes("residence act") || text.includes("infrastructure") || text.includes("investment")) {
+    return 5.0; // strong positive legacy
   }
 
-  // Moderate positive — effective policy, reforms, stabilization
-  if (text.includes("act") || text.includes("treaty") || text.includes("charter") ||
-      text.includes("signed") || text.includes("repeal") || text.includes("reduction") ||
-      text.includes("expansion") || text.includes("stability") || text.includes("growth") ||
-      text.includes("resolved") || text.includes("protected") || text.includes("prevented")) {
+  // Moderate positive — effective laws, reforms, resolutions, acts
+  if (text.includes("act") || text.includes("treaty") || text.includes("signed") ||
+      text.includes("repeal") || text.includes("reduction") || text.includes("growth") ||
+      text.includes("resolved") || text.includes("protected") || text.includes("prevented") ||
+      text.includes("charter") || text.includes("infrastructure") || text.includes("investment") ||
+      text.includes("second bank") || text.includes("tariff of 1816") || text.includes("coinage act")) {
     return 3.0;
   }
 
@@ -55,17 +57,20 @@ function getEventSeverity(title = "", summary = "") {
   if (text.includes("inaugural") || text.includes("farewell") || text.includes("address") ||
       text.includes("proclamation") || text.includes("message") || text.includes("appointment") ||
       text.includes("move") || text.includes("convenes") || text.includes("ceremonial") ||
-      text.includes("cornerstone") || text.includes("day of thanksgiving")) {
+      text.includes("cornerstone") || text.includes("day of thanksgiving") || text.includes("message") ||
+      text.includes("veto") || text.includes("electors") || text.includes("state of the union")) {
     return 0.0;
   }
 
-  // Negative — misconduct, controversy, failure, harm
+  // Negative — misconduct, controversy, failure, harm, suppression
   if (text.includes("enslavement") || text.includes("enslaved") || text.includes("runaway") ||
       text.includes("alien and sedition") || text.includes("suppression") || text.includes("dissent") ||
       text.includes("embargo") || text.includes("controversy") || text.includes("backlash") ||
       text.includes("failed") || text.includes("devastated") || text.includes("hardship") ||
       text.includes("scandal") || text.includes("investigation") || text.includes("impeachment") ||
-      text.includes("classified documents") || text.includes("hunter biden") || text.includes("moral failing")) {
+      text.includes("classified documents") || text.includes("hunter biden") || text.includes("moral failing") ||
+      text.includes("exploitative") || text.includes("abuse") || text.includes("violation") ||
+      text.includes("resistance") || text.includes("panic") || text.includes("epidemic")) {
     return -5.0; // strong penalty
   }
 
@@ -77,7 +82,7 @@ function getEventSeverity(title = "", summary = "") {
 function scorePresident(p) {
   let rawScore = 0;
 
-  // Major events — positive weight 2.0
+  // Major events — weight 2.0
   (p.majorEvents || []).forEach(e => {
     const severity = getEventSeverity(e.title || "", e.summary || "");
     rawScore += severity * 2.0;
