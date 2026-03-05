@@ -1,86 +1,94 @@
 name: Update Presidents Data
 
 on:
-  workflow_dispatch:
+  workflow_dispatch:  # Manual trigger
   push:
     paths:
-      - "public/presidents-*.json"
+      - "public/presidents.json"              # Source of truth for basic info + photos
+      - "public/presidents-rankings.json"     # Generated output
       - "scripts/bootstrap-presidents.js"
-      - "scripts/merge-presidents.js"
+      - "scripts/merge-presidents.js"         # Now critical — populates events
       - "scripts/presidents-scores.js"
       - "scripts/presidential-eras.js"
 
 jobs:
   update-presidents-data:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repo
+      - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          fetch-depth: 0  # Needed for proper git history in retry
 
-      - name: Use Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: "20"
 
-      - name: Install dependencies
+      - name: Install dependencies (if package.json exists)
         run: |
           if [ -f package.json ]; then
-            npm install
+            npm ci
           fi
 
-      # ------------------------------------------------------------
-      # 1. BOOTSTRAP
-      # ------------------------------------------------------------
-      - name: Bootstrap presidents-rankings.json
+      # ────────────────────────────────────────────────────────────────
+      # 1. Bootstrap → creates clean skeleton with empty events[]
+      #    (photos + basic info preserved from presidents.json)
+      # ────────────────────────────────────────────────────────────────
+      - name: Bootstrap clean presidents-rankings.json skeleton
         run: node scripts/bootstrap-presidents.js
 
-      # ------------------------------------------------------------
-      # 2. MERGE (THIS WAS MISSING)
-      # ------------------------------------------------------------
-      - name: Merge presidents data
+      # ────────────────────────────────────────────────────────────────
+      # 2. Merge / Populate → adds real events, tags, sources, initial scores
+      #    IMPORTANT: This step MUST preserve the 'photo' field from presidents.json
+      # ────────────────────────────────────────────────────────────────
+      - name: Merge timelines, events, and photos into rankings
         run: node scripts/merge-presidents.js
 
-      # ------------------------------------------------------------
-      # 3. SCORE (NOW SAFE TO RUN)
-      # ------------------------------------------------------------
-      - name: Score presidents and update rankings
+      # ────────────────────────────────────────────────────────────────
+      # 3. Score → reads events[], computes categoryScores, overallPowerScore, era rankings
+      # ────────────────────────────────────────────────────────────────
+      - name: Score presidents (events-based) and generate rankings
         run: node scripts/presidents-scores.js
 
-      # ------------------------------------------------------------
-      # 4. COMMIT & PUSH
-      # ------------------------------------------------------------
+      # ────────────────────────────────────────────────────────────────
+      # 4. Commit & Push (only if changes exist, safe retry on conflict)
+      # ────────────────────────────────────────────────────────────────
       - name: Commit and push updated presidents files
         if: github.ref == 'refs/heads/main'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-          # Stage ONLY president files (full isolation)
-          git add -- public/presidents-*.json public/presidents.json
+          # Stage only the president-related JSON files
+          git add public/presidents.json public/presidents-rankings.json
 
-          # If nothing changed, exit cleanly
+          # Nothing to commit? Exit cleanly
           if git diff --cached --quiet; then
-            echo "No changes to commit."
+            echo "No changes detected — skipping commit."
             exit 0
           fi
 
-          git commit -m "Update presidents data via workflow [skip ci]"
+          git commit -m "chore: update presidents data & scores [skip ci]"
 
-          # Push with lease safety
+          # Safe push with lease; retry logic if conflict
           git push --force-with-lease origin HEAD:main || {
-            echo "Push failed - possible conflict. Fetching latest..."
+            echo "Push failed (likely conflict) — resetting and retrying..."
             git fetch origin main
             git reset --hard origin/main
 
-            echo "Re-running scripts after reset..."
+            echo "Re-running pipeline after reset..."
             node scripts/bootstrap-presidents.js
             node scripts/merge-presidents.js
             node scripts/presidents-scores.js
 
-            git add -- public/presidents-*.json public/presidents.json
-            git commit -m "Retry update presidents data [skip ci]" || echo "No retry changes"
+            git add public/presidents.json public/presidents-rankings.json
+            git commit -m "chore: retry update presidents data after conflict [skip ci]" || echo "No changes on retry"
             git push origin HEAD:main
           }
+
+      - name: Workflow summary
+        run: |
+          echo "Workflow complete."
+          echo "Photos preserved from public/presidents.json → merged into rankings."
+          echo "Check public/presidents-rankings.json for photo fields and event data."
