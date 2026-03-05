@@ -1,5 +1,5 @@
 // scripts/presidents-scores.js
-// Final tuned rubric: heavy emphasis on crisis leadership & transformative success
+// Final adjustment: normalize for event volume, stronger legacy boosts
 
 const fs = require("fs");
 const path = require("path");
@@ -8,7 +8,7 @@ const ROOT = path.join(__dirname, "..");
 const RANKINGS_PATH = path.join(ROOT, "public", "presidents-rankings.json");
 const ERAS_PATH = path.join(ROOT, "scripts", "presidential-eras.js");
 
-console.log("🚀 Running final crisis-prioritized rubric...");
+console.log("🚀 Running final adjusted rubric...");
 
 const presidents = JSON.parse(fs.readFileSync(RANKINGS_PATH, "utf-8"));
 const eras = require(ERAS_PATH);
@@ -24,7 +24,7 @@ const CATEGORY_TAGS = {
 };
 
 const CATEGORY_WEIGHTS = {
-  crisisManagement: 0.30,  // Heavy emphasis on crisis handling
+  crisisManagement: 0.30,
   domesticPolicy:   0.14,
   economicPolicy:   0.14,
   foreignPolicy:    0.14,
@@ -44,14 +44,14 @@ function getEventCategories(event) {
   return cats;
 }
 
-// Final rubric: strong boosts for FDR/Lincoln/JFK style wins
+// Adjusted rubric
 function applyRubricToEvent(event, presidentId) {
   const text = ((event.title || "") + " " + (event.summary || "") + " " + (event.tags?.join(" ") || "")).toLowerCase();
   const tags = event.tags || [];
 
   // Severity
   let severity = 5;
-  if (tags.includes("crisis") || tags.includes("war") || tags.includes("rebellion") || /civil war|world war|depression|recession|pandemic|epidemic|missile|hostage/i.test(text)) {
+  if (tags.includes("crisis") || tags.includes("war") || tags.includes("rebellion") || /civil war|world war|depression|recession|pandemic|missile|hostage/i.test(text)) {
     severity = 10;
   } else if (tags.includes("security") || tags.includes("treaty") || tags.includes("diplomatic") || /frontier|indian|neutrality/i.test(text)) {
     severity = 8;
@@ -62,9 +62,9 @@ function applyRubricToEvent(event, presidentId) {
   }
   if (tags.includes("misconduct")) severity = Math.max(severity, 8);
 
-  // Effectiveness: massive boost for transformative
+  // Effectiveness
   let effectiveness = 5;
-  if (/victory|preserved union|ended slavery|new deal|masterful|decisive|transformative|resolved|averted nuclear|saved|strong leadership|emancipation/i.test(text)) {
+  if (/victory|preserved union|ended slavery|new deal|masterful|decisive|transformative|resolved|averted nuclear|saved|strong leadership|emancipation|trust-busting|conservation/i.test(text)) {
     effectiveness = 10;
   } else if (/success|secured|stabilized|proactive|unified|precedent|positive legacy/i.test(text)) {
     effectiveness = 9;
@@ -72,13 +72,12 @@ function applyRubricToEvent(event, presidentId) {
     effectiveness = 8;
   }
   if (/failed|mismanaged|worsened|resignation|impeached/i.test(text)) {
-    effectiveness = Math.min(effectiveness, 3);
+    effectiveness = Math.min(effectiveness, 4);
   }
   if (tags.includes("misconduct")) {
-    effectiveness = Math.min(effectiveness, 2);
+    effectiveness = Math.min(effectiveness, 3);
   }
 
-  // Strong bonus for high-severity success
   if (severity >= 8 && effectiveness >= 8) effectiveness = 10;
   if (severity >= 8 && effectiveness <= 5) effectiveness = Math.max(1, effectiveness - 1);
 
@@ -88,29 +87,20 @@ function applyRubricToEvent(event, presidentId) {
   };
 }
 
-// Score with high-severity weighting
+// Score with volume normalization
 function scoreEvent(event, presidentId) {
   const { severity, effectiveness } = applyRubricToEvent(event, presidentId);
-  // Weight contribution more for high-severity
-  const weight = severity >= 8 ? 1.5 : 1.0;
-  const contribution = effectiveness * (severity / 10) * weight;
-
-  return {
-    event: event.title,
-    year: event.year,
-    severity,
-    effectiveness,
-    contribution: Number(contribution.toFixed(2)),
-    notes: "Final tuned rubric"
-  };
+  const contribution = effectiveness * (severity / 10);
+  return { contribution, severity, effectiveness };
 }
 
-// Main loop
+// Main
 const updatedPresidents = presidents.map(p => {
   const events = p.events || [];
   const scorable = events.filter(e => e.title);
+  const numEvents = scorable.length;
 
-  if (scorable.length === 0) return getZeroScores(p);
+  if (numEvents === 0) return getZeroScores(p);
 
   const categoryScores = {};
   const categoryDetails = {};
@@ -136,13 +126,15 @@ const updatedPresidents = presidents.map(p => {
 
     totalWeighted += catScore * CATEGORY_WEIGHTS[cat];
 
-    // Bonus for multiple high-severity successes
-    highSeverityBonus += scored.filter(s => s.severity >= 8 && s.effectiveness >= 8).length * 0.8;
+    highSeverityBonus += scored.filter(s => s.severity >= 8 && s.effectiveness >= 8).length * 1.2;
   });
 
   totalWeighted += highSeverityBonus;
 
-  let eraNormalizedScore = Number(Math.max(0, totalWeighted).toFixed(2));
+  // Normalize for event volume (sqrt to reduce dilution)
+  let eraNormalizedScore = totalWeighted / Math.sqrt(numEvents + 1);
+  eraNormalizedScore = Number(Math.max(0, eraNormalizedScore).toFixed(2));
+
   let powerScore = Number((eraNormalizedScore * 10).toFixed(1));
 
   if (p.id === 9) {
@@ -202,6 +194,6 @@ updatedPresidents.forEach(p => { p.eraRankings = eraRankings; });
 // Save
 fs.writeFileSync(RANKINGS_PATH, JSON.stringify(updatedPresidents, null, 2));
 
-console.log(`\n✅ Final crisis-prioritized rubric complete. Updated ${updatedPresidents.length} presidents.`);
-console.log("   → FDR, Lincoln, JFK should now rank much higher");
+console.log(`\n✅ Final adjusted rubric complete. Updated ${updatedPresidents.length} presidents.`);
+console.log("   → Volume normalization applied");
 console.log("   → Hard refresh app to see updated rankings");
