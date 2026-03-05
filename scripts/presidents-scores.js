@@ -6,7 +6,7 @@ const TIMELINE_PATH = path.join(__dirname, "../public/presidents-full-timeline.j
 const RANKINGS_PATH = path.join(__dirname, "../public/presidents-rankings.json");
 const erasPath = path.join(__dirname, "../scripts/presidential-eras.js");
 
-console.log("Running pure count-based scoring...");
+console.log("Running strict positive scoring...");
 
 // Load timeline
 let timeline;
@@ -19,11 +19,19 @@ try {
 
 const eras = require(erasPath);
 
-// Score = number of major events minus twice the number of misconduct entries
+// Score = major events * 3 - misconduct * 2, floor at 0.1
 function scorePresident(p) {
   const major = p.majorEvents?.length || 0;
   const misconduct = p.misconduct?.length || 0;
-  return major - (misconduct * 2);
+
+  let raw = (major * 3) - (misconduct * 2);
+
+  // Never allow 0 or negative
+  if (raw <= 0) {
+    raw = 0.1;
+  }
+
+  return raw;
 }
 
 // Build rankings
@@ -59,7 +67,7 @@ Object.keys(eras).forEach(eraName => {
 rankings.forEach(r => {
   const era = Object.keys(eras).find(e => eras[e].includes(r.id));
   if (era && eraAverages[era]) {
-    r.normalizedScore = Number((r.rawScore / eraAverages[era]).toFixed(2));
+    r.normalizedScore = Number((r.rawScore / eraAverages[era]).toFixed(1));
   } else {
     r.normalizedScore = r.rawScore;
   }
@@ -68,5 +76,5 @@ rankings.forEach(r => {
 // Save
 fs.writeFileSync(RANKINGS_PATH, JSON.stringify(rankings, null, 2));
 console.log(`Scored ${rankings.length} presidents`);
-console.log("Harrison note applied");
+console.log("All scores floored at 0.1 minimum");
 console.log("Era normalization complete");
