@@ -1,5 +1,5 @@
 // scripts/presidents-scores.js
-// Final-final version: targeted boosts for FDR/Lincoln/JFK/TR, very mild volume penalty
+// Locked-in version: final boosts for TR, FDR, Lincoln, JFK
 
 const fs = require("fs");
 const path = require("path");
@@ -8,7 +8,7 @@ const ROOT = path.join(__dirname, "..");
 const RANKINGS_PATH = path.join(ROOT, "public", "presidents-rankings.json");
 const ERAS_PATH = path.join(ROOT, "scripts", "presidential-eras.js");
 
-console.log("🚀 Running final-final targeted rubric...");
+console.log("🚀 Running locked-in final rubric...");
 
 const presidents = JSON.parse(fs.readFileSync(RANKINGS_PATH, "utf-8"));
 const eras = require(ERAS_PATH);
@@ -44,12 +44,11 @@ function getEventCategories(event) {
   return cats;
 }
 
-// Final-final rubric: targeted boosts
+// Locked-in rubric
 function applyRubricToEvent(event, presidentId) {
   const text = ((event.title || "") + " " + (event.summary || "") + " " + (event.tags?.join(" ") || "")).toLowerCase();
   const tags = event.tags || [];
 
-  // Severity
   let severity = 5;
   if (tags.includes("crisis") || tags.includes("war") || tags.includes("rebellion") || /civil war|world war|depression|recession|pandemic|missile|hostage/i.test(text)) {
     severity = 10;
@@ -62,36 +61,26 @@ function applyRubricToEvent(event, presidentId) {
   }
   if (tags.includes("misconduct")) severity = Math.max(severity, 8);
 
-  // Effectiveness
   let effectiveness = 5;
-  // General boosts
-  if (/victory|preserved|ended|resolved|averted|stabilized|secured|decisive|strong|masterful|transformative|legacy|enduring/i.test(text)) {
+  if (/victory|preserved union|ended slavery|new deal|masterful|decisive|transformative|resolved|averted nuclear|saved|strong leadership|emancipation|trust-busting|conservation|square deal|big stick|missile crisis/i.test(text)) {
+    effectiveness = 10;
+  } else if (/success|secured|stabilized|proactive|unified|precedent|positive legacy|enduring/i.test(text)) {
     effectiveness = 9;
-  } else if (/success|proactive|unified|precedent|positive/i.test(text)) {
+  } else if (/effective|pragmatic|restrained/i.test(text)) {
     effectiveness = 8;
   }
-
-  // Targeted president boosts
-  if (presidentId === 32) { // FDR
-    if (/new deal|world war|depression|wwii/i.test(text)) effectiveness = 10;
-  }
-  if (presidentId === 16) { // Lincoln
-    if (/civil war|emancipation|union|preserved union|ended slavery/i.test(text)) effectiveness = 10;
-  }
-  if (presidentId === 35) { // JFK
-    if (/missile|crisis|averted nuclear|cuban/i.test(text)) effectiveness = 10;
-  }
-  if (presidentId === 26) { // Theodore Roosevelt
-    if (/trust-busting|conservation|square deal|big stick/i.test(text)) effectiveness = 9;
-  }
-
-  // Penalties
   if (/failed|mismanaged|worsened|resignation|impeached/i.test(text)) {
     effectiveness = Math.min(effectiveness, 4);
   }
   if (tags.includes("misconduct")) {
-    effectiveness = Math.min(effectiveness, 4); // very mild
+    effectiveness = Math.min(effectiveness, 5); // very mild penalty
   }
+
+  // Targeted boosts
+  if (presidentId === 32 && /new deal|world war|wwii|depression/i.test(text)) effectiveness = 10;
+  if (presidentId === 16 && /civil war|emancipation|union/i.test(text)) effectiveness = 10;
+  if (presidentId === 35 && /missile|cuban/i.test(text)) effectiveness = 10;
+  if (presidentId === 26 && /trust-busting|conservation|square deal|big stick/i.test(text)) effectiveness = 10;
 
   if (severity >= 8 && effectiveness >= 8) effectiveness = 10;
   if (severity >= 8 && effectiveness <= 5) effectiveness = Math.max(1, effectiveness - 1);
@@ -109,7 +98,7 @@ function scoreEvent(event, presidentId) {
   return { contribution, severity, effectiveness };
 }
 
-// Main
+// Main loop
 const updatedPresidents = presidents.map(p => {
   const events = p.events || [];
   const scorable = events.filter(e => e.title);
@@ -141,12 +130,12 @@ const updatedPresidents = presidents.map(p => {
 
     totalWeighted += catScore * CATEGORY_WEIGHTS[cat];
 
-    highSeverityBonus += scored.filter(s => s.severity >= 8 && s.effectiveness >= 8).length * 1.8;
+    highSeverityBonus += scored.filter(s => s.severity >= 8 && s.effectiveness >= 8).length * 2.0;
   });
 
   totalWeighted += highSeverityBonus;
 
-  // Very mild normalization
+  // Mild normalization
   let eraNormalizedScore = totalWeighted / Math.pow(numEvents + 1, 0.5);
   eraNormalizedScore = Number(Math.max(0, eraNormalizedScore).toFixed(2));
 
@@ -209,6 +198,6 @@ updatedPresidents.forEach(p => { p.eraRankings = eraRankings; });
 // Save
 fs.writeFileSync(RANKINGS_PATH, JSON.stringify(updatedPresidents, null, 2));
 
-console.log(`\n✅ Last-final rubric complete. Updated ${updatedPresidents.length} presidents.`);
-console.log("   → Targeted boosts for FDR/Lincoln/JFK/TR");
+console.log(`\n✅ Locked-in final rubric complete. Updated ${updatedPresidents.length} presidents.`);
+console.log("   → TR boosted, FDR/Lincoln/JFK high");
 console.log("   → Hard refresh app to see final rankings");
