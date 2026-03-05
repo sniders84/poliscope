@@ -1,5 +1,5 @@
 // scripts/presidents-scores.js
-// Heavily tuned rubric: prioritizes crisis leadership & transformative success
+// Balanced tuned rubric: broad triggers + historian boosts
 
 const fs = require("fs");
 const path = require("path");
@@ -8,24 +8,32 @@ const ROOT = path.join(__dirname, "..");
 const RANKINGS_PATH = path.join(ROOT, "public", "presidents-rankings.json");
 const ERAS_PATH = path.join(ROOT, "scripts", "presidential-eras.js");
 
-console.log("🚀 Running historian-tuned rubric scoring...");
+console.log("🚀 Running balanced tuned rubric scoring...");
 
 const presidents = JSON.parse(fs.readFileSync(RANKINGS_PATH, "utf-8"));
 const eras = require(ERAS_PATH);
 
-// Increased crisis weight
-const CATEGORY_TAGS = { /* same as before */ };
+// Category tags (same)
+const CATEGORY_TAGS = {
+  crisisManagement: ["crisis", "publichealth", "civilunrest", "security"],
+  domesticPolicy:   ["domestic", "civilrights", "social", "infrastructure"],
+  economicPolicy:   ["economic", "financial", "trade", "tariff", "debt"],
+  foreignPolicy:    ["foreign", "diplomatic", "treaty", "war", "neutrality"],
+  judicialPolicy:   ["judicial", "court", "supreme", "constitution"],
+  legislation:      ["legislation", "act", "bill", "law", "charter"],
+  misconduct:       ["misconduct", "scandal", "impeachment", "abuse", "failure"]
+};
+
 const CATEGORY_WEIGHTS = {
-  crisisManagement: 0.25,  // ↑ big boost for crisis leaders like Lincoln/FDR
+  crisisManagement: 0.25,
   domesticPolicy:   0.15,
   economicPolicy:   0.15,
   foreignPolicy:    0.15,
   judicialPolicy:   0.10,
   legislation:      0.10,
-  misconduct:       0.10   // still penalizes but less dominant
+  misconduct:       0.10
 };
 
-// getEventCategories function (same as before)
 function getEventCategories(event) {
   const cats = [];
   const eventTags = (event.tags || []).map(t => t.toLowerCase());
@@ -37,43 +45,45 @@ function getEventCategories(event) {
   return cats;
 }
 
-// Tuned rubric: massive boost for transformative crisis wins
+// Balanced rubric: broad tag matches + boost for transformative keywords
 function applyRubricToEvent(event, presidentId) {
   const text = ((event.title || "") + " " + (event.summary || "") + " " + (event.tags?.join(" ") || "")).toLowerCase();
   const tags = event.tags || [];
 
-  // Severity: higher for existential threats
-  let severity = 5;
-  if (/civil war|world war|depression|great depression|new deal|emancipation|union|secession|crisis|pandemic/i.test(text)) {
-    severity = 10;  // existential
-  } else if (tags.includes("crisis") || tags.includes("war") || /rebellion|emergency|attack/i.test(text)) {
+  // Severity: broad tag-based
+  let severity = 4;
+  if (tags.includes("crisis") || tags.includes("war") || tags.includes("rebellion") || tags.includes("uprising") || tags.includes("epidemic") || tags.includes("pandemic") || /depression|recession|panic/i.test(text)) {
     severity = 9;
-  } else if (tags.includes("treaty") || tags.includes("diplomatic") || /missile|hostage|embargo/i.test(text)) {
-    severity = 8;
-  } else if (tags.includes("economic") || /recession|panic|debt/i.test(text)) {
+  } else if (tags.includes("security") || tags.includes("treaty") || tags.includes("diplomatic") || tags.includes("frontier") || /indian|neutrality/i.test(text)) {
     severity = 7;
-  } else {
+  } else if (tags.includes("economic") || tags.includes("trade") || /tax|tariff|bank|debt/i.test(text)) {
     severity = 6;
+  } else if (tags.includes("judicial") || tags.includes("legislation") || /court|act|bill/i.test(text)) {
+    severity = 5;
+  }
+  if (tags.includes("misconduct") || /scandal|impeachment|cover-up/i.test(text)) {
+    severity = Math.max(severity, 8);
   }
 
-  // Effectiveness: huge boost for historians' favorites
+  // Effectiveness: broad + strong boost for historian favorites
   let effectiveness = 5;
-  if (/victory|preserved union|ended slavery|new deal|masterful|decisive|transformative|resolved|averted nuclear|saved|strong leadership/i.test(text)) {
-    effectiveness = 10;  // top-tier
-  } else if (/success|secured|stabilized|proactive|unified|precedent|positive legacy/i.test(text)) {
+  if (/victory|preserved|ended|resolved|averted|stabilized|secured|decisive|strong|masterful|transformative|new deal|emancipation|union/i.test(text)) {
+    effectiveness = 10;
+  } else if (/success|proactive|unified|precedent|positive|legacy|pragmatic/i.test(text)) {
     effectiveness = 9;
-  } else if (/effective|pragmatic|restrained/i.test(text)) {
+  } else if (/effective|restrained/i.test(text)) {
     effectiveness = 8;
   }
-  if (/failed|mismanaged|worsened|resignation|impeached|scandal/i.test(text)) {
+  if (/failed|mismanaged|worsened|divided|resignation|impeached/i.test(text)) {
     effectiveness = Math.min(effectiveness, 3);
   }
   if (tags.includes("misconduct")) {
     effectiveness = Math.min(effectiveness, 2);
   }
 
-  // Strong crisis bonus
+  // Crisis handling bonus
   if (severity >= 8 && effectiveness >= 8) effectiveness = 10;
+  if (severity >= 8 && effectiveness <= 4) effectiveness = Math.max(1, effectiveness - 2);
 
   return {
     severity: Math.min(10, Math.max(1, Math.round(severity))),
@@ -84,9 +94,7 @@ function applyRubricToEvent(event, presidentId) {
 // Score event
 function scoreEvent(event, presidentId) {
   const { severity, effectiveness } = applyRubricToEvent(event, presidentId);
-  // Weight contribution more for high-severity events
-  const weight = severity / 10;
-  const contribution = effectiveness * weight;
+  const contribution = effectiveness * (severity / 10);
 
   return {
     event: event.title,
@@ -94,11 +102,11 @@ function scoreEvent(event, presidentId) {
     severity,
     effectiveness,
     contribution: Number(contribution.toFixed(2)),
-    notes: "Historian-tuned rubric"
+    notes: "Balanced tuned rubric"
   };
 }
 
-// Main loop (same structure, with tuning)
+// Main loop
 const updatedPresidents = presidents.map(p => {
   const events = p.events || [];
   const scorable = events.filter(e => e.title);
@@ -108,7 +116,6 @@ const updatedPresidents = presidents.map(p => {
   const categoryScores = {};
   const categoryDetails = {};
   let totalWeighted = 0;
-  let highSeverityCount = 0;
 
   Object.keys(CATEGORY_WEIGHTS).forEach(cat => {
     const catEvents = scorable.filter(e => getEventCategories(e).includes(cat));
@@ -128,14 +135,7 @@ const updatedPresidents = presidents.map(p => {
     categoryDetails[cat] = scored;
 
     totalWeighted += catScore * CATEGORY_WEIGHTS[cat];
-
-    // Count high-severity for bonus
-    highSeverityCount += scored.filter(s => s.severity >= 8).length;
   });
-
-  // Bonus for handling multiple big crises
-  let bonus = highSeverityCount * 0.5;
-  totalWeighted += bonus;
 
   let eraNormalizedScore = Number(Math.max(0, totalWeighted).toFixed(2));
   let powerScore = Number((eraNormalizedScore * 10).toFixed(1));
@@ -147,9 +147,8 @@ const updatedPresidents = presidents.map(p => {
 
   // Debug Washington
   if (p.id === 1) {
-    console.log("Washington details (tuned):");
+    console.log("Washington details (balanced):");
     console.log(categoryScores);
-    console.log(`High-severity events handled: ${highSeverityCount}`);
   }
 
   return {
@@ -162,7 +161,6 @@ const updatedPresidents = presidents.map(p => {
   };
 });
 
-// getZeroScores function (same as before)
 function getZeroScores(p) {
   return {
     ...p,
@@ -174,7 +172,7 @@ function getZeroScores(p) {
   };
 }
 
-// Era rankings (same)
+// Era rankings
 const eraRankings = {};
 Object.keys(eras).forEach(eraName => {
   const eraPres = updatedPresidents.filter(p => eras[eraName].includes(p.id));
@@ -200,6 +198,6 @@ updatedPresidents.forEach(p => { p.eraRankings = eraRankings; });
 // Save
 fs.writeFileSync(RANKINGS_PATH, JSON.stringify(updatedPresidents, null, 2));
 
-console.log(`\n✅ Historian-tuned rubric complete. Updated ${updatedPresidents.length} presidents.`);
-console.log("   → FDR, Lincoln, JFK boosted for transformative crises");
+console.log(`\n✅ Balanced tuned rubric complete. Updated ${updatedPresidents.length} presidents.`);
+console.log("   → Broad matches should now trigger scores");
 console.log("   → Hard refresh app to see updated rankings");
