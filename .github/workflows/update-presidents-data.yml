@@ -5,15 +5,15 @@ on:
   push:
     paths:
       - "public/presidents-*.json"
+      - "public/presidents.json"
       - "scripts/bootstrap-presidents.js"
-      - "scripts/merge-presidents.js"
+      - "scripts/merge-timeline.js"
       - "scripts/presidents-scores.js"
       - "scripts/presidential-eras.js"
 
 jobs:
   update-presidents-data:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
@@ -31,56 +31,39 @@ jobs:
             npm install
           fi
 
-      # ------------------------------------------------------------
-      # 1. BOOTSTRAP
-      # ------------------------------------------------------------
+      # 1. Bootstrap skeleton rankings
       - name: Bootstrap presidents-rankings.json
         run: node scripts/bootstrap-presidents.js
 
-      # ------------------------------------------------------------
-      # 2. MERGE (THIS WAS MISSING)
-      # ------------------------------------------------------------
-      - name: Merge presidents data
-        run: node scripts/merge-presidents.js
+      # 2. Merge all metric files into presidents-full-timeline.json
+      - name: Merge metric files into presidents-full-timeline.json
+        run: node scripts/merge-timeline.js
 
-      # ------------------------------------------------------------
-      # 3. SCORE (NOW SAFE TO RUN)
-      # ------------------------------------------------------------
+      # 3. Score presidents
       - name: Score presidents and update rankings
         run: node scripts/presidents-scores.js
 
-      # ------------------------------------------------------------
-      # 4. COMMIT & PUSH
-      # ------------------------------------------------------------
+      # 4. Commit & push updated files
       - name: Commit and push updated presidents files
         if: github.ref == 'refs/heads/main'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-
-          # Stage ONLY president files (full isolation)
-          git add -- public/presidents-*.json public/presidents.json
-
-          # If nothing changed, exit cleanly
+          git add public/presidents-rankings.json public/presidents-full-timeline.json
           if git diff --cached --quiet; then
             echo "No changes to commit."
             exit 0
           fi
-
           git commit -m "Update presidents data via workflow [skip ci]"
-
-          # Push with lease safety
-          git push --force-with-lease origin HEAD:main || {
+          git push origin HEAD:main || {
             echo "Push failed - possible conflict. Fetching latest..."
             git fetch origin main
             git reset --hard origin/main
-
             echo "Re-running scripts after reset..."
             node scripts/bootstrap-presidents.js
-            node scripts/merge-presidents.js
+            node scripts/merge-timeline.js
             node scripts/presidents-scores.js
-
-            git add -- public/presidents-*.json public/presidents.json
+            git add public/presidents-rankings.json public/presidents-full-timeline.json
             git commit -m "Retry update presidents data [skip ci]" || echo "No retry changes"
             git push origin HEAD:main
           }
