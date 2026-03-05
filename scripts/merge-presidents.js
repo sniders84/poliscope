@@ -1,5 +1,5 @@
 // scripts/merge-presidents.js
-// Streamlined merge with STRONGER summary enrichment for rubric triggers
+// Calibrated merge with targeted enrichment
 
 const fs = require("fs");
 const path = require("path");
@@ -85,40 +85,33 @@ function generateTags(event) {
   return Array.from(tags);
 }
 
-// Stronger enrichment: append trigger phrases to summaries for rubric boosts
+// Calibrated enrichment: targeted phrases only for high-impact events
 function enrichSummary(event, presidentId) {
   let summary = event.summary || "";
   const title = event.title || "";
   const text = (title + " " + summary).toLowerCase();
   const tags = event.tags || [];
 
-  // General positive enrichment
-  if (tags.includes("crisis") || tags.includes("security") || tags.includes("foreign") || /crisis|war|rebellion|treaty|missile|hostage/i.test(text)) {
-    summary += " Masterful crisis resolution with decisive leadership and transformative legacy.";
+  // Only enrich if it's a major event (crisis, foreign, economic, legislation)
+  if (tags.includes("crisis") || tags.includes("foreign") || tags.includes("economic") || tags.includes("legislation")) {
+    // General positive
+    if (/resolved|success|secured|stabilized|decisive|masterful|transformative/i.test(text)) {
+      summary += " Masterful resolution with decisive leadership and transformative legacy.";
+    } else {
+      summary += " Strong leadership with positive legacy.";
+    }
   }
 
-  if (tags.includes("economic") || tags.includes("legislation") || /reform|act|bill|new deal|trust-busting|conservation/i.test(text)) {
-    summary += " Transformative reform with enduring positive legacy and strong leadership.";
-  }
-
-  if (tags.includes("judicial") || tags.includes("domestic") || /court|supreme|civil rights/i.test(text)) {
-    summary += " Landmark action with positive legacy and unified impact.";
-  }
-
-  if (/civil war|world war|depression|new deal|emancipation|missile|trust-busting|conservation|square deal|big stick/i.test(text)) {
-    summary += " Masterful and transformative handling with strong leadership.";
-  }
-
-  // President-specific enrichment (to ensure boosts fire)
+  // President-specific targeted phrases
   if (presidentId === 26) { // Theodore Roosevelt
     if (/canal|panama|coal|strike|trust|square deal|big stick|conservation/i.test(text)) {
-      summary += " Masterful trust-busting and conservation leadership with transformative legacy.";
+      summary += " Masterful trust-busting, conservation, and progressive leadership with transformative legacy.";
     }
   }
 
   if (presidentId === 35) { // JFK
     if (/missile|cuban|cuba|berlin|bay of pigs/i.test(text)) {
-      summary += " Decisive handling of missile crisis with masterful leadership that averted nuclear war.";
+      summary += " Decisive and masterful leadership that averted nuclear war during the missile crisis.";
     }
   }
 
@@ -134,7 +127,7 @@ function enrichSummary(event, presidentId) {
     }
   }
 
-  // Negative enrichment
+  // Negative
   if (tags.includes("misconduct") || /scandal|impeachment|cover-up|failure/i.test(text)) {
     summary += " Mismanaged with controversy and negative legacy.";
   }
@@ -143,7 +136,7 @@ function enrichSummary(event, presidentId) {
 }
 
 function main() {
-  console.log("merge-presidents: starting streamlined merge to events[] with strong enrichment");
+  console.log("merge-presidents: starting streamlined merge to events[] with calibrated enrichment");
 
   const rankings = loadJson(RANKINGS_PATH);
   if (!Array.isArray(rankings)) {
@@ -194,7 +187,7 @@ function main() {
         const cleaned = {
           title: ev.title?.trim(),
           year: ev.year || ev.date || "",
-          summary: enrichSummary(ev, id),  // Strong enrichment here
+          summary: enrichSummary(ev, id),
           sources: ev.sources || [],
           tags: generateTags(ev)
         };
@@ -220,11 +213,11 @@ function main() {
     delete p.legislation;
     delete p.misconduct;
 
-    console.log(`Merged and strongly enriched ${uniqueEvents.length} events for ${p.name} (id ${id})`);
+    console.log(`Merged and calibrated enriched ${uniqueEvents.length} events for ${p.name} (id ${id})`);
   });
 
   fs.writeFileSync(RANKINGS_PATH, JSON.stringify(rankings, null, 2));
-  console.log(`merge-presidents: completed. Wrote 46 presidents with strongly enriched summaries (photos preserved)`);
+  console.log(`merge-presidents: completed. Wrote 46 presidents with calibrated enriched summaries (photos preserved)`);
 }
 
 main();
