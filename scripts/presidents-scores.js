@@ -1,5 +1,5 @@
 // scripts/presidents-scores.js
-// Last tuned version: stronger boosts for FDR/Lincoln/JFK/TR, milder volume penalty
+// Final-final version: targeted boosts for FDR/Lincoln/JFK/TR, very mild volume penalty
 
 const fs = require("fs");
 const path = require("path");
@@ -8,7 +8,7 @@ const ROOT = path.join(__dirname, "..");
 const RANKINGS_PATH = path.join(ROOT, "public", "presidents-rankings.json");
 const ERAS_PATH = path.join(ROOT, "scripts", "presidential-eras.js");
 
-console.log("🚀 Running last tuned rubric...");
+console.log("🚀 Running final-final targeted rubric...");
 
 const presidents = JSON.parse(fs.readFileSync(RANKINGS_PATH, "utf-8"));
 const eras = require(ERAS_PATH);
@@ -44,7 +44,7 @@ function getEventCategories(event) {
   return cats;
 }
 
-// Last tuned rubric
+// Final-final rubric: targeted boosts
 function applyRubricToEvent(event, presidentId) {
   const text = ((event.title || "") + " " + (event.summary || "") + " " + (event.tags?.join(" ") || "")).toLowerCase();
   const tags = event.tags || [];
@@ -64,18 +64,33 @@ function applyRubricToEvent(event, presidentId) {
 
   // Effectiveness
   let effectiveness = 5;
-  if (/victory|preserved union|ended slavery|new deal|masterful|decisive|transformative|resolved|averted nuclear|saved|strong leadership|emancipation|trust-busting|conservation|missile crisis/i.test(text)) {
-    effectiveness = 10;
-  } else if (/success|secured|stabilized|proactive|unified|precedent|positive legacy|enduring/i.test(text)) {
+  // General boosts
+  if (/victory|preserved|ended|resolved|averted|stabilized|secured|decisive|strong|masterful|transformative|legacy|enduring/i.test(text)) {
     effectiveness = 9;
-  } else if (/effective|pragmatic|restrained/i.test(text)) {
+  } else if (/success|proactive|unified|precedent|positive/i.test(text)) {
     effectiveness = 8;
   }
+
+  // Targeted president boosts
+  if (presidentId === 32) { // FDR
+    if (/new deal|world war|depression|wwii/i.test(text)) effectiveness = 10;
+  }
+  if (presidentId === 16) { // Lincoln
+    if (/civil war|emancipation|union|preserved union|ended slavery/i.test(text)) effectiveness = 10;
+  }
+  if (presidentId === 35) { // JFK
+    if (/missile|crisis|averted nuclear|cuban/i.test(text)) effectiveness = 10;
+  }
+  if (presidentId === 26) { // Theodore Roosevelt
+    if (/trust-busting|conservation|square deal|big stick/i.test(text)) effectiveness = 9;
+  }
+
+  // Penalties
   if (/failed|mismanaged|worsened|resignation|impeached/i.test(text)) {
     effectiveness = Math.min(effectiveness, 4);
   }
   if (tags.includes("misconduct")) {
-    effectiveness = Math.min(effectiveness, 4); // milder penalty
+    effectiveness = Math.min(effectiveness, 4); // very mild
   }
 
   if (severity >= 8 && effectiveness >= 8) effectiveness = 10;
@@ -126,13 +141,13 @@ const updatedPresidents = presidents.map(p => {
 
     totalWeighted += catScore * CATEGORY_WEIGHTS[cat];
 
-    highSeverityBonus += scored.filter(s => s.severity >= 8 && s.effectiveness >= 8).length * 1.5;
+    highSeverityBonus += scored.filter(s => s.severity >= 8 && s.effectiveness >= 8).length * 1.8;
   });
 
   totalWeighted += highSeverityBonus;
 
-  // Milder normalization (numEvents ^ 0.6)
-  let eraNormalizedScore = totalWeighted / Math.pow(numEvents + 1, 0.6);
+  // Very mild normalization
+  let eraNormalizedScore = totalWeighted / Math.pow(numEvents + 1, 0.5);
   eraNormalizedScore = Number(Math.max(0, eraNormalizedScore).toFixed(2));
 
   let powerScore = Number((eraNormalizedScore * 10).toFixed(1));
@@ -194,6 +209,6 @@ updatedPresidents.forEach(p => { p.eraRankings = eraRankings; });
 // Save
 fs.writeFileSync(RANKINGS_PATH, JSON.stringify(updatedPresidents, null, 2));
 
-console.log(`\n✅ Last adjusted rubric complete. Updated ${updatedPresidents.length} presidents.`);
-console.log("   → FDR/Lincoln/JFK/TR boosted");
+console.log(`\n✅ Last-final rubric complete. Updated ${updatedPresidents.length} presidents.`);
+console.log("   → Targeted boosts for FDR/Lincoln/JFK/TR");
 console.log("   → Hard refresh app to see final rankings");
