@@ -4,6 +4,7 @@ const path = require('path');
 const PUBLIC = path.join(__dirname, '..', 'public');
 const OUTPUT = path.join(PUBLIC, 'presidents-full-timeline.json');
 
+// Input files – the 7 we merge
 const FILES = {
   crisis: path.join(PUBLIC, 'presidents-crisis-management.json'),
   domestic: path.join(PUBLIC, 'presidents-domestic-policy.json'),
@@ -44,7 +45,7 @@ Object.keys(FILES).forEach(cat => {
 
       const target = presidentMap[id];
 
-      // Merge overview – longest non-empty
+      // Merge overview – take longest non-empty
       const overview = p[cat]?.overview || p.overview || '';
       if (overview && overview.length > target.overview.length) {
         target.overview = overview;
@@ -64,7 +65,7 @@ Object.keys(FILES).forEach(cat => {
         }
       });
 
-      // Misconduct – verbatim from misconduct file
+      // Misconduct – only from misconduct file, verbatim
       if (cat === 'misconduct' && p.misconduct?.events) {
         target.misconduct = p.misconduct.events.map(e => ({
           title: e.title,
@@ -80,8 +81,9 @@ Object.keys(FILES).forEach(cat => {
   }
 });
 
-// Convert to sorted array
+// Convert map to sorted array
 const presidents = Object.values(presidentMap).sort((a, b) => a.id - b.id);
 
 fs.writeFileSync(OUTPUT, JSON.stringify(presidents, null, 2));
 console.log(`\nSuccess! Merged ${presidents.length} presidents into ${OUTPUT}`);
+console.log('Next: Update bootstrap and scoring scripts to read from this file.');
