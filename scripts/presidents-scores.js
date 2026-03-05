@@ -1,5 +1,5 @@
 // scripts/presidents-scores.js
-// Locked-in version: final boosts for TR, FDR, Lincoln, JFK
+// Ultimate version: manual overrides for big events + TR/JFK boosts
 
 const fs = require("fs");
 const path = require("path");
@@ -8,10 +8,26 @@ const ROOT = path.join(__dirname, "..");
 const RANKINGS_PATH = path.join(ROOT, "public", "presidents-rankings.json");
 const ERAS_PATH = path.join(ROOT, "scripts", "presidential-eras.js");
 
-console.log("🚀 Running locked-in final rubric...");
+console.log("🚀 Running ultimate rubric with manual overrides...");
 
 const presidents = JSON.parse(fs.readFileSync(RANKINGS_PATH, "utf-8"));
 const eras = require(ERAS_PATH);
+
+// Manual overrides for key events (title match, case-insensitive)
+const EVENT_OVERRIDES = {
+  "cuban missile": { severity: 10, effectiveness: 10 }, // JFK
+  "missile crisis": { severity: 10, effectiveness: 10 },
+  "civil war": { severity: 10, effectiveness: 10 }, // Lincoln
+  "emancipation": { severity: 10, effectiveness: 10 },
+  "new deal": { severity: 10, effectiveness: 10 }, // FDR
+  "world war": { severity: 10, effectiveness: 10 },
+  "wwii": { severity: 10, effectiveness: 10 },
+  "trust-busting": { severity: 8, effectiveness: 9 }, // TR
+  "conservation": { severity: 8, effectiveness: 9 },
+  "panama canal": { severity: 9, effectiveness: 9 },
+  "coal strike": { severity: 8, effectiveness: 9 },
+  "square deal": { severity: 8, effectiveness: 9 }
+};
 
 const CATEGORY_TAGS = {
   crisisManagement: ["crisis", "publichealth", "civilunrest", "security"],
@@ -44,9 +60,19 @@ function getEventCategories(event) {
   return cats;
 }
 
-// Locked-in rubric
+// Ultimate rubric with overrides
 function applyRubricToEvent(event, presidentId) {
-  const text = ((event.title || "") + " " + (event.summary || "") + " " + (event.tags?.join(" ") || "")).toLowerCase();
+  const titleLower = (event.title || "").toLowerCase();
+  const summaryLower = (event.summary || "").toLowerCase();
+
+  // Check for manual override
+  for (const [key, override] of Object.entries(EVENT_OVERRIDES)) {
+    if (titleLower.includes(key) || summaryLower.includes(key)) {
+      return override;
+    }
+  }
+
+  const text = (titleLower + " " + summaryLower + " " + (event.tags?.join(" ") || "")).toLowerCase();
   const tags = event.tags || [];
 
   let severity = 5;
@@ -73,14 +99,8 @@ function applyRubricToEvent(event, presidentId) {
     effectiveness = Math.min(effectiveness, 4);
   }
   if (tags.includes("misconduct")) {
-    effectiveness = Math.min(effectiveness, 5); // very mild penalty
+    effectiveness = Math.min(effectiveness, 5);
   }
-
-  // Targeted boosts
-  if (presidentId === 32 && /new deal|world war|wwii|depression/i.test(text)) effectiveness = 10;
-  if (presidentId === 16 && /civil war|emancipation|union/i.test(text)) effectiveness = 10;
-  if (presidentId === 35 && /missile|cuban/i.test(text)) effectiveness = 10;
-  if (presidentId === 26 && /trust-busting|conservation|square deal|big stick/i.test(text)) effectiveness = 10;
 
   if (severity >= 8 && effectiveness >= 8) effectiveness = 10;
   if (severity >= 8 && effectiveness <= 5) effectiveness = Math.max(1, effectiveness - 1);
@@ -198,6 +218,6 @@ updatedPresidents.forEach(p => { p.eraRankings = eraRankings; });
 // Save
 fs.writeFileSync(RANKINGS_PATH, JSON.stringify(updatedPresidents, null, 2));
 
-console.log(`\n✅ Locked-in final rubric complete. Updated ${updatedPresidents.length} presidents.`);
-console.log("   → TR boosted, FDR/Lincoln/JFK high");
+console.log(`\n✅ Ultimate locked-in rubric complete. Updated ${updatedPresidents.length} presidents.`);
+console.log("   → Manual overrides for big events");
 console.log("   → Hard refresh app to see final rankings");
