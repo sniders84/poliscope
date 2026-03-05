@@ -1,5 +1,5 @@
 // scripts/presidents-scores.js
-// Final adjustment: normalize for event volume, stronger legacy boosts
+// Last tuned version: stronger boosts for FDR/Lincoln/JFK/TR, milder volume penalty
 
 const fs = require("fs");
 const path = require("path");
@@ -8,7 +8,7 @@ const ROOT = path.join(__dirname, "..");
 const RANKINGS_PATH = path.join(ROOT, "public", "presidents-rankings.json");
 const ERAS_PATH = path.join(ROOT, "scripts", "presidential-eras.js");
 
-console.log("🚀 Running final adjusted rubric...");
+console.log("🚀 Running last tuned rubric...");
 
 const presidents = JSON.parse(fs.readFileSync(RANKINGS_PATH, "utf-8"));
 const eras = require(ERAS_PATH);
@@ -24,13 +24,13 @@ const CATEGORY_TAGS = {
 };
 
 const CATEGORY_WEIGHTS = {
-  crisisManagement: 0.30,
-  domesticPolicy:   0.14,
-  economicPolicy:   0.14,
-  foreignPolicy:    0.14,
+  crisisManagement: 0.28,
+  domesticPolicy:   0.15,
+  economicPolicy:   0.15,
+  foreignPolicy:    0.15,
   judicialPolicy:   0.10,
   legislation:      0.10,
-  misconduct:       0.08
+  misconduct:       0.07
 };
 
 function getEventCategories(event) {
@@ -44,7 +44,7 @@ function getEventCategories(event) {
   return cats;
 }
 
-// Adjusted rubric
+// Last tuned rubric
 function applyRubricToEvent(event, presidentId) {
   const text = ((event.title || "") + " " + (event.summary || "") + " " + (event.tags?.join(" ") || "")).toLowerCase();
   const tags = event.tags || [];
@@ -64,9 +64,9 @@ function applyRubricToEvent(event, presidentId) {
 
   // Effectiveness
   let effectiveness = 5;
-  if (/victory|preserved union|ended slavery|new deal|masterful|decisive|transformative|resolved|averted nuclear|saved|strong leadership|emancipation|trust-busting|conservation/i.test(text)) {
+  if (/victory|preserved union|ended slavery|new deal|masterful|decisive|transformative|resolved|averted nuclear|saved|strong leadership|emancipation|trust-busting|conservation|missile crisis/i.test(text)) {
     effectiveness = 10;
-  } else if (/success|secured|stabilized|proactive|unified|precedent|positive legacy/i.test(text)) {
+  } else if (/success|secured|stabilized|proactive|unified|precedent|positive legacy|enduring/i.test(text)) {
     effectiveness = 9;
   } else if (/effective|pragmatic|restrained/i.test(text)) {
     effectiveness = 8;
@@ -75,7 +75,7 @@ function applyRubricToEvent(event, presidentId) {
     effectiveness = Math.min(effectiveness, 4);
   }
   if (tags.includes("misconduct")) {
-    effectiveness = Math.min(effectiveness, 3);
+    effectiveness = Math.min(effectiveness, 4); // milder penalty
   }
 
   if (severity >= 8 && effectiveness >= 8) effectiveness = 10;
@@ -87,7 +87,7 @@ function applyRubricToEvent(event, presidentId) {
   };
 }
 
-// Score with volume normalization
+// Score
 function scoreEvent(event, presidentId) {
   const { severity, effectiveness } = applyRubricToEvent(event, presidentId);
   const contribution = effectiveness * (severity / 10);
@@ -126,13 +126,13 @@ const updatedPresidents = presidents.map(p => {
 
     totalWeighted += catScore * CATEGORY_WEIGHTS[cat];
 
-    highSeverityBonus += scored.filter(s => s.severity >= 8 && s.effectiveness >= 8).length * 1.2;
+    highSeverityBonus += scored.filter(s => s.severity >= 8 && s.effectiveness >= 8).length * 1.5;
   });
 
   totalWeighted += highSeverityBonus;
 
-  // Normalize for event volume (sqrt to reduce dilution)
-  let eraNormalizedScore = totalWeighted / Math.sqrt(numEvents + 1);
+  // Milder normalization (numEvents ^ 0.6)
+  let eraNormalizedScore = totalWeighted / Math.pow(numEvents + 1, 0.6);
   eraNormalizedScore = Number(Math.max(0, eraNormalizedScore).toFixed(2));
 
   let powerScore = Number((eraNormalizedScore * 10).toFixed(1));
@@ -194,6 +194,6 @@ updatedPresidents.forEach(p => { p.eraRankings = eraRankings; });
 // Save
 fs.writeFileSync(RANKINGS_PATH, JSON.stringify(updatedPresidents, null, 2));
 
-console.log(`\n✅ Final adjusted rubric complete. Updated ${updatedPresidents.length} presidents.`);
-console.log("   → Volume normalization applied");
-console.log("   → Hard refresh app to see updated rankings");
+console.log(`\n✅ Last adjusted rubric complete. Updated ${updatedPresidents.length} presidents.`);
+console.log("   → FDR/Lincoln/JFK/TR boosted");
+console.log("   → Hard refresh app to see final rankings");
