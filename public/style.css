@@ -6713,19 +6713,21 @@ section > h3 {
   transition: box-shadow 0.25s ease, transform 0.25s ease;
 }
 /* Party-specific stripes */
-#ratings-cards .info-card[data-party="republican"] { border-color: #c00; }
-#ratings-cards .info-card[data-party="democrat"] { border-color: #0015bc; }
-#ratings-cards .info-card[data-party="independent"] { border-color: #666; }
-#ratings-cards .info-card[data-party="libertarian"] { border-color: #e6b800; }
-#ratings-cards .info-card[data-party="green"] { border-color: #228b22; }
+#ratings-cards .info-card[data-party="republican"]   { border-color: #c00; }
+#ratings-cards .info-card[data-party="democratic"]   { border-color: #0015bc; }
+#ratings-cards .info-card[data-party="independent"]  { border-color: #666; }
+#ratings-cards .info-card[data-party="libertarian"]  { border-color: #e6b800; }
+#ratings-cards .info-card[data-party="green"]        { border-color: #228b22; }
 #ratings-cards .info-card[data-party="constitution"] { border-color: #8b0000; }
-#ratings-cards .info-card[data-party="nonpartisan"] { border-color: #444; }
+#ratings-cards .info-card[data-party="nonpartisan"]  { border-color: #444; }
+
 /* Hover: subtle lift + glow, no color override */
 #ratings-cards .info-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 0 12px rgba(255,255,255,0.25); /* neutral white glow */
-  background-color: #2b2b2b; /* keep background consistent */
+  box-shadow: 0 0 12px rgba(255,255,255,0.25);
+  background-color: #2b2b2b;
 }
+
 /* Ratings & Rankings — toggle + sections */
 .rr-toggle {
   display: flex;
