@@ -1,5 +1,5 @@
 // scripts/presidents-scores.js
-// Ultimate version: manual overrides for big events + TR/JFK boosts
+// Ultimate version: manual overrides for big events + full event preservation in categoryDetails
 
 const fs = require("fs");
 const path = require("path");
@@ -8,12 +8,12 @@ const ROOT = path.join(__dirname, "..");
 const RANKINGS_PATH = path.join(ROOT, "public", "presidents-rankings.json");
 const ERAS_PATH = path.join(ROOT, "scripts", "presidential-eras.js");
 
-console.log("🚀 Running ultimate rubric with manual overrides...");
+console.log("🚀 Running ultimate rubric with manual overrides and full event preservation...");
 
 const presidents = JSON.parse(fs.readFileSync(RANKINGS_PATH, "utf-8"));
 const eras = require(ERAS_PATH);
 
-// Manual overrides for key events (title match, case-insensitive)
+// Manual overrides for key events (title or summary match, case-insensitive)
 const EVENT_OVERRIDES = {
   "cuban missile": { severity: 10, effectiveness: 10 }, // JFK
   "missile crisis": { severity: 10, effectiveness: 10 },
@@ -111,11 +111,18 @@ function applyRubricToEvent(event, presidentId) {
   };
 }
 
-// Score
+// Score — NOW PRESERVES FULL EVENT DATA
 function scoreEvent(event, presidentId) {
   const { severity, effectiveness } = applyRubricToEvent(event, presidentId);
   const contribution = effectiveness * (severity / 10);
-  return { contribution, severity, effectiveness };
+
+  return {
+    ...event,  // ← Preserve title, year, summary, tags, sources, etc.
+    severity,
+    effectiveness,
+    contribution: Number(contribution.toFixed(2)),
+    notes: "Ultimate rubric"
+  };
 }
 
 // Main loop
@@ -146,7 +153,7 @@ const updatedPresidents = presidents.map(p => {
     if (cat === "misconduct") catScore = -Math.abs(catScore);
 
     categoryScores[cat] = Number(catScore.toFixed(1));
-    categoryDetails[cat] = scored;
+    categoryDetails[cat] = scored; // Now contains full events + scores
 
     totalWeighted += catScore * CATEGORY_WEIGHTS[cat];
 
@@ -177,6 +184,12 @@ const updatedPresidents = presidents.map(p => {
     categoryDetails,
     eraNormalizedScore,
     powerScore,
+    breakdown: {  // Save for modal transparency
+      subtotal: Number(totalWeighted.toFixed(2)),
+      highSeverityBonus: Number(highSeverityBonus.toFixed(2)),
+      numEvents,
+      normalizationFactor: Math.pow(numEvents + 1, 0.5).toFixed(2)
+    },
     lastUpdated: new Date().toISOString()
   };
 });
@@ -188,6 +201,7 @@ function getZeroScores(p) {
     categoryDetails: Object.fromEntries(Object.keys(CATEGORY_WEIGHTS).map(k => [k, []])),
     powerScore: 0,
     eraNormalizedScore: 0,
+    breakdown: { subtotal: 0, highSeverityBonus: 0, numEvents: 0, normalizationFactor: 1 },
     lastUpdated: new Date().toISOString()
   };
 }
@@ -220,4 +234,5 @@ fs.writeFileSync(RANKINGS_PATH, JSON.stringify(updatedPresidents, null, 2));
 
 console.log(`\n✅ Ultimate locked-in rubric complete. Updated ${updatedPresidents.length} presidents.`);
 console.log("   → Manual overrides for big events");
+console.log("   → Full event data preserved in categoryDetails");
 console.log("   → Hard refresh app to see final rankings");
