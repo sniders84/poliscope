@@ -7451,3 +7451,28 @@ header .header-center .logo {
   font-weight: bold;
   background: #2a4d6e;
 }
+details {
+  margin: 12px 0;
+  border: 1px solid #444;
+  border-radius: 6px;
+  overflow: hidden;
+}
+summary {
+  padding: 10px;
+  background: #1a3c5e;
+  color: white;
+  cursor: pointer;
+}
+details[open] summary {
+  background: #2a4d6e;
+}
+ul {
+  padding: 10px;
+}
+li {
+  padding: 8px 0;
+  border-bottom: 1px solid #333;
+}
+li:last-child {
+  border-bottom: none;
+}
