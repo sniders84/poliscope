@@ -485,47 +485,22 @@
 <!-- Rankings section -->
 <div id="rankings-section" class="rr-section" aria-hidden="true" role="tabpanel" aria-labelledby="btn-rankings">
   <div class="filters-row">
-    <!-- Office Filter -->
+
+    <!-- Office Filter (cleaned + reordered + restricted) -->
     <select id="rankingsOfficeFilter" aria-label="Select office for rankings">
-      <option value="senator" selected>Senators</option>
-      <option value="u.s. representative">U.S. Representatives</option>
+      <option value="president">Presidents</option>
       <option value="governor">Governors</option>
-      <option value="lieutenant governor">Lt. Governors</option>
-      <option value="president">President</option>
-      <option value="vice president">Vice President</option>
+      <option value="senator">Senators</option>
+      <option value="representative">U.S. Representatives</option>
     </select>
 
-    <!-- Category Filter (Legislative + Presidential) -->
-    <select id="rankingsCategoryFilter" aria-label="Select ranking category">
-      <option value="powerScore" selected>Overall Power Score</option>
-
-      <optgroup label="Legislative">
-        <option value="sponsoredBills">Sponsored Bills</option>
-        <option value="cosponsoredBills">Cosponsored Bills</option>
-        <option value="becameLawBills">Bills Enacted</option>
-        <option value="becameLawCosponsoredBills">Bills Enacted (Cosponsored)</option>
-        <option value="committees">Committee Memberships</option>
-        <option value="yeaVotes">Yea Votes</option>
-        <option value="nayVotes">Nay Votes</option>
-        <option value="missedVotes">Missed Votes</option>
-      </optgroup>
-
-      <optgroup label="Shared / Misconduct">
-        <option value="misconductCount">Misconduct Count</option>
-        <option value="misconductTags">Misconduct Tags</option>
-      </optgroup>
-
-      <optgroup label="Presidential">
-        <option value="crisisManagement">Crisis Management</option>
-        <option value="domesticPolicy">Domestic Policy</option>
-        <option value="economicPolicy">Economic Policy</option>
-        <option value="foreignPolicy">Foreign Policy</option>
-        <option value="judicialPolicy">Judicial Policy</option>
-        <option value="legislation">Legislation Impact</option>
-        <option value="misconduct">Misconduct Impact</option>
-      </optgroup>
+    <!-- Dynamic Metrics Filter (JS will populate this) -->
+    <select id="rankingsCategoryFilter" aria-label="Select ranking metric">
+      <!-- JS will insert the correct metric options based on office -->
     </select>
+
   </div>
+</div>
 
   <div class="leaderboard-wrap">
     <table id="rankings-leaderboard" class="leaderboard-table" aria-label="Rankings leaderboard" aria-live="polite">
