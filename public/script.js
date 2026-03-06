@@ -2906,13 +2906,20 @@ function showRatings() {
       const card = document.createElement('div');
       card.className = 'info-card';
 
-      // Dataset tags for filters
-      card.dataset.office = normalizeText(official.office || '');
-      card.dataset.state  = normalizeText(official.state || '');
-      let partyKey        = normalizeText(official.party || '');
-      if (partyKey === 'democratic') partyKey = 'democrat';
-      if (partyKey === 'gop')        partyKey = 'republican';
-      card.dataset.party  = partyKey;
+     // Dataset tags for filters
+card.dataset.office = normalizeText(official.office || '');
+card.dataset.state  = normalizeText(official.state || '');
+
+let partyKey = normalizeText(official.party || '');
+
+// Normalize all Democratic variants → "democratic"
+if (partyKey === 'democrat') partyKey = 'democratic';
+if (partyKey === 'democratic party') partyKey = 'democratic';
+
+// Normalize GOP variants → "republican"
+if (partyKey === 'gop') partyKey = 'republican';
+
+card.dataset.party = partyKey;
 
       // Full name for search
       const fullNameRaw = String(official.name || '').trim();
