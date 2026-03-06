@@ -807,9 +807,14 @@ function showCitizenship() {
           <h4>Practice the Naturalization Civics Test (2008 version)</h4>
           <p class="card-desc">Official 2008 test — 100 questions, 10 asked, 6 correct to pass.</p>
           <button class="card-button" onclick="openPractice2008Modal()">Launch 2008 Test</button>
+
           <h4>Practice the Naturalization Civics Test (2025 version)</h4>
           <p class="card-desc">New 2025 test — based on 2020 version, 128 questions.</p>
           <button class="card-button" onclick="openPractice2025Modal()">Launch 2025 Test</button>
+
+          <h4>Study the Civics Concepts (128‑slide guide)</h4>
+          <p class="card-desc">Paraphrased study slides covering all 128 civics topics.</p>
+          <button class="card-button" onclick="openCivicsSlideshow()">Open Study Slides</button>
         `;
       } else {
         card = document.createElement('a');
@@ -873,29 +878,29 @@ function openDailyQuizModal() {
       const nextBtn = document.getElementById('quiz-next');
 
       // Daily submit: reads inputs with name="opt"
-     submitBtn.onclick = () => {
-  const selected = document.querySelector('input[name="opt"]:checked');
-  if (!selected) {
-    alert("Pick an answer!");
-    return;
-  }
-  const q = quizQuestions[currentQuestion];
-  const selectedIndex = parseInt(selected.value, 10);
-  const correctText = q.answers[0]; // use the first string in answers[]
-  const feedbackEl = document.getElementById("quiz-feedback");
+      submitBtn.onclick = () => {
+        const selected = document.querySelector('input[name="opt"]:checked');
+        if (!selected) {
+          alert("Pick an answer!");
+          return;
+        }
+        const q = quizQuestions[currentQuestion];
+        const selectedIndex = parseInt(selected.value, 10);
+        const correctText = q.answers[0]; // use the first string in answers[]
+        const feedbackEl = document.getElementById("quiz-feedback");
 
-  if (q.choices[selectedIndex] === correctText) {
-    score++;
-    feedbackEl.className = "correct";
-    feedbackEl.innerHTML = `✅ Correct — ${correctText}<br><small>${q.explanation}</small>`;
-  } else {
-    feedbackEl.className = "incorrect";
-    feedbackEl.innerHTML = `❌ Incorrect. Correct answer: ${correctText}<br><small>${q.explanation}</small>`;
-  }
+        if (q.choices[selectedIndex] === correctText) {
+          score++;
+          feedbackEl.className = "correct";
+          feedbackEl.innerHTML = `✅ Correct — ${correctText}<br><small>${q.explanation}</small>`;
+        } else {
+          feedbackEl.className = "incorrect";
+          feedbackEl.innerHTML = `❌ Incorrect. Correct answer: ${correctText}<br><small>${q.explanation}</small>`;
+        }
 
-  submitBtn.style.display = "none";
-  nextBtn.style.display = "inline-block";
-};
+        submitBtn.style.display = "none";
+        nextBtn.style.display = "inline-block";
+      };
 
       nextBtn.onclick = () => {
         currentQuestion++;
@@ -1542,6 +1547,75 @@ function openCivicsQuizModal() {
   modal.style.display = 'block';
   initCivicsQuiz(); // kick off the quiz engine
 }
+
+// === CIVICS STUDY SLIDESHOW (128-SLIDE GUIDE) ===
+
+// Load the 128-slide civics study dataset
+let civicsSlides = [];
+fetch('data/civics-128.json')
+  .then(res => res.json())
+  .then(data => {
+    civicsSlides = data;
+    window.civicsSlides = data; // global access for renderer
+  })
+  .catch(err => console.error("Error loading civics-128.json:", err));
+
+// Track current slide index
+window.currentCivicsIndex = 0;
+
+// Render a single slide
+function renderCivicsSlide(index) {
+  if (!window.civicsSlides || !window.civicsSlides.length) {
+    console.error("Civics slides not loaded yet.");
+    return;
+  }
+
+  const slide = window.civicsSlides[index];
+  const container = document.getElementById('civicsSlideContainer');
+  if (!container) {
+    console.error("civicsSlideContainer not found in DOM.");
+    return;
+  }
+
+  container.innerHTML = `
+    <h2>${slide.title}</h2>
+    <p>${slide.body}</p>
+  `;
+
+  // Enable/disable navigation buttons
+  const prevBtn = document.getElementById('civicsPrev');
+  const nextBtn = document.getElementById('civicsNext');
+
+  if (prevBtn) prevBtn.disabled = index === 0;
+  if (nextBtn) nextBtn.disabled = index === window.civicsSlides.length - 1;
+
+  window.currentCivicsIndex = index;
+}
+
+// Launch the slideshow from the Study Materials card
+function openCivicsSlideshow() {
+  showTab('citizenship'); // ensure user is on the correct tab
+  window.currentCivicsIndex = 0;
+  renderCivicsSlide(0);
+}
+
+// Wire slideshow navigation buttons
+document.addEventListener('DOMContentLoaded', () => {
+  const prevBtn = document.getElementById('civicsPrev');
+  const nextBtn = document.getElementById('civicsNext');
+
+  if (prevBtn) {
+    prevBtn.addEventListener('click', () => {
+      renderCivicsSlide(window.currentCivicsIndex - 1);
+    });
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener('click', () => {
+      renderCivicsSlide(window.currentCivicsIndex + 1);
+    });
+  }
+});
 
 // === Daily Civics Quiz Engine ===
 let quizQuestions = [];
