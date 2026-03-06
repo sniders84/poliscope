@@ -7433,3 +7433,21 @@ header .header-center .logo {
 .summary-content p {
   margin: 6px 0;
 }
+.scorecard-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 15px 0;
+}
+.scorecard-table th, .scorecard-table td {
+  border: 1px solid #444;
+  padding: 8px;
+  text-align: right;
+}
+.scorecard-table th {
+  background: #1a3c5e;
+  color: white;
+}
+.subtotal-row td, .final-row td {
+  font-weight: bold;
+  background: #2a4d6e;
+}
