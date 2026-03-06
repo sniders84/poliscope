@@ -1552,7 +1552,7 @@ function openCivicsQuizModal() {
 
 // Load the 128-slide civics study dataset
 let civicsSlides = [];
-fetch('data/civics-128.json')
+fetch('uscis-study-slides.json')
   .then(res => res.json())
   .then(data => {
     civicsSlides = data;
