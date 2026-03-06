@@ -3249,7 +3249,7 @@ document.getElementById('rate-me-btn').onclick = function() {
     return `<span class="${cls}">${Number.isFinite(value) ? value.toFixed(1) : '0.0'}</span>`;
   }
 
-// PRESIDENT SCORECARD RENDERING — WITH EVENT DETAILS UNDER CATEGORIES
+// PRESIDENT SCORECARD RENDERING — WITH FULL EVENT DETAILS UNDER CATEGORIES
 function showPresidentScorecard(person) {
   document.getElementById('scorecardName').textContent = person.name;
 
@@ -3296,7 +3296,7 @@ function showPresidentScorecard(person) {
     </p>
   `;
 
-  // NEW: Collapsible event lists per category
+  // Collapsible event lists per category — using correct fields from categoryDetails
   let eventsHtml = '<h3 style="margin-top: 20px;">Events by Category</h3>';
   const categories = [
     { key: 'crisisManagement', label: 'Crisis Management' },
@@ -3314,16 +3314,20 @@ function showPresidentScorecard(person) {
 
     eventsHtml += `
       <details style="margin: 10px 0; border: 1px solid #444; border-radius: 4px; padding: 8px;">
-        <summary style="cursor: pointer; font-weight: bold;">
+        <summary style="cursor: pointer; font-weight: bold; padding: 8px; background: #1a3c5e; color: white;">
           ${cat.label} (${events.length} events, Avg ${formatScore(cs[cat.key])})
         </summary>
-        <ul style="list-style: none; padding-left: 20px; margin: 10px 0 0;">
+        <ul style="list-style: none; padding: 10px; margin: 0;">
           ${events.map(e => `
-            <li style="margin: 8px 0; border-bottom: 1px solid #333; padding-bottom: 8px;">
-              <strong>${e.event || 'Unnamed Event'}</strong> (${e.year})
-              <br><span style="color: #aaa;">Severity: ${formatScore(e.severity)} | Effectiveness: ${formatScore(e.effectiveness)}</span>
+            <li style="margin: 12px 0; border-bottom: 1px solid #333; padding-bottom: 12px;">
+              <strong>${e.title || 'Unnamed Event'}</strong> (${e.year || 'N/A'})
+              <br><span style="color: #aaa; font-size: 0.9em;">
+                Severity: ${formatScore(e.severity)} | Effectiveness: ${formatScore(e.effectiveness)}
+              </span>
               <br><strong>Contribution: ${formatScore(e.contribution)}</strong>
-              <br><small>${e.notes || 'No notes'}</small>
+              <br><small>${e.summary ? e.summary.substring(0, 150) + (e.summary.length > 150 ? '...' : '') : 'No summary available'}</small>
+              ${e.sources && e.sources.length > 0 ? `<br><small>Sources: ${e.sources.join(', ')}</small>` : ''}
+              <br><small>Notes: ${e.notes || 'None'}</small>
             </li>
           `).join('')}
         </ul>
