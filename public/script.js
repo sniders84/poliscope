@@ -3249,49 +3249,111 @@ document.getElementById('rate-me-btn').onclick = function() {
     return `<span class="${cls}">${Number.isFinite(value) ? value.toFixed(1) : '0.0'}</span>`;
   }
 
-  // PRESIDENT SCORECARD RENDERING — UPDATED FOR HYBRID SCHEMA
-  function showPresidentScorecard(person) {
-    document.getElementById('scorecardName').textContent = person.name;
-    const photoUrl = person.photo || 'https://via.placeholder.com/150?text=No+Photo';
+ // PRESIDENT SCORECARD RENDERING — UPDATED WITH FULL MATH BREAKDOWN
+function showPresidentScorecard(person) {
+  document.getElementById('scorecardName').textContent = person.name;
 
-    const headerHtml = `
-      <img src="${photoUrl}" alt="${person.name}" class="profile-photo" loading="lazy">
-      <p>${person.party} • ${person.termStart}–${person.termEnd}</p>
-    `;
+  const photoUrl = person.photo || 'https://via.placeholder.com/150?text=No+Photo';
+  const headerHtml = `
+    <img src="${photoUrl}" alt="${person.name}" class="profile-photo" loading="lazy">
+    <p>${person.party} • ${person.termStart}–${person.termEnd}</p>
+  `;
 
-    const breakdownEl = document.getElementById('scorecardBreakdown');
-    breakdownEl.innerHTML = headerHtml;
+  const breakdownEl = document.getElementById('scorecardBreakdown');
+  breakdownEl.innerHTML = headerHtml;
 
-    // NEW: use hybrid categoryScores
-    const cs = person.categoryScores || {};
+  // Get category scores and breakdown (from JSON)
+  const cs = person.categoryScores || {};
+  const bd = person.breakdown || {}; // fallback if not present yet
 
-    const metricRows = `
-      <tr><td>Crisis Management</td><td colspan="3">${formatScore(cs.crisisManagement)}</td></tr>
-      <tr><td>Domestic Policy</td><td colspan="3">${formatScore(cs.domesticPolicy)}</td></tr>
-      <tr><td>Economic Policy</td><td colspan="3">${formatScore(cs.economicPolicy)}</td></tr>
-      <tr><td>Foreign Policy</td><td colspan="3">${formatScore(cs.foreignPolicy)}</td></tr>
-      <tr><td>Judicial Policy</td><td colspan="3">${formatScore(cs.judicialPolicy)}</td></tr>
-      <tr><td>Legislation</td><td colspan="3">${formatScore(cs.legislation)}</td></tr>
-      <tr><td>Misconduct</td><td colspan="3">${formatScore(cs.misconduct)}</td></tr>
-    `;
+  // Format helper (your existing function, or define if missing)
+  const formatScore = (val) => (typeof val === 'number' ? val.toFixed(1) : '—');
 
-    breakdownEl.innerHTML += `
-      <table class="scorecard-table">
-        <tbody>
-          <tr>
-            <td><strong>Power Score</strong></td>
-            <td colspan="3">${formatScore(person.powerScore)}</td>
-          </tr>
-          <tr><td colspan="4"><strong>Metric Breakdown</strong></td></tr>
-          ${metricRows}
-        </tbody>
-      </table>
-    `;
+  // Build full math table
+  const metricRows = `
+    <tr>
+      <td>Crisis Management</td>
+      <td>${formatScore(cs.crisisManagement)}</td>
+      <td>0.28</td>
+      <td>${formatScore(cs.crisisManagement * 0.28)}</td>
+    </tr>
+    <tr>
+      <td>Domestic Policy</td>
+      <td>${formatScore(cs.domesticPolicy)}</td>
+      <td>0.15</td>
+      <td>${formatScore(cs.domesticPolicy * 0.15)}</td>
+    </tr>
+    <tr>
+      <td>Economic Policy</td>
+      <td>${formatScore(cs.economicPolicy)}</td>
+      <td>0.15</td>
+      <td>${formatScore(cs.economicPolicy * 0.15)}</td>
+    </tr>
+    <tr>
+      <td>Foreign Policy</td>
+      <td>${formatScore(cs.foreignPolicy)}</td>
+      <td>0.15</td>
+      <td>${formatScore(cs.foreignPolicy * 0.15)}</td>
+    </tr>
+    <tr>
+      <td>Judicial Policy</td>
+      <td>${formatScore(cs.judicialPolicy)}</td>
+      <td>0.10</td>
+      <td>${formatScore(cs.judicialPolicy * 0.10)}</td>
+    </tr>
+    <tr>
+      <td>Legislation</td>
+      <td>${formatScore(cs.legislation)}</td>
+      <td>0.10</td>
+      <td>${formatScore(cs.legislation * 0.10)}</td>
+    </tr>
+    <tr>
+      <td>Misconduct</td>
+      <td>${formatScore(cs.misconduct)}</td>
+      <td>0.07</td>
+      <td>${formatScore(cs.misconduct * 0.07)}</td>
+    </tr>
+    <tr class="subtotal-row">
+      <td><strong>Subtotal (weighted sum)</strong></td>
+      <td colspan="3"><strong>${formatScore(bd.subtotal)}</strong></td>
+    </tr>
+    <tr>
+      <td>High-Severity Bonus</td>
+      <td colspan="3">${formatScore(bd.highSeverityBonus || 0)}</td>
+    </tr>
+    <tr>
+      <td>Normalization Factor</td>
+      <td colspan="3">${formatScore(bd.normalizationFactor || 1)}</td>
+    </tr>
+    <tr class="final-row">
+      <td><strong>Final Power Score</strong></td>
+      <td colspan="3"><strong>${formatScore(person.powerScore)}</strong></td>
+    </tr>
+  `;
 
-    const modal = document.getElementById('scorecardModal');
-    modal.classList.add('is-open', 'modal-dark');
-    modal.setAttribute('aria-hidden', 'false');
-  }
+  breakdownEl.innerHTML += `
+    <table class="scorecard-table">
+      <thead>
+        <tr>
+          <th>Category</th>
+          <th>Raw Avg</th>
+          <th>Weight</th>
+          <th>Contribution</th>
+        </tr>
+      </thead>
+      <tbody>
+        ${metricRows}
+      </tbody>
+    </table>
+    <p style="font-size: 0.9em; margin-top: 10px; color: #aaa;">
+      Power Score = (weighted categories + high-severity bonus) / normalization factor × 10
+    </p>
+  `;
+
+  const modal = document.getElementById('scorecardModal');
+  modal.classList.add('is-open', 'modal-dark');
+  modal.setAttribute('aria-hidden', 'false');
+}
 
   // LEGISLATOR SCORECARD (UNCHANGED)
   function showLegislatorScorecard(person, breakdown, composite) {
