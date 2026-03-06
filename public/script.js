@@ -1556,7 +1556,8 @@ fetch('data/civics-128.json')
   .then(res => res.json())
   .then(data => {
     civicsSlides = data;
-    window.civicsSlides = data; // global access for renderer
+    window.civicsSlides = data;
+    buildCivicsTOC(); // Build sidebar TOC once slides are loaded
   })
   .catch(err => console.error("Error loading civics-128.json:", err));
 
@@ -1582,6 +1583,12 @@ function renderCivicsSlide(index) {
     <p>${slide.body}</p>
   `;
 
+  // Progress indicator
+  const progressEl = document.getElementById('civicsProgress');
+  if (progressEl) {
+    progressEl.textContent = `Slide ${index + 1} of ${window.civicsSlides.length}`;
+  }
+
   // Enable/disable navigation buttons
   const prevBtn = document.getElementById('civicsPrev');
   const nextBtn = document.getElementById('civicsNext');
@@ -1594,9 +1601,24 @@ function renderCivicsSlide(index) {
 
 // Launch the slideshow from the Study Materials card
 function openCivicsSlideshow() {
-  showTab('citizenship'); // ensure user is on the correct tab
+  showTab('citizenship');
   window.currentCivicsIndex = 0;
   renderCivicsSlide(0);
+}
+
+// Build the sidebar table of contents
+function buildCivicsTOC() {
+  const toc = document.getElementById('civicsTOC');
+  if (!toc || !window.civicsSlides) return;
+
+  toc.innerHTML = `<h3>Topics</h3><ul></ul>`;
+  const list = toc.querySelector('ul');
+
+  window.civicsSlides.forEach((slide, idx) => {
+    const li = document.createElement('li');
+    li.innerHTML = `<a href="#" onclick="renderCivicsSlide(${idx}); return false;">${slide.title}</a>`;
+    list.appendChild(li);
+  });
 }
 
 // Wire slideshow navigation buttons
