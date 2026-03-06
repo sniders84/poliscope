@@ -2858,18 +2858,20 @@ const ratingCategories = [
   "Toughness","Ability to Unify","Effectiveness","Health","Fashion Style","Electability"
 ];
 
-// Normalize helper: collapse whitespace, strip diacritics, lowercase
+// Normalize helper
 function normalizeText(s) {
   return String(s || "")
     .normalize("NFKD")
     .replace(/[\u0300-\u036f]/g, "")
-    .replace(/[^\w\s'-]/g, "")     // remove non-word punctuation except apostrophes/hyphens
+    .replace(/[^\w\s'-]/g, "")
     .replace(/\s+/g, " ")
     .trim()
     .toLowerCase();
 }
 
-// Show Ratings tab
+// ==============================
+// RENDER RATINGS TAB
+// ==============================
 function showRatings() {
   Promise.all([
     fetch('president-ratings.json').then(res => res.json()),
@@ -2878,9 +2880,10 @@ function showRatings() {
     fetch('ltgovernors-ratings.json').then(res => res.json()),
     fetch('senators-ratings.json').then(res => res.json()),
     fetch('housereps-ratings.json').then(res => res.json())
-  ]).then(([presidents, vps, governors, ltgovs, senators, representative]) => {
+  ]).then(([presidents, vps, governors, ltgovs, senators, representatives]) => {
+
     const ratings = [
-      ...presidents, ...vps, ...governors, ...ltgovs, ...senators, ...representative
+      ...presidents, ...vps, ...governors, ...ltgovs, ...senators, ...representatives
     ];
 
     // Merge saved ratings
@@ -2903,7 +2906,7 @@ function showRatings() {
       const card = document.createElement('div');
       card.className = 'info-card';
 
-      // Dataset tags for filters (normalized)
+      // Dataset tags for filters
       card.dataset.office   = normalizeText(official.office || '');
       card.dataset.state    = normalizeText(official.state || '');
       let partyKey          = normalizeText(official.party || '');
@@ -2911,11 +2914,11 @@ function showRatings() {
       if (partyKey === 'gop')        partyKey = 'republican';
       card.dataset.party    = partyKey;
 
-      // ✅ Full name normalization for robust searching
+      // Full name for search
       const fullNameRaw = String(official.name || '').trim();
       card.dataset.fullname = normalizeText(fullNameRaw);
 
-      // UI name split (first/last) for display only
+      // UI name split
       const nameParts = fullNameRaw.split(/\s+/);
       const firstName = nameParts.slice(0, -1).join(' ') || nameParts[0] || '';
       const lastName  = nameParts.slice(-1).join(' ') || '';
@@ -2946,61 +2949,64 @@ function showRatings() {
       container.appendChild(card);
     });
 
-    // After render, apply filters once to reflect any defaults
+    // Apply filters once after render
     applyRatingsFilters();
   });
 }
 
-// Robust tokenized search + office/state/party filters
-(function initRatingsSearchFilters() {
+// ==============================
+// FILTER ENGINE (SEARCH + OFFICE + STATE + PARTY)
+// ==============================
+function applyRatingsFilters() {
   const searchEl  = document.getElementById('searchInput');
   const officeSel = document.getElementById('officeFilter');
   const stateSel  = document.getElementById('stateFilter');
   const partySel  = document.getElementById('partyFilter');
   const container = document.getElementById('ratings-cards');
+
   if (!searchEl || !officeSel || !stateSel || !partySel || !container) return;
 
-  const normalize = s => String(s || '')
-    .normalize('NFKD')
-    .replace(/[\u0300-\u036f]/g, '')
-    .replace(/\s+/g, ' ')
-    .trim()
-    .toLowerCase();
-
+  const normalize = s => normalizeText(s);
   const isAll = v => {
     const x = normalize(v);
     return !x || x === 'all' || x.startsWith('all ');
   };
 
-  function applyFilters() {
-    const tokens = normalize(searchEl.value).split(' ').filter(Boolean);
-    const office = normalize(officeSel.value);
-    const state  = normalize(stateSel.value);
-    const party  = normalize(partySel.value);
+  const tokens = normalize(searchEl.value).split(' ').filter(Boolean);
+  const office = normalize(officeSel.value);
+  const state  = normalize(stateSel.value);
+  const party  = normalize(partySel.value);
 
-    container.querySelectorAll('.info-card').forEach(card => {
-      const fullName = normalize(card.dataset.fullname || '');
-      const officeKey = card.dataset.office || '';
-      const stateKey  = card.dataset.state || '';
-      const partyKey  = card.dataset.party || '';
+  container.querySelectorAll('.info-card').forEach(card => {
+    const fullName = card.dataset.fullname || '';
+    const officeKey = card.dataset.office || '';
+    const stateKey  = card.dataset.state || '';
+    const partyKey  = card.dataset.party || '';
 
-      // ✅ Every token must be present in the full name
-      const matchesText   = !tokens.length || tokens.every(t => fullName.includes(t));
-      const matchesOffice = isAll(office) || officeKey.includes(office);
-      const matchesState  = isAll(state)  || stateKey.includes(state);
-      const matchesParty  = isAll(party)  || partyKey.includes(party);
+    const matchesText   = !tokens.length || tokens.every(t => fullName.includes(t));
+    const matchesOffice = isAll(office) || officeKey.includes(office);
+    const matchesState  = isAll(state)  || stateKey === state;
+    const matchesParty  = isAll(party)  || partyKey === party;
 
-      card.style.display = (matchesText && matchesOffice && matchesState && matchesParty) ? '' : 'none';
-    });
-  }
+    card.style.display = (matchesText && matchesOffice && matchesState && matchesParty)
+      ? ''
+      : 'none';
+  });
+}
 
-  searchEl.addEventListener('input', applyFilters);
-  officeSel.addEventListener('change', applyFilters);
-  stateSel.addEventListener('change', applyFilters);
-  partySel.addEventListener('change', applyFilters);
+// ==============================
+// FILTER EVENT LISTENERS
+// ==============================
+(function initRatingsSearchFilters() {
+  const searchEl  = document.getElementById('searchInput');
+  const officeSel = document.getElementById('officeFilter');
+  const stateSel  = document.getElementById('stateFilter');
+  const partySel  = document.getElementById('partyFilter');
 
-  // Run once on load
-  applyFilters();
+  if (searchEl) searchEl.addEventListener('input', applyRatingsFilters);
+  if (officeSel) officeSel.addEventListener('change', applyRatingsFilters);
+  if (stateSel) stateSel.addEventListener('change', applyRatingsFilters);
+  if (partySel) partySel.addEventListener('change', applyRatingsFilters);
 })();
 
 // Open Ratings Modal
