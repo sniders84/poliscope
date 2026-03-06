@@ -3252,13 +3252,45 @@ document.getElementById('rate-me-btn').onclick = function() {
   activateRatings();
 })();
 
+// ==============================
+// Rankings — Dynamic Metrics Loader
+// ==============================
+
+const rankingMetricOptions = {
+  president: [...],
+  governor: [...],
+  senator: [...],
+  representative: [...]
+};
+
+function populateRankingMetrics() {
+  const office = document.getElementById("rankingsOfficeFilter").value;
+  const metricSelect = document.getElementById("rankingsCategoryFilter");
+
+  metricSelect.innerHTML = "";
+
+  rankingMetricOptions[office].forEach(opt => {
+    const o = document.createElement("option");
+    o.value = opt.value;
+    o.textContent = opt.label;
+    metricSelect.appendChild(o);
+  });
+}
+
+document.getElementById("rankingsOfficeFilter")
+  .addEventListener("change", populateRankingMetrics);
+
+populateRankingMetrics();
+
+// ==============================
 // Rankings — render using the new merged JSONs
+// ==============================
 (function initRankingsRender() {
   const officeSel = document.getElementById('rankingsOfficeFilter');
   const categorySel = document.getElementById('rankingsCategoryFilter');
   const tableBody = document.querySelector('#rankings-leaderboard tbody');
   if (!officeSel || !categorySel || !tableBody) return;
-
+  
   // Dynamically filter category options based on selected office
   function updateCategoryVisibility() {
     const office = officeSel.value.toLowerCase();
