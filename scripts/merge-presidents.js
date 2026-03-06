@@ -154,7 +154,7 @@ function main() {
       const id = item.id || item.presidentId;
       if (!id) return;
       if (!eventSourcesById[id]) eventSourcesById[id] = [];
-      const events = item.majorEvents || item.events || item[cat]?.majorEvents || [];
+      const events = item.majorEvents || item.events || item[cat]?.majorEvents || item.misconduct?.events || [];
       events.forEach(ev => {
         if (ev.title) {
           eventSourcesById[id].push({ ...ev, originalCategory: cat });
