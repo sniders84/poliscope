@@ -3249,7 +3249,7 @@ document.getElementById('rate-me-btn').onclick = function() {
     return `<span class="${cls}">${Number.isFinite(value) ? value.toFixed(1) : '0.0'}</span>`;
   }
 
- // PRESIDENT SCORECARD RENDERING — UPDATED WITH FULL MATH BREAKDOWN
+// PRESIDENT SCORECARD RENDERING — WITH EVENT DETAILS UNDER CATEGORIES
 function showPresidentScorecard(person) {
   document.getElementById('scorecardName').textContent = person.name;
 
@@ -3262,93 +3262,76 @@ function showPresidentScorecard(person) {
   const breakdownEl = document.getElementById('scorecardBreakdown');
   breakdownEl.innerHTML = headerHtml;
 
-  // Get category scores and breakdown (from JSON)
+  // Get data from JSON
   const cs = person.categoryScores || {};
-  const bd = person.breakdown || {}; // fallback if not present yet
+  const cd = person.categoryDetails || {}; // event details per category
+  const bd = person.breakdown || {};
 
-  // Format helper (your existing function, or define if missing)
   const formatScore = (val) => (typeof val === 'number' ? val.toFixed(1) : '—');
 
-  // Build full math table
+  // Metric table (Raw/Weight/Contribution)
   const metricRows = `
-    <tr>
-      <td>Crisis Management</td>
-      <td>${formatScore(cs.crisisManagement)}</td>
-      <td>0.28</td>
-      <td>${formatScore(cs.crisisManagement * 0.28)}</td>
-    </tr>
-    <tr>
-      <td>Domestic Policy</td>
-      <td>${formatScore(cs.domesticPolicy)}</td>
-      <td>0.15</td>
-      <td>${formatScore(cs.domesticPolicy * 0.15)}</td>
-    </tr>
-    <tr>
-      <td>Economic Policy</td>
-      <td>${formatScore(cs.economicPolicy)}</td>
-      <td>0.15</td>
-      <td>${formatScore(cs.economicPolicy * 0.15)}</td>
-    </tr>
-    <tr>
-      <td>Foreign Policy</td>
-      <td>${formatScore(cs.foreignPolicy)}</td>
-      <td>0.15</td>
-      <td>${formatScore(cs.foreignPolicy * 0.15)}</td>
-    </tr>
-    <tr>
-      <td>Judicial Policy</td>
-      <td>${formatScore(cs.judicialPolicy)}</td>
-      <td>0.10</td>
-      <td>${formatScore(cs.judicialPolicy * 0.10)}</td>
-    </tr>
-    <tr>
-      <td>Legislation</td>
-      <td>${formatScore(cs.legislation)}</td>
-      <td>0.10</td>
-      <td>${formatScore(cs.legislation * 0.10)}</td>
-    </tr>
-    <tr>
-      <td>Misconduct</td>
-      <td>${formatScore(cs.misconduct)}</td>
-      <td>0.07</td>
-      <td>${formatScore(cs.misconduct * 0.07)}</td>
-    </tr>
-    <tr class="subtotal-row">
-      <td><strong>Subtotal (weighted sum)</strong></td>
-      <td colspan="3"><strong>${formatScore(bd.subtotal)}</strong></td>
-    </tr>
-    <tr>
-      <td>High-Severity Bonus</td>
-      <td colspan="3">${formatScore(bd.highSeverityBonus || 0)}</td>
-    </tr>
-    <tr>
-      <td>Normalization Factor</td>
-      <td colspan="3">${formatScore(bd.normalizationFactor || 1)}</td>
-    </tr>
-    <tr class="final-row">
-      <td><strong>Final Power Score</strong></td>
-      <td colspan="3"><strong>${formatScore(person.powerScore)}</strong></td>
-    </tr>
+    <tr><td>Crisis Management</td><td>${formatScore(cs.crisisManagement)}</td><td>0.28</td><td>${formatScore(cs.crisisManagement * 0.28)}</td></tr>
+    <tr><td>Domestic Policy</td><td>${formatScore(cs.domesticPolicy)}</td><td>0.15</td><td>${formatScore(cs.domesticPolicy * 0.15)}</td></tr>
+    <tr><td>Economic Policy</td><td>${formatScore(cs.economicPolicy)}</td><td>0.15</td><td>${formatScore(cs.economicPolicy * 0.15)}</td></tr>
+    <tr><td>Foreign Policy</td><td>${formatScore(cs.foreignPolicy)}</td><td>0.15</td><td>${formatScore(cs.foreignPolicy * 0.15)}</td></tr>
+    <tr><td>Judicial Policy</td><td>${formatScore(cs.judicialPolicy)}</td><td>0.10</td><td>${formatScore(cs.judicialPolicy * 0.10)}</td></tr>
+    <tr><td>Legislation</td><td>${formatScore(cs.legislation)}</td><td>0.10</td><td>${formatScore(cs.legislation * 0.10)}</td></tr>
+    <tr><td>Misconduct</td><td>${formatScore(cs.misconduct)}</td><td>0.07</td><td>${formatScore(cs.misconduct * 0.07)}</td></tr>
+    <tr class="subtotal-row"><td><strong>Subtotal</strong></td><td colspan="3"><strong>${formatScore(bd.subtotal)}</strong></td></tr>
+    <tr><td>High-Severity Bonus</td><td colspan="3">${formatScore(bd.highSeverityBonus || 0)}</td></tr>
+    <tr><td>Normalization Factor</td><td colspan="3">${formatScore(bd.normalizationFactor || 1)}</td></tr>
+    <tr class="final-row"><td><strong>Final Power Score</strong></td><td colspan="3"><strong>${formatScore(person.powerScore)}</strong></td></tr>
   `;
 
   breakdownEl.innerHTML += `
     <table class="scorecard-table">
       <thead>
-        <tr>
-          <th>Category</th>
-          <th>Raw Avg</th>
-          <th>Weight</th>
-          <th>Contribution</th>
-        </tr>
+        <tr><th>Category</th><th>Raw Avg</th><th>Weight</th><th>Contribution</th></tr>
       </thead>
-      <tbody>
-        ${metricRows}
-      </tbody>
+      <tbody>${metricRows}</tbody>
     </table>
-    <p style="font-size: 0.9em; margin-top: 10px; color: #aaa;">
+    <p style="font-size: 0.9em; margin: 10px 0; color: #aaa;">
       Power Score = (weighted categories + high-severity bonus) / normalization factor × 10
     </p>
   `;
+
+  // NEW: Collapsible event lists per category
+  let eventsHtml = '<h3 style="margin-top: 20px;">Events by Category</h3>';
+  const categories = [
+    { key: 'crisisManagement', label: 'Crisis Management' },
+    { key: 'domesticPolicy', label: 'Domestic Policy' },
+    { key: 'economicPolicy', label: 'Economic Policy' },
+    { key: 'foreignPolicy', label: 'Foreign Policy' },
+    { key: 'judicialPolicy', label: 'Judicial Policy' },
+    { key: 'legislation', label: 'Legislation' },
+    { key: 'misconduct', label: 'Misconduct' }
+  ];
+
+  categories.forEach(cat => {
+    const events = cd[cat.key] || [];
+    if (events.length === 0) return;
+
+    eventsHtml += `
+      <details style="margin: 10px 0; border: 1px solid #444; border-radius: 4px; padding: 8px;">
+        <summary style="cursor: pointer; font-weight: bold;">
+          ${cat.label} (${events.length} events, Avg ${formatScore(cs[cat.key])})
+        </summary>
+        <ul style="list-style: none; padding-left: 20px; margin: 10px 0 0;">
+          ${events.map(e => `
+            <li style="margin: 8px 0; border-bottom: 1px solid #333; padding-bottom: 8px;">
+              <strong>${e.event || 'Unnamed Event'}</strong> (${e.year})
+              <br><span style="color: #aaa;">Severity: ${formatScore(e.severity)} | Effectiveness: ${formatScore(e.effectiveness)}</span>
+              <br><strong>Contribution: ${formatScore(e.contribution)}</strong>
+              <br><small>${e.notes || 'No notes'}</small>
+            </li>
+          `).join('')}
+        </ul>
+      </details>
+    `;
+  });
+
+  breakdownEl.innerHTML += eventsHtml;
 
   const modal = document.getElementById('scorecardModal');
   modal.classList.add('is-open', 'modal-dark');
