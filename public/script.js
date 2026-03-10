@@ -3372,15 +3372,16 @@ function sortByMetric(data, officeType, metric) {
 // FULL DROP-IN REPLACEMENT FOR initRankingsRender()
 // -------------------------------------------------------
 function initRankingsRender() {
-  const officeSel = document.getElementById('rankings-office-filter');
-  const metricSel = document.getElementById('rankings-metric-filter');
+  const officeSel = document.getElementById('rankingsOfficeFilter');
+  const metricSel = document.getElementById('rankingsCategoryFilter');
   const tableBody = document.querySelector('#rankings-leaderboard tbody');
+
+  if (!officeSel || !metricSel || !tableBody) return;
 
   async function loadData() {
     const office = officeSel.value.toLowerCase();
-    const metric = metricSel.value;
+    const metric = metricSel.value || 'powerScore';
 
-    // LOAD ALL RANKINGS JSONs
     const [
       presidentsRankings,
       governorsRankings,
@@ -3405,7 +3406,7 @@ function initRankingsRender() {
     } else if (office === 'senator') {
       data = senatorsRankings;
       officeType = 'senator';
-    } else if (office === 'u.s. representative') {
+    } else if (office === 'representative') {
       data = representativesRankings;
       officeType = 'representative';
     } else {
@@ -3418,31 +3419,29 @@ function initRankingsRender() {
       return;
     }
 
-    // SORT BY SELECTED METRIC
     const sorted = sortByMetric(data, officeType, metric);
 
-    // RENDER TABLE ROWS
     tableBody.innerHTML = '';
     sorted.forEach((person, index) => {
       const value = getMetricValue(person, officeType, metric);
 
       const tr = document.createElement('tr');
       tr.classList.add('rankings-row');
-      tr.dataset.slug = person.slug;
-      tr.dataset.office = person.office;
+      tr.dataset.slug = person.slug || '';
+      tr.dataset.office = person.office || '';
 
       tr.innerHTML = `
         <td>${index + 1}</td>
         <td>${person.name}</td>
-        <td>${person.office}</td>
+        <td>${person.office || ''}</td>
         <td>${value}</td>
       `;
 
       tr.addEventListener('click', () => {
         if (officeType === 'president') {
-          openPresidentScorecard(person.slug);
+          openPresidentScorecard?.(person.slug);
         } else {
-          openLegislatorScorecard(person.slug);
+          openLegislatorScorecard?.(person.slug);
         }
       });
 
@@ -3941,17 +3940,16 @@ document.getElementById('scoringLogicModal')?.addEventListener('click', e => {
 });
 
 // -----------------------------
-// GLOBAL HOOKS (SAFE)
+// GLOBAL HOOKS
 // -----------------------------
-window.renderRankingsLeaderboard = () => render().catch(console.error);
+document.addEventListener('DOMContentLoaded', () => {
+  // Ratings may have its own renderer elsewhere; we leave it alone here.
 
-document.getElementById('rankingsOfficeFilter')?.addEventListener('change', () => render().catch(console.error));
-document.getElementById('rankings-office-filter')?.addEventListener('change', () => render().catch(console.error));
-
-document.getElementById('rankingsCategoryFilter')?.addEventListener('change', () => render().catch(console.error));
-document.getElementById('rankings-metric-filter')?.addEventListener('change', () => render().catch(console.error));
-
-render().catch(console.error);
+  // Rankings: use the dedicated Rankings renderer
+  if (typeof initRankingsRender === 'function') {
+    initRankingsRender();
+  }
+});
 
 // -----------------------------
 // GLOBAL MENU HELPERS
