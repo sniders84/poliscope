@@ -3282,48 +3282,136 @@ document.getElementById("rankingsOfficeFilter")
 
 populateRankingMetrics();
 
-// ==============================
-// Rankings — render using the new merged JSONs
-// ==============================
-(function initRankingsRender() {
-  const officeSel = document.getElementById('rankingsOfficeFilter');
-  const categorySel = document.getElementById('rankingsCategoryFilter');
-  const tableBody = document.querySelector('#rankings-leaderboard tbody');
-  if (!officeSel || !categorySel || !tableBody) return;
-  
-  // Dynamically filter category options based on selected office
-  function updateCategoryVisibility() {
-    const office = officeSel.value.toLowerCase();
-    Array.from(categorySel.options).forEach(opt => {
-      const tag = opt.dataset.office;
-      // Always show powerScore
-      if (opt.value === "powerScore") {
-        opt.hidden = false;
-        return;
-      }
-      // Shared categories (misconductCount, misconductTags)
-      if (tag === "shared") {
-        opt.hidden = false;
-        return;
-      }
-      // Legislative offices
-      if (office === "senator" || office === "u.s. representative") {
-        opt.hidden = (tag !== "legislative");
-        return;
-      }
-      // Presidential office
-      if (office === "president") {
-        opt.hidden = (tag !== "president");
-        return;
-      }
-      // All other offices (governor, lt. governor, vice president)
-      opt.hidden = true;
-    });
-    // Reset to powerScore to avoid invalid selections
-    categorySel.value = "powerScore";
+// ---------------------------------------------
+// METRIC EXTRACTION + SORTING HELPER MODULE
+// ---------------------------------------------
+function getMetricValue(person, officeType, metric) {
+  if (!person) return 0;
+
+  // PRESIDENTS + GOVERNORS (categoryScores)
+  if (officeType === 'president' || officeType === 'governor') {
+    if (metric === 'powerScore') {
+      return Number(person.powerScore) || 0;
+    }
+    if (person.categoryScores && metric in person.categoryScores) {
+      return Number(person.categoryScores[metric]) || 0;
+    }
+    return 0;
   }
-  officeSel.addEventListener('change', updateCategoryVisibility);
-  updateCategoryVisibility();
+
+  // LEGISLATORS (direct fields)
+  if (officeType === 'senator' || officeType === 'representative') {
+    if (metric === 'committees') {
+      return Array.isArray(person.committees) ? person.committees.length : 0;
+    }
+    return Number(person[metric]) || 0;
+  }
+
+  return 0;
+}
+
+function sortByMetric(data, officeType, metric) {
+  const ascending = (metric === 'missedVotes' || metric === 'misconductCount');
+
+  return data.sort((a, b) => {
+    const va = getMetricValue(a, officeType, metric);
+    const vb = getMetricValue(b, officeType, metric);
+
+    if (ascending) {
+      return va - vb;
+    } else {
+      return vb - va;
+    }
+  });
+}
+
+// -------------------------------------------------------
+// FULL DROP-IN REPLACEMENT FOR initRankingsRender()
+// -------------------------------------------------------
+function initRankingsRender() {
+  const officeSel = document.getElementById('rankings-office-filter');
+  const metricSel = document.getElementById('rankings-metric-filter');
+  const tableBody = document.querySelector('#rankings-leaderboard tbody');
+
+  async function loadData() {
+    const office = officeSel.value.toLowerCase();
+    const metric = metricSel.value;
+
+    // LOAD ALL RANKINGS JSONs
+    const [
+      presidentsRankings,
+      governorsRankings,
+      senatorsRankings,
+      representativesRankings
+    ] = await Promise.all([
+      fetch('/presidents-rankings.json').then(r => r.json()).catch(() => []),
+      fetch('/governors-rankings.json').then(r => r.json()).catch(() => []),
+      fetch('/senators-rankings.json').then(r => r.json()).catch(() => []),
+      fetch('/representatives-rankings.json').then(r => r.json()).catch(() => [])
+    ]);
+
+    let data = [];
+    let officeType = '';
+
+    if (office === 'president') {
+      data = presidentsRankings;
+      officeType = 'president';
+    } else if (office === 'governor') {
+      data = governorsRankings;
+      officeType = 'governor';
+    } else if (office === 'senator') {
+      data = senatorsRankings;
+      officeType = 'senator';
+    } else if (office === 'u.s. representative') {
+      data = representativesRankings;
+      officeType = 'representative';
+    } else {
+      tableBody.innerHTML = '<tr><td colspan="4">Select an office</td></tr>';
+      return;
+    }
+
+    if (!Array.isArray(data) || data.length === 0) {
+      tableBody.innerHTML = '<tr><td colspan="4">No data available</td></tr>';
+      return;
+    }
+
+    // SORT BY SELECTED METRIC
+    const sorted = sortByMetric(data, officeType, metric);
+
+    // RENDER TABLE ROWS
+    tableBody.innerHTML = '';
+    sorted.forEach((person, index) => {
+      const value = getMetricValue(person, officeType, metric);
+
+      const tr = document.createElement('tr');
+      tr.classList.add('rankings-row');
+      tr.dataset.slug = person.slug;
+      tr.dataset.office = person.office;
+
+      tr.innerHTML = `
+        <td>${index + 1}</td>
+        <td>${person.name}</td>
+        <td>${person.office}</td>
+        <td>${value}</td>
+      `;
+
+      tr.addEventListener('click', () => {
+        if (officeType === 'president') {
+          openPresidentScorecard(person.slug);
+        } else {
+          openLegislatorScorecard(person.slug);
+        }
+      });
+
+      tableBody.appendChild(tr);
+    });
+  }
+
+  officeSel.addEventListener('change', loadData);
+  metricSel.addEventListener('change', loadData);
+
+  loadData();
+}
 
   // LEGISLATOR WEIGHTS (UNCHANGED)
   const WEIGHTS = {
@@ -3616,6 +3704,8 @@ function mergeData(rankings, info, misconduct = []) {
     };
   });
 }
+
+  
 
 // -----------------------------
 // MAIN RENDER FUNCTION
