@@ -3955,5 +3955,3 @@ function showCitizenship() {
 function showCommunity() {
   showTab('community');
 }
-// CLOSE initRankingsRender()
-})();
