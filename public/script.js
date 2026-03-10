@@ -3252,208 +3252,46 @@ document.getElementById('rate-me-btn').onclick = function() {
   activateRatings();
 })();
 
-// ==============================
-// Rankings — Dynamic Metrics Loader
-// ==============================
-
-// Full metric definitions for all offices
-const rankingMetricOptions = {
-  president: [
-    { value: "powerScore", label: "Overall Power Score" },
-    { value: "crisisManagement", label: "Crisis Management" },
-    { value: "domesticPolicy", label: "Domestic Policy" },
-    { value: "economicPolicy", label: "Economic Policy" },
-    { value: "foreignPolicy", label: "Foreign Policy" },
-    { value: "judicialPolicy", label: "Judicial Policy" },
-    { value: "legislation", label: "Legislative Impact" },
-    { value: "misconduct", label: "Misconduct" }
-  ],
-
-  governor: [
-    { value: "powerScore", label: "Overall Power Score" },
-    { value: "crisisManagement", label: "Crisis Management" },
-    { value: "domesticPolicy", label: "Domestic Policy" },
-    { value: "economicPolicy", label: "Economic Policy" },
-    { value: "foreignPolicy", label: "Foreign Policy" },
-    { value: "judicialPolicy", label: "Judicial Policy" },
-    { value: "legislation", label: "Legislative Impact" },
-    { value: "misconduct", label: "Misconduct" }
-  ],
-
-  senator: [
-    { value: "powerScore", label: "Overall Power Score" },
-    { value: "sponsoredBills", label: "Sponsored Bills" },
-    { value: "cosponsoredBills", label: "Cosponsored Bills" },
-    { value: "becameLawBills", label: "Bills Became Law" },
-    { value: "becameLawCosponsoredBills", label: "Cosponsored Bills Became Law" },
-    { value: "committees", label: "Committee Memberships" },
-    { value: "missedVotes", label: "Missed Votes" },
-    { value: "misconductCount", label: "Misconduct Count" }
-  ],
-
-  representative: [
-    { value: "powerScore", label: "Overall Power Score" },
-    { value: "sponsoredBills", label: "Sponsored Bills" },
-    { value: "cosponsoredBills", label: "Cosponsored Bills" },
-    { value: "becameLawBills", label: "Bills Became Law" },
-    { value: "becameLawCosponsoredBills", label: "Cosponsored Bills Became Law" },
-    { value: "committees", label: "Committee Memberships" },
-    { value: "missedVotes", label: "Missed Votes" },
-    { value: "misconductCount", label: "Misconduct Count" }
-  ]
-};
-
-// Populate metric dropdown based on selected office
-function populateRankingMetrics() {
-  const office = document.getElementById("rankingsOfficeFilter").value;
-  const metricSelect = document.getElementById("rankingsCategoryFilter");
-
-  metricSelect.innerHTML = "";
-
-  rankingMetricOptions[office].forEach(opt => {
-    const o = document.createElement("option");
-    o.value = opt.value;
-    o.textContent = opt.label;
-    metricSelect.appendChild(o);
-  });
-}
-
-// Re-populate metrics when office changes
-document.getElementById("rankingsOfficeFilter")
-  .addEventListener("change", populateRankingMetrics);
-
-// Initial population
-populateRankingMetrics();
-
-// ---------------------------------------------
-// METRIC EXTRACTION + SORTING HELPER MODULE
-// ---------------------------------------------
-function getMetricValue(person, officeType, metric) {
-  if (!person) return 0;
-
-  // PRESIDENTS + GOVERNORS (categoryScores)
-  if (officeType === 'president' || officeType === 'governor') {
-    if (metric === 'powerScore') {
-      return Number(person.powerScore) || 0;
-    }
-    if (person.categoryScores && metric in person.categoryScores) {
-      return Number(person.categoryScores[metric]) || 0;
-    }
-    return 0;
-  }
-
-  // LEGISLATORS (direct fields)
-  if (officeType === 'senator' || officeType === 'representative') {
-    if (metric === 'committees') {
-      return Array.isArray(person.committees) ? person.committees.length : 0;
-    }
-    return Number(person[metric]) || 0;
-  }
-
-  return 0;
-}
-
-function sortByMetric(data, officeType, metric) {
-  const ascending = (metric === 'missedVotes' || metric === 'misconductCount');
-
-  return data.sort((a, b) => {
-    const va = getMetricValue(a, officeType, metric);
-    const vb = getMetricValue(b, officeType, metric);
-
-    if (ascending) {
-      return va - vb;
-    } else {
-      return vb - va;
-    }
-  });
-}
-
-// -------------------------------------------------------
-// FULL DROP-IN REPLACEMENT FOR initRankingsRender()
-// -------------------------------------------------------
-function initRankingsRender() {
+// Rankings — render using the new merged JSONs
+(function initRankingsRender() {
   const officeSel = document.getElementById('rankingsOfficeFilter');
-  const metricSel = document.getElementById('rankingsCategoryFilter');
+  const categorySel = document.getElementById('rankingsCategoryFilter');
   const tableBody = document.querySelector('#rankings-leaderboard tbody');
+  if (!officeSel || !categorySel || !tableBody) return;
 
-  if (!officeSel || !metricSel || !tableBody) return;
-
-  async function loadData() {
+  // Dynamically filter category options based on selected office
+  function updateCategoryVisibility() {
     const office = officeSel.value.toLowerCase();
-    const metric = metricSel.value || 'powerScore';
-
-    const [
-      presidentsRankings,
-      governorsRankings,
-      senatorsRankings,
-      representativesRankings
-    ] = await Promise.all([
-      fetch('/presidents-rankings.json').then(r => r.json()).catch(() => []),
-      fetch('/governors-rankings.json').then(r => r.json()).catch(() => []),
-      fetch('/senators-rankings.json').then(r => r.json()).catch(() => []),
-      fetch('/representatives-rankings.json').then(r => r.json()).catch(() => [])
-    ]);
-
-    let data = [];
-    let officeType = '';
-
-    if (office === 'president') {
-      data = presidentsRankings;
-      officeType = 'president';
-    } else if (office === 'governor') {
-      data = governorsRankings;
-      officeType = 'governor';
-    } else if (office === 'senator') {
-      data = senatorsRankings;
-      officeType = 'senator';
-    } else if (office === 'representative') {
-      data = representativesRankings;
-      officeType = 'representative';
-    } else {
-      tableBody.innerHTML = '<tr><td colspan="4">Select an office</td></tr>';
-      return;
-    }
-
-    if (!Array.isArray(data) || data.length === 0) {
-      tableBody.innerHTML = '<tr><td colspan="4">No data available</td></tr>';
-      return;
-    }
-
-    const sorted = sortByMetric(data, officeType, metric);
-
-    tableBody.innerHTML = '';
-    sorted.forEach((person, index) => {
-      const value = getMetricValue(person, officeType, metric);
-
-      const tr = document.createElement('tr');
-      tr.classList.add('rankings-row');
-      tr.dataset.slug = person.slug || '';
-      tr.dataset.office = person.office || '';
-
-      tr.innerHTML = `
-        <td>${index + 1}</td>
-        <td>${person.name}</td>
-        <td>${person.office || ''}</td>
-        <td>${value}</td>
-      `;
-
-      tr.addEventListener('click', () => {
-        if (officeType === 'president') {
-          openPresidentScorecard?.(person.slug);
-        } else {
-          openLegislatorScorecard?.(person.slug);
-        }
-      });
-
-      tableBody.appendChild(tr);
+    Array.from(categorySel.options).forEach(opt => {
+      const tag = opt.dataset.office;
+      // Always show powerScore
+      if (opt.value === "powerScore") {
+        opt.hidden = false;
+        return;
+      }
+      // Shared categories (misconductCount, misconductTags)
+      if (tag === "shared") {
+        opt.hidden = false;
+        return;
+      }
+      // Legislative offices
+      if (office === "senator" || office === "u.s. representative") {
+        opt.hidden = (tag !== "legislative");
+        return;
+      }
+      // Presidential office
+      if (office === "president") {
+        opt.hidden = (tag !== "president");
+        return;
+      }
+      // All other offices (governor, lt. governor, vice president)
+      opt.hidden = true;
     });
+    // Reset to powerScore to avoid invalid selections
+    categorySel.value = "powerScore";
   }
-
-  officeSel.addEventListener('change', loadData);
-  metricSel.addEventListener('change', loadData);
-
-  loadData();
-}
+  officeSel.addEventListener('change', updateCategoryVisibility);
+  updateCategoryVisibility();
 
   // LEGISLATOR WEIGHTS (UNCHANGED)
   const WEIGHTS = {
@@ -3747,10 +3585,8 @@ function mergeData(rankings, info, misconduct = []) {
   });
 }
 
-  
-
 // -----------------------------
-// MAIN RENDER FUNCTION (SAFE, ID‑AGNOSTIC)
+// MAIN RENDER FUNCTION
 // -----------------------------
 function ordinalSuffix(n) {
   const s = ["th", "st", "nd", "rd"];
@@ -3759,27 +3595,20 @@ function ordinalSuffix(n) {
 }
 
 async function render() {
-  // Auto-detect whichever IDs exist
-  const officeSel =
-    document.getElementById('rankingsOfficeFilter') ||
-    document.getElementById('rankings-office-filter');
+  const selectedOffice = officeSel.value.toLowerCase();
+  const selectedCategory = categorySel.value;
 
-  const categorySel =
-    document.getElementById('rankingsCategoryFilter') ||
-    document.getElementById('rankings-metric-filter');
+  const senatorsRes = await fetch('/senators-rankings.json');
+  const senatorsInfoRes = await fetch('/senators.json');
+  const repsRes = await fetch('/representatives-rankings.json');
+  const repsInfoRes = await fetch('/housereps.json');
+  const presidentsRes = await fetch('/presidents-rankings.json');
 
-  const tableBody = document.querySelector('#rankings-leaderboard tbody');
-  if (!tableBody) return;
-
-  const selectedOffice = officeSel?.value?.toLowerCase() || "";
-  const selectedCategory = categorySel?.value || "powerScore";
-
-  // Load data
-  const senatorsRankings = await fetch('/senators-rankings.json').then(r => r.json()).catch(() => []);
-  const senatorsInfo = await fetch('/senators.json').then(r => r.json()).catch(() => []);
-  const repsRankings = await fetch('/representatives-rankings.json').then(r => r.json()).catch(() => []);
-  const repsInfo = await fetch('/housereps.json').then(r => r.json()).catch(() => []);
-  const presidentsRankings = await fetch('/presidents-rankings.json').then(r => r.json()).catch(() => []);
+  const senatorsRankings = await senatorsRes.json().catch(() => []);
+  const senatorsInfo = await senatorsInfoRes.json().catch(() => []);
+  const repsRankings = await repsRes.json().catch(() => []);
+  const repsInfo = await repsInfoRes.json().catch(() => []);
+  const presidentsRankings = await presidentsRes.json().catch(() => []);
 
   let data = [];
   let officeType = '';
@@ -3807,12 +3636,11 @@ async function render() {
     return;
   }
 
-  // Build rows
   const rows = data.map(person => {
     if (officeType === 'president') {
       return {
         person,
-        score: Number(person.powerScore) || 0,
+        score: person.powerScore || 0,   // UPDATED
         breakdown: null
       };
     } else {
@@ -3825,12 +3653,12 @@ async function render() {
     }
   });
 
-  // Sorting
+  // SORTING
   rows.sort((a, b) => {
     const key = selectedCategory;
 
     if (officeType === 'president') {
-      return (b.person.powerScore || 0) - (a.person.powerScore || 0);
+      return (b.person.powerScore || 0) - (a.person.powerScore || 0);  // UPDATED
     }
 
     if (key === "powerScore") return b.score - a.score;
@@ -3840,14 +3668,14 @@ async function render() {
     return (b.person[key] || 0) - (a.person[key] || 0);
   });
 
-  // Render table
+  // RENDER TABLE
   tableBody.innerHTML = '';
   rows.forEach((row, idx) => {
     const tr = document.createElement('tr');
     let displayVal = 0;
 
     if (officeType === 'president') {
-      displayVal = (row.person.powerScore || 0).toFixed(1);
+      displayVal = (row.person.powerScore || 0).toFixed(1);  // UPDATED
     } else {
       displayVal = selectedCategory === "powerScore"
         ? row.score.toFixed(1)
@@ -3859,7 +3687,7 @@ async function render() {
     const officeLabel =
       officeType === 'president'
         ? `President (${ordinalSuffix(row.person.ordinal)})`
-        : row.person.office || (officeType === 'rep' ? 'U.S. Representative' : 'U.S. Senator');
+        : row.person.office || (officeType === 'rep' ? 'U.S. representative' : 'U.S. Senator');
 
     const photoUrl = row.person.photo || 'https://via.placeholder.com/50?text=?';
 
@@ -3885,7 +3713,7 @@ async function render() {
     tableBody.appendChild(tr);
   });
 
-  // Scorecard handlers
+  // SCORECARD CLICK HANDLERS
   tableBody.querySelectorAll('.scorecard-link').forEach(link => {
     link.addEventListener('click', e => {
       e.preventDefault();
@@ -3894,7 +3722,7 @@ async function render() {
       if (!row) return;
 
       if (officeType === 'president') {
-        showScorecard(row.person);
+        showScorecard(row.person);  // UPDATED
       } else {
         showScorecard(row.person, row.breakdown, row.score);
       }
@@ -3942,14 +3770,10 @@ document.getElementById('scoringLogicModal')?.addEventListener('click', e => {
 // -----------------------------
 // GLOBAL HOOKS
 // -----------------------------
-document.addEventListener('DOMContentLoaded', () => {
-  // Ratings may have its own renderer elsewhere; we leave it alone here.
-
-  // Rankings: use the dedicated Rankings renderer
-  if (typeof initRankingsRender === 'function') {
-    initRankingsRender();
-  }
-});
+window.renderRankingsLeaderboard = () => render().catch(console.error);
+officeSel.addEventListener('change', () => render().catch(console.error));
+categorySel.addEventListener('change', () => render().catch(console.error));
+render().catch(console.error);
 
 // -----------------------------
 // GLOBAL MENU HELPERS
@@ -3966,3 +3790,5 @@ function showCitizenship() {
 function showCommunity() {
   showTab('community');
 }
+// CLOSE initRankingsRender()
+})();
