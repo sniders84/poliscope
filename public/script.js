@@ -3751,7 +3751,7 @@ function mergeData(rankings, info, misconduct = []) {
   
 
 // -----------------------------
-// MAIN RENDER FUNCTION
+// MAIN RENDER FUNCTION (SAFE, ID‑AGNOSTIC)
 // -----------------------------
 function ordinalSuffix(n) {
   const s = ["th", "st", "nd", "rd"];
@@ -3760,20 +3760,27 @@ function ordinalSuffix(n) {
 }
 
 async function render() {
-  const selectedOffice = officeSel.value.toLowerCase();
-  const selectedCategory = categorySel.value;
+  // Auto-detect whichever IDs exist
+  const officeSel =
+    document.getElementById('rankingsOfficeFilter') ||
+    document.getElementById('rankings-office-filter');
 
-  const senatorsRes = await fetch('/senators-rankings.json');
-  const senatorsInfoRes = await fetch('/senators.json');
-  const repsRes = await fetch('/representatives-rankings.json');
-  const repsInfoRes = await fetch('/housereps.json');
-  const presidentsRes = await fetch('/presidents-rankings.json');
+  const categorySel =
+    document.getElementById('rankingsCategoryFilter') ||
+    document.getElementById('rankings-metric-filter');
 
-  const senatorsRankings = await senatorsRes.json().catch(() => []);
-  const senatorsInfo = await senatorsInfoRes.json().catch(() => []);
-  const repsRankings = await repsRes.json().catch(() => []);
-  const repsInfo = await repsInfoRes.json().catch(() => []);
-  const presidentsRankings = await presidentsRes.json().catch(() => []);
+  const tableBody = document.querySelector('#rankings-leaderboard tbody');
+  if (!tableBody) return;
+
+  const selectedOffice = officeSel?.value?.toLowerCase() || "";
+  const selectedCategory = categorySel?.value || "powerScore";
+
+  // Load data
+  const senatorsRankings = await fetch('/senators-rankings.json').then(r => r.json()).catch(() => []);
+  const senatorsInfo = await fetch('/senators.json').then(r => r.json()).catch(() => []);
+  const repsRankings = await fetch('/representatives-rankings.json').then(r => r.json()).catch(() => []);
+  const repsInfo = await fetch('/housereps.json').then(r => r.json()).catch(() => []);
+  const presidentsRankings = await fetch('/presidents-rankings.json').then(r => r.json()).catch(() => []);
 
   let data = [];
   let officeType = '';
@@ -3801,11 +3808,12 @@ async function render() {
     return;
   }
 
+  // Build rows
   const rows = data.map(person => {
     if (officeType === 'president') {
       return {
         person,
-        score: person.powerScore || 0,   // UPDATED
+        score: Number(person.powerScore) || 0,
         breakdown: null
       };
     } else {
@@ -3818,12 +3826,12 @@ async function render() {
     }
   });
 
-  // SORTING
+  // Sorting
   rows.sort((a, b) => {
     const key = selectedCategory;
 
     if (officeType === 'president') {
-      return (b.person.powerScore || 0) - (a.person.powerScore || 0);  // UPDATED
+      return (b.person.powerScore || 0) - (a.person.powerScore || 0);
     }
 
     if (key === "powerScore") return b.score - a.score;
@@ -3833,14 +3841,14 @@ async function render() {
     return (b.person[key] || 0) - (a.person[key] || 0);
   });
 
-  // RENDER TABLE
+  // Render table
   tableBody.innerHTML = '';
   rows.forEach((row, idx) => {
     const tr = document.createElement('tr');
     let displayVal = 0;
 
     if (officeType === 'president') {
-      displayVal = (row.person.powerScore || 0).toFixed(1);  // UPDATED
+      displayVal = (row.person.powerScore || 0).toFixed(1);
     } else {
       displayVal = selectedCategory === "powerScore"
         ? row.score.toFixed(1)
@@ -3852,7 +3860,7 @@ async function render() {
     const officeLabel =
       officeType === 'president'
         ? `President (${ordinalSuffix(row.person.ordinal)})`
-        : row.person.office || (officeType === 'rep' ? 'U.S. representative' : 'U.S. Senator');
+        : row.person.office || (officeType === 'rep' ? 'U.S. Representative' : 'U.S. Senator');
 
     const photoUrl = row.person.photo || 'https://via.placeholder.com/50?text=?';
 
@@ -3878,7 +3886,7 @@ async function render() {
     tableBody.appendChild(tr);
   });
 
-  // SCORECARD CLICK HANDLERS
+  // Scorecard handlers
   tableBody.querySelectorAll('.scorecard-link').forEach(link => {
     link.addEventListener('click', e => {
       e.preventDefault();
@@ -3887,7 +3895,7 @@ async function render() {
       if (!row) return;
 
       if (officeType === 'president') {
-        showScorecard(row.person);  // UPDATED
+        showScorecard(row.person);
       } else {
         showScorecard(row.person, row.breakdown, row.score);
       }
@@ -3933,11 +3941,16 @@ document.getElementById('scoringLogicModal')?.addEventListener('click', e => {
 });
 
 // -----------------------------
-// GLOBAL HOOKS
+// GLOBAL HOOKS (SAFE)
 // -----------------------------
 window.renderRankingsLeaderboard = () => render().catch(console.error);
-officeSel.addEventListener('change', () => render().catch(console.error));
-categorySel.addEventListener('change', () => render().catch(console.error));
+
+document.getElementById('rankingsOfficeFilter')?.addEventListener('change', () => render().catch(console.error));
+document.getElementById('rankings-office-filter')?.addEventListener('change', () => render().catch(console.error));
+
+document.getElementById('rankingsCategoryFilter')?.addEventListener('change', () => render().catch(console.error));
+document.getElementById('rankings-metric-filter')?.addEventListener('change', () => render().catch(console.error));
+
 render().catch(console.error);
 
 // -----------------------------
