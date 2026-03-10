@@ -3256,13 +3256,54 @@ document.getElementById('rate-me-btn').onclick = function() {
 // Rankings — Dynamic Metrics Loader
 // ==============================
 
+// Full metric definitions for all offices
 const rankingMetricOptions = {
-  president: [...],
-  governor: [...],
-  senator: [...],
-  representative: [...]
+  president: [
+    { value: "powerScore", label: "Overall Power Score" },
+    { value: "crisisManagement", label: "Crisis Management" },
+    { value: "domesticPolicy", label: "Domestic Policy" },
+    { value: "economicPolicy", label: "Economic Policy" },
+    { value: "foreignPolicy", label: "Foreign Policy" },
+    { value: "judicialPolicy", label: "Judicial Policy" },
+    { value: "legislation", label: "Legislative Impact" },
+    { value: "misconduct", label: "Misconduct" }
+  ],
+
+  governor: [
+    { value: "powerScore", label: "Overall Power Score" },
+    { value: "crisisManagement", label: "Crisis Management" },
+    { value: "domesticPolicy", label: "Domestic Policy" },
+    { value: "economicPolicy", label: "Economic Policy" },
+    { value: "foreignPolicy", label: "Foreign Policy" },
+    { value: "judicialPolicy", label: "Judicial Policy" },
+    { value: "legislation", label: "Legislative Impact" },
+    { value: "misconduct", label: "Misconduct" }
+  ],
+
+  senator: [
+    { value: "powerScore", label: "Overall Power Score" },
+    { value: "sponsoredBills", label: "Sponsored Bills" },
+    { value: "cosponsoredBills", label: "Cosponsored Bills" },
+    { value: "becameLawBills", label: "Bills Became Law" },
+    { value: "becameLawCosponsoredBills", label: "Cosponsored Bills Became Law" },
+    { value: "committees", label: "Committee Memberships" },
+    { value: "missedVotes", label: "Missed Votes" },
+    { value: "misconductCount", label: "Misconduct Count" }
+  ],
+
+  representative: [
+    { value: "powerScore", label: "Overall Power Score" },
+    { value: "sponsoredBills", label: "Sponsored Bills" },
+    { value: "cosponsoredBills", label: "Cosponsored Bills" },
+    { value: "becameLawBills", label: "Bills Became Law" },
+    { value: "becameLawCosponsoredBills", label: "Cosponsored Bills Became Law" },
+    { value: "committees", label: "Committee Memberships" },
+    { value: "missedVotes", label: "Missed Votes" },
+    { value: "misconductCount", label: "Misconduct Count" }
+  ]
 };
 
+// Populate metric dropdown based on selected office
 function populateRankingMetrics() {
   const office = document.getElementById("rankingsOfficeFilter").value;
   const metricSelect = document.getElementById("rankingsCategoryFilter");
@@ -3277,9 +3318,11 @@ function populateRankingMetrics() {
   });
 }
 
+// Re-populate metrics when office changes
 document.getElementById("rankingsOfficeFilter")
   .addEventListener("change", populateRankingMetrics);
 
+// Initial population
 populateRankingMetrics();
 
 // ---------------------------------------------
