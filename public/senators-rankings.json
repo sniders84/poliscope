@@ -11,7 +11,7 @@
     "office": "Senator",
     "photo": "https://www.congress.gov/img/member/c000127_200.jpg",
     "sponsoredBills": 61,
-    "cosponsoredBills": 210,
+    "cosponsoredBills": 213,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 1,
     "committees": [
@@ -115,8 +115,8 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "powerScore": 229.2,
-    "lastUpdated": "2026-04-22T04:17:56.201Z",
+    "powerScore": 231,
+    "lastUpdated": "2026-04-23T04:32:33.737Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -130,9 +130,9 @@
         "contribution": 73.2
       },
       "billsCosponsored": {
-        "raw": 210,
+        "raw": 213,
         "weight": 0.6,
-        "contribution": 126
+        "contribution": 127.8
       },
       "billsEnacted": {
         "raw": 0,
@@ -177,7 +177,7 @@
         "weight": -10,
         "contribution": 0
       },
-      "totalPowerScore": 229.2
+      "totalPowerScore": 231
     }
   },
   {
@@ -192,7 +192,7 @@
     "office": "Senator",
     "photo": "https://www.congress.gov/img/member/k000367_200.jpg",
     "sponsoredBills": 145,
-    "cosponsoredBills": 574,
+    "cosponsoredBills": 575,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 2,
     "committees": [
@@ -331,8 +331,8 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "powerScore": 564.4,
-    "lastUpdated": "2026-04-22T04:17:56.201Z",
+    "powerScore": 565,
+    "lastUpdated": "2026-04-23T04:32:33.738Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -346,9 +346,9 @@
         "contribution": 174
       },
       "billsCosponsored": {
-        "raw": 574,
+        "raw": 575,
         "weight": 0.6,
-        "contribution": 344.4
+        "contribution": 345
       },
       "billsEnacted": {
         "raw": 0,
@@ -393,7 +393,7 @@
         "weight": -10,
         "contribution": 0
       },
-      "totalPowerScore": 564.4
+      "totalPowerScore": 565
     }
   },
   {
@@ -408,7 +408,7 @@
     "office": "Senator",
     "photo": "https://www.congress.gov/img/member/s000033_200.jpg",
     "sponsoredBills": 66,
-    "cosponsoredBills": 389,
+    "cosponsoredBills": 390,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 2,
     "committees": [
@@ -519,8 +519,8 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "powerScore": 346.6,
-    "lastUpdated": "2026-04-22T04:17:56.201Z",
+    "powerScore": 347.2,
+    "lastUpdated": "2026-04-23T04:32:33.738Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -534,9 +534,9 @@
         "contribution": 79.2
       },
       "billsCosponsored": {
-        "raw": 389,
+        "raw": 390,
         "weight": 0.6,
-        "contribution": 233.39999999999998
+        "contribution": 234
       },
       "billsEnacted": {
         "raw": 0,
@@ -581,7 +581,7 @@
         "weight": -10,
         "contribution": 0
       },
-      "totalPowerScore": 346.6
+      "totalPowerScore": 347.2
     }
   },
   {
@@ -596,7 +596,7 @@
     "office": "Senator",
     "photo": "https://www.congress.gov/img/member/w000802_200.jpg",
     "sponsoredBills": 129,
-    "cosponsoredBills": 374,
+    "cosponsoredBills": 376,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 2,
     "committees": [
@@ -728,8 +728,8 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "powerScore": 422.2,
-    "lastUpdated": "2026-04-22T04:17:56.202Z",
+    "powerScore": 423.4,
+    "lastUpdated": "2026-04-23T04:32:33.738Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -743,9 +743,9 @@
         "contribution": 154.79999999999998
       },
       "billsCosponsored": {
-        "raw": 374,
+        "raw": 376,
         "weight": 0.6,
-        "contribution": 224.4
+        "contribution": 225.6
       },
       "billsEnacted": {
         "raw": 0,
@@ -790,7 +790,7 @@
         "weight": -10,
         "contribution": 0
       },
-      "totalPowerScore": 422.2
+      "totalPowerScore": 423.4
     }
   },
   {
@@ -910,7 +910,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 223.8,
-    "lastUpdated": "2026-04-22T04:17:56.202Z",
+    "lastUpdated": "2026-04-23T04:32:33.738Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -1133,7 +1133,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 255,
-    "lastUpdated": "2026-04-22T04:17:56.202Z",
+    "lastUpdated": "2026-04-23T04:32:33.738Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -1335,7 +1335,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 254,
-    "lastUpdated": "2026-04-22T04:17:56.202Z",
+    "lastUpdated": "2026-04-23T04:32:33.738Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -1411,7 +1411,7 @@
     "office": "Senator",
     "photo": "https://www.congress.gov/img/member/c001056_200.jpg",
     "sponsoredBills": 158,
-    "cosponsoredBills": 275,
+    "cosponsoredBills": 276,
     "becameLawBills": 3,
     "becameLawCosponsoredBills": 2,
     "committees": [
@@ -1543,8 +1543,8 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "powerScore": 410.6,
-    "lastUpdated": "2026-04-22T04:17:56.202Z",
+    "powerScore": 411.2,
+    "lastUpdated": "2026-04-23T04:32:33.738Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -1558,9 +1558,9 @@
         "contribution": 189.6
       },
       "billsCosponsored": {
-        "raw": 275,
+        "raw": 276,
         "weight": 0.6,
-        "contribution": 165
+        "contribution": 165.6
       },
       "billsEnacted": {
         "raw": 3,
@@ -1605,7 +1605,7 @@
         "weight": -10,
         "contribution": 0
       },
-      "totalPowerScore": 410.6
+      "totalPowerScore": 411.2
     }
   },
   {
@@ -1718,7 +1718,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 523.8,
-    "lastUpdated": "2026-04-22T04:17:56.202Z",
+    "lastUpdated": "2026-04-23T04:32:33.738Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -1793,7 +1793,7 @@
     "party": "Republican",
     "office": "Senator",
     "photo": "https://www.congress.gov/img/member/g000359_200.jpg",
-    "sponsoredBills": 43,
+    "sponsoredBills": 44,
     "cosponsoredBills": 142,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 4,
@@ -1926,8 +1926,8 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "powerScore": 185.8,
-    "lastUpdated": "2026-04-22T04:17:56.202Z",
+    "powerScore": 187,
+    "lastUpdated": "2026-04-23T04:32:33.738Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -1936,9 +1936,9 @@
     "misconductConsequences": [],
     "scoreBreakdown": {
       "billsSponsored": {
-        "raw": 43,
+        "raw": 44,
         "weight": 1.2,
-        "contribution": 51.6
+        "contribution": 52.8
       },
       "billsCosponsored": {
         "raw": 142,
@@ -1988,7 +1988,7 @@
         "weight": -10,
         "contribution": 0
       },
-      "totalPowerScore": 185.8
+      "totalPowerScore": 187
     }
   },
   {
@@ -2115,7 +2115,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 94.6,
-    "lastUpdated": "2026-04-22T04:17:56.202Z",
+    "lastUpdated": "2026-04-23T04:32:33.738Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -2191,7 +2191,7 @@
     "office": "Senator",
     "photo": "https://www.congress.gov/img/member/m001176_200.jpg",
     "sponsoredBills": 267,
-    "cosponsoredBills": 571,
+    "cosponsoredBills": 574,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 1,
     "committees": [
@@ -2330,8 +2330,8 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "powerScore": 703,
-    "lastUpdated": "2026-04-22T04:17:56.202Z",
+    "powerScore": 704.8,
+    "lastUpdated": "2026-04-23T04:32:33.738Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -2345,9 +2345,9 @@
         "contribution": 320.4
       },
       "billsCosponsored": {
-        "raw": 571,
+        "raw": 574,
         "weight": 0.6,
-        "contribution": 342.59999999999997
+        "contribution": 344.4
       },
       "billsEnacted": {
         "raw": 0,
@@ -2392,7 +2392,7 @@
         "weight": -10,
         "contribution": 0
       },
-      "totalPowerScore": 703
+      "totalPowerScore": 704.8
     }
   },
   {
@@ -2406,8 +2406,8 @@
     "party": "Democrat",
     "office": "Senator",
     "photo": "https://www.congress.gov/img/member/r000122_200.jpg",
-    "sponsoredBills": 153,
-    "cosponsoredBills": 288,
+    "sponsoredBills": 154,
+    "cosponsoredBills": 289,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 1,
     "committees": [
@@ -2560,8 +2560,8 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "powerScore": 395.4,
-    "lastUpdated": "2026-04-22T04:17:56.202Z",
+    "powerScore": 397.2,
+    "lastUpdated": "2026-04-23T04:32:33.738Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -2570,14 +2570,14 @@
     "misconductConsequences": [],
     "scoreBreakdown": {
       "billsSponsored": {
-        "raw": 153,
+        "raw": 154,
         "weight": 1.2,
-        "contribution": 183.6
+        "contribution": 184.79999999999998
       },
       "billsCosponsored": {
-        "raw": 288,
+        "raw": 289,
         "weight": 0.6,
-        "contribution": 172.79999999999998
+        "contribution": 173.4
       },
       "billsEnacted": {
         "raw": 0,
@@ -2622,7 +2622,7 @@
         "weight": -10,
         "contribution": 0
       },
-      "totalPowerScore": 395.4
+      "totalPowerScore": 397.2
     }
   },
   {
@@ -2763,7 +2763,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 330.2,
-    "lastUpdated": "2026-04-22T04:17:56.202Z",
+    "lastUpdated": "2026-04-23T04:32:33.738Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -2838,8 +2838,8 @@
     "party": "Democrat",
     "office": "Senator",
     "photo": "https://www.congress.gov/img/member/s001181_200.jpg",
-    "sponsoredBills": 246,
-    "cosponsoredBills": 477,
+    "sponsoredBills": 247,
+    "cosponsoredBills": 479,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 4,
     "committees": [
@@ -3006,8 +3006,8 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "powerScore": 631.4,
-    "lastUpdated": "2026-04-22T04:17:56.202Z",
+    "powerScore": 633.8,
+    "lastUpdated": "2026-04-23T04:32:33.738Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -3016,14 +3016,14 @@
     "misconductConsequences": [],
     "scoreBreakdown": {
       "billsSponsored": {
-        "raw": 246,
+        "raw": 247,
         "weight": 1.2,
-        "contribution": 295.2
+        "contribution": 296.4
       },
       "billsCosponsored": {
-        "raw": 477,
+        "raw": 479,
         "weight": 0.6,
-        "contribution": 286.2
+        "contribution": 287.4
       },
       "billsEnacted": {
         "raw": 0,
@@ -3068,7 +3068,7 @@
         "weight": -10,
         "contribution": 0
       },
-      "totalPowerScore": 631.4
+      "totalPowerScore": 633.8
     }
   },
   {
@@ -3083,7 +3083,7 @@
     "office": "Senator",
     "photo": "https://www.congress.gov/img/member/w000805_200.jpg",
     "sponsoredBills": 104,
-    "cosponsoredBills": 311,
+    "cosponsoredBills": 312,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 2,
     "committees": [
@@ -3173,8 +3173,8 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "powerScore": 340.4,
-    "lastUpdated": "2026-04-22T04:17:56.202Z",
+    "powerScore": 341,
+    "lastUpdated": "2026-04-23T04:32:33.738Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -3188,9 +3188,9 @@
         "contribution": 124.8
       },
       "billsCosponsored": {
-        "raw": 311,
+        "raw": 312,
         "weight": 0.6,
-        "contribution": 186.6
+        "contribution": 187.2
       },
       "billsEnacted": {
         "raw": 0,
@@ -3235,7 +3235,7 @@
         "weight": -10,
         "contribution": 0
       },
-      "totalPowerScore": 340.4
+      "totalPowerScore": 341
     }
   },
   {
@@ -3250,7 +3250,7 @@
     "office": "Senator",
     "photo": "https://www.congress.gov/img/member/g000555_200.jpg",
     "sponsoredBills": 62,
-    "cosponsoredBills": 399,
+    "cosponsoredBills": 401,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 2,
     "committees": [
@@ -3347,8 +3347,8 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "powerScore": 341.8,
-    "lastUpdated": "2026-04-22T04:17:56.202Z",
+    "powerScore": 343,
+    "lastUpdated": "2026-04-23T04:32:33.738Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -3362,9 +3362,9 @@
         "contribution": 74.39999999999999
       },
       "billsCosponsored": {
-        "raw": 399,
+        "raw": 401,
         "weight": 0.6,
-        "contribution": 239.39999999999998
+        "contribution": 240.6
       },
       "billsEnacted": {
         "raw": 0,
@@ -3409,7 +3409,7 @@
         "weight": -10,
         "contribution": 0
       },
-      "totalPowerScore": 341.8
+      "totalPowerScore": 343
     }
   },
   {
@@ -3423,8 +3423,8 @@
     "party": "Democrat",
     "office": "Senator",
     "photo": "https://www.congress.gov/img/member/c001088_200.jpg",
-    "sponsoredBills": 128,
-    "cosponsoredBills": 471,
+    "sponsoredBills": 129,
+    "cosponsoredBills": 473,
     "becameLawBills": 1,
     "becameLawCosponsoredBills": 1,
     "committees": [
@@ -3570,8 +3570,8 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "powerScore": 481.2,
-    "lastUpdated": "2026-04-22T04:17:56.202Z",
+    "powerScore": 483.6,
+    "lastUpdated": "2026-04-23T04:32:33.738Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -3580,14 +3580,14 @@
     "misconductConsequences": [],
     "scoreBreakdown": {
       "billsSponsored": {
-        "raw": 128,
+        "raw": 129,
         "weight": 1.2,
-        "contribution": 153.6
+        "contribution": 154.79999999999998
       },
       "billsCosponsored": {
-        "raw": 471,
+        "raw": 473,
         "weight": 0.6,
-        "contribution": 282.59999999999997
+        "contribution": 283.8
       },
       "billsEnacted": {
         "raw": 1,
@@ -3632,7 +3632,7 @@
         "weight": -10,
         "contribution": 0
       },
-      "totalPowerScore": 481.2
+      "totalPowerScore": 483.6
     }
   },
   {
@@ -3647,7 +3647,7 @@
     "office": "Senator",
     "photo": "https://www.congress.gov/img/member/b001230_200.jpg",
     "sponsoredBills": 73,
-    "cosponsoredBills": 365,
+    "cosponsoredBills": 368,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
     "committees": [
@@ -3765,8 +3765,8 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "powerScore": 329.6,
-    "lastUpdated": "2026-04-22T04:17:56.202Z",
+    "powerScore": 331.4,
+    "lastUpdated": "2026-04-23T04:32:33.738Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -3780,9 +3780,9 @@
         "contribution": 87.6
       },
       "billsCosponsored": {
-        "raw": 365,
+        "raw": 368,
         "weight": 0.6,
-        "contribution": 219
+        "contribution": 220.79999999999998
       },
       "billsEnacted": {
         "raw": 0,
@@ -3827,7 +3827,7 @@
         "weight": -10,
         "contribution": 0
       },
-      "totalPowerScore": 329.6
+      "totalPowerScore": 331.4
     }
   },
   {
@@ -3842,7 +3842,7 @@
     "office": "Senator",
     "photo": "https://www.congress.gov/img/member/b001267_200.jpg",
     "sponsoredBills": 272,
-    "cosponsoredBills": 344,
+    "cosponsoredBills": 347,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 2,
     "committees": [
@@ -3918,8 +3918,8 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "powerScore": 559.8,
-    "lastUpdated": "2026-04-22T04:17:56.202Z",
+    "powerScore": 561.6,
+    "lastUpdated": "2026-04-23T04:32:33.738Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -3933,9 +3933,9 @@
         "contribution": 326.4
       },
       "billsCosponsored": {
-        "raw": 344,
+        "raw": 347,
         "weight": 0.6,
-        "contribution": 206.4
+        "contribution": 208.2
       },
       "billsEnacted": {
         "raw": 0,
@@ -3980,7 +3980,7 @@
         "weight": -10,
         "contribution": 0
       },
-      "totalPowerScore": 559.8
+      "totalPowerScore": 561.6
     }
   },
   {
@@ -4114,7 +4114,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 491,
-    "lastUpdated": "2026-04-22T04:17:56.202Z",
+    "lastUpdated": "2026-04-23T04:32:33.738Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -4190,7 +4190,7 @@
     "office": "Senator",
     "photo": "https://www.congress.gov/img/member/b001277_200.jpg",
     "sponsoredBills": 146,
-    "cosponsoredBills": 712,
+    "cosponsoredBills": 713,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 3,
     "committees": [
@@ -4301,8 +4301,8 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "powerScore": 641.4,
-    "lastUpdated": "2026-04-22T04:17:56.202Z",
+    "powerScore": 642,
+    "lastUpdated": "2026-04-23T04:32:33.738Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -4316,9 +4316,9 @@
         "contribution": 175.2
       },
       "billsCosponsored": {
-        "raw": 712,
+        "raw": 713,
         "weight": 0.6,
-        "contribution": 427.2
+        "contribution": 427.8
       },
       "billsEnacted": {
         "raw": 0,
@@ -4363,7 +4363,7 @@
         "weight": -10,
         "contribution": 0
       },
-      "totalPowerScore": 641.4
+      "totalPowerScore": 642
     }
   },
   {
@@ -4532,7 +4532,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 198.8,
-    "lastUpdated": "2026-04-22T04:17:56.202Z",
+    "lastUpdated": "2026-04-23T04:32:33.738Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -4608,7 +4608,7 @@
     "office": "Senator",
     "photo": "https://www.congress.gov/img/member/c001047_200.jpg",
     "sponsoredBills": 26,
-    "cosponsoredBills": 286,
+    "cosponsoredBills": 287,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 5,
     "committees": [
@@ -4747,8 +4747,8 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "powerScore": 241.8,
-    "lastUpdated": "2026-04-22T04:17:56.202Z",
+    "powerScore": 242.4,
+    "lastUpdated": "2026-04-23T04:32:33.738Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -4762,9 +4762,9 @@
         "contribution": 31.2
       },
       "billsCosponsored": {
-        "raw": 286,
+        "raw": 287,
         "weight": 0.6,
-        "contribution": 171.6
+        "contribution": 172.2
       },
       "billsEnacted": {
         "raw": 0,
@@ -4809,7 +4809,7 @@
         "weight": -10,
         "contribution": 0
       },
-      "totalPowerScore": 241.8
+      "totalPowerScore": 242.4
     }
   },
   {
@@ -4824,7 +4824,7 @@
     "office": "Senator",
     "photo": "https://www.congress.gov/img/member/c001075_200.jpg",
     "sponsoredBills": 111,
-    "cosponsoredBills": 303,
+    "cosponsoredBills": 304,
     "becameLawBills": 1,
     "becameLawCosponsoredBills": 4,
     "committees": [
@@ -4928,8 +4928,8 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "powerScore": 351,
-    "lastUpdated": "2026-04-22T04:17:56.202Z",
+    "powerScore": 351.6,
+    "lastUpdated": "2026-04-23T04:32:33.738Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -4943,9 +4943,9 @@
         "contribution": 133.2
       },
       "billsCosponsored": {
-        "raw": 303,
+        "raw": 304,
         "weight": 0.6,
-        "contribution": 181.79999999999998
+        "contribution": 182.4
       },
       "billsEnacted": {
         "raw": 1,
@@ -4990,7 +4990,7 @@
         "weight": -10,
         "contribution": 0
       },
-      "totalPowerScore": 351
+      "totalPowerScore": 351.6
     }
   },
   {
@@ -5110,7 +5110,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 252.6,
-    "lastUpdated": "2026-04-22T04:17:56.202Z",
+    "lastUpdated": "2026-04-23T04:32:33.738Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -5284,7 +5284,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 312.2,
-    "lastUpdated": "2026-04-22T04:17:56.202Z",
+    "lastUpdated": "2026-04-23T04:32:33.738Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -5465,7 +5465,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 389.2,
-    "lastUpdated": "2026-04-22T04:17:56.202Z",
+    "lastUpdated": "2026-04-23T04:32:33.738Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -5540,8 +5540,8 @@
     "party": "Democrat",
     "office": "Senator",
     "photo": "https://www.congress.gov/img/member/h001042_200.jpg",
-    "sponsoredBills": 161,
-    "cosponsoredBills": 469,
+    "sponsoredBills": 162,
+    "cosponsoredBills": 470,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 2,
     "committees": [
@@ -5659,8 +5659,8 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "powerScore": 500.6,
-    "lastUpdated": "2026-04-22T04:17:56.202Z",
+    "powerScore": 502.4,
+    "lastUpdated": "2026-04-23T04:32:33.738Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -5669,14 +5669,14 @@
     "misconductConsequences": [],
     "scoreBreakdown": {
       "billsSponsored": {
-        "raw": 161,
+        "raw": 162,
         "weight": 1.2,
-        "contribution": 193.2
+        "contribution": 194.4
       },
       "billsCosponsored": {
-        "raw": 469,
+        "raw": 470,
         "weight": 0.6,
-        "contribution": 281.4
+        "contribution": 282
       },
       "billsEnacted": {
         "raw": 0,
@@ -5721,7 +5721,7 @@
         "weight": -10,
         "contribution": 0
       },
-      "totalPowerScore": 500.6
+      "totalPowerScore": 502.4
     }
   },
   {
@@ -5855,7 +5855,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 177.2,
-    "lastUpdated": "2026-04-22T04:17:56.202Z",
+    "lastUpdated": "2026-04-23T04:32:33.738Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -6008,7 +6008,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 88,
-    "lastUpdated": "2026-04-22T04:17:56.202Z",
+    "lastUpdated": "2026-04-23T04:32:33.738Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -6161,7 +6161,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 305,
-    "lastUpdated": "2026-04-22T04:17:56.202Z",
+    "lastUpdated": "2026-04-23T04:32:33.738Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -6356,7 +6356,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 404.6,
-    "lastUpdated": "2026-04-22T04:17:56.202Z",
+    "lastUpdated": "2026-04-23T04:32:33.738Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -6432,7 +6432,7 @@
     "office": "Senator",
     "photo": "https://www.congress.gov/img/member/l000570_200.jpg",
     "sponsoredBills": 150,
-    "cosponsoredBills": 432,
+    "cosponsoredBills": 435,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 2,
     "committees": [
@@ -6552,8 +6552,8 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "powerScore": 458.2,
-    "lastUpdated": "2026-04-22T04:17:56.202Z",
+    "powerScore": 460,
+    "lastUpdated": "2026-04-23T04:32:33.738Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -6590,9 +6590,9 @@
         "contribution": 180
       },
       "billsCosponsored": {
-        "raw": 432,
+        "raw": 435,
         "weight": 0.6,
-        "contribution": 259.2
+        "contribution": 261
       },
       "billsEnacted": {
         "raw": 0,
@@ -6637,7 +6637,7 @@
         "weight": -10,
         "contribution": -10
       },
-      "totalPowerScore": 458.2
+      "totalPowerScore": 460
     }
   },
   {
@@ -6651,8 +6651,8 @@
     "party": "Democrat",
     "office": "Senator",
     "photo": "https://www.congress.gov/img/member/m000133_200.jpg",
-    "sponsoredBills": 185,
-    "cosponsoredBills": 433,
+    "sponsoredBills": 189,
+    "cosponsoredBills": 436,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 1,
     "committees": [
@@ -6749,8 +6749,8 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "powerScore": 502.8,
-    "lastUpdated": "2026-04-22T04:17:56.202Z",
+    "powerScore": 509.4,
+    "lastUpdated": "2026-04-23T04:32:33.738Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -6759,14 +6759,14 @@
     "misconductConsequences": [],
     "scoreBreakdown": {
       "billsSponsored": {
-        "raw": 185,
+        "raw": 189,
         "weight": 1.2,
-        "contribution": 222
+        "contribution": 226.79999999999998
       },
       "billsCosponsored": {
-        "raw": 433,
+        "raw": 436,
         "weight": 0.6,
-        "contribution": 259.8
+        "contribution": 261.59999999999997
       },
       "billsEnacted": {
         "raw": 0,
@@ -6811,7 +6811,7 @@
         "weight": -10,
         "contribution": 0
       },
-      "totalPowerScore": 502.8
+      "totalPowerScore": 509.4
     }
   },
   {
@@ -6826,7 +6826,7 @@
     "office": "Senator",
     "photo": "https://www.congress.gov/img/member/m000934_200.jpg",
     "sponsoredBills": 88,
-    "cosponsoredBills": 184,
+    "cosponsoredBills": 186,
     "becameLawBills": 1,
     "becameLawCosponsoredBills": 3,
     "committees": [
@@ -6958,8 +6958,8 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "powerScore": 257,
-    "lastUpdated": "2026-04-22T04:17:56.202Z",
+    "powerScore": 258.2,
+    "lastUpdated": "2026-04-23T04:32:33.738Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -6973,9 +6973,9 @@
         "contribution": 105.6
       },
       "billsCosponsored": {
-        "raw": 184,
+        "raw": 186,
         "weight": 0.6,
-        "contribution": 110.39999999999999
+        "contribution": 111.6
       },
       "billsEnacted": {
         "raw": 1,
@@ -7020,7 +7020,7 @@
         "weight": -10,
         "contribution": 0
       },
-      "totalPowerScore": 257
+      "totalPowerScore": 258.2
     }
   },
   {
@@ -7147,7 +7147,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 267.6,
-    "lastUpdated": "2026-04-22T04:17:56.202Z",
+    "lastUpdated": "2026-04-23T04:32:33.738Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -7223,7 +7223,7 @@
     "office": "Senator",
     "photo": "https://upload.wikimedia.org/wikipedia/commons/f/fb/Chris_Murphy_official_photo.jpg",
     "sponsoredBills": 124,
-    "cosponsoredBills": 232,
+    "cosponsoredBills": 234,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
     "committees": [
@@ -7327,8 +7327,8 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "powerScore": 309,
-    "lastUpdated": "2026-04-22T04:17:56.202Z",
+    "powerScore": 310.2,
+    "lastUpdated": "2026-04-23T04:32:33.738Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -7342,9 +7342,9 @@
         "contribution": 148.79999999999998
       },
       "billsCosponsored": {
-        "raw": 232,
+        "raw": 234,
         "weight": 0.6,
-        "contribution": 139.2
+        "contribution": 140.4
       },
       "billsEnacted": {
         "raw": 0,
@@ -7389,7 +7389,7 @@
         "weight": -10,
         "contribution": 0
       },
-      "totalPowerScore": 309
+      "totalPowerScore": 310.2
     }
   },
   {
@@ -7544,7 +7544,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 279,
-    "lastUpdated": "2026-04-22T04:17:56.202Z",
+    "lastUpdated": "2026-04-23T04:32:33.738Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -7725,7 +7725,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 167.4,
-    "lastUpdated": "2026-04-22T04:17:56.202Z",
+    "lastUpdated": "2026-04-23T04:32:33.738Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -7948,7 +7948,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 418.8,
-    "lastUpdated": "2026-04-22T04:17:56.202Z",
+    "lastUpdated": "2026-04-23T04:32:33.738Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -8023,8 +8023,8 @@
     "party": "Democrat",
     "office": "Senator",
     "photo": "https://www.congress.gov/img/member/677d870dfdb6cf36bbb649b3_200.jpg",
-    "sponsoredBills": 170,
-    "cosponsoredBills": 521,
+    "sponsoredBills": 171,
+    "cosponsoredBills": 522,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 3,
     "committees": [
@@ -8130,8 +8130,8 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "powerScore": 534.6,
-    "lastUpdated": "2026-04-22T04:17:56.202Z",
+    "powerScore": 536.4,
+    "lastUpdated": "2026-04-23T04:32:33.738Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -8152,14 +8152,14 @@
     ],
     "scoreBreakdown": {
       "billsSponsored": {
-        "raw": 170,
+        "raw": 171,
         "weight": 1.2,
-        "contribution": 204
+        "contribution": 205.2
       },
       "billsCosponsored": {
-        "raw": 521,
+        "raw": 522,
         "weight": 0.6,
-        "contribution": 312.59999999999997
+        "contribution": 313.2
       },
       "billsEnacted": {
         "raw": 0,
@@ -8204,7 +8204,7 @@
         "weight": -10,
         "contribution": -10
       },
-      "totalPowerScore": 534.6
+      "totalPowerScore": 536.4
     }
   },
   {
@@ -8219,7 +8219,7 @@
     "office": "Senator",
     "photo": "https://www.congress.gov/img/member/s000148_200.jpg",
     "sponsoredBills": 56,
-    "cosponsoredBills": 217,
+    "cosponsoredBills": 218,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
     "committees": [
@@ -8246,8 +8246,8 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "powerScore": 201.4,
-    "lastUpdated": "2026-04-22T04:17:56.202Z",
+    "powerScore": 202,
+    "lastUpdated": "2026-04-23T04:32:33.738Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -8261,9 +8261,9 @@
         "contribution": 67.2
       },
       "billsCosponsored": {
-        "raw": 217,
+        "raw": 218,
         "weight": 0.6,
-        "contribution": 130.2
+        "contribution": 130.79999999999998
       },
       "billsEnacted": {
         "raw": 0,
@@ -8308,7 +8308,7 @@
         "weight": -10,
         "contribution": 0
       },
-      "totalPowerScore": 201.4
+      "totalPowerScore": 202
     }
   },
   {
@@ -8323,7 +8323,7 @@
     "office": "Senator",
     "photo": "https://www.banking.senate.gov/themes/banking/images/scott_official.jpg",
     "sponsoredBills": 69,
-    "cosponsoredBills": 144,
+    "cosponsoredBills": 145,
     "becameLawBills": 1,
     "becameLawCosponsoredBills": 4,
     "committees": [
@@ -8441,8 +8441,8 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "powerScore": 205.2,
-    "lastUpdated": "2026-04-22T04:17:56.202Z",
+    "powerScore": 205.8,
+    "lastUpdated": "2026-04-23T04:32:33.738Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -8456,9 +8456,9 @@
         "contribution": 82.8
       },
       "billsCosponsored": {
-        "raw": 144,
+        "raw": 145,
         "weight": 0.6,
-        "contribution": 86.39999999999999
+        "contribution": 87
       },
       "billsEnacted": {
         "raw": 1,
@@ -8503,7 +8503,7 @@
         "weight": -10,
         "contribution": 0
       },
-      "totalPowerScore": 205.2
+      "totalPowerScore": 205.8
     }
   },
   {
@@ -8630,7 +8630,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 193.6,
-    "lastUpdated": "2026-04-22T04:17:56.202Z",
+    "lastUpdated": "2026-04-23T04:32:33.738Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -8706,7 +8706,7 @@
     "office": "Senator",
     "photo": "https://www.congress.gov/img/member/v000128_200.jpg",
     "sponsoredBills": 132,
-    "cosponsoredBills": 600,
+    "cosponsoredBills": 601,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
     "committees": [
@@ -8824,8 +8824,8 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "powerScore": 545.4,
-    "lastUpdated": "2026-04-22T04:17:56.202Z",
+    "powerScore": 546,
+    "lastUpdated": "2026-04-23T04:32:33.738Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -8839,9 +8839,9 @@
         "contribution": 158.4
       },
       "billsCosponsored": {
-        "raw": 600,
+        "raw": 601,
         "weight": 0.6,
-        "contribution": 360
+        "contribution": 360.59999999999997
       },
       "billsEnacted": {
         "raw": 0,
@@ -8886,7 +8886,7 @@
         "weight": -10,
         "contribution": 0
       },
-      "totalPowerScore": 545.4
+      "totalPowerScore": 546
     }
   },
   {
@@ -8901,7 +8901,7 @@
     "office": "Senator",
     "photo": "https://upload.wikimedia.org/wikipedia/commons/d/d3/Peter_Welch_official_Senate_photo.jpg",
     "sponsoredBills": 244,
-    "cosponsoredBills": 588,
+    "cosponsoredBills": 590,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 2,
     "committees": [
@@ -9005,8 +9005,8 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "powerScore": 672.6,
-    "lastUpdated": "2026-04-22T04:17:56.202Z",
+    "powerScore": 673.8,
+    "lastUpdated": "2026-04-23T04:32:33.738Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -9020,9 +9020,9 @@
         "contribution": 292.8
       },
       "billsCosponsored": {
-        "raw": 588,
+        "raw": 590,
         "weight": 0.6,
-        "contribution": 352.8
+        "contribution": 354
       },
       "billsEnacted": {
         "raw": 0,
@@ -9067,7 +9067,7 @@
         "weight": -10,
         "contribution": 0
       },
-      "totalPowerScore": 672.6
+      "totalPowerScore": 673.8
     }
   },
   {
@@ -9081,7 +9081,7 @@
     "party": "Democrat",
     "office": "Senator",
     "photo": "https://www.congress.gov/img/member/w000779_200.jpg",
-    "sponsoredBills": 216,
+    "sponsoredBills": 218,
     "cosponsoredBills": 519,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 1,
@@ -9193,8 +9193,8 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "powerScore": 606.6,
-    "lastUpdated": "2026-04-22T04:17:56.202Z",
+    "powerScore": 609,
+    "lastUpdated": "2026-04-23T04:32:33.738Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -9203,9 +9203,9 @@
     "misconductConsequences": [],
     "scoreBreakdown": {
       "billsSponsored": {
-        "raw": 216,
+        "raw": 218,
         "weight": 1.2,
-        "contribution": 259.2
+        "contribution": 261.59999999999997
       },
       "billsCosponsored": {
         "raw": 519,
@@ -9255,7 +9255,7 @@
         "weight": -10,
         "contribution": 0
       },
-      "totalPowerScore": 606.6
+      "totalPowerScore": 609
     }
   },
   {
@@ -9361,7 +9361,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 221.8,
-    "lastUpdated": "2026-04-22T04:17:56.202Z",
+    "lastUpdated": "2026-04-23T04:32:33.738Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -9577,7 +9577,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 352.2,
-    "lastUpdated": "2026-04-22T04:17:56.202Z",
+    "lastUpdated": "2026-04-23T04:32:33.738Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -9737,7 +9737,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 238.2,
-    "lastUpdated": "2026-04-22T04:17:56.202Z",
+    "lastUpdated": "2026-04-23T04:32:33.738Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -9918,7 +9918,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 428.4,
-    "lastUpdated": "2026-04-22T04:17:56.202Z",
+    "lastUpdated": "2026-04-23T04:32:33.738Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -9994,7 +9994,7 @@
     "office": "Senator",
     "photo": "https://www.congress.gov/img/member/w000817_200.jpg",
     "sponsoredBills": 222,
-    "cosponsoredBills": 454,
+    "cosponsoredBills": 456,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
     "committees": [
@@ -10119,8 +10119,8 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "powerScore": 562.8,
-    "lastUpdated": "2026-04-22T04:17:56.202Z",
+    "powerScore": 564,
+    "lastUpdated": "2026-04-23T04:32:33.738Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -10134,9 +10134,9 @@
         "contribution": 266.4
       },
       "billsCosponsored": {
-        "raw": 454,
+        "raw": 456,
         "weight": 0.6,
-        "contribution": 272.4
+        "contribution": 273.59999999999997
       },
       "billsEnacted": {
         "raw": 0,
@@ -10181,7 +10181,7 @@
         "weight": -10,
         "contribution": 0
       },
-      "totalPowerScore": 562.8
+      "totalPowerScore": 564
     }
   },
   {
@@ -10280,7 +10280,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 412.6,
-    "lastUpdated": "2026-04-22T04:17:56.202Z",
+    "lastUpdated": "2026-04-23T04:32:33.738Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -10461,7 +10461,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 319.2,
-    "lastUpdated": "2026-04-22T04:17:56.202Z",
+    "lastUpdated": "2026-04-23T04:32:33.738Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -10649,7 +10649,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 262.4,
-    "lastUpdated": "2026-04-22T04:17:56.202Z",
+    "lastUpdated": "2026-04-23T04:32:33.738Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -10893,7 +10893,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 188.2,
-    "lastUpdated": "2026-04-22T04:17:56.202Z",
+    "lastUpdated": "2026-04-23T04:32:33.738Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -11090,7 +11090,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 151.4,
-    "lastUpdated": "2026-04-22T04:17:56.202Z",
+    "lastUpdated": "2026-04-23T04:32:33.738Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -11201,7 +11201,7 @@
     "office": "Senator",
     "photo": "https://www.congress.gov/img/member/c001098_200.jpg",
     "sponsoredBills": 181,
-    "cosponsoredBills": 234,
+    "cosponsoredBills": 235,
     "becameLawBills": 1,
     "becameLawCosponsoredBills": 6,
     "committees": [
@@ -11333,8 +11333,8 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "powerScore": 411.6,
-    "lastUpdated": "2026-04-22T04:17:56.202Z",
+    "powerScore": 412.2,
+    "lastUpdated": "2026-04-23T04:32:33.738Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -11348,9 +11348,9 @@
         "contribution": 217.2
       },
       "billsCosponsored": {
-        "raw": 234,
+        "raw": 235,
         "weight": 0.6,
-        "contribution": 140.4
+        "contribution": 141
       },
       "billsEnacted": {
         "raw": 1,
@@ -11395,7 +11395,7 @@
         "weight": -10,
         "contribution": 0
       },
-      "totalPowerScore": 411.6
+      "totalPowerScore": 412.2
     }
   },
   {
@@ -11409,8 +11409,8 @@
     "party": "Democrat",
     "office": "Senator",
     "photo": "https://www.congress.gov/img/member/k000384_200.jpg",
-    "sponsoredBills": 198,
-    "cosponsoredBills": 461,
+    "sponsoredBills": 199,
+    "cosponsoredBills": 462,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
     "committees": [
@@ -11507,8 +11507,8 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "powerScore": 532.2,
-    "lastUpdated": "2026-04-22T04:17:56.202Z",
+    "powerScore": 534,
+    "lastUpdated": "2026-04-23T04:32:33.738Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -11517,14 +11517,14 @@
     "misconductConsequences": [],
     "scoreBreakdown": {
       "billsSponsored": {
-        "raw": 198,
+        "raw": 199,
         "weight": 1.2,
-        "contribution": 237.6
+        "contribution": 238.79999999999998
       },
       "billsCosponsored": {
-        "raw": 461,
+        "raw": 462,
         "weight": 0.6,
-        "contribution": 276.59999999999997
+        "contribution": 277.2
       },
       "billsEnacted": {
         "raw": 0,
@@ -11569,7 +11569,7 @@
         "weight": -10,
         "contribution": 0
       },
-      "totalPowerScore": 532.2
+      "totalPowerScore": 534
     }
   },
   {
@@ -11584,7 +11584,7 @@
     "office": "Senator",
     "photo": "https://upload.wikimedia.org/wikipedia/commons/2/24/Cory_Booker%2C_official_portrait_%28119th_Congress%29.jpg",
     "sponsoredBills": 223,
-    "cosponsoredBills": 647,
+    "cosponsoredBills": 649,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 4,
     "committees": [
@@ -11695,8 +11695,8 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "powerScore": 690.8,
-    "lastUpdated": "2026-04-22T04:17:56.202Z",
+    "powerScore": 692,
+    "lastUpdated": "2026-04-23T04:32:33.738Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -11710,9 +11710,9 @@
         "contribution": 267.59999999999997
       },
       "billsCosponsored": {
-        "raw": 647,
+        "raw": 649,
         "weight": 0.6,
-        "contribution": 388.2
+        "contribution": 389.4
       },
       "billsEnacted": {
         "raw": 0,
@@ -11757,7 +11757,7 @@
         "weight": -10,
         "contribution": 0
       },
-      "totalPowerScore": 690.8
+      "totalPowerScore": 692
     }
   },
   {
@@ -11772,7 +11772,7 @@
     "office": "Senator",
     "photo": "https://www.congress.gov/img/member/c6870f487cf4bc9a568d8afbe61d754b_200.jpg",
     "sponsoredBills": 98,
-    "cosponsoredBills": 360,
+    "cosponsoredBills": 361,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 4,
     "committees": [
@@ -11862,8 +11862,8 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "powerScore": 362.6,
-    "lastUpdated": "2026-04-22T04:17:56.202Z",
+    "powerScore": 363.2,
+    "lastUpdated": "2026-04-23T04:32:33.738Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -11877,9 +11877,9 @@
         "contribution": 117.6
       },
       "billsCosponsored": {
-        "raw": 360,
+        "raw": 361,
         "weight": 0.6,
-        "contribution": 216
+        "contribution": 216.6
       },
       "billsEnacted": {
         "raw": 0,
@@ -11924,7 +11924,7 @@
         "weight": -10,
         "contribution": 0
       },
-      "totalPowerScore": 362.6
+      "totalPowerScore": 363.2
     }
   },
   {
@@ -12044,7 +12044,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 312.6,
-    "lastUpdated": "2026-04-22T04:17:56.202Z",
+    "lastUpdated": "2026-04-23T04:32:33.738Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -12120,7 +12120,7 @@
     "office": "Senator",
     "photo": "https://www.congress.gov/img/member/e000295_200.jpg",
     "sponsoredBills": 107,
-    "cosponsoredBills": 191,
+    "cosponsoredBills": 192,
     "becameLawBills": 1,
     "becameLawCosponsoredBills": 5,
     "committees": [
@@ -12217,8 +12217,8 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "powerScore": 287,
-    "lastUpdated": "2026-04-22T04:17:56.202Z",
+    "powerScore": 287.6,
+    "lastUpdated": "2026-04-23T04:32:33.738Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -12232,9 +12232,9 @@
         "contribution": 128.4
       },
       "billsCosponsored": {
-        "raw": 191,
+        "raw": 192,
         "weight": 0.6,
-        "contribution": 114.6
+        "contribution": 115.19999999999999
       },
       "billsEnacted": {
         "raw": 1,
@@ -12279,7 +12279,7 @@
         "weight": -10,
         "contribution": 0
       },
-      "totalPowerScore": 287
+      "totalPowerScore": 287.6
     }
   },
   {
@@ -12413,7 +12413,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 327.2,
-    "lastUpdated": "2026-04-22T04:17:56.202Z",
+    "lastUpdated": "2026-04-23T04:32:33.738Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -12489,7 +12489,7 @@
     "office": "Senator",
     "photo": "https://www.congress.gov/img/member/r000605_200.jpg",
     "sponsoredBills": 64,
-    "cosponsoredBills": 223,
+    "cosponsoredBills": 224,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 3,
     "committees": [
@@ -12628,8 +12628,8 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "powerScore": 245.6,
-    "lastUpdated": "2026-04-22T04:17:56.202Z",
+    "powerScore": 246.2,
+    "lastUpdated": "2026-04-23T04:32:33.738Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -12643,9 +12643,9 @@
         "contribution": 76.8
       },
       "billsCosponsored": {
-        "raw": 223,
+        "raw": 224,
         "weight": 0.6,
-        "contribution": 133.79999999999998
+        "contribution": 134.4
       },
       "billsEnacted": {
         "raw": 0,
@@ -12690,7 +12690,7 @@
         "weight": -10,
         "contribution": 0
       },
-      "totalPowerScore": 245.6
+      "totalPowerScore": 246.2
     }
   },
   {
@@ -12838,7 +12838,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 290.6,
-    "lastUpdated": "2026-04-22T04:17:56.202Z",
+    "lastUpdated": "2026-04-23T04:32:33.738Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -12914,7 +12914,7 @@
     "office": "Senator",
     "photo": "https://www.congress.gov/img/member/h001076_200.jpg",
     "sponsoredBills": 85,
-    "cosponsoredBills": 286,
+    "cosponsoredBills": 289,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 4,
     "committees": [
@@ -13011,8 +13011,8 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "powerScore": 309.6,
-    "lastUpdated": "2026-04-22T04:17:56.202Z",
+    "powerScore": 311.4,
+    "lastUpdated": "2026-04-23T04:32:33.738Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -13026,9 +13026,9 @@
         "contribution": 102
       },
       "billsCosponsored": {
-        "raw": 286,
+        "raw": 289,
         "weight": 0.6,
-        "contribution": 171.6
+        "contribution": 173.4
       },
       "billsEnacted": {
         "raw": 0,
@@ -13073,7 +13073,7 @@
         "weight": -10,
         "contribution": 0
       },
-      "totalPowerScore": 309.6
+      "totalPowerScore": 311.4
     }
   },
   {
@@ -13087,8 +13087,8 @@
     "party": "Democrat",
     "office": "Senator",
     "photo": "https://www.congress.gov/img/member/c001113_200.jpg",
-    "sponsoredBills": 183,
-    "cosponsoredBills": 365,
+    "sponsoredBills": 185,
+    "cosponsoredBills": 366,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 4,
     "committees": [
@@ -13192,8 +13192,8 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "powerScore": 473.6,
-    "lastUpdated": "2026-04-22T04:17:56.202Z",
+    "powerScore": 476.6,
+    "lastUpdated": "2026-04-23T04:32:33.738Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -13202,14 +13202,14 @@
     "misconductConsequences": [],
     "scoreBreakdown": {
       "billsSponsored": {
-        "raw": 183,
+        "raw": 185,
         "weight": 1.2,
-        "contribution": 219.6
+        "contribution": 222
       },
       "billsCosponsored": {
-        "raw": 365,
+        "raw": 366,
         "weight": 0.6,
-        "contribution": 219
+        "contribution": 219.6
       },
       "billsEnacted": {
         "raw": 0,
@@ -13254,7 +13254,7 @@
         "weight": -10,
         "contribution": 0
       },
-      "totalPowerScore": 473.6
+      "totalPowerScore": 476.6
     }
   },
   {
@@ -13395,7 +13395,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 298.6,
-    "lastUpdated": "2026-04-22T04:17:56.202Z",
+    "lastUpdated": "2026-04-23T04:32:33.738Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -13470,7 +13470,7 @@
     "party": "Republican",
     "office": "Senator",
     "photo": "https://www.congress.gov/img/member/677d83cbfdb6cf36bbb64998_200.jpg",
-    "sponsoredBills": 86,
+    "sponsoredBills": 87,
     "cosponsoredBills": 201,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 4,
@@ -13575,8 +13575,8 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "powerScore": 248.8,
-    "lastUpdated": "2026-04-22T04:17:56.202Z",
+    "powerScore": 250,
+    "lastUpdated": "2026-04-23T04:32:33.738Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -13585,9 +13585,9 @@
     "misconductConsequences": [],
     "scoreBreakdown": {
       "billsSponsored": {
-        "raw": 86,
+        "raw": 87,
         "weight": 1.2,
-        "contribution": 103.2
+        "contribution": 104.39999999999999
       },
       "billsCosponsored": {
         "raw": 201,
@@ -13637,7 +13637,7 @@
         "weight": -10,
         "contribution": 0
       },
-      "totalPowerScore": 248.8
+      "totalPowerScore": 250
     }
   },
   {
@@ -13651,7 +13651,7 @@
     "party": "Republican",
     "office": "Senator",
     "photo": "https://www.congress.gov/img/member/m001198_200.jpg",
-    "sponsoredBills": 76,
+    "sponsoredBills": 77,
     "cosponsoredBills": 246,
     "becameLawBills": 1,
     "becameLawCosponsoredBills": 3,
@@ -13742,8 +13742,8 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "powerScore": 274.8,
-    "lastUpdated": "2026-04-22T04:17:56.202Z",
+    "powerScore": 276,
+    "lastUpdated": "2026-04-23T04:32:33.738Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -13752,9 +13752,9 @@
     "misconductConsequences": [],
     "scoreBreakdown": {
       "billsSponsored": {
-        "raw": 76,
+        "raw": 77,
         "weight": 1.2,
-        "contribution": 91.2
+        "contribution": 92.39999999999999
       },
       "billsCosponsored": {
         "raw": 246,
@@ -13804,7 +13804,7 @@
         "weight": -10,
         "contribution": 0
       },
-      "totalPowerScore": 274.8
+      "totalPowerScore": 276
     }
   },
   {
@@ -13819,7 +13819,7 @@
     "office": "Senator",
     "photo": "https://www.congress.gov/img/member/b001305_200.jpg",
     "sponsoredBills": 60,
-    "cosponsoredBills": 343,
+    "cosponsoredBills": 345,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 4,
     "committees": [
@@ -13916,8 +13916,8 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "powerScore": 304.8,
-    "lastUpdated": "2026-04-22T04:17:56.202Z",
+    "powerScore": 306,
+    "lastUpdated": "2026-04-23T04:32:33.738Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -13931,9 +13931,9 @@
         "contribution": 72
       },
       "billsCosponsored": {
-        "raw": 343,
+        "raw": 345,
         "weight": 0.6,
-        "contribution": 205.79999999999998
+        "contribution": 207
       },
       "billsEnacted": {
         "raw": 0,
@@ -13978,7 +13978,7 @@
         "weight": -10,
         "contribution": 0
       },
-      "totalPowerScore": 304.8
+      "totalPowerScore": 306
     }
   },
   {
@@ -14098,7 +14098,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 488.4,
-    "lastUpdated": "2026-04-22T04:17:56.202Z",
+    "lastUpdated": "2026-04-23T04:32:33.738Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -14279,7 +14279,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 208,
-    "lastUpdated": "2026-04-22T04:17:56.202Z",
+    "lastUpdated": "2026-04-23T04:32:33.738Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -14355,7 +14355,7 @@
     "office": "Senator",
     "photo": "https://www.congress.gov/img/member/s001203_200.jpg",
     "sponsoredBills": 51,
-    "cosponsoredBills": 409,
+    "cosponsoredBills": 410,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
     "committees": [
@@ -14466,8 +14466,8 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "powerScore": 328.6,
-    "lastUpdated": "2026-04-22T04:17:56.202Z",
+    "powerScore": 329.2,
+    "lastUpdated": "2026-04-23T04:32:33.738Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -14481,9 +14481,9 @@
         "contribution": 61.199999999999996
       },
       "billsCosponsored": {
-        "raw": 409,
+        "raw": 410,
         "weight": 0.6,
-        "contribution": 245.39999999999998
+        "contribution": 246
       },
       "billsEnacted": {
         "raw": 0,
@@ -14528,7 +14528,7 @@
         "weight": -10,
         "contribution": 0
       },
-      "totalPowerScore": 328.6
+      "totalPowerScore": 329.2
     }
   },
   {
@@ -14669,7 +14669,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 245.8,
-    "lastUpdated": "2026-04-22T04:17:56.202Z",
+    "lastUpdated": "2026-04-23T04:32:33.738Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -14836,7 +14836,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 215.6,
-    "lastUpdated": "2026-04-22T04:17:56.202Z",
+    "lastUpdated": "2026-04-23T04:32:33.738Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -14912,7 +14912,7 @@
     "office": "Senator",
     "photo": "https://www.congress.gov/img/member/677d84cbfdb6cf36bbb649a1_200.jpg",
     "sponsoredBills": 90,
-    "cosponsoredBills": 401,
+    "cosponsoredBills": 404,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 0,
     "committees": [
@@ -15030,8 +15030,8 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "powerScore": 369.6,
-    "lastUpdated": "2026-04-22T04:17:56.202Z",
+    "powerScore": 371.4,
+    "lastUpdated": "2026-04-23T04:32:33.738Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -15045,9 +15045,9 @@
         "contribution": 108
       },
       "billsCosponsored": {
-        "raw": 401,
+        "raw": 404,
         "weight": 0.6,
-        "contribution": 240.6
+        "contribution": 242.39999999999998
       },
       "billsEnacted": {
         "raw": 0,
@@ -15092,7 +15092,7 @@
         "weight": -10,
         "contribution": 0
       },
-      "totalPowerScore": 369.6
+      "totalPowerScore": 371.4
     }
   },
   {
@@ -15107,7 +15107,7 @@
     "office": "Senator",
     "photo": "https://www.congress.gov/img/member/s001217_200.jpg",
     "sponsoredBills": 162,
-    "cosponsoredBills": 350,
+    "cosponsoredBills": 351,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 5,
     "committees": [
@@ -15211,8 +15211,8 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "powerScore": 442.4,
-    "lastUpdated": "2026-04-22T04:17:56.202Z",
+    "powerScore": 443,
+    "lastUpdated": "2026-04-23T04:32:33.738Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -15226,9 +15226,9 @@
         "contribution": 194.4
       },
       "billsCosponsored": {
-        "raw": 350,
+        "raw": 351,
         "weight": 0.6,
-        "contribution": 210
+        "contribution": 210.6
       },
       "billsEnacted": {
         "raw": 0,
@@ -15273,7 +15273,7 @@
         "weight": -10,
         "contribution": 0
       },
-      "totalPowerScore": 442.4
+      "totalPowerScore": 443
     }
   },
   {
@@ -15287,8 +15287,8 @@
     "party": "Republican",
     "office": "Senator",
     "photo": "https://www.congress.gov/img/member/h001089_200.jpg",
-    "sponsoredBills": 81,
-    "cosponsoredBills": 155,
+    "sponsoredBills": 82,
+    "cosponsoredBills": 156,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 3,
     "committees": [
@@ -15385,8 +15385,8 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "powerScore": 219.2,
-    "lastUpdated": "2026-04-22T04:17:56.202Z",
+    "powerScore": 221,
+    "lastUpdated": "2026-04-23T04:32:33.738Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -15395,14 +15395,14 @@
     "misconductConsequences": [],
     "scoreBreakdown": {
       "billsSponsored": {
-        "raw": 81,
+        "raw": 82,
         "weight": 1.2,
-        "contribution": 97.2
+        "contribution": 98.39999999999999
       },
       "billsCosponsored": {
-        "raw": 155,
+        "raw": 156,
         "weight": 0.6,
-        "contribution": 93
+        "contribution": 93.6
       },
       "billsEnacted": {
         "raw": 0,
@@ -15447,7 +15447,7 @@
         "weight": -10,
         "contribution": 0
       },
-      "totalPowerScore": 219.2
+      "totalPowerScore": 221
     }
   },
   {
@@ -15462,7 +15462,7 @@
     "office": "Senator",
     "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Mark_Kelly%2C_Official_Portrait_117th.jpg/500px-Mark_Kelly%2C_Official_Portrait_117th.jpg",
     "sponsoredBills": 111,
-    "cosponsoredBills": 370,
+    "cosponsoredBills": 372,
     "becameLawBills": 1,
     "becameLawCosponsoredBills": 4,
     "committees": [
@@ -15552,8 +15552,8 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "powerScore": 390.2,
-    "lastUpdated": "2026-04-22T04:17:56.203Z",
+    "powerScore": 391.4,
+    "lastUpdated": "2026-04-23T04:32:33.738Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -15567,9 +15567,9 @@
         "contribution": 133.2
       },
       "billsCosponsored": {
-        "raw": 370,
+        "raw": 372,
         "weight": 0.6,
-        "contribution": 222
+        "contribution": 223.2
       },
       "billsEnacted": {
         "raw": 1,
@@ -15614,7 +15614,7 @@
         "weight": -10,
         "contribution": 0
       },
-      "totalPowerScore": 390.2
+      "totalPowerScore": 391.4
     }
   },
   {
@@ -15629,7 +15629,7 @@
     "office": "Senator",
     "photo": "https://upload.wikimedia.org/wikipedia/commons/6/69/Cynthia_Lummis_U.S._Senator.jpg",
     "sponsoredBills": 56,
-    "cosponsoredBills": 297,
+    "cosponsoredBills": 298,
     "becameLawBills": 1,
     "becameLawCosponsoredBills": 5,
     "committees": [
@@ -15726,8 +15726,8 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "powerScore": 286.4,
-    "lastUpdated": "2026-04-22T04:17:56.203Z",
+    "powerScore": 287,
+    "lastUpdated": "2026-04-23T04:32:33.738Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -15741,9 +15741,9 @@
         "contribution": 67.2
       },
       "billsCosponsored": {
-        "raw": 297,
+        "raw": 298,
         "weight": 0.6,
-        "contribution": 178.2
+        "contribution": 178.79999999999998
       },
       "billsEnacted": {
         "raw": 1,
@@ -15788,7 +15788,7 @@
         "weight": -10,
         "contribution": 0
       },
-      "totalPowerScore": 286.4
+      "totalPowerScore": 287
     }
   },
   {
@@ -15802,8 +15802,8 @@
     "party": "Republican",
     "office": "Senator",
     "photo": "https://www.congress.gov/img/member/t000278_200.jpg",
-    "sponsoredBills": 61,
-    "cosponsoredBills": 206,
+    "sponsoredBills": 62,
+    "cosponsoredBills": 209,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 3,
     "committees": [
@@ -15909,8 +15909,8 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "powerScore": 216.8,
-    "lastUpdated": "2026-04-22T04:17:56.203Z",
+    "powerScore": 219.8,
+    "lastUpdated": "2026-04-23T04:32:33.738Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -15930,14 +15930,14 @@
     ],
     "scoreBreakdown": {
       "billsSponsored": {
-        "raw": 61,
+        "raw": 62,
         "weight": 1.2,
-        "contribution": 73.2
+        "contribution": 74.39999999999999
       },
       "billsCosponsored": {
-        "raw": 206,
+        "raw": 209,
         "weight": 0.6,
-        "contribution": 123.6
+        "contribution": 125.39999999999999
       },
       "billsEnacted": {
         "raw": 0,
@@ -15982,7 +15982,7 @@
         "weight": -10,
         "contribution": -10
       },
-      "totalPowerScore": 216.8
+      "totalPowerScore": 219.8
     }
   },
   {
@@ -16102,7 +16102,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 366.4,
-    "lastUpdated": "2026-04-22T04:17:56.203Z",
+    "lastUpdated": "2026-04-23T04:32:33.738Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -16311,7 +16311,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 189.8,
-    "lastUpdated": "2026-04-22T04:17:56.203Z",
+    "lastUpdated": "2026-04-23T04:32:33.738Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -16520,7 +16520,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 668.6,
-    "lastUpdated": "2026-04-22T04:17:56.203Z",
+    "lastUpdated": "2026-04-23T04:32:33.738Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -16666,7 +16666,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 173.2,
-    "lastUpdated": "2026-04-22T04:17:56.203Z",
+    "lastUpdated": "2026-04-23T04:32:33.738Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -16742,7 +16742,7 @@
     "office": "Senator",
     "photo": "https://www.congress.gov/img/member/w000790_200.jpg",
     "sponsoredBills": 92,
-    "cosponsoredBills": 366,
+    "cosponsoredBills": 367,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 4,
     "committees": [
@@ -16846,8 +16846,8 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "powerScore": 363,
-    "lastUpdated": "2026-04-22T04:17:56.203Z",
+    "powerScore": 363.6,
+    "lastUpdated": "2026-04-23T04:32:33.738Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -16861,9 +16861,9 @@
         "contribution": 110.39999999999999
       },
       "billsCosponsored": {
-        "raw": 366,
+        "raw": 367,
         "weight": 0.6,
-        "contribution": 219.6
+        "contribution": 220.2
       },
       "billsEnacted": {
         "raw": 0,
@@ -16908,7 +16908,7 @@
         "weight": -10,
         "contribution": 0
       },
-      "totalPowerScore": 363
+      "totalPowerScore": 363.6
     }
   },
   {
@@ -17063,7 +17063,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 250.2,
-    "lastUpdated": "2026-04-22T04:17:56.203Z",
+    "lastUpdated": "2026-04-23T04:32:33.738Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -17139,7 +17139,7 @@
     "office": "Senator",
     "photo": "https://www.congress.gov/img/member/b66a0806e77f63e862391b15a0b1f753_200.jpg",
     "sponsoredBills": 62,
-    "cosponsoredBills": 150,
+    "cosponsoredBills": 151,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 3,
     "committees": [
@@ -17264,8 +17264,8 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "powerScore": 195.4,
-    "lastUpdated": "2026-04-22T04:17:56.203Z",
+    "powerScore": 196,
+    "lastUpdated": "2026-04-23T04:32:33.740Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -17279,9 +17279,9 @@
         "contribution": 74.39999999999999
       },
       "billsCosponsored": {
-        "raw": 150,
+        "raw": 151,
         "weight": 0.6,
-        "contribution": 90
+        "contribution": 90.6
       },
       "billsEnacted": {
         "raw": 0,
@@ -17326,7 +17326,7 @@
         "weight": -10,
         "contribution": 0
       },
-      "totalPowerScore": 195.4
+      "totalPowerScore": 196
     }
   },
   {
@@ -17341,7 +17341,7 @@
     "office": "Senator",
     "photo": "https://www.congress.gov/img/member/f000479_200.jpg",
     "sponsoredBills": 28,
-    "cosponsoredBills": 308,
+    "cosponsoredBills": 309,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 3,
     "committees": [
@@ -17424,8 +17424,8 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "powerScore": 240.4,
-    "lastUpdated": "2026-04-22T04:17:56.203Z",
+    "powerScore": 241,
+    "lastUpdated": "2026-04-23T04:32:33.740Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -17439,9 +17439,9 @@
         "contribution": 33.6
       },
       "billsCosponsored": {
-        "raw": 308,
+        "raw": 309,
         "weight": 0.6,
-        "contribution": 184.79999999999998
+        "contribution": 185.4
       },
       "billsEnacted": {
         "raw": 0,
@@ -17486,7 +17486,7 @@
         "weight": -10,
         "contribution": 0
       },
-      "totalPowerScore": 240.4
+      "totalPowerScore": 241
     }
   },
   {
@@ -17501,7 +17501,7 @@
     "office": "Senator",
     "photo": "https://www.congress.gov/img/member/r000618_200.jpg",
     "sponsoredBills": 68,
-    "cosponsoredBills": 302,
+    "cosponsoredBills": 303,
     "becameLawBills": 1,
     "becameLawCosponsoredBills": 5,
     "committees": [
@@ -17605,8 +17605,8 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "powerScore": 306.8,
-    "lastUpdated": "2026-04-22T04:17:56.203Z",
+    "powerScore": 307.4,
+    "lastUpdated": "2026-04-23T04:32:33.740Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -17620,9 +17620,9 @@
         "contribution": 81.6
       },
       "billsCosponsored": {
-        "raw": 302,
+        "raw": 303,
         "weight": 0.6,
-        "contribution": 181.2
+        "contribution": 181.79999999999998
       },
       "billsEnacted": {
         "raw": 1,
@@ -17667,7 +17667,7 @@
         "weight": -10,
         "contribution": 0
       },
-      "totalPowerScore": 306.8
+      "totalPowerScore": 307.4
     }
   },
   {
@@ -17773,7 +17773,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 323,
-    "lastUpdated": "2026-04-22T04:17:56.203Z",
+    "lastUpdated": "2026-04-23T04:32:33.740Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -17926,7 +17926,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 270,
-    "lastUpdated": "2026-04-22T04:17:56.203Z",
+    "lastUpdated": "2026-04-23T04:32:33.740Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -18114,7 +18114,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 162.2,
-    "lastUpdated": "2026-04-22T04:17:56.203Z",
+    "lastUpdated": "2026-04-23T04:32:33.740Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -18295,7 +18295,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 201.8,
-    "lastUpdated": "2026-04-22T04:17:56.203Z",
+    "lastUpdated": "2026-04-23T04:32:33.740Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -18370,8 +18370,8 @@
     "party": "Republican",
     "office": "Senator",
     "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Senator_Jim_Justice_Official_Portrait.jpg/960px-Senator_Jim_Justice_Official_Portrait.jpg",
-    "sponsoredBills": 12,
-    "cosponsoredBills": 238,
+    "sponsoredBills": 13,
+    "cosponsoredBills": 239,
     "becameLawBills": 0,
     "becameLawCosponsoredBills": 3,
     "committees": [
@@ -18454,8 +18454,8 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "powerScore": 178.2,
-    "lastUpdated": "2026-04-22T04:17:56.203Z",
+    "powerScore": 180,
+    "lastUpdated": "2026-04-23T04:32:33.740Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -18464,14 +18464,14 @@
     "misconductConsequences": [],
     "scoreBreakdown": {
       "billsSponsored": {
-        "raw": 12,
+        "raw": 13,
         "weight": 1.2,
-        "contribution": 14.399999999999999
+        "contribution": 15.6
       },
       "billsCosponsored": {
-        "raw": 238,
+        "raw": 239,
         "weight": 0.6,
-        "contribution": 142.79999999999998
+        "contribution": 143.4
       },
       "billsEnacted": {
         "raw": 0,
@@ -18516,7 +18516,7 @@
         "weight": -10,
         "contribution": 0
       },
-      "totalPowerScore": 178.2
+      "totalPowerScore": 180
     }
   },
   {
@@ -18615,7 +18615,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 138.4,
-    "lastUpdated": "2026-04-22T04:17:56.203Z",
+    "lastUpdated": "2026-04-23T04:32:33.740Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -18796,7 +18796,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 163,
-    "lastUpdated": "2026-04-22T04:17:56.203Z",
+    "lastUpdated": "2026-04-23T04:32:33.740Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
