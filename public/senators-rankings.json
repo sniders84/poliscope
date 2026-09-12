@@ -116,7 +116,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 301.8,
-    "lastUpdated": "2026-09-11T05:08:25.098Z",
+    "lastUpdated": "2026-09-12T05:07:34.386Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -332,7 +332,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 667,
-    "lastUpdated": "2026-09-11T05:08:25.098Z",
+    "lastUpdated": "2026-09-12T05:07:34.386Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -520,7 +520,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 420.4,
-    "lastUpdated": "2026-09-11T05:08:25.098Z",
+    "lastUpdated": "2026-09-12T05:07:34.386Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -729,7 +729,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 518.8,
-    "lastUpdated": "2026-09-11T05:08:25.098Z",
+    "lastUpdated": "2026-09-12T05:07:34.386Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -910,7 +910,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 260.4,
-    "lastUpdated": "2026-09-11T05:08:25.098Z",
+    "lastUpdated": "2026-09-12T05:07:34.387Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -1133,7 +1133,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 295.2,
-    "lastUpdated": "2026-09-11T05:08:25.099Z",
+    "lastUpdated": "2026-09-12T05:07:34.387Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -1335,7 +1335,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 297.8,
-    "lastUpdated": "2026-09-11T05:08:25.099Z",
+    "lastUpdated": "2026-09-12T05:07:34.387Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -1413,7 +1413,7 @@
     "sponsoredBills": 210,
     "cosponsoredBills": 331,
     "becameLawBills": 3,
-    "becameLawCosponsoredBills": 2,
+    "becameLawCosponsoredBills": 3,
     "committees": [
       {
         "committeeCode": "SSFI",
@@ -1543,8 +1543,8 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "powerScore": 506.6,
-    "lastUpdated": "2026-09-11T05:08:25.099Z",
+    "powerScore": 509.6,
+    "lastUpdated": "2026-09-12T05:07:34.387Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -1568,9 +1568,9 @@
         "contribution": 18
       },
       "billsEnactedCosponsored": {
-        "raw": 2,
+        "raw": 3,
         "weight": 3,
-        "contribution": 6
+        "contribution": 9
       },
       "committees": {
         "chair": {
@@ -1605,7 +1605,7 @@
         "weight": -10,
         "contribution": 0
       },
-      "totalPowerScore": 506.6
+      "totalPowerScore": 509.6
     }
   },
   {
@@ -1718,7 +1718,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 643.8,
-    "lastUpdated": "2026-09-11T05:08:25.099Z",
+    "lastUpdated": "2026-09-12T05:07:34.387Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -1927,7 +1927,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 227.8,
-    "lastUpdated": "2026-09-11T05:08:25.099Z",
+    "lastUpdated": "2026-09-12T05:07:34.387Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -2115,7 +2115,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 110.8,
-    "lastUpdated": "2026-09-11T05:08:25.099Z",
+    "lastUpdated": "2026-09-12T05:07:34.387Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -2331,7 +2331,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 853,
-    "lastUpdated": "2026-09-11T05:08:25.099Z",
+    "lastUpdated": "2026-09-12T05:07:34.387Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -2561,7 +2561,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 468.6,
-    "lastUpdated": "2026-09-11T05:08:25.099Z",
+    "lastUpdated": "2026-09-12T05:07:34.387Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -2639,7 +2639,7 @@
     "sponsoredBills": 103,
     "cosponsoredBills": 347,
     "becameLawBills": 0,
-    "becameLawCosponsoredBills": 5,
+    "becameLawCosponsoredBills": 6,
     "committees": [
       {
         "committeeCode": "SSEG",
@@ -2762,8 +2762,8 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "powerScore": 375.8,
-    "lastUpdated": "2026-09-11T05:08:25.099Z",
+    "powerScore": 378.8,
+    "lastUpdated": "2026-09-12T05:07:34.387Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -2787,9 +2787,9 @@
         "contribution": 0
       },
       "billsEnactedCosponsored": {
-        "raw": 5,
+        "raw": 6,
         "weight": 3,
-        "contribution": 15
+        "contribution": 18
       },
       "committees": {
         "chair": {
@@ -2824,7 +2824,7 @@
         "weight": -10,
         "contribution": 0
       },
-      "totalPowerScore": 375.8
+      "totalPowerScore": 378.8
     }
   },
   {
@@ -3007,7 +3007,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 811.4,
-    "lastUpdated": "2026-09-11T05:08:25.099Z",
+    "lastUpdated": "2026-09-12T05:07:34.387Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -3174,7 +3174,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 432.8,
-    "lastUpdated": "2026-09-11T05:08:25.099Z",
+    "lastUpdated": "2026-09-12T05:07:34.387Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -3348,7 +3348,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 443.2,
-    "lastUpdated": "2026-09-11T05:08:25.099Z",
+    "lastUpdated": "2026-09-12T05:07:34.387Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -3571,7 +3571,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 615.6,
-    "lastUpdated": "2026-09-11T05:08:25.099Z",
+    "lastUpdated": "2026-09-12T05:07:34.387Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -3766,7 +3766,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 417.2,
-    "lastUpdated": "2026-09-11T05:08:25.099Z",
+    "lastUpdated": "2026-09-12T05:07:34.387Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -3919,7 +3919,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 730.2,
-    "lastUpdated": "2026-09-11T05:08:25.099Z",
+    "lastUpdated": "2026-09-12T05:07:34.387Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -3997,7 +3997,7 @@
     "sponsoredBills": 190,
     "cosponsoredBills": 517,
     "becameLawBills": 0,
-    "becameLawCosponsoredBills": 6,
+    "becameLawCosponsoredBills": 7,
     "committees": [
       {
         "committeeCode": "SSCM",
@@ -4113,8 +4113,8 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "powerScore": 579.2,
-    "lastUpdated": "2026-09-11T05:08:25.099Z",
+    "powerScore": 582.2,
+    "lastUpdated": "2026-09-12T05:07:34.387Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -4138,9 +4138,9 @@
         "contribution": 0
       },
       "billsEnactedCosponsored": {
-        "raw": 6,
+        "raw": 7,
         "weight": 3,
-        "contribution": 18
+        "contribution": 21
       },
       "committees": {
         "chair": {
@@ -4175,7 +4175,7 @@
         "weight": -10,
         "contribution": 0
       },
-      "totalPowerScore": 579.2
+      "totalPowerScore": 582.2
     }
   },
   {
@@ -4302,7 +4302,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 844.2,
-    "lastUpdated": "2026-09-11T05:08:25.099Z",
+    "lastUpdated": "2026-09-12T05:07:34.387Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -4532,7 +4532,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 227.6,
-    "lastUpdated": "2026-09-11T05:08:25.099Z",
+    "lastUpdated": "2026-09-12T05:07:34.387Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -4610,7 +4610,7 @@
     "sponsoredBills": 35,
     "cosponsoredBills": 350,
     "becameLawBills": 1,
-    "becameLawCosponsoredBills": 6,
+    "becameLawCosponsoredBills": 7,
     "committees": [
       {
         "committeeCode": "SSAP",
@@ -4747,8 +4747,8 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "powerScore": 300,
-    "lastUpdated": "2026-09-11T05:08:25.099Z",
+    "powerScore": 303,
+    "lastUpdated": "2026-09-12T05:07:34.387Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -4772,9 +4772,9 @@
         "contribution": 6
       },
       "billsEnactedCosponsored": {
-        "raw": 6,
+        "raw": 7,
         "weight": 3,
-        "contribution": 18
+        "contribution": 21
       },
       "committees": {
         "chair": {
@@ -4809,7 +4809,7 @@
         "weight": -10,
         "contribution": 0
       },
-      "totalPowerScore": 300
+      "totalPowerScore": 303
     }
   },
   {
@@ -4826,7 +4826,7 @@
     "sponsoredBills": 151,
     "cosponsoredBills": 343,
     "becameLawBills": 1,
-    "becameLawCosponsoredBills": 6,
+    "becameLawCosponsoredBills": 7,
     "committees": [
       {
         "committeeCode": "SSEG",
@@ -4928,8 +4928,8 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "powerScore": 429,
-    "lastUpdated": "2026-09-11T05:08:25.099Z",
+    "powerScore": 432,
+    "lastUpdated": "2026-09-12T05:07:34.387Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -4953,9 +4953,9 @@
         "contribution": 6
       },
       "billsEnactedCosponsored": {
-        "raw": 6,
+        "raw": 7,
         "weight": 3,
-        "contribution": 18
+        "contribution": 21
       },
       "committees": {
         "chair": {
@@ -4990,7 +4990,7 @@
         "weight": -10,
         "contribution": 0
       },
-      "totalPowerScore": 429
+      "totalPowerScore": 432
     }
   },
   {
@@ -5110,7 +5110,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 286.8,
-    "lastUpdated": "2026-09-11T05:08:25.099Z",
+    "lastUpdated": "2026-09-12T05:07:34.387Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -5188,7 +5188,7 @@
     "sponsoredBills": 141,
     "cosponsoredBills": 276,
     "becameLawBills": 0,
-    "becameLawCosponsoredBills": 6,
+    "becameLawCosponsoredBills": 7,
     "committees": [
       {
         "committeeCode": "SSAF",
@@ -5283,8 +5283,8 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "powerScore": 384.8,
-    "lastUpdated": "2026-09-11T05:08:25.099Z",
+    "powerScore": 387.8,
+    "lastUpdated": "2026-09-12T05:07:34.387Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -5308,9 +5308,9 @@
         "contribution": 0
       },
       "billsEnactedCosponsored": {
-        "raw": 6,
+        "raw": 7,
         "weight": 3,
-        "contribution": 18
+        "contribution": 21
       },
       "committees": {
         "chair": {
@@ -5345,7 +5345,7 @@
         "weight": -10,
         "contribution": 0
       },
-      "totalPowerScore": 384.8
+      "totalPowerScore": 387.8
     }
   },
   {
@@ -5465,7 +5465,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 583.6,
-    "lastUpdated": "2026-09-11T05:08:25.099Z",
+    "lastUpdated": "2026-09-12T05:07:34.387Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -5660,7 +5660,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 626,
-    "lastUpdated": "2026-09-11T05:08:25.099Z",
+    "lastUpdated": "2026-09-12T05:07:34.387Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -5855,7 +5855,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 209,
-    "lastUpdated": "2026-09-11T05:08:25.099Z",
+    "lastUpdated": "2026-09-12T05:07:34.387Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -6008,7 +6008,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 112,
-    "lastUpdated": "2026-09-11T05:08:25.099Z",
+    "lastUpdated": "2026-09-12T05:07:34.387Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -6161,7 +6161,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 373.4,
-    "lastUpdated": "2026-09-11T05:08:25.099Z",
+    "lastUpdated": "2026-09-12T05:07:34.387Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -6356,7 +6356,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 469.4,
-    "lastUpdated": "2026-09-11T05:08:25.099Z",
+    "lastUpdated": "2026-09-12T05:07:34.387Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -6553,7 +6553,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 622.6,
-    "lastUpdated": "2026-09-11T05:08:25.099Z",
+    "lastUpdated": "2026-09-12T05:07:34.387Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -6750,7 +6750,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 618,
-    "lastUpdated": "2026-09-11T05:08:25.099Z",
+    "lastUpdated": "2026-09-12T05:07:34.387Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -6959,7 +6959,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 313.4,
-    "lastUpdated": "2026-09-11T05:08:25.099Z",
+    "lastUpdated": "2026-09-12T05:07:34.387Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -7147,7 +7147,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 341.4,
-    "lastUpdated": "2026-09-11T05:08:25.099Z",
+    "lastUpdated": "2026-09-12T05:07:34.387Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -7328,7 +7328,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 369,
-    "lastUpdated": "2026-09-11T05:08:25.099Z",
+    "lastUpdated": "2026-09-12T05:07:34.387Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -7544,7 +7544,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 361.2,
-    "lastUpdated": "2026-09-11T05:08:25.099Z",
+    "lastUpdated": "2026-09-12T05:07:34.387Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -7725,7 +7725,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 196.2,
-    "lastUpdated": "2026-09-11T05:08:25.099Z",
+    "lastUpdated": "2026-09-12T05:07:34.387Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -7948,7 +7948,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 511.2,
-    "lastUpdated": "2026-09-11T05:08:25.099Z",
+    "lastUpdated": "2026-09-12T05:07:34.387Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -8131,7 +8131,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 733.2,
-    "lastUpdated": "2026-09-11T05:08:25.099Z",
+    "lastUpdated": "2026-09-12T05:07:34.387Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -8247,7 +8247,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 251.8,
-    "lastUpdated": "2026-09-11T05:08:25.099Z",
+    "lastUpdated": "2026-09-12T05:07:34.387Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -8442,7 +8442,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 247.2,
-    "lastUpdated": "2026-09-11T05:08:25.099Z",
+    "lastUpdated": "2026-09-12T05:07:34.387Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -8630,7 +8630,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 245.2,
-    "lastUpdated": "2026-09-11T05:08:25.099Z",
+    "lastUpdated": "2026-09-12T05:07:34.387Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -8825,7 +8825,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 696.6,
-    "lastUpdated": "2026-09-11T05:08:25.099Z",
+    "lastUpdated": "2026-09-12T05:07:34.387Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -9006,7 +9006,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 843,
-    "lastUpdated": "2026-09-11T05:08:25.099Z",
+    "lastUpdated": "2026-09-12T05:07:34.387Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -9194,7 +9194,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 735.6,
-    "lastUpdated": "2026-09-11T05:08:25.099Z",
+    "lastUpdated": "2026-09-12T05:07:34.387Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -9361,7 +9361,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 271,
-    "lastUpdated": "2026-09-11T05:08:25.099Z",
+    "lastUpdated": "2026-09-12T05:07:34.387Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -9577,7 +9577,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 439.2,
-    "lastUpdated": "2026-09-11T05:08:25.099Z",
+    "lastUpdated": "2026-09-12T05:07:34.387Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -9655,7 +9655,7 @@
     "sponsoredBills": 111,
     "cosponsoredBills": 206,
     "becameLawBills": 1,
-    "becameLawCosponsoredBills": 2,
+    "becameLawCosponsoredBills": 3,
     "committees": [
       {
         "committeeCode": "SSAS",
@@ -9736,8 +9736,8 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "powerScore": 289.8,
-    "lastUpdated": "2026-09-11T05:08:25.099Z",
+    "powerScore": 292.8,
+    "lastUpdated": "2026-09-12T05:07:34.387Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -9761,9 +9761,9 @@
         "contribution": 6
       },
       "billsEnactedCosponsored": {
-        "raw": 2,
+        "raw": 3,
         "weight": 3,
-        "contribution": 6
+        "contribution": 9
       },
       "committees": {
         "chair": {
@@ -9798,7 +9798,7 @@
         "weight": -10,
         "contribution": 0
       },
-      "totalPowerScore": 289.8
+      "totalPowerScore": 292.8
     }
   },
   {
@@ -9918,7 +9918,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 554.4,
-    "lastUpdated": "2026-09-11T05:08:25.099Z",
+    "lastUpdated": "2026-09-12T05:07:34.387Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -10120,7 +10120,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 670.8,
-    "lastUpdated": "2026-09-11T05:08:25.099Z",
+    "lastUpdated": "2026-09-12T05:07:34.387Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -10280,7 +10280,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 479.2,
-    "lastUpdated": "2026-09-11T05:08:25.099Z",
+    "lastUpdated": "2026-09-12T05:07:34.387Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -10461,7 +10461,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 385.2,
-    "lastUpdated": "2026-09-11T05:08:25.099Z",
+    "lastUpdated": "2026-09-12T05:07:34.387Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -10649,7 +10649,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 317.6,
-    "lastUpdated": "2026-09-11T05:08:25.099Z",
+    "lastUpdated": "2026-09-12T05:07:34.387Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -10893,7 +10893,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 230.8,
-    "lastUpdated": "2026-09-11T05:08:25.099Z",
+    "lastUpdated": "2026-09-12T05:07:34.387Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -11090,7 +11090,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 151.4,
-    "lastUpdated": "2026-09-11T05:08:25.099Z",
+    "lastUpdated": "2026-09-12T05:07:34.387Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -11203,7 +11203,7 @@
     "sponsoredBills": 222,
     "cosponsoredBills": 281,
     "becameLawBills": 1,
-    "becameLawCosponsoredBills": 6,
+    "becameLawCosponsoredBills": 7,
     "committees": [
       {
         "committeeCode": "SSCM",
@@ -11333,8 +11333,8 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "powerScore": 489,
-    "lastUpdated": "2026-09-11T05:08:25.099Z",
+    "powerScore": 492,
+    "lastUpdated": "2026-09-12T05:07:34.387Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -11358,9 +11358,9 @@
         "contribution": 6
       },
       "billsEnactedCosponsored": {
-        "raw": 6,
+        "raw": 7,
         "weight": 3,
-        "contribution": 18
+        "contribution": 21
       },
       "committees": {
         "chair": {
@@ -11395,7 +11395,7 @@
         "weight": -10,
         "contribution": 0
       },
-      "totalPowerScore": 489
+      "totalPowerScore": 492
     }
   },
   {
@@ -11508,7 +11508,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 691.8,
-    "lastUpdated": "2026-09-11T05:08:25.099Z",
+    "lastUpdated": "2026-09-12T05:07:34.387Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -11696,7 +11696,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 881,
-    "lastUpdated": "2026-09-11T05:08:25.099Z",
+    "lastUpdated": "2026-09-12T05:07:34.387Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -11774,7 +11774,7 @@
     "sponsoredBills": 150,
     "cosponsoredBills": 439,
     "becameLawBills": 0,
-    "becameLawCosponsoredBills": 4,
+    "becameLawCosponsoredBills": 5,
     "committees": [
       {
         "committeeCode": "SSBK",
@@ -11862,8 +11862,8 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "powerScore": 472.4,
-    "lastUpdated": "2026-09-11T05:08:25.099Z",
+    "powerScore": 475.4,
+    "lastUpdated": "2026-09-12T05:07:34.387Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -11887,9 +11887,9 @@
         "contribution": 0
       },
       "billsEnactedCosponsored": {
-        "raw": 4,
+        "raw": 5,
         "weight": 3,
-        "contribution": 12
+        "contribution": 15
       },
       "committees": {
         "chair": {
@@ -11924,7 +11924,7 @@
         "weight": -10,
         "contribution": 0
       },
-      "totalPowerScore": 472.4
+      "totalPowerScore": 475.4
     }
   },
   {
@@ -12044,7 +12044,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 366,
-    "lastUpdated": "2026-09-11T05:08:25.099Z",
+    "lastUpdated": "2026-09-12T05:07:34.387Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -12218,7 +12218,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 332,
-    "lastUpdated": "2026-09-11T05:08:25.099Z",
+    "lastUpdated": "2026-09-12T05:07:34.387Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -12296,7 +12296,7 @@
     "sponsoredBills": 75,
     "cosponsoredBills": 417,
     "becameLawBills": 1,
-    "becameLawCosponsoredBills": 7,
+    "becameLawCosponsoredBills": 8,
     "committees": [
       {
         "committeeCode": "SSBK",
@@ -12412,8 +12412,8 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "powerScore": 390.2,
-    "lastUpdated": "2026-09-11T05:08:25.099Z",
+    "powerScore": 393.2,
+    "lastUpdated": "2026-09-12T05:07:34.387Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -12437,9 +12437,9 @@
         "contribution": 6
       },
       "billsEnactedCosponsored": {
-        "raw": 7,
+        "raw": 8,
         "weight": 3,
-        "contribution": 21
+        "contribution": 24
       },
       "committees": {
         "chair": {
@@ -12474,7 +12474,7 @@
         "weight": -10,
         "contribution": 0
       },
-      "totalPowerScore": 390.2
+      "totalPowerScore": 393.2
     }
   },
   {
@@ -12629,7 +12629,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 312.2,
-    "lastUpdated": "2026-09-11T05:08:25.099Z",
+    "lastUpdated": "2026-09-12T05:07:34.387Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -12838,7 +12838,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 366.8,
-    "lastUpdated": "2026-09-11T05:08:25.099Z",
+    "lastUpdated": "2026-09-12T05:07:34.387Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -13012,7 +13012,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 396,
-    "lastUpdated": "2026-09-11T05:08:25.099Z",
+    "lastUpdated": "2026-09-12T05:07:34.387Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -13193,7 +13193,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 607.4,
-    "lastUpdated": "2026-09-11T05:08:25.099Z",
+    "lastUpdated": "2026-09-12T05:07:34.387Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -13395,7 +13395,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 370.6,
-    "lastUpdated": "2026-09-11T05:08:25.099Z",
+    "lastUpdated": "2026-09-12T05:07:34.387Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -13576,7 +13576,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 313,
-    "lastUpdated": "2026-09-11T05:08:25.099Z",
+    "lastUpdated": "2026-09-12T05:07:34.387Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -13743,7 +13743,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 340.2,
-    "lastUpdated": "2026-09-11T05:08:25.099Z",
+    "lastUpdated": "2026-09-12T05:07:34.387Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -13821,7 +13821,7 @@
     "sponsoredBills": 79,
     "cosponsoredBills": 414,
     "becameLawBills": 0,
-    "becameLawCosponsoredBills": 4,
+    "becameLawCosponsoredBills": 5,
     "committees": [
       {
         "committeeCode": "SSAS",
@@ -13916,8 +13916,8 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "powerScore": 370.2,
-    "lastUpdated": "2026-09-11T05:08:25.099Z",
+    "powerScore": 373.2,
+    "lastUpdated": "2026-09-12T05:07:34.387Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -13941,9 +13941,9 @@
         "contribution": 0
       },
       "billsEnactedCosponsored": {
-        "raw": 4,
+        "raw": 5,
         "weight": 3,
-        "contribution": 12
+        "contribution": 15
       },
       "committees": {
         "chair": {
@@ -13978,7 +13978,7 @@
         "weight": -10,
         "contribution": 0
       },
-      "totalPowerScore": 370.2
+      "totalPowerScore": 373.2
     }
   },
   {
@@ -14098,7 +14098,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 643.2,
-    "lastUpdated": "2026-09-11T05:08:25.099Z",
+    "lastUpdated": "2026-09-12T05:07:34.387Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -14279,7 +14279,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 278.2,
-    "lastUpdated": "2026-09-11T05:08:25.099Z",
+    "lastUpdated": "2026-09-12T05:07:34.387Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -14467,7 +14467,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 406,
-    "lastUpdated": "2026-09-11T05:08:25.099Z",
+    "lastUpdated": "2026-09-12T05:07:34.387Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -14545,7 +14545,7 @@
     "sponsoredBills": 43,
     "cosponsoredBills": 336,
     "becameLawBills": 0,
-    "becameLawCosponsoredBills": 4,
+    "becameLawCosponsoredBills": 5,
     "committees": [
       {
         "committeeCode": "SSAF",
@@ -14668,8 +14668,8 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "powerScore": 287.2,
-    "lastUpdated": "2026-09-11T05:08:25.099Z",
+    "powerScore": 290.2,
+    "lastUpdated": "2026-09-12T05:07:34.387Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -14693,9 +14693,9 @@
         "contribution": 0
       },
       "billsEnactedCosponsored": {
-        "raw": 4,
+        "raw": 5,
         "weight": 3,
-        "contribution": 12
+        "contribution": 15
       },
       "committees": {
         "chair": {
@@ -14730,7 +14730,7 @@
         "weight": -10,
         "contribution": 0
       },
-      "totalPowerScore": 287.2
+      "totalPowerScore": 290.2
     }
   },
   {
@@ -14836,7 +14836,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 290.6,
-    "lastUpdated": "2026-09-11T05:08:25.099Z",
+    "lastUpdated": "2026-09-12T05:07:34.387Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -15031,7 +15031,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 496.8,
-    "lastUpdated": "2026-09-11T05:08:25.099Z",
+    "lastUpdated": "2026-09-12T05:07:34.387Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -15212,7 +15212,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 527.6,
-    "lastUpdated": "2026-09-11T05:08:25.099Z",
+    "lastUpdated": "2026-09-12T05:07:34.387Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -15386,7 +15386,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 242.6,
-    "lastUpdated": "2026-09-11T05:08:25.099Z",
+    "lastUpdated": "2026-09-12T05:07:34.387Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -15553,7 +15553,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 512.6,
-    "lastUpdated": "2026-09-11T05:08:25.099Z",
+    "lastUpdated": "2026-09-12T05:07:34.387Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -15727,7 +15727,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 342.2,
-    "lastUpdated": "2026-09-11T05:08:25.099Z",
+    "lastUpdated": "2026-09-12T05:07:34.387Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -15910,7 +15910,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 262.4,
-    "lastUpdated": "2026-09-11T05:08:25.099Z",
+    "lastUpdated": "2026-09-12T05:07:34.387Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -16102,7 +16102,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 521.8,
-    "lastUpdated": "2026-09-11T05:08:25.099Z",
+    "lastUpdated": "2026-09-12T05:07:34.387Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -16311,7 +16311,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 222.2,
-    "lastUpdated": "2026-09-11T05:08:25.099Z",
+    "lastUpdated": "2026-09-12T05:07:34.387Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -16520,7 +16520,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 884,
-    "lastUpdated": "2026-09-11T05:08:25.099Z",
+    "lastUpdated": "2026-09-12T05:07:34.387Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -16666,7 +16666,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 214,
-    "lastUpdated": "2026-09-11T05:08:25.099Z",
+    "lastUpdated": "2026-09-12T05:07:34.387Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -16847,7 +16847,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 460.8,
-    "lastUpdated": "2026-09-11T05:08:25.099Z",
+    "lastUpdated": "2026-09-12T05:07:34.387Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -17063,7 +17063,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 300,
-    "lastUpdated": "2026-09-11T05:08:25.100Z",
+    "lastUpdated": "2026-09-12T05:07:34.388Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -17265,7 +17265,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 229.6,
-    "lastUpdated": "2026-09-11T05:08:25.100Z",
+    "lastUpdated": "2026-09-12T05:07:34.388Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -17425,7 +17425,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 312.4,
-    "lastUpdated": "2026-09-11T05:08:25.100Z",
+    "lastUpdated": "2026-09-12T05:07:34.388Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -17606,7 +17606,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 389,
-    "lastUpdated": "2026-09-11T05:08:25.100Z",
+    "lastUpdated": "2026-09-12T05:07:34.388Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -17773,7 +17773,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 433.4,
-    "lastUpdated": "2026-09-11T05:08:25.100Z",
+    "lastUpdated": "2026-09-12T05:07:34.388Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -17851,7 +17851,7 @@
     "sponsoredBills": 93,
     "cosponsoredBills": 337,
     "becameLawBills": 1,
-    "becameLawCosponsoredBills": 4,
+    "becameLawCosponsoredBills": 5,
     "committees": [
       {
         "committeeCode": "SSAS",
@@ -17925,8 +17925,8 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "powerScore": 340.8,
-    "lastUpdated": "2026-09-11T05:08:25.100Z",
+    "powerScore": 343.8,
+    "lastUpdated": "2026-09-12T05:07:34.388Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -17950,9 +17950,9 @@
         "contribution": 6
       },
       "billsEnactedCosponsored": {
-        "raw": 4,
+        "raw": 5,
         "weight": 3,
-        "contribution": 12
+        "contribution": 15
       },
       "committees": {
         "chair": {
@@ -17987,7 +17987,7 @@
         "weight": -10,
         "contribution": 0
       },
-      "totalPowerScore": 340.8
+      "totalPowerScore": 343.8
     }
   },
   {
@@ -18114,7 +18114,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 196.4,
-    "lastUpdated": "2026-09-11T05:08:25.100Z",
+    "lastUpdated": "2026-09-12T05:07:34.388Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -18295,7 +18295,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 358.4,
-    "lastUpdated": "2026-09-11T05:08:25.100Z",
+    "lastUpdated": "2026-09-12T05:07:34.388Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -18372,7 +18372,7 @@
     "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Senator_Jim_Justice_Official_Portrait.jpg/960px-Senator_Jim_Justice_Official_Portrait.jpg",
     "sponsoredBills": 17,
     "cosponsoredBills": 302,
-    "becameLawBills": 0,
+    "becameLawBills": 1,
     "becameLawCosponsoredBills": 3,
     "committees": [
       {
@@ -18454,8 +18454,8 @@
     "totalVotes": 0,
     "participationPct": 0,
     "missedVotePct": 0,
-    "powerScore": 222.6,
-    "lastUpdated": "2026-09-11T05:08:25.100Z",
+    "powerScore": 228.6,
+    "lastUpdated": "2026-09-12T05:07:34.388Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -18474,9 +18474,9 @@
         "contribution": 181.2
       },
       "billsEnacted": {
-        "raw": 0,
+        "raw": 1,
         "weight": 6,
-        "contribution": 0
+        "contribution": 6
       },
       "billsEnactedCosponsored": {
         "raw": 3,
@@ -18516,7 +18516,7 @@
         "weight": -10,
         "contribution": 0
       },
-      "totalPowerScore": 222.6
+      "totalPowerScore": 228.6
     }
   },
   {
@@ -18615,7 +18615,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 210.4,
-    "lastUpdated": "2026-09-11T05:08:25.100Z",
+    "lastUpdated": "2026-09-12T05:07:34.388Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
@@ -18796,7 +18796,7 @@
     "participationPct": 0,
     "missedVotePct": 0,
     "powerScore": 220.6,
-    "lastUpdated": "2026-09-11T05:08:25.100Z",
+    "lastUpdated": "2026-09-12T05:07:34.388Z",
     "rawScore": 0,
     "score": 0,
     "scoreNormalized": 0,
